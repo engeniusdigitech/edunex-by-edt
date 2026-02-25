@@ -271,46 +271,7 @@
 <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-glass py-3">
-        <div class="container">
-            <h2 class="navbar-brand d-flex align-items-center mb-0">
-                <i class="fas fa-layer-group me-2 fs-3 text-primary"></i> 
-                EduCore
-            </h2>
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
-                    <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link fw-semibold px-2 {{ request()->is('/') ? 'text-primary' : 'text-secondary' }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('about') }}" class="nav-link fw-semibold px-2 {{ request()->routeIs('about') ? 'text-primary' : 'text-secondary' }}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pricing') }}" class="nav-link fw-semibold px-2 {{ request()->routeIs('pricing') ? 'text-primary' : 'text-secondary' }}">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('contact') }}" class="nav-link fw-semibold px-2 {{ request()->routeIs('contact') ? 'text-primary' : 'text-secondary' }}">Contact Us</a>
-                    </li>
-                    
-                    @if (Route::has('login'))
-                        @auth
-                            @if(auth()->user()->isSuperAdmin())
-                                <li class="nav-item"><a href="{{ route('superadmin.dashboard') }}" class="btn btn-primary-glow btn-modern py-2 px-4 shadow-sm">Super Admin Panel</a></li>
-                            @else
-                                <li class="nav-item"><a href="{{ url('/dashboard') }}" class="btn btn-primary-glow btn-modern py-2 px-4 shadow-sm">Institute Dashboard</a></li>
-                            @endif
-                        @else
-                            <li class="nav-item"><a href="{{ route('login') }}" class="btn btn-outline-modern btn-modern py-2 px-4">Log in</a></li>
-                            <li class="nav-item"><a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern py-2 px-4">Start Free Trial</a></li>
-                        @endauth
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @include('components.frontend-navbar')
 
     <!-- Hero Section -->
     <section class="hero-section text-center">
@@ -334,7 +295,7 @@
                                     Launch Dashboard <i class="fas fa-rocket ms-2"></i>
                                 </a>
                             @else
-                                <a href="{{ route('register') }}" class="btn btn-primary-glow btn-modern btn-lg">
+                                <a href="{{ route('contact') }}" class="btn btn-primary-glow btn-modern btn-lg">
                                     Get Started Now
                                 </a>
                                 <a href="{{ route('login') }}" class="btn btn-outline-modern btn-modern btn-lg">
@@ -348,59 +309,9 @@
 
             <div class="dashboard-preview mt-5 pt-4 d-none d-md-block">
                 <div class="glow-bg"></div>
-                <!-- Abstract UI representation -->
-                <div class="mx-auto bg-white rounded-4 shadow-lg overflow-hidden border" style="max-width: 900px; height: 400px; position: relative; text-align: left;">
-                    
-                    <!-- Fake Mac Window Header -->
-                    <div class="bg-light border-bottom p-3 d-flex align-items-center">
-                        <div class="d-flex gap-2">
-                            <div class="rounded-circle bg-danger" style="width: 12px; height: 12px;"></div>
-                            <div class="rounded-circle bg-warning" style="width: 12px; height: 12px;"></div>
-                            <div class="rounded-circle bg-success" style="width: 12px; height: 12px;"></div>
-                        </div>
-                        <div class="mx-auto text-muted small fw-semibold">app.educore.com</div>
-                    </div>
-                    
-                    <!-- Fake Dashboard UI -->
-                    <div class="d-flex h-100">
-                        <!-- Sidebar -->
-                        <div class="bg-light border-end w-25 p-4 d-none d-sm-block">
-                            <div class="bg-secondary bg-opacity-10 rounded mb-3" style="height: 20px; width: 60%;"></div>
-                            <div class="bg-secondary bg-opacity-10 rounded mb-3" style="height: 20px; width: 80%;"></div>
-                            <div class="bg-secondary bg-opacity-10 rounded mb-3" style="height: 20px; width: 70%;"></div>
-                            <div class="bg-secondary bg-opacity-10 rounded mb-3" style="height: 20px; width: 50%;"></div>
-                        </div>
-                        <!-- Main Content -->
-                        <div class="p-4 flex-grow-1">
-                            <div class="d-flex justify-content-between mb-4">
-                                <div class="bg-secondary bg-opacity-10 rounded" style="height: 30px; width: 30%;"></div>
-                                <div class="bg-secondary bg-opacity-10 rounded-pill" style="height: 30px; width: 10%;"></div>
-                            </div>
-                            <!-- Cards -->
-                            <div class="row g-4 mb-4">
-                                <div class="col-4">
-                                    <div class="bg-primary bg-opacity-10 rounded-3 h-100 p-3" style="min-height: 100px;">
-                                        <div class="bg-primary bg-opacity-25 rounded mb-2" style="height: 15px; width: 50%;"></div>
-                                        <div class="bg-primary bg-opacity-50 rounded" style="height: 30px; width: 70%;"></div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="bg-success bg-opacity-10 rounded-3 h-100 p-3" style="min-height: 100px;">
-                                        <div class="bg-success bg-opacity-25 rounded mb-2" style="height: 15px; width: 50%;"></div>
-                                        <div class="bg-success bg-opacity-50 rounded" style="height: 30px; width: 70%;"></div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="bg-pink bg-opacity-10 rounded-3 h-100 p-3" style="min-height: 100px; background-color: #FDF2F8;">
-                                        <div class="bg-secondary bg-opacity-25 rounded mb-2" style="height: 15px; width: 50%;"></div>
-                                        <div class="bg-secondary bg-opacity-50 rounded" style="height: 30px; width: 70%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Chart Area -->
-                            <div class="bg-light rounded-3 w-100" style="height: 120px;"></div>
-                        </div>
-                    </div>
+                <!-- Dashboard Image Preview -->
+                <div class="mx-auto rounded-4 shadow-lg overflow-hidden border" style="max-width: 900px; position: relative;">
+                    <img src="{{ asset('images/hero-banner.png') }}" class="img-fluid w-100" alt="EduCore Dashboard Preview">
                 </div>
             </div>
         </div>
