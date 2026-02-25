@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $instituteAdminRole = Role::create(['name' => 'Institute Admin']);
         $teacherRole = Role::create(['name' => 'Teacher']);
         $receptionistRole = Role::create(['name' => 'Receptionist']);
+        $studentRole = Role::create(['name' => 'Student']);
 
         // 2. Super Admin User
         User::create([
@@ -35,13 +36,6 @@ class DatabaseSeeder extends Seeder
         Plan::create([
             'name' => 'Basic Plan',
             'price' => 999.00,
-            'duration_days' => 30,
-            'is_active' => true,
-        ]);
-
-        $proPlan = Plan::create([
-            'name' => 'Pro Plan',
-            'price' => 1999.00,
             'duration_days' => 30,
             'is_active' => true,
         ]);
@@ -102,6 +96,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'receptionist@apexcoaching.com',
             'password' => Hash::make('password'),
             'role_id' => $receptionistRole->id,
+            'institute_id' => $institute->id,
+        ]);
+
+        User::create([
+            'name' => 'Abid Saiyed',
+            'email' => 'student@edu.com',
+            'password' => Hash::make('password'),
+            'role_id' => $studentRole->id,
             'institute_id' => $institute->id,
         ]);
     }
