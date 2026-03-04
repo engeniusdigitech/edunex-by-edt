@@ -212,12 +212,7 @@
                             <div class="pricing-card popular text-center shadow-lg" style="border: 2px solid var(--primary-color);">
                                 <div class="pricing-badge">RECOMMENDED</div>
                                 
-                                <h4 class="fw-bold text-dark">{{ $plan->name }}</h4>
-                                <div class="pricing-price">
-                                    <span class="pricing-currency">₹</span>{{ number_format($plan->price, 0) }}
-                                    <span class="pricing-period">/ {{ $plan->duration_days }} days</span>
-                                </div>
-                                <p class="text-muted mb-4 border-bottom pb-4">Perfect for growing institutes to manage their operations efficiently.</p>
+                                <h4 class="fw-bold text-dark mb-4 border-bottom pb-4">{{ $plan->name }}</h4>
                                 
                                 <ul class="pricing-features">
                                     <li><i class="fas fa-check-circle"></i> Unlimited Students Enrollment</li>
