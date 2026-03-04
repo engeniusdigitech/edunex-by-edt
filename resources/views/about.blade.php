@@ -106,6 +106,41 @@
             margin-bottom: 20px;
             display: inline-block;
         }
+        /* Feature Boxes in About Us */
+        .feature-box {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(79,70,229,0.03), rgba(236,72,153,0.03));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1) !important;
+            border-color: rgba(79,70,229,0.2) !important;
+        }
+        
+        .feature-box:hover::before {
+            opacity: 1;
+        }
+
+        .feature-box .fas {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .feature-box:hover .fas {
+            transform: scale(1.15) rotate(-5deg);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -144,21 +179,21 @@
                     <h3 class="fw-bold">Why choose EduNex?</h3>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border feature-box">
                         <i class="fas fa-code fa-3x text-primary mb-3"></i>
                         <h5 class="fw-bold">Modern Tech Stack</h5>
                         <p class="text-muted small">Built on robust frameworks ensuring unmatched speed, security, and multi-tenant data isolation.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border feature-box">
                         <i class="fas fa-paint-brush fa-3x text-pink mb-3" style="color: var(--secondary-color);"></i>
                         <h5 class="fw-bold">Premium Design</h5>
                         <p class="text-muted small">We believe B2B software doesn't have to be ugly. Experience a beautiful, intuitive interface.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                    <div class="p-4 bg-white rounded-4 shadow-sm h-100 border feature-box">
                         <i class="fas fa-headset fa-3x text-success mb-3"></i>
                         <h5 class="fw-bold">Expert Support</h5>
                         <p class="text-muted small">Backed directly by the senior talent at Engenius Digitech. We succeed when you succeed.</p>

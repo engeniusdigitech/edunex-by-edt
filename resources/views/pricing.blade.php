@@ -224,7 +224,7 @@
                                 </ul>
                                 
                                 <a href="{{ route('trial.request', ['plan' => $plan->name]) }}" class="btn btn-modern btn-pricing btn-primary text-white mt-3" style="background: linear-gradient(135deg, var(--primary-color), #6366F1); border: none;">
-                                    Get Started
+                                    Get Started with 7 days free trail
                                 </a>
                             </div>
                         </div>
