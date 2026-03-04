@@ -111,46 +111,20 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 1;
-            overflow: hidden;
-        }
-        
-        .feature-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, var(--primary-color), #818CF8);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: inherit;
         }
 
         .feature-box:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.4) !important;
-            border-color: var(--primary-color) !important;
-        }
-        
-        .feature-box:hover::before {
-            opacity: 1;
-        }
-
-        .feature-box *:not(.fas) {
-            transition: color 0.4s ease;
+            box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.25), 0 0 15px rgba(139, 92, 246, 0.15) !important;
+            border-color: var(--secondary-color) !important;
         }
 
         .feature-box .fas {
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .feature-box:hover h5, 
-        .feature-box:hover p {
-            color: #ffffff !important;
-        }
-
         .feature-box:hover .fas {
             transform: scale(1.15) rotate(-5deg);
-            color: #ffffff !important;
         }
     </style>
 </head>
