@@ -146,7 +146,7 @@
         <div class="container py-4">
             <div class="row align-items-center mb-5 pb-5 border-bottom">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Team meeting" class="img-fluid rounded-4 shadow-lg">
+                    <img src="{{ asset('images/about-us.jpg') }}" alt="Team meeting" class="img-fluid rounded-4 shadow-lg">
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <h2 class="fw-bold mb-4" style="color: var(--dark-bg);">Empowering Innovation</h2>
