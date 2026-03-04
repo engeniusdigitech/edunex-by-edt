@@ -1,12 +1,12 @@
-# EduCore Coaching Management SaaS
+# EduNex Institute Management SaaS
 
-EduCore is a comprehensive, multi-tenant Software as a Service (SaaS) application built to power modern coaching institutes, tuition centers, and educational academies. It handles everything from student enrollment and daily attendance to fee tracking, advanced analytics, and academic learning management—all under a single, isolated, role-based architecture.
+EduNex is a comprehensive, multi-tenant Software as a Service (SaaS) application built to power modern institute institutes, tuition centers, and educational academies. It handles everything from student enrollment and daily attendance to fee tracking, advanced analytics, and academic learning management—all under a single, isolated, role-based architecture.
 
 ## 🚀 Key Features
 
 ### 🏢 Multi-Tenant SaaS Architecture
-- **Super Administration:** Global platform owners can manage the overarching SaaS configuration, onboard new coaching institutes, and design subscription pricing plans.
-- **Strict Data Isolation (`TenantScope`):** Each registered coaching institute is completely siloed. An Institute Admin inherently only interacts with their own students, batches, payments, and staff securely, without explicit where-clauses littering the codebase.
+- **Super Administration:** Global platform owners can manage the overarching SaaS configuration, onboard new institute institutes, and design subscription pricing plans.
+- **Strict Data Isolation (`TenantScope`):** Each registered institute institute is completely siloed. An Institute Admin inherently only interacts with their own students, batches, payments, and staff securely, without explicit where-clauses littering the codebase.
 
 ### 👥 Role-Based Access Control (RBAC)
 Robust internal Laravel Gates & Policies ensure data integrity:
@@ -59,12 +59,12 @@ npm run build
 ```
 
 ### 3. Database Preparation
-Create a MySQL database named `educore_db`. Duplicate your `.env.example` to `.env` and verify the DB credentials:
+Create a MySQL database named `edunex_db`. Duplicate your `.env.example` to `.env` and verify the DB credentials:
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=educore_db
+DB_DATABASE=edunex_db
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -88,11 +88,11 @@ php artisan serve
 To immediately test the application's isolated multi-tenant capabilities, login at `http://localhost:8000/login` using the following seeded credentials:
 
 **1. The Platform Owner (Super Admin)**
-- Email: `superadmin@educore.com`
+- Email: `superadmin@edunex.com`
 - Password: `password`
 
-**2. Coaching Institute Owner (Institute Admin)**
-- Email: `admin@apexcoaching.com` (or `admin@institute1.com` depending on seeder generation)
+**2. Institute Institute Owner (Institute Admin)**
+- Email: `admin@apexinstitute.com` (or `admin@institute1.com` depending on seeder generation)
 - Password: `password`
 
 **3. Student Mobile Portal Demo**

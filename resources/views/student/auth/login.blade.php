@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login - EduCore</title>
+    <title>Student Login - EduNex</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -74,7 +74,7 @@
                     </form>
                 </div>
                 <div class="text-center mt-3 text-white-50">
-                    <small>&copy; {{ date('Y') }} EduCore Systems</small>
+                    <small>&copy; {{ date('Y') }} EduNex Systems</small>
                 </div>
             </div>
         </div>

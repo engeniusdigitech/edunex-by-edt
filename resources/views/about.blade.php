@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - EduCore & Engenius Digitech</title>
+    <title>About Us - EduNex & Engenius Digitech</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,7 +117,7 @@
         <div class="container">
             <h1 class="page-title animate__animated animate__fadeInUp">Our Story</h1>
             <p class="fs-5 text-muted max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 700px;">
-                EduCore is built and maintained by <strong>Engenius Digitech</strong>. We empower innovation and craft digital excellence for modern educational institutes.
+                EduNex is built and maintained by <strong>Engenius Digitech</strong>. We empower innovation and craft digital excellence for modern educational institutes.
             </p>
         </div>
     </div>
@@ -131,7 +131,7 @@
                 <div class="col-lg-5 offset-lg-1">
                     <h2 class="fw-bold mb-4" style="color: var(--dark-bg);">Empowering Innovation</h2>
                     <p class="fs-5 text-muted mb-4">At Engenius Digitech, we partner with founders and teams to design, build, and scale modern software tailored to solve real-world problems.</p>
-                    <p class="text-muted">EduCore is born out of the necessity to streamline the chaotic nature of coaching management. We combined our deep expertise in software development with top-tier design to bring you a platform that doesn't just work—it delights.</p>
+                    <p class="text-muted">EduNex is born out of the necessity to streamline the chaotic nature of institute management. We combined our deep expertise in software development with top-tier design to bring you a platform that doesn't just work—it delights.</p>
                     
                     <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="btn btn-outline-primary mt-3 rounded-pill px-4 fw-semibold border-2">
                         Visit Engenius Digitech <i class="fas fa-external-link-alt ms-2"></i>
@@ -141,7 +141,7 @@
 
             <div class="row pt-4 text-center">
                 <div class="col-12 mb-5">
-                    <h3 class="fw-bold">Why choose EduCore?</h3>
+                    <h3 class="fw-bold">Why choose EduNex?</h3>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
@@ -173,8 +173,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <div class="footer-brand"><i class="fas fa-layer-group me-2"></i> EduCore</div>
-                    <p class="footer-text text-white-50 mb-0">Elevating coaching management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
+                    <div class="footer-brand"><img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" style="max-height: 64px;" class="me-2"></div>
+                    <p class="footer-text text-white-50 mb-0">Elevating institute management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
                 </div>
                 <div class="col-md-6 text-md-end footer-text">
                     <a href="{{ route('about') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">About Us</a>

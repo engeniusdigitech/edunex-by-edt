@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal - EduCore</title>
+    <title>Student Portal - EduNex</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,12 +90,7 @@
     <nav class="navbar navbar-expand-lg sticky-top mb-5">
         <div class="container">
             <a href="#" class="navbar-brand d-flex align-items-center mb-0 text-decoration-none" style="padding: 0;">
-                <!-- Icon Wrapper -->
-                <div class="me-2 d-flex align-items-center justify-content-center shadow-sm" 
-                     style="width: 44px; height: 44px; background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(236,72,153,0.1)); border-radius: 12px; border: 1px solid rgba(79,70,229,0.15);">
-                    <i class="fas fa-layer-group fs-5" 
-                       style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
-                </div>
+                <img src="{{ asset('images/logo.png') }}" class="me-2 img-fluid" style="max-height: 60px;" alt="EduNex Logo">
                 <!-- Text Details -->
                 <div class="d-flex flex-column justify-content-center">
                     <span class="fw-bolder" style="font-size: 1.35rem; letter-spacing: -0.5px; line-height: 1;">
@@ -103,7 +98,7 @@
                     </span>
                     <span class="fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; display: flex; align-items: center; color: var(--text-muted) !important;">
                         <span style="display: inline-block; width: 12px; height: 2px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; margin-right: 6px;"></span>
-                        Powered by EduCore
+                        Powered by EduNex
                     </span>
                 </div>
             </a>

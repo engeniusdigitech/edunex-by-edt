@@ -41,7 +41,7 @@
                             <div class="small text-muted"><i class="far fa-envelope me-1"></i> {{ $institute->contact_email }} &bull; <i class="fas fa-phone-alt me-1"></i> {{ $institute->phone }}</div>
                         </td>
                         <td class="py-3">
-                            <span class="badge bg-light text-dark border px-2 py-1" style="font-family: monospace;">{{ $institute->subdomain }}.educore.test</span>
+                            <span class="badge bg-light text-dark border px-2 py-1" style="font-family: monospace;">{{ $institute->subdomain }}.edunex.test</span>
                         </td>
                         <td class="py-3">
                             @if($institute->is_active)

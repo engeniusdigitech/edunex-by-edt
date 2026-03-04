@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduCore - The Ultimate Coaching Management SaaS</title>
+    <title>EduNex - The Ultimate Institute Management SaaS</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -279,10 +279,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="hero-badge animate__animated animate__fadeInDown">
-                        ✨ Next-Gen Coaching Management <span class="text-muted fw-normal ms-1">| By <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-primary text-decoration-none fw-bold">Engenius Digitech</a></span>
+                        ✨ Next-Gen Institute Management <span class="text-muted fw-normal ms-1">| By <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-primary text-decoration-none fw-bold">Engenius Digitech</a></span>
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
-                        The ultimate operating system for <br> <span>modern coaching centers.</span>
+                        The ultimate operating system for <br> <span>modern institute centers.</span>
                     </h1>
                     <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
                         Automate fee collections, track real-time attendance, and engage students with an enterprise-grade SaaS platform designed essentially for educators.
@@ -311,7 +311,7 @@
                 <div class="glow-bg"></div>
                 <!-- Dashboard Image Preview -->
                 <div class="mx-auto rounded-4 shadow-lg overflow-hidden border" style="max-width: 900px; position: relative;">
-                    <img src="{{ asset('images/hero-banner.png') }}" class="img-fluid w-100" alt="EduCore Dashboard Preview">
+                    <img src="{{ asset('images/hero-banner.png') }}" class="img-fluid w-100" alt="EduNex Dashboard Preview">
                 </div>
             </div>
         </div>
@@ -402,7 +402,7 @@
                 <div class="position-absolute top-0 start-0 w-100 h-100" style="background: radial-gradient(circle at center, rgba(79,70,229,0.3) 0%, transparent 60%);"></div>
                 <div class="position-relative z-1">
                     <h2 class="text-white fw-bold display-5 mb-4">Ready to transform your institute?</h2>
-                    <p class="text-white-50 fs-5 mb-5 mx-auto" style="max-width: 600px;">Join the next generation of educators managing their coaching centers effortlessly with EduCore.</p>
+                    <p class="text-white-50 fs-5 mb-5 mx-auto" style="max-width: 600px;">Join the next generation of educators managing their institute centers effortlessly with EduNex.</p>
                     <a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern btn-lg px-5">Start Your Free Trial</a>
                 </div>
             </div>
@@ -414,8 +414,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <h2 class="footer-brand mb-0"><i class="fas fa-layer-group me-2"></i> EduCore</h2>
-                    <p class="footer-text mb-0">Elevating the standard of coaching management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
+                    <h2 class="footer-brand mb-0"><img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" style="max-height: 64px;" class="me-2"></h2>
+                    <p class="footer-text mb-0">Elevating the standard of institute management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
                 </div>
                 <div class="col-md-6 text-md-end footer-text">
                     <a href="{{ route('about') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">About Us</a>

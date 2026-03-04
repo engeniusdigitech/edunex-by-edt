@@ -56,7 +56,7 @@
                         </td>
                         <td class="py-3 text-end pe-4">
                             @php
-                                $instituteName = urlencode($student->institute->name ?? 'EduCore');
+                                $instituteName = urlencode($student->institute->name ?? 'EduNex');
                                 $studentName = urlencode($student->name);
                                 $message = "Dear {$studentName},%0A%0AThis is a gentle reminder from *{$instituteName}* that your fee payment for the current month is pending.%0A%0APlease clear your dues at your earliest convenience to maintain uninterrupted access to your classes.%0A%0AThank you!";
                                 $phone = preg_replace('/[^0-9]/', '', $student->phone);

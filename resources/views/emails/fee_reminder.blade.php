@@ -3,7 +3,7 @@
 
 Dear {{ $student->name }},
 
-This is a gentle reminder from **{{ $student->institute->name ?? 'EduCore' }}** that your fee payment for the current month is pending. 
+This is a gentle reminder from **{{ $student->institute->name ?? 'EduNex' }}** that your fee payment for the current month is pending. 
 
 If you have already made the payment, please ignore this email. Otherwise, please clear your dues at your earliest convenience to maintain uninterrupted access to your classes.
 

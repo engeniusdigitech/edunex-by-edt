@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'EduCore Dashboard')</title>
+    <title>@yield('title', 'EduNex Dashboard')</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -24,7 +24,7 @@
         <div class="row g-0">
             <!-- Sidebar -->
             <div class="col-md-2 sidebar d-none d-md-block">
-                <h4 class="text-white text-center mb-4"><i class="fas fa-graduation-cap"></i> EduCore</h4>
+                <h4 class="text-white text-center mb-4"><i class="fas fa-graduation-cap"></i> EduNex</h4>
                 <a href="{{ route('dashboard') }}" class="active"><i class="fas fa-home me-2"></i> Dashboard</a>
                 <a href="{{ route('students.index') }}"><i class="fas fa-users me-2"></i> Students</a>
                 <a href="{{ route('attendance.index') }}"><i class="fas fa-calendar-check me-2"></i> Attendance</a>

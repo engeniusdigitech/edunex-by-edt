@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - EduCore & Engenius Digitech</title>
+    <title>Contact Us - EduNex & Engenius Digitech</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,7 +161,7 @@
         <div class="container">
             <h1 class="page-title animate__animated animate__fadeInUp">Get in Touch</h1>
             <p class="fs-5 text-muted max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 700px;">
-                Looking to transform your coaching institute? Our team at Engenius Digitech is ready to help you deploy EduCore.
+                Looking to transform your institute institute? Our team at Engenius Digitech is ready to help you deploy EduNex.
             </p>
         </div>
     </div>
@@ -220,7 +220,7 @@
                             <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <h6 class="fw-bold">Email Us</h6>
-                                <p class="text-white-50 mb-0">hello@engeniusdigitech.com<br>support@educore.com</p>
+                                <p class="text-white-50 mb-0">hello@engeniusdigitech.com<br>support@edunex.com</p>
                             </div>
                         </div>
                         
@@ -252,8 +252,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <div class="footer-brand"><i class="fas fa-layer-group me-2"></i> EduCore</div>
-                    <p class="footer-text text-white-50 mb-0">Elevating coaching management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
+                    <div class="footer-brand"><img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" style="max-height: 64px;" class="me-2"></div>
+                    <p class="footer-text text-white-50 mb-0">Elevating institute management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
                 </div>
                 <div class="col-md-6 text-md-end footer-text">
                     <a href="{{ route('about') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">About Us</a>

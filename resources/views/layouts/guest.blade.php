@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'EduCore') }} - Authentication</title>
+        <title>{{ config('app.name', 'EduNex') }} - Authentication</title>
 
         <!-- PWA Manifest -->
         <link rel="manifest" href="/manifest.json">
@@ -115,18 +115,7 @@
         <!-- Logo -->
         <div class="mb-8 text-center animate__animated animate__fadeInDown">
             <a href="{{ url('/') }}" class="flex items-center justify-center text-3xl font-extrabold text-indigo-600 no-underline" style="display: flex; flex-direction: column; text-decoration: none;">
-                <div class="flex items-center justify-center mb-2 shadow-sm" style="width: 56px; height: 56px; background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(236,72,153,0.1)); border-radius: 16px; border: 1px solid rgba(79,70,229,0.15);">
-                    <i class="fas fa-layer-group text-2xl" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span style="font-size: 2rem; letter-spacing: -1px; line-height: 1; font-weight: 800;">
-                        <span style="color: var(--dark-bg);">Edu</span><span style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Core</span>
-                    </span>
-                    <span class="font-bold mt-1 text-gray-500" style="font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center;">
-                        <span style="display: inline-block; width: 14px; height: 2px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; margin-right: 6px;"></span>
-                        EnGenius DigiTech
-                    </span>
-                </div>
+                <img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" class="mb-2" style="max-height: 100px;">
             </a>
             <p class="text-gray-500 mt-4 font-medium">Welcome to the future of education</p>
         </div>

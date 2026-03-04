@@ -1,7 +1,7 @@
 {
-    "name": "EduCore Student Portal",
-    "short_name": "EduCore",
-    "description": "The unified student dashboard for EduCore Coaching Management",
+    "name": "EduNex Student Portal",
+    "short_name": "EduNex",
+    "description": "The unified student dashboard for EduNex Institute Management",
     "start_url": "/student/login",
     "display": "standalone",
     "background_color": "#FAFAF9",

@@ -36,7 +36,7 @@ class FeeReminderNotification extends Notification
      */
     public function toArray(object $notifiable): array
     {
-        $instituteName = $notifiable->institute->name ?? 'EduCore';
+        $instituteName = $notifiable->institute->name ?? 'EduNex';
         return [
             'title' => 'Pending Fee Reminder',
             'message' => "This is a gentle reminder from {$instituteName} that your fee payment for the current month is pending. Please clear your dues.",

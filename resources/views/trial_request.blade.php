@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Trial - EduCore</title>
+    <title>Start Trial - EduNex</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -150,7 +150,7 @@
                             <div class="row g-4">
                                 <div class="col-12">
                                     <label class="form-label fw-semibold text-muted small text-uppercase">Institute Name</label>
-                                    <input type="text" id="institute" class="form-control" placeholder="e.g. Apex Coaching classes" required>
+                                    <input type="text" id="institute" class="form-control" placeholder="e.g. Apex Institute classes" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold text-muted small text-uppercase">Your Name</label>
@@ -182,8 +182,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <div class="footer-brand"><i class="fas fa-layer-group me-2"></i> EduCore</div>
-                    <p class="footer-text text-white-50 mb-0">Elevating coaching management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
+                    <div class="footer-brand"><img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" style="max-height: 64px;" class="me-2"></div>
+                    <p class="footer-text text-white-50 mb-0">Elevating institute management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
                 </div>
                 <div class="col-md-6 text-md-end footer-text">
                     <a href="{{ route('about') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">About Us</a>
@@ -206,7 +206,7 @@
             const plan = document.getElementById('plan').value;
             
             // Build the message
-            let message = `Hello Engenius Digitech,\n\nI am interested in starting my EduCore Trial.\n\n`;
+            let message = `Hello Engenius Digitech,\n\nI am interested in starting my EduNex Trial.\n\n`;
             message += `*Institute:* ${institute}\n`;
             message += `*Name:* ${name}\n`;
             message += `*Contact:* ${phone}\n`;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'EduCore') - Dashboard</title>
+    <title>@yield('title', 'EduNex') - Dashboard</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -190,22 +190,7 @@
             <div class="col-md-2 sidebar d-flex flex-column h-100" id="adminSidebar">
                 <div class="text-center d-block">
                     <a href="{{ url('/') }}" class="sidebar-brand mb-0 text-decoration-none d-flex flex-column align-items-center justify-content-center" style="padding: 10px 0;">
-                        <!-- Icon Wrapper -->
-                        <div class="d-flex align-items-center justify-content-center shadow-sm mb-2" 
-                             style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border-radius: 14px; border: 1px solid rgba(255,255,255,0.1);">
-                            <i class="fas fa-layer-group fs-4" 
-                               style="background: linear-gradient(135deg, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
-                        </div>
-                        <!-- Text Details -->
-                        <div class="d-flex flex-column justify-content-center align-items-center">
-                            <span class="fw-bolder" style="font-size: 1.5rem; letter-spacing: -0.5px; line-height: 1;">
-                                <span style="color: #fff;">Edu</span><span style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Core</span>
-                            </span>
-                            <span class="fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; display: flex; align-items: center; color: #94A3B8;">
-                                <span style="display: inline-block; width: 12px; height: 2px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; margin-right: 6px;"></span>
-                                EnGenius DigiTech
-                            </span>
-                        </div>
+                        <img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" class="img-fluid mb-2" style="max-height: 72px;">
                     </a>
                 </div>
                 

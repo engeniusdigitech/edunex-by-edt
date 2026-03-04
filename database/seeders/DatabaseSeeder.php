@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         // 2. Super Admin User
         User::firstOrCreate(
-        ['email' => 'superadmin@educore.com'],
+        ['email' => 'superadmin@edunex.com'],
         [
             'name' => 'System Owner',
             'password' => Hash::make('password'),
@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
         $institute = Institute::firstOrCreate(
         ['subdomain' => 'apex'],
         [
-            'name' => 'Apex Coaching Center',
-            'contact_email' => 'contact@apexcoaching.com',
+            'name' => 'Apex Institute Center',
+            'contact_email' => 'contact@apexinstitute.com',
             'phone' => '9876543210',
             'is_active' => true,
         ]
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
         );
 
         \App\Models\FeeStructure::firstOrCreate(
-        ['institute_id' => $institute->id, 'name' => 'Annual Coaching Fee'],
+        ['institute_id' => $institute->id, 'name' => 'Annual Institute Fee'],
         [
             'total_amount' => 12000.00,
             'description' => 'Includes all subjects',
@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
 
         // 6. Institute Admin
         User::firstOrCreate(
-        ['email' => 'admin@apexcoaching.com'],
+        ['email' => 'admin@apexinstitute.com'],
         [
             'name' => 'Apex Admin',
             'password' => Hash::make('password'),
@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
 
         // 7. Teacher
         User::firstOrCreate(
-        ['email' => 'teacher@apexcoaching.com'],
+        ['email' => 'teacher@apexinstitute.com'],
         [
             'name' => 'Jane Teacher',
             'password' => Hash::make('password'),
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
 
         // 8. Receptionist
         User::firstOrCreate(
-        ['email' => 'receptionist@apexcoaching.com'],
+        ['email' => 'receptionist@apexinstitute.com'],
         [
             'name' => 'Mike Receptionist',
             'password' => Hash::make('password'),

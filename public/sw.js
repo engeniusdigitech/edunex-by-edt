@@ -1,4 +1,4 @@
-const CACHE_NAME = 'educore-student-portal-v1';
+const CACHE_NAME = 'edunex-student-portal-v1';
 const ASSETS_TO_CACHE = [
     '/student/login',
     '/build/assets/app-*.css', // Assuming Vite built assets

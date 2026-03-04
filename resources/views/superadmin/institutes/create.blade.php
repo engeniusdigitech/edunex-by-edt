@@ -16,13 +16,13 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Institute Name</label>
-                <input type="text" name="name" class="form-control" required placeholder="e.g. Apex Coaching">
+                <input type="text" name="name" class="form-control" required placeholder="e.g. Apex Institute">
             </div>
             <div class="mb-3">
                 <label class="form-label">Subdomain</label>
                 <div class="input-group">
                     <input type="text" name="subdomain" class="form-control" placeholder="apex">
-                    <span class="input-group-text">.educore.test</span>
+                    <span class="input-group-text">.edunex.test</span>
                 </div>
                 <small class="text-muted">Leave blank to auto-generate from name.</small>
             </div>
