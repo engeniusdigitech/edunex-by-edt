@@ -218,6 +218,7 @@
                     <h6 class="sidebar-header mt-3">Academics</h6>
                     <a href="{{ route('homework.index') }}" class="{{ request()->routeIs('homework.*') ? 'active' : '' }}"><i class="fas fa-book-open"></i> Homework</a>
                     <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i class="fas fa-file-alt"></i> Tests & Exams</a>
+                    <a href="{{ route('live-lectures.index') }}" class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i> Live Lectures</a>
                     
                     @if(auth()->user()->isInstituteAdmin())
                     <h6 class="sidebar-header mt-3">Analytics</h6>

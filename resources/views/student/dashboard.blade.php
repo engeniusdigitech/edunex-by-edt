@@ -203,6 +203,15 @@
                     </div>
                 </div>
 
+                <div class="card border-0 mt-4" style="background: linear-gradient(135deg, var(--primary-color), #818CF8); color: white;">
+                    <div class="card-body p-4 text-center">
+                        <i class="fas fa-video fa-2x mb-3 text-white"></i>
+                        <h5 class="fw-bold text-white mb-2">Live Lectures</h5>
+                        <p class="small text-white-50 mb-4">Access recording library for your subjects.</p>
+                        <a href="{{ route('student.lectures.index') }}" class="btn btn-light rounded-pill px-4 fw-bold w-100 text-primary">View Library</a>
+                    </div>
+                </div>
+
                 <!-- Active Homework Area -->
                 <h5 class="fw-bold mt-5 mb-4 text-dark fs-4">Current Assignments</h5>
                 @forelse($activeHomeworks as $hw)

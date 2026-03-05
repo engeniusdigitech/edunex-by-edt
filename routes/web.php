@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
             // Academics Module
             Route::resource('homework', \App\Http\Controllers\HomeworkController::class);
             Route::resource('tests', \App\Http\Controllers\TestController::class);
+            Route::resource('live-lectures', \App\Http\Controllers\LiveLectureController::class);
             Route::get('tests/{test}/marks', [\App\Http\Controllers\TestController::class , 'marks'])->name('tests.marks');
             Route::post('tests/{test}/marks', [\App\Http\Controllers\TestController::class , 'storeMarks'])->name('tests.store_marks');
 
@@ -75,7 +76,8 @@ Route::middleware(['auth'])->group(function () {
                 }
                 );
             }
-            );        });
+            );
+        });
 
 require __DIR__ . '/auth.php'; // assuming Laravel Breeze
 
@@ -89,6 +91,10 @@ Route::prefix('student')->name('student.')->group(function () {
 
         Route::middleware('auth:student')->group(function () {
             Route::get('dashboard', [\App\Http\Controllers\Student\DashboardController::class , 'index'])->name('dashboard');
+
+            // Live Lectures
+            Route::get('lectures', [\App\Http\Controllers\Student\LectureController::class , 'index'])->name('lectures.index');
+            Route::get('lectures/{liveLecture}/download', [\App\Http\Controllers\Student\LectureController::class , 'download'])->name('lectures.download');
             Route::post('notifications/{id}/read', [\App\Http\Controllers\Student\DashboardController::class , 'markAsRead'])->name('notifications.read');
             Route::post('logout', [\App\Http\Controllers\Student\AuthController::class , 'logout'])->name('logout');
         }
