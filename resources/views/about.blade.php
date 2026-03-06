@@ -326,9 +326,7 @@
                     </div>
                     <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built by educators, for educators.</p>
                     <div class="d-flex gap-3">
-                        <a href="#" class="footer-link fs-5"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="footer-link fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-2">

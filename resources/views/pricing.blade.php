@@ -286,6 +286,9 @@
                         <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="max-height: 50px;" class="me-2">
                     </div>
                     <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built by educators, for educators.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-2">
                     <h6 class="fw-bold mb-4">Platform</h6>

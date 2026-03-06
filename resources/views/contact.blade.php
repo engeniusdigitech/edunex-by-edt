@@ -286,8 +286,11 @@
                                 <h6 class="fw-bold text-white-50 small text-uppercase mb-4">Crafted by</h6>
                                 <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-decoration-none">
                                     <h4 class="text-white fw-black mb-1">Engenius Digitech</h4>
-                                    <p class="text-white-50 small">Visit our main portfolio <i class="fas fa-arrow-up-right-from-square ms-1"></i></p>
+                                    <p class="text-white-50 small mb-4">Visit our main portfolio <i class="fas fa-arrow-up-right-from-square ms-1"></i></p>
                                 </a>
+                                <div class="d-flex gap-3">
+                                    <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" class="btn btn-light rounded-circle" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i class="fab fa-linkedin-in text-primary"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -319,9 +322,7 @@
                     </div>
                     <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built by educators, for educators.</p>
                     <div class="d-flex gap-3">
-                        <a href="#" class="footer-link fs-5"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="footer-link fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-2">
