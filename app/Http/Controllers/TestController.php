@@ -6,26 +6,29 @@ use App\Models\Test;
 use App\Models\Batch;
 use App\Models\TestScore;
 use App\Models\Student;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     public function index()
     {
-        $tests = Test::with('batch')->latest()->get();
+        $tests = Test::with(['batch', 'subject'])->latest()->get();
         return view('tests.index', compact('tests'));
     }
 
     public function create()
     {
         $batches = Batch::where('is_active', true)->get();
-        return view('tests.create', compact('batches'));
+        $subjects = Subject::where('is_active', true)->get();
+        return view('tests.create', compact('batches', 'subjects'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'batch_id' => 'required|exists:batches,id',
+            'subject_id' => 'required|exists:subjects,id',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'test_date' => 'required|date',
@@ -47,13 +50,15 @@ class TestController extends Controller
     public function edit(Test $test)
     {
         $batches = Batch::where('is_active', true)->get();
-        return view('tests.edit', compact('test', 'batches'));
+        $subjects = Subject::where('is_active', true)->get();
+        return view('tests.edit', compact('test', 'batches', 'subjects'));
     }
 
     public function update(Request $request, Test $test)
     {
         $validated = $request->validate([
             'batch_id' => 'required|exists:batches,id',
+            'subject_id' => 'required|exists:subjects,id',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'test_date' => 'required|date',

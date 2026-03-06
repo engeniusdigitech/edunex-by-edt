@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\LiveLecture;
 
 class LectureController extends Controller
 {
@@ -11,28 +11,57 @@ class LectureController extends Controller
     {
         $student = auth('student')->user();
 
-        // Fetch lectures for the student's batch, latest first
-        $lectures = \App\Models\LiveLecture::where('batch_id', $student->batch_id)
+        // Fetch LIVE sessions for the student's batch
+        $liveLectures = LiveLecture::where('batch_id', $student->batch_id)
+            ->where('status', 'live')
+            ->latest()
+            ->get();
+
+        // Fetch ENDED sessions (recording library) grouped by subject
+        $endedLectures = LiveLecture::where('batch_id', $student->batch_id)
+            ->where('status', 'ended')
             ->latest('recorded_at')
             ->get();
 
-        // Group by subject in PHP (quicker than complex DB grouping for typical lecture counts)
-        $groupedLectures = $lectures->groupBy('subject');
+        $groupedLectures = $endedLectures->groupBy('subject');
 
-        return view('student.lectures.index', compact('groupedLectures'));
+        return view('student.lectures.index', compact('liveLectures', 'groupedLectures'));
     }
 
-    public function download(\App\Models\LiveLecture $liveLecture)
+    public function join(LiveLecture $liveLecture)
     {
-        // Ensure student has access to this lecture
-        if ($liveLecture->batch_id !== auth('student')->user()->batch_id) {
+        $student = auth('student')->user();
+
+        // Ensure lecture is still live and belongs to the student's batch
+        if ($liveLecture->batch_id !== $student->batch_id) {
+            abort(403, 'You do not have access to this lecture.');
+        }
+
+        if (!$liveLecture->isLive()) {
+            return redirect()->route('student.lectures.index')
+                ->with('error', 'This lecture has already ended.');
+        }
+
+        return view('student.lectures.room', [
+            'liveLecture' => $liveLecture,
+        ]);
+    }
+
+    public function download(LiveLecture $liveLecture)
+    {
+        $student = auth('student')->user();
+
+        if ($liveLecture->batch_id !== $student->batch_id) {
             abort(403);
         }
 
-        if (!\Illuminate\Support\Facades\Storage::disk('public')->exists($liveLecture->video_path)) {
+        if (!$liveLecture->video_path || !\Illuminate\Support\Facades\Storage::disk('public')->exists($liveLecture->video_path)) {
             return back()->with('error', 'Video file not found.');
         }
 
-        return \Illuminate\Support\Facades\Storage::disk('public')->download($liveLecture->video_path, $liveLecture->title . '.' . pathinfo($liveLecture->video_path, PATHINFO_EXTENSION));
+        return \Illuminate\Support\Facades\Storage::disk('public')->download(
+            $liveLecture->video_path,
+            $liveLecture->title . '.' . pathinfo($liveLecture->video_path, PATHINFO_EXTENSION)
+        );
     }
 }

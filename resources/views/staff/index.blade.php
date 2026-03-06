@@ -56,6 +56,7 @@
                         </td>
                         <td class="py-3 text-muted fw-medium">{{ $staff->created_at->format('M d, Y') }}</td>
                         <td class="py-3 text-end pe-4">
+                            <a href="{{ route('staff.edit', $staff) }}" class="btn btn-sm btn-light text-primary border shadow-sm rounded-circle p-2 me-1" title="Edit Staff"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('staff.destroy', $staff) }}" method="POST" class="d-inline" onsubmit="return confirm('Remove this staff member?');">
                                 @csrf
                                 @method('DELETE')

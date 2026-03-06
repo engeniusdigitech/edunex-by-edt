@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $student = auth('student')->user()->load('batch', 'institute');
 
         $totalClasses = $student->attendances()->count();
-        $presentClasses = $student->attendances()->where('status', 'present')->count();
+        $presentClasses = $student->attendances()->whereIn('status', ['present', 'late'])->count();
         $attendancePercentage = $totalClasses > 0 ? round(($presentClasses / $totalClasses) * 100) : 0;
 
         $recentPayments = $student->payments()->latest()->take(5)->get();

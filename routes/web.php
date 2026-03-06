@@ -58,11 +58,19 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('payments', PaymentController::class)->middleware('can:manage-payments');
 
             // Academics Module
+            Route::resource('batches', \App\Http\Controllers\BatchController::class)->except(['create', 'edit', 'show'])->middleware('can:manage-batches');
+            Route::resource('subjects', \App\Http\Controllers\SubjectController::class)->except(['create', 'edit', 'show']);
             Route::resource('homework', \App\Http\Controllers\HomeworkController::class);
             Route::resource('tests', \App\Http\Controllers\TestController::class);
             Route::resource('live-lectures', \App\Http\Controllers\LiveLectureController::class);
+            Route::post('live-lectures/{liveLecture}/start', [\App\Http\Controllers\LiveLectureController::class , 'start'])->name('live-lectures.start');
+            Route::post('live-lectures/{liveLecture}/end', [\App\Http\Controllers\LiveLectureController::class , 'end'])->name('live-lectures.end');
             Route::get('tests/{test}/marks', [\App\Http\Controllers\TestController::class , 'marks'])->name('tests.marks');
             Route::post('tests/{test}/marks', [\App\Http\Controllers\TestController::class , 'storeMarks'])->name('tests.store_marks');
+
+            // Notifications
+            Route::get('/notifications', [\App\Http\Controllers\NotificationController::class , 'index'])->name('notifications.index');
+            Route::post('/notifications/send', [\App\Http\Controllers\NotificationController::class , 'send'])->name('notifications.send');
 
             // Advanced Analytics / Reports
             Route::prefix('reports')->name('reports.')->group(function () {
@@ -73,6 +81,9 @@ Route::middleware(['auth'])->group(function () {
                     Route::get('/defaulters/pdf', [\App\Http\Controllers\ReportController::class , 'exportDefaultersPdf'])->name('defaulters.pdf');
 
                     Route::post('/defaulters/notify/{student}', [\App\Http\Controllers\NotificationController::class , 'sendPortalAlert'])->name('notify');
+
+                    Route::get('/students/{student}', [\App\Http\Controllers\ReportController::class , 'studentReport'])->name('student');
+                    Route::get('/students/{student}/pdf', [\App\Http\Controllers\ReportController::class , 'exportStudentReportPdf'])->name('student.pdf');
                 }
                 );
             }
@@ -94,6 +105,7 @@ Route::prefix('student')->name('student.')->group(function () {
 
             // Live Lectures
             Route::get('lectures', [\App\Http\Controllers\Student\LectureController::class , 'index'])->name('lectures.index');
+            Route::get('lectures/{liveLecture}/join', [\App\Http\Controllers\Student\LectureController::class , 'join'])->name('lectures.join');
             Route::get('lectures/{liveLecture}/download', [\App\Http\Controllers\Student\LectureController::class , 'download'])->name('lectures.download');
             Route::post('notifications/{id}/read', [\App\Http\Controllers\Student\DashboardController::class , 'markAsRead'])->name('notifications.read');
             Route::post('logout', [\App\Http\Controllers\Student\AuthController::class , 'logout'])->name('logout');

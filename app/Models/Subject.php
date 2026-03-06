@@ -4,23 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Homework extends Model
+class Subject extends Model
 {
     use \App\Traits\BelongsToInstitute;
-
-    protected $table = 'homework';
 
     protected $fillable = [
         'institute_id',
         'batch_id',
-        'subject_id',
-        'title',
-        'description',
-        'due_date',
-    ];
-
-    protected $casts = [
-        'due_date' => 'date',
+        'name',
+        'is_active',
     ];
 
     public function batch()
@@ -28,8 +20,8 @@ class Homework extends Model
         return $this->belongsTo(Batch::class);
     }
 
-    public function subject()
+    public function users()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->belongsToMany(User::class);
     }
 }

@@ -16,15 +16,27 @@
             <form action="{{ route('homework.store') }}" method="POST">
                 @csrf
                 
-                <div class="mb-4">
-                    <label class="form-label fw-semibold text-secondary small text-uppercase">Select Batch <span class="text-danger">*</span></label>
-                    <select name="batch_id" class="form-select form-select-lg rounded-3 @error('batch_id') is-invalid @enderror" required>
-                        <option value="">-- Choose a batch --</option>
-                        @foreach($batches as $batch)
-                            <option value="{{ $batch->id }}" {{ old('batch_id') == $batch->id ? 'selected' : '' }}>{{ $batch->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('batch_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold text-secondary small text-uppercase">Select Batch <span class="text-danger">*</span></label>
+                        <select name="batch_id" class="form-select form-select-lg rounded-3 @error('batch_id') is-invalid @enderror" required>
+                            <option value="">-- Choose a batch --</option>
+                            @foreach($batches as $batch)
+                                <option value="{{ $batch->id }}" {{ old('batch_id') == $batch->id ? 'selected' : '' }}>{{ $batch->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('batch_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label fw-semibold text-secondary small text-uppercase">Select Subject <span class="text-danger">*</span></label>
+                        <select name="subject_id" class="form-select form-select-lg rounded-3 @error('subject_id') is-invalid @enderror" required>
+                            <option value="">-- Choose a subject --</option>
+                            @foreach($subjects as $subject)
+                                <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>{{ $subject->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('subject_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
                 </div>
 
                 <div class="mb-4">

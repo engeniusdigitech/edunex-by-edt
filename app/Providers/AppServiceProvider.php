@@ -38,5 +38,9 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Gate::define('manage-payments', function ($user) {
             return $user->isInstituteAdmin() || $user->isReceptionist();
         });
+
+        \Illuminate\Support\Facades\Gate::define('manage-batches', function ($user) {
+            return $user->isInstituteAdmin();
+        });
     }
 }

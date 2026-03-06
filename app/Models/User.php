@@ -63,4 +63,14 @@ class User extends Authenticatable
     {
         return ($this->role->name ?? '') === 'Receptionist';
     }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
+    public function batches()
+    {
+        return $this->belongsToMany(Batch::class);
+    }
 }

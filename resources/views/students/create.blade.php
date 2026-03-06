@@ -37,6 +37,18 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" required placeholder="Min. 8 characters">
+                    @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="password_confirmation" class="form-control" required placeholder="Re-enter password">
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Assign Batch</label>
                 <!-- Usually you'd fetch active batches from the controller -->

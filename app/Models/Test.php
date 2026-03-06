@@ -11,6 +11,7 @@ class Test extends Model
     protected $fillable = [
         'institute_id',
         'batch_id',
+        'subject_id',
         'title',
         'description',
         'test_date',
@@ -24,6 +25,11 @@ class Test extends Model
     public function batch()
     {
         return $this->belongsTo(Batch::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
     }
 
     public function scores()

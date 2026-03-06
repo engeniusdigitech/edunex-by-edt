@@ -33,6 +33,13 @@
                 @forelse($homeworks as $hw)
                 <tr>
                     <td class="px-4 py-3">
+                        <div class="mb-1">
+                            @if($hw->subject)
+                                <span class="badge bg-info bg-opacity-10 text-info border border-info-subtle">{{ $hw->subject->name }}</span>
+                            @else
+                                <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary-subtle">General</span>
+                            @endif
+                        </div>
                         <div class="fw-bold text-dark">{{ $hw->title }}</div>
                         @if($hw->description)
                             <div class="small text-muted text-truncate" style="max-width: 250px;">{{ $hw->description }}</div>

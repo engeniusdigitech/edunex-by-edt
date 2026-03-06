@@ -30,14 +30,17 @@
 
         /* Sidebar Styling */
         .sidebar { 
-            min-height: 100vh; 
+            height: 100vh;
+            overflow-y: auto;
             background: var(--dark-bg);
             border-right: 1px solid rgba(255,255,255,0.05);
-            padding-top: 24px; 
+            padding-top: 0;
             box-shadow: 4px 0 15px rgba(0,0,0,0.2);
-            position: relative;
+            position: sticky;
+            top: 0;
             z-index: 1040;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
         .sidebar-brand {
             font-size: 1.5rem;
@@ -51,8 +54,8 @@
             font-weight: 700; 
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px; 
-            margin-top: 24px;
+            margin-bottom: 6px; 
+            margin-top: 10px;
             color: #64748B; 
             padding-left: 20px;
         }
@@ -184,14 +187,24 @@
 <body>
     <div class="bg-map"></div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="container-fluid p-0">
-        <div class="row g-0">
+    <div class="container-fluid p-0" style="height:100vh;overflow:hidden;">
+        <div class="row g-0" style="height:100vh;overflow:hidden;">
             <!-- Sidebar -->
             <div class="col-md-2 sidebar d-flex flex-column h-100" id="adminSidebar">
-                <div class="text-center d-block">
-                    <a href="{{ url('/') }}" class="sidebar-brand mb-0 text-decoration-none d-flex flex-column align-items-center justify-content-center" style="padding: 10px 0;">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" class="img-fluid mb-2" style="max-height: 72px;">
-                    </a>
+                <div class="d-flex flex-column align-items-center gap-1 px-3 py-2" style="border-bottom:1px solid rgba(255,255,255,0.06);text-align:center;">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="height:80px;width:80px;object-fit:contain;border-radius:14px;flex-shrink:0;">
+                    <div style="line-height:1.2;min-width:0;">
+                        <div style="font-size:0.82rem;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;">
+                            @if(auth()->check() && auth()->user()->institute_id && auth()->user()->institute)
+                                {{ auth()->user()->institute->name }}
+                            @elseif(auth()->check() && auth()->user()->isSuperAdmin())
+                                Super Admin
+                            @else
+                                EduNex
+                            @endif
+                        </div>
+                        <div style="font-size:0.62rem;color:#64748B;text-transform:uppercase;letter-spacing:1px;">Admin Panel</div>
+                    </div>
                 </div>
                 
                 @if(auth()->user() && auth()->user()->isSuperAdmin())
@@ -216,6 +229,10 @@
                     @endcan
 
                     <h6 class="sidebar-header mt-3">Academics</h6>
+                    @can('manage-batches')
+                    <a href="{{ route('batches.index') }}" class="{{ request()->routeIs('batches.*') ? 'active' : '' }}"><i class="fas fa-layer-group"></i> Batches</a>
+                    @endcan
+                    <a href="{{ route('subjects.index') }}" class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}"><i class="fas fa-book"></i> Subjects</a>
                     <a href="{{ route('homework.index') }}" class="{{ request()->routeIs('homework.*') ? 'active' : '' }}"><i class="fas fa-book-open"></i> Homework</a>
                     <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i class="fas fa-file-alt"></i> Tests & Exams</a>
                     <a href="{{ route('live-lectures.index') }}" class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i> Live Lectures</a>
@@ -224,6 +241,7 @@
                     <h6 class="sidebar-header mt-3">Analytics</h6>
                     <a href="{{ route('reports.attendance') }}" class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i class="fas fa-chart-bar"></i> Attendance Rep</a>
                     <a href="{{ route('reports.defaulters') }}" class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                    <a href="{{ route('notifications.index') }}" class="{{ request()->routeIs('notifications.*') ? 'active' : '' }}"><i class="fas fa-bell"></i> Notifications</a>
                     @endif
                 @endif
                 
@@ -232,7 +250,7 @@
             </div>
             
             <!-- Main Content Area -->
-            <div class="col-md-10 vh-100 overflow-auto position-relative">
+            <div class="col-md-10" style="height:100vh;overflow-y:auto;position:relative;">
                 <!-- Top Navbar -->
                 <nav class="navbar navbar-expand-lg top-navbar sticky-top">
                     <div class="container-fluid px-0">
@@ -273,5 +291,6 @@
         });
     </script>
     @stack('scripts')
+    @yield('modals')
 </body>
 </html>

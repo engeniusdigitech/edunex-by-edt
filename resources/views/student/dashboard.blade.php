@@ -3,388 +3,686 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal - EduNex</title>
-    <!-- Fonts -->
+    <title>Student Portal — {{ $student->institute->name ?? 'EduNex' }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- PWA Manifest -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#4F46E5">
-
-    <!-- Bootstrap 5 CSS -->
+    <meta name="theme-color" content="#6366F1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4F46E5;
-            --secondary-color: #EC4899;
-            --bg-color: #FAFAF9;
+            --indigo: #6366F1;
+            --indigo-dark: #4F46E5;
+            --pink: #EC4899;
+            --emerald: #10B981;
+            --amber: #F59E0B;
+            --red: #EF4444;
+            --bg: #F1F5F9;
+            --card: #ffffff;
+            --border: #E2E8F0;
+            --text: #0F172A;
+            --muted: #64748B;
+            --radius: 16px;
         }
-        body { 
-            font-family: 'Outfit', sans-serif; 
-            background-color: var(--bg-color); 
-            color: #1E293B;
+
+        * { box-sizing: border-box; }
+        html, body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        /* ── NAVBAR ── */
+        .top-navbar {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .nav-brand .brand-badge {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--indigo), var(--pink));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; font-weight: 800; color: #fff;
+        }
+        .nav-brand .brand-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.1;
+        }
+        .nav-brand .brand-sub {
+            font-size: 0.62rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-right .student-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--muted);
+        }
+        .nav-right .avatar {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--indigo), var(--pink));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.78rem; font-weight: 700; color: #fff;
+        }
+        .notif-icon-btn {
+            width: 36px; height: 36px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted);
+            font-size: 0.82rem;
+            cursor: pointer;
             position: relative;
+            text-decoration: none;
+            transition: all .2s;
         }
-        
-        /* Background Gradient Map */
-        .bg-map {
-            position: fixed;
-            top: -20vh; left: -20vw; width: 60vw; height: 60vh;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 60%);
-            z-index: -1; pointer-events: none;
+        .notif-icon-btn:hover { background: var(--indigo); color: #fff; border-color: var(--indigo); }
+        .notif-dot {
+            position: absolute; top: -3px; right: -3px;
+            width: 14px; height: 14px;
+            background: var(--pink);
+            border-radius: 50%;
+            font-size: 0.58rem; color: #fff; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid #fff;
         }
+        .logout-btn {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 6px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all .2s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .logout-btn:hover { border-color: var(--red); color: var(--red); }
 
-        .navbar {
-            background: rgba(255, 255, 255, 0.9) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 16px 0;
-        }
-        .navbar-brand { font-weight: 800; color: #1E293B !important; font-size: 1.25rem; }
-        
-        /* Cards */
-        .card { 
-            border: 1px solid rgba(0,0,0,0.03); 
-            border-radius: 20px; 
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02); 
-            transition: all 0.3s ease;
-        }
-        .card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
-            transform: translateY(-2px);
-        }
-        .card-stat { background: #ffffff; }
-        .icon-box { 
-            width: 50px; height: 50px; 
-            border-radius: 14px; 
-            display: flex; align-items: center; justify-content: center; 
-            font-size: 20px; color: white; 
-        }
+        /* ── PAGE ── */
+        .page { max-width: 1200px; margin: 0 auto; padding: 28px 24px 60px; }
 
-        /* Banner */
-        .welcome-banner {
-            background: linear-gradient(135deg, var(--primary-color), #818CF8);
-            border-radius: 20px;
-            color: white;
-            box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.3);
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #4F46E5, #7C3AED 55%, #EC4899);
+            border-radius: var(--radius);
+            padding: 30px 32px;
             position: relative;
             overflow: hidden;
+            margin-bottom: 24px;
         }
-        .welcome-banner::before {
+        .hero::before {
             content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background: radial-gradient(circle at top right, rgba(255,255,255,0.2), transparent 60%);
-            pointer-events: none;
+            position: absolute; top: -50px; right: -30px;
+            width: 220px; height: 220px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: -60px; right: 180px;
+            width: 180px; height: 180px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .hero .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.85);
+            border-radius: 50px;
+            padding: 3px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        .hero h2 { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 4px; line-height: 1.2; }
+        .hero p { color: rgba(255,255,255,0.6); font-size: 0.87rem; margin: 0; }
+        .hero .batch-badge {
+            margin-top: 14px;
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 500;
+        }
+        .hero-icon-bg {
+            position: absolute; right: 32px; top: 50%; transform: translateY(-50%);
+            font-size: 7rem; color: rgba(255,255,255,0.07);
+        }
+
+        /* ── STAT CARDS ── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+        .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600; color: var(--muted); margin-bottom: 10px; }
+        .stat-value { font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+        .stat-hint { font-size: 0.75rem; color: var(--muted); }
+
+        .prog { height: 5px; border-radius: 99px; background: #E2E8F0; overflow: hidden; margin-top: 10px; }
+        .prog .fill { height: 100%; border-radius: 99px; }
+
+        /* ── MAIN GRID ── */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        .col-wide { grid-column: span 2; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .main-grid { grid-template-columns: 1fr 1fr; }
+            .col-wide  { grid-column: span 2; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .top-navbar { padding: 0 16px; height: 56px; }
+            .nav-brand .brand-name { font-size: 0.82rem; }
+            .nav-right .student-name { display: none; }
+            .logout-btn span { display: none; }
+            .page { padding: 16px 12px 60px; }
+            .hero { padding: 22px 20px; }
+            .hero h2 { font-size: 1.2rem; }
+            .hero-icon-bg { font-size: 4rem; right: 16px; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-value { font-size: 1.5rem; }
+            .main-grid { grid-template-columns: 1fr; gap: 12px; }
+            .col-wide  { grid-column: span 1; }
+        }
+
+        /* ── CARD ── */
+        .card-block {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .card-head {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .card-head h6 {
+            font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--text); margin: 0;
+        }
+        .card-link { font-size: 0.72rem; color: var(--indigo); font-weight: 600; text-decoration: none; }
+        .card-link:hover { text-decoration: underline; }
+
+        /* ── BATCH INFO ── */
+        .batch-info {
+            background: linear-gradient(135deg, var(--indigo), #818CF8);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            color: white;
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 16px;
+            position: relative; overflow: hidden;
+        }
+        .batch-info::after {
+            content: '';
+            position: absolute; right: -20px; top: -20px;
+            width: 100px; height: 100px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 50%;
+        }
+        .batch-ico {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+        .batch-info .b-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: .6; }
+        .batch-info .b-name { font-size: 1rem; font-weight: 700; margin: 2px 0; }
+        .batch-info .b-time { font-size: 0.75rem; opacity: .65; }
+
+        /* ── LECTURES CTA ── */
+        .lectures-cta {
+            background: #0F172A;
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .lectures-cta .lc-icon {
+            width: 46px; height: 46px;
+            background: rgba(99,102,241,0.15);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: #818CF8;
+            margin: 0 auto 10px;
+        }
+        .lectures-cta h6 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+        .lectures-cta p { color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-bottom: 12px; }
+        .btn-lectures {
+            background: linear-gradient(135deg, var(--indigo), #818CF8);
+            color: #fff; border: none; border-radius: 8px;
+            padding: 8px 0; font-size: 0.8rem; font-weight: 600;
+            width: 100%; cursor: pointer; text-decoration: none;
+            display: block; transition: opacity .2s;
+        }
+        .btn-lectures:hover { opacity: .85; color: #fff; }
+
+        /* ── LIST ITEMS ── */
+        .list-item {
+            padding: 13px 20px;
+            border-bottom: 1px solid #F1F5F9;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .list-item:last-child { border-bottom: none; }
+        .list-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--indigo); margin-top: 6px; flex-shrink: 0; }
+        .item-title { font-size: 0.84rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+        .item-sub { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+        .item-due { font-size: 0.72rem; color: var(--red); font-weight: 500; margin-top: 2px; }
+
+        /* ── TESTS ── */
+        .tab-row { display: flex; gap: 6px; padding: 12px 20px 0; }
+        .t-pill {
+            padding: 4px 12px; border-radius: 50px;
+            font-size: 0.7rem; font-weight: 600;
+            border: 1px solid var(--border);
+            background: none; color: var(--muted);
+            cursor: pointer; transition: all .2s;
+        }
+        .t-pill.active { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+        .t-pane { display: none; }
+        .t-pane.active { display: block; }
+        .test-row {
+            padding: 12px 20px;
+            border-bottom: 1px solid #F1F5F9;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .test-row:last-child { border-bottom: none; }
+        .t-date { text-align: center; min-width: 38px; }
+        .t-month { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--indigo); }
+        .t-day { font-size: 1.2rem; font-weight: 800; line-height: 1; color: var(--text); }
+        .t-name { font-size: 0.84rem; font-weight: 600; }
+        .t-info { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+        .t-score { font-size: 0.95rem; font-weight: 800; color: var(--indigo); }
+        .t-total { font-size: 0.7rem; color: var(--muted); }
+
+        /* ── PAYMENTS ── */
+        .pay-table { width: 100%; border-collapse: collapse; }
+        .pay-table th {
+            font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--muted); font-weight: 600; padding: 12px 20px;
+            border-bottom: 1px solid var(--border); text-align: left; background: #F8FAFC;
+        }
+        .pay-table td { padding: 13px 20px; font-size: 0.82rem; border-bottom: 1px solid #F8FAFC; vertical-align: middle; }
+        .pay-table tr:last-child td { border-bottom: none; }
+        .pay-table tr:hover td { background: #FAFBFC; }
+        .pay-name { font-weight: 600; }
+        .pay-method { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+        .pay-amt { font-weight: 700; font-variant-numeric: tabular-nums; }
+        .badge-paid { background: #D1FAE5; color: #065F46; font-size: 0.68rem; font-weight: 600; padding: 3px 9px; border-radius: 50px; }
+
+        /* ── NOTIFICATIONS ── */
+        .notif-row {
+            padding: 13px 20px;
+            display: flex; align-items: flex-start; gap: 12px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .notif-row:last-child { border-bottom: none; }
+        .notif-ico {
+            width: 34px; height: 34px; border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(99,102,241,0.1); color: var(--indigo);
+            font-size: 0.8rem; flex-shrink: 0;
+        }
+        .notif-title { font-size: 0.82rem; font-weight: 600; }
+        .notif-msg { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
+        .dismiss-btn {
+            margin-left: auto; flex-shrink: 0;
+            background: none; border: 1px solid var(--border);
+            border-radius: 7px; padding: 3px 9px;
+            font-size: 0.68rem; color: var(--muted); cursor: pointer;
+            transition: all .2s;
+        }
+        .dismiss-btn:hover { border-color: var(--emerald); color: var(--emerald); }
+
+        /* ── EMPTY ── */
+        .empty-box { text-align: center; padding: 30px 16px; color: var(--muted); }
+        .empty-box i { font-size: 1.8rem; opacity: .25; display: block; margin-bottom: 8px; }
+        .empty-box span { font-size: 0.8rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 960px) {
+            .main-grid { grid-template-columns: 1fr 1fr; }
+            .col-wide { grid-column: span 2; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .col-wide { grid-column: span 1; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .hero h2 { font-size: 1.3rem; }
+            .hero-icon-bg { display: none; }
+            .top-navbar { padding: 0 16px; }
+            .page { padding: 16px 14px 40px; }
+            .nav-right .student-name { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-map"></div>
 
-    <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top mb-5">
-        <div class="container">
-            <a href="#" class="navbar-brand d-flex align-items-center mb-0 text-decoration-none" style="padding: 0;">
-                <img src="{{ asset('images/logo.png') }}" class="me-2 img-fluid" style="max-height: 60px;" alt="EduNex Logo">
-                <!-- Text Details -->
-                <div class="d-flex flex-column justify-content-center">
-                    <span class="fw-bolder" style="font-size: 1.35rem; letter-spacing: -0.5px; line-height: 1;">
-                        <span style="color: var(--dark-bg) !important;">{{ $student->institute->name }}</span>
-                    </span>
-                    <span class="fw-bold" style="font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; display: flex; align-items: center; color: var(--text-muted) !important;">
-                        <span style="display: inline-block; width: 12px; height: 2px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 2px; margin-right: 6px;"></span>
-                        Powered by EduNex
-                    </span>
-                </div>
-            </a>
-            <div class="d-flex align-items-center ms-auto">
-                <span class="me-4 fw-semibold text-secondary d-none d-sm-block">{{ $student->name }}</span>
-                <form method="POST" action="{{ route('student.logout') }}" class="m-0">
-                    @csrf
-                    <button class="btn btn-outline-danger shadow-sm fw-semibold" style="border-radius: 50px; padding: 6px 20px;">Logout</button>
-                </form>
-            </div>
+<!-- ── TOP NAVBAR ── -->
+<header class="top-navbar">
+    <a href="#" class="nav-brand">
+        <div class="brand-badge">{{ strtoupper(substr($student->institute->name ?? 'E', 0, 1)) }}</div>
+        <div>
+            <div class="brand-name">{{ $student->institute->name ?? 'EduNex' }}</div>
+            <div class="brand-sub">Student Portal</div>
         </div>
-    </nav>
-
-    <div class="container pb-5">
-        <!-- Welcome Banner -->
-        <div class="row mb-5">
-            <div class="col-12">
-                <div class="card border-0 welcome-banner">
-                    <div class="card-body p-5 d-flex justify-content-between align-items-center z-1">
-                        <div>
-                            <span class="badge bg-white text-primary fw-bold mb-3 px-3 py-2 rounded-pill shadow-sm">Student Dashboard</span>
-                            <h2 class="fw-bold mb-2 display-6">Welcome back, {{ explode(' ', $student->name)[0] }}!</h2>
-                            <p class="mb-0 text-white-50 fs-5">Here is an overview of your progress in <strong class="text-white">{{ $student->batch->name ?? 'your batch' }}</strong>.</p>
-                        </div>
-                        <div class="d-none d-md-block text-white opacity-25">
-                            <i class="fas fa-user-graduate" style="font-size: 8rem;"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Notifications Area -->
+    </a>
+    <div class="nav-right">
         @if($student->unreadNotifications->count() > 0)
-        <div class="row mb-5">
-            <div class="col-12">
-                <div class="card border-0" style="border-left: 4px solid var(--secondary-color) !important; background: rgba(255, 255, 255, 0.8);">
-                    <div class="card-body p-4">
-                        <h6 class="fw-bold text-dark mb-4 text-uppercase" style="letter-spacing: 1px; font-size: 0.85rem;">
-                            <i class="fas fa-bell text-pink-500 me-2" style="color: var(--secondary-color);"></i> Action Required ({{ $student->unreadNotifications->count() }})
-                        </h6>
-                        @foreach($student->unreadNotifications as $notification)
-                        <div class="alert bg-white border border-light shadow-sm alert-dismissible fade show mb-3 d-flex align-items-center rounded-4 p-3" role="alert">
-                            <div class="icon-box bg-{{ $notification->data['color'] ?? 'primary' }} bg-opacity-10 me-4 flex-shrink-0" style="color: var(--{{ $notification->data['color'] == 'danger' ? 'secondary' : 'primary' }}-color, #4F46E5);">
-                                <i class="{{ $notification->data['icon'] ?? 'fas fa-info-circle' }}"></i>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h6 class="mb-1 text-dark fw-bold">{{ $notification->data['title'] }}</h6>
-                                <p class="mb-0 text-muted">{{ $notification->data['message'] }}</p>
-                            </div>
-                            <form action="{{ route('student.notifications.read', $notification->id) }}" method="POST" class="ms-3">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-light border shadow-sm rounded-circle" style="width: 32px; height: 32px; padding: 0;"><i class="fas fa-check text-success"></i></button>
-                            </form>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+        <a href="#notif-section" class="notif-icon-btn" title="Notifications">
+            <i class="fas fa-bell"></i>
+            <div class="notif-dot">{{ $student->unreadNotifications->count() }}</div>
+        </a>
+        @endif
+        <a href="{{ route('student.lectures.index') }}" class="notif-icon-btn" title="Live Lectures">
+            <i class="fas fa-video"></i>
+        </a>
+        <span class="student-name d-none d-sm-inline">{{ $student->name }}</span>
+        <div class="avatar">{{ strtoupper(substr($student->name, 0, 2)) }}</div>
+        <form method="POST" action="{{ route('student.logout') }}" style="margin:0;">
+            @csrf
+            <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </form>
+    </div>
+</header>
+
+<!-- ── PAGE ── -->
+<div class="page">
+
+    <!-- Hero Banner -->
+    <div class="hero">
+        <div class="tag">{{ now()->format('l, d M Y') }}</div>
+        <h2>Good {{ now()->hour < 12 ? 'Morning' : (now()->hour < 17 ? 'Afternoon' : 'Evening') }}, {{ explode(' ', $student->name)[0] }}! 👋</h2>
+        <p>Here's an overview of your academics and activity.</p>
+        @if($student->batch)
+        <div class="batch-badge">
+            <i class="fas fa-users" style="font-size:0.7rem;opacity:.7;"></i>
+            <strong>{{ $student->batch->name }}</strong>
+            @if($student->batch->schedule_time)
+                &nbsp;·&nbsp; <i class="far fa-clock" style="font-size:0.7rem;opacity:.7;"></i> {{ $student->batch->schedule_time }}
+            @endif
         </div>
         @endif
+        <i class="fas fa-graduation-cap hero-icon-bg"></i>
+    </div>
 
-        <div class="row g-5">
-            <!-- Left Column: Stats -->
-            <div class="col-md-4">
-                <h5 class="fw-bold mb-4 text-dark fs-4">Overview</h5>
-                
-                <div class="card card-stat mb-4">
-                    <div class="card-body p-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="text-muted mb-2 text-uppercase fw-semibold" style="font-size: 0.75rem; letter-spacing: 1px;">Attendance Rate</h6>
-                                <h2 class="mb-0 fw-black {{ $attendancePercentage >= 75 ? 'text-success' : 'text-danger' }}" style="font-weight: 800;">
-                                    {{ $attendancePercentage }}<small class="fs-5">%</small>
-                                </h2>
-                            </div>
-                            <div class="icon-box" style="background: {{ $attendancePercentage >= 75 ? 'linear-gradient(135deg, #10B981, #34D399)' : 'linear-gradient(135deg, #EF4444, #F87171)' }}; box-shadow: 0 10px 15px -3px {{ $attendancePercentage >= 75 ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)' }}">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                        </div>
-                        <div class="mt-4 text-muted small">
-                            You have attended <strong class="text-dark">{{ $presentClasses }}</strong> out of <strong class="text-dark">{{ $totalClasses }}</strong> recorded classes.
-                        </div>
-                        <div class="progress mt-3 rounded-pill" style="height: 8px; background-color: #F1F5F9;">
-                            <div class="progress-bar rounded-pill {{ $attendancePercentage >= 75 ? 'bg-success' : 'bg-danger' }}" role="progressbar" style="width: {{ $attendancePercentage }}%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card card-stat">
-                    <div class="card-body p-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="text-muted mb-2 text-uppercase fw-semibold" style="font-size: 0.75rem; letter-spacing: 1px;">Active Batch</h6>
-                                <h5 class="mb-1 fw-bold text-dark">{{ $student->batch->name ?? 'Not Assigned' }}</h5>
-                                <div class="text-muted small border-top pt-2 mt-2"><i class="far fa-clock me-1"></i> {{ $student->batch->schedule_time ?? 'Schedule pending' }}</div>
-                            </div>
-                            <div class="icon-box" style="background: linear-gradient(135deg, #3B82F6, #60A5FA); box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);">
-                                <i class="fas fa-users"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card border-0 mt-4" style="background: linear-gradient(135deg, var(--primary-color), #818CF8); color: white;">
-                    <div class="card-body p-4 text-center">
-                        <i class="fas fa-video fa-2x mb-3 text-white"></i>
-                        <h5 class="fw-bold text-white mb-2">Live Lectures</h5>
-                        <p class="small text-white-50 mb-4">Access recording library for your subjects.</p>
-                        <a href="{{ route('student.lectures.index') }}" class="btn btn-light rounded-pill px-4 fw-bold w-100 text-primary">View Library</a>
-                    </div>
-                </div>
-
-                <!-- Active Homework Area -->
-                <h5 class="fw-bold mt-5 mb-4 text-dark fs-4">Current Assignments</h5>
-                @forelse($activeHomeworks as $hw)
-                <div class="card border-0 mb-3" style="border-left: 4px solid var(--primary-color) !important;">
-                    <div class="card-body p-3 d-flex align-items-center">
-                        <div class="icon-box bg-primary bg-opacity-10 me-3 shadow-none text-primary" style="width: 40px; height: 40px; border-radius: 10px;">
-                            <i class="fas fa-book-open fs-6"></i>
-                        </div>
-                        <div class="flex-grow-1">
-                            <h6 class="mb-1 fw-bold text-dark">{{ $hw->title }}</h6>
-                            <div class="small fw-semibold text-danger"><i class="far fa-clock me-1"></i> Due: {{ $hw->due_date->format('M d, Y') }}</div>
-                        </div>
-                    </div>
-                    @if($hw->description)
-                    <div class="card-footer bg-white border-top-0 pt-0 pb-3 ps-5 ms-3">
-                        <p class="small text-muted mb-0">{{ $hw->description }}</p>
-                    </div>
-                    @endif
-                </div>
-                @empty
-                <div class="card border-0 bg-transparent shadow-none mb-4">
-                    <div class="card-body py-4 px-0 text-center text-muted">
-                        <i class="fas fa-check-circle fs-3 text-success opacity-50 mb-2"></i>
-                        <h6 class="fw-semibold">All caught up!</h6>
-                        <p class="small mb-0">No active homework assignments for your batch.</p>
-                    </div>
-                </div>
-                @endforelse
-
-                <!-- Tests Area -->
-                <h5 class="fw-bold mt-5 mb-4 text-dark fs-4">Tests & Exams</h5>
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active rounded-pill px-4 fw-semibold" id="pills-upcoming-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming" type="button" role="tab">Upcoming</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-semibold" id="pills-results-tab" data-bs-toggle="pill" data-bs-target="#pills-results" type="button" role="tab">Past Results</button>
-                    </li>
-                </ul>
-                
-                <div class="tab-content" id="pills-tabContent">
-                    <!-- Upcoming Tests Tab -->
-                    <div class="tab-pane fade show active" id="pills-upcoming" role="tabpanel">
-                        @forelse($upcomingTests as $test)
-                        <div class="card border-0 mb-3">
-                            <div class="card-body p-4 d-flex align-items-center justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <div class="text-center me-4 pe-4 border-end">
-                                        <div class="text-primary fw-bold text-uppercase small">{{ $test->test_date->format('M') }}</div>
-                                        <h3 class="fw-black text-dark mb-0 lh-1">{{ $test->test_date->format('d') }}</h3>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1 fw-bold text-dark">{{ $test->title }}</h6>
-                                        <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 rounded-pill px-3">
-                                            Max Marks: {{ $test->total_marks }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @empty
-                        <div class="text-center py-4 text-muted">
-                            <p class="small mb-0">No upcoming tests scheduled.</p>
-                        </div>
-                        @endforelse
-                    </div>
-
-                    <!-- Past Results Tab -->
-                    <div class="tab-pane fade" id="pills-results" role="tabpanel">
-                        @forelse($pastTests as $test)
-                        <div class="card border-0 mb-3 bg-light bg-opacity-50">
-                            <div class="card-body p-4">
-                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <div>
-                                        <h6 class="mb-1 fw-bold text-dark">{{ $test->title }}</h6>
-                                        <div class="small fw-semibold text-muted">{{ $test->test_date->format('M d, Y') }}</div>
-                                    </div>
-                                    @php
-                                        $score = $test->scores->first();
-                                    @endphp
-                                    <div class="text-end">
-                                        @if($score)
-                                            <div class="fw-black text-primary fs-5">{{ $score->score }} <span class="text-muted fw-semibold fs-6">/ {{ $test->total_marks }}</span></div>
-                                            @if($score->remarks)
-                                                <div class="small text-muted fst-italic mt-1">{{ $score->remarks }}</div>
-                                            @endif
-                                        @else
-                                            <span class="badge bg-warning bg-opacity-25 text-warning-emphasis rounded-pill px-3">Result Pending</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @empty
-                        <div class="text-center py-4 text-muted">
-                            <p class="small mb-0">No past test results available yet.</p>
-                        </div>
-                        @endforelse
-                    </div>
-                </div>
-
+    <!-- Stat Cards -->
+    <div class="stats-row">
+        <!-- Attendance -->
+        <div class="stat-card">
+            <div class="stat-label">Attendance Rate</div>
+            <div class="stat-value {{ $attendancePercentage >= 75 ? 'text-success' : 'text-danger' }}">
+                {{ $attendancePercentage }}<small style="font-size:1rem;font-weight:600;">%</small>
+            </div>
+            <div class="stat-hint">{{ $presentClasses }} / {{ $totalClasses }} classes</div>
+            <div class="prog">
+                <div class="fill" style="width:{{ $attendancePercentage }}%;background:{{ $attendancePercentage >= 75 ? 'linear-gradient(90deg,#10B981,#34D399)' : 'linear-gradient(90deg,#EF4444,#F87171)' }};"></div>
             </div>
 
-            <!-- Right Column: Payments -->
-            <div class="col-md-8">
-                <h5 class="fw-bold mb-4 text-dark fs-4">Recent Transactions</h5>
-                
-                <div class="card border-0 bg-white">
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle mb-0">
-                                <thead style="background-color: #F8FAFC;">
-                                    <tr>
-                                        <th class="ps-4 py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Date</th>
-                                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Details</th>
-                                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Amount</th>
-                                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($recentPayments as $payment)
-                                    <tr>
-                                        <td class="ps-4 py-4 text-muted fw-medium">{{ $payment->payment_date->format('M d, Y') }}</td>
-                                        <td class="py-4">
-                                            <div class="fw-bold text-dark mb-1">{{ $payment->feeStructure->name ?? 'General Fee' }}</div>
-                                            <div class="small text-muted">
-                                            @if($payment->payment_method === 'online')
-                                                <i class="fas fa-credit-card me-1 border p-1 rounded"></i> Transfer
-                                            @else
-                                                <i class="fas fa-money-bill me-1 border p-1 rounded"></i> Cash
-                                            @endif
-                                            </div>
-                                        </td>
-                                        <td class="py-4 fw-black text-dark fs-5" style="font-family: monospace;">₹{{ number_format($payment->amount_paid, 2) }}</td>
-                                        <td class="py-4">
-                                            <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle rounded-pill px-3 py-2 fw-bold">Success</span>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    
-                                    @if($recentPayments->isEmpty())
-                                    <tr>
-                                        <td colspan="4" class="text-center py-5">
-                                            <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
-                                                <i class="fas fa-receipt fa-2x"></i>
-                                            </div>
-                                            <h6 class="fw-bold text-dark">No transaction history</h6>
-                                            <p class="text-muted small mb-0">Your payment records will appear here.</p>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                </tbody>
-                            </table>
+        </div>
+
+        <!-- Assignments -->
+        <div class="stat-card">
+            <div class="stat-label">Assignments</div>
+            <div class="stat-value" style="color:var(--amber);">{{ $activeHomeworks->count() }}</div>
+            <div class="stat-hint">{{ $activeHomeworks->count() == 0 ? 'All caught up 🎉' : 'Active homework' }}</div>
+
+        </div>
+
+        <!-- Upcoming Tests -->
+        <div class="stat-card">
+            <div class="stat-label">Upcoming Tests</div>
+            <div class="stat-value" style="color:var(--indigo);">{{ $upcomingTests->count() }}</div>
+            <div class="stat-hint">{{ $upcomingTests->count() == 0 ? 'No tests soon' : 'Tests ahead' }}</div>
+
+        </div>
+
+        <!-- Recent Payments -->
+        <div class="stat-card">
+            <div class="stat-label">Total Paid</div>
+            <div class="stat-value" style="color:var(--emerald);font-size:1.4rem;">₹{{ number_format($recentPayments->sum('amount_paid'), 0) }}</div>
+            <div class="stat-hint">{{ $recentPayments->count() }} payment{{ $recentPayments->count() != 1 ? 's' : '' }} recorded</div>
+
+        </div>
+    </div>
+
+    <!-- Notifications (if any) -->
+    @if($student->unreadNotifications->count() > 0)
+    <div class="card-block mb-0" id="notif-section" style="margin-bottom:20px;">
+        <div class="card-head">
+            <h6><i class="fas fa-bell me-2" style="color:var(--pink);"></i>Notifications</h6>
+            <span style="font-size:0.7rem;color:var(--muted);">{{ $student->unreadNotifications->count() }} unread</span>
+        </div>
+        @foreach($student->unreadNotifications as $notification)
+        <div class="notif-row">
+            <div class="notif-ico"><i class="{{ $notification->data['icon'] ?? 'fas fa-info-circle' }}"></i></div>
+            <div style="flex:1;">
+                <div class="notif-title">{{ $notification->data['title'] }}</div>
+                <div class="notif-msg">{{ $notification->data['message'] }}</div>
+            </div>
+            <form action="{{ route('student.notifications.read', $notification->id) }}" method="POST">
+                @csrf
+                <button class="dismiss-btn" type="submit"><i class="fas fa-check me-1"></i>Dismiss</button>
+            </form>
+        </div>
+        @endforeach
+    </div>
+    @endif
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+
+        <!-- Batch + Lectures + Assignments + Tests -->
+        <div>
+            <!-- Batch Info -->
+            <div class="batch-info">
+                <div class="batch-ico"><i class="fas fa-users"></i></div>
+                <div>
+                    <div class="b-label">Your Batch</div>
+                    <div class="b-name">{{ $student->batch->name ?? 'Not Assigned' }}</div>
+                    <div class="b-time"><i class="far fa-clock me-1"></i>{{ $student->batch->schedule_time ?? 'Schedule pending' }}</div>
+                </div>
+            </div>
+
+            <!-- Lectures CTA -->
+            <div class="lectures-cta">
+                <div class="lc-icon"><i class="fas fa-video"></i></div>
+                <h6>Live Lecture Library</h6>
+                <p>Access recordings and join live sessions for your batch.</p>
+                <a href="{{ route('student.lectures.index') }}" class="btn-lectures">
+                    <i class="fas fa-play-circle me-1"></i> View Lectures
+                </a>
+            </div>
+
+            <!-- Assignments -->
+            <div class="card-block">
+                <div class="card-head"><h6>Current Assignments</h6></div>
+                @forelse($activeHomeworks as $hw)
+                <div class="list-item">
+                    <div class="list-dot"></div>
+                    <div>
+                        <div class="item-title">{{ $hw->title }}</div>
+                        <div class="item-due"><i class="far fa-clock me-1"></i>Due {{ $hw->due_date->format('M d, Y') }}</div>
+                        @if($hw->description)
+                            <div class="item-sub">{{ Str::limit($hw->description, 65) }}</div>
+                        @endif
+                    </div>
+                </div>
+                @empty
+                <div class="empty-box"><i class="fas fa-check-circle" style="color:var(--emerald);opacity:.4;"></i><span>No active assignments</span></div>
+                @endforelse
+            </div>
+
+            <!-- Tests -->
+            <div class="card-block">
+                <div class="card-head" style="flex-direction:column;align-items:flex-start;gap:0;">
+                    <h6>Tests &amp; Exams</h6>
+                    <div class="tab-row" style="padding:10px 0 0;">
+                        <button class="t-pill active" onclick="switchTab('up',this)">Upcoming</button>
+                        <button class="t-pill" onclick="switchTab('done',this)">Past Results</button>
+                    </div>
+                </div>
+                <div id="tab-up" class="t-pane active">
+                    @forelse($upcomingTests as $test)
+                    <div class="test-row">
+                        <div class="t-date"><div class="t-month">{{ $test->test_date->format('M') }}</div><div class="t-day">{{ $test->test_date->format('d') }}</div></div>
+                        <div><div class="t-name">{{ $test->title }}</div><div class="t-info">Max: {{ $test->total_marks }} marks</div></div>
+                    </div>
+                    @empty
+                    <div class="empty-box"><i class="fas fa-calendar-check"></i><span>No upcoming tests</span></div>
+                    @endforelse
+                </div>
+                <div id="tab-done" class="t-pane">
+                    @forelse($pastTests as $test)
+                    @php $score = $test->scores->first(); @endphp
+                    <div class="test-row" style="justify-content:space-between;">
+                        <div style="display:flex;gap:12px;align-items:center;">
+                            <div class="t-date"><div class="t-month">{{ $test->test_date->format('M') }}</div><div class="t-day">{{ $test->test_date->format('d') }}</div></div>
+                            <div><div class="t-name">{{ $test->title }}</div><div class="t-info">{{ $test->test_date->format('Y') }}</div></div>
+                        </div>
+                        <div style="text-align:right;">
+                            @if($score)
+                                <span class="t-score">{{ $score->score }}</span> <span class="t-total">/ {{ $test->total_marks }}</span>
+                                @if($score->remarks)<div style="font-size:0.68rem;color:var(--muted);font-style:italic;">{{ $score->remarks }}</div>@endif
+                            @else
+                                <span style="background:#FEF3C7;color:#92400E;font-size:0.68rem;font-weight:600;padding:3px 9px;border-radius:50px;">Pending</span>
+                            @endif
                         </div>
                     </div>
+                    @empty
+                    <div class="empty-box"><i class="fas fa-file-alt"></i><span>No past results yet</span></div>
+                    @endforelse
                 </div>
             </div>
         </div>
-        
-        <!-- Footer Branding Removed -->
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    console.log('PWA ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
-                    console.log('PWA ServiceWorker registration failed: ', err);
-                });
-            });
-        }
-    </script>
+        <!-- Payments (wide, spans 2 cols) -->
+        <div class="col-wide">
+            <div class="card-block">
+                <div class="card-head">
+                    <h6>Recent Transactions</h6>
+                </div>
+                <table class="pay-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($recentPayments as $payment)
+                        <tr>
+                            <td style="color:var(--muted);white-space:nowrap;">{{ $payment->payment_date->format('M d, Y') }}</td>
+                            <td>
+                                <div class="pay-name">{{ $payment->feeStructure->name ?? 'General Fee' }}</div>
+                                <div class="pay-method">
+                                    @if($payment->payment_method === 'online')
+                                        <i class="fas fa-credit-card me-1"></i> Online Transfer
+                                    @else
+                                        <i class="fas fa-money-bill me-1"></i> Cash Payment
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="pay-amt">₹{{ number_format($payment->amount_paid, 2) }}</td>
+                            <td><span class="badge-paid">Paid</span></td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4">
+                                <div class="empty-box">
+                                    <i class="fas fa-receipt"></i>
+                                    <span>No payment records yet</span>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div><!-- /main-grid -->
+</div><!-- /page -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function switchTab(tab, btn) {
+        document.querySelectorAll('.t-pane').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.t-pill').forEach(b => b.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // Animate progress bars
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.prog .fill').forEach(function (el) {
+            const w = el.style.width;
+            el.style.width = '0';
+            setTimeout(() => { el.style.width = w; }, 150);
+        });
+    });
+
+    // PWA
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+</script>
 </body>
 </html>

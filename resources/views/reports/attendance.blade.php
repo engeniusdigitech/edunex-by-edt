@@ -55,6 +55,7 @@
                             <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Total Classes</th>
                             <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Classes Attended</th>
                             <th class="py-3 pe-4 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Percentage</th>
+                            <th class="py-3 pe-4 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,7 +73,7 @@
                                 </div>
                             </td>
                             <td class="py-3 fw-medium text-dark">{{ $row['total'] }} <span class="text-muted small">sessions</span></td>
-                            <td class="py-3 fw-medium text-dark">{{ $row['present'] }} <span class="text-muted small">sessions</span></td>
+                            <td class="py-3 fw-medium text-dark">{{ $row['present'] }} <span class="text-muted small">sessions <span class="badge bg-warning bg-opacity-25 text-warning-emphasis" style="font-size:0.65rem;">incl. late</span></span></td>
                             <td class="py-3 pe-4">
                                 <div class="d-flex align-items-center">
                                     <span class="me-3 fw-black {{ $row['percentage'] >= 75 ? 'text-success' : 'text-danger' }}" style="min-width: 45px; font-size: 1.1rem;">{{ $row['percentage'] }}%</span>
@@ -80,6 +81,11 @@
                                         <div class="progress-bar rounded-pill {{ $row['percentage'] >= 75 ? 'bg-success' : 'bg-danger' }}" role="progressbar" style="width: {{ $row['percentage'] }}%"></div>
                                     </div>
                                 </div>
+                            </td>
+                            <td class="py-3 pe-4">
+                                <a href="{{ route('reports.student', $row['student']) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                    <i class="fas fa-user-circle me-1"></i> View Report
+                                </a>
                             </td>
                         </tr>
                         @endforeach

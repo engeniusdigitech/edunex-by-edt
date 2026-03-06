@@ -34,6 +34,13 @@
                 @forelse($tests as $test)
                 <tr>
                     <td class="px-4 py-3">
+                        <div class="mb-1">
+                            @if($test->subject)
+                                <span class="badge bg-info bg-opacity-10 text-info border border-info-subtle">{{ $test->subject->name }}</span>
+                            @else
+                                <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary-subtle">General</span>
+                            @endif
+                        </div>
                         <div class="fw-bold text-dark">{{ $test->title }}</div>
                         @if($test->description)
                             <div class="small text-muted text-truncate" style="max-width: 250px;">{{ $test->description }}</div>

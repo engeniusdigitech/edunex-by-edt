@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Subject;
+use App\Models\Batch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -21,7 +23,9 @@ class StaffController extends Controller
     public function create()
     {
         $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
-        return view('staff.create', compact('roles'));
+        $subjects = Subject::where('is_active', 1)->get();
+        $batches = Batch::where('is_active', 1)->get();
+        return view('staff.create', compact('roles', 'subjects', 'batches'));
     }
 
     public function store(Request $request)
@@ -33,12 +37,24 @@ class StaffController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role_id' => ['required', Rule::in($roles)],
+            'subjects' => 'nullable|array',
+            'subjects.*' => 'exists:subjects,id',
+            'batches' => 'nullable|array',
+            'batches.*' => 'exists:batches,id',
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
 
         // TenantScope automatically injects institute_id via BelongsToInstitute trait!
-        User::create($validated);
+        $staff = User::create($validated);
+
+        if ($request->has('subjects')) {
+            $staff->subjects()->sync($request->subjects);
+        }
+
+        if ($request->has('batches')) {
+            $staff->batches()->sync($request->batches);
+        }
 
         return redirect()->route('staff.index')->with('success', 'Staff member created successfully.');
     }
@@ -46,7 +62,9 @@ class StaffController extends Controller
     public function edit(User $staff)
     {
         $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
-        return view('staff.edit', compact('staff', 'roles'));
+        $subjects = Subject::where('is_active', 1)->get();
+        $batches = Batch::where('is_active', 1)->get();
+        return view('staff.edit', compact('staff', 'roles', 'subjects', 'batches'));
     }
 
     public function update(Request $request, User $staff)
@@ -58,6 +76,10 @@ class StaffController extends Controller
             'email' => ['required', 'email', Rule::unique('users')->ignore($staff->id)],
             'password' => 'nullable|string|min:8|confirmed',
             'role_id' => ['required', Rule::in($roles)],
+            'subjects' => 'nullable|array',
+            'subjects.*' => 'exists:subjects,id',
+            'batches' => 'nullable|array',
+            'batches.*' => 'exists:batches,id',
         ]);
 
         if (!empty($validated['password'])) {
@@ -68,6 +90,10 @@ class StaffController extends Controller
         }
 
         $staff->update($validated);
+
+        // Sync subjects and batches (will detach all if none are selected)
+        $staff->subjects()->sync($request->input('subjects', []));
+        $staff->batches()->sync($request->input('batches', []));
 
         return redirect()->route('staff.index')->with('success', 'Staff member updated successfully.');
     }

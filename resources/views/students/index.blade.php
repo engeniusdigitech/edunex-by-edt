@@ -28,7 +28,8 @@
                         <th class="ps-4 py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Student</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Contact Info</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Batch Assignment</th>
-                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Enrolled On</th>
+                    <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Enrolled On</th>
+                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,11 +62,20 @@
                             @endif
                         </td>
                         <td class="py-3 text-muted fw-medium">{{ $student->enrollment_date->format('M d, Y') }}</td>
+                        <td class="py-3">
+                            <a href="{{ route('reports.student', $student) }}" class="btn btn-sm btn-outline-secondary me-1"><i class="fas fa-chart-bar"></i> Report</a>
+                            <a href="{{ route('students.edit', $student) }}" class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i> Edit</a>
+                            <form action="{{ route('students.destroy', $student) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this student?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     @if($students->isEmpty())
                     <tr>
-                        <td colspan="4" class="text-center py-5">
+                        <td colspan="5" class="text-center py-5">
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-user-graduate fa-2x"></i>
                             </div>
