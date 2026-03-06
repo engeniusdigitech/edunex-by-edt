@@ -12,443 +12,628 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
         :root {
             --primary-color: #4F46E5;
+            --primary-light: #6366F1;
             --secondary-color: #EC4899;
             --dark-bg: #0F172A;
+            --card-bg: #ffffff;
             --text-main: #1E293B;
             --text-muted: #64748B;
+            --border-color: #E2E8F0;
         }
 
         body {
             font-family: 'Outfit', sans-serif;
             color: var(--text-main);
-            background-color: #FAFAF9;
+            background-color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* Glassmorphic Navbar */
+        /* ── MESH GRADIENT BACKGROUNDS ── */
+        .mesh-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .mesh-circle-1 {
+            position: absolute; top: -10%; left: -10%;
+            width: 60%; height: 60%;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 70%);
+            filter: blur(80px);
+        }
+        .mesh-circle-2 {
+            position: absolute; bottom: -10%; right: -10%;
+            width: 50%; height: 50%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.04), transparent 70%);
+            filter: blur(80px);
+        }
+
+        /* ── NAVBAR ── */
         .navbar-glass {
-            background: rgba(255, 255, 255, 0.8) !important;
+            background: rgba(255, 255, 255, 0.85) !important;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
-            letter-spacing: -0.5px;
-        }
-
-        /* Modern Gradient Hero */
+        /* ── HERO ── */
         .hero-section {
+            padding: 180px 0 100px;
             position: relative;
-            padding: 160px 0 100px;
-            background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.08), transparent 40%),
-                        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.08), transparent 40%);
-            overflow: hidden;
         }
-
         .hero-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             padding: 8px 16px;
-            background: rgba(79, 70, 229, 0.1);
+            background: rgba(79, 70, 229, 0.08);
             color: var(--primary-color);
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 24px;
-            border: 1px solid rgba(79, 70, 229, 0.2);
-            backdrop-filter: blur(4px);
+            border: 1px solid rgba(79, 70, 229, 0.15);
         }
-
         .hero-title {
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 900;
             line-height: 1.1;
             letter-spacing: -2px;
             margin-bottom: 24px;
             color: var(--dark-bg);
         }
-
         .hero-title span {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-muted);
             margin-bottom: 40px;
-            max-width: 600px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
-            font-weight: 400;
+            line-height: 1.7;
         }
 
-        /* Buttons */
+        /* ── BUTTONS ── */
         .btn-modern {
-            padding: 14px 32px;
-            font-weight: 600;
-            border-radius: 50px;
+            padding: 14px 36px;
+            font-weight: 700;
+            border-radius: 16px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
-
         .btn-primary-glow {
-            background: linear-gradient(135deg, var(--primary-color), #6366F1);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: white;
-            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.4);
+            border: none;
         }
-
         .btn-primary-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px -5px rgba(79, 70, 229, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px -5px rgba(79, 70, 229, 0.5);
             color: white;
         }
-
         .btn-outline-modern {
-            background: white;
+            background: #ffffff;
             color: var(--text-main);
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
         }
-
         .btn-outline-modern:hover {
             border-color: var(--primary-color);
             color: var(--primary-color);
             transform: translateY(-2px);
         }
 
-        /* Features */
-        .features-section {
-            padding: 100px 0;
-            background: #ffffff;
+        /* ── FLOATING MOCKUP ── */
+        .mockup-container {
             position: relative;
+            margin-top: 80px;
+            perspective: 1000px;
+        }
+        .mockup-img {
+            max-width: 1000px;
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.25);
+            border: 8px solid #ffffff;
+            transform: rotateX(5deg) scale(0.95);
+            transition: all 0.6s ease;
+        }
+        .mockup-container:hover .mockup-img {
+            transform: rotateX(0deg) scale(1);
         }
 
-        .section-header {
+        /* ── IMPACT STATS ── */
+        .stats-section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            background: #fafafa;
+        }
+        .stat-card {
             text-align: center;
-            margin-bottom: 60px;
         }
-
-        .section-header h2 {
-            font-size: 2.75rem;
+        .stat-number {
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--dark-bg);
-            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
+        /* ── FEATURES ── */
+        .features-section {
+            padding: 100px 0;
+        }
+        .section-tag {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
         .feature-card {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 40px 30px;
-            border: 1px solid #F1F5F9;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.03);
-            transition: all 0.4s ease;
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
             height: 100%;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(79,70,229,0.03), rgba(236,72,153,0.03));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
-            border-color: rgba(79,70,229,0.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
         }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .icon-wrapper {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
             margin-bottom: 24px;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s ease;
         }
-
-        .feature-card:hover .icon-wrapper {
-            transform: scale(1.1) rotate(-5deg);
+        .feature-card:hover .icon-box {
+            transform: rotate(-10deg) scale(1.1);
         }
-
-        .icon-blue { background: #EEF2FF; color: var(--primary-color); }
-        .icon-pink { background: #FDF2F8; color: var(--secondary-color); }
-        .icon-emerald { background: #ECFDF5; color: #10B981; }
-
         .feature-title {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--dark-bg);
+            margin-bottom: 16px;
         }
-
         .feature-desc {
             color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 0;
         }
 
-        /* Dashboard Preview / Abstract shape */
-        .dashboard-preview {
-            position: relative;
-            margin-top: 60px;
-            z-index: 10;
-        }
-        
-        .preview-image {
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .glow-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            filter: blur(120px);
-            opacity: 0.15;
-            z-index: -1;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark-bg);
+        /* ── HOW IT WORKS ── */
+        .step-num {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--primary-color);
             color: white;
-            padding: 80px 0 40px;
-        }
-
-        .footer-brand {
-            font-size: 1.75rem;
+            display: flex; align-items: center; justify-content: center;
             font-weight: 800;
-            background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            display: inline-block;
+            margin-bottom: 16px;
         }
 
-        .footer-text {
-            color: #94A3B8;
-            line-height: 1.7;
+        /* ── FAQ ── */
+        .faq-section { padding: 100px 0; background: #fafafa; }
+        .accordion-item {
+            border: 1px solid var(--border-color) !important;
+            border-radius: 20px !important;
+            margin-bottom: 16px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .accordion-button {
+            padding: 24px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark-bg);
+            box-shadow: none !important;
+        }
+        .accordion-button:not(.collapsed) {
+            background: #EEF2FF;
+            color: var(--primary-color);
+        }
+        .accordion-body { padding: 24px; color: var(--text-muted); line-height: 1.6; }
+
+        /* ── FINAL CTA ── */
+        .cta-section { padding: 100px 0; }
+        .cta-card {
+            background: var(--dark-bg);
+            border-radius: 32px;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-card::before {
+            content: '';
+            position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.1), transparent 70%);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
-            .hero-section { padding: 120px 0 60px; }
+        /* ── FOOTER ── */
+        .footer {
+            background: #ffffff;
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-color);
         }
+        .footer-logo { font-size: 1.8rem; font-weight: 900; color: var(--primary-color); }
+        .footer-link { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .footer-link:hover { color: var(--primary-color); }
+
     </style>
 </head>
-<body class="antialiased">
+<body>
+
+    <div class="mesh-bg">
+        <div class="mesh-circle-1"></div>
+        <div class="mesh-circle-2"></div>
+    </div>
 
     <!-- Navigation -->
     @include('components.frontend-navbar')
 
     <!-- Hero Section -->
     <section class="hero-section text-center">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="hero-badge animate__animated animate__fadeInDown">
-                        ✨ Next-Gen Institute Management <span class="text-muted fw-normal ms-1">| By <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-primary text-decoration-none fw-bold">Engenius Digitech</a></span>
-                    </div>
-                    <h1 class="hero-title animate__animated animate__zoomIn">
-                        The ultimate operating system for <br> <span>modern institute centers.</span>
-                    </h1>
-                    <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
-                        Automate fee collections, track real-time attendance, and engage students with an enterprise-grade SaaS platform designed essentially for educators.
-                    </p>
-                    
-                    <div class="d-flex justify-content-center gap-3 flex-column flex-sm-row animate__animated animate__fadeInUp animate__delay-1s">
-                        @if (Route::has('login'))
-                            @auth
-                                <a href="{{ auth()->user()->isSuperAdmin() ? route('superadmin.dashboard') : url('/dashboard') }}" class="btn btn-primary-glow btn-modern btn-lg">
-                                    Launch Dashboard <i class="fas fa-rocket ms-2"></i>
-                                </a>
-                            @else
-                                <a href="{{ route('contact') }}" class="btn btn-primary-glow btn-modern btn-lg">
-                                    Get Started Now
-                                </a>
-                                <a href="{{ route('login') }}" class="btn btn-outline-modern btn-modern btn-lg">
-                                    Institute Login
-                                </a>
-                            @endauth
-                        @endif
-                    </div>
-                </div>
+        <div class="container px-4">
+            <div class="hero-badge animate__animated animate__fadeInDown">
+                ✨ Trusted by 150+ institutes across the country
+            </div>
+            <h1 class="hero-title animate__animated animate__zoomIn">
+                Automate your institute.<br>
+                <span>Empower your educators.</span>
+            </h1>
+            <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                The most complete, intuitive, and feature-rich platform to manage your educational center. From fee tracking to live classes — everything in one place.
+            </p>
+
+            {{-- Category Scroller --}}
+            <div class="d-flex justify-content-center gap-2 flex-wrap mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+                @foreach(['Coaching Centers', 'K-12 Schools', 'Music Academies', 'Language Schools', 'Skill Training', 'Sports Clubs'] as $cat)
+                    <span class="badge rounded-pill px-3 py-2 border text-muted fw-500" style="background:#fff; font-size: 0.78rem;">{{ $cat }}</span>
+                @endforeach
+            </div>
+            
+            <div class="d-flex justify-content-center gap-3 flex-column flex-sm-row animate__animated animate__fadeInUp animate__delay-1s">
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ auth()->user()->isSuperAdmin() ? route('superadmin.dashboard') : url('/dashboard') }}" class="btn btn-primary-glow btn-modern">
+                            Open Dashboard <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    @else
+                        <a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern">
+                            Start 7-Day Free Trial
+                        </a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-modern btn-modern">
+                            Institute Login
+                        </a>
+                    @endauth
+                @endif
             </div>
 
-            <div class="dashboard-preview mt-5 pt-4 d-none d-md-block">
-                <div class="glow-bg"></div>
-                <!-- Dashboard Image Preview -->
-                <div class="mx-auto rounded-4 shadow-lg overflow-hidden border" style="max-width: 900px; position: relative;">
-                    <img src="{{ asset('images/hero-banner.png') }}" class="img-fluid w-100" alt="EduNex Dashboard Preview">
+            <div class="mockup-container animate__animated animate__fadeInUp animate__delay-2s">
+                <img src="{{ asset('images/hero-banner.png') }}" alt="EduNex Dashboard" class="mockup-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="stats-section">
+        <div class="container px-4">
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Institutes</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features-section" id="features">
-        <div class="container">
-            <div class="section-header ms-auto me-auto" style="max-width: 700px;">
-                <h2>Everything you need to scale.</h2>
-                <p class="text-muted fs-5 mt-3">Powerful tools designed specifically for educational institutes, giving you back hours of administrative time every week.</p>
+    <section id="features" class="features-section">
+        <div class="container px-4">
+            <div class="text-center mb-5">
+                <span class="section-tag">Powerful Features</span>
+                <h2 class="section-title">Built for serious growth</h2>
+                <p class="text-muted fs-5">Everything you need to run a modern education business.</p>
             </div>
-            
-            <div class="row g-5">
-                <!-- Feature 1 -->
+
+            <div class="row g-4">
+                {{-- Group: Academic --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-wrapper icon-blue">
-                            <i class="fas fa-clipboard-user"></i>
+                        <div class="icon-box" style="background: #EEF2FF; color: #4F46E5;">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <h3 class="feature-title">Student Hub</h3>
-                        <p class="feature-desc">Dedicated student portals. Seamless onboarding, active batch assignments, and profile management without the paperwork.</p>
-                    </div>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
-                        <div class="icon-wrapper icon-emerald">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <h3 class="feature-title">Automated Finances</h3>
-                        <p class="feature-desc">Track cash and online payments against structural fee plans. Generate PDF reports and identify defaulters instantly.</p>
+                        <h3 class="feature-title">Batch Intelligence</h3>
+                        <p class="feature-desc">Organize students into batches with specific subjects, teachers, and schedules. Real-time attendance tracking with daily logs.</p>
                     </div>
                 </div>
 
-                <!-- Feature 3 -->
+                {{-- Group: Financial --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-wrapper icon-pink">
-                            <i class="fab fa-whatsapp"></i>
+                        <div class="icon-box" style="background: #ECFDF5; color: #10B981;">
+                            <i class="fas fa-receipt"></i>
                         </div>
-                        <h3 class="feature-title">Smart Communication</h3>
-                        <p class="feature-desc">Blast pre-filled WhatsApp reminders for pending dues with a single click and push alerts directly to student dashboards.</p>
+                        <h3 class="feature-title">Fee Automation</h3>
+                        <p class="feature-desc">Set complex fee structures. Record payments, send automated WhatsApp reminders for dues, and identify defaulters instantly.</p>
                     </div>
                 </div>
 
-                <!-- Feature 4 -->
+                {{-- Group: Communication --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-wrapper" style="background: #FFFBEB; color: #D97706;">
-                            <i class="fas fa-fingerprint"></i>
+                        <div class="icon-box" style="background: #FFF7ED; color: #F97316;">
+                            <i class="fas fa-bullhorn"></i>
                         </div>
-                        <h3 class="feature-title">Role-Based Access</h3>
-                        <p class="feature-desc">Secure your institute data. Assign granular permissions to Teachers and Receptionists so they only see what matters.</p>
+                        <h3 class="feature-title">Direct Notifications</h3>
+                        <p class="feature-desc">Push alerts directly to individual students or entire batches. Keep everyone informed with portal-wide announcements.</p>
                     </div>
                 </div>
 
-                <!-- Feature 5 -->
+                {{-- Group: Learning --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-wrapper" style="background: #F3E8FF; color: #9333EA;">
-                            <i class="fas fa-chart-pie"></i>
+                        <div class="icon-box" style="background: #FDF2F8; color: #DB2777;">
+                            <i class="fas fa-video"></i>
                         </div>
-                        <h3 class="feature-title">Deep Reporting</h3>
-                        <p class="feature-desc">Interactive dashboard charts and exportable PDF analytics for monthly attendance and revenue metrics.</p>
+                        <h3 class="feature-title">Live Lectures</h3>
+                        <p class="feature-desc">Integrated Jitsi video conferencing. Students join live classes directly from their dashboard with no external links needed.</p>
                     </div>
                 </div>
 
-                <!-- Feature 6 -->
+                {{-- Group: Student Portal --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-wrapper" style="background: #E0F2FE; color: #0284C7;">
-                            <i class="fas fa-server"></i>
+                        <div class="icon-box" style="background: #F0F9FF; color: #0EA5E9;">
+                            <i class="fas fa-mobile-screen-button"></i>
                         </div>
-                        <h3 class="feature-title">Multi-Tenant Core</h3>
-                        <p class="feature-desc">Built for scale. A rigorous global scope architecture ensures your institute's data is isolated with enterprise-grade security.</p>
+                        <h3 class="feature-title">Student App / PWA</h3>
+                        <p class="feature-desc">Our platform is a full PWA. Students can "install" the portal on their mobile home screen for a native app experience.</p>
+                    </div>
+                </div>
+
+                {{-- Group: Security --}}
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="icon-box" style="background: #F5F3FF; color: #8B5CF6;">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="feature-title">Enterprise Security</h3>
+                        <p class="feature-desc">Strict multi-tenant isolation. Your data is isolated at the database level with granular role-based access for staff.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-5 bg-white">
-        <div class="container py-5">
-            <div class="bg-dark rounded-4 p-5 text-center position-relative overflow-hidden shadow-lg" style="background: var(--dark-bg);">
-                <div class="position-absolute top-0 start-0 w-100 h-100" style="background: radial-gradient(circle at center, rgba(79,70,229,0.3) 0%, transparent 60%);"></div>
+    <!-- How it Works -->
+    <section class="py-5">
+        <div class="container px-4 py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="section-tag">Seamless Onboarding</span>
+                    <h2 class="section-title">Zero setup friction.</h2>
+                    <p class="text-muted mb-5">Go from manual spreadsheets to automated management in less than 30 minutes.</p>
+                    
+                    <div class="mb-4">
+                        <div class="step-num">1</div>
+                        <h5 class="fw-bold">Create your Institute</h5>
+                        <p class="text-muted small">Register and choose your custom subdomain for your staff and student portals.</p>
+                    </div>
+                    <div class="mb-4">
+                        <div class="step-num">2</div>
+                        <h5 class="fw-bold">Setup Batches & Subjects</h5>
+                        <p class="text-muted small">Define your academic structure and fee plans for each category of study.</p>
+                    </div>
+                    <div class="mb-4">
+                        <div class="step-num">3</div>
+                        <h5 class="fw-bold">Import Students</h5>
+                        <p class="text-muted small">Bulk upload students. Each student automatically gets login credentials for their portal.</p>
+                    </div>
+                    <div>
+                        <div class="step-num">4</div>
+                        <h5 class="fw-bold">Go Live</h5>
+                        <p class="text-muted small">Start marking attendance, collecting fees, and sending automated portal notifications.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-5 bg-white border rounded-4 shadow-sm">
+                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 60px;" class="mb-4">
+                        <h4 class="fw-black mb-3">Save 20+ hours every month.</h4>
+                        <p class="text-muted mb-4">"EduNex completely changed how we handle our 200+ students. The fee reminders alone saved us hours of repetitive phone calls."</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px;">RK</div>
+                            <div>
+                                <div class="fw-bold small">Rajesh Kumar</div>
+                                <div class="text-muted" style="font-size: 0.75rem;">Director, Apex Classes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container px-4">
+            <div class="text-center mb-5">
+                <span class="section-tag">Common Questions</span>
+                <h2 class="section-title">Need clarity? We got you.</h2>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="welcomeFaq">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+                                    Is my institute data secure and private?
+                                </button>
+                            </h2>
+                            <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#welcomeFaq">
+                                <div class="accordion-body">
+                                    Absolutely. EduNex is built on a multi-tenant global scope architecture. This means your data is logically isolated from other institutes, and our database is encrypted at rest and in transit.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+                                    Can students access it on their phones?
+                                </button>
+                            </h2>
+                            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#welcomeFaq">
+                                <div class="accordion-body">
+                                    Yes! The entire student portal is a Progressive Web App (PWA). Students can simply open the link on their mobile browser and tap "Add to Home Screen" to get a native app-like experience without downloading from the Play Store.
+                               </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
+                                    How do fee reminders work?
+                                </button>
+                            </h2>
+                            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#welcomeFaq">
+                                <div class="accordion-body">
+                                    Our system automatically identifies students with pending dues. From the dashboard, you can click "Send Reminder" which generates a pre-filled WhatsApp message or triggers a portal notification instantly.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4">
+                                    Is there a limit on the number of students?
+                                </button>
+                            </h2>
+                            <div id="f4" class="accordion-collapse collapse" data-bs-parent="#welcomeFaq">
+                                <div class="accordion-body">
+                                    No. Unlike our competitors, we believe in supporting your growth. We don't charge you based on student count. Enroll as many students as your institute can handle.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="container px-4">
+            <div class="cta-card shadow-lg animate__animated animate__fadeIn">
+                <h2 class="text-white fw-black display-5 mb-4 position-relative z-1">Ready to lead your institute<br>into the digital age?</h2>
+                <p class="text-white-50 fs-5 mb-5 mx-auto position-relative z-1" style="max-width: 600px;">
+                    Join over 150 institutes that have already automated their operations with EduNex. Start your 7-day free trial today.
+                </p>
                 <div class="position-relative z-1">
-                    <h2 class="text-white fw-bold display-5 mb-4">Ready to transform your institute?</h2>
-                    <p class="text-white-50 fs-5 mb-5 mx-auto" style="max-width: 600px;">Join the next generation of educators managing their institute centers effortlessly with EduNex.</p>
-                    <a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern btn-lg px-5">Start Your Free Trial</a>
+                    <a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern px-5 py-3">Get Started Today <i class="fas fa-rocket ms-2"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer text-center text-md-start">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <h2 class="footer-brand mb-0"><img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" style="max-height: 64px;" class="me-2"></h2>
-                    <p class="footer-text mb-0">Elevating the standard of institute management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
+    <footer class="footer">
+        <div class="container px-4">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="footer-logo mb-4">
+                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 50px;" class="me-2">
+                    </div>
+                    <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built by educators, for educators.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="footer-link fs-5"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="footer-link fs-5"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-6 text-md-end footer-text">
-                    <a href="{{ route('about') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">About Us</a>
-                    <a href="{{ route('contact') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">Contact Us</a>
-                    <a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Privacy Policy</a>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="fw-bold mb-4">Platform</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#features" class="footer-link small">Features</a></li>
+                        <li class="mb-2"><a href="{{ route('pricing') }}" class="footer-link small">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link small">Live Demo</a></li>
+                    </ul>
                 </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="fw-bold mb-4">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{{ route('about') }}" class="footer-link small">About Us</a></li>
+                        <li class="mb-2"><a href="{{ route('contact') }}" class="footer-link small">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link small">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-4 text-md-end">
+                    <h6 class="fw-bold mb-4">Product by</h6>
+                    <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-decoration-none">
+                        <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
+                        <p class="text-muted small">Specialized in SaaS solutions</p>
+                    </a>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 text-center">
+                <p class="text-muted small mb-0">© {{ date('Y') }} EduNex. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        .hover-opacity-100 { transition: opacity 0.3s; }
-        .hover-opacity-100:hover { opacity: 1 !important; }
-        
-        /* Simple animation keyframes */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translate3d(0, 40px, 0); }
-            to { opacity: 1; transform: translate3d(0, 0, 0); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translate3d(0, -40px, 0); }
-            to { opacity: 1; transform: translate3d(0, 0, 0); }
-        }
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale3d(0.9, 0.9, 0.9); }
-            to { opacity: 1; transform: scale3d(1, 1, 1); }
-        }
-        .animate__fadeInUp { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
-        .animate__fadeInDown { animation: fadeInDown 0.8s ease-out forwards; opacity: 0; }
-        .animate__zoomIn { animation: zoomIn 0.8s ease-out forwards; opacity: 0; }
-        .animate__delay-1s { animation-delay: 0.2s; }
-    </style>
 </body>
 </html>
