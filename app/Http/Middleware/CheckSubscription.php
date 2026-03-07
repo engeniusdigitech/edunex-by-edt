@@ -13,17 +13,18 @@ class CheckSubscription
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && !auth()->user()->isSuperAdmin()) {
-
-            $institute = auth()->user()->institute;
-            // E.g. fetch the active subscription
-            $activeSub = $institute->subscriptions()->where('status', 'active')->first();
-
-            if (!$activeSub || !$activeSub->isValid()) {
-                // Ideally redirect to a "Subscription Expired" page or payment gateway
-                return redirect()->route('subscription.expired')->with('error', 'Your subscription has expired. Please renew.');
-            }
-        }
+        // Subscription checks disabled as per user request
+        /*
+         if (auth()->check() && !auth()->user()->isSuperAdmin()) {
+         $institute = auth()->user()->institute;
+         // E.g. fetch the active subscription
+         $activeSub = $institute->subscriptions()->where('status', 'active')->first();
+         if (!$activeSub || !$activeSub->isValid()) {
+         // Ideally redirect to a "Subscription Expired" page or payment gateway
+         return redirect()->route('subscription.expired')->with('error', 'Your subscription has expired. Please renew.');
+         }
+         }
+         */
 
         return $next($request);
     }

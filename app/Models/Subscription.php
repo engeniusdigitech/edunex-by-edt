@@ -31,6 +31,6 @@ class Subscription extends Model
 
     public function isValid()
     {
-        return $this->status === 'active' && $this->ends_at->isFuture();
+        return $this->status === 'active';
     }
 }

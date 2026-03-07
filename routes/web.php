@@ -47,6 +47,12 @@ Route::middleware(['auth'])->group(function () {
         }
         );
 
+        // Subscription Expired Route
+        Route::get('/subscription-expired', function () {
+            return view('subscription.expired');
+        }
+        )->name('subscription.expired');
+
         // Institute Admin / Staff Routes (protected by tenant & subscription middlewares)
         Route::middleware(['tenant', 'subscription'])->group(function () {
             Route::get('/dashboard', [DashboardController::class , 'index'])->name('dashboard');
