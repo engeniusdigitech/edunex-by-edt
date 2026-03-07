@@ -226,6 +226,8 @@
                     @endcan
                     @can('manage-payments')
                     <a href="{{ route('payments.index') }}" class="{{ request()->routeIs('payments.*') ? 'active' : '' }}"><i class="fas fa-wallet"></i> Payments</a>
+                    <a href="{{ route('fee-categories.index') }}" class="{{ request()->routeIs('fee-categories.*') ? 'active' : '' }}"><i class="fas fa-tags"></i> Fee Categories</a>
+                    <a href="{{ route('fee-structures.index') }}" class="{{ request()->routeIs('fee-structures.*') ? 'active' : '' }}"><i class="fas fa-sitemap"></i> Fee Structures</a>
                     @endcan
 
                     <h6 class="sidebar-header mt-3">Academics</h6>

@@ -99,8 +99,25 @@
                         <input type="text" name="name" class="form-control" required placeholder="e.g. Class 10th A, Morning Batch">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Schedule Time (Optional)</label>
-                        <input type="text" name="schedule_time" class="form-control" placeholder="e.g. 09:00 AM - 12:00 PM">
+                        <label class="form-label fw-bold small text-muted text-uppercase">Schedule Days</label>
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
+                                <div class="form-check form-check-inline m-0 border px-3 py-2 rounded-3 bg-light" style="cursor: pointer;">
+                                    <input class="form-check-input mt-1" type="checkbox" name="days[]" value="{{ $day }}" id="add_day_{{ $day }}" style="cursor: pointer;">
+                                    <label class="form-check-label ms-1 user-select-none fw-medium text-dark" for="add_day_{{ $day }}" style="cursor: pointer;">{{ $day }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label class="form-label fw-bold small text-muted text-uppercase">Start Time</label>
+                            <input type="time" name="start_time" class="form-control rounded-3" id="start_time">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-bold small text-muted text-uppercase">End Time</label>
+                            <input type="time" name="end_time" class="form-control rounded-3" id="end_time">
+                        </div>
                     </div>
                     <div class="form-check form-switch mt-3">
                         <input class="form-check-input" type="checkbox" name="is_active" id="isActiveAdd" value="1" checked>
@@ -133,8 +150,25 @@
                         <input type="text" name="name" id="editBatchName" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Schedule Time (Optional)</label>
-                        <input type="text" name="schedule_time" id="editBatchSchedule" class="form-control">
+                        <label class="form-label fw-bold small text-muted text-uppercase">Schedule Days</label>
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
+                                <div class="form-check form-check-inline m-0 border px-3 py-2 rounded-3 bg-light" style="cursor: pointer;">
+                                    <input class="form-check-input mt-1 edit-day-checkbox" type="checkbox" name="days[]" value="{{ $day }}" id="edit_day_{{ $day }}" style="cursor: pointer;">
+                                    <label class="form-check-label ms-1 user-select-none fw-medium text-dark" for="edit_day_{{ $day }}" style="cursor: pointer;">{{ $day }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label class="form-label fw-bold small text-muted text-uppercase">Start Time</label>
+                            <input type="time" name="start_time" class="form-control rounded-3" id="edit_start_time">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-bold small text-muted text-uppercase">End Time</label>
+                            <input type="time" name="end_time" class="form-control rounded-3" id="edit_end_time">
+                        </div>
                     </div>
                     <div class="form-check form-switch mt-3">
                         <input class="form-check-input" type="checkbox" name="is_active" id="editBatchIsActive" value="1">
@@ -154,23 +188,60 @@
 @section('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        function convertTo24Hour(time12h) {
+            if(!time12h) return '';
+            const match = time12h.match(/(\d+):(\d+)\s*(AM|PM)/i);
+            if(!match) return time12h; // fallback
+            let hours = parseInt(match[1], 10);
+            const minutes = match[2];
+            const modifier = match[3].toUpperCase();
+            
+            if (hours === 12) {
+                hours = 0;
+            }
+            if (modifier === 'PM') {
+                hours += 12;
+            }
+            return `${hours.toString().padStart(2, '0')}:${minutes}`;
+        }
+
         const editBtns = document.querySelectorAll('.edit-batch-btn');
         const editForm = document.getElementById('editBatchForm');
         const editName = document.getElementById('editBatchName');
-        const editSchedule = document.getElementById('editBatchSchedule');
         const editIsActive = document.getElementById('editBatchIsActive');
+        const editStartTime = document.getElementById('edit_start_time');
+        const editEndTime = document.getElementById('edit_end_time');
 
         editBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 const id = this.dataset.id;
                 const name = this.dataset.name;
-                const schedule = this.dataset.schedule;
+                const schedule = this.dataset.schedule || '';
                 const isActive = this.dataset.is_active;
 
                 editForm.action = `/batches/${id}`;
                 editName.value = name;
-                editSchedule.value = schedule;
                 editIsActive.checked = isActive == '1' || isActive == true;
+
+                // Reset fields
+                document.querySelectorAll('.edit-day-checkbox').forEach(cb => cb.checked = false);
+                editStartTime.value = '';
+                editEndTime.value = '';
+
+                // Parse schedule: "Mon, Wed (09:00 AM - 10:30 AM)"
+                const match = schedule.match(/^(.*?)\s*\((.*?)\s*-\s*(.*?)\)$/);
+                if (match) {
+                    const days = match[1].split(',').map(d => d.trim());
+                    const start = convertTo24Hour(match[2].trim());
+                    const end = convertTo24Hour(match[3].trim());
+
+                    days.forEach(d => {
+                        const cb = document.getElementById(`edit_day_${d}`);
+                        if(cb) cb.checked = true;
+                    });
+                    editStartTime.value = start;
+                    editEndTime.value = end;
+                }
             });
         });
     });

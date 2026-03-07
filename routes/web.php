@@ -7,6 +7,8 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SuperAdmin\InstituteController;
 use App\Http\Controllers\SuperAdmin\PlanController;
+use App\Http\Controllers\FeeCategoryController;
+use App\Http\Controllers\FeeStructureController;
 
 // Register middleware aliases directly to bypass bootstrap/app.php reset issues
 Route::aliasMiddleware('role', \App\Http\Middleware\CheckRole::class);
@@ -56,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/attendance', [AttendanceController::class , 'store'])->name('attendance.store')->middleware('can:manage-attendance');
 
             Route::resource('payments', PaymentController::class)->middleware('can:manage-payments');
+            Route::resource('fee-categories', FeeCategoryController::class)->middleware('can:manage-payments');
+            Route::resource('fee-structures', FeeStructureController::class)->middleware('can:manage-payments');
 
             // Academics Module
             Route::resource('batches', \App\Http\Controllers\BatchController::class)->except(['create', 'edit', 'show'])->middleware('can:manage-batches');

@@ -138,27 +138,29 @@
         <!-- Attendance Log -->
         <div class="col-left">
             <div class="section-title">Attendance Log</div>
-            @forelse($attendanceByMonth as $monthKey => $records)
-            <div class="att-month">
-                <span>{{ \Carbon\Carbon::parse($monthKey . '-01')->format('F Y') }}</span>
-                @php $mPct = $records->count() > 0 ? round($records->whereIn('status',['present','late'])->count() / $records->count() * 100) : 0; @endphp
-                <span class="{{ $mPct >= 75 ? 'green' : 'red' }}">{{ $mPct }}%</span>
-            </div>
-            @foreach($records as $att)
-            <div class="att-row">
-                <div class="att-date">{{ $att->date->format('D, d M Y') }}</div>
-                @if($att->status === 'present')
-                    <span class="badge badge-present">Present</span>
-                @elseif($att->status === 'late')
-                    <span class="badge badge-late">Late</span>
-                @else
-                    <span class="badge badge-absent">Absent</span>
-                @endif
-            </div>
-            @endforeach
-            @empty
-            <p style="color:#94A3B8;font-size:9px;padding:8px;">No attendance records found.</p>
-            @endforelse
+            @if($attendanceByMonth->isNotEmpty())
+                @foreach($attendanceByMonth as $monthKey => $records)
+                <div class="att-month">
+                    <span>{{ \Carbon\Carbon::parse($monthKey . '-01')->format('F Y') }}</span>
+                    @php $mPct = $records->count() > 0 ? round($records->whereIn('status',['present','late'])->count() / $records->count() * 100) : 0; @endphp
+                    <span class="{{ $mPct >= 75 ? 'green' : 'red' }}">{{ $mPct }}%</span>
+                </div>
+                @foreach($records as $att)
+                <div class="att-row">
+                    <div class="att-date">{{ $att->date->format('D, d M Y') }}</div>
+                    @if($att->status === 'present')
+                        <span class="badge badge-present">Present</span>
+                    @elseif($att->status === 'late')
+                        <span class="badge badge-late">Late</span>
+                    @else
+                        <span class="badge badge-absent">Absent</span>
+                    @endif
+                </div>
+                @endforeach
+                @endforeach
+            @else
+                <p style="color:#94A3B8;font-size:9px;padding:8px;">No attendance records found.</p>
+            @endif
         </div>
 
         <!-- Right: Tests + Payments -->

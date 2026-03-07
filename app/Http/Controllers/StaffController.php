@@ -23,9 +23,11 @@ class StaffController extends Controller
     public function create()
     {
         $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
-        $subjects = Subject::where('is_active', 1)->get();
-        $batches = Batch::where('is_active', 1)->get();
-        return view('staff.create', compact('roles', 'subjects', 'batches'));
+        // Get active batches with their active subjects
+        $batches = Batch::with(['subjects' => function ($query) {
+            $query->where('is_active', 1);
+        }])->where('is_active', 1)->get();
+        return view('staff.create', compact('roles', 'batches'));
     }
 
     public function store(Request $request)
@@ -62,9 +64,11 @@ class StaffController extends Controller
     public function edit(User $staff)
     {
         $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
-        $subjects = Subject::where('is_active', 1)->get();
-        $batches = Batch::where('is_active', 1)->get();
-        return view('staff.edit', compact('staff', 'roles', 'subjects', 'batches'));
+        // Get active batches with their active subjects for the hierarchical UI
+        $batches = Batch::with(['subjects' => function ($query) {
+            $query->where('is_active', 1);
+        }])->where('is_active', 1)->get();
+        return view('staff.edit', compact('staff', 'roles', 'batches'));
     }
 
     public function update(Request $request, User $staff)

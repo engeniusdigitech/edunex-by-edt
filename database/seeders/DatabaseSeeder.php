@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
 
         // 3. Subscription Plans
         $proPlan = Plan::firstOrCreate(
-        ['name' => 'Basic Plan'],
+        ['name' => 'Plan'],
         [
             'price' => 999.00,
             'duration_days' => 30,

@@ -48,9 +48,8 @@
                         </td>
                         <td class="py-3 text-muted fw-medium">{{ $subject->created_at->format('M d, Y') }}</td>
                         <td class="py-3 text-end pe-4">
-                            <button type="button" class="btn btn-sm btn-light text-primary border shadow-sm rounded-circle p-2 me-1 edit-subject-btn" 
-                                data-id="{{ $subject->id }}" data-name="{{ $subject->name }}" data-batch_id="{{ $subject->batch_id }}" data-is_active="{{ $subject->is_active }}"
-                                data-bs-toggle="modal" data-bs-target="#editSubjectModal" title="Edit Subject">
+                            <button type="button" class="btn btn-sm btn-light text-primary border shadow-sm rounded-circle p-2 me-1" 
+                                data-bs-toggle="modal" data-bs-target="#editSubjectModal{{ $subject->id }}" title="Edit Subject">
                                 <i class="fas fa-edit"></i>
                             </button>
                             
@@ -123,34 +122,35 @@
     </div>
 </div>
 
+@foreach($subjects as $subject)
 <!-- Edit Subject Modal -->
-<div class="modal fade" id="editSubjectModal" tabindex="-1" aria-labelledby="editSubjectModalLabel" aria-hidden="true">
+<div class="modal fade" id="editSubjectModal{{ $subject->id }}" tabindex="-1" aria-labelledby="editSubjectModalLabel{{ $subject->id }}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content border-0 shadow">
             <div class="modal-header bg-light">
-                <h5 class="modal-title" id="editSubjectModalLabel">Edit Subject</h5>
+                <h5 class="modal-title" id="editSubjectModalLabel{{ $subject->id }}">Edit Subject</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="editSubjectForm" method="POST">
+            <form action="{{ url('subjects/' . $subject->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Subject Name</label>
-                        <input type="text" name="name" id="editSubjectName" class="form-control" required>
+                        <input type="text" name="name" class="form-control" value="{{ $subject->name }}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Assign to Batch</label>
-                        <select name="batch_id" id="editSubjectBatchId" class="form-select" required>
+                        <select name="batch_id" class="form-select" required>
                             <option value="">-- Select a Batch --</option>
                             @foreach($batches as $batch)
-                                <option value="{{ $batch->id }}">{{ $batch->name }}</option>
+                                <option value="{{ $batch->id }}" {{ $subject->batch_id == $batch->id ? 'selected' : '' }}>{{ $batch->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-check form-switch mt-3">
-                        <input class="form-check-input" type="checkbox" name="is_active" id="editSubjectIsActive" value="1">
-                        <label class="form-check-label" for="editSubjectIsActive">Active Subject</label>
+                        <input class="form-check-input" type="checkbox" name="is_active" id="editSubjectIsActive{{ $subject->id }}" value="1" {{ $subject->is_active ? 'checked' : '' }}>
+                        <label class="form-check-label" for="editSubjectIsActive{{ $subject->id }}">Active Subject</label>
                     </div>
                 </div>
                 <div class="modal-footer border-top-0 bg-light">
@@ -161,30 +161,5 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editBtns = document.querySelectorAll('.edit-subject-btn');
-        const editForm = document.getElementById('editSubjectForm');
-        const editName = document.getElementById('editSubjectName');
-        const editIsActive = document.getElementById('editSubjectIsActive');
-        const editBatchId = document.getElementById('editSubjectBatchId');
-
-        editBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = this.dataset.id;
-                const name = this.dataset.name;
-                const batchId = this.dataset.batch_id;
-                const isActive = this.dataset.is_active;
-
-                editForm.action = `/subjects/${id}`;
-                editName.value = name;
-                editBatchId.value = batchId;
-                editIsActive.checked = isActive == '1' || isActive == true;
-            });
-        });
-    });
-</script>
+@endforeach
 @endsection

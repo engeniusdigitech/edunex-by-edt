@@ -17,12 +17,23 @@ class BatchController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'schedule_time' => 'nullable|string|max:255',
+            'days' => 'nullable|array',
+            'start_time' => 'nullable|string',
+            'end_time' => 'nullable|string',
             'is_active' => 'boolean',
         ]);
 
         $validated['is_active'] = $request->has('is_active');
-        $validated['institute_id'] = auth()->user()->institute_id; // Using the BelongsToInstitute trait usually handles this, but explicitly setting it is fine or letting the trait handle it. The model has the trait.
+        $validated['institute_id'] = auth()->user()->institute_id;
+
+        if (!empty($validated['days']) && !empty($validated['start_time']) && !empty($validated['end_time'])) {
+            $start = \Carbon\Carbon::parse($validated['start_time'])->format('h:i A');
+            $end = \Carbon\Carbon::parse($validated['end_time'])->format('h:i A');
+            $validated['schedule_time'] = implode(', ', $validated['days']) . " ({$start} - {$end})";
+        }
+        else {
+            $validated['schedule_time'] = null;
+        }
 
         Batch::create($validated);
 
@@ -33,11 +44,22 @@ class BatchController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'schedule_time' => 'nullable|string|max:255',
+            'days' => 'nullable|array',
+            'start_time' => 'nullable|string',
+            'end_time' => 'nullable|string',
             'is_active' => 'boolean',
         ]);
 
         $validated['is_active'] = $request->has('is_active');
+
+        if (!empty($validated['days']) && !empty($validated['start_time']) && !empty($validated['end_time'])) {
+            $start = \Carbon\Carbon::parse($validated['start_time'])->format('h:i A');
+            $end = \Carbon\Carbon::parse($validated['end_time'])->format('h:i A');
+            $validated['schedule_time'] = implode(', ', $validated['days']) . " ({$start} - {$end})";
+        }
+        else {
+            $validated['schedule_time'] = null;
+        }
 
         $batch->update($validated);
 

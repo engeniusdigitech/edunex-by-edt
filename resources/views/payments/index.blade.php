@@ -40,7 +40,13 @@
                         </td>
                         <td class="py-4">
                             <div class="fw-bold text-dark mb-1">{{ $payment->student->name ?? 'Deleted Student' }}</div>
-                            <div class="small text-muted"><i class="fas fa-tag text-opacity-50 me-1"></i> {{ $payment->feeStructure->name ?? 'General Fee' }}</div>
+                            <div class="small text-muted">
+                                <i class="fas fa-tag text-opacity-50 me-1"></i> 
+                                {{ $payment->feeStructure->name ?? 'General Fee' }}
+                                @if(isset($payment->feeStructure->category))
+                                    <span class="ms-1 text-primary-light">• {{ $payment->feeStructure->category->name }}</span>
+                                @endif
+                            </div>
                         </td>
                         <td class="py-4 fw-black text-dark fs-5" style="font-family: monospace;">₹{{ number_format($payment->amount_paid, 2) }}</td>
                         <td class="py-4">

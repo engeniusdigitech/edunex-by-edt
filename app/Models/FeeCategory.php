@@ -6,25 +6,18 @@ use App\Traits\BelongsToInstitute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FeeStructure extends Model
+class FeeCategory extends Model
 {
     use HasFactory, BelongsToInstitute;
 
     protected $fillable = [
         'institute_id',
-        'fee_category_id',
         'name',
-        'total_amount',
         'description',
     ];
 
-    public function category()
+    public function institute()
     {
-        return $this->belongsTo(FeeCategory::class , 'fee_category_id');
-    }
-
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
+        return $this->belongsTo(Institute::class);
     }
 }

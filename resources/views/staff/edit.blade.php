@@ -37,40 +37,44 @@
             </div>
 
             <div class="mb-3" id="teacherOptionsContainer" style="{{ $staff->isTeacher() ? '' : 'display: none;' }}">
-                <label class="form-label">Assign Subjects & Batches (For Teachers)</label>
+                <label class="form-label">Assign Class & Subjects (For Teachers)</label>
                 <div class="border rounded p-3 bg-light mb-3">
-                    <h6 class="text-secondary fw-bold mb-3">Subjects</h6>
-                    @if($subjects->isEmpty())
-                        <p class="text-muted mb-0 small">No subjects available. Please create subjects first.</p>
-                    @else
-                        <div class="row">
-                            @foreach($subjects as $subject)
-                                <div class="col-md-4 mb-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="subjects[]" value="{{ $subject->id }}" id="subject_{{ $subject->id }}" {{ $staff->subjects->contains($subject->id) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="subject_{{ $subject->id }}">
-                                            {{ $subject->name }}
-                                        </label>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
-                </div>
-
-                <div class="border rounded p-3 bg-light">
-                    <h6 class="text-secondary fw-bold mb-3">Batches</h6>
                     @if($batches->isEmpty())
                         <p class="text-muted mb-0 small">No batches available. Please create batches first.</p>
                     @else
-                        <div class="row">
+                        <div class="accordion" id="batchAccordion">
                             @foreach($batches as $batch)
-                                <div class="col-md-4 mb-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="batches[]" value="{{ $batch->id }}" id="batch_{{ $batch->id }}" {{ $staff->batches->contains($batch->id) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="batch_{{ $batch->id }}">
-                                            {{ $batch->name }}
-                                        </label>
+                                <div class="accordion-item border-0 mb-2 rounded shadow-sm">
+                                    <h2 class="accordion-header" id="headingBatch{{ $batch->id }}">
+                                        <div class="accordion-button collapsed bg-white rounded d-flex align-items-center p-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBatch{{ $batch->id }}" aria-expanded="false" aria-controls="collapseBatch{{ $batch->id }}">
+                                            <div class="form-check me-3" onclick="event.stopPropagation();">
+                                                <input class="form-check-input batch-checkbox" type="checkbox" name="batches[]" value="{{ $batch->id }}" id="batch_{{ $batch->id }}" {{ $staff->batches->contains($batch->id) ? 'checked' : '' }}>
+                                                <label class="form-check-label fw-bold" for="batch_{{ $batch->id }}" style="cursor: pointer;">
+                                                    {{ $batch->name }}
+                                                </label>
+                                            </div>
+                                            <span class="badge bg-secondary rounded-pill ms-auto">{{ $batch->subjects->count() }} Subjects</span>
+                                        </div>
+                                    </h2>
+                                    <div id="collapseBatch{{ $batch->id }}" class="accordion-collapse collapse" aria-labelledby="headingBatch{{ $batch->id }}" data-bs-parent="#batchAccordion">
+                                        <div class="accordion-body bg-light border-top pt-3 pb-2">
+                                            @if($batch->subjects->isEmpty())
+                                                <p class="text-muted small mb-0 ms-4"><i class="fas fa-info-circle me-1"></i> No active subjects found for this batch.</p>
+                                            @else
+                                                <div class="row ms-3">
+                                                    @foreach($batch->subjects as $subject)
+                                                        <div class="col-md-6 mb-2">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input subject-checkbox" type="checkbox" name="subjects[]" value="{{ $subject->id }}" id="subject_{{ $subject->id }}" data-batch-id="{{ $batch->id }}" {{ $staff->subjects->contains($subject->id) ? 'checked' : '' }}>
+                                                                <label class="form-check-label" for="subject_{{ $subject->id }}">
+                                                                    {{ $subject->name }}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -121,6 +125,36 @@
 
         roleSelect.addEventListener('change', toggleSubjects);
         toggleSubjects(); // Initialize on load
+
+        // Hierarchical Checkbox Logic
+        const subjectCheckboxes = document.querySelectorAll('.subject-checkbox');
+        const batchCheckboxes = document.querySelectorAll('.batch-checkbox');
+
+        // When a subject is checked, ensure its parent batch is also checked
+        subjectCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    const batchId = this.dataset.batchId;
+                    const parentBatchCheckbox = document.getElementById('batch_' + batchId);
+                    if (parentBatchCheckbox && !parentBatchCheckbox.checked) {
+                        parentBatchCheckbox.checked = true;
+                    }
+                }
+            });
+        });
+
+        // When a batch is unchecked, optionally uncheck all its child subjects
+        batchCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (!this.checked) {
+                    const batchId = this.value;
+                    const childSubjects = document.querySelectorAll('.subject-checkbox[data-batch-id="' + batchId + '"]');
+                    childSubjects.forEach(subject => {
+                        subject.checked = false;
+                    });
+                }
+            });
+        });
     });
 </script>
 @endpush

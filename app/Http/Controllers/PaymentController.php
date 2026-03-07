@@ -12,7 +12,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $payments = Payment::with(['student', 'feeStructure'])->latest()->paginate(15);
+        $payments = Payment::with(['student', 'feeStructure.category'])->latest()->paginate(15);
         return view('payments.index', compact('payments'));
     }
 

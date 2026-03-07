@@ -201,11 +201,10 @@
                     <div class="plan-card animate__animated animate__fadeInRight animate__delay-1s">
                         <div class="plan-badge">⭐ Recommended</div>
                         <div class="plan-name">{{ $plan->name }}</div>
-                        <h2 class="plan-headline">The Professional Edition</h2>
+                        <h2 class="plan-headline">The Professional Edition's Majors</h2>
                         
                         <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> <span><strong>Unlimited Students</strong> — grow without extra costs</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span><strong>Smart Fee Tracking</strong> & automated reminders</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span><strong>Smart Fee Tracking</strong> & reminders</span></li>
                             <li><i class="fas fa-check-circle"></i> <span><strong>Live Class Integration</strong> (Jitsi Conferencing)</span></li>
                             <li><i class="fas fa-check-circle"></i> <span><strong>Staff Management</strong> with custom permissions</span></li>
                             <li><i class="fas fa-check-circle"></i> <span><strong>Interactive Student Portal</strong> (PWA Support)</span></li>
