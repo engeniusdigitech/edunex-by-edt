@@ -29,6 +29,9 @@
                             <li class="nav-item"><a href="{{ url('/dashboard') }}" class="btn btn-primary-glow btn-modern py-2 px-4 shadow-sm">Institute Dashboard</a></li>
                         @endif
                     @else
+                        <li class="nav-item">
+                            <a href="{{ route('student.login') }}" class="btn btn-outline-modern btn-modern py-2 px-4 shadow-sm">Student Login</a>
+                        </li>
                         <li class="nav-item"><a href="{{ route('login') }}" class="btn btn-outline-modern btn-modern py-2 px-4">Log in</a></li>
                         <li class="nav-item"><a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern py-2 px-4">Start Free Trial</a></li>
                     @endauth

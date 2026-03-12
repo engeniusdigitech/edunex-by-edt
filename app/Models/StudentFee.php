@@ -2,32 +2,20 @@
 
 namespace App\Models;
 
-use App\Traits\BelongsToInstitute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class StudentFee extends Model
 {
-    use HasFactory, BelongsToInstitute;
+    use HasFactory;
 
     protected $fillable = [
-        'institute_id',
         'student_id',
         'fee_structure_id',
-        'amount_paid',
-        'payment_date',
-        'payment_method',
-        'razorpay_payment_id',
+        'amount',
+        'paid_amount',
+        'due_amount',
         'status',
-        'gateway',
-        'transaction_id',
-        'currency',
-        'payment_status',
-        'receipt_number',
-    ];
-
-    protected $casts = [
-        'payment_date' => 'date',
     ];
 
     public function student()

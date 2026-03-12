@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduNex - The Ultimate Institute Management SaaS</title>
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,57 +16,12 @@
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
+    @include('components.frontend-styles')
+    
     <style>
-        :root {
-            --primary-color: #4F46E5;
-            --primary-light: #6366F1;
-            --secondary-color: #EC4899;
-            --dark-bg: #0F172A;
-            --card-bg: #ffffff;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --border-color: #E2E8F0;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            color: var(--text-main);
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* ── MESH GRADIENT BACKGROUNDS ── */
-        .mesh-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .mesh-circle-1 {
-            position: absolute; top: -10%; left: -10%;
-            width: 60%; height: 60%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 70%);
-            filter: blur(80px);
-        }
-        .mesh-circle-2 {
-            position: absolute; bottom: -10%; right: -10%;
-            width: 50%; height: 50%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.04), transparent 70%);
-            filter: blur(80px);
-        }
-
-        /* ── NAVBAR ── */
-        .navbar-glass {
-            background: rgba(255, 255, 255, 0.85) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
         /* ── HERO ── */
         .hero-section {
-            padding: 180px 0 100px;
+            padding: 126px 0 100px;
             position: relative;
         }
         .hero-badge {
@@ -101,56 +57,6 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
-        }
-
-        /* ── BUTTONS ── */
-        .btn-modern {
-            padding: 14px 36px;
-            font-weight: 700;
-            border-radius: 16px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1.05rem;
-        }
-        .btn-primary-glow {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: white;
-            box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.4);
-            border: none;
-        }
-        .btn-primary-glow:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px -5px rgba(79, 70, 229, 0.5);
-            color: white;
-        }
-        .btn-outline-modern {
-            background: #ffffff;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
-        }
-        .btn-outline-modern:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* ── FLOATING MOCKUP ── */
-        .mockup-container {
-            position: relative;
-            margin-top: 80px;
-            perspective: 1000px;
-        }
-        .mockup-img {
-            max-width: 1000px;
-            width: 100%;
-            border-radius: 24px;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.25);
-            border: 8px solid #ffffff;
-            transform: rotateX(5deg) scale(0.95);
-            transition: all 0.6s ease;
-        }
-        .mockup-container:hover .mockup-img {
-            transform: rotateX(0deg) scale(1);
         }
 
         /* ── IMPACT STATS ── */
@@ -233,17 +139,6 @@
             line-height: 1.6;
         }
 
-        /* ── HOW IT WORKS ── */
-        .step-num {
-            width: 32px; height: 32px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: white;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
         /* ── FAQ ── */
         .faq-section { padding: 100px 0; background: #fafafa; }
         .accordion-item {
@@ -282,16 +177,101 @@
             width: 200%; height: 200%;
             background: radial-gradient(circle, rgba(79, 70, 229, 0.1), transparent 70%);
         }
-
-        /* ── FOOTER ── */
-        .footer {
-            background: #ffffff;
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--border-color);
+/* ── PORTAL SHOWCASE ── */
+        .portal-showcase {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #fff, #f8fafc, #fff);
+            position: relative;
         }
-        .footer-logo { font-size: 1.8rem; font-weight: 900; color: var(--primary-color); }
-        .footer-link { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        .footer-link:hover { color: var(--primary-color); }
+        .portal-nav {
+            display: inline-flex;
+            background: rgba(241, 245, 249, 0.8);
+            padding: 6px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(8px);
+        }
+        .portal-nav-btn {
+            padding: 12px 30px;
+            border-radius: 16px;
+            border: none;
+            background: transparent;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .portal-nav-btn.active {
+            background: #fff;
+            color: var(--primary-color);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+        }
+        .portal-display {
+            position: relative;
+            min-height: 600px;
+        }
+        .portal-content {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+        .portal-content.active {
+            display: block;
+        }
+        .display-wrapper {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .desktop-mockup {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 40px 80px -15px rgba(0,0,0,0.15);
+            border: 6px solid #fff;
+            background: #f1f5f9;
+        }
+        .mobile-mockup {
+            position: absolute;
+            bottom: -40px;
+            right: -20px;
+            width: 260px;
+            border-radius: 35px;
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.25);
+            border: 8px solid #1e293b;
+            z-index: 2;
+            background: #1e293b;
+            transition: transform 0.5s ease;
+        }
+        .mobile-mockup img {
+            border-radius: 28px;
+            width: 100%;
+        }
+        .display-wrapper:hover .mobile-mockup {
+            transform: translateY(-10px) rotate(-2deg);
+        }
+        @media (max-width: 991px) {
+            .mobile-mockup {
+                width: 180px;
+                right: 0;
+                bottom: -20px;
+            }
+        }
+        @media (max-width: 767px) {
+            .portal-display { min-height: 500px; }
+            .mobile-mockup {
+                position: relative;
+                width: 240px;
+                right: auto;
+                bottom: auto;
+                margin: 40px auto 0;
+                display: block;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
     </style>
 </head>
@@ -343,8 +323,43 @@
                 @endif
             </div>
 
-            <div class="mockup-container animate__animated animate__fadeInUp animate__delay-2s">
-                <img src="{{ asset('images/hero-banner.png') }}" alt="EduNex Dashboard" class="mockup-img">
+            <div class="portal-showcase mt-5">
+                <div class="text-center mb-4">
+                    <div class="portal-nav">
+                        <button class="portal-nav-btn active" onclick="switchPortal('admin')">Admin Hub</button>
+                        <button class="portal-nav-btn" onclick="switchPortal('student')">Student Portal</button>
+                    </div>
+                </div>
+
+                <div class="portal-display">
+                    <!-- Admin Portal Content -->
+                    <div id="admin-portal" class="portal-content active">
+                        <div class="display-wrapper">
+                            <img src="{{ asset('images/hero-banner.png') }}" alt="Admin Desktop" class="desktop-mockup">
+                            <div class="mobile-mockup">
+                                <img src="{{ asset('images/hero-banner-mobile.png') }}" alt="Admin Mobile">
+                            </div>
+                        </div>
+                        <div class="mt-5" style="max-width: 700px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem;">
+                            <h3 class="fw-bold mb-3">Enterprise-Grade Admin Control</h3>
+                            <p class="text-muted">Manage your entire institute with a powerful, intuitive interface. Track attendance, automate fees, and monitor growth in real-time — all from one central dashboard.</p>
+                        </div>
+                    </div>
+
+                    <!-- Student Portal Content -->
+                    <div id="student-portal" class="portal-content">
+                        <div class="display-wrapper">
+                            <img src="{{ asset('images/hero-banner-2.png') }}" alt="Student Desktop" class="desktop-mockup">
+                            <div class="mobile-mockup">
+                                <img src="{{ asset('images/hero-banner-2-mobile.png') }}" alt="Student Mobile">
+                            </div>
+                        </div>
+                        <div class="mt-5" style="max-width: 700px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem;">
+                            <h3 class="fw-bold mb-3">Dynamic Student Learning Hub</h3>
+                            <p class="text-muted">Empower your students with a modern digital environment. From checking schedules and dues to joining live Jitsi meetings — everything is just one tap away.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -631,7 +646,25 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
+    <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function switchPortal(portal) {
+            // Update buttons
+            document.querySelectorAll('.portal-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.innerText.toLowerCase().includes(portal)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update content
+            document.querySelectorAll('.portal-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(portal + '-portal').classList.add('active');
+        }
+    </script>
 </body>
 </html>

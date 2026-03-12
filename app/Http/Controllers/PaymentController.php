@@ -44,4 +44,18 @@ class PaymentController extends Controller
 
         return redirect()->route('payments.index')->with('success', 'Payment recorded successfully.');
     }
+    public function receipt(Payment $payment)
+    {
+        // Ensure the admin can only view receipts for their institute
+        if (auth()->user()->institute_id !== $payment->institute_id && !auth()->user()->isSuperAdmin()) {
+            abort(403);
+        }
+
+        $student = $payment->student;
+        $institute = $payment->institute ?? auth()->user()->institute;
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('payments.pdf_receipt', compact('payment', 'student', 'institute'));
+
+        return $pdf->stream('receipt-' . ($payment->receipt_number ?? $payment->id) . '.pdf');
+    }
 }

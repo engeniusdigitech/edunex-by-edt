@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing ΓÇö EduNex</title>
+    <meta name="description" content="Simple, transparent pricing for EduNex institute management software. One powerful plan, no hidden fees.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+    :root {
+        --primary-color: #4F46E5;
+        --primary-light: #6366F1;
+        --secondary-color: #EC4899;
+        --dark-bg: #0F172A;
+        --card-bg: #ffffff;
+        --text-main: #1E293B;
+        --text-muted: #64748B;
+        --border-color: #E2E8F0;
+    }
+
+    body {
+        font-family: 'Outfit', sans-serif;
+        color: var(--text-main);
+        background-color: #ffffff;
+        overflow-x: hidden;
+    }
+
+    /* ΓöÇΓöÇ MESH GRADIENT BACKGROUNDS ΓöÇΓöÇ */
+    .mesh-bg {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: -1;
+        overflow: hidden;
+    }
+    .mesh-circle-1 {
+        position: absolute; top: -10%; left: -10%;
+        width: 60%; height: 60%;
+        background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 70%);
+        filter: blur(80px);
+    }
+    .mesh-circle-2 {
+        position: absolute; bottom: -10%; right: -10%;
+        width: 50%; height: 50%;
+        background: radial-gradient(circle, rgba(236, 72, 153, 0.04), transparent 70%);
+        filter: blur(80px);
+    }
+
+    /* ΓöÇΓöÇ NAVBAR ΓöÇΓöÇ */
+    .navbar-glass {
+        background: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    /* ΓöÇΓöÇ BUTTONS ΓöÇΓöÇ */
+    .btn-modern {
+        padding: 12px 28px;
+        font-weight: 700;
+        border-radius: 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn-primary-glow {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        color: white !important;
+        box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.4);
+        border: none;
+    }
+    .btn-primary-glow:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px -5px rgba(79, 70, 229, 0.5);
+    }
+    .btn-outline-modern {
+        background: #ffffff;
+        color: var(--text-main) !important;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+    }
+    .btn-outline-modern:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color) !important;
+        transform: translateY(-2px);
+    }
+
+    /* ΓöÇΓöÇ FOOTER ΓöÇΓöÇ */
+    .footer {
+        background: #ffffff;
+        padding: 80px 0 40px;
+        border-top: 1px solid var(--border-color);
+    }
+    .footer-logo { font-size: 1.8rem; font-weight: 900; color: var(--primary-color); }
+    .footer-link { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    .footer-link:hover { color: var(--primary-color); }
+</style>
+    
+    <style>
+        /* ΓöÇΓöÇ HERO ΓöÇΓöÇ */
+        .page-header {
+            padding: 126px 0 100px;
+            position: relative;
+        }
+        .section-tag {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            color: var(--dark-bg);
+            margin-bottom: 24px;
+        }
+        .hero-title span {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-sub { font-size: 1.25rem; color: var(--text-muted); line-height: 1.7; max-width: 500px; }
+
+        /* ΓöÇΓöÇ PRICING CARD ΓöÇΓöÇ */
+        .plan-card {
+            background: #ffffff;
+            border-radius: 36px;
+            border: 1px solid var(--border-color);
+            padding: 60px;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 40px 100px -30px rgba(0,0,0,0.1);
+        }
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 50px 120px -30px rgba(79, 70, 229, 0.15);
+            border-color: var(--primary-color);
+        }
+        .plan-badge {
+            position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff; font-size: 0.75rem; font-weight: 800;
+            padding: 6px 20px; border-radius: 50px;
+            text-transform: uppercase; letter-spacing: 1px;
+            box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.4);
+        }
+        .plan-name { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px; }
+        .plan-headline { font-size: 1.75rem; font-weight: 900; color: var(--dark-bg); margin-bottom: 30px; letter-spacing: -0.5px; }
+        
+        .feature-list { list-style: none; padding: 0; margin: 0 0 40px; }
+        .feature-list li {
+            display: flex; align-items: flex-start; gap: 15px;
+            font-size: 1rem; color: var(--text-main);
+            padding: 12px 0;
+            border-bottom: 1px solid #F8FAFC;
+        }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-list li i { color: #10B981; font-size: 1.1rem; margin-top: 4px; }
+        
+        .plan-cta {
+            display: block; width: 100%; text-align: center;
+            padding: 18px 30px; border-radius: 20px;
+            font-weight: 800; font-size: 1.1rem;
+            text-decoration: none; transition: all 0.3s;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: #fff;
+            box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.4);
+        }
+        .plan-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px -5px rgba(79, 70, 229, 0.5); color: #fff; }
+
+        /* ΓöÇΓöÇ TRUST STRIP ΓöÇΓöÇ */
+        .trust-strip { background: var(--dark-bg); padding: 24px 0; border-radius: 0; }
+        .trust-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-weight: 600; font-size: 0.85rem; }
+        .trust-item i { color: #10B981; }
+
+        /* ΓöÇΓöÇ FAQ ΓöÇΓöÇ */
+        .accordion-item {
+            border: 1px solid var(--border-color) !important;
+            border-radius: 20px !important;
+            margin-bottom: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .accordion-button { padding: 24px; font-weight: 700; color: var(--dark-bg); border-radius: 0 !important; }
+        .accordion-button:not(.collapsed) { background: #EEF2FF; color: var(--primary-color); }
+    </style>
+</head>
+<body>
+
+    <div class="mesh-bg">
+        <div class="mesh-circle-1"></div>
+        <div class="mesh-circle-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-glass py-3">
+    <div class="container">
+        <a href="http://localhost" class="navbar-brand d-flex align-items-center mb-0 text-decoration-none" style="padding: 0;">
+            <img src="http://localhost/images/logo.png" alt="EduCore Logo" class="img-fluid" style="max-height: 64px;">
+        </a>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center gap-3 mt-3 mt-lg-0">
+                <li class="nav-item">
+                    <a href="http://localhost" class="nav-link fw-semibold px-2 text-secondary">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost/about" class="nav-link fw-semibold px-2 text-secondary">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost/pricing" class="nav-link fw-semibold px-2 text-primary">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://localhost/contact" class="nav-link fw-semibold px-2 text-secondary">Contact Us</a>
+                </li>
+                
+                                                            <li class="nav-item">
+                            <a href="http://localhost/student/login" class="btn btn-outline-modern btn-modern py-2 px-4 shadow-sm">Student Login</a>
+                        </li>
+                        <li class="nav-item"><a href="http://localhost/login" class="btn btn-outline-modern btn-modern py-2 px-4">Log in</a></li>
+                        <li class="nav-item"><a href="http://localhost/pricing" class="btn btn-primary-glow btn-modern py-2 px-4">Start Free Trial</a></li>
+                                                </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Page Header -->
+    <header class="page-header text-center">
+        <div class="container px-4">
+            <span class="section-tag animate__animated animate__fadeInDown">Pricing Plans</span>
+            <h1 class="hero-title animate__animated animate__zoomIn">
+                Simple, transparent,<br>
+                <span>No Student Limits.</span>
+            </h1>
+            <p class="text-muted fs-5 mt-4 max-w-xl mx-auto animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 600px;">
+                We don't believe in charging per student or gating features. You get the complete, unlimited EduNex platform for your entire institute.
+            </p>
+        </div>
+    </header>
+
+    <!-- Pricing Section -->
+    <section class="py-5">
+        <div class="container px-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 animate__animated animate__fadeInLeft">
+                    <h2 class="fw-black mb-4 display-6">Everything you need,<br>one flat monthly fee.</h2>
+                    <ul class="feature-list mb-5">
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Smart Fee Tracking</strong> & reminders</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Live Class Integration</strong> (Jitsi Conferencing)</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Staff Management</strong> with custom permissions</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Interactive Student Portal</strong> (PWA Support)</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Automated PDF Reports</strong> for all metrics</span></li>
+                    </ul>
+                    <a href="http://localhost/trial-request" class="btn btn-outline-modern btn-lg px-5 py-3">Start Your Free Trial</a>
+                </div>
+
+                <div class="col-lg-6 offset-lg-1">
+                                        <div class="plan-card animate__animated animate__fadeInRight animate__delay-1s">
+                        <div class="plan-badge">Γ¡É Recommended</div>
+                        <div class="plan-name">Plan</div>
+                        <h2 class="plan-headline">The Professional Edition's Majors</h2>
+                        
+                        <div class="d-flex align-items-baseline gap-2 mb-4">
+                            <span class="display-4 fw-black text-dark">Γé╣999</span>
+                            <span class="text-muted fw-bold">/ Month</span>
+                        </div>
+
+                        <p class="text-muted mb-4">Get full access to all features with no student limits and 24/7 dedicated support.</p>
+
+                        <a href="http://localhost/trial-request?plan=Plan" class="plan-cta">
+                            Start 7-Day Free Trial
+                        </a>
+                        <p class="text-center text-muted small mt-4 mb-0">Cancel at any time. No card required.</p>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <section class="trust-strip mt-5">
+        <div class="container px-4">
+            <div class="row justify-content-center g-4">
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-lock"></i> SSL Encrypted</div></div>
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-cloud"></i> 99.9% Cloud Uptime</div></div>
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-headset"></i> Dedicated Support</div></div>
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-database"></i> Data Isolation</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 mt-5">
+        <div class="container px-4 py-5">
+            <div class="text-center mb-5">
+                <span class="section-tag">Common Questions</span>
+                <h2 class="fw-black display-6">Pricing & Access FAQ</h2>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="pricingFaq">
+                        
+                                                <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#pq0">
+                                    What happens after the 7-day trial?
+                                </button>
+                            </h2>
+                            <div id="pq0" class="accordion-collapse collapse show" data-bs-parent="#pricingFaq">
+                                <div class="accordion-body">
+                                    You can choose to continue by subscribing to our flat monthly plan. If you decide not to continue, your data remains secure but the portal features will be restricted.
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pq1">
+                                    Can I upgrade or downgrade?
+                                </button>
+                            </h2>
+                            <div id="pq1" class="accordion-collapse collapse " data-bs-parent="#pricingFaq">
+                                <div class="accordion-body">
+                                    We offer a single comprehensive plan that includes everything. There are no tiers to worry about ΓÇö you always have the best version of EduNex.
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pq2">
+                                    Is there a setup fee?
+                                </button>
+                            </h2>
+                            <div id="pq2" class="accordion-collapse collapse " data-bs-parent="#pricingFaq">
+                                <div class="accordion-body">
+                                    Zero. No onboarding fees, no implementation fees. You only pay the monthly subscription and that is it.
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pq3">
+                                    Do you offer discounts for non-profits?
+                                </button>
+                            </h2>
+                            <div id="pq3" class="accordion-collapse collapse " data-bs-parent="#pricingFaq">
+                                <div class="accordion-body">
+                                    Yes! Reach out to our sales team with your documentation, and we will set you up with special pricing.
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container px-4">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="footer-logo mb-4">
+                        <img src="http://localhost/images/logo.png" alt="EduNex" style="height: 50px;" class="me-2">
+                    </div>
+                    <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built by educators, for educators.</p>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="fw-bold mb-4">Platform</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="http://localhost#features" class="footer-link small">Features</a></li>
+                        <li class="mb-2"><a href="http://localhost/pricing" class="footer-link small">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link small">Live Demo</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="fw-bold mb-4">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="http://localhost/about" class="footer-link small">About Us</a></li>
+                        <li class="mb-2"><a href="http://localhost/contact" class="footer-link small">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-4 text-md-end">
+                    <h6 class="fw-bold mb-4">Product by</h6>
+                    <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
+                    <p class="text-muted small">Specialized in SaaS solutions</p>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 text-center">
+                <p class="text-muted small mb-0">┬⌐ 2026 EduNex. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -30,6 +30,7 @@
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Subdomain</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Status</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Sub Expiry</th>
+                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0 text-end" style="font-size: 0.75rem; letter-spacing: 1px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,11 @@
                             @else
                                 <span class="text-muted fst-italic">No Plan</span>
                             @endif
+                        </td>
+                        <td class="py-3 text-end">
+                            <a href="{{ route('superadmin.institutes.edit', $institute->id) }}" class="btn btn-sm btn-outline-primary shadow-sm" style="border-radius:6px;" title="Edit Institute">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
                         </td>
                     </tr>
                     @endforeach

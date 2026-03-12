@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'EduNex') - Dashboard</title>
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -211,7 +212,6 @@
                     <h6 class="sidebar-header">Super Admin</h6>
                     <a href="{{ route('superadmin.dashboard') }}" class="{{ request()->routeIs('superadmin.dashboard') ? 'active' : '' }}"><i class="fas fa-home"></i> Dashboard</a>
                     <a href="{{ route('superadmin.institutes.index') }}" class="{{ request()->routeIs('superadmin.institutes.*') ? 'active' : '' }}"><i class="fas fa-school"></i> Institutes</a>
-                    <a href="{{ route('superadmin.plans.index') }}" class="{{ request()->routeIs('superadmin.plans.*') ? 'active' : '' }}"><i class="fas fa-tags"></i> Plans</a>
                 @else
                     <h6 class="sidebar-header">Institute Panel</h6>
                     <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fas fa-home"></i> Dashboard</a>
@@ -228,6 +228,7 @@
                     <a href="{{ route('payments.index') }}" class="{{ request()->routeIs('payments.*') ? 'active' : '' }}"><i class="fas fa-wallet"></i> Payments</a>
                     <a href="{{ route('fee-categories.index') }}" class="{{ request()->routeIs('fee-categories.*') ? 'active' : '' }}"><i class="fas fa-tags"></i> Fee Categories</a>
                     <a href="{{ route('fee-structures.index') }}" class="{{ request()->routeIs('fee-structures.*') ? 'active' : '' }}"><i class="fas fa-sitemap"></i> Fee Structures</a>
+                    <a href="{{ route('payment-gateways.settings') }}" class="{{ request()->routeIs('payment-gateways.*') ? 'active' : '' }}"><i class="fas fa-credit-card"></i> Payment Gateways</a>
                     @endcan
 
                     <h6 class="sidebar-header mt-3">Academics</h6>

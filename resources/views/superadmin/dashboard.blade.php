@@ -38,7 +38,7 @@
             <i class="fas fa-laptop-code fa-2x text-primary me-3"></i>
             <h4 class="fw-bold mb-0">Welcome Platform Owner</h4>
         </div>
-        <p class="text-white opacity-75 fs-5 mb-0">Use the sidebar to manage onboarded institutes, oversee global metrics, and configure subscription plans running on the EduNex engine.</p>
+        <p class="text-white opacity-75 fs-5 mb-0">Use the sidebar to manage onboarded institutes and oversee global metrics running on the EduNex engine.</p>
     </div>
 </div>
 @endsection

@@ -39,6 +39,7 @@ class InstituteController extends Controller
             'name' => 'required|string|max:255',
             'contact_email' => 'required|email|unique:institutes',
             'phone' => 'nullable|string',
+            'country' => 'required|string',
             'subdomain' => 'nullable|string|unique:institutes',
             'admin_name' => 'required|string|max:255',
             'admin_email' => 'required|email|unique:users,email',
@@ -55,6 +56,7 @@ class InstituteController extends Controller
                 'name' => $validated['name'],
                 'contact_email' => $validated['contact_email'],
                 'phone' => $validated['phone'],
+                'country' => $validated['country'],
                 'subdomain' => $validated['subdomain'],
             ]);
 
@@ -78,5 +80,35 @@ class InstituteController extends Controller
         }
     }
 
-// Edit, Update omitted for brevity, but easily added.
+    public function edit(Institute $institute)
+    {
+        return view('superadmin.institutes.edit', compact('institute'));
+    }
+
+    public function update(Request $request, Institute $institute)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'contact_email' => 'required|email|unique:institutes,contact_email,' . $institute->id,
+            'phone' => 'nullable|string',
+            'country' => 'required|string',
+            'subdomain' => 'nullable|string|unique:institutes,subdomain,' . $institute->id,
+            'is_active' => 'boolean',
+        ]);
+
+        if (empty($validated['subdomain'])) {
+            $validated['subdomain'] = Str::slug($validated['name']);
+        }
+
+        $institute->update([
+            'name' => $validated['name'],
+            'contact_email' => $validated['contact_email'],
+            'phone' => $validated['phone'],
+            'country' => $validated['country'],
+            'subdomain' => $validated['subdomain'],
+            'is_active' => $request->has('is_active'),
+        ]);
+
+        return redirect()->route('superadmin.institutes.index')->with('success', 'Institute updated successfully.');
+    }
 }

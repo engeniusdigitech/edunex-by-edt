@@ -14,6 +14,7 @@ class Institute extends Model
         'subdomain',
         'contact_email',
         'phone',
+        'country',
         'logo',
         'is_active',
     ];
@@ -31,5 +32,10 @@ class Institute extends Model
     public function students()
     {
         return $this->hasMany(Student::class);
+    }
+
+    public function paymentGateway()
+    {
+        return $this->hasOne(PaymentGateway::class);
     }
 }

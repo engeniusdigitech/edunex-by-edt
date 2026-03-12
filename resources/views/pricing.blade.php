@@ -5,62 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing — EduNex</title>
     <meta name="description" content="Simple, transparent pricing for EduNex institute management software. One powerful plan, no hidden fees.">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
+    @include('components.frontend-styles')
+    
     <style>
-        :root {
-            --primary-color: #4F46E5;
-            --primary-light: #6366F1;
-            --secondary-color: #EC4899;
-            --dark-bg: #0F172A;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --border-color: #E2E8F0;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            color: var(--text-main);
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* ── MESH GRADIENT BACKGROUNDS ── */
-        .mesh-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .mesh-circle-1 {
-            position: absolute; top: -10%; left: -10%;
-            width: 60%; height: 60%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 70%);
-            filter: blur(80px);
-        }
-        .mesh-circle-2 {
-            position: absolute; bottom: -10%; right: -10%;
-            width: 50%; height: 50%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.04), transparent 70%);
-            filter: blur(80px);
-        }
-
-        /* ── NAVBAR ── */
-        .navbar-glass {
-            background: rgba(255, 255, 255, 0.85) !important;
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
         /* ── HERO ── */
         .page-header {
-            padding: 180px 0 100px;
+            padding: 126px 0 100px;
             position: relative;
         }
         .section-tag {
@@ -68,7 +29,7 @@
             font-weight: 700;
             color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 20%;
+            letter-spacing: 2px;
             margin-bottom: 16px;
             display: block;
         }
@@ -147,19 +108,8 @@
             overflow: hidden;
             background: #fff;
         }
-        .accordion-button { padding: 24px; font-weight: 700; color: var(--dark-bg); }
+        .accordion-button { padding: 24px; font-weight: 700; color: var(--dark-bg); border-radius: 0 !important; }
         .accordion-button:not(.collapsed) { background: #EEF2FF; color: var(--primary-color); }
-
-        /* ── FOOTER ── */
-        .footer {
-            background: #ffffff;
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--border-color);
-        }
-        .footer-logo { font-size: 1.8rem; font-weight: 900; color: var(--primary-color); }
-        .footer-link { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        .footer-link:hover { color: var(--primary-color); }
-
     </style>
 </head>
 <body>
@@ -169,104 +119,104 @@
         <div class="mesh-circle-2"></div>
     </div>
 
+    <!-- Navigation -->
     @include('components.frontend-navbar')
 
-    {{-- ── HERO ── --}}
-    <header class="page-header">
+    <!-- Page Header -->
+    <header class="page-header text-center">
         <div class="container px-4">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <span class="section-tag animate__animated animate__fadeInDown">Simple Transparent Model</span>
-                    <h1 class="hero-title animate__animated animate__zoomIn">
-                        Everything you need.<br>
-                        <span>Without complexity.</span>
-                    </h1>
-                    <p class="hero-sub animate__animated animate__fadeInUp animate__delay-1s">
-                        We don't believe in charging per student or gating features. You get the complete, unlimited EduNex platform for your entire institute.
-                    </p>
-                    <div class="d-flex gap-4 flex-wrap mt-5 animate__animated animate__fadeInUp animate__delay-1s">
-                        <div class="d-flex align-items-center gap-2 small fw-bold text-muted">
-                            <i class="fas fa-check-circle text-success"></i> 7-day free trial
-                        </div>
-                        <div class="d-flex align-items-center gap-2 small fw-bold text-muted">
-                            <i class="fas fa-check-circle text-success"></i> No setup fees
-                        </div>
-                        <div class="d-flex align-items-center gap-2 small fw-bold text-muted">
-                            <i class="fas fa-check-circle text-success"></i> Unlimited everything
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    @forelse($plans as $plan)
-                    <div class="plan-card animate__animated animate__fadeInRight animate__delay-1s">
-                        <div class="plan-badge">⭐ Recommended</div>
-                        <div class="plan-name">{{ $plan->name }}</div>
-                        <h2 class="plan-headline">The Professional Edition's Majors</h2>
-                        
-                        <ul class="feature-list">
-                            <li><i class="fas fa-check-circle"></i> <span><strong>Smart Fee Tracking</strong> & reminders</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span><strong>Live Class Integration</strong> (Jitsi Conferencing)</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span><strong>Staff Management</strong> with custom permissions</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span><strong>Interactive Student Portal</strong> (PWA Support)</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span><strong>Automated PDF Reports</strong> for all metrics</span></li>
-                        </ul>
-                        
-                        <a href="{{ route('trial.request', ['plan' => $plan->name]) }}" class="plan-cta">
-                            Start Your Free Trial
-                        </a>
-                        <p class="text-center text-muted small mt-3 fw-bold">Cancel at any time. No card required.</p>
-                    </div>
-                    @empty
-                    <div class="alert border-0 shadow-sm rounded-4 p-5 text-center" style="background:#F1F5F9;">
-                        <i class="fas fa-clock fa-2x mb-3 text-muted"></i>
-                        <h5 class="fw-bold">Contact us for custom setup</h5>
-                        <p class="mb-0 small text-muted">We're currently scaling our infrastructure for new institutes.</p>
-                    </div>
-                    @endforelse
-                </div>
-            </div>
+            <span class="section-tag animate__animated animate__fadeInDown">Trial & Access</span>
+            <h1 class="hero-title animate__animated animate__zoomIn">
+                Unlock your institute's<br>
+                <span>True Potential.</span>
+            </h1>
+            <p class="text-muted fs-5 mt-4 max-w-xl mx-auto animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 600px;">
+                Get the complete, unlimited EduNex platform for your entire institute. No gating features, no arbitrary limits.
+            </p>
         </div>
     </header>
 
-    {{-- ── TRUST STRIP ── --}}
-    <div class="trust-strip">
+    <!-- Pricing Section -->
+    <section class="py-5">
         <div class="container px-4">
-            <div class="d-flex align-items-center justify-content-center gap-5 flex-wrap">
-                <div class="trust-item"><i class="fas fa-lock"></i> SSL Encrypted</div>
-                <div class="trust-item"><i class="fas fa-cloud"></i> 99.9% Cloud Uptime</div>
-                <div class="trust-item"><i class="fas fa-headset"></i> Dedicated Support</div>
-                <div class="trust-item"><i class="fas fa-shield-alt"></i> Data Isolation</div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 animate__animated animate__fadeInLeft">
+                    <h2 class="fw-black mb-4 display-6">Everything you need<br>to manage and grow.</h2>
+                    <ul class="feature-list mb-5">
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Smart Fee Tracking</strong> & reminders</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Live Class Integration</strong> (Jitsi Conferencing)</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Staff Management</strong> with custom permissions</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Interactive Student Portal</strong> (PWA Support)</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Automated PDF Reports</strong> for all metrics</span></li>
+                    </ul>
+                    <a href="{{ route('trial.request') }}" class="btn btn-outline-modern btn-lg px-5 py-3">Start Your Free Trial</a>
+                </div>
+
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="plan-card animate__animated animate__fadeInRight animate__delay-1s">
+                        <div class="plan-badge">⭐ Recommended</div>
+                        <div class="plan-name">The Complete Platform</div>
+                        <h2 class="plan-headline">EduNex Professional</h2>
+                        
+                        <div class="d-flex align-items-baseline gap-2 mb-4">
+                            <span class="display-5 fw-black text-dark">Full Access</span>
+                        </div>
+
+                        <p class="text-muted mb-4">Get full access to all features with no student limits and 24/7 dedicated support.</p>
+
+                        <a href="{{ route('trial.request') }}" class="plan-cta">
+                            Start 7-Day Free Trial
+                        </a>
+                        <p class="text-center text-muted small mt-4 mb-0">No credit card required to start.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    {{-- ── FAQ ── --}}
-    <section class="py-5 bg-light">
+    <!-- Trust Strip -->
+    <section class="trust-strip mt-5">
+        <div class="container px-4">
+            <div class="row justify-content-center g-4">
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-lock"></i> SSL Encrypted</div></div>
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-cloud"></i> 99.9% Cloud Uptime</div></div>
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-headset"></i> Dedicated Support</div></div>
+                <div class="col-auto"><div class="trust-item"><i class="fas fa-database"></i> Data Isolation</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 mt-5">
         <div class="container px-4 py-5">
             <div class="text-center mb-5">
                 <span class="section-tag">Common Questions</span>
                 <h2 class="fw-black display-6">Pricing & Access FAQ</h2>
             </div>
+            
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="accordion" id="pricingFaq">
                         @php
                         $faqs = [
-                            ['q'=>'What happens after the 7-day trial?', 'a'=>'You can choose to continue by subscribing to our flat monthly plan. If you decide not to continue, your data remains secure but the portal features will be restricted.'],
-                            ['q'=>'Can I upgrade or downgrade?', 'a'=>'We offer a single comprehensive plan that includes everything. There are no tiers to worry about — you always have the best version of EduNex.'],
-                            ['q'=>'Is there any limit student enrollment?', 'a'=>'Absolutely not. Our core philosophy is that your growth shouldn\'t cost you more. Enroll 10 or 10,000 students — the price stays exactly the same.'],
-                            ['q'=>'How do I get my data if I cancel?', 'a'=>'You can export your student records, payment history, and attendance logs to CSV/PDF at any time from your admin dashboard.'],
+                            ['q'=>'What happens after the 7-day trial?', 'a'=>'You can choose to continue using EduNex for your institute. If you decide not to continue, your data remains secure but the portal features will be restricted.'],
+                            ['q'=>'Are there any hidden limits?', 'a'=>'We offer a single comprehensive platform that includes everything. There are no feature tiers to worry about — you always have the best version of EduNex.'],
+                            ['q'=>'Is there a setup fee?', 'a'=>'Zero. No onboarding fees, no implementation fees.'],
+                            ['q'=>'How does onboarding work?', 'a'=>'Once you start your trial, our team provides full support to help you import your existing data and set up your institute seamlessly.']
                         ];
                         @endphp
+
                         @foreach($faqs as $i => $faq)
-                        <div class="accordion-item shadow-sm">
+                        <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button {{ $i > 0 ? 'collapsed' : '' }}" type="button" data-bs-toggle="collapse" data-bs-target="#pq{{ $i }}">
+                                <button class="accordion-button {{ $i === 0 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#pq{{ $i }}">
                                     {{ $faq['q'] }}
                                 </button>
                             </h2>
                             <div id="pq{{ $i }}" class="accordion-collapse collapse {{ $i === 0 ? 'show' : '' }}" data-bs-parent="#pricingFaq">
-                                <div class="accordion-body">{{ $faq['a'] }}</div>
+                                <div class="accordion-body">
+                                    {{ $faq['a'] }}
+                                </div>
                             </div>
                         </div>
                         @endforeach
@@ -282,12 +232,9 @@
             <div class="row g-5">
                 <div class="col-lg-4">
                     <div class="footer-logo mb-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="max-height: 50px;" class="me-2">
+                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 50px;" class="me-2">
                     </div>
                     <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built by educators, for educators.</p>
-                    <div class="d-flex gap-3">
-                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
-                    </div>
                 </div>
                 <div class="col-md-4 col-lg-2">
                     <h6 class="fw-bold mb-4">Platform</h6>
@@ -302,15 +249,12 @@
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="{{ route('about') }}" class="footer-link small">About Us</a></li>
                         <li class="mb-2"><a href="{{ route('contact') }}" class="footer-link small">Contact</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 col-lg-4 text-md-end">
                     <h6 class="fw-bold mb-4">Product by</h6>
-                    <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-decoration-none">
-                        <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
-                        <p class="text-muted small">Specialized in SaaS solutions</p>
-                    </a>
+                    <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
+                    <p class="text-muted small">Specialized in SaaS solutions</p>
                 </div>
             </div>
             <div class="border-top mt-5 pt-4 text-center">
@@ -319,6 +263,7 @@
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

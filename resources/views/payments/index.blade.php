@@ -30,6 +30,7 @@
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Amount</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Date & Method</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Status</th>
+                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0 text-end" style="font-size: 0.75rem; letter-spacing: 1px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,6 +67,13 @@
                                 <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle rounded-pill px-3 py-2 fw-bold">Success</span>
                             @else
                                 <span class="badge bg-warning bg-opacity-10 text-warning border border-warning-subtle rounded-pill px-3 py-2 fw-bold">{{ ucfirst($payment->status) }}</span>
+                            @endif
+                        </td>
+                        <td class="py-4 text-end">
+                            @if($payment->status == 'success')
+                            <a href="{{ route('payments.receipt', $payment->id) }}" class="btn btn-sm btn-outline-primary shadow-sm" style="border-radius:8px;" target="_blank">
+                                <i class="fas fa-file-pdf me-1"></i> Receipt
+                            </a>
                             @endif
                         </td>
                     </tr>

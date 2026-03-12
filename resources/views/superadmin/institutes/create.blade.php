@@ -27,13 +27,27 @@
                 <small class="text-muted">Leave blank to auto-generate from name.</small>
             </div>
             <div class="row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-4 mb-3">
                     <label class="form-label">Contact Email</label>
                     <input type="email" name="contact_email" class="form-control" required placeholder="admin@apex.com">
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-4 mb-3">
                     <label class="form-label">Phone</label>
                     <input type="text" name="phone" class="form-control" placeholder="9876543210">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Country <span class="text-danger">*</span></label>
+                    <select name="country" class="form-select" required>
+                        <option value="">Select Country</option>
+                        <option value="IN">India</option>
+                        <option value="US">United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="AU">Australia</option>
+                        <option value="CA">Canada</option>
+                        <option value="SG">Singapore</option>
+                        <option value="AE">United Arab Emirates</option>
+                        <option value="OTHER">Other</option>
+                    </select>
                 </div>
             </div>
             <hr class="my-4">

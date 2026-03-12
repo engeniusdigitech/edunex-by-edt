@@ -13,72 +13,9 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    @include('components.frontend-styles')
+    
     <style>
-        :root {
-            --primary-color: #4F46E5;
-            --secondary-color: #EC4899;
-            --dark-bg: #0F172A;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            color: var(--text-main);
-            background-color: #FAFAF9;
-            overflow-x: hidden;
-        }
-
-        /* Glassmorphic Navbar */
-        .navbar-glass {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
-            letter-spacing: -0.5px;
-        }
-
-        .btn-modern {
-            padding: 10px 24px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary-glow {
-            background: linear-gradient(135deg, var(--primary-color), #6366F1);
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
-        }
-
-        .btn-primary-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px -5px rgba(79, 70, 229, 0.5);
-            color: white;
-        }
-
-        .btn-outline-modern {
-            background: white;
-            color: var(--text-main);
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .btn-outline-modern:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
         .page-header {
             padding: 160px 0 80px;
             background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(236, 72, 153, 0.05));
@@ -165,7 +102,7 @@
                                     <input type="text" id="plan" class="form-control bg-light" value="{{ $planName }}" readonly>
                                 </div>
                                 <div class="col-12 mt-4 text-center">
-                                    <button type="submit" class="btn btn-modern w-100 py-3 text-white shadow-sm fw-bold fs-5" style="background-color: #25D366; border-radius: 50px;">
+                                    <button type="submit" class="btn btn-modern w-100 py-3 text-white shadow-sm fw-bold fs-5" style="background-color: #25D366; border-radius: 16px;">
                                         Submit <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
                                 </div>

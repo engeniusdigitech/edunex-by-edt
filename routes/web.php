@@ -5,10 +5,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Student\FeePaymentController;
 use App\Http\Controllers\SuperAdmin\InstituteController;
 use App\Http\Controllers\SuperAdmin\PlanController;
 use App\Http\Controllers\FeeCategoryController;
 use App\Http\Controllers\FeeStructureController;
+use App\Http\Controllers\PaymentGatewayController;
 
 // Register middleware aliases directly to bypass bootstrap/app.php reset issues
 Route::aliasMiddleware('role', \App\Http\Middleware\CheckRole::class);
@@ -28,8 +30,9 @@ Route::get('/pricing', function () {
     return view('pricing', compact('plans'));
 })->name('pricing');
 
+
 Route::get('/trial-request', function () {
-    $planName = request('plan', 'Basic Plan');
+    $planName = request('plan', 'EduNex Platform');
     return view('trial_request', compact('planName'));
 })->name('trial.request');
 
@@ -43,7 +46,6 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:Super Admin'])->prefix('superadmin')->name('superadmin.')->group(function () {
             Route::get('/dashboard', [InstituteController::class , 'dashboard'])->name('dashboard');
             Route::resource('institutes', InstituteController::class);
-            Route::resource('plans', PlanController::class);
         }
         );
 
@@ -64,8 +66,12 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/attendance', [AttendanceController::class , 'store'])->name('attendance.store')->middleware('can:manage-attendance');
 
             Route::resource('payments', PaymentController::class)->middleware('can:manage-payments');
+            Route::get('/payments/{payment}/receipt', [PaymentController::class , 'receipt'])->name('payments.receipt')->middleware('can:manage-payments');
             Route::resource('fee-categories', FeeCategoryController::class)->middleware('can:manage-payments');
             Route::resource('fee-structures', FeeStructureController::class)->middleware('can:manage-payments');
+
+            Route::get('/payment-gateways/settings', [PaymentGatewayController::class , 'settings'])->name('payment-gateways.settings')->middleware('can:manage-payments');
+            Route::put('/payment-gateways/settings', [PaymentGatewayController::class , 'updateSettings'])->name('payment-gateways.update')->middleware('can:manage-payments');
 
             // Academics Module
             Route::resource('batches', \App\Http\Controllers\BatchController::class)->except(['create', 'edit', 'show'])->middleware('can:manage-batches');
@@ -113,6 +119,13 @@ Route::prefix('student')->name('student.')->group(function () {
         Route::middleware('auth:student')->group(function () {
             Route::get('dashboard', [\App\Http\Controllers\Student\DashboardController::class , 'index'])->name('dashboard');
 
+            // Student Fees
+            Route::get('fees', [FeePaymentController::class , 'index'])->name('fees.index');
+            Route::post('fees/{fee}/pay', [FeePaymentController::class , 'pay'])->name('fees.pay');
+            Route::get('fees/stripe-success', [FeePaymentController::class , 'stripeSuccess'])->name('fees.stripe.success');
+            Route::get('fees/cancel', [FeePaymentController::class , 'cancel'])->name('fees.cancel');
+            Route::get('fees/receipt/{payment}', [FeePaymentController::class , 'receipt'])->name('fees.receipt');
+
             // Live Lectures
             Route::get('lectures', [\App\Http\Controllers\Student\LectureController::class , 'index'])->name('lectures.index');
             Route::get('lectures/{liveLecture}/join', [\App\Http\Controllers\Student\LectureController::class , 'join'])->name('lectures.join');
@@ -122,3 +135,8 @@ Route::prefix('student')->name('student.')->group(function () {
         }
         );
     });
+
+// Webhook routes for payment gateways (bypassing CSRF in bootstrap/app.php)
+use App\Http\Controllers\WebhookController;
+Route::post('webhooks/stripe', [WebhookController::class , 'handleStripe'])->name('webhooks.stripe');
+Route::post('webhooks/razorpay', [WebhookController::class , 'handleRazorpay'])->name('webhooks.razorpay');

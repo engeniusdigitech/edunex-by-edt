@@ -15,55 +15,12 @@
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
+    @include('components.frontend-styles')
+    
     <style>
-        :root {
-            --primary-color: #4F46E5;
-            --primary-light: #6366F1;
-            --secondary-color: #EC4899;
-            --dark-bg: #0F172A;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --border-color: #E2E8F0;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            color: var(--text-main);
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* ── MESH GRADIENT BACKGROUNDS ── */
-        .mesh-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .mesh-circle-1 {
-            position: absolute; top: -10%; right: -10%;
-            width: 60%; height: 60%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.04), transparent 70%);
-            filter: blur(80px);
-        }
-        .mesh-circle-2 {
-            position: absolute; bottom: -10%; left: -10%;
-            width: 50%; height: 50%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.03), transparent 70%);
-            filter: blur(80px);
-        }
-
-        /* ── NAVBAR ── */
-        .navbar-glass {
-            background: rgba(255, 255, 255, 0.85) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
         /* ── PAGE HEADER ── */
         .page-header {
-            padding: 180px 0 100px;
+            padding: 126px 0 100px;
             position: relative;
         }
         .section-tag {
@@ -166,17 +123,6 @@
             width: 200%; height: 200%;
             background: radial-gradient(circle, rgba(236, 72, 153, 0.08), transparent 70%);
         }
-
-        /* ── FOOTER ── */
-        .footer {
-            background: #ffffff;
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--border-color);
-        }
-        .footer-logo { font-size: 1.8rem; font-weight: 900; color: var(--primary-color); }
-        .footer-link { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        .footer-link:hover { color: var(--primary-color); }
-
     </style>
 </head>
 <body>

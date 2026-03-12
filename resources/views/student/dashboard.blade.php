@@ -429,6 +429,9 @@
             <div class="notif-dot">{{ $student->unreadNotifications->count() }}</div>
         </a>
         @endif
+        <a href="{{ route('student.fees.index') }}" class="notif-icon-btn" title="My Fees">
+            <i class="fas fa-wallet"></i>
+        </a>
         <a href="{{ route('student.lectures.index') }}" class="notif-icon-btn" title="Live Lectures">
             <i class="fas fa-video"></i>
         </a>
