@@ -14,6 +14,7 @@ class Payment extends Model
         'institute_id',
         'student_id',
         'fee_structure_id',
+        'student_fee_id',
         'amount_paid',
         'payment_date',
         'payment_method',
@@ -38,5 +39,10 @@ class Payment extends Model
     public function feeStructure()
     {
         return $this->belongsTo(FeeStructure::class);
+    }
+
+    public function studentFee()
+    {
+        return $this->belongsTo(StudentFee::class);
     }
 }

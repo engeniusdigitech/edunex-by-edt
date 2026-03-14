@@ -50,13 +50,13 @@ class WebhookController extends Controller
 
         try {
             $event = \Stripe\Webhook::constructEvent(
-                $payload, $sigHeader, $gatewayConfig->stripe_webhook_secret
+                $payload,
+                $sigHeader,
+                $gatewayConfig->stripe_webhook_secret
             );
-        }
-        catch (\UnexpectedValueException $e) {
+        } catch (\UnexpectedValueException $e) {
             return response()->json(['error' => 'Invalid payload'], 400);
-        }
-        catch (\Stripe\Exception\SignatureVerificationException $e) {
+        } catch (\Stripe\Exception\SignatureVerificationException $e) {
             return response()->json(['error' => 'Invalid signature'], 400);
         }
 
@@ -64,7 +64,7 @@ class WebhookController extends Controller
         if ($event->type == 'checkout.session.completed') {
             $session = $event->data->object;
 
-            $this->processSuccessfulPayment(
+            $this->paymentService->processSuccessfulPayment(
                 $session->metadata->student_fee_id,
                 $session->amount_total / 100, // Convert from cents
                 'stripe',
@@ -101,64 +101,12 @@ class WebhookController extends Controller
 
                 // Optional: Verify signature if the institute has saved a webhook secret in a separate field.
                 // For now, if we trust the notes and transaction, we process it.
-                $this->processSuccessfulPayment($studentFeeId, $amount, 'razorpay', $transactionId, $currency);
+                $this->paymentService->processSuccessfulPayment($studentFeeId, $amount, 'razorpay', $transactionId, $currency);
             }
         }
 
         return response()->json(['status' => 'success'], 200);
     }
 
-    /**
-     * Internal method to securely record the payment and update fee balance.
-     */
-    protected function processSuccessfulPayment($studentFeeId, $amountPaid, $gateway, $transactionId, $currency = 'INR')
-    {
-        $fee = StudentFee::with('student.institute')->find($studentFeeId);
 
-        if (!$fee) {
-            Log::error("Webhook payment process failed: StudentFee {$studentFeeId} not found.");
-            return;
-        }
-
-        // Prevent duplicate processing
-        $existingPayment = Payment::where('transaction_id', $transactionId)->first();
-        if ($existingPayment) {
-            Log::info("Webhook payment ignored: Transaction {$transactionId} already processed.");
-            return;
-        }
-
-        // Generate receipt number
-        $receiptNumber = strtoupper($gateway[0]) . date('Ymd') . '-' . Str::random(6);
-
-        // Record Payment
-        Payment::create([
-            'institute_id' => $fee->student->institute_id,
-            'student_id' => $fee->student_id,
-            'fee_structure_id' => $fee->fee_structure_id,
-            'amount_paid' => $amountPaid,
-            'payment_date' => now(),
-            'payment_method' => 'online',
-            'status' => 'success',
-            'gateway' => $gateway,
-            'transaction_id' => $transactionId,
-            'currency' => $currency,
-            'payment_status' => 'paid',
-            'receipt_number' => $receiptNumber,
-        ]);
-
-        // Update StudentFee
-        $fee->paid_amount += $amountPaid;
-        $fee->due_amount = max(0, $fee->amount - $fee->paid_amount);
-
-        if ($fee->due_amount == 0) {
-            $fee->status = 'paid';
-        }
-        elseif ($fee->paid_amount > 0) {
-            $fee->status = 'partial';
-        }
-
-        $fee->save();
-
-        Log::info("Successfully processed {$gateway} payment for StudentFee {$studentFeeId}");
-    }
 }

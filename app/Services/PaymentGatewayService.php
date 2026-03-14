@@ -21,7 +21,7 @@ class PaymentGatewayService
     /**
      * Create a Stripe Checkout Session for a specific fee.
      */
-    public function createStripeSession(StudentFee $fee, PaymentGateway $config, $successUrl, $cancelUrl)
+    public function createStripeSession(StudentFee $fee, PaymentGateway $config, $amount, $successUrl, $cancelUrl)
     {
         if (empty($config->stripe_secret_key)) {
             throw new \Exception('Stripe is not configured for this institute.');
@@ -31,17 +31,18 @@ class PaymentGatewayService
 
         $session = StripeSession::create([
             'payment_method_types' => ['card'],
-            'line_items' => [[
+            'line_items' => [
+                [
                     'price_data' => [
-                        'currency' => 'inr', // Or dynamic based on institute settings
+                        'currency' => 'inr',
                         'product_data' => [
                             'name' => 'Fee Payment: ' . $fee->feeStructure->name,
                         ],
-                        // Stripe expects amount in cents/lowest denomination
-                        'unit_amount' => (int)($fee->due_amount * 100),
+                        'unit_amount' => (int) ($amount * 100),
                     ],
                     'quantity' => 1,
-                ]],
+                ]
+            ],
             'mode' => 'payment',
             'success_url' => $successUrl . '?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => $cancelUrl,
@@ -60,7 +61,7 @@ class PaymentGatewayService
     /**
      * Create a Razorpay Order for a specific fee.
      */
-    public function createRazorpayOrder(StudentFee $fee, PaymentGateway $config)
+    public function createRazorpayOrder(StudentFee $fee, PaymentGateway $config, $amount)
     {
         if (empty($config->razorpay_key) || empty($config->razorpay_secret)) {
             throw new \Exception('Razorpay is not configured for this institute.');
@@ -70,8 +71,7 @@ class PaymentGatewayService
 
         $orderData = [
             'receipt' => 'rcpt_' . $fee->id . '_' . time(),
-            // Razorpay expects amount in paise
-            'amount' => (int)($fee->due_amount * 100),
+            'amount' => (int) ($amount * 100),
             'currency' => 'INR',
             'notes' => [
                 'student_fee_id' => $fee->id,
@@ -96,9 +96,65 @@ class PaymentGatewayService
         try {
             $api->utility->verifyPaymentSignature($attributes);
             return true;
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             return false;
         }
+    }
+
+    /**
+     * Internal method to securely record the payment and update fee balance.
+     */
+    public function processSuccessfulPayment($studentFeeId, $amountPaid, $gateway, $transactionId, $currency = 'INR')
+    {
+        \Illuminate\Support\Facades\Log::info("Processing successful payment in service", ['fee_id' => $studentFeeId, 'amount' => $amountPaid, 'txn' => $transactionId]);
+        $fee = \App\Models\StudentFee::with('student.institute')->find($studentFeeId);
+
+        if (!$fee) {
+            \Illuminate\Support\Facades\Log::error("Payment process failed: StudentFee {$studentFeeId} not found.");
+            return;
+        }
+
+        // Prevent duplicate processing
+        $existingPayment = \App\Models\Payment::where('transaction_id', $transactionId)->first();
+        if ($existingPayment) {
+            \Illuminate\Support\Facades\Log::info("Payment ignored: Transaction {$transactionId} already processed.");
+            return $fee; // Return fee to allow redirect logic
+        }
+
+        // Generate receipt number
+        $receiptNumber = strtoupper($gateway[0]) . date('Ymd') . '-' . \Illuminate\Support\Str::random(6);
+
+        // Record Payment
+        \App\Models\Payment::create([
+            'institute_id' => $fee->student->institute_id,
+            'student_id' => $fee->student_id,
+            'fee_structure_id' => $fee->fee_structure_id,
+            'student_fee_id' => $fee->id,
+            'amount_paid' => $amountPaid,
+            'payment_date' => now(),
+            'payment_method' => 'online',
+            'status' => 'success',
+            'gateway' => $gateway,
+            'transaction_id' => $transactionId,
+            'currency' => $currency,
+            'payment_status' => 'paid',
+            'receipt_number' => $receiptNumber,
+        ]);
+
+        // Update StudentFee
+        $fee->paid_amount += $amountPaid;
+        $fee->due_amount = max(0, $fee->amount - $fee->paid_amount);
+
+        if ($fee->due_amount <= 0) {
+            $fee->status = 'paid';
+        } elseif ($fee->paid_amount > 0) {
+            $fee->status = 'partial';
+        }
+
+        $fee->save();
+
+        \Illuminate\Support\Facades\Log::info("Successfully processed {$gateway} payment for StudentFee {$studentFeeId}");
+
+        return $fee;
     }
 }

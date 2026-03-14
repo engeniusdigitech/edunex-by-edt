@@ -10,10 +10,25 @@ use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $payments = Payment::with(['student', 'feeStructure.category'])->latest()->paginate(15);
-        return view('payments.index', compact('payments'));
+        $query = \App\Models\StudentFee::with(['student', 'feeStructure.category']);
+
+        if ($request->filled('status')) {
+            $statusMap = [
+                'paid' => 'paid',
+                'pending' => 'unpaid',
+                'partial' => 'partial'
+            ];
+
+            if (isset($statusMap[$request->status])) {
+                $query->where('status', $statusMap[$request->status]);
+            }
+        }
+
+        $fees = $query->latest()->paginate(15);
+
+        return view('payments.index', compact('fees'));
     }
 
     public function create()
@@ -40,7 +55,29 @@ class PaymentController extends Controller
             $validated['razorpay_payment_id'] = 'pay_' . Str::random(14);
         }
 
+        // Update StudentFee record
+        $studentFee = \App\Models\StudentFee::where('student_id', $validated['student_id'])
+            ->where('fee_structure_id', $validated['fee_structure_id'])
+            ->first();
+
+        if ($studentFee) {
+            $validated['student_fee_id'] = $studentFee->id;
+        }
+
         Payment::create($validated);
+
+        if ($studentFee) {
+            $studentFee->paid_amount += $validated['amount_paid'];
+            $studentFee->due_amount = max(0, $studentFee->amount - $studentFee->paid_amount);
+
+            if ($studentFee->due_amount <= 0) {
+                $studentFee->status = 'paid';
+            } elseif ($studentFee->paid_amount > 0) {
+                $studentFee->status = 'partial';
+            }
+
+            $studentFee->save();
+        }
 
         return redirect()->route('payments.index')->with('success', 'Payment recorded successfully.');
     }

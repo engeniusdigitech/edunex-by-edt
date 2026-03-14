@@ -14,8 +14,10 @@ class IdentifyTenant
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->institute_id) {
-            session(['institute_id' => auth()->user()->institute_id]);
+        $user = auth()->user() ?: auth()->guard('student')->user();
+
+        if ($user && isset($user->institute_id)) {
+            session(['institute_id' => $user->institute_id]);
         }
 
         return $next($request);
