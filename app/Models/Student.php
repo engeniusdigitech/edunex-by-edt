@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Laravel\Sanctum\HasApiTokens;
+
 class Student extends Authenticatable
 {
-    use HasFactory, BelongsToInstitute, Notifiable;
+    use HasApiTokens, HasFactory, BelongsToInstitute, Notifiable;
 
     protected $fillable = [
         'institute_id',

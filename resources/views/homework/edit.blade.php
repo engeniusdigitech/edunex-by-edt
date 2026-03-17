@@ -13,7 +13,7 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="card border-0 shadow-sm rounded-4 p-4">
-            <form action="{{ route('homework.update', $homework) }}" method="POST">
+            <form action="{{ route('homework.update', $homework) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 
@@ -50,6 +50,33 @@
                     <label class="form-label fw-semibold text-secondary small text-uppercase">Description / Instructions</label>
                     <textarea name="description" class="form-control form-control-lg rounded-3 @error('description') is-invalid @enderror" rows="4">{{ old('description', $homework->description) }}</textarea>
                     @error('description') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                @if($homework->attachments->count() > 0)
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-secondary small text-uppercase">Current Attachments</label>
+                        <div class="list-group list-group-flush border rounded-3 bg-light">
+                            @foreach($homework->attachments as $attachment)
+                                <div class="list-group-item d-flex justify-content-between align-items-center py-2 bg-transparent">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-paperclip text-primary me-2"></i>
+                                        <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank" class="text-decoration-none small fw-semibold text-dark text-truncate" style="max-width: 240px;" title="{{ $attachment->original_name }}">{{ $attachment->original_name }}</a>
+                                        <span class="text-muted ms-1" style="font-size: 0.75rem;">({{ number_format($attachment->file_size / 1024, 1) }} KB)</span>
+                                    </div>
+                                    <div>
+                                        <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank" class="btn btn-sm btn-light rounded-circle"><i class="fas fa-download fa-xs"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-secondary small text-uppercase">Add Attachments</label>
+                    <input type="file" name="attachments[]" class="form-control form-control-lg rounded-3 @error('attachments.*') is-invalid @enderror" multiple accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+                    <div class="form-text small">Upload documents, PDFs, or photos (Max 10MB each)</div>
+                    @error('attachments.*') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="mb-5">

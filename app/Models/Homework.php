@@ -23,6 +23,11 @@ class Homework extends Model
         'due_date' => 'date',
     ];
 
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachable');
+    }
+
     public function batch()
     {
         return $this->belongsTo(Batch::class);

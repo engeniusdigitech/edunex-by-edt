@@ -33,9 +33,22 @@ class TestController extends Controller
             'description' => 'nullable|string',
             'test_date' => 'required|date',
             'total_marks' => 'required|integer|min:1',
+            'attachments.*' => 'nullable|file|mimes:pdf,doc,docx,png,jpg,jpeg|max:10240',
         ]);
 
         $test = Test::create($validated);
+
+        if ($request->hasFile('attachments')) {
+            foreach ($request->file('attachments') as $file) {
+                $path = $file->store('attachments', 'public');
+                $test->attachments()->create([
+                    'file_path' => $path,
+                    'original_name' => $file->getClientOriginalName(),
+                    'file_size' => $file->getSize(),
+                    'file_type' => $file->getMimeType(),
+                ]);
+            }
+        }
 
         // Notify all students in this batch
         $students = \App\Models\Student::where('batch_id', $test->batch_id)->get();
@@ -63,9 +76,22 @@ class TestController extends Controller
             'description' => 'nullable|string',
             'test_date' => 'required|date',
             'total_marks' => 'required|integer|min:1',
+            'attachments.*' => 'nullable|file|mimes:pdf,doc,docx,png,jpg,jpeg|max:10240',
         ]);
 
         $test->update($validated);
+
+        if ($request->hasFile('attachments')) {
+            foreach ($request->file('attachments') as $file) {
+                $path = $file->store('attachments', 'public');
+                $test->attachments()->create([
+                    'file_path' => $path,
+                    'original_name' => $file->getClientOriginalName(),
+                    'file_size' => $file->getSize(),
+                    'file_type' => $file->getMimeType(),
+                ]);
+            }
+        }
 
         return redirect()->route('tests.index')
             ->with('success', 'Test updated successfully.');
@@ -98,14 +124,14 @@ class TestController extends Controller
         foreach ($validated['scores'] as $studentId => $data) {
             if ($data['score'] !== null) {
                 TestScore::updateOrCreate(
-                [
-                    'test_id' => $test->id,
-                    'student_id' => $studentId,
-                ],
-                [
-                    'score' => $data['score'],
-                    'remarks' => $data['remarks'] ?? null,
-                ]
+                    [
+                        'test_id' => $test->id,
+                        'student_id' => $studentId,
+                    ],
+                    [
+                        'score' => $data['score'],
+                        'remarks' => $data['remarks'] ?? null,
+                    ]
                 );
             }
         }

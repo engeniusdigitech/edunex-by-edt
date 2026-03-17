@@ -2,7 +2,7 @@
     <div class="container">
         <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center mb-0 text-decoration-none"
             style="padding: 0;">
-            <img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" class="img-fluid" style="max-height: 64px;">
+            <img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" class="img-fluid" style="max-height: 65px;">
         </a>
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNav">

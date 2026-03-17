@@ -30,9 +30,22 @@ class HomeworkController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'due_date' => 'required|date|after_or_equal:today',
+            'attachments.*' => 'nullable|file|mimes:pdf,doc,docx,png,jpg,jpeg|max:10240',
         ]);
 
         $homework = Homework::create($validated);
+
+        if ($request->hasFile('attachments')) {
+            foreach ($request->file('attachments') as $file) {
+                $path = $file->store('attachments', 'public');
+                $homework->attachments()->create([
+                    'file_path' => $path,
+                    'original_name' => $file->getClientOriginalName(),
+                    'file_size' => $file->getSize(),
+                    'file_type' => $file->getMimeType(),
+                ]);
+            }
+        }
 
         // Notify all students in this batch
         $students = \App\Models\Student::where('batch_id', $homework->batch_id)->get();
@@ -59,9 +72,22 @@ class HomeworkController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'due_date' => 'required|date',
+            'attachments.*' => 'nullable|file|mimes:pdf,doc,docx,png,jpg,jpeg|max:10240',
         ]);
 
         $homework->update($validated);
+
+        if ($request->hasFile('attachments')) {
+            foreach ($request->file('attachments') as $file) {
+                $path = $file->store('attachments', 'public');
+                $homework->attachments()->create([
+                    'file_path' => $path,
+                    'original_name' => $file->getClientOriginalName(),
+                    'file_size' => $file->getSize(),
+                    'file_type' => $file->getMimeType(),
+                ]);
+            }
+        }
 
         return redirect()->route('homework.index')
             ->with('success', 'Homework updated successfully.');
