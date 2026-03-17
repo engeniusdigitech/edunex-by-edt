@@ -27,7 +27,8 @@
                                 <option value="">-- Choose a batch --</option>
                                 @foreach($batches as $batch)
                                     <option value="{{ $batch->id }}" {{ old('batch_id') == $batch->id ? 'selected' : '' }}>
-                                        {{ $batch->name }}</option>
+                                        {{ $batch->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('batch_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -40,8 +41,9 @@
                                 required>
                                 <option value="">-- Choose a subject --</option>
                                 @foreach($subjects as $subject)
-                                    <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
-                                        {{ $subject->name }}</option>
+                                    <option value="{{ $subject->id }}" data-batch="{{ $subject->batch_id }}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
+                                        {{ $subject->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('subject_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -95,4 +97,7 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        @include('components.batch-subject-filter')
+    @endpush
 @endsection

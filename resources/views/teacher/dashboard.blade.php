@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Teacher Dashboard')
 
 @section('content')
 
-    {{-- ── ROW 1: 6 STAT CARDS ── --}}
+    {{-- ── ROW 1: 4 STAT CARDS ── --}}
     <div class="row g-3 mb-4">
         {{-- Total Students --}}
-        <div class="col-6 col-md-4 col-xl-2">
+        <div class="col-6 col-md-3">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(79,70,229,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -18,12 +18,12 @@
                             <i class="fas fa-users"></i></div>
                     </div>
                     <h2 class="fw-black mb-0" style="color:#0F172A;">{{ $totalStudents }}</h2>
-                    <div class="text-muted" style="font-size:0.7rem;">active students</div>
+                    <div class="text-muted" style="font-size:0.7rem;">assigned students</div>
                 </div>
             </div>
         </div>
         {{-- Active Batches --}}
-        <div class="col-6 col-md-4 col-xl-2">
+        <div class="col-6 col-md-3">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -38,41 +38,8 @@
                 </div>
             </div>
         </div>
-        {{-- Monthly Revenue --}}
-        <div class="col-6 col-md-4 col-xl-2">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(245,158,11,0.08);">
-                <div class="card-body p-3">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
-                            style="font-size:0.62rem;letter-spacing:1px;">Revenue</span>
-                        <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:rgba(245,158,11,0.1);color:#F59E0B;font-size:0.75rem;">
-                            <i class="fas fa-wallet"></i></div>
-                    </div>
-                    <h2 class="fw-black mb-0" style="color:#0F172A;font-size:1.3rem;">
-                        ₹{{ number_format($monthlyRevenue, 0) }}</h2>
-                    <div class="text-muted" style="font-size:0.7rem;">this month</div>
-                </div>
-            </div>
-        </div>
-        {{-- Staff --}}
-        <div class="col-6 col-md-4 col-xl-2">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(236,72,153,0.08);">
-                <div class="card-body p-3">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
-                            style="font-size:0.62rem;letter-spacing:1px;">Staff</span>
-                        <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:rgba(236,72,153,0.1);color:#EC4899;font-size:0.75rem;">
-                            <i class="fas fa-user-tie"></i></div>
-                    </div>
-                    <h2 class="fw-black mb-0" style="color:#0F172A;">{{ $totalStaff }}</h2>
-                    <div class="text-muted" style="font-size:0.7rem;">total staff</div>
-                </div>
-            </div>
-        </div>
         {{-- Homework --}}
-        <div class="col-6 col-md-4 col-xl-2">
+        <div class="col-6 col-md-3">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(99,102,241,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -88,7 +55,7 @@
             </div>
         </div>
         {{-- Upcoming Tests --}}
-        <div class="col-6 col-md-4 col-xl-2">
+        <div class="col-6 col-md-3">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(239,68,68,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -105,29 +72,9 @@
         </div>
     </div>
 
-    {{-- ── ROW 2: REVENUE CHART + TODAY'S ATTENDANCE ── --}}
+    {{-- ── ROW 2: TODAY'S ATTENDANCE SNAPSHOT (FULL WIDTH) ── --}}
     <div class="row g-4 mb-4">
-        {{-- 6-Month Revenue Chart --}}
-        <div class="col-lg-8">
-            <div class="card border-0" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
-                <div
-                    class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4 d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="fw-bold text-dark mb-0">Revenue Overview</h6>
-                        <p class="text-muted small mb-0">Last 6 months</p>
-                    </div>
-                    <span class="badge rounded-pill px-3 py-2 fw-semibold"
-                        style="background:#EEF2FF;color:#4338CA;font-size:0.7rem;">₹{{ number_format($monthlyRevenue, 0) }}
-                        this month</span>
-                </div>
-                <div class="card-body p-4">
-                    <canvas id="revenueChart" height="100"></canvas>
-                </div>
-            </div>
-        </div>
-
-        {{-- Today's Attendance Snapshot --}}
-        <div class="col-lg-4">
+        <div class="col-lg-12">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <h6 class="fw-bold text-dark mb-0">Today's Attendance</h6>
@@ -162,11 +109,7 @@
                     @else
                         <div class="text-center py-3">
                             <i class="fas fa-calendar-times fa-2x text-muted opacity-25 mb-3 d-block"></i>
-                            <div class="fw-semibold text-muted small">No attendance marked today</div>
-                            @if($noAttendanceToday > 0)
-                                <a href="{{ route('attendance.index') }}" class="btn btn-sm btn-primary mt-3 rounded-pill">Mark
-                                    Now</a>
-                            @endif
+                            <div class="fw-semibold text-muted small">No class attendance marked today</div>
                         </div>
                     @endif
                 </div>
@@ -174,14 +117,14 @@
         </div>
     </div>
 
-    {{-- ── ROW 3: ATTENDANCE TREND + BATCH DONUT + RECENT PAYMENTS ── --}}
+    {{-- ── ROW 3: ATTENDANCE TREND + BATCH DONUT ── --}}
     <div class="row g-4 mb-4">
-        {{-- 7-day Attendance % Bar Chart --}}
-        <div class="col-lg-5">
+        {{-- 7-day Attendance Trend --}}
+        <div class="col-lg-7">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <h6 class="fw-bold text-dark mb-0">Attendance Trend</h6>
-                    <p class="text-muted small mb-0">Last 7 days — percentage</p>
+                    <p class="text-muted small mb-0">Last 7 days — Percentage</p>
                 </div>
                 <div class="card-body p-4">
                     <canvas id="attendanceTrendChart" height="160"></canvas>
@@ -189,47 +132,15 @@
             </div>
         </div>
 
-        {{-- Students per Batch --}}
-        <div class="col-lg-3">
+        {{-- Students per Batch distribution --}}
+        <div class="col-lg-5">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <h6 class="fw-bold text-dark mb-0">Students by Batch</h6>
-                    <p class="text-muted small mb-0">Distribution</p>
+                    <p class="text-muted small mb-0">Assigned Batches Distribution</p>
                 </div>
                 <div class="card-body p-4 d-flex align-items-center justify-content-center" style="min-height:220px;">
                     <canvas id="batchChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        {{-- Recent Payments --}}
-        <div class="col-lg-4">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
-                <div
-                    class="card-header bg-white border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
-                    <h6 class="fw-bold text-dark mb-0">Recent Payments</h6>
-                    <a href="{{ route('payments.index') }}" class="text-primary fw-semibold" style="font-size:0.72rem;">View
-                        all</a>
-                </div>
-                <div class="card-body p-0">
-                    @forelse($recentPayments as $payment)
-                        <div class="d-flex align-items-center px-4 py-2 border-bottom" style="border-color:#F8FAFC!important;">
-                            <div class="me-3 rounded-2 d-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0"
-                                style="width:34px;height:34px;background:linear-gradient(135deg,#4F46E5,#818CF8);font-size:0.72rem;">
-                                {{ strtoupper(substr($payment->student->name ?? 'N', 0, 2)) }}
-                            </div>
-                            <div class="flex-grow-1 min-w-0">
-                                <div class="fw-semibold text-dark text-truncate" style="font-size:0.8rem;">
-                                    {{ $payment->student->name ?? '—' }}</div>
-                                <div class="text-muted" style="font-size:0.68rem;">{{ $payment->payment_date->format('d M Y') }}
-                                </div>
-                            </div>
-                            <div class="fw-bold text-success ms-2" style="font-size:0.82rem;white-space:nowrap;">
-                                ₹{{ number_format($payment->amount_paid, 0) }}</div>
-                        </div>
-                    @empty
-                        <div class="text-center py-4 text-muted small">No payments this month.</div>
-                    @endforelse
                 </div>
             </div>
         </div>
@@ -253,40 +164,6 @@
 
 @push('scripts')
     <script>
-        // ── 6-Month Revenue Line Chart ──
-        const revCtx = document.getElementById('revenueChart').getContext('2d');
-        const revData = @json($revenueData);
-        const revGrad = revCtx.createLinearGradient(0, 0, 0, 300);
-        revGrad.addColorStop(0, 'rgba(79,70,229,0.2)');
-        revGrad.addColorStop(1, 'rgba(79,70,229,0.0)');
-        new Chart(revCtx, {
-            type: 'line',
-            data: {
-                labels: Object.keys(revData),
-                datasets: [{
-                    label: 'Revenue (₹)',
-                    data: Object.values(revData),
-                    borderColor: '#4F46E5',
-                    backgroundColor: revGrad,
-                    borderWidth: 2.5,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#4F46E5',
-                    pointBorderWidth: 2,
-                    pointRadius: 4,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: v => '₹' + v.toLocaleString() } },
-                    x: { grid: { display: false } }
-                }
-            }
-        });
-
         // ── Today's Attendance Ring ──
         @if($todayAttendancePct !== null)
             const ringCtx = document.getElementById('attendanceRing').getContext('2d');

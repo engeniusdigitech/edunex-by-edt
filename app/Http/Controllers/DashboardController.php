@@ -13,6 +13,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+
+        if ($user && $user->isTeacher()) {
+            return $this->teacherDashboard($user);
+        }
+
         // ── STAT CARDS ──
         $totalStudents = Student::count();
         $activeBatches = Batch::where('is_active', true)->count();
@@ -73,11 +79,81 @@ class DashboardController extends Controller
             ->count();
 
         return view('dashboard', compact(
-            'totalStudents', 'activeBatches', 'monthlyRevenue', 'totalStaff',
-            'activeHomework', 'upcomingTests',
-            'todayAttendancePct', 'todayTotal', 'todayPresent',
-            'revenueData', 'studentsPerBatch', 'attendanceTrend',
-            'recentPayments', 'noAttendanceToday'
+            'totalStudents',
+            'activeBatches',
+            'monthlyRevenue',
+            'totalStaff',
+            'activeHomework',
+            'upcomingTests',
+            'todayAttendancePct',
+            'todayTotal',
+            'todayPresent',
+            'revenueData',
+            'studentsPerBatch',
+            'attendanceTrend',
+            'recentPayments',
+            'noAttendanceToday'
+        ));
+    }
+    private function teacherDashboard($user)
+    {
+        $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id');
+        $activeBatches = $batchIds->count();
+        $totalStudents = Student::whereIn('batch_id', $batchIds)->count();
+
+        $activeHomework = \App\Models\Homework::whereIn('batch_id', $batchIds)
+            ->where('due_date', '>=', now()->startOfDay())
+            ->count();
+
+        $upcomingTests = \App\Models\Test::whereIn('batch_id', $batchIds)
+            ->where('test_date', '>=', now()->startOfDay())
+            ->count();
+
+        $todayTotal = Attendance::whereIn('student_id', function ($q) use ($batchIds) {
+            $q->select('id')->from('students')->whereIn('batch_id', $batchIds);
+        })->whereDate('date', today())->count();
+
+        $todayPresent = Attendance::whereIn('student_id', function ($q) use ($batchIds) {
+            $q->select('id')->from('students')->whereIn('batch_id', $batchIds);
+        })->whereDate('date', today())->whereIn('status', ['present', 'late'])->count();
+
+        $todayAttendancePct = $todayTotal > 0 ? round(($todayPresent / $todayTotal) * 100) : null;
+
+        $studentsPerBatch = \App\Models\Batch::whereIn('id', $batchIds)
+            ->withCount('students')
+            ->get()
+            ->pluck('students_count', 'name');
+
+        $attendanceTrend = collect();
+        for ($i = 6; $i >= 0; $i--) {
+            $day = now()->subDays($i);
+            $total = Attendance::whereIn('student_id', function ($q) use ($batchIds) {
+                $q->select('id')->from('students')->whereIn('batch_id', $batchIds);
+            })->whereDate('date', $day->toDateString())->count();
+
+            $present = Attendance::whereIn('student_id', function ($q) use ($batchIds) {
+                $q->select('id')->from('students')->whereIn('batch_id', $batchIds);
+            })->whereDate('date', $day->toDateString())->whereIn('status', ['present', 'late'])->count();
+
+            $attendanceTrend[$day->format('D d')] = $total > 0 ? round($present / $total * 100) : 0;
+        }
+
+        $noAttendanceToday = Student::whereIn('batch_id', $batchIds)
+            ->where('is_active', true)
+            ->whereDoesntHave('attendances', fn($q) => $q->whereDate('date', today()))
+            ->count();
+
+        return view('teacher.dashboard', compact(
+            'totalStudents',
+            'activeBatches',
+            'activeHomework',
+            'upcomingTests',
+            'todayAttendancePct',
+            'todayTotal',
+            'todayPresent',
+            'studentsPerBatch',
+            'attendanceTrend',
+            'noAttendanceToday'
         ));
     }
 }

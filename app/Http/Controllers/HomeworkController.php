@@ -11,19 +11,41 @@ class HomeworkController extends Controller
 {
     public function index()
     {
-        $homeworks = Homework::with(['batch', 'subject'])->latest()->get();
+        $user = auth()->user();
+        $query = Homework::with(['batch', 'subject']);
+
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id');
+            $query->whereIn('batch_id', $batchIds);
+        }
+
+        $homeworks = $query->latest()->get();
         return view('homework.index', compact('homeworks'));
     }
 
     public function create()
     {
-        $batches = Batch::where('is_active', true)->get();
-        $subjects = Subject::where('is_active', true)->get();
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batches = $user->batches()->where('is_active', true)->get();
+            $subjects = Subject::where('is_active', true)->get(); // Keep global or filter if assigned
+        } else {
+            $batches = Batch::where('is_active', true)->get();
+            $subjects = Subject::where('is_active', true)->get();
+        }
         return view('homework.create', compact('batches', 'subjects'));
     }
 
     public function store(Request $request)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($request->batch_id, $batchIds)) {
+                return back()->withErrors(['batch_id' => 'You can only assign homework to your own batches.']);
+            }
+        }
+
         $validated = $request->validate([
             'batch_id' => 'required|exists:batches,id',
             'subject_id' => 'required|exists:subjects,id',
@@ -59,13 +81,30 @@ class HomeworkController extends Controller
 
     public function edit(Homework $homework)
     {
-        $batches = Batch::where('is_active', true)->get();
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($homework->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized access to this homework.');
+            }
+            $batches = $user->batches()->where('is_active', true)->get();
+        } else {
+            $batches = Batch::where('is_active', true)->get();
+        }
         $subjects = Subject::where('is_active', true)->get();
+
         return view('homework.edit', compact('homework', 'batches', 'subjects'));
     }
 
     public function update(Request $request, Homework $homework)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($homework->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
         $validated = $request->validate([
             'batch_id' => 'required|exists:batches,id',
             'subject_id' => 'required|exists:subjects,id',
@@ -95,6 +134,14 @@ class HomeworkController extends Controller
 
     public function destroy(Homework $homework)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($homework->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
+
         $homework->delete();
         return redirect()->route('homework.index')
             ->with('success', 'Homework deleted successfully.');

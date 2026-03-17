@@ -13,19 +13,40 @@ class TestController extends Controller
 {
     public function index()
     {
-        $tests = Test::with(['batch', 'subject'])->latest()->get();
+        $user = auth()->user();
+        $query = Test::with(['batch', 'subject']);
+
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id');
+            $query->whereIn('batch_id', $batchIds);
+        }
+
+        $tests = $query->latest()->get();
         return view('tests.index', compact('tests'));
     }
 
     public function create()
     {
-        $batches = Batch::where('is_active', true)->get();
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batches = $user->batches()->where('is_active', true)->get();
+        } else {
+            $batches = Batch::where('is_active', true)->get();
+        }
         $subjects = Subject::where('is_active', true)->get();
         return view('tests.create', compact('batches', 'subjects'));
     }
 
     public function store(Request $request)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($request->batch_id, $batchIds)) {
+                return back()->withErrors(['batch_id' => 'You can only schedule tests for your own batches.']);
+            }
+        }
+
         $validated = $request->validate([
             'batch_id' => 'required|exists:batches,id',
             'subject_id' => 'required|exists:subjects,id',
@@ -62,13 +83,29 @@ class TestController extends Controller
 
     public function edit(Test $test)
     {
-        $batches = Batch::where('is_active', true)->get();
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($test->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized access to this test.');
+            }
+            $batches = $user->batches()->where('is_active', true)->get();
+        } else {
+            $batches = Batch::where('is_active', true)->get();
+        }
         $subjects = Subject::where('is_active', true)->get();
         return view('tests.edit', compact('test', 'batches', 'subjects'));
     }
 
     public function update(Request $request, Test $test)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($test->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
         $validated = $request->validate([
             'batch_id' => 'required|exists:batches,id',
             'subject_id' => 'required|exists:subjects,id',
@@ -99,6 +136,13 @@ class TestController extends Controller
 
     public function destroy(Test $test)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($test->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
         $test->delete();
         return redirect()->route('tests.index')
             ->with('success', 'Test deleted successfully.');
@@ -107,6 +151,13 @@ class TestController extends Controller
     // Marks Management
     public function marks(Test $test)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($test->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized access to marks management.');
+            }
+        }
         $test->load('batch.students');
         $scores = TestScore::where('test_id', $test->id)->get()->keyBy('student_id');
 
@@ -115,6 +166,14 @@ class TestController extends Controller
 
     public function storeMarks(Request $request, Test $test)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($test->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
+
         $validated = $request->validate([
             'scores' => 'required|array',
             'scores.*.score' => 'nullable|numeric|min:0|max:' . $test->total_marks,

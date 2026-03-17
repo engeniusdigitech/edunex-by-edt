@@ -14,7 +14,15 @@ class LiveLectureController extends Controller
      */
     public function index()
     {
-        $lectures = LiveLecture::with('batch')->latest()->paginate(10);
+        $user = auth()->user();
+        $query = LiveLecture::with('batch');
+
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id');
+            $query->whereIn('batch_id', $batchIds);
+        }
+
+        $lectures = $query->latest()->paginate(10);
         return view('live_lectures.index', compact('lectures'));
     }
 
@@ -23,7 +31,12 @@ class LiveLectureController extends Controller
      */
     public function create()
     {
-        $batches = Batch::where('is_active', 1)->get();
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batches = $user->batches()->where('is_active', true)->get();
+        } else {
+            $batches = Batch::where('is_active', 1)->get();
+        }
         $subjects = Subject::where('is_active', 1)->get();
         return view('live_lectures.create', compact('batches', 'subjects'));
     }
@@ -33,6 +46,14 @@ class LiveLectureController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($request->batch_id, $batchIds)) {
+                return back()->withErrors(['batch_id' => 'You can only schedule lectures for your own batches.']);
+            }
+        }
+
         $request->validate([
             'batch_id' => 'required|exists:batches,id',
             'subject' => 'required|string|max:255',
@@ -60,6 +81,14 @@ class LiveLectureController extends Controller
      */
     public function start(LiveLecture $liveLecture)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($liveLecture->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
+
         $liveLecture->update([
             'status' => 'live',
             'recorded_at' => now()->toDateString(),
@@ -76,6 +105,14 @@ class LiveLectureController extends Controller
      */
     public function end(LiveLecture $liveLecture)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($liveLecture->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
+
         $liveLecture->update(['status' => 'ended']);
 
         return redirect()->route('live-lectures.index')
@@ -87,7 +124,16 @@ class LiveLectureController extends Controller
      */
     public function edit(LiveLecture $liveLecture)
     {
-        $batches = Batch::where('is_active', 1)->get();
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($liveLecture->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized access to this lecture.');
+            }
+            $batches = $user->batches()->where('is_active', true)->get();
+        } else {
+            $batches = Batch::where('is_active', 1)->get();
+        }
         $subjects = Subject::where('is_active', 1)->get();
         return view('live_lectures.edit', compact('liveLecture', 'batches', 'subjects'));
     }
@@ -97,6 +143,14 @@ class LiveLectureController extends Controller
      */
     public function update(Request $request, LiveLecture $liveLecture)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($liveLecture->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
+
         $request->validate([
             'batch_id' => 'required|exists:batches,id',
             'subject' => 'required|string|max:255',
@@ -115,6 +169,14 @@ class LiveLectureController extends Controller
      */
     public function destroy(LiveLecture $liveLecture)
     {
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id')->toArray();
+            if (!in_array($liveLecture->batch_id, $batchIds)) {
+                abort(403, 'Unauthorized action.');
+            }
+        }
+
         if ($liveLecture->video_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($liveLecture->video_path)) {
             \Illuminate\Support\Facades\Storage::disk('public')->delete($liveLecture->video_path);
         }
