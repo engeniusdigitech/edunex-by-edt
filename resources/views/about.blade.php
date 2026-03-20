@@ -150,6 +150,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(236, 72, 153, 0.08), transparent 70%);
+            pointer-events: none;
         }
     </style>
 </head>

@@ -23,7 +23,7 @@
     <style>
         /* ── HERO ── */
         .hero-section {
-            padding: 80px 0 60px;
+            padding: 120px 0 60px;
             position: relative;
         }
 
