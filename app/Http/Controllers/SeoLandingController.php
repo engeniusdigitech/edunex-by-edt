@@ -125,7 +125,8 @@ class SeoLandingController extends Controller
     public function sitemap()
     {
         $locations = $this->locations;
-        return response()->view('sitemap', compact('locations'))
+        $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
+        return response()->view('sitemap', compact('locations', 'xmlHeader'))
                          ->header('Content-Type', 'text/xml');
     }
 }

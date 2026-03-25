@@ -19,7 +19,8 @@ class DashboardController extends Controller
         $recentPayments = $student->payments()->latest()->take(5)->get();
 
         // Academics Data
-        $activeHomeworks = \App\Models\Homework::where('batch_id', $student->batch_id)
+        $activeHomeworks = \App\Models\Homework::with('attachments')
+            ->where('batch_id', $student->batch_id)
             ->where('due_date', '>=', now()->startOfDay())
             ->orderBy('due_date', 'asc')
             ->get();

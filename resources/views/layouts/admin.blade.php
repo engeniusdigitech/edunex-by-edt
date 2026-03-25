@@ -341,14 +341,18 @@
                         class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
                         Live Lectures</a>
 
-                    @if(auth()->user()->isInstituteAdmin())
-                        <h6 class="sidebar-header mt-3">Analytics</h6>
+                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher())
+                        <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
                         <a href="{{ route('reports.attendance') }}"
                             class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
                                 class="fas fa-chart-bar"></i> Attendance Rep</a>
-                        <a href="{{ route('reports.defaulters') }}"
-                            class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i
-                                class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                        
+                        @if(auth()->user()->isInstituteAdmin())
+                            <a href="{{ route('reports.defaulters') }}"
+                                class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i
+                                    class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                        @endif
+
                         <a href="{{ route('notifications.index') }}"
                             class="{{ request()->routeIs('notifications.*') ? 'active' : '' }}"><i class="fas fa-bell"></i>
                             Notifications</a>

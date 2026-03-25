@@ -1089,12 +1089,21 @@
                 @forelse($activeHomeworks as $hw)
                     <div class="list-item">
                         <div class="list-dot"></div>
-                        <div>
+                        <div style="width: 100%;">
                             <div class="item-title">{{ $hw->title }}</div>
                             <div class="item-due"><i class="far fa-clock me-1"></i>Due {{ $hw->due_date->format('M d, Y') }}
                             </div>
                             @if($hw->description)
-                                <div class="item-sub">{{ Str::limit($hw->description, 100) }}</div>
+                                <div class="item-sub mb-2">{{ Str::limit($hw->description, 100) }}</div>
+                            @endif
+                            @if($hw->attachments && $hw->attachments->count() > 0)
+                                <div class="d-flex flex-wrap gap-2 mt-2">
+                                    @foreach($hw->attachments as $attachment)
+                                        <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank" class="text-decoration-none" style="background:#F1F5F9; border:1px solid #E2E8F0; padding:4px 10px; border-radius:6px; font-size:0.7rem; color:#4F46E5; font-weight:600;">
+                                            <i class="fas fa-paperclip me-1"></i> View Attachment
+                                        </a>
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
                     </div>
