@@ -29,10 +29,10 @@
 <!-- JSON-LD Structured Data for Brand Search -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
+  "@@context": "https://schema.org",
+  "@@graph": [
     {
-      "@type": "Organization",
+      "@@type": "Organization",
       "name": "EduNex",
       "alternateName": "EduNex Software",
       "url": "{{ url('/') }}",
@@ -43,12 +43,12 @@
       "description": "The ultimate SaaS platform for modern educational institutes. Built by educators, for educators."
     },
     {
-      "@type": "SoftwareApplication",
+      "@@type": "SoftwareApplication",
       "name": "EduNex",
       "operatingSystem": "Web, Android, iOS",
       "applicationCategory": "EducationalApplication",
       "offers": {
-        "@type": "Offer",
+        "@@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       },
