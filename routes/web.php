@@ -11,6 +11,7 @@ use App\Http\Controllers\SuperAdmin\PlanController;
 use App\Http\Controllers\FeeCategoryController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\PaymentGatewayController;
+use App\Http\Controllers\SeoLandingController;
 
 // Register middleware aliases directly to bypass bootstrap/app.php reset issues
 Route::aliasMiddleware('role', \App\Http\Middleware\CheckRole::class);
@@ -39,6 +40,10 @@ Route::get('/trial-request', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+// SEO Landing Pages & Sitemap
+Route::get('/institute-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
+Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
 
 Route::middleware(['auth'])->group(function () {
 
