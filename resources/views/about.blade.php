@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us — EduNex & Engenius Digitech</title>
+    <x-seo title="About Us — EduNex & Engenius Digitech" description="Learn about the mission and vision driving EduNex, the top robust institute management software built by educators, for educators." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

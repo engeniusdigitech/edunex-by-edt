@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing — EduNex</title>
-    <meta name="description"
-        content="Simple, transparent pricing for EduNex institute management software. One powerful plan, no hidden fees.">
+    <x-seo title="Pricing — EduNex | Institute Management Software" description="Simple, transparent pricing for EduNex institute management software. One powerful plan, no hidden fees." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
