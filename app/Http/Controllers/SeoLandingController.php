@@ -124,9 +124,13 @@ class SeoLandingController extends Controller
 
     public function sitemap()
     {
-        $locations = $this->locations;
-        $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
-        return response()->view('sitemap', compact('locations', 'xmlHeader'))
-                         ->header('Content-Type', 'text/xml');
+        $locations  = $this->locations;
+        $xmlHeader  = '<?xml version="1.0" encoding="UTF-8"?>';
+        $lastmod    = now()->toDateString(); // e.g. 2026-03-26
+
+        return response()
+            ->view('sitemap', compact('locations', 'xmlHeader', 'lastmod'))
+            ->header('Content-Type', 'text/xml')
+            ->header('Cache-Control', 'public, max-age=86400'); // cache 24 hours
     }
 }

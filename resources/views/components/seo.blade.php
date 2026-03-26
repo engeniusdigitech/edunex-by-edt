@@ -1,8 +1,11 @@
 @props([
-    'title' => 'EduNex - The Ultimate Institute Management SaaS', 
-    'description' => 'EduNex is the #1 institute management software to automate fees, attendance, live lectures, and student portals. Try EduNex today to scale your institute.', 
-    'keywords' => 'edunex, edunex software, edunex institute management, edunex app, institute management software, coaching management software, edunex saas'
+    'title'       => 'EduNex - The Ultimate Institute Management SaaS',
+    'description' => 'EduNex is the #1 institute management software to automate fees, attendance, live lectures, and student portals. Try EduNex today to scale your institute.',
+    'keywords'    => 'edunex, edunex software, edunex institute management, edunex app, institute management software, coaching management software, edunex saas',
+    'image'       => null,
 ])
+
+@php $ogImage = $image ?? asset('images/og-image.png'); @endphp
 
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
@@ -13,20 +16,20 @@
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
-<!-- Assuming you have an og image or using logo as fallback -->
-<meta property="og:image" content="{{ asset('images/logo.png') }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:site_name" content="EduNex">
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="{{ url()->current() }}">
-<meta property="twitter:title" content="{{ $title }}">
-<meta property="twitter:description" content="{{ $description }}">
-<meta property="twitter:image" content="{{ asset('images/logo.png') }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ url()->current() }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ url()->current() }}">
 
-<!-- JSON-LD Structured Data for Brand Search -->
+<!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
@@ -43,6 +46,19 @@
       "description": "The ultimate SaaS platform for modern educational institutes. Built by educators, for educators."
     },
     {
+      "@@type": "WebSite",
+      "name": "EduNex",
+      "url": "{{ url('/') }}",
+      "potentialAction": {
+        "@@type": "SearchAction",
+        "target": {
+          "@@type": "EntryPoint",
+          "urlTemplate": "{{ url('/') }}?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
       "@@type": "SoftwareApplication",
       "name": "EduNex",
       "operatingSystem": "Web, Android, iOS",
@@ -57,3 +73,5 @@
   ]
 }
 </script>
+
+

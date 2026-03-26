@@ -12,6 +12,7 @@ use App\Http\Controllers\FeeCategoryController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\PaymentGatewayController;
 use App\Http\Controllers\SeoLandingController;
+use App\Http\Controllers\ContactController;
 
 // Register middleware aliases directly to bypass bootstrap/app.php reset issues
 Route::aliasMiddleware('role', \App\Http\Middleware\CheckRole::class);
@@ -40,8 +41,12 @@ Route::get('/trial-request', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
-// SEO Landing Pages & Sitemap
+// SEO Landing Pages, Sitemap & Robots
+Route::get('/robots.txt', function () {
+    return response()->view('robots')->header('Content-Type', 'text/plain');
+});
 Route::get('/institute-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
 Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
 

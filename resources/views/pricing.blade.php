@@ -196,6 +196,48 @@
             color: var(--primary-color);
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What happens after the 7-day trial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can choose to continue using EduNex for your institute. If you decide not to continue, your data remains secure but the portal features will be restricted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there any hidden limits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer a single comprehensive platform that includes everything. There are no feature tiers to worry about — you always have the best version of EduNex."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a setup fee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zero. No onboarding fees, no implementation fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does onboarding work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once you start your trial, our team provides full support to help you import your existing data and set up your institute seamlessly."
+          }
+        }
+      ]
+    }
+    </script>
+
 </head>
 
 <body>

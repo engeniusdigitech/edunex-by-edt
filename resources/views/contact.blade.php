@@ -148,6 +148,13 @@
     <!-- Navigation -->
     @include('components.frontend-navbar')
 
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show text-center mb-0 rounded-0" role="alert" style="background:#ECFDF5; border:none; border-bottom:1px solid #A7F3D0; color:#065F46; font-weight:600;">
+        <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    @endif
+
     <!-- Page Header -->
     <header class="page-header text-center">
         <div class="container px-4">
@@ -173,8 +180,8 @@
                     <div class="col-lg-7">
                         <div class="contact-form-side">
                             <h3 class="fw-black mb-5">Send us a message</h3>
-                            <form action="#" method="POST"
-                                onsubmit="event.preventDefault(); alert('Message received! Our team will reach out within 24 hours.');">
+                            <form action="{{ route('contact.send') }}" method="POST">
+                                @csrf
                                 <div class="row g-4">
                                     <div class="col-md-6">
                                         <label class="form-label">Full Name</label>
@@ -268,8 +275,8 @@
             <p class="text-muted mb-5 mx-auto" style="max-width: 500px;">Our team can walk you through the entire
                 platform and help you set up your first batch in minutes.</p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn btn-dark btn-modern px-5">
-                    <i class="fab fa-whatsapp me-2"></i> WhatsApp Sales
+                <a href="mailto:engeniusdigitech@gmail.com" class="btn btn-dark btn-modern px-5">
+                    <i class="fas fa-envelope me-2"></i> Email Sales Team
                 </a>
             </div>
         </div>

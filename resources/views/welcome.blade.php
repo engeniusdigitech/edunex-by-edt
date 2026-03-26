@@ -336,6 +336,48 @@
             }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my institute data secure and private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. EduNex is built on a multi-tenant global scope architecture. Your data is logically isolated from other institutes, and our database is encrypted at rest and in transit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can students access EduNex on their phones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! The entire student portal is a Progressive Web App (PWA). Students can simply open the link on their mobile browser and tap 'Add to Home Screen' to get a native app-like experience without downloading from the Play Store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do fee reminders work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our system automatically identifies students with pending dues. From the dashboard, you can click 'Send Reminder' which generates a pre-filled WhatsApp message or triggers a portal notification instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a limit on the number of students?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Unlike our competitors, we believe in supporting your growth. We don't charge you based on student count. Enroll as many students as your institute can handle."
+          }
+        }
+      ]
+    }
+    </script>
+
 </head>
 
 <body>
