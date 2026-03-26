@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Start Your Best School Management Software Free Trial | EduNex" description="Experience the #1 education management system for free. Start your 7-day trial of EduNex school software today and automate your institute." />
+    <x-seo title="Start Your Best Institute Management Software Free Trial | EduNex" description="Experience the #1 education management system for free. Start your 7-day trial of EduNex institute software today and automate your educational center." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +66,7 @@
 
     <div class="page-header text-center">
         <div class="container">
-            <h1 class="page-title animate__animated animate__fadeInUp">Start Your Free School Software Trial</h1>
+            <h1 class="page-title animate__animated animate__fadeInUp">Start Your Free Institute Software Trial</h1>
             <p class="fs-5 text-muted max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 700px;">
                 Ready to upgrade your workflow with the best <strong>education management system</strong>? Fill the form below, and our team will get your institute set up.
             </p>

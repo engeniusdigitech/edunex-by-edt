@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo 
-        title="Best School Management Software in {{ $city }}, {{ $country }} | {{ $city }} Education System" 
-        description="EduNex is the top-rated school management system and education management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} institute." 
+        title="Best Institute Management Software in {{ $city }}, {{ $country }} | {{ $city }} Education System" 
+        description="EduNex is the top-rated institute management system and education management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} educational center." 
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <!-- Fonts -->
@@ -360,10 +360,10 @@
                         ✨ Trusted by 150+ institutes across the country
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
-                        Best Education Management Software in {{ $city }}.<br><span>Top School Management System in {{ $country }}.</span>
+                        Best Education Management System in {{ $city }}.<br><span>For Every Type of Institute in {{ $country }}.</span>
                     </h1>
                     <p class="hero-subtitle ms-lg-0 animate__animated animate__fadeInUp animate__delay-1s">
-                        EduNex is the most complete, intuitive, and feature-rich <strong>school software in {{ $city }}</strong> to manage your educational center. From 
+                        EduNex is the most complete, intuitive, and feature-rich <strong>institute software in {{ $city }}</strong> to manage your educational center. From 
                         <strong>institute management</strong> to live classes — everything in one place.
                     </p>
 
@@ -416,7 +416,7 @@
                                 </div>
                                 <div class="mt-5"
                                     style="max-width: 700px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem;">
-                                    <h3 class="fw-bold mb-3">Enterprise-Grade {{ $city }} School Management</h3>
+                                    <h3 class="fw-bold mb-3">Enterprise-Grade {{ $city }} Institute Management</h3>
                                     <p class="text-muted">Manage your entire institute in {{ $city }} with a powerful, intuitive
                                         interface. Track attendance, automate fees, and monitor growth in real-time — all with our 
                                         central <strong>institute ERP</strong> dashboard.</p>
@@ -485,7 +485,7 @@
         <div class="container px-4">
             <div class="text-center mb-5">
                 <span class="section-tag">Powerful Features</span>
-                <h2 class="section-title">Best {{ $city }} School Software Features</h2>
+                <h2 class="section-title">Best {{ $city }} Institute Software Features</h2>
                 <p class="text-muted fs-5">Everything you need to run a modern <strong>education management</strong> business in {{ $city }}.</p>
             </div>
 

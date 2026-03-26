@@ -35,7 +35,7 @@
                     <p>At <strong>EduNex</strong> (a product of Engenius Digitech), we take your privacy and the security of your institute's data extremely seriously. This Privacy Policy outlines how we collect, use, and protect your information.</p>
 
                     <h2>1. Data Collection</h2>
-                    <p>We collect information necessary to provide our school management services, including:</p>
+                    <p>We collect information necessary to provide our institute management services, including:</p>
                     <ul>
                         <li>Institute details (Name, Address, Logo)</li>
                         <li>Staff and Student records provided by you</li>

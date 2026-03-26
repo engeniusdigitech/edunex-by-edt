@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Contact Top School Management System Support | EduNex" description="Get in touch for EduNex school software inquiries, custom education management system deployments, and expert support." />
+    <x-seo title="Contact Top Institute Management System Support | EduNex" description="Get in touch for EduNex institute software inquiries, custom education management system deployments, and expert support." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -218,7 +218,7 @@
             </h1>
             <p class="text-muted fs-5 mt-4 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s"
                 style="max-width: 700px;">
-                Whether you have a technical question or need a custom <strong>school management system</strong> deployment, our team at Engenius
+                Whether you have a technical question or need a custom <strong>education management system</strong> deployment, our team at Engenius
                 Digitech is here to help you scale.
             </p>
         </div>

@@ -403,11 +403,11 @@
                         ✨ Trusted by 150+ institutes across the country
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
-                        Best Education Management Software.<br>
-                        <span>Top School Management System.</span>
+                        Best Education Management System.<br>
+                        <span>For Every Type of Institute.</span>
                     </h1>
                     <p class="hero-subtitle ms-lg-0 animate__animated animate__fadeInUp animate__delay-1s">
-                        EduNex is the most complete, intuitive, and feature-rich <strong>school software</strong> to manage your educational center. From 
+                        EduNex is the most complete, intuitive, and feature-rich <strong>institute software</strong> to manage your educational center. From 
                         <strong>institute management</strong> to live classes — everything in one place.
                     </p>
 
@@ -452,7 +452,7 @@
                             <!-- Admin Portal Content -->
                             <div id="admin-portal" class="portal-content active">
                                 <div class="display-wrapper">
-                                    <img src="{{ asset('images/hero-banner.png') }}" alt="EduNex Admin Dashboard - Best School Management Software Interface"
+                                    <img src="{{ asset('images/hero-banner.png') }}" alt="EduNex Admin Dashboard - Best Institute Management Software Interface"
                                         class="desktop-mockup">
                                     <div class="mobile-mockup">
                                         <img src="{{ asset('images/hero-banner-mobile.png') }}" alt="EduNex Mobile - Best Institute Management System Mobile View">
@@ -471,7 +471,7 @@
                             <!-- Student Portal Content -->
                             <div id="student-portal" class="portal-content">
                                 <div class="display-wrapper">
-                                    <img src="{{ asset('images/hero-banner-2.png') }}" alt="Student Learning Portal - Interactive School Software for Students"
+                                    <img src="{{ asset('images/hero-banner-2.png') }}" alt="Student Learning Portal - Interactive Institute Software for Students"
                                         class="desktop-mockup">
                                     <div class="mobile-mockup">
                                         <img src="{{ asset('images/hero-banner-2-mobile.png') }}" alt="Mobile Student App - Education Management System Access">
@@ -530,7 +530,7 @@
         <div class="container px-4">
             <div class="text-center mb-5">
                 <span class="section-tag">Powerful Features</span>
-                <h2 class="section-title">Best School Management Software Features</h2>
+                <h2 class="section-title">Best Institute Management Software Features</h2>
                 <p class="text-muted fs-5">Everything you need to run a modern <strong>education management</strong> business.</p>
             </div>
 
