@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="About Us — EduNex & Engenius Digitech" description="Learn about the mission and vision driving EduNex, the top robust institute management software built by educators, for educators." />
+    <x-seo title="Best Education Management Software & School Management System Vision | EduNex" description="Learn about the mission driving EduNex, the top education management system and school management software designed for modern institutes." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,26 +22,29 @@
     <style>
         /* ── PAGE HEADER ── */
         .page-header {
-            padding: 126px 0 100px;
+            padding: 160px 0 80px;
             position: relative;
         }
 
         .section-tag {
             font-size: 0.85rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-            display: block;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: rgba(79, 70, 229, 0.08);
+            padding: 6px 16px;
+            border-radius: 50px;
         }
 
         .page-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            letter-spacing: -2px;
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            font-weight: 950;
+            letter-spacing: -3px;
             color: var(--dark-bg);
-            line-height: 1.1;
+            line-height: 1;
         }
 
         .page-title span {
@@ -56,101 +59,84 @@
             padding: 20px;
         }
 
-        .story-img-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            border-top: 5px solid var(--primary-color);
-            border-left: 5px solid var(--primary-color);
-            border-radius: 20px 0 0 0;
-        }
-
-        .story-img-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            border-bottom: 5px solid var(--secondary-color);
-            border-right: 5px solid var(--secondary-color);
-            border-radius: 0 0 20px 0;
-        }
-
         .story-img {
-            border-radius: 30px;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 48px;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
+            border: 8px solid #fff;
         }
 
         /* ── VISION/MISSION CARDS ── */
         .vision-card {
-            background: #ffffff;
-            border-radius: 32px;
-            padding: 50px;
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             height: 100%;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.05);
         }
 
         .vision-card:hover {
+            transform: translateY(-12px);
             border-color: var(--primary-color);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
-            transform: translateY(-5px);
+            box-shadow: 0 40px 100px -20px rgba(79, 70, 229, 0.12);
         }
 
         .icon-box {
-            width: 64px;
-            height: 64px;
-            border-radius: 20px;
+            width: 72px;
+            height: 72px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: 30px;
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
         }
 
         /* ── CORE VALUES ── */
         .value-item {
             display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 24px;
+            margin-bottom: 40px;
         }
 
         .value-icon {
             flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: rgba(79, 70, 229, 0.08);
+            width: 56px;
+            height: 56px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(236, 72, 153, 0.1));
             color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
 
         /* ── BRAND FOCUS (Engenius) ── */
         .brand-focus {
-            background: var(--dark-bg);
-            border-radius: 40px;
-            padding: 80px 60px;
+            background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 100%);
+            border-radius: 56px;
+            padding: 80px;
             color: #ffffff;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.3);
         }
 
-        .brand-focus::before {
+        .brand-focus::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.08), transparent 70%);
-            pointer-events: none;
+            width: 400px;
+            height: 400px;
+            background: var(--primary-color);
+            filter: blur(150px);
+            opacity: 0.1;
+            bottom: -200px;
+            left: -200px;
         }
     </style>
 </head>
@@ -182,7 +168,8 @@
     </header>
 
     <!-- Our Story Section -->
-    <section class="py-5">
+    <!-- Our Story Section -->
+    <section class="py-5 mb-5">
         <div class="container px-4">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
@@ -190,24 +177,20 @@
                         <img src="{{ asset('images/about-us.jpg') }}" alt="Our Team" class="img-fluid story-img">
                     </div>
                 </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                <div class="col-lg-6 animate__animated animate__fadeInRight ps-lg-5">
                     <span class="section-tag">Our History</span>
-                    <h2 class="fw-black mb-4 display-6">Born out of necessity.</h2>
-                    <p class="text-muted mb-4 fs-5">At <strong>Engenius Digitech</strong>, we observed the
-                        administrative struggles of hundreds of coaching centers and schools. Manual fee tracking,
-                        fragmented attendance logs, and poor student communication were holding educators back.</p>
-                    <p class="text-muted mb-4">We decided to build a platform that solves these problems once and for
-                        all. EduNex was crafted with a "premium-first" approach — ensuring that enterprise-grade power
-                        is accessible to every institute, regardless of size.</p>
+                    <h2 class="fw-black mb-4 display-6" style="letter-spacing: -2px;">Best Education Management System Vision.</h2>
+                    <p class="text-muted mb-4 fs-5 fw-500">At <strong>Engenius Digitech</strong>, we observed the administrative struggles of hundreds of coaching centers and schools. Manual fee tracking, fragmented attendance logs, and poor student communication were holding educators back.</p>
+                    <p class="text-muted mb-4 fw-500">We decided to build the ultimate <strong>education management software</strong> that solves these problems once and for all. EduNex was crafted with a "premium-first" approach — ensuring that enterprise-grade power is accessible to every institute, regardless of size.</p>
 
-                    <div class="row g-4 mt-2">
+                    <div class="row g-4 mt-3">
                         <div class="col-sm-6">
-                            <h4 class="fw-bold mb-1">100%</h4>
-                            <p class="small text-muted mb-0">Client-Focused Approach</p>
+                            <h4 class="fw-black mb-1 text-primary">100%</h4>
+                            <p class="small text-muted mb-0 fw-bold">Client-Focused Approach</p>
                         </div>
                         <div class="col-sm-6">
-                            <h4 class="fw-bold mb-1">24/7</h4>
-                            <p class="small text-muted mb-0">Platform Monitoring</p>
+                            <h4 class="fw-black mb-1 text-primary">24/7</h4>
+                            <p class="small text-muted mb-0 fw-bold">Platform Monitoring</p>
                         </div>
                     </div>
                 </div>
@@ -216,18 +199,16 @@
     </section>
 
     <!-- Mission & Vision -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light" style="border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
         <div class="container px-4 py-5">
-            <div class="row g-4">
+            <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="vision-card">
                         <div class="icon-box" style="background: #EEF2FF; color: #4F46E5;">
                             <i class="fas fa-eye"></i>
                         </div>
-                        <h3 class="fw-bold mb-3">Our Vision</h3>
-                        <p class="text-muted mb-0 fs-5 lh-base">To be the global gold standard for educational
-                            operations, where technology acts as a silent partner in the classroom, letting teachers
-                            focus entirely on teaching.</p>
+                        <h3 class="fw-black mb-3" style="letter-spacing: -1px;">Our Vision</h3>
+                        <p class="text-muted mb-0 fs-5 lh-base fw-500">To be the global gold standard for educational operations, where technology acts as a silent partner in the classroom, letting teachers focus entirely on teaching.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -235,10 +216,8 @@
                         <div class="icon-box" style="background: #FDF2F8; color: #DB2777;">
                             <i class="fas fa-bullseye"></i>
                         </div>
-                        <h3 class="fw-bold mb-3">Our Mission</h3>
-                        <p class="text-muted mb-0 fs-5 lh-base">To simplify institute management through beautiful
-                            design and powerful automation, making administrative excellence achievable for every
-                            educator on the planet.</p>
+                        <h3 class="fw-black mb-3" style="letter-spacing: -1px;">Our Mission</h3>
+                        <p class="text-muted mb-0 fs-5 lh-base fw-500">To simplify institute management through beautiful design and powerful automation, making administrative excellence achievable for every educator on the planet.</p>
                     </div>
                 </div>
             </div>
@@ -246,37 +225,33 @@
     </section>
 
     <!-- Values & Focus -->
-    <section class="py-5">
+    <section class="py-5 mt-4">
         <div class="container px-4 py-5">
-            <div class="row g-5">
+            <div class="row g-5 align-items-center">
                 <div class="col-lg-5">
                     <span class="section-tag">Core Values</span>
-                    <h2 class="fw-black mb-4 display-6">What drives us every single day.</h2>
-                    <p class="text-muted mb-5">Our principles are the foundation of everything we build. We don't just
-                        ship code; we ship solutions that matter.</p>
+                    <h2 class="fw-black mb-4 display-6" style="letter-spacing: -2px;">What drives us every day.</h2>
+                    <p class="text-muted mb-5 fw-500">Our principles are the foundation of everything we build. We don't just ship code; we ship solutions that matter.</p>
 
                     <div class="value-item">
                         <div class="value-icon"><i class="fas fa-heart"></i></div>
                         <div>
-                            <h5 class="fw-bold">Empathy for Educators</h5>
-                            <p class="text-muted small">We listen to the daily struggles of teachers and owners to build
-                                features that actualy save time.</p>
+                            <h5 class="fw-black mb-1">Empathy for Educators</h5>
+                            <p class="text-muted small fw-500">We listen to the daily struggles of teachers and owners to build features that actually save time.</p>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon"><i class="fas fa-shield-halved"></i></div>
                         <div>
-                            <h5 class="fw-bold">Security by Default</h5>
-                            <p class="text-muted small">We treat your institute's data with the same level of security
-                                as financial institutions do.</p>
+                            <h5 class="fw-black mb-1">Security by Default</h5>
+                            <p class="text-muted small fw-500">We treat your institute's data with the same level of security as financial institutions do.</p>
                         </div>
                     </div>
                     <div class="value-item">
                         <div class="value-icon"><i class="fas fa-bolt"></i></div>
                         <div>
-                            <h5 class="fw-bold">Relentless Innovation</h5>
-                            <p class="text-muted small">We're never "done." We continuously push updates to make EduNex
-                                faster and more capable.</p>
+                            <h5 class="fw-black mb-1">Relentless Innovation</h5>
+                            <p class="text-muted small fw-500">We're never "done." We continuously push updates to make EduNex faster and more capable.</p>
                         </div>
                     </div>
                 </div>
@@ -284,18 +259,14 @@
                 <div class="col-lg-7">
                     <div class="brand-focus animate__animated animate__fadeIn">
                         <img src="{{ asset('images/logo.png') }}" alt="EduNex"
-                            style="height: 50px; filter: brightness(0) invert(1);" class="mb-4">
-                        <h3 class="fw-black mb-4">A product by Engenius Digitech</h3>
-                        <p class="text-white-50 mb-4 fs-5">EduNex is the flagship product of <strong>Engenius
-                                Digitech</strong>, a specialized software agency dedicated to crafting premium digital
-                            experiences.</p>
-                        <p class="text-white-50 mb-5">When you choose EduNex, you're not just getting a tool; you're
-                            getting the support of a senior team of designers and developers who are passionate about
-                            scaling your business.</p>
+                            style="height: 50px; filter: brightness(0) invert(1);" class="mb-5">
+                        <h2 class="fw-black mb-4">A product by Engenius Digitech</h2>
+                        <p class="text-white-50 mb-4 fs-5">EduNex is the flagship product of <strong>Engenius Digitech</strong>, a specialized software agency dedicated to crafting premium digital experiences.</p>
+                        <p class="text-white-50 mb-5">When you choose EduNex, you're not just getting a tool; you're getting the support of a senior team of designers and developers who are passionate about scaling your business.</p>
 
-                        <a href="https://engeniusdigitech.netlify.app/" target="_blank"
-                            class="btn btn-light btn-modern fw-bold px-4">
-                            Explore Engenius Digitech <i class="fas fa-external-link-alt ms-2"></i>
+                        <a href="https://engeniusdigitech.com" target="_blank"
+                            class="btn btn-light btn-modern fw-bold px-5 py-3 shadow-lg">
+                            Explore our Portfolio <i class="fas fa-external-link-alt ms-2"></i>
                         </a>
                     </div>
                 </div>
@@ -304,60 +275,16 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="py-5">
+    <section class="py-5 my-5">
         <div class="container px-4 py-5 text-center">
-            <h2 class="fw-black mb-4 display-5">Join the digital revolution.</h2>
-            <p class="text-muted mb-5 mx-auto" style="max-width: 500px;">Experience the easiest way to manage your
-                students, staff, and finances in one place.</p>
-            <a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern px-5 py-3">View Pricing Plans <i
+            <h2 class="fw-black mb-4 display-5" style="letter-spacing: -3px;">Join the digital revolution.</h2>
+            <p class="text-muted mb-5 mx-auto fs-5 fw-500" style="max-width: 500px;">Experience the easiest way to manage your students, staff, and finances in one place.</p>
+            <a href="{{ route('pricing') }}" class="btn btn-primary-glow btn-modern px-5 py-3 shadow-lg">View Pricing Plans <i
                     class="fas fa-arrow-right ms-2"></i></a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container px-4">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="footer-logo mb-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="max-height: 50px;" class="me-2">
-                    </div>
-                    <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built
-                        by educators, for educators.</p>
-                    <div class="d-flex gap-3">
-                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank"
-                            class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Platform</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ url('/') }}#features" class="footer-link small">Features</a></li>
-                        <li class="mb-2"><a href="{{ route('pricing') }}" class="footer-link small">Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Live Demo</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Company</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ route('about') }}" class="footer-link small">About Us</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}" class="footer-link small">Contact</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-4 text-md-end">
-                    <h6 class="fw-bold mb-4">Product by</h6>
-                    <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-decoration-none">
-                        <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
-                        <p class="text-muted small">Specialized in SaaS solutions</p>
-                    </a>
-                </div>
-            </div>
-            <div class="border-top mt-5 pt-4 text-center">
-                <p class="text-muted small mb-0">© {{ date('Y') }} EduNex. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <x-frontend-footer />
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

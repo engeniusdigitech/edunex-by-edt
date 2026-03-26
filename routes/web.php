@@ -43,6 +43,19 @@ Route::get('/contact', function () {
 })->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
+// Legal Pages
+Route::get('/privacy-policy', function () {
+    return view('legal.privacy');
+})->name('legal.privacy');
+
+Route::get('/terms-and-conditions', function () {
+    return view('legal.terms');
+})->name('legal.terms');
+
+Route::get('/refund-policy', function () {
+    return view('legal.refund');
+})->name('legal.refund');
+
 // SEO Landing Pages, Sitemap & Robots
 Route::get('/robots.txt', function () {
     return response()->view('robots')->header('Content-Type', 'text/plain');

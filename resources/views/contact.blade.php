@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Contact Us — EduNex & Engenius Digitech" description="Get in touch with Engenius Digitech for EduNex software inquiries, support, and custom enterprise deployments." />
+    <x-seo title="Contact Top School Management System Support | EduNex" description="Get in touch for EduNex school software inquiries, custom education management system deployments, and expert support." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,26 +22,29 @@
     <style>
         /* ── PAGE HEADER ── */
         .page-header {
-            padding: 126px 0 100px;
+            padding: 160px 0 80px;
             position: relative;
         }
 
         .section-tag {
             font-size: 0.85rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-            display: block;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: rgba(79, 70, 229, 0.08);
+            padding: 6px 16px;
+            border-radius: 50px;
         }
 
         .page-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 900;
-            letter-spacing: -2px;
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            font-weight: 950;
+            letter-spacing: -3px;
             color: var(--dark-bg);
-            line-height: 1.1;
+            line-height: 1;
         }
 
         .page-title span {
@@ -51,89 +54,139 @@
         }
 
         /* ── CONTACT CONTAINER ── */
+        .contact-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
         .contact-container {
-            background: #ffffff;
-            border-radius: 40px;
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             overflow: hidden;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08), 
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
         }
 
         /* ── FORM STYLING ── */
         .contact-form-side {
-            padding: 60px;
+            padding: 70px;
         }
 
         .form-label {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--text-main);
+            font-weight: 750;
+            font-size: 0.8rem;
+            color: var(--dark-bg);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            opacity: 0.8;
         }
 
         .form-control,
         .form-select {
-            padding: 16px 20px;
-            border-radius: 16px;
-            border: 1.5px solid var(--border-color);
-            background: #F8FAFC;
+            padding: 18px 24px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background: #f1f5f9;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--dark-bg);
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
             font-weight: 500;
-            transition: all 0.3s;
         }
 
         .form-control:focus,
         .form-select:focus {
             background: #ffffff;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            box-shadow: 0 12px 24px -8px rgba(79, 70, 229, 0.2);
+            transform: translateY(-2px);
         }
 
         /* ── INFO SIDE ── */
         .contact-info-side {
-            background: var(--dark-bg);
-            padding: 60px;
+            background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 70px;
             color: #ffffff;
             position: relative;
-            overflow: hidden;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .contact-info-side::before {
+        .contact-info-side::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.1), transparent 70%);
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            filter: blur(120px);
+            opacity: 0.15;
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
         }
 
-        .info-pill {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+        .info-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
             padding: 24px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 20px;
-            transition: all 0.3s;
+            margin-bottom: 24px;
+            transition: all 0.4s;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        .info-pill:hover {
+        .info-card:hover {
             background: rgba(255, 255, 255, 0.08);
-            transform: translateX(5px);
+            transform: scale(1.02) translateX(10px);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .info-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--primary-color);
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            margin-bottom: 16px;
+            font-size: 1.4rem;
+            color: #fff;
+            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+        }
+
+        .info-content h6 {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .info-content p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 991px) {
+            .contact-form-side, .contact-info-side {
+                padding: 40px 24px;
+            }
+            .page-header {
+                padding: 120px 0 60px;
+            }
         }
     </style>
 </head>
@@ -165,36 +218,35 @@
             </h1>
             <p class="text-muted fs-5 mt-4 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s"
                 style="max-width: 700px;">
-                Whether you have a technical question or need a custom enterprise solution, our team at Engenius
-                Digitech is here to help.
+                Whether you have a technical question or need a custom <strong>school management system</strong> deployment, our team at Engenius
+                Digitech is here to help you scale.
             </p>
         </div>
     </header>
 
     <!-- Main Contact Section -->
-    <section class="py-5 mb-5">
-        <div class="container px-4 py-4">
+    <section class="py-5 mb-5 px-3">
+        <div class="contact-wrapper">
             <div class="contact-container animate__animated animate__fadeInUp">
                 <div class="row g-0">
                     <!-- Form Side -->
                     <div class="col-lg-7">
                         <div class="contact-form-side">
-                            <h3 class="fw-black mb-5">Send us a message</h3>
+                            <h3 class="fw-black mb-5" style="letter-spacing: -1px;">Send us a message</h3>
                             <form action="{{ route('contact.send') }}" method="POST">
                                 @csrf
                                 <div class="row g-4">
                                     <div class="col-md-6">
                                         <label class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" placeholder="Arjun Sharma" required>
+                                        <input type="text" name="name" class="form-control" placeholder="e.g. Arjun Sharma" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" placeholder="arjun@institute.com"
-                                            required>
+                                        <input type="email" name="email" class="form-control" placeholder="arjun@institute.com" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Inquiry Type</label>
-                                        <select class="form-select">
+                                        <select name="inquiry_type" class="form-select">
                                             <option>General Sales Inquiry</option>
                                             <option>Partner with us</option>
                                             <option>Technical Support</option>
@@ -203,16 +255,16 @@
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Your Message</label>
-                                        <textarea class="form-control" rows="5"
-                                            placeholder="Tell us about your institute and how we can help..."
-                                            required></textarea>
+                                        <textarea name="message" class="form-control" rows="5"
+                                            placeholder="Tell us about your institute and how we can help..." required></textarea>
                                     </div>
                                     <div class="col-12 pt-3">
-                                        <button type="submit" class="btn btn-primary-glow btn-modern w-100 py-3">
-                                            Submit Message <i class="fas fa-paper-plane ms-2"></i>
+                                        <button type="submit" class="btn btn-primary-glow btn-modern w-100 py-3 shadow-lg">
+                                            Submit Inquiry <i class="fas fa-paper-plane ms-2"></i>
                                         </button>
-                                        <p class="text-center text-muted small mt-3">We typically respond within 1
-                                            business day.</p>
+                                        <p class="text-center text-muted small mt-4 fw-500">
+                                            <i class="fas fa-clock me-1 text-primary"></i> We typically respond within 1 business day.
+                                        </p>
                                     </div>
                                 </div>
                             </form>
@@ -222,43 +274,42 @@
                     <!-- Info Side -->
                     <div class="col-lg-5">
                         <div class="contact-info-side">
-                            <h3 class="fw-black mb-5">Contact Details</h3>
+                            <h3 class="fw-black mb-5" style="letter-spacing: -1px;">Contact Details</h3>
 
-                            <div class="info-pill">
+                            <div class="info-card">
                                 <div class="info-icon"><i class="fas fa-headset"></i></div>
-                                <h6 class="fw-bold text-white mb-2">Dedicated Support</h6>
-                                <p class="text-white-50 small mb-0">For existing clients needing help with their
-                                    portals.<br><strong>support@edunex.com</strong></p>
-                            </div>
-
-                            <div class="info-pill">
-                                <div class="info-icon" style="background: var(--secondary-color);"><i
-                                        class="fas fa-paper-plane"></i></div>
-                                <h6 class="fw-bold text-white mb-2">Sales & Partnerships</h6>
-                                <p class="text-white-50 small mb-0">For new institutes and customized
-                                    plans.<br><strong>sales@engeniusdigitech.com</strong></p>
-                            </div>
-
-                            <div class="info-pill">
-                                <div class="info-icon" style="background: #10B981;"><i class="fas fa-location-dot"></i>
+                                <div class="info-content">
+                                    <h6>Dedicated Support</h6>
+                                    <p>support@edunex.com</p>
                                 </div>
-                                <h6 class="fw-bold text-white mb-2">Headquarters</h6>
-                                <p class="text-white-50 small mb-0">Engenius Digitech, Vadodara,<br>Gujarat, India.</p>
                             </div>
 
-                            <div class="mt-5 pt-4 border-top border-white border-opacity-10">
-                                <h6 class="fw-bold text-white-50 small text-uppercase mb-4">Crafted by</h6>
-                                <a href="https://engeniusdigitech.netlify.app/" target="_blank"
-                                    class="text-decoration-none">
+                            <div class="info-card">
+                                <div class="info-icon" style="background: linear-gradient(135deg, var(--secondary-color), #ec4899);"><i class="fas fa-paper-plane"></i></div>
+                                <div class="info-content">
+                                    <h6>Sales & Partnerships</h6>
+                                    <p>engeniusdigitech@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-icon" style="background: linear-gradient(135deg, #10B981, #059669);"><i class="fas fa-location-dot"></i></div>
+                                <div class="info-content">
+                                    <h6>Headquarters</h6>
+                                    <p>Vadodara, Gujarat, India.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-auto pt-5 border-top border-white border-opacity-10">
+                                <p class="text-white-50 small mb-3 fw-bold text-uppercase ls-1">Crafted by</p>
+                                <a href="https://engeniusdigitech.com" target="_blank" class="text-decoration-none">
                                     <h4 class="text-white fw-black mb-1">Engenius Digitech</h4>
-                                    <p class="text-white-50 small mb-4">Visit our main portfolio <i
-                                            class="fas fa-arrow-up-right-from-square ms-1"></i></p>
+                                    <p class="text-white-50 small mb-4">Leading specialized SaaS solutions <i class="fas fa-external-link-alt ms-1 text-xs"></i></p>
                                 </a>
                                 <div class="d-flex gap-3">
-                                    <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true"
-                                        target="_blank" class="btn btn-light rounded-circle"
-                                        style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;"><i
-                                            class="fab fa-linkedin-in text-primary"></i></a>
+                                    <a href="https://www.linkedin.com/company/engenius-digitech" target="_blank" class="btn btn-primary rounded-circle shadow-sm" style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: #0077b5; border: none;">
+                                        <i class="fab fa-linkedin-in text-white"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -282,50 +333,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container px-4">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="footer-logo mb-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="max-height: 50px;" class="me-2">
-                    </div>
-                    <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built
-                        by educators, for educators.</p>
-                    <div class="d-flex gap-3">
-                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank"
-                            class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Platform</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ url('/') }}#features" class="footer-link small">Features</a></li>
-                        <li class="mb-2"><a href="{{ route('pricing') }}" class="footer-link small">Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Live Demo</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Company</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ route('about') }}" class="footer-link small">About Us</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}" class="footer-link small">Contact</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-4 text-md-end">
-                    <h6 class="fw-bold mb-4">Product by</h6>
-                    <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-decoration-none">
-                        <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
-                        <p class="text-muted small">Specialized in SaaS solutions</p>
-                    </a>
-                </div>
-            </div>
-            <div class="border-top mt-5 pt-4 text-center">
-                <p class="text-muted small mb-0">© {{ date('Y') }} EduNex. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <x-frontend-footer />
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

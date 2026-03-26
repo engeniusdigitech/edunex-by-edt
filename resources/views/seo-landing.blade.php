@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The #1 Institute Management Software in {{ $city }}, {{ $country }} | EduNex</title>
+    <x-seo 
+        title="Best School Management Software in {{ $city }}, {{ $country }} | {{ $city }} Education System" 
+        description="EduNex is the top-rated school management system and education management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} institute." 
+    />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -357,12 +360,11 @@
                         ✨ Trusted by 150+ institutes across the country
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
-                        Automate your institute in {{ $city }}.<br><span>Empower your educators in {{ $country }}.</span>
+                        Best Education Management Software in {{ $city }}.<br><span>Top School Management System in {{ $country }}.</span>
                     </h1>
                     <p class="hero-subtitle ms-lg-0 animate__animated animate__fadeInUp animate__delay-1s">
-                        The most complete, intuitive, and feature-rich platform to manage your educational center. From
-                        fee
-                        tracking to live classes — everything in one place.
+                        EduNex is the most complete, intuitive, and feature-rich <strong>school software in {{ $city }}</strong> to manage your educational center. From 
+                        <strong>institute management</strong> to live classes — everything in one place.
                     </p>
 
                     {{-- Category Scroller --}}
@@ -414,12 +416,10 @@
                                 </div>
                                 <div class="mt-5"
                                     style="max-width: 700px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem;">
-                                    <h3 class="fw-bold mb-3">Enterprise-Grade Admin Control</h3>
-                                    <p class="text-muted">Manage your entire institute with a powerful, intuitive
-                                        interface.
-                                        Track attendance, automate fees, and monitor growth in real-time — all from one
-                                        central
-                                        dashboard.</p>
+                                    <h3 class="fw-bold mb-3">Enterprise-Grade {{ $city }} School Management</h3>
+                                    <p class="text-muted">Manage your entire institute in {{ $city }} with a powerful, intuitive
+                                        interface. Track attendance, automate fees, and monitor growth in real-time — all with our 
+                                        central <strong>institute ERP</strong> dashboard.</p>
                                 </div>
                             </div>
 
@@ -485,8 +485,8 @@
         <div class="container px-4">
             <div class="text-center mb-5">
                 <span class="section-tag">Powerful Features</span>
-                <h2 class="section-title">Built for serious growth</h2>
-                <p class="text-muted fs-5">Everything you need to run a modern education business.</p>
+                <h2 class="section-title">Best {{ $city }} School Software Features</h2>
+                <p class="text-muted fs-5">Everything you need to run a modern <strong>education management</strong> business in {{ $city }}.</p>
             </div>
 
             <div class="row g-4">
@@ -714,50 +714,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container px-4">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="footer-logo mb-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 50px;" class="me-2">
-                    </div>
-                    <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built
-                        by educators, for educators.</p>
-                    <div class="d-flex gap-3">
-                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank"
-                            class="footer-link fs-5"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Platform</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#features" class="footer-link small">Features</a></li>
-                        <li class="mb-2"><a href="{{ route('pricing') }}" class="footer-link small">Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Live Demo</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Company</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ route('about') }}" class="footer-link small">About Us</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}" class="footer-link small">Contact</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-4 text-md-end">
-                    <h6 class="fw-bold mb-4">Product by</h6>
-                    <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-decoration-none">
-                        <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
-                        <p class="text-muted small">Specialized in SaaS solutions</p>
-                    </a>
-                </div>
-            </div>
-            <div class="border-top mt-5 pt-4 text-center">
-                <p class="text-muted small mb-0">© {{ date('Y') }} EduNex. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <x-frontend-footer />
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

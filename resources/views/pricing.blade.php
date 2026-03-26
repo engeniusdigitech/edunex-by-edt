@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Pricing — EduNex | Institute Management Software" description="Simple, transparent pricing for EduNex institute management software. One powerful plan, no hidden fees." />
+    <x-seo title="Best School Management Software Pricing & Institute ERP Plans | EduNex" description="Scalable, transparent pricing for the #1 school management system. Get a custom quote for our premier education management software." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,67 +51,58 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-sub {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            max-width: 500px;
-        }
-
         /* ── PRICING CARD ── */
         .plan-card {
             background: #ffffff;
-            border-radius: 36px;
-            border: 1px solid var(--border-color);
+            border-radius: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
             padding: 60px;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+
+        .plan-card.recommended {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+            z-index: 2;
         }
 
         .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 50px 120px -30px rgba(79, 70, 229, 0.15);
-            border-color: var(--primary-color);
+            transform: translateY(-15px);
+            box-shadow: 0 50px 100px -20px rgba(79, 70, 229, 0.12);
         }
 
         .plan-badge {
             position: absolute;
-            top: -16px;
+            top: -18px;
             left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: #fff;
             font-size: 0.75rem;
             font-weight: 800;
-            padding: 6px 20px;
+            padding: 8px 24px;
             border-radius: 50px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.4);
         }
 
-        .plan-name {
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .plan-headline {
-            font-size: 1.75rem;
-            font-weight: 900;
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 950;
             color: var(--dark-bg);
-            margin-bottom: 30px;
-            letter-spacing: -0.5px;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .feature-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 40px;
+            margin: 40px 0;
         }
 
         .feature-list li {
@@ -138,20 +129,20 @@
             display: block;
             width: 100%;
             text-align: center;
-            padding: 18px 30px;
-            border-radius: 20px;
+            padding: 20px 30px;
+            border-radius: 24px;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             text-decoration: none;
-            transition: all 0.3s;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            transition: all 0.4s;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: #fff;
-            box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.4);
         }
 
         .plan-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px -5px rgba(79, 70, 229, 0.5);
+            transform: scale(1.02);
+            box-shadow: 0 20px 45px -5px rgba(79, 70, 229, 0.5);
             color: #fff;
         }
 
@@ -175,28 +166,45 @@
             color: #10B981;
         }
 
-        /* ── FAQ ── */
+        /* ── FAQ MODERNIZE ── */
         .accordion-item {
-            border: 1px solid var(--border-color) !important;
-            border-radius: 20px !important;
-            margin-bottom: 12px;
-            overflow: hidden;
-            background: #fff;
+            border: none !important;
+            border-radius: 28px !important;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.6) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .accordion-item:hover {
+            transform: translateX(10px);
+            background: #fff !important;
         }
 
         .accordion-button {
-            padding: 24px;
-            font-weight: 700;
+            padding: 30px;
+            font-weight: 800;
             color: var(--dark-bg);
-            border-radius: 0 !important;
+            font-size: 1.1rem;
+            border-radius: 28px !important;
+            background: transparent !important;
+            box-shadow: none !important;
         }
 
         .accordion-button:not(.collapsed) {
-            background: #EEF2FF;
             color: var(--primary-color);
+        }
+
+        .accordion-body {
+            padding: 0 30px 30px;
+            color: var(--text-muted);
+            font-weight: 500;
+            line-height: 1.7;
         }
     </style>
 
+    @verbatim
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -237,6 +245,7 @@
       ]
     }
     </script>
+    @endverbatim
 
 </head>
 
@@ -251,17 +260,16 @@
     @include('components.frontend-navbar')
 
     <!-- Page Header -->
-    <header class="page-header text-center">
+    <header class="page-header text-center pb-0">
         <div class="container px-4">
-            <span class="section-tag animate__animated animate__fadeInDown">Trial & Access</span>
+            <span class="section-tag animate__animated animate__fadeInDown">Global Access</span>
             <h1 class="hero-title animate__animated animate__zoomIn">
-                Unlock your institute's<br>
-                <span>True Potential.</span>
+                Simple, transparent<br>
+                <span>one plan for all.</span>
             </h1>
-            <p class="text-muted fs-5 mt-4 max-w-xl mx-auto animate__animated animate__fadeInUp animate__delay-1s"
-                style="max-width: 600px;">
-                Get the complete, unlimited EduNex platform for your entire institute. No gating features, no arbitrary
-                limits.
+            <p class="text-muted fs-5 mt-4 mx-auto animate__animated animate__fadeInUp animate__delay-1s"
+                style="max-width: 600px; font-weight: 500;">
+                Get the complete, unlimited <strong>school software</strong> platform for your entire institute. No hidden fees, no gating features.
             </p>
         </div>
     </header>
@@ -269,42 +277,65 @@
     <!-- Pricing Section -->
     <section class="py-5">
         <div class="container px-4">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-5 animate__animated animate__fadeInLeft">
-                    <h2 class="fw-black mb-4 display-6">Everything you need<br>to manage and grow.</h2>
-                    <ul class="feature-list mb-5">
-                        <li><i class="fas fa-check-circle"></i> <span><strong>Smart Fee Tracking</strong> &
-                                reminders</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span><strong>Live Class Integration</strong> (Jitsi
-                                Conferencing)</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span><strong>Staff Management</strong> with custom
-                                permissions</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span><strong>Interactive Student Portal</strong> (PWA
-                                Support)</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span><strong>Automated PDF Reports</strong> for all
-                                metrics</span></li>
-                    </ul>
-                    <a href="{{ route('trial.request') }}" class="btn btn-outline-modern btn-lg px-5 py-3">Start Your
-                        Free Trial</a>
-                </div>
-
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="plan-card animate__animated animate__fadeInRight animate__delay-1s">
+            
+            <div class="row justify-content-center align-items-center g-4">
+                <div class="col-lg-7">
+                    <div class="plan-card recommended animate__animated animate__fadeInUp animate__delay-1s">
                         <div class="plan-badge">⭐ Recommended</div>
-                        <div class="plan-name">The Complete Platform</div>
-                        <h2 class="plan-headline">EduNex Professional</h2>
-
-                        <div class="d-flex align-items-baseline gap-2 mb-4">
-                            <span class="display-5 fw-black text-dark">Full Access</span>
+                        
+                        <div class="d-flex justify-content-between align-items-start mb-4">
+                            <div>
+                                <h2 class="fw-black text-dark mb-1" style="letter-spacing: -1px;">Professional Plan</h2>
+                                <p class="text-muted small fw-bold text-uppercase ls-1">Unlimited Scale</p>
+                            </div>
                         </div>
 
-                        <p class="text-muted mb-4">Get full access to all features with no student limits and 24/7
-                            dedicated support.</p>
+                        <p class="text-muted mb-5 fw-500">Transform your institute with our most powerful platform. Dedicated for growth-minded centers.</p>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6">
+                                <ul class="feature-list m-0 p-0" style="border:none;">
+                                    <li><i class="fas fa-check-circle"></i> Smart Fee Tracking</li>
+                                    <li><i class="fas fa-check-circle"></i> Live Class Integration</li>
+                                    <li><i class="fas fa-check-circle"></i> Staff Management</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="feature-list m-0 p-0" style="border:none;">
+                                    <li><i class="fas fa-check-circle"></i> Student Portal (PWA)</li>
+                                    <li><i class="fas fa-check-circle"></i> Custom PDF Reports</li>
+                                    <li><i class="fas fa-check-circle"></i> 24/7 Priority Support</li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <a href="{{ route('trial.request') }}" class="plan-cta">
-                            Start 7-Day Free Trial
+                            Get Best Quote
                         </a>
-                        <p class="text-center text-muted small mt-4 mb-0">No credit card required to start.</p>
+                        <p class="text-center text-muted small mt-4 mb-0 fw-600">Enterprise-grade features. 24/7 dedicated support.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 ps-lg-5 mt-5 mt-lg-0 animate__animated animate__fadeInRight animate__delay-2s">
+                    <div class="p-4 rounded-4" style="background: rgba(79, 70, 229, 0.03); border: 1px dashed rgba(79, 70, 229, 0.2);">
+                        <h4 class="fw-black mb-3">Enterprise Needs?</h4>
+                        <p class="text-muted mb-4 small">Looking for multi-branch setups or custom feature development for large-scale franchises?</p>
+                        <a href="{{ route('contact') }}" class="btn btn-dark btn-modern w-100 py-3">Talk to our Experts</a>
+
+                        <div class="mt-5 border-top pt-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-primary text-white rounded-circle p-2" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <span class="small fw-700">Enterprise Grade Security</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-primary text-white rounded-circle p-2" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <span class="small fw-700">Instant Setup (Under 2 mins)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -312,35 +343,39 @@
     </section>
 
     <!-- Trust Strip -->
-    <section class="trust-strip mt-5">
+    <section class="py-5" style="background: #f8fafc; border-top: 1px solid #e2e8f0;">
         <div class="container px-4">
-            <div class="row justify-content-center g-4">
-                <div class="col-auto">
-                    <div class="trust-item"><i class="fas fa-lock"></i> SSL Encrypted</div>
+            <div class="row row-cols-2 row-cols-md-4 g-4 text-center">
+                <div class="col">
+                    <h6 class="text-muted text-uppercase ls-2 mb-2" style="font-size: 0.7rem;">Uptime</h6>
+                    <h4 class="fw-black">99.9%</h4>
                 </div>
-                <div class="col-auto">
-                    <div class="trust-item"><i class="fas fa-cloud"></i> 99.9% Cloud Uptime</div>
+                <div class="col">
+                    <h6 class="text-muted text-uppercase ls-2 mb-2" style="font-size: 0.7rem;">Support</h6>
+                    <h4 class="fw-black">24/7</h4>
                 </div>
-                <div class="col-auto">
-                    <div class="trust-item"><i class="fas fa-headset"></i> Dedicated Support</div>
+                <div class="col">
+                    <h6 class="text-muted text-uppercase ls-2 mb-2" style="font-size: 0.7rem;">Institutes</h6>
+                    <h4 class="fw-black">150+</h4>
                 </div>
-                <div class="col-auto">
-                    <div class="trust-item"><i class="fas fa-database"></i> Data Isolation</div>
+                <div class="col">
+                    <h6 class="text-muted text-uppercase ls-2 mb-2" style="font-size: 0.7rem;">Feedback</h6>
+                    <h4 class="fw-black">4.9/5</h4>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-5 mt-5">
+    <section class="py-5">
         <div class="container px-4 py-5">
             <div class="text-center mb-5">
-                <span class="section-tag">Common Questions</span>
-                <h2 class="fw-black display-6">Pricing & Access FAQ</h2>
+                <span class="section-tag">Transparency</span>
+                <h2 class="fw-black display-6" style="letter-spacing: -2px;">Frequently Asked Questions</h2>
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="accordion" id="pricingFaq">
                         @php
                             $faqs = [
@@ -352,7 +387,7 @@
                         @endphp
 
                         @foreach($faqs as $i => $faq)
-                            <div class="accordion-item">
+                            <div class="accordion-item animate__animated animate__fadeInUp" style="animation-delay: {{ $i * 0.1 }}s">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button {{ $i === 0 ? '' : 'collapsed' }}" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#pq{{ $i }}">
@@ -373,43 +408,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container px-4">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="footer-logo mb-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 50px;" class="me-2">
-                    </div>
-                    <p class="text-muted small mb-4">The ultimate SaaS platform for modern educational institutes. Built
-                        by educators, for educators.</p>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Platform</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ url('/') }}#features" class="footer-link small">Features</a></li>
-                        <li class="mb-2"><a href="{{ route('pricing') }}" class="footer-link small">Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link small">Live Demo</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-2">
-                    <h6 class="fw-bold mb-4">Company</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ route('about') }}" class="footer-link small">About Us</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}" class="footer-link small">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 col-lg-4 text-md-end">
-                    <h6 class="fw-bold mb-4">Product by</h6>
-                    <h5 class="fw-black text-dark mb-1">Engenius Digitech</h5>
-                    <p class="text-muted small">Specialized in SaaS solutions</p>
-                </div>
-            </div>
-            <div class="border-top mt-5 pt-4 text-center">
-                <p class="text-muted small mb-0">© {{ date('Y') }} EduNex. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <x-frontend-footer />
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
