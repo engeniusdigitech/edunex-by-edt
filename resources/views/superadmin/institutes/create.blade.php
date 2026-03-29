@@ -14,9 +14,19 @@
     <div class="card-body">
         <form action="{{ route('superadmin.institutes.store') }}" method="POST">
             @csrf
-            <div class="mb-3">
-                <label class="form-label">Institute Name</label>
-                <input type="text" name="name" class="form-control" required placeholder="e.g. Apex Institute">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Institute Name <span class="text-danger">*</span></label>
+                    <input type="text" name="name" class="form-control" required placeholder="e.g. Apex Institute" value="{{ old('name') }}">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Institute Type <span class="text-danger">*</span></label>
+                    <select name="type" class="form-select" required>
+                        <option value="">Select Type</option>
+                        <option value="institute" {{ old('type') == 'institute' ? 'selected' : '' }}>Institute / Coaching</option>
+                        <option value="school" {{ old('type') == 'school' ? 'selected' : '' }}>School</option>
+                    </select>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Subdomain</label>

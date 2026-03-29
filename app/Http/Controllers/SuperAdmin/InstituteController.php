@@ -40,6 +40,7 @@ class InstituteController extends Controller
             'contact_email' => 'required|email|unique:institutes',
             'phone' => 'nullable|string',
             'country' => 'required|string',
+            'type' => 'required|string|in:institute,school',
             'subdomain' => 'nullable|string|unique:institutes',
             'admin_name' => 'required|string|max:255',
             'admin_email' => 'required|email|unique:users,email',
@@ -57,6 +58,7 @@ class InstituteController extends Controller
                 'contact_email' => $validated['contact_email'],
                 'phone' => $validated['phone'],
                 'country' => $validated['country'],
+                'type' => $validated['type'],
                 'subdomain' => $validated['subdomain'],
             ]);
 
@@ -92,6 +94,7 @@ class InstituteController extends Controller
             'contact_email' => 'required|email|unique:institutes,contact_email,' . $institute->id,
             'phone' => 'nullable|string',
             'country' => 'required|string',
+            'type' => 'required|string|in:institute,school',
             'subdomain' => 'nullable|string|unique:institutes,subdomain,' . $institute->id,
             'is_active' => 'boolean',
         ]);
@@ -105,6 +108,7 @@ class InstituteController extends Controller
             'contact_email' => $validated['contact_email'],
             'phone' => $validated['phone'],
             'country' => $validated['country'],
+            'type' => $validated['type'],
             'subdomain' => $validated['subdomain'],
             'is_active' => $request->has('is_active'),
         ]);

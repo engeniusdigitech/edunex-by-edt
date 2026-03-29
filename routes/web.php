@@ -86,6 +86,7 @@ Route::middleware(['auth'])->group(function () {
         function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+            Route::resource('principals', \App\Http\Controllers\PrincipalController::class)->middleware('can:manage-principals');
             Route::resource('students', StudentController::class)->middleware('can:manage-students');
             Route::resource('staff', \App\Http\Controllers\StaffController::class)->middleware('can:manage-staff');
 
@@ -104,14 +105,14 @@ Route::middleware(['auth'])->group(function () {
 
             // Academics Module
             Route::resource('batches', \App\Http\Controllers\BatchController::class)->except(['create', 'edit', 'show'])->middleware('can:manage-batches');
-            Route::resource('subjects', \App\Http\Controllers\SubjectController::class)->except(['create', 'edit', 'show']);
-            Route::resource('homework', \App\Http\Controllers\HomeworkController::class);
-            Route::resource('tests', \App\Http\Controllers\TestController::class);
-            Route::resource('live-lectures', \App\Http\Controllers\LiveLectureController::class);
-            Route::post('live-lectures/{liveLecture}/start', [\App\Http\Controllers\LiveLectureController::class, 'start'])->name('live-lectures.start');
-            Route::post('live-lectures/{liveLecture}/end', [\App\Http\Controllers\LiveLectureController::class, 'end'])->name('live-lectures.end');
-            Route::get('tests/{test}/marks', [\App\Http\Controllers\TestController::class, 'marks'])->name('tests.marks');
-            Route::post('tests/{test}/marks', [\App\Http\Controllers\TestController::class, 'storeMarks'])->name('tests.store_marks');
+            Route::resource('subjects', \App\Http\Controllers\SubjectController::class)->except(['create', 'edit', 'show'])->middleware('can:manage-academics');
+            Route::resource('homework', \App\Http\Controllers\HomeworkController::class)->middleware('can:manage-academics');
+            Route::resource('tests', \App\Http\Controllers\TestController::class)->middleware('can:manage-academics');
+            Route::resource('live-lectures', \App\Http\Controllers\LiveLectureController::class)->middleware('can:manage-academics');
+            Route::post('live-lectures/{liveLecture}/start', [\App\Http\Controllers\LiveLectureController::class, 'start'])->name('live-lectures.start')->middleware('can:manage-academics');
+            Route::post('live-lectures/{liveLecture}/end', [\App\Http\Controllers\LiveLectureController::class, 'end'])->name('live-lectures.end')->middleware('can:manage-academics');
+            Route::get('tests/{test}/marks', [\App\Http\Controllers\TestController::class, 'marks'])->name('tests.marks')->middleware('can:manage-academics');
+            Route::post('tests/{test}/marks', [\App\Http\Controllers\TestController::class, 'storeMarks'])->name('tests.store_marks')->middleware('can:manage-academics');
 
             // Notifications
             Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
@@ -120,16 +121,16 @@ Route::middleware(['auth'])->group(function () {
             // Advanced Analytics / Reports
             Route::prefix('reports')->name('reports.')->group(
                 function () {
-                Route::get('/attendance', [\App\Http\Controllers\ReportController::class, 'attendance'])->name('attendance');
-                Route::get('/attendance/pdf', [\App\Http\Controllers\ReportController::class, 'exportAttendancePdf'])->name('attendance.pdf');
+                Route::get('/attendance', [\App\Http\Controllers\ReportController::class, 'attendance'])->name('attendance')->middleware('can:manage-attendance');
+                Route::get('/attendance/pdf', [\App\Http\Controllers\ReportController::class, 'exportAttendancePdf'])->name('attendance.pdf')->middleware('can:manage-attendance');
 
-                Route::get('/defaulters', [\App\Http\Controllers\ReportController::class, 'defaulters'])->name('defaulters');
-                Route::get('/defaulters/pdf', [\App\Http\Controllers\ReportController::class, 'exportDefaultersPdf'])->name('defaulters.pdf');
+                Route::get('/defaulters', [\App\Http\Controllers\ReportController::class, 'defaulters'])->name('defaulters')->middleware('can:manage-payments');
+                Route::get('/defaulters/pdf', [\App\Http\Controllers\ReportController::class, 'exportDefaultersPdf'])->name('defaulters.pdf')->middleware('can:manage-payments');
 
-                Route::post('/defaulters/notify/{student}', [\App\Http\Controllers\NotificationController::class, 'sendPortalAlert'])->name('notify');
+                Route::post('/defaulters/notify/{student}', [\App\Http\Controllers\NotificationController::class, 'sendPortalAlert'])->name('notify')->middleware('can:manage-payments');
 
-                Route::get('/students/{student}', [\App\Http\Controllers\ReportController::class, 'studentReport'])->name('student');
-                Route::get('/students/{student}/pdf', [\App\Http\Controllers\ReportController::class, 'exportStudentReportPdf'])->name('student.pdf');
+                Route::get('/students/{student}', [\App\Http\Controllers\ReportController::class, 'studentReport'])->name('student')->middleware('can:manage-academics');
+                Route::get('/students/{student}/pdf', [\App\Http\Controllers\ReportController::class, 'exportStudentReportPdf'])->name('student.pdf')->middleware('can:manage-academics');
             }
             );
         }

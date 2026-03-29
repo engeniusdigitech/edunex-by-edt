@@ -19,6 +19,14 @@ class DashboardController extends Controller
             return $this->teacherDashboard($user);
         }
 
+        if ($user && $user->isPrincipal()) {
+            return $this->principalDashboard($user);
+        }
+
+        if ($user && $user->isReceptionist()) {
+            return $this->receptionistDashboard($user);
+        }
+
         // ── STAT CARDS ──
         $totalStudents = Student::count();
         $activeBatches = Batch::where('is_active', true)->count();
@@ -151,6 +159,104 @@ class DashboardController extends Controller
             'todayAttendancePct',
             'todayTotal',
             'todayPresent',
+            'studentsPerBatch',
+            'attendanceTrend',
+            'noAttendanceToday'
+        ));
+    }
+
+    private function principalDashboard($user)
+    {
+        // Principals see everything EXCEPT financial data
+        $totalStudents = Student::count();
+        $activeBatches = Batch::where('is_active', true)->count();
+        
+        $staffRoleIds = \App\Models\Role::whereIn('name', ['Teacher', 'Receptionist'])->pluck('id');
+        $totalStaff = \App\Models\User::whereIn('role_id', $staffRoleIds)->count();
+
+        $activeHomework = \App\Models\Homework::where('due_date', '>=', now()->startOfDay())->count();
+        $upcomingTests = \App\Models\Test::where('test_date', '>=', now()->startOfDay())->count();
+
+        $todayTotal = Attendance::whereDate('date', today())->count();
+        $todayPresent = Attendance::whereDate('date', today())->whereIn('status', ['present', 'late'])->count();
+        $todayAttendancePct = $todayTotal > 0 ? round(($todayPresent / $todayTotal) * 100) : null;
+
+        $studentsPerBatch = Batch::withCount('students')
+            ->where('is_active', true)
+            ->get()
+            ->pluck('students_count', 'name');
+
+        $attendanceTrend = collect();
+        for ($i = 6; $i >= 0; $i--) {
+            $day = now()->subDays($i);
+            $total = Attendance::whereDate('date', $day->toDateString())->count();
+            $present = Attendance::whereDate('date', $day->toDateString())->whereIn('status', ['present', 'late'])->count();
+            $attendanceTrend[$day->format('D d')] = $total > 0 ? round($present / $total * 100) : 0;
+        }
+
+        $noAttendanceToday = Student::where('is_active', true)
+            ->whereDoesntHave('attendances', fn($q) => $q->whereDate('date', today()))
+            ->count();
+
+        return view('dashboard', compact(
+            'totalStudents',
+            'activeBatches',
+            'totalStaff',
+            'activeHomework',
+            'upcomingTests',
+            'todayAttendancePct',
+            'todayTotal',
+            'todayPresent',
+            'studentsPerBatch',
+            'attendanceTrend',
+            'noAttendanceToday'
+        ));
+    }
+
+    private function receptionistDashboard($user)
+    {
+        // Receptionists see ONLY financial data and notifications
+        $monthlyRevenue = Payment::where('status', 'success')
+            ->whereMonth('payment_date', now()->month)
+            ->sum('amount_paid');
+
+        $revenueData = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $month = now()->subMonths($i);
+            $total = Payment::where('status', 'success')
+                ->whereYear('payment_date', $month->year)
+                ->whereMonth('payment_date', $month->month)
+                ->sum('amount_paid');
+            $revenueData[$month->format('M Y')] = $total;
+        }
+
+        $recentPayments = Payment::with('student')
+            ->where('status', 'success')
+            ->latest('payment_date')
+            ->take(6)
+            ->get();
+
+        // Dummy/Null values for non-finance stats to avoid view errors
+        $totalStudents = 0;
+        $activeBatches = 0;
+        $totalStaff = 0;
+        $activeHomework = 0;
+        $upcomingTests = 0;
+        $todayAttendancePct = null;
+        $studentsPerBatch = collect();
+        $attendanceTrend = collect();
+        $noAttendanceToday = 0;
+
+        return view('dashboard', compact(
+            'monthlyRevenue',
+            'revenueData',
+            'recentPayments',
+            'totalStudents',
+            'activeBatches',
+            'totalStaff',
+            'activeHomework',
+            'upcomingTests',
+            'todayAttendancePct',
             'studentsPerBatch',
             'attendanceTrend',
             'noAttendanceToday'

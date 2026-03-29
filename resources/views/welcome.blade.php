@@ -400,7 +400,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
                     <div class="hero-badge animate__animated animate__fadeInDown">
-                        ✨ Trusted by 150+ institutes across the country
+                        ✨ Trusted by 100+ institutes across the country
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
                         Best Education Management System.<br>
@@ -499,7 +499,7 @@
             <div class="row g-4">
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
-                        <div class="stat-number">150+</div>
+                        <div class="stat-number">100+</div>
                         <div class="stat-label">Institutes</div>
                     </div>
                 </div>
@@ -748,7 +748,7 @@
                 <h2 class="text-white fw-black display-5 mb-4 position-relative z-1">Ready to lead your
                     institute<br>into the digital age?</h2>
                 <p class="text-white-50 fs-5 mb-5 mx-auto position-relative z-1" style="max-width: 600px;">
-                    Join over 150 institutes that have already automated their operations with EduNex. Start your 7-day
+                    Join over 100 institutes that have already automated their operations with EduNex. Start your 7-day
                     free trial today.
                 </p>
                 <div class="position-relative z-1">

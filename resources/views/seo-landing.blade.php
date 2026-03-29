@@ -357,7 +357,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
                     <div class="hero-badge animate__animated animate__fadeInDown">
-                        ✨ Trusted by 150+ institutes across the country
+                        ✨ Trusted by 100+ institutes across the country
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
                         Best Education Management System in {{ $city }}.<br><span>For Every Type of Institute in {{ $country }}.</span>
@@ -454,7 +454,7 @@
             <div class="row g-4">
                 <div class="col-6 col-md-3">
                     <div class="stat-card">
-                        <div class="stat-number">150+</div>
+                        <div class="stat-number">100+</div>
                         <div class="stat-label">Institutes</div>
                     </div>
                 </div>

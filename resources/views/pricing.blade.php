@@ -356,7 +356,7 @@
                 </div>
                 <div class="col">
                     <h6 class="text-muted text-uppercase ls-2 mb-2" style="font-size: 0.7rem;">Institutes</h6>
-                    <h4 class="fw-black">150+</h4>
+                    <h4 class="fw-black">100+</h4>
                 </div>
                 <div class="col">
                     <h6 class="text-muted text-uppercase ls-2 mb-2" style="font-size: 0.7rem;">Feedback</h6>

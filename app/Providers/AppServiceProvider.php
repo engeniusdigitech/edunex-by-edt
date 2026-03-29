@@ -23,16 +23,20 @@ class AppServiceProvider extends ServiceProvider
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
 
+        \Illuminate\Support\Facades\Gate::define('manage-principals', function ($user) {
+            return $user->isInstituteAdmin() && $user->institute->isSchool();
+        });
+
         \Illuminate\Support\Facades\Gate::define('manage-staff', function ($user) {
-            return $user->isInstituteAdmin();
+            return $user->isInstituteAdmin() || $user->isPrincipal();
         });
 
         \Illuminate\Support\Facades\Gate::define('manage-students', function ($user) {
-            return $user->isInstituteAdmin();
+            return $user->isInstituteAdmin() || $user->isPrincipal();
         });
 
         \Illuminate\Support\Facades\Gate::define('manage-attendance', function ($user) {
-            return $user->isInstituteAdmin() || $user->isTeacher();
+            return $user->isInstituteAdmin() || $user->isPrincipal() || $user->isTeacher();
         });
 
         \Illuminate\Support\Facades\Gate::define('manage-payments', function ($user) {
@@ -40,7 +44,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
         \Illuminate\Support\Facades\Gate::define('manage-batches', function ($user) {
-            return $user->isInstituteAdmin();
+            return $user->isInstituteAdmin() || $user->isPrincipal();
+        });
+
+        \Illuminate\Support\Facades\Gate::define('manage-academics', function ($user) {
+            return $user->isInstituteAdmin() || $user->isPrincipal() || $user->isTeacher();
         });
     }
 }

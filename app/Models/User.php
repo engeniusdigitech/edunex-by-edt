@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function isStaff()
     {
-        return in_array($this->role->name ?? '', ['Staff', 'Teacher', 'Receptionist']);
+        return in_array($this->role->name ?? '', ['Staff', 'Teacher', 'Receptionist', 'Principal']);
     }
 
     public function isTeacher()
@@ -63,6 +63,11 @@ class User extends Authenticatable
     public function isReceptionist()
     {
         return ($this->role->name ?? '') === 'Receptionist';
+    }
+
+    public function isPrincipal()
+    {
+        return ($this->role->name ?? '') === 'Principal';
     }
 
     public function subjects()

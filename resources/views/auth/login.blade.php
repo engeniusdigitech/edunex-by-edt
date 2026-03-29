@@ -1,59 +1,51 @@
 <x-guest-layout>
-    <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-900">Sign in to your account</h2>
-        <p class="text-gray-500 text-sm mt-1">Manage everything in one central hub.</p>
+    <div style="text-align: center; margin-bottom: 32px;">
+        <h2 class="brand-font" style="font-size: 1.75rem; font-weight: 700; color: white; margin: 0 0 8px 0;">Welcome Back</h2>
+        <p style="color: var(--text-muted); margin: 0; font-size: 0.95rem;">Empowering education through brilliant tools.</p>
     </div>
 
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    @if (session('status'))
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: #34d399; padding: 12px; border-radius: 12px; margin-bottom: 20px; font-size: 0.9rem;">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <label for="email" class="block font-semibold text-sm text-gray-700 uppercase tracking-wide mb-1">{{ __('Email Address') }}</label>
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="admin@institute.com" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2 text-pink-600" />
+        <div class="input-group">
+            <label for="email">{{ __('Email Address') }}</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="admin@institute.com" />
+            <x-input-error :messages="$errors->get('email')" style="color: #f43f5e; margin-top: 8px; font-size: 0.85rem;" />
         </div>
 
-        <!-- Password -->
-        <div class="mt-6">
-            <div class="flex justify-between items-center mb-1">
-                <label for="password" class="block font-semibold text-sm text-gray-700 uppercase tracking-wide">{{ __('Password') }}</label>
+        <div class="input-group" style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <label for="password" style="margin: 0;">{{ __('Password') }}</label>
                 @if (Route::has('password.request'))
-                    <a class="text-sm font-semibold text-indigo-600 hover:text-indigo-500" href="{{ route('password.request') }}">
+                    <a class="link-premium" style="font-size: 0.85rem;" href="{{ route('password.request') }}">
                         {{ __('Forgot password?') }}
                     </a>
                 @endif
             </div>
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" placeholder="••••••••" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2 text-pink-600" />
+            <input id="password" type="password" name="password" required autocomplete="current-password" placeholder="••••••••" />
+            <x-input-error :messages="$errors->get('password')" style="color: #f43f5e; margin-top: 8px; font-size: 0.85rem;" />
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4 mb-6">
-            <label for="remember_me" class="inline-flex items-center cursor-pointer">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 cursor-pointer" name="remember">
-                <span class="ms-2 text-sm text-gray-600 font-medium">{{ __('Keep me logged in') }}</span>
-            </label>
-        </div>
+        <label class="custom-checkbox" style="margin-bottom: 32px;">
+            <input type="checkbox" name="remember" id="remember_me">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">{{ __('Keep me securely logged in') }}</span>
+        </label>
 
-        <div>
-            <button type="submit" class="auth-btn">
-                {{ __('Secure Sign In') }} <i class="fas fa-arrow-right ml-2 opacity-70"></i>
-            </button>
-        </div>
+        <button type="submit" class="btn-premium">
+            {{ __('Sign In to Dashboard') }} <i class="fas fa-arrow-right"></i>
+        </button>
         
-        <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600">
-                Don't have an institute account? 
-                <a href="{{ route('trial.request') }}" class="font-semibold text-indigo-600 hover:text-indigo-500">Contact us to get started</a>
+        <div style="text-align: center; margin-top: 24px;">
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+                Don't have an institute account? <br>
+                <a href="{{ route('trial.request') }}" class="link-premium" style="display: inline-block; margin-top: 8px;">Contact us to get started</a>
             </p>
         </div>
     </form>

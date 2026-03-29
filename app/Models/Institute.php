@@ -16,6 +16,7 @@ class Institute extends Model
         'phone',
         'country',
         'logo',
+        'type',
         'is_active',
     ];
 
@@ -37,5 +38,10 @@ class Institute extends Model
     public function paymentGateway()
     {
         return $this->hasOne(PaymentGateway::class);
+    }
+
+    public function isSchool()
+    {
+        return $this->type === 'school';
     }
 }

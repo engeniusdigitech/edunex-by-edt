@@ -16,9 +16,19 @@
             @csrf
             @method('PUT')
             
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-muted small">Institute Name <span class="text-danger">*</span></label>
-                <input type="text" name="name" class="form-control" required value="{{ old('name', $institute->name) }}">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold text-muted small">Institute Name <span class="text-danger">*</span></label>
+                    <input type="text" name="name" class="form-control" required value="{{ old('name', $institute->name) }}">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold text-muted small">Institute Type <span class="text-danger">*</span></label>
+                    <select name="type" class="form-select" required>
+                        <option value="">Select Type</option>
+                        <option value="institute" {{ old('type', $institute->type) == 'institute' ? 'selected' : '' }}>Institute / Coaching</option>
+                        <option value="school" {{ old('type', $institute->type) == 'school' ? 'selected' : '' }}>School</option>
+                    </select>
+                </div>
             </div>
             
             <div class="mb-4">

@@ -289,6 +289,10 @@
                     <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><i
                             class="fas fa-home"></i> Dashboard</a>
                     @can('manage-staff')
+                        @if(auth()->user()->isInstituteAdmin() && auth()->user()->institute->isSchool())
+                            <a href="{{ route('principals.index') }}" class="{{ request()->routeIs('principals.*') ? 'active' : '' }}"><i
+                                    class="fas fa-user-shield"></i> Principals</a>
+                        @endif
                         <a href="{{ route('staff.index') }}" class="{{ request()->routeIs('staff.*') ? 'active' : '' }}"><i
                                 class="fas fa-user-tie"></i> Staff</a>
                     @endcan
@@ -309,48 +313,56 @@
                                            request()->routeIs('fee-categories.*') || 
                                            request()->routeIs('fee-structures.*') || 
                                            request()->routeIs('payment-gateways.*');
+                            $showFees = !auth()->user()->isPrincipal();
                         @endphp
-                        <a href="#feesCollapse" data-bs-toggle="collapse" class="{{ $isFeesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isFeesActive ? 'true' : 'false' }}">
-                            <i class="fas fa-money-bill-wave"></i> 
-                            <span class="flex-grow-1">Fees & Payments</span>
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
-                        </a>
-                        <div class="collapse {{ $isFeesActive ? 'show' : '' }}" id="feesCollapse">
-                            <a href="{{ route('payments.index') }}" class="{{ request()->routeIs('payments.*') ? 'active' : '' }} small py-2"><i class="fas fa-wallet"></i> Payments</a>
-                            <a href="{{ route('fee-allocations.create') }}" class="{{ request()->routeIs('fee-allocations.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-plus"></i> Allocate Fees</a>
-                            <a href="{{ route('fee-categories.index') }}" class="{{ request()->routeIs('fee-categories.*') ? 'active' : '' }} small py-2"><i class="fas fa-tags"></i> Categories</a>
-                            <a href="{{ route('fee-structures.index') }}" class="{{ request()->routeIs('fee-structures.*') ? 'active' : '' }} small py-2"><i class="fas fa-sitemap"></i> Structures</a>
-                            <a href="{{ route('payment-gateways.settings') }}" class="{{ request()->routeIs('payment-gateways.*') ? 'active' : '' }} small py-2"><i class="fas fa-credit-card"></i> Settings</a>
-                        </div>
+                        @if($showFees)
+                            <a href="#feesCollapse" data-bs-toggle="collapse" class="{{ $isFeesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isFeesActive ? 'true' : 'false' }}">
+                                <i class="fas fa-money-bill-wave"></i> 
+                                <span class="flex-grow-1">Fees & Payments</span>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </a>
+                            <div class="collapse {{ $isFeesActive ? 'show' : '' }}" id="feesCollapse">
+                                <a href="{{ route('payments.index') }}" class="{{ request()->routeIs('payments.*') ? 'active' : '' }} small py-2"><i class="fas fa-wallet"></i> Payments</a>
+                                <a href="{{ route('fee-allocations.create') }}" class="{{ request()->routeIs('fee-allocations.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-plus"></i> Allocate Fees</a>
+                                <a href="{{ route('fee-categories.index') }}" class="{{ request()->routeIs('fee-categories.*') ? 'active' : '' }} small py-2"><i class="fas fa-tags"></i> Categories</a>
+                                <a href="{{ route('fee-structures.index') }}" class="{{ request()->routeIs('fee-structures.*') ? 'active' : '' }} small py-2"><i class="fas fa-sitemap"></i> Structures</a>
+                                <a href="{{ route('payment-gateways.settings') }}" class="{{ request()->routeIs('payment-gateways.*') ? 'active' : '' }} small py-2"><i class="fas fa-credit-card"></i> Settings</a>
+                            </div>
+                        @endif
                     @endcan
 
-                    <h6 class="sidebar-header mt-3">Academics</h6>
-                    @can('manage-batches')
-                        <a href="{{ route('batches.index') }}" class="{{ request()->routeIs('batches.*') ? 'active' : '' }}"><i
-                                class="fas fa-layer-group"></i> Batches</a>
-                    @endcan
-                    <a href="{{ route('subjects.index') }}"
-                        class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}"><i class="fas fa-book"></i>
-                        Subjects</a>
-                    <a href="{{ route('homework.index') }}"
-                        class="{{ request()->routeIs('homework.*') ? 'active' : '' }}"><i class="fas fa-book-open"></i>
-                        Homework</a>
-                    <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i
-                            class="fas fa-file-alt"></i> Tests & Exams</a>
-                    <a href="{{ route('live-lectures.index') }}"
-                        class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
-                        Live Lectures</a>
+                    @if(!auth()->user()->isReceptionist())
+                        <h6 class="sidebar-header mt-3">Academics</h6>
+                        @can('manage-batches')
+                            <a href="{{ route('batches.index') }}" class="{{ request()->routeIs('batches.*') ? 'active' : '' }}"><i
+                                    class="fas fa-layer-group"></i> Batches</a>
+                        @endcan
+                        <a href="{{ route('subjects.index') }}"
+                            class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}"><i class="fas fa-book"></i>
+                            Subjects</a>
+                        <a href="{{ route('homework.index') }}"
+                            class="{{ request()->routeIs('homework.*') ? 'active' : '' }}"><i class="fas fa-book-open"></i>
+                            Homework</a>
+                        <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i
+                                class="fas fa-file-alt"></i> Tests & Exams</a>
+                        <a href="{{ route('live-lectures.index') }}"
+                            class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
+                            Live Lectures</a>
+                    @endif
 
-                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher())
+                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist())
                         <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
-                        <a href="{{ route('reports.attendance') }}"
-                            class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
-                                class="fas fa-chart-bar"></i> Attendance Rep</a>
                         
-                        @if(auth()->user()->isInstituteAdmin())
-                            <a href="{{ route('reports.defaulters') }}"
-                                class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i
-                                    class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                        @if(!auth()->user()->isReceptionist())
+                            <a href="{{ route('reports.attendance') }}"
+                                class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
+                                    class="fas fa-chart-bar"></i> Attendance Rep</a>
+                            
+                            @if(auth()->user()->isInstituteAdmin() || auth()->user()->isReceptionist())
+                                <a href="{{ route('reports.defaulters') }}"
+                                    class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i
+                                        class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                            @endif
                         @endif
 
                         <a href="{{ route('notifications.index') }}"

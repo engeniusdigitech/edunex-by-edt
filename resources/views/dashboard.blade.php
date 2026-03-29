@@ -7,7 +7,8 @@
     {{-- ── ROW 1: 6 STAT CARDS ── --}}
     <div class="row g-3 mb-4">
         {{-- Total Students --}}
-        <div class="col-6 col-md-4 col-xl-2">
+        @if(!auth()->user()->isReceptionist())
+        <div class="col-6 col-md-4 {{ auth()->user()->isPrincipal() ? 'col-xl-2' : 'col-xl-2' }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(79,70,229,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -22,6 +23,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(!auth()->user()->isReceptionist())
         {{-- Active Batches --}}
         <div class="col-6 col-md-4 col-xl-2">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.08);">
@@ -38,6 +41,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(!auth()->user()->isPrincipal())
         {{-- Monthly Revenue --}}
         <div class="col-6 col-md-4 col-xl-2">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(245,158,11,0.08);">
@@ -55,6 +60,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(!auth()->user()->isReceptionist())
         {{-- Staff --}}
         <div class="col-6 col-md-4 col-xl-2">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(236,72,153,0.08);">
@@ -71,6 +78,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(!auth()->user()->isReceptionist())
         {{-- Homework --}}
         <div class="col-6 col-md-4 col-xl-2">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(99,102,241,0.08);">
@@ -87,6 +96,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(!auth()->user()->isReceptionist())
         {{-- Upcoming Tests --}}
         <div class="col-6 col-md-4 col-xl-2">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(239,68,68,0.08);">
@@ -103,10 +114,12 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 
     {{-- ── ROW 2: REVENUE CHART + TODAY'S ATTENDANCE ── --}}
     <div class="row g-4 mb-4">
+        @if(!auth()->user()->isPrincipal())
         {{-- 6-Month Revenue Chart --}}
         <div class="col-lg-8">
             <div class="card border-0" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
@@ -125,9 +138,11 @@
                 </div>
             </div>
         </div>
+        @endif
 
+        @if(!auth()->user()->isReceptionist())
         {{-- Today's Attendance Snapshot --}}
-        <div class="col-lg-4">
+        <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-12' : 'col-lg-4' }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <h6 class="fw-bold text-dark mb-0">Today's Attendance</h6>
@@ -172,12 +187,14 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 
     {{-- ── ROW 3: ATTENDANCE TREND + BATCH DONUT + RECENT PAYMENTS ── --}}
     <div class="row g-4 mb-4">
+        @if(!auth()->user()->isReceptionist())
         {{-- 7-day Attendance % Bar Chart --}}
-        <div class="col-lg-5">
+        <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-8' : 'col-lg-5' }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <h6 class="fw-bold text-dark mb-0">Attendance Trend</h6>
@@ -188,9 +205,11 @@
                 </div>
             </div>
         </div>
+        @endif
 
+        @if(!auth()->user()->isReceptionist())
         {{-- Students per Batch --}}
-        <div class="col-lg-3">
+        <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-4' : 'col-lg-3' }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <h6 class="fw-bold text-dark mb-0">Students by Batch</h6>
@@ -201,7 +220,9 @@
                 </div>
             </div>
         </div>
+        @endif
 
+        @if(!auth()->user()->isPrincipal())
         {{-- Recent Payments --}}
         <div class="col-lg-4">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
@@ -233,10 +254,11 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 
     {{-- ── NEEDS ATTENTION BANNER ── --}}
-    @if($noAttendanceToday > 0)
+    @if($noAttendanceToday > 0 && !auth()->user()->isReceptionist())
         <div class="alert border-0 d-flex align-items-center gap-3 mb-0"
             style="background:#FEF3C7;border-radius:14px;padding:14px 20px;">
             <i class="fas fa-exclamation-triangle text-warning fs-5"></i>
@@ -253,6 +275,7 @@
 
 @push('scripts')
     <script>
+        @if(!auth()->user()->isPrincipal())
         // ── 6-Month Revenue Line Chart ──
         const revCtx = document.getElementById('revenueChart').getContext('2d');
         const revData = @json($revenueData);
@@ -286,6 +309,7 @@
                 }
             }
         });
+        @endif
 
         // ── Today's Attendance Ring ──
         @if($todayAttendancePct !== null)

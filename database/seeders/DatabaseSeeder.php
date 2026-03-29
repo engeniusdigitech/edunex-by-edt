@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $teacherRole = Role::firstOrCreate(['name' => 'Teacher']);
         $receptionistRole = Role::firstOrCreate(['name' => 'Receptionist']);
         $studentRole = Role::firstOrCreate(['name' => 'Student']);
+        $principalRole = Role::firstOrCreate(['name' => 'Principal']);
 
         // 2. Super Admin User
         User::firstOrCreate(
