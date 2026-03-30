@@ -15,7 +15,13 @@ class Batch extends Model
         'name',
         'schedule_time',
         'is_active',
+        'class_teacher_id',
     ];
+
+    public function classTeacher()
+    {
+        return $this->belongsTo(User::class, 'class_teacher_id');
+    }
 
     public function students()
     {

@@ -70,6 +70,11 @@ class User extends Authenticatable
         return ($this->role->name ?? '') === 'Principal';
     }
 
+    public function isClassTeacher()
+    {
+        return $this->managedBatches()->exists();
+    }
+
     public function subjects()
     {
         return $this->belongsToMany(Subject::class);
@@ -78,5 +83,10 @@ class User extends Authenticatable
     public function batches()
     {
         return $this->belongsToMany(Batch::class);
+    }
+
+    public function managedBatches()
+    {
+        return $this->hasMany(Batch::class, 'class_teacher_id');
     }
 }

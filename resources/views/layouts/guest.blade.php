@@ -1,3 +1,4 @@
+@props(['wide' => false, 'hideLogo' => false])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -111,6 +112,62 @@
                 transform: translateY(20px);
                 opacity: 0;
                 animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                overflow: hidden; /* Added to clip child content in split mode */
+            }
+
+            .glass-card.wide {
+                max-width: 980px; /* Reduced by 2% from 1000px */
+                padding: 0; /* Padding will be handled by columns */
+            }
+
+            .auth-split {
+                display: flex;
+                flex-direction: row;
+                height: 100%;
+                min-height: 600px;
+            }
+
+            .auth-form-side {
+                flex: 0.85; /* Narrower form column */
+                padding: 48px 60px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                z-index: 5;
+            }
+
+            .auth-visual-side {
+                flex: 1.35;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+                padding: 48px 60px 48px 120px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                margin-left: -70px; /* Shifted right (from -80px) */
+                clip-path: polygon(70px 0, 100% 0, 100% 100%, 0 100%);
+                z-index: 10;
+            }
+
+            @media (max-width: 1024px) {
+                .glass-card {
+                    margin: 20px;
+                }
+                .glass-card.wide {
+                    max-width: 440px;
+                    margin: 20px;
+                }
+                .auth-split {
+                    flex-direction: column;
+                }
+                .auth-visual-side {
+                    display: none; /* Hide visual on small screens for better UX */
+                }
+                .auth-form-side {
+                    padding: 32px 24px;
+                }
             }
 
             @keyframes slideUp {
@@ -269,12 +326,14 @@
             <i class="fas fa-arrow-left"></i> Back to Home
         </a>
 
-        <div class="glass-card">
-            <div class="auth-logo">
-                <a href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo">
-                </a>
-            </div>
+        <div class="glass-card {{ $wide ? 'wide' : '' }}">
+            @if(!isset($hideLogo) || !$hideLogo)
+                <div class="auth-logo">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo">
+                    </a>
+                </div>
+            @endif
             {{ $slot }}
         </div>
         

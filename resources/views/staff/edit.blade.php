@@ -37,8 +37,33 @@
             </div>
 
             <div class="mb-3" id="teacherOptionsContainer" style="{{ $staff->isTeacher() ? '' : 'display: none;' }}">
-                <label class="form-label">Assign Class & Subjects (For Teachers)</label>
+                <label class="form-label fw-bold"><i class="fas fa-chalkboard-teacher me-1"></i> Class Teacher Appointment</label>
+                <div class="border rounded p-3 bg-light mb-4">
+                    <p class="small text-muted mb-3">Select batches for which this teacher will be the **Main Class Teacher**. These batches will see this teacher's attendance and class details.</p>
+                    @if($unassignedBatches->isEmpty())
+                        <div class="alert alert-info py-2 px-3 small mb-0">
+                            <i class="fas fa-info-circle me-1"></i> All active batches already have a class teacher assigned.
+                        </div>
+                    @else
+                        <div class="row">
+                            @php $managedBatchIds = $staff->managedBatches->pluck('id')->toArray(); @endphp
+                            @foreach($unassignedBatches as $batch)
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-check p-2 border rounded bg-white shadow-sm">
+                                        <input class="form-check-input ms-0 me-2" type="checkbox" name="class_teacher_batches[]" value="{{ $batch->id }}" id="class_teacher_{{ $batch->id }}" {{ in_array($batch->id, $managedBatchIds) ? 'checked' : '' }}>
+                                        <label class="form-check-label fw-semibold" for="class_teacher_{{ $batch->id }}">
+                                            {{ $batch->name }}
+                                        </label>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                <label class="form-label fw-bold"><i class="fas fa-book-reader me-1"></i> Subject & Batch Access</label>
                 <div class="border rounded p-3 bg-light mb-3">
+                    <p class="small text-muted mb-3">Select batches and specific subjects this teacher is allowed to teach and access.</p>
                     @if($batches->isEmpty())
                         <p class="text-muted mb-0 small">No batches available. Please create batches first.</p>
                     @else

@@ -11,7 +11,13 @@ class ReportController extends Controller
 {
     public function attendance(Request $request)
     {
-        $batches = Batch::all();
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batches = Batch::where('class_teacher_id', $user->id)->where('is_active', true)->get();
+        } else {
+            $batches = Batch::all();
+        }
+        
         $batchId = $request->get('batch_id');
         $month = $request->get('month', date('Y-m'));
 

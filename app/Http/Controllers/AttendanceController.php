@@ -15,7 +15,14 @@ class AttendanceController extends Controller
         $date = $request->input('date', date('Y-m-d'));
         $batchId = $request->input('batch_id');
 
-        $batches = Batch::where('is_active', true)->get();
+        $user = auth()->user();
+        $batchesQuery = Batch::where('is_active', true);
+
+        if ($user->isTeacher()) {
+            $batchesQuery->where('class_teacher_id', $user->id);
+        }
+
+        $batches = $batchesQuery->get();
 
         $students = collect();
         if ($batchId) {

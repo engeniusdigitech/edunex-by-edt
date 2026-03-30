@@ -27,7 +27,11 @@ class StaffController extends Controller
         $batches = Batch::with(['subjects' => function ($query) {
             $query->where('is_active', 1);
         }])->where('is_active', 1)->get();
-        return view('staff.create', compact('roles', 'batches'));
+        
+        // Get batches that don't have a class teacher currently
+        $unassignedBatches = Batch::whereNull('class_teacher_id')->where('is_active', 1)->get();
+        
+        return view('staff.create', compact('roles', 'batches', 'unassignedBatches'));
     }
 
     public function store(Request $request)
@@ -43,6 +47,8 @@ class StaffController extends Controller
             'subjects.*' => 'exists:subjects,id',
             'batches' => 'nullable|array',
             'batches.*' => 'exists:batches,id',
+            'class_teacher_batches' => 'nullable|array',
+            'class_teacher_batches.*' => 'exists:batches,id',
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
@@ -58,6 +64,11 @@ class StaffController extends Controller
             $staff->batches()->sync($request->batches);
         }
 
+        // Handle Class Teacher Assignment
+        if ($request->has('class_teacher_batches')) {
+            Batch::whereIn('id', $request->class_teacher_batches)->update(['class_teacher_id' => $staff->id]);
+        }
+
         return redirect()->route('staff.index')->with('success', 'Staff member created successfully.');
     }
 
@@ -68,7 +79,13 @@ class StaffController extends Controller
         $batches = Batch::with(['subjects' => function ($query) {
             $query->where('is_active', 1);
         }])->where('is_active', 1)->get();
-        return view('staff.edit', compact('staff', 'roles', 'batches'));
+        
+        // Get batches that are either unassigned or assigned to this staff
+        $unassignedBatches = Batch::where(function($q) use ($staff) {
+            $q->whereNull('class_teacher_id')->orWhere('class_teacher_id', $staff->id);
+        })->where('is_active', 1)->get();
+        
+        return view('staff.edit', compact('staff', 'roles', 'batches', 'unassignedBatches'));
     }
 
     public function update(Request $request, User $staff)
@@ -84,6 +101,8 @@ class StaffController extends Controller
             'subjects.*' => 'exists:subjects,id',
             'batches' => 'nullable|array',
             'batches.*' => 'exists:batches,id',
+            'class_teacher_batches' => 'nullable|array',
+            'class_teacher_batches.*' => 'exists:batches,id',
         ]);
 
         if (!empty($validated['password'])) {
@@ -98,6 +117,15 @@ class StaffController extends Controller
         // Sync subjects and batches (will detach all if none are selected)
         $staff->subjects()->sync($request->input('subjects', []));
         $staff->batches()->sync($request->input('batches', []));
+
+        // Handle Class Teacher Assignment
+        // First, clear old assignments for this teacher
+        Batch::where('class_teacher_id', $staff->id)->update(['class_teacher_id' => null]);
+        
+        // Then assign new ones
+        if ($request->has('class_teacher_batches')) {
+            Batch::whereIn('id', $request->class_teacher_batches)->update(['class_teacher_id' => $staff->id]);
+        }
 
         return redirect()->route('staff.index')->with('success', 'Staff member updated successfully.');
     }

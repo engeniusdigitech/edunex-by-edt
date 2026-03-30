@@ -302,9 +302,14 @@
                             Students</a>
                     @endcan
                     @can('manage-attendance')
-                        <a href="{{ route('attendance.index') }}"
-                            class="{{ request()->routeIs('attendance.*') ? 'active' : '' }}"><i
-                                class="fas fa-calendar-check"></i> Attendance</a>
+                        @php
+                            $showAttendance = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
+                        @endphp
+                        @if($showAttendance)
+                            <a href="{{ route('attendance.index') }}"
+                                class="{{ request()->routeIs('attendance.*') ? 'active' : '' }}"><i
+                                    class="fas fa-calendar-check"></i> Attendance</a>
+                        @endif
                     @endcan
                     @can('manage-payments')
                         @php
@@ -313,7 +318,7 @@
                                            request()->routeIs('fee-categories.*') || 
                                            request()->routeIs('fee-structures.*') || 
                                            request()->routeIs('payment-gateways.*');
-                            $showFees = !auth()->user()->isPrincipal();
+                            $showFees = !auth()->user()->isPrincipal() && !auth()->user()->isTeacher();
                         @endphp
                         @if($showFees)
                             <a href="#feesCollapse" data-bs-toggle="collapse" class="{{ $isFeesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isFeesActive ? 'true' : 'false' }}">
@@ -337,9 +342,13 @@
                             <a href="{{ route('batches.index') }}" class="{{ request()->routeIs('batches.*') ? 'active' : '' }}"><i
                                     class="fas fa-layer-group"></i> Batches</a>
                         @endcan
-                        <a href="{{ route('subjects.index') }}"
-                            class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}"><i class="fas fa-book"></i>
-                            Subjects</a>
+                        
+                        @if(!auth()->user()->isTeacher())
+                            <a href="{{ route('subjects.index') }}"
+                                class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}"><i class="fas fa-book"></i>
+                                Subjects</a>
+                        @endif
+
                         <a href="{{ route('homework.index') }}"
                             class="{{ request()->routeIs('homework.*') ? 'active' : '' }}"><i class="fas fa-book-open"></i>
                             Homework</a>
@@ -354,9 +363,14 @@
                         <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
                         
                         @if(!auth()->user()->isReceptionist())
-                            <a href="{{ route('reports.attendance') }}"
-                                class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
-                                    class="fas fa-chart-bar"></i> Attendance Rep</a>
+                            @php
+                                $showAttendanceRep = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
+                            @endphp
+                            @if($showAttendanceRep)
+                                <a href="{{ route('reports.attendance') }}"
+                                    class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
+                                        class="fas fa-chart-bar"></i> Attendance Rep</a>
+                            @endif
                             
                             @if(auth()->user()->isInstituteAdmin() || auth()->user()->isReceptionist())
                                 <a href="{{ route('reports.defaulters') }}"
