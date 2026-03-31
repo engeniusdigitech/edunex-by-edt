@@ -146,6 +146,8 @@
     <div class="mesh-bg">
         <div class="mesh-circle-1"></div>
         <div class="mesh-circle-2"></div>
+        <div class="mesh-circle-3"></div>
+        <div class="mesh-circle-4"></div>
     </div>
 
     <!-- Navigation -->
@@ -167,7 +169,6 @@
         </div>
     </header>
 
-    <!-- Our Story Section -->
     <!-- Our Story Section -->
     <section class="py-5 mb-5">
         <div class="container px-4">
@@ -203,7 +204,7 @@
         <div class="container px-4 py-5">
             <div class="row g-5">
                 <div class="col-lg-6">
-                    <div class="vision-card">
+                    <div class="vision-card glass">
                         <div class="icon-box" style="background: #EEF2FF; color: #4F46E5;">
                             <i class="fas fa-eye"></i>
                         </div>
@@ -212,7 +213,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="vision-card">
+                    <div class="vision-card glass">
                         <div class="icon-box" style="background: #FDF2F8; color: #DB2777;">
                             <i class="fas fa-bullseye"></i>
                         </div>
@@ -257,7 +258,7 @@
                 </div>
 
                 <div class="col-lg-7">
-                    <div class="brand-focus animate__animated animate__fadeIn">
+                    <div class="brand-focus animate__animated animate__fadeIn glass-dark">
                         <img src="{{ asset('images/logo.png') }}" alt="EduNex"
                             style="height: 50px; filter: brightness(0) invert(1);" class="mb-5">
                         <h2 class="fw-black mb-4">A product by Engenius Digitech</h2>

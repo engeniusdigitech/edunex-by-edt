@@ -60,14 +60,13 @@
         }
 
         .contact-container {
-            background: rgba(255, 255, 255, 0.7);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 48px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid var(--glass-border);
             overflow: hidden;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08), 
-                        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08);
         }
 
         /* ── FORM STYLING ── */
@@ -135,10 +134,11 @@
 
         .info-card {
             background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 28px;
             padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 24px;
             transition: all 0.4s;
             display: flex;
@@ -196,6 +196,8 @@
     <div class="mesh-bg">
         <div class="mesh-circle-1"></div>
         <div class="mesh-circle-2"></div>
+        <div class="mesh-circle-3"></div>
+        <div class="mesh-circle-4"></div>
     </div>
 
     <!-- Navigation -->
@@ -227,7 +229,7 @@
     <!-- Main Contact Section -->
     <section class="py-5 mb-5 px-3">
         <div class="contact-wrapper">
-            <div class="contact-container animate__animated animate__fadeInUp">
+            <div class="contact-container animate__animated animate__fadeInUp glass">
                 <div class="row g-0">
                     <!-- Form Side -->
                     <div class="col-lg-7">
@@ -273,7 +275,7 @@
 
                     <!-- Info Side -->
                     <div class="col-lg-5">
-                        <div class="contact-info-side">
+                        <div class="contact-info-side glass-dark">
                             <h3 class="fw-black mb-5" style="letter-spacing: -1px;">Contact Details</h3>
 
                             <div class="info-card">

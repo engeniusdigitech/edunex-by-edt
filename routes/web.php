@@ -41,6 +41,9 @@ Route::get('/trial-request', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+Route::get('/blogs', function () {
+    return view('blogs');
+})->name('blogs');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Legal Pages
@@ -131,6 +134,7 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/students/{student}', [\App\Http\Controllers\ReportController::class, 'studentReport'])->name('student')->middleware('can:manage-academics');
                 Route::get('/students/{student}/pdf', [\App\Http\Controllers\ReportController::class, 'exportStudentReportPdf'])->name('student.pdf')->middleware('can:manage-academics');
+                Route::get('/erp-guide/pdf', [\App\Http\Controllers\ReportController::class, 'exportErpGuidePdf'])->name('erp-guide.pdf');
             }
             );
         }

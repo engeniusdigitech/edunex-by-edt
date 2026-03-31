@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-glass py-3">
+<nav id="frontend-navbar" class="navbar navbar-expand-lg fixed-top navbar-glass py-3">
     <div class="container">
         <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center mb-0 text-decoration-none"
             style="padding: 0;">
@@ -27,6 +27,10 @@
                     <a href="{{ route('contact') }}"
                         class="nav-link fw-semibold px-2 {{ request()->routeIs('contact') ? 'text-primary' : 'text-secondary' }}">Contact
                         Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('blogs') }}"
+                        class="nav-link fw-semibold px-2 {{ request()->routeIs('blogs') ? 'text-primary' : 'text-secondary' }}">Blogs</a>
                 </li>
 
                 @if (Route::has('login'))
@@ -68,3 +72,20 @@
         </div>
     </div>
 </nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.getElementById('frontend-navbar');
+        
+        function handleScroll() {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial check
+    });
+</script>

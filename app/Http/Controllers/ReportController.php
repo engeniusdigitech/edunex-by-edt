@@ -172,4 +172,10 @@ class ReportController extends Controller
         $pdf = Pdf::loadView('reports.pdf.defaulters', compact('defaulters', 'currentMonth'));
         return $pdf->download('Fee_Defaulters_Report_' . $currentMonth . '.pdf');
     }
+
+    public function exportErpGuidePdf()
+    {
+        $pdf = Pdf::loadView('reports.pdf.erp_guide')->setPaper('a4', 'portrait');
+        return $pdf->download('EduNex_ERP_Brief_Guide.pdf');
+    }
 }

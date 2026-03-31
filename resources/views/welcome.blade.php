@@ -66,30 +66,65 @@
         }
 
         /* ── IMPACT STATS ── */
+        /* ── IMPACT STATS ── */
         .stats-section {
-            padding: 60px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            background: #fafafa;
+            padding: 80px 0;
+            position: relative;
         }
 
-        .stat-card {
+        .stats-bar {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 60px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
             text-align: center;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .stat-item:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: -12px;
+                top: 20%;
+                height: 60%;
+                width: 1px;
+                background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.08), transparent);
+            }
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--dark-bg);
-            margin-bottom: 5px;
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            font-weight: 950;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: -3px;
+            line-height: 1;
         }
 
         .stat-label {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+        }
+
+        .stat-icon {
+            font-size: 1.2rem;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+            opacity: 0.7;
         }
 
         /* ── FEATURES ── */
@@ -161,7 +196,7 @@
         /* ── FAQ ── */
         .faq-section {
             padding: 100px 0;
-            background: #fafafa;
+            background: transparent;
         }
 
         .accordion-item {
@@ -220,18 +255,19 @@
         /* ── PORTAL SHOWCASE ── */
         .portal-showcase {
             padding: 0 0 20px;
-            background: linear-gradient(180deg, #fff, #f8fafc, #fff);
+            background: transparent;
             position: relative;
         }
 
         .portal-nav {
             display: inline-flex;
-            background: rgba(241, 245, 249, 0.8);
+            background: rgba(241, 245, 249, 0.4);
             padding: 4px;
             border-radius: 20px;
             margin-bottom: 20px;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .portal-nav-btn {
@@ -389,13 +425,15 @@
     <div class="mesh-bg">
         <div class="mesh-circle-1"></div>
         <div class="mesh-circle-2"></div>
+        <div class="mesh-circle-3"></div>
+        <div class="mesh-circle-4"></div>
     </div>
 
     <!-- Navigation -->
     @include('components.frontend-navbar')
 
     <!-- Hero Section -->
-    <section class="hero-section text-center">
+    <section class="hero-section text-center" style="position: relative; z-index: 10;">
         <div class="container px-4">
             <div class="row align-items-center">
                 <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
@@ -496,29 +534,35 @@
     <!-- Impact Stats -->
     <section class="stats-section">
         <div class="container px-4">
-            <div class="row g-4">
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Institutes</div>
+            <div class="stats-bar animate__animated animate__fadeInUp">
+                <div class="row g-4 g-md-0">
+                    <div class="col-6 col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-school"></i></div>
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Institutes</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">50K+</div>
-                        <div class="stat-label">Students</div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Students</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">99.9%</div>
-                        <div class="stat-label">Uptime</div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Uptime</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-card">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Support</div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -526,7 +570,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features-section">
+    <section id="features" class="features-section" style="position: relative; z-index: 10;">
         <div class="container px-4">
             <div class="text-center mb-5">
                 <span class="section-tag">Powerful Features</span>
@@ -537,7 +581,7 @@
             <div class="row g-4">
                 {{-- Group: Academic --}}
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                    <div class="feature-card glass">
                         <div class="icon-box" style="background: #EEF2FF; color: #4F46E5;">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
@@ -549,7 +593,7 @@
 
                 {{-- Group: Financial --}}
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                    <div class="feature-card glass">
                         <div class="icon-box" style="background: #ECFDF5; color: #10B981;">
                             <i class="fas fa-receipt"></i>
                         </div>
@@ -561,7 +605,7 @@
 
                 {{-- Group: Communication --}}
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                    <div class="feature-card glass">
                         <div class="icon-box" style="background: #FFF7ED; color: #F97316;">
                             <i class="fas fa-bullhorn"></i>
                         </div>
@@ -573,7 +617,7 @@
 
                 {{-- Group: Learning --}}
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                    <div class="feature-card glass">
                         <div class="icon-box" style="background: #FDF2F8; color: #DB2777;">
                             <i class="fas fa-video"></i>
                         </div>
@@ -585,7 +629,7 @@
 
                 {{-- Group: Student Portal --}}
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                    <div class="feature-card glass">
                         <div class="icon-box" style="background: #F0F9FF; color: #0EA5E9;">
                             <i class="fas fa-mobile-screen-button"></i>
                         </div>
@@ -597,7 +641,7 @@
 
                 {{-- Group: Security --}}
                 <div class="col-lg-4 col-md-6">
-                    <div class="feature-card">
+                    <div class="feature-card glass">
                         <div class="icon-box" style="background: #F5F3FF; color: #8B5CF6;">
                             <i class="fas fa-lock"></i>
                         </div>
@@ -611,7 +655,7 @@
     </section>
 
     <!-- How it Works -->
-    <section class="py-5">
+    <section class="py-5" style="position: relative; z-index: 10;">
         <div class="container px-4 py-5">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
@@ -646,7 +690,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="p-5 bg-white border rounded-4 shadow-sm">
+                    <div class="p-5 bg-white border rounded-4 shadow-sm glass">
                         <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 60px;" class="mb-4">
                         <h4 class="fw-black mb-3">Save 20+ hours every month.</h4>
                         <p class="text-muted mb-4">"EduNex completely changed how we handle our 200+ students. The fee
@@ -666,7 +710,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="faq-section" style="position: relative; z-index: 10;">
         <div class="container px-4">
             <div class="text-center mb-5">
                 <span class="section-tag">Common Questions</span>
@@ -744,7 +788,7 @@
     <!-- Final CTA -->
     <section class="cta-section">
         <div class="container px-4">
-            <div class="cta-card shadow-lg animate__animated animate__fadeIn">
+            <div class="cta-card shadow-lg animate__animated animate__fadeIn glass-dark">
                 <h2 class="text-white fw-black display-5 mb-4 position-relative z-1">Ready to lead your
                     institute<br>into the digital age?</h2>
                 <p class="text-white-50 fs-5 mb-5 mx-auto position-relative z-1" style="max-width: 600px;">
@@ -759,7 +803,7 @@
         </div>
     </section>
 
-    <x-frontend-footer />
+    <x-frontend-footer/>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

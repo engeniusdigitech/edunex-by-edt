@@ -254,6 +254,8 @@
     <div class="mesh-bg">
         <div class="mesh-circle-1"></div>
         <div class="mesh-circle-2"></div>
+        <div class="mesh-circle-3"></div>
+        <div class="mesh-circle-4"></div>
     </div>
 
     <!-- Navigation -->
@@ -280,7 +282,7 @@
             
             <div class="row justify-content-center align-items-center g-4">
                 <div class="col-lg-7">
-                    <div class="plan-card recommended animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="plan-card recommended animate__animated animate__fadeInUp animate__delay-1s glass">
                         <div class="plan-badge">⭐ Recommended</div>
                         
                         <div class="d-flex justify-content-between align-items-start mb-4">
@@ -317,7 +319,7 @@
                 </div>
 
                 <div class="col-lg-5 ps-lg-5 mt-5 mt-lg-0 animate__animated animate__fadeInRight animate__delay-2s">
-                    <div class="p-4 rounded-4" style="background: rgba(79, 70, 229, 0.03); border: 1px dashed rgba(79, 70, 229, 0.2);">
+                    <div class="p-4 rounded-4 glass" style="background: rgba(79, 70, 229, 0.03); border: 1px dashed rgba(79, 70, 229, 0.2);">
                         <h4 class="fw-black mb-3">Enterprise Needs?</h4>
                         <p class="text-muted mb-4 small">Looking for multi-branch setups or custom feature development for large-scale franchises?</p>
                         <a href="{{ route('contact') }}" class="btn btn-dark btn-modern w-100 py-3">Talk to our Experts</a>

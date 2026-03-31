@@ -60,6 +60,12 @@
     </style>
 </head>
 <body class="antialiased">
+    <div class="mesh-bg">
+        <div class="mesh-circle-1"></div>
+        <div class="mesh-circle-2"></div>
+        <div class="mesh-circle-3"></div>
+        <div class="mesh-circle-4"></div>
+    </div>
 
     <!-- Navigation -->
     @include('components.frontend-navbar')
@@ -77,7 +83,7 @@
         <div class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
-                    <div class="card border-0 shadow-lg rounded-4 p-5">
+                    <div class="card border-0 shadow-lg rounded-4 p-5 glass">
                         <div class="text-center mb-5">
                             <h4 class="fw-bold"><i class="fab  text-success fa-2x mb-3"></i><br>Let's Get connected for trial</h4>
                             <p class="text-muted">Fill out these basic details. This will send a direct WhatsApp message to our enrollment team.</p>
