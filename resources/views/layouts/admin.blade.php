@@ -255,7 +255,7 @@
     <div class="container-fluid p-0" style="height:100vh;overflow:hidden;">
         <div class="row g-0" style="height:100vh;overflow:hidden;">
             <!-- Sidebar -->
-            <div class="col-md-2 sidebar d-flex flex-column h-100" id="adminSidebar">
+            <div class="col-lg-2 col-md-3 sidebar d-flex flex-column h-100" id="adminSidebar">
                 <div class="d-flex flex-column align-items-center gap-1 px-3 py-2"
                     style="border-bottom:1px solid rgba(255,255,255,0.06);text-align:center;">
                     <img src="{{ asset('images/logo.png') }}" alt="Logo"
@@ -405,7 +405,7 @@
             </div>
 
             <!-- Main Content Area -->
-            <div class="col-md-10" style="height:100vh;overflow-y:auto;position:relative;">
+            <div class="col-lg-10 col-md-9" style="height:100vh;overflow-y:auto;position:relative;">
                 <!-- Top Navbar -->
                 <nav class="navbar navbar-expand-lg top-navbar sticky-top">
                     <div class="container-fluid px-0">
