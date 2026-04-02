@@ -174,6 +174,7 @@ Route::prefix('student')->name('student.')->group(function () {
             Route::get('lectures/{liveLecture}/download', [\App\Http\Controllers\Student\LectureController::class, 'download'])->name('lectures.download');
             Route::post('notifications/{id}/read', [\App\Http\Controllers\Student\DashboardController::class, 'markAsRead'])->name('notifications.read');
             Route::post('logout', [\App\Http\Controllers\Student\AuthController::class, 'logout'])->name('logout');
+            Route::get('logout', [\App\Http\Controllers\Student\AuthController::class, 'logout']);
 
             // Leave Management (Student)
             Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
