@@ -311,6 +311,21 @@
                                     class="fas fa-calendar-check"></i> Attendance</a>
                         @endif
                     @endcan
+
+                    <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }}">
+                        <i class="fas fa-calendar-alt"></i> Leave Management
+                    </a>
+
+                    @php
+                        $user = auth()->user();
+                        $canManageStudentLeaves = $user->isInstituteAdmin() || $user->isPrincipal() || $user->isClassTeacher();
+                    @endphp
+
+                    @if($canManageStudentLeaves)
+                        <a href="{{ route('leaves.students') }}" class="{{ request()->routeIs('leaves.students') ? 'active' : '' }}">
+                            <i class="fas fa-user-clock"></i> Student Leaves
+                        </a>
+                    @endif
                     @can('manage-payments')
                         @php
                             $isFeesActive = request()->routeIs('payments.*') || 

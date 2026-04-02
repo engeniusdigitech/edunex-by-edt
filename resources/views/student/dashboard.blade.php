@@ -1054,6 +1054,11 @@
                 <div class="app-card-title">Attendance</div>
                 <div class="app-card-badge">{{ $attendancePercentage }}% Rate</div>
             </div>
+            <div class="app-card" onclick="window.location.href='{{ route('student.leaves.index') }}'">
+                <div class="app-card-icon bg-indigo"><i class="fas fa-calendar-minus"></i></div>
+                <div class="app-card-title">Leave Request</div>
+                <div class="app-card-badge">History & Apply</div>
+            </div>
         </div>
 
         <!-- Notifications (if any) -->

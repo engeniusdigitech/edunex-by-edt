@@ -685,8 +685,7 @@
                             </h2>
                             <div id="f4" class="accordion-collapse collapse" data-bs-parent="#welcomeFaq">
                                 <div class="accordion-body">
-                                    No. Unlike our competitors, we believe in supporting your growth. We don't charge
-                                    you based on student count. Enroll as many students as your institute can handle.
+                                    No. Unlike our competitors, we believe in supporting your growth.Enroll as many students as your institute can handle.
                                 </div>
                             </div>
                         </div>

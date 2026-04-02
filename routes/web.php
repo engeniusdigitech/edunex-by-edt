@@ -137,6 +137,10 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/erp-guide/pdf', [\App\Http\Controllers\ReportController::class, 'exportErpGuidePdf'])->name('erp-guide.pdf');
             }
             );
+            // Leave Management (Staff)
+            Route::get('leaves/students', [\App\Http\Controllers\LeaveRequestController::class, 'studentLeaves'])->name('leaves.students');
+            Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
+            Route::resource('leaves', \App\Http\Controllers\LeaveRequestController::class)->only(['index', 'create', 'store', 'update']);
         }
     );
 });
@@ -170,6 +174,10 @@ Route::prefix('student')->name('student.')->group(function () {
             Route::get('lectures/{liveLecture}/download', [\App\Http\Controllers\Student\LectureController::class, 'download'])->name('lectures.download');
             Route::post('notifications/{id}/read', [\App\Http\Controllers\Student\DashboardController::class, 'markAsRead'])->name('notifications.read');
             Route::post('logout', [\App\Http\Controllers\Student\AuthController::class, 'logout'])->name('logout');
+
+            // Leave Management (Student)
+            Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
+            Route::resource('leaves', \App\Http\Controllers\Student\LeaveController::class)->only(['index', 'create', 'store']);
         }
     );
 });
