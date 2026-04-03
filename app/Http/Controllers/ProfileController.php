@@ -26,13 +26,27 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isTeacher() || $user->isReceptionist()) {
+            return back()->with('error', 'You are not authorized to edit your profile details.');
         }
 
-        $request->user()->save();
+        $user->fill($request->validated());
+
+        if ($request->hasFile('profile_image')) {
+            // Delete old image if it exists
+            if ($user->profile_image) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($user->profile_image);
+            }
+            $user->profile_image = $request->file('profile_image')->store('profile_images', 'public');
+        }
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

@@ -18,6 +18,8 @@ class User extends Authenticatable
         'password',
         'institute_id',
         'role_id',
+        'profile_image',
+        'responsibilities',
     ];
 
     protected $hidden = [
@@ -88,5 +90,14 @@ class User extends Authenticatable
     public function managedBatches()
     {
         return $this->hasMany(Batch::class, 'class_teacher_id');
+    }
+
+    public function getProfileImageUrlAttribute()
+    {
+        if ($this->profile_image) {
+            return asset('storage/' . $this->profile_image);
+        }
+
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF';
     }
 }

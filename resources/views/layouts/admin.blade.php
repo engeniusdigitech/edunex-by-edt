@@ -367,6 +367,19 @@
                         <a href="{{ route('homework.index') }}"
                             class="{{ request()->routeIs('homework.*') ? 'active' : '' }}"><i class="fas fa-book-open"></i>
                             Homework</a>
+                        
+                        @if(!auth()->user()->isTeacher())
+                            <a href="{{ route('timetables.index') }}" class="{{ request()->routeIs('timetables.index') ? 'active' : '' }}">
+                                <i class="fas fa-calendar-alt"></i> Timetable
+                            </a>
+                        @endif
+                        
+                        @if(auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isInstituteAdmin())
+                            <a href="{{ route('timetables.my-schedule') }}" class="{{ request()->routeIs('timetables.my-schedule') ? 'active' : '' }}">
+                                <i class="fas fa-user-clock"></i> My Schedule
+                            </a>
+                        @endif
+
                         <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i
                                 class="fas fa-file-alt"></i> Tests & Exams</a>
                         <a href="{{ route('live-lectures.index') }}"
@@ -397,6 +410,10 @@
                         <a href="{{ route('notifications.index') }}"
                             class="{{ request()->routeIs('notifications.*') ? 'active' : '' }}"><i class="fas fa-bell"></i>
                             Notifications</a>
+
+                        <a href="{{ route('profile.edit') }}"
+                            class="{{ request()->routeIs('profile.*') ? 'active' : '' }}"><i class="fas fa-user-circle text-primary"></i>
+                            My Profile</a>
                     @endif
                 @endif
 
@@ -414,8 +431,15 @@
                         </button>
                         <span class="navbar-brand-title mb-0">@yield('title', 'Overview')</span>
                         <div class="d-flex align-items-center ms-auto">
-                            <span class="user-profile me-3 d-none d-sm-inline-block"><i
-                                    class="fas fa-user-circle me-2 text-primary"></i>{{ auth()->user()->name ?? 'Admin User' }}</span>
+                            <a href="{{ route('profile.edit') }}" class="text-decoration-none d-flex align-items-center me-3">
+                                <img src="{{ auth()->user()->profile_image_url }}" 
+                                     alt="Profile" 
+                                     class="rounded-circle border border-2 border-white shadow-sm me-2" 
+                                     style="width: 32px; height: 32px; object-fit: cover;">
+                                <span class="user-profile d-none d-sm-inline-block text-dark fw-semibold">
+                                    {{ auth()->user()->name ?? 'Admin User' }}
+                                </span>
+                            </a>
                             <form method="POST" action="{{ route('logout') }}" class="m-0">
                                 @csrf
                                 <button class="btn btn-outline-danger btn-modern btn-sm"><i

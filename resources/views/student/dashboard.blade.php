@@ -261,7 +261,29 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 7rem;
-            color: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .student-hero-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 28px;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .student-hero-img:hover {
+            transform: scale(1.05) rotate(2deg);
         }
 
         /* ── STAT CARDS ── */
@@ -1000,8 +1022,17 @@
                 title="Live Lectures">
                 <i class="fas fa-video"></i>
             </a>
-            <span class="student-name d-none d-sm-inline">{{ $student->name }}</span>
-            <div class="avatar">{{ strtoupper(substr($student->name, 0, 2)) }}</div>
+            <a href="{{ route('student.timetable.index') }}" class="notif-icon-btn d-none d-sm-flex"
+                title="Weekly Timetable">
+                <i class="fas fa-calendar-alt"></i>
+            </a>
+            <a href="{{ route('student.profile.edit') }}" class="d-flex align-items-center text-decoration-none ms-2">
+                <span class="student-name d-none d-sm-inline me-2 text-dark fw-bold">{{ $student->name }}</span>
+                <img src="{{ $student->profile_image_url }}" 
+                     alt="Profile" 
+                     class="rounded-circle border border-2 border-white shadow-sm" 
+                     style="width: 38px; height: 38px; object-fit: cover;">
+            </a>
             <form method="POST" action="{{ route('student.logout') }}" style="margin:0;">
                 @csrf
                 <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -1014,21 +1045,30 @@
 
         <!-- Hero Banner -->
         <div class="hero">
-            <div class="tag">{{ now()->format('l, d M Y') }}</div>
-            <h2>Good {{ now()->hour < 12 ? 'Morning' : (now()->hour < 17 ? 'Afternoon' : 'Evening') }},
-                {{ explode(' ', $student->name)[0] }}! 👋
-            </h2>
-            <p>Here's an overview of your academics and activity.</p>
-            @if($student->batch)
-                <div class="batch-badge">
-                    <i class="fas fa-users" style="font-size:0.7rem;opacity:.7;"></i>
-                    <strong>{{ $student->batch->name }}</strong>
-                    @if($student->batch->schedule_time)
-                        &nbsp;·&nbsp; <i class="far fa-clock" style="font-size:0.7rem;opacity:.7;"></i>
-                        {{ $student->batch->schedule_time }}
+            <div class="hero-flex">
+                <div class="hero-text-content">
+                    <div class="tag">{{ now()->format('l, d M Y') }}</div>
+                    <h2>Good {{ now()->hour < 12 ? 'Morning' : (now()->hour < 17 ? 'Afternoon' : 'Evening') }},
+                        {{ explode(' ', $student->name)[0] }}! 👋
+                    </h2>
+                    <p>Here's an overview of your academics and activity.</p>
+                    @if($student->batch)
+                        <div class="batch-badge">
+                            <i class="fas fa-users" style="font-size:0.7rem;opacity:.7;"></i>
+                            <strong>{{ $student->batch->name }}</strong>
+                            @if($student->batch->schedule_time)
+                                &nbsp;·&nbsp; <i class="far fa-clock" style="font-size:0.7rem;opacity:.7;"></i>
+                                {{ $student->batch->schedule_time }}
+                            @endif
+                        </div>
                     @endif
                 </div>
-            @endif
+                <div class="hero-avatar-content">
+                    <a href="{{ route('student.profile.edit') }}">
+                        <img src="{{ $student->profile_image_url }}" alt="Profile" class="student-hero-img">
+                    </a>
+                </div>
+            </div>
             <i class="fas fa-graduation-cap hero-icon-bg"></i>
         </div>
 
@@ -1053,6 +1093,16 @@
                 <div class="app-card-icon bg-pink"><i class="fas fa-chart-pie"></i></div>
                 <div class="app-card-title">Attendance</div>
                 <div class="app-card-badge">{{ $attendancePercentage }}% Rate</div>
+            </div>
+            <div class="app-card" onclick="window.location.href='{{ route('student.timetable.index') }}'">
+                <div class="app-card-icon bg-pink"><i class="fas fa-calendar-alt"></i></div>
+                <div class="app-card-title">Timetable</div>
+                <div class="app-card-badge">Weekly Schedule</div>
+            </div>
+            <div class="app-card" onclick="window.location.href='{{ route('student.profile.edit') }}'">
+                <div class="app-card-icon bg-amber"><i class="fas fa-user-circle"></i></div>
+                <div class="app-card-title">My Profile</div>
+                <div class="app-card-badge">View & Edit</div>
             </div>
             <div class="app-card" onclick="window.location.href='{{ route('student.leaves.index') }}'">
                 <div class="app-card-icon bg-indigo"><i class="fas fa-calendar-minus"></i></div>

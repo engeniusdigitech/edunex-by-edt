@@ -141,6 +141,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('leaves/students', [\App\Http\Controllers\LeaveRequestController::class, 'studentLeaves'])->name('leaves.students');
             Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
             Route::resource('leaves', \App\Http\Controllers\LeaveRequestController::class)->only(['index', 'create', 'store', 'update']);
+
+            // Timetable Management
+            Route::get('timetables/my-schedule', [\App\Http\Controllers\TimetableController::class, 'mySchedule'])->name('timetables.my-schedule');
+            Route::resource('timetables', \App\Http\Controllers\TimetableController::class)->only(['index', 'store', 'destroy']);
+
+            // Profile
+            Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+            Route::patch('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
         }
     );
 });
@@ -179,6 +187,13 @@ Route::prefix('student')->name('student.')->group(function () {
             // Leave Management (Student)
             Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
             Route::resource('leaves', \App\Http\Controllers\Student\LeaveController::class)->only(['index', 'create', 'store']);
+
+            // Timetable
+            Route::get('timetable', [\App\Http\Controllers\Student\TimetableController::class, 'index'])->name('timetable.index');
+
+            // Profile
+            Route::get('profile', [\App\Http\Controllers\Student\ProfileController::class, 'edit'])->name('profile.edit');
+            Route::post('profile', [\App\Http\Controllers\Student\ProfileController::class, 'update'])->name('profile.update');
         }
     );
 });
