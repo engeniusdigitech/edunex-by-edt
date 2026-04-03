@@ -3,7 +3,9 @@ const ASSETS_TO_CACHE = [
     '/student/login',
     '/build/assets/app-*.css', // Assuming Vite built assets
     '/build/assets/app-*.js',
-    '/manifest.json'
+    '/manifest.json',
+    '/icons/icon-192x192.png',
+    '/icons/icon-512x512.png'
 ];
 
 // Install Event
