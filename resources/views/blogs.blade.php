@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="EduNex Insights | Modern Education Management & Technology Blog" 
-           description="Stay updated with the latest trends in education management, institute automation, and technology insights from the EduNex team." />
+    <x-seo title="EduNex Insights | Modern Institute Management & Technology Blog" 
+           description="Stay updated with the latest trends in institute management, institute automation, and technology insights from the EduNex team." />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

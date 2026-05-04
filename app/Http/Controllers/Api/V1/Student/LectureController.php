@@ -14,7 +14,6 @@ class LectureController extends Controller
 
         // Fetch lectures for the student's batch
         $lectures = LiveLecture::where('batch_id', $student->batch_id)
-            ->with('subject')
             ->latest()
             ->get();
 
@@ -22,13 +21,13 @@ class LectureController extends Controller
             'lectures' => $lectures->map(function ($lecture) {
                 return [
                     'id' => $lecture->id,
-                    'topic' => $lecture->topic,
+                    'topic' => $lecture->title,
                     'description' => $lecture->description,
-                    'subject' => $lecture->subject->name,
-                    'start_time' => $lecture->start_time->toDateTimeString(),
-                    'end_time' => $lecture->end_time ? $lecture->end_time->toDateTimeString() : null,
+                    'subject' => $lecture->subject,
+                    'start_time' => $lecture->created_at ? $lecture->created_at->toDateTimeString() : null,
+                    'end_time' => null,
                     'status' => $lecture->status,
-                    'meeting_link' => $lecture->meeting_link,
+                    'meeting_link' => $lecture->getJitsiRoomUrl(),
                 ];
             })
         ]);

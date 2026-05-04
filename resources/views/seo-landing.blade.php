@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo 
         title="Best Institute Management Software in {{ $city }}, {{ $country }} | {{ $city }} Education System" 
-        description="EduNex is the top-rated institute management system and education management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} educational center." 
+        description="EduNex is the top-rated institute management system and institute management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} educational center." 
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <!-- Fonts -->
@@ -360,7 +360,7 @@
                         ✨ Trusted by 100+ institutes across the country
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
-                        Best Education Management System in {{ $city }}.<br><span>For Every Type of Institute in {{ $country }}.</span>
+                        Best Institute Management System in {{ $city }}.<br><span>For Every Type of Institute in {{ $country }}.</span>
                     </h1>
                     <p class="hero-subtitle ms-lg-0 animate__animated animate__fadeInUp animate__delay-1s">
                         EduNex is the most complete, intuitive, and feature-rich <strong>institute software in {{ $city }}</strong> to manage your educational center. From 
@@ -486,7 +486,7 @@
             <div class="text-center mb-5">
                 <span class="section-tag">Powerful Features</span>
                 <h2 class="section-title">Best {{ $city }} Institute Software Features</h2>
-                <p class="text-muted fs-5">Everything you need to run a modern <strong>education management</strong> business in {{ $city }}.</p>
+                <p class="text-muted fs-5">Everything you need to run a modern <strong>Institute management</strong> business in {{ $city }}.</p>
             </div>
 
             <div class="row g-4">

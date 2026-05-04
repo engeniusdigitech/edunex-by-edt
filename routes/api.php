@@ -22,5 +22,12 @@ Route::prefix('v1')->group(function () {
         // Academic Routes
         Route::get('/lectures', [\App\Http\Controllers\Api\V1\Student\LectureController::class, 'index']);
         Route::get('/notifications', [\App\Http\Controllers\Api\V1\Student\NotificationController::class, 'index']);
+        Route::get('/homework', [\App\Http\Controllers\Api\V1\Student\HomeworkController::class, 'index']);
+        Route::get('/attendance', [\App\Http\Controllers\Api\V1\Student\AttendanceController::class, 'index']);
+        Route::get('/timetable', [\App\Http\Controllers\Api\V1\Student\TimetableController::class, 'index']);
+        Route::get('/tests', [\App\Http\Controllers\Api\V1\Student\TestController::class, 'index']);
+        
+        Route::get('/leave-requests', [\App\Http\Controllers\Api\V1\Student\LeaveRequestController::class, 'index']);
+        Route::post('/leave-requests', [\App\Http\Controllers\Api\V1\Student\LeaveRequestController::class, 'store']);
     });
 });

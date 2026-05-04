@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Terms and Conditions | EduNex Education Management System" description="Review the terms and conditions for using the EduNex education platform." />
+    <x-seo title="Terms and Conditions | EduNex Institute Management System" description="Review the terms and conditions for using the EduNex institute management platform." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">

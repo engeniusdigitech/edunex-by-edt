@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Best Education Management Software & Institute ERP Vision | EduNex" description="Learn about the mission driving EduNex, the top education management system and institute management software designed for modern educational centers." />
+    <x-seo title="Best Institute Management Software & Institute ERP Vision | EduNex" description="Learn about the mission driving EduNex, the top institute management system and institute management software designed for modern educational centers." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -180,9 +180,9 @@
                 </div>
                 <div class="col-lg-6 animate__animated animate__fadeInRight ps-lg-5">
                     <span class="section-tag">Our History</span>
-                    <h2 class="fw-black mb-4 display-6" style="letter-spacing: -2px;">Best Education Management System Vision.</h2>
+                    <h2 class="fw-black mb-4 display-6" style="letter-spacing: -2px;">Best Institute Management System Vision.</h2>
                     <p class="text-muted mb-4 fs-5 fw-500">At <strong>Engenius Digitech</strong>, we observed the administrative struggles of hundreds of coaching centers, academies, and schools. Manual fee tracking, fragmented attendance logs, and poor student communication were holding educators back.</p>
-                    <p class="text-muted mb-4 fw-500">We decided to build the ultimate <strong>education management software</strong> that solves these problems once and for all. EduNex was crafted with a "premium-first" approach — ensuring that enterprise-grade power is accessible to every institute, regardless of size.</p>
+                    <p class="text-muted mb-4 fw-500">We decided to build the ultimate <strong>institute management software</strong> that solves these problems once and for all. EduNex was crafted with a "premium-first" approach — ensuring that enterprise-grade power is accessible to every institute, regardless of size.</p>
 
                     <div class="row g-4 mt-3">
                         <div class="col-sm-6">

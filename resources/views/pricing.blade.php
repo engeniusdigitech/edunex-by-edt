@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Best Education Management Software Pricing & Institute ERP Plans | EduNex" description="Scalable, transparent pricing for the #1 institute management system. Get a custom quote for our premier education management software." />
+    <x-seo title="Best Institute Management Software Pricing & Institute ERP Plans | EduNex" description="Scalable, transparent pricing for the #1 institute management system. Get a custom quote for our premier institute management software." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

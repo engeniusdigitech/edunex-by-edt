@@ -1,7 +1,7 @@
 @props([
-    'title'       => 'Best Education Management Software & Institute ERP | EduNex',
-    'description' => 'EduNex is the #1 education management system and institute management software. Automate fees, attendance, and student portals with our premium institute management ERP.',
-    'keywords'    => 'education management software, institute management system, best institute management software, coaching center software, training institute software, school software, student management system, edunex',
+    'title'       => 'Best Institute Management Software & Institute ERP | EduNex',
+    'description' => 'EduNex is the #1 institute management system and institute management software. Automate fees, attendance, and student portals with our premium institute management ERP.',
+    'keywords'    => 'institute management software, institute management system, best institute management software, coaching center software, training institute software, school software, student management system, edunex',
     'image'       => null,
 ])
 
@@ -74,7 +74,7 @@
         "priceCurrency": "USD",
         "description": "Free 7-day trial available for schools and institutes."
       },
-      "description": "Leading institute management software and education management system. EduNex automates student attendance, fee tracking, and provides a premium student portal for modern educational centers."
+      "description": "Leading institute management software and institute management system. EduNex automates student attendance, fee tracking, and provides a premium student portal for modern educational centers."
     },
     {
       "@@type": "BreadcrumbList",
