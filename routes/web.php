@@ -61,10 +61,10 @@ Route::get('/refund-policy', function () {
 
 // SEO Landing Pages, Sitemap & Robots
 Route::get('/robots.txt', function () {
-    return response()->view('robots')
+    $content = view('robots')->render();
+    return response($content, 200)
         ->header('Content-Type', 'text/plain')
-        ->header('X-Robots-Tag', 'index, follow')
-        ->header('Cache-Control', 'public, max-age=3600');
+        ->header('X-Robots-Tag', 'index, follow');
 });
 Route::get('/institute-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
 Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
