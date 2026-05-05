@@ -344,6 +344,8 @@
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.5s ease;
+            max-width: 580px;
+            margin: 0 auto;
         }
 
         .desktop-mockup {
@@ -364,14 +366,26 @@
 
         .mobile-mockup {
             position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 200px;
-            border-radius: 30px;
+            bottom: -20px;
+            right: -40px;
+            width: 220px;
+            border-radius: 32px;
             box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.3);
-            border: 6px solid #1e293b;
+            border: 8px solid #1e293b;
             z-index: 5;
             background: #1e293b;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        .mobile-mockup img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .display-wrapper:hover .mobile-mockup {
+            transform: translateY(-10px) rotate(-2deg);
         }
 
         .floating-info-card {
@@ -383,8 +397,8 @@
             animation: float 5s ease-in-out infinite;
         }
 
-        .card-1 { top: 20%; left: -40px; animation-delay: 0s; }
-        .card-2 { top: 10%; left: -20px; animation-delay: 1s; }
+        .card-1 { top: 15%; left: -20px; animation-delay: 0s; }
+        .card-2 { top: 10%; left: -10px; animation-delay: 1s; }
 
         .info-icon {
             width: 40px;
@@ -427,6 +441,9 @@
                 margin: 40px auto 0;
                 display: block;
             }
+        }
+    </style>
+
     @verbatim
     <script type="application/ld+json">
     {
@@ -545,7 +562,7 @@
 
                 <div class="col-lg-6">
                     <div class="portal-showcase animate__animated animate__zoomIn animate__delay-1s">
-                        <div class="d-flex justify-content-center justify-content-lg-end mb-4">
+                        <div class="d-flex justify-content-center mb-4">
                             <div class="portal-nav glass">
                                 <button class="portal-nav-btn active" onclick="switchPortal('admin')">Admin Hub</button>
                                 <button class="portal-nav-btn" onclick="switchPortal('student')">Student App</button>
@@ -562,7 +579,7 @@
                                         <img src="{{ asset('images/hero-banner-mobile.png') }}" alt="EduNex Mobile Admin">
                                     </div>
                                     <!-- Floating Info Cards -->
-                                    <div class="floating-info-card card-1 d-none d-xl-block glass">
+                                    <div class="floating-info-card card-1 d-none d-md-block glass">
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="info-icon bg-success bg-opacity-10 text-success"><i class="fas fa-check-circle"></i></div>
                                             <div>
@@ -582,7 +599,7 @@
                                     <div class="mobile-mockup">
                                         <img src="{{ asset('images/hero-banner-2-mobile.png') }}" alt="EduNex Student App">
                                     </div>
-                                    <div class="floating-info-card card-2 d-none d-xl-block glass">
+                                    <div class="floating-info-card card-2 d-none d-md-block glass">
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="info-icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-receipt"></i></div>
                                             <div>
