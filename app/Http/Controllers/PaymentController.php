@@ -12,23 +12,29 @@ class PaymentController extends Controller
 {
     public function index(Request $request)
     {
-        $query = \App\Models\StudentFee::with(['student', 'feeStructure.category']);
+        $query = \App\Models\StudentFee::with(['student.batch', 'feeStructure.category']);
 
         if ($request->filled('status')) {
-            $statusMap = [
-                'paid' => 'paid',
-                'pending' => 'unpaid',
-                'partial' => 'partial'
-            ];
+            $query->where('status', $request->status);
+        }
 
-            if (isset($statusMap[$request->status])) {
-                $query->where('status', $statusMap[$request->status]);
-            }
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->whereHas('student', function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('batch_id')) {
+            $query->whereHas('student', function($q) use ($request) {
+                $q->where('batch_id', $request->batch_id);
+            });
         }
 
         $fees = $query->latest()->paginate(15);
+        $batches = \App\Models\Batch::all();
 
-        return view('payments.index', compact('fees'));
+        return view('payments.index', compact('fees', 'batches'));
     }
 
     public function create()

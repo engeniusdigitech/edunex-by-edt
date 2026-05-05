@@ -140,34 +140,63 @@ class ReportController extends Controller
 
     public function defaulters(Request $request)
     {
-        $students = Student::with(['payments', 'batch'])->where('is_active', true)->get();
-        // Since we don't have a direct 'fee_assigned' to compare easily by default without logic, 
-        // we'll assume a basic logic: Check if they haven't made a payment this month
-        $defaulters = [];
-        $currentMonth = date('Y-m');
-
-        foreach ($students as $student) {
-            $hasPaidThisMonth = $student->payments()->where('payment_date', 'like', $currentMonth . '%')->exists();
-            if (!$hasPaidThisMonth) {
-                $defaulters[] = $student;
-            }
+        $user = auth()->user();
+        if ($user->isTeacher()) {
+            $batches = Batch::where('class_teacher_id', $user->id)->where('is_active', true)->get();
+        } else {
+            $batches = Batch::all();
         }
 
-        return view('reports.defaulters', compact('defaulters', 'currentMonth'));
+        $batchId = $request->get('batch_id');
+        $month = $request->get('month', date('Y-m'));
+        $search = $request->get('search');
+
+        $query = Student::where('is_active', true)
+            ->whereDoesntHave('payments', function ($q) use ($month) {
+                $q->where('payment_date', 'like', $month . '%');
+            });
+
+        if ($batchId) {
+            $query->where('batch_id', $batchId);
+        }
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        $defaulters = $query->with(['batch', 'institute'])->get();
+        $currentMonth = $month;
+
+        return view('reports.defaulters', compact('defaulters', 'currentMonth', 'batches', 'batchId', 'search'));
     }
 
     public function exportDefaultersPdf(Request $request)
     {
-        $students = Student::with(['payments', 'batch'])->where('is_active', true)->get();
-        $defaulters = [];
-        $currentMonth = date('Y-m');
+        $batchId = $request->get('batch_id');
+        $month = $request->get('month', date('Y-m'));
+        $search = $request->get('search');
 
-        foreach ($students as $student) {
-            $hasPaidThisMonth = $student->payments()->where('payment_date', 'like', $currentMonth . '%')->exists();
-            if (!$hasPaidThisMonth) {
-                $defaulters[] = $student;
-            }
+        $query = Student::where('is_active', true)
+            ->whereDoesntHave('payments', function ($q) use ($month) {
+                $q->where('payment_date', 'like', $month . '%');
+            });
+
+        if ($batchId) {
+            $query->where('batch_id', $batchId);
         }
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        $defaulters = $query->with(['batch', 'institute'])->get();
+        $currentMonth = $month;
 
         $pdf = Pdf::loadView('reports.pdf.defaulters', compact('defaulters', 'currentMonth'));
         return $pdf->download('Fee_Defaulters_Report_' . $currentMonth . '.pdf');

@@ -9,10 +9,57 @@
         <p class="text-muted small mb-0">Monitor unpaid fees and send automated reminders</p>
     </div>
     @if(count($defaulters) > 0)
-    <a href="{{ route('reports.defaulters.pdf') }}" class="btn btn-danger btn-modern shadow-sm">
+    <a href="{{ route('reports.defaulters.pdf', request()->all()) }}" class="btn btn-danger btn-modern shadow-sm">
         <i class="fas fa-file-pdf me-2"></i> Download PDF
     </a>
     @endif
+</div>
+
+@if(session('success'))
+<div class="alert alert-success border-0 shadow-sm rounded-4 mb-4 animate__animated animate__fadeIn">
+    <i class="fas fa-check-circle me-2"></i> {{ session('success') }}
+</div>
+@endif
+
+@if(session('error'))
+<div class="alert alert-danger border-0 shadow-sm rounded-4 mb-4 animate__animated animate__shakeX">
+    <i class="fas fa-exclamation-circle me-2"></i> {{ session('error') }}
+</div>
+@endif
+
+<!-- Filter Bar -->
+<div class="glass rounded-4 p-4 mb-4 border-0 shadow-sm">
+    <form action="{{ route('reports.defaulters') }}" method="GET" class="row g-3 align-items-end">
+        <div class="col-md-4">
+            <label class="form-label small fw-bold text-muted text-uppercase" style="letter-spacing: 1px;">Search Student</label>
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 text-muted"><i class="fas fa-search"></i></span>
+                <input type="text" name="search" class="form-control border-start-0 ps-0" placeholder="Name or Email..." value="{{ request('search') }}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted text-uppercase" style="letter-spacing: 1px;">Batch</label>
+            <select name="batch_id" class="form-select">
+                <option value="">All Batches</option>
+                @foreach($batches as $batch)
+                    <option value="{{ $batch->id }}" {{ request('batch_id') == $batch->id ? 'selected' : '' }}>
+                        {{ $batch->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted text-uppercase" style="letter-spacing: 1px;">Month</label>
+            <input type="month" name="month" class="form-control" value="{{ $currentMonth }}">
+        </div>
+        <div class="col-md-2">
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-modern">
+                    <i class="fas fa-filter me-2"></i> Filter
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <div class="card border-0 bg-white">
@@ -73,7 +120,7 @@
                             </button>
                             @endif
                             
-                            <form action="{{ route('reports.notify', $student->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('reports.notify', $student->id) }}" method="POST" class="d-inline" onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').innerHTML='<i class=\'fas fa-spinner fa-spin me-1\'></i> Sending...';">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-outline-primary rounded-pill px-3 py-2 shadow-sm fw-medium">
                                     <i class="fas fa-bell me-1"></i> Send Alert

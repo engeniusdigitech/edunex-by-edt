@@ -17,6 +17,44 @@
     </div>
 @endif
 
+<!-- Filters -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+        <form action="{{ route('tests.index') }}" method="GET" class="row g-2 align-items-center">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" name="search" class="form-control bg-light border-0" placeholder="Search by title..." value="{{ request('search') }}">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <select name="batch_id" class="form-select bg-light border-0">
+                    <option value="">All Batches</option>
+                    @foreach($batches as $batch)
+                        <option value="{{ $batch->id }}" {{ request('batch_id') == $batch->id ? 'selected' : '' }}>{{ $batch->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="subject_id" class="form-select bg-light border-0">
+                    <option value="">All Subjects</option>
+                    @foreach($subjects as $subject)
+                        <option value="{{ $subject->id }}" {{ request('subject_id') == $subject->id ? 'selected' : '' }}>{{ $subject->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary w-100 btn-modern">Filter</button>
+                    @if(request()->anyFilled(['search', 'batch_id', 'subject_id']))
+                        <a href="{{ route('tests.index') }}" class="btn btn-light border w-100 btn-modern">Clear</a>
+                    @endif
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
     <div class="table-responsive">
         <table class="table table-hover align-middle mb-0">
@@ -96,5 +134,8 @@
             </tbody>
         </table>
     </div>
+</div>
+<div class="mt-4 px-2">
+    {{ $tests->links() }}
 </div>
 @endsection

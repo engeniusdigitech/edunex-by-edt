@@ -108,65 +108,91 @@
         }
 
         /* ── IMPACT STATS ── */
-        /* ── IMPACT STATS ── */
+        /* ── IMPACT STATS REDESIGN ── */
         .stats-section {
             padding: 80px 0;
             position: relative;
+            z-index: 20;
         }
 
-        .stats-bar {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px;
-            padding: 60px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.05);
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-item {
+        .stat-metric-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 28px;
+            padding: 36px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            height: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             position: relative;
+            overflow: hidden;
         }
 
-        @media (min-width: 768px) {
-            .stat-item:not(:last-child)::after {
-                content: '';
-                position: absolute;
-                right: -12px;
-                top: 20%;
-                height: 60%;
-                width: 1px;
-                background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.08), transparent);
-            }
+        .stat-metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: transparent;
+            transition: background 0.3s ease;
         }
 
-        .stat-number {
-            font-size: clamp(2.5rem, 4vw, 3.8rem);
-            font-weight: 950;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-            letter-spacing: -3px;
+        .stat-metric-card:hover {
+            transform: translateY(-10px);
+            background: #ffffff;
+            box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.1);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        .stat-metric-card:hover::before {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .stat-icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-metric-card:hover .stat-icon-box {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Stat Icon Variants */
+        .stat-i-indigo { background: #EEF2FF; color: #4F46E5; }
+        .stat-i-pink { background: #FDF2F8; color: #DB2777; }
+        .stat-i-amber { background: #FFF7ED; color: #F59E0B; }
+        .stat-i-cyan { background: #ECFEFF; color: #0891B2; }
+
+        .stat-number-text {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0F172A;
             line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -1.5px;
         }
 
-        .stat-label {
-            color: var(--text-muted);
+        .stat-label-text {
             font-size: 0.85rem;
             font-weight: 700;
+            color: #64748B;
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .stat-icon {
-            font-size: 1.2rem;
-            color: var(--primary-light);
-            margin-bottom: 15px;
-            opacity: 0.7;
+            letter-spacing: 1.5px;
+            margin-bottom: 0;
         }
 
         /* ── FEATURES ── */
@@ -621,35 +647,41 @@
     <!-- Impact Stats -->
     <section class="stats-section">
         <div class="container px-4">
-            <div class="stats-bar animate__animated animate__fadeInUp">
-                <div class="row g-4 g-md-0">
-                    <div class="col-6 col-md-3">
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-school"></i></div>
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Institutes</div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <div class="stat-metric-card">
+                        <div class="stat-icon-box stat-i-indigo">
+                            <i class="fas fa-school"></i>
                         </div>
+                        <div class="stat-number-text">100+</div>
+                        <p class="stat-label-text">Institutes</p>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-number">50K+</div>
-                            <div class="stat-label">Students</div>
+                </div>
+                <div class="col-6 col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="stat-metric-card">
+                        <div class="stat-icon-box stat-i-pink">
+                            <i class="fas fa-users"></i>
                         </div>
+                        <div class="stat-number-text">50K+</div>
+                        <p class="stat-label-text">Students</p>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="stat-number">99.9%</div>
-                            <div class="stat-label">Uptime</div>
+                </div>
+                <div class="col-6 col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                    <div class="stat-metric-card">
+                        <div class="stat-icon-box stat-i-amber">
+                            <i class="fas fa-bolt"></i>
                         </div>
+                        <div class="stat-number-text">99.9%</div>
+                        <p class="stat-label-text">Uptime</p>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-headset"></i></div>
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Support</div>
+                </div>
+                <div class="col-6 col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="stat-metric-card">
+                        <div class="stat-icon-box stat-i-cyan">
+                            <i class="fas fa-headset"></i>
                         </div>
+                        <div class="stat-number-text">24/7</div>
+                        <p class="stat-label-text">Support</p>
                     </div>
                 </div>
             </div>

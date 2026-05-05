@@ -12,12 +12,29 @@ use Illuminate\Validation\Rule;
 
 class StaffController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Only get users who are in the Teacher or Receptionist roles
-        $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->pluck('id');
-        $staffMembers = User::whereIn('role_id', $roles)->latest()->paginate(10);
-        return view('staff.index', compact('staffMembers'));
+        $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
+        $roleIds = $roles->pluck('id');
+        
+        $query = User::whereIn('role_id', $roleIds)
+                    ->where('id', '!=', auth()->id());
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('role_id')) {
+            $query->where('role_id', $request->role_id);
+        }
+
+        $staffMembers = $query->latest()->paginate(15);
+
+        return view('staff.index', compact('staffMembers', 'roles'));
     }
 
     public function create()

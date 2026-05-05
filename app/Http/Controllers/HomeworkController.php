@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeworkController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user();
         $query = Homework::with(['batch', 'subject']);
@@ -17,10 +17,28 @@ class HomeworkController extends Controller
         if ($user->isTeacher()) {
             $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id');
             $query->whereIn('batch_id', $batchIds);
+            $batches = $user->batches()->where('is_active', true)->get();
+        } else {
+            $batches = Batch::where('is_active', true)->get();
         }
 
-        $homeworks = $query->latest()->get();
-        return view('homework.index', compact('homeworks'));
+        if ($request->filled('batch_id')) {
+            $query->where('batch_id', $request->batch_id);
+        }
+
+        if ($request->filled('subject_id')) {
+            $query->where('subject_id', $request->subject_id);
+        }
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('title', 'like', "%{$search}%");
+        }
+
+        $homeworks = $query->latest()->paginate(15);
+        $subjects = Subject::where('is_active', true)->get();
+
+        return view('homework.index', compact('homeworks', 'batches', 'subjects'));
     }
 
     public function create()

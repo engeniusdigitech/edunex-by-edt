@@ -19,6 +19,36 @@
 </div>
 @endif
 
+<!-- Filters -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+        <form action="{{ route('staff.index') }}" method="GET" class="row g-2 align-items-center">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" name="search" class="form-control bg-light border-0" placeholder="Search by name or email..." value="{{ request('search') }}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <select name="role_id" class="form-select bg-light border-0">
+                    <option value="">All Roles</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary w-100 btn-modern">Filter</button>
+                    @if(request()->anyFilled(['search', 'role_id']))
+                        <a href="{{ route('staff.index') }}" class="btn btn-light border w-100 btn-modern">Clear</a>
+                    @endif
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="card border-0 bg-white">
     <div class="card-body p-0">
         <div class="table-responsive">

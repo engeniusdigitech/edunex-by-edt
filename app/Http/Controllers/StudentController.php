@@ -13,11 +13,27 @@ class StudentController extends Controller
      * Display a listing of the resource.
      * Note: institute_id is automatically handled by the TenantScope
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::with('batch')->latest()->paginate(15);
+        $query = Student::with('batch');
 
-        return view('students.index', compact('students'));
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('phone', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('batch_id')) {
+            $query->where('batch_id', $request->batch_id);
+        }
+
+        $students = $query->latest()->paginate(15);
+        $batches = Batch::all();
+
+        return view('students.index', compact('students', 'batches'));
     }
 
     /**

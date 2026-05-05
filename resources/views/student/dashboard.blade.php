@@ -781,7 +781,14 @@
             color: var(--indigo);
             font-size: 0.8rem;
             flex-shrink: 0;
+            transition: all 0.3s ease;
         }
+
+        .notif-ico.warning { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
+        .notif-ico.danger { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+        .notif-ico.success { background: rgba(16, 185, 129, 0.15); color: var(--emerald); }
+        .notif-ico.primary { background: rgba(99, 102, 241, 0.15); color: var(--indigo); }
+        .notif-ico.info { background: rgba(99, 102, 241, 0.15); color: var(--indigo); }
 
         .notif-title {
             font-size: 0.82rem;
@@ -1121,7 +1128,9 @@
                 </div>
                 @foreach($student->unreadNotifications as $notification)
                     <div class="notif-row">
-                        <div class="notif-ico"><i class="{{ $notification->data['icon'] ?? 'fas fa-info-circle' }}"></i></div>
+                        <div class="notif-ico {{ $notification->data['color'] ?? 'primary' }}">
+                            <i class="{{ $notification->data['icon'] ?? 'fas fa-info-circle' }}"></i>
+                        </div>
                         <div style="flex:1;">
                             <div class="notif-title">{{ $notification->data['title'] }}</div>
                             <div class="notif-msg">{{ $notification->data['message'] }}</div>

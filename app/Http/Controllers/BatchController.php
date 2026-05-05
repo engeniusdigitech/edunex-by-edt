@@ -7,9 +7,17 @@ use App\Models\Batch;
 
 class BatchController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $batches = Batch::latest()->paginate(10);
+        $query = Batch::with('classTeacher');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('name', 'like', "%{$search}%");
+        }
+
+        $batches = $query->latest()->paginate(15);
+
         return view('batches.index', compact('batches'));
     }
 

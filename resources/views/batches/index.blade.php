@@ -19,6 +19,28 @@
 </div>
 @endif
 
+<!-- Filters -->
+<div class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body p-3">
+        <form action="{{ route('batches.index') }}" method="GET" class="row g-2 align-items-center">
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" name="search" class="form-control bg-light border-0" placeholder="Search batches by name..." value="{{ request('search') }}">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary w-100 btn-modern">Filter</button>
+                    @if(request()->filled('search'))
+                        <a href="{{ route('batches.index') }}" class="btn btn-light border w-100 btn-modern">Clear</a>
+                    @endif
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="card border-0 bg-white shadow-sm rounded-4">
     <div class="card-body p-0">
         <div class="table-responsive">

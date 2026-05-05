@@ -21,28 +21,49 @@
     <!-- Filters -->
     <div class="card border-0 shadow-sm rounded-4 mb-4">
         <div class="card-body p-3">
-            <div class="d-flex flex-wrap align-items-center gap-2">
-                <span class="text-muted small fw-bold text-uppercase me-2" style="letter-spacing: 0.5px;">Filter by
-                    Status:</span>
-                <a href="{{ route('payments.index') }}"
-                    class="btn btn-sm btn-modern px-3 {{ !request()->filled('status') ? 'btn-primary' : 'btn-light border text-muted' }}">
-                    All
-                </a>
-                <a href="{{ route('payments.index', ['status' => 'paid']) }}"
-                    class="btn btn-sm btn-modern px-3 {{ request('status') == 'paid' ? 'btn-success' : 'btn-light border text-muted' }}">
-                    <i class="fas fa-check-circle me-1"></i> Paid
-                </a>
-                <a href="{{ route('payments.index', ['status' => 'partial']) }}"
-                    class="btn btn-sm btn-modern px-3 {{ request('status') == 'partial' ? 'btn-warning' : 'btn-light border text-muted' }}">
-                    <i class="fas fa-adjust me-1"></i> Partially Paid
-                </a>
-                <a href="{{ route('payments.index', ['status' => 'pending']) }}"
-                    class="btn btn-sm btn-modern px-3 {{ request('status') == 'pending' ? 'btn-danger' : 'btn-light border text-muted' }}">
-                    <i class="fas fa-clock me-1"></i> Pending
-                </a>
-            </div>
+            <form action="{{ route('payments.index') }}" method="GET">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-0"><i class="fas fa-search text-muted"></i></span>
+                            <input type="text" name="search" class="form-control bg-light border-0" placeholder="Search student name..." value="{{ request('search') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select name="batch_id" class="form-select bg-light border-0">
+                            <option value="">All Batches</option>
+                            @foreach($batches as $batch)
+                                <option value="{{ $batch->id }}" {{ request('batch_id') == $batch->id ? 'selected' : '' }}>{{ $batch->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="hidden" name="status" id="filterStatus" value="{{ request('status') }}">
+                            <div class="btn-group btn-group-sm">
+                                <button type="button" onclick="setStatus('')" class="btn btn-modern {{ !request()->filled('status') ? 'btn-primary' : 'btn-light border' }}">All</button>
+                                <button type="button" onclick="setStatus('paid')" class="btn btn-modern {{ request('status') == 'paid' ? 'btn-success' : 'btn-light border' }}">Paid</button>
+                                <button type="button" onclick="setStatus('partial')" class="btn btn-modern {{ request('status') == 'partial' ? 'btn-warning' : 'btn-light border' }}">Partial</button>
+                                <button type="button" onclick="setStatus('pending')" class="btn btn-modern {{ request('status') == 'pending' ? 'btn-danger' : 'btn-light border' }}">Pending</button>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-sm px-3 btn-modern">Apply</button>
+                            @if(request()->anyFilled(['search', 'batch_id', 'status']))
+                                <a href="{{ route('payments.index') }}" class="btn btn-light btn-sm border px-3 btn-modern">Clear</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+
+    <script>
+        function setStatus(status) {
+            document.getElementById('filterStatus').value = status;
+            // Optionally auto-submit or just let them click Apply
+            // document.forms[0].submit(); 
+        }
+    </script>
 
     @if(session('success'))
         <div
