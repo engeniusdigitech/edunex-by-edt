@@ -525,7 +525,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
                     <div class="hero-badge animate__animated animate__fadeInDown">
-                        <span class="me-2">✨</span> Trusted by 100+ institutes nationwide
+                        <span class="me-2">✨</span> Trusted by 100+ institutes
                     </div>
                     <h1 class="hero-title animate__animated animate__fadeInUp">
                         The Smarter Way to<br>
