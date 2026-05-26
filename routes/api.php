@@ -18,6 +18,7 @@ Route::prefix('v1')->group(function () {
         // Fee Routes
         Route::get('/fees', [\App\Http\Controllers\Api\V1\Student\FeeController::class, 'index']);
         Route::get('/fees/{fee}', [\App\Http\Controllers\Api\V1\Student\FeeController::class, 'show']);
+        Route::post('/fees/{fee}/checkout-link', [\App\Http\Controllers\Api\V1\Student\FeeController::class, 'checkoutLink']);
 
         // Academic Routes
         Route::get('/lectures', [\App\Http\Controllers\Api\V1\Student\LectureController::class, 'index']);

@@ -10,7 +10,7 @@
 
         /* Header */
         .header {
-            background: #4F46E5;
+            background: #2563EB;
             color: white;
             padding: 22px 28px;
             border-radius: 0 0 12px 12px;
@@ -36,7 +36,7 @@
         .stat-sub { font-size: 8px; color: #94A3B8; margin-top: 3px; }
         .green { color: #10B981; }
         .red { color: #EF4444; }
-        .indigo { color: #6366F1; }
+        .indigo { color: #0EA5E9; }
         .amber { color: #F59E0B; }
 
         /* Progress bar */
@@ -78,7 +78,7 @@
         .badge-avg     { background: #FEF3C7; color: #92400E; }
         .badge-fail    { background: #FEE2E2; color: #991B1B; }
         .badge-pending { background: #F1F5F9; color: #64748B; }
-        .badge-online  { background: #EDE9FE; color: #4C1D95; }
+        .badge-online  { background: #CCFBF1; color: #4C1D95; }
         .badge-cash    { background: #D1FAE5; color: #065F46; }
 
         /* Footer */

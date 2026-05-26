@@ -2,7 +2,9 @@
     <div class="container">
         <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center mb-0 text-decoration-none"
             style="padding: 0;">
-            <img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" class="img-fluid" style="max-height: 65px;">
+            <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo" class="img-fluid" style="max-height: 75px;">
+            <img src="{{ asset('images/logo-name.png') }}" alt="EduNex Logo" class="img-fluid" style="max-height: 48px; margin-left: 10px;">
+
         </a>
         
         <button class="navbar-toggler custom-toggler border-0 shadow-none p-2" type="button" 
@@ -85,7 +87,7 @@
             
             {{-- Mobile Footer Info --}}
             <div class="d-lg-none mt-auto p-4 text-center">
-                <p class="text-muted small mb-0">© {{ date('Y') }} EduNex. Best Institute Management Software</p>
+                <p class="text-muted small mb-0">© {{ date('Y') }} EduNex. Best Institute and School Management Software</p>
             </div>
         </div>
     </div>
@@ -139,4 +141,4 @@
         window.addEventListener('scroll', handleScroll);
         handleScroll();
     });
-</script>
+</script>

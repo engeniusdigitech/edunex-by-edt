@@ -28,46 +28,70 @@
             overflow: hidden;
         }
 
+        .hero-badge-container {
+            margin-bottom: 26px;
+        }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
+            gap: 10px;
+            padding: 8px 18px;
+            background: rgba(27, 117, 215, 0.08);
             color: var(--primary-color);
             border-radius: 100px;
-            font-size: 0.8rem;
+            font-size: 0.825rem;
             font-weight: 700;
-            margin-bottom: 28px;
-            border: 1px solid rgba(79, 70, 229, 0.15);
-            box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.2);
+            border: 1px solid rgba(27, 117, 215, 0.18);
+            box-shadow: 0 10px 30px -10px rgba(27, 117, 215, 0.12);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+        }
+
+        .badge-dot::after {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(124, 209, 55, 0.45);
+            animation: badge-pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes badge-pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.2); opacity: 0; }
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4.2rem);
-            font-weight: 950;
-            line-height: 1.05;
-            letter-spacing: -3px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.035em;
             margin-bottom: 28px;
             color: #0f172a;
         }
 
         .hero-title span {
-            display: block;
-            background: linear-gradient(135deg, #4f46e5 0%, #ec4899 50%, #f59e0b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 10px 20px rgba(79, 70, 229, 0.15));
+            display: inline-block;
+            color: var(--primary-color);
+            filter: drop-shadow(0 8px 16px rgba(27, 117, 215, 0.08));
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
-            color: #64748b;
-            margin-bottom: 44px;
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 40px;
             max-width: 580px;
-            line-height: 1.75;
+            line-height: 1.8;
             font-weight: 400;
         }
 
@@ -76,8 +100,7 @@
             position: absolute;
             z-index: -1;
             pointer-events: none;
-            opacity: 0.5;
-            filter: blur(2px);
+            opacity: 0.4;
         }
 
         .shape-1 { top: 15%; left: 5%; animation: float 6s ease-in-out infinite; }
@@ -90,21 +113,22 @@
         }
 
         .category-pill {
-            background: rgba(255, 255, 255, 0.6) !important;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(0, 0, 0, 0.05) !important;
-            color: #475569 !important;
+            background: rgba(27, 117, 215, 0.04) !important;
+            border: 1px solid rgba(27, 117, 215, 0.09) !important;
+            color: #334155 !important;
             font-weight: 600 !important;
-            padding: 8px 16px !important;
-            font-size: 0.75rem !important;
-            transition: all 0.3s ease;
+            padding: 8px 18px !important;
+            font-size: 0.78rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .category-pill:hover {
-            background: #fff !important;
+            background: var(--primary-color) !important;
             border-color: var(--primary-color) !important;
-            color: var(--primary-color) !important;
+            color: #ffffff !important;
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(27, 117, 215, 0.15);
         }
 
         /* ── IMPACT STATS ── */
@@ -116,10 +140,8 @@
         }
 
         .stat-metric-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
             border-radius: 28px;
             padding: 36px 24px;
             display: flex;
@@ -146,11 +168,11 @@
             transform: translateY(-10px);
             background: #ffffff;
             box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.1);
-            border-color: rgba(79, 70, 229, 0.2);
+            border-color: rgba(37, 99, 235, 0.2);
         }
 
         .stat-metric-card:hover::before {
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: var(--primary-color);
         }
 
         .stat-icon-box {
@@ -172,8 +194,8 @@
         }
 
         /* Stat Icon Variants */
-        .stat-i-indigo { background: #EEF2FF; color: #4F46E5; }
-        .stat-i-pink { background: #FDF2F8; color: #DB2777; }
+        .stat-i-indigo { background: rgba(27, 117, 215, 0.08); color: var(--primary-color); }
+        .stat-i-pink { background: rgba(124, 209, 55, 0.08); color: var(--secondary-color); }
         .stat-i-amber { background: #FFF7ED; color: #F59E0B; }
         .stat-i-cyan { background: #ECFEFF; color: #0891B2; }
 
@@ -284,7 +306,7 @@
         }
 
         .accordion-button:not(.collapsed) {
-            background: #EEF2FF;
+            background: #EFF6FF;
             color: var(--primary-color);
         }
 
@@ -315,7 +337,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.1), transparent 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 70%);
         }
 
 
@@ -349,7 +371,7 @@
         .portal-nav-btn.active {
             background: var(--primary-color);
             color: #fff;
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
         }
 
         .portal-display {
@@ -381,14 +403,7 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
-        .glass-reflection {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
-            pointer-events: none;
-            z-index: 2;
-            border-radius: 24px;
-        }
+
 
         .mobile-mockup {
             position: absolute;
@@ -423,7 +438,7 @@
             animation: float 5s ease-in-out infinite;
         }
 
-        .card-1 { top: 15%; left: -20px; animation-delay: 0s; }
+        .card-1 { top: 75%; left: -20px; animation-delay: 0s; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
         .card-2 { top: 10%; left: -10px; animation-delay: 1s; }
 
         .info-icon {
@@ -533,7 +548,7 @@
         <div class="floating-shape shape-1">
             <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="60" cy="60" r="60" fill="url(#paint0_linear_hero)" fill-opacity="0.1"/>
-                <defs><linearGradient id="paint0_linear_hero" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs>
+                <defs><linearGradient id="paint0_linear_hero" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#1B75D7"/><stop offset="1" stop-color="#7CD137"/></linearGradient></defs>
             </svg>
         </div>
         <div class="floating-shape shape-2">
@@ -550,19 +565,21 @@
         <div class="container px-4">
             <div class="row align-items-center">
                 <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
-                    <div class="hero-badge animate__animated animate__fadeInDown">
-                        <span class="me-2">✨</span> Trusted by 100+ institutes
+                    <div class="hero-badge-container animate__animated animate__fadeInDown">
+                        <div class="hero-badge">
+                            <span class="badge-dot"></span>
+                            <span class="badge-text">Trusted by 100+ Institutes Worldwide</span>
+                        </div>
                     </div>
-                    <h1 class="hero-title animate__animated animate__fadeInUp">
-                        The Smarter Way to<br>
-                        <span>Manage Your Institute.</span>
-                    </h1>
+                    <h1 class="hero-title animate__animated animate__fadeInUp animate__delay-0.5s">
+                        Revolutionize Your Institute with <span><img src="{{ asset('images/logo-name.png') }}" alt="EduNex" style="height: 85px;" class="mb-4"></span>
+                      </h1>  
                     <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
                         EduNex is the ultimate <strong>all-in-one platform</strong> designed to automate every aspect of your educational business. From attendance to online fee payments — we've got you covered.
                     </p>
 
                     <div class="d-flex justify-content-center justify-content-lg-start gap-2 flex-wrap mb-5 animate__animated animate__fadeInUp animate__delay-1s">
-                        @foreach(['Coaching Centers', 'K-12 Schools', 'Skill Training', 'Language Academies', 'Music Schools', 'Sports Clubs'] as $cat)
+                        @foreach(['Coaching Centers', 'KG to 12 Schools', 'Skill Training', 'Language Academies', 'Music Schools', 'Sports Clubs'] as $cat)
                             <span class="badge rounded-pill category-pill">{{ $cat }}</span>
                         @endforeach
                     </div>
@@ -589,7 +606,7 @@
                 <div class="col-lg-6">
                     <div class="portal-showcase animate__animated animate__zoomIn animate__delay-1s">
                         <div class="d-flex justify-content-center mb-4">
-                            <div class="portal-nav glass">
+                            <div class="portal-nav glass" style="transform: translateX(-30px);">
                                 <button class="portal-nav-btn active" onclick="switchPortal('admin')">Admin Hub</button>
                                 <button class="portal-nav-btn" onclick="switchPortal('student')">Student App</button>
                             </div>
@@ -599,8 +616,7 @@
                             <!-- Admin Portal Content -->
                             <div id="admin-portal" class="portal-content active">
                                 <div class="display-wrapper">
-                                    <div class="glass-reflection"></div>
-                                    <img src="{{ asset('images/hero-banner.png') }}" alt="EduNex Admin Dashboard" class="desktop-mockup">
+                                    <img src="{{ asset('images/hero-banner.jpg') }}" alt="EduNex Admin Dashboard" class="desktop-mockup">
                                     <div class="mobile-mockup">
                                         <img src="{{ asset('images/hero-banner-mobile.png') }}" alt="EduNex Mobile Admin">
                                     </div>
@@ -620,7 +636,6 @@
                             <!-- Student Portal Content -->
                             <div id="student-portal" class="portal-content">
                                 <div class="display-wrapper">
-                                    <div class="glass-reflection"></div>
                                     <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex Student Portal" class="desktop-mockup">
                                     <div class="mobile-mockup">
                                         <img src="{{ asset('images/hero-banner-2-mobile.png') }}" alt="EduNex Student App">
@@ -695,10 +710,8 @@
             .feat-card {
                 border-radius: 28px;
                 padding: 36px;
-                border: 1px solid rgba(255,255,255,0.6);
-                background: rgba(255,255,255,0.7);
-                backdrop-filter: blur(18px);
-                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid #e2e8f0;
+                background: #ffffff;
                 box-shadow: 0 4px 24px rgba(0,0,0,0.04);
                 transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s;
                 height: 100%;
@@ -721,29 +734,29 @@
             .feat-card:hover::before { opacity:0.12; transform: scale(1.2); }
 
             /* Card accent colours */
-            .feat-card.c-indigo  { border-color:rgba(79,70,229,0.12); }
-            .feat-card.c-indigo::before  { background:#4F46E5; }
-            .feat-card.c-indigo:hover    { border-color:rgba(79,70,229,0.35); box-shadow:0 24px 60px -12px rgba(79,70,229,0.15); }
+            .feat-card.c-indigo  { border-color:rgba(27,117,215,0.12); }
+            .feat-card.c-indigo::before  { background:#1B75D7; }
+            .feat-card.c-indigo:hover    { border-color:rgba(27,117,215,0.35); box-shadow:0 24px 60px -12px rgba(27,117,215,0.15); }
 
-            .feat-card.c-green   { border-color:rgba(16,185,129,0.12); }
-            .feat-card.c-green::before   { background:#10B981; }
-            .feat-card.c-green:hover     { border-color:rgba(16,185,129,0.35); box-shadow:0 24px 60px -12px rgba(16,185,129,0.15); }
+            .feat-card.c-green   { border-color:rgba(124,209,55,0.12); }
+            .feat-card.c-green::before   { background:#7CD137; }
+            .feat-card.c-green:hover     { border-color:rgba(124,209,55,0.35); box-shadow:0 24px 60px -12px rgba(124,209,55,0.15); }
 
             .feat-card.c-orange  { border-color:rgba(249,115,22,0.12); }
             .feat-card.c-orange::before  { background:#F97316; }
             .feat-card.c-orange:hover    { border-color:rgba(249,115,22,0.35); box-shadow:0 24px 60px -12px rgba(249,115,22,0.12); }
 
-            .feat-card.c-pink    { border-color:rgba(219,39,119,0.12); }
-            .feat-card.c-pink::before    { background:#DB2777; }
-            .feat-card.c-pink:hover      { border-color:rgba(219,39,119,0.35); box-shadow:0 24px 60px -12px rgba(219,39,119,0.12); }
+            .feat-card.c-pink    { border-color:rgba(5,150,105,0.12); }
+            .feat-card.c-pink::before    { background:#059669; }
+            .feat-card.c-pink:hover      { border-color:rgba(5,150,105,0.35); box-shadow:0 24px 60px -12px rgba(5,150,105,0.12); }
 
             .feat-card.c-sky     { border-color:rgba(14,165,233,0.12); }
             .feat-card.c-sky::before     { background:#0EA5E9; }
             .feat-card.c-sky:hover       { border-color:rgba(14,165,233,0.35); box-shadow:0 24px 60px -12px rgba(14,165,233,0.12); }
 
-            .feat-card.c-violet  { border-color:rgba(139,92,246,0.12); }
-            .feat-card.c-violet::before  { background:#8B5CF6; }
-            .feat-card.c-violet:hover    { border-color:rgba(139,92,246,0.35); box-shadow:0 24px 60px -12px rgba(139,92,246,0.12); }
+            .feat-card.c-violet  { border-color:rgba(20,184,166,0.12); }
+            .feat-card.c-violet::before  { background:#14B8A6; }
+            .feat-card.c-violet:hover    { border-color:rgba(20,184,166,0.35); box-shadow:0 24px 60px -12px rgba(20,184,166,0.12); }
 
             .feat-card.c-emerald { border-color:rgba(5,150,105,0.12); }
             .feat-card.c-emerald::before { background:#059669; }
@@ -757,17 +770,17 @@
             .feat-card.c-red::before     { background:#DC2626; }
             .feat-card.c-red:hover       { border-color:rgba(220,38,38,0.35); box-shadow:0 24px 60px -12px rgba(220,38,38,0.12); }
 
-            .feat-card.c-purple  { border-color:rgba(124,58,237,0.12); }
-            .feat-card.c-purple::before  { background:#7C3AED; }
-            .feat-card.c-purple:hover    { border-color:rgba(124,58,237,0.35); box-shadow:0 24px 60px -12px rgba(124,58,237,0.12); }
+            .feat-card.c-purple  { border-color:rgba(13,148,136,0.12); }
+            .feat-card.c-purple::before  { background:#0D9488; }
+            .feat-card.c-purple:hover    { border-color:rgba(13,148,136,0.35); box-shadow:0 24px 60px -12px rgba(13,148,136,0.12); }
 
             .feat-card.c-lime    { border-color:rgba(22,163,74,0.12); }
             .feat-card.c-lime::before    { background:#16A34A; }
             .feat-card.c-lime:hover      { border-color:rgba(22,163,74,0.35); box-shadow:0 24px 60px -12px rgba(22,163,74,0.12); }
 
-            .feat-card.c-rose    { border-color:rgba(225,29,72,0.12); }
-            .feat-card.c-rose::before    { background:#E11D48; }
-            .feat-card.c-rose:hover      { border-color:rgba(225,29,72,0.35); box-shadow:0 24px 60px -12px rgba(225,29,72,0.12); }
+            .feat-card.c-rose    { border-color:rgba(22,163,74,0.12); }
+            .feat-card.c-rose::before    { background:#16A34A; }
+            .feat-card.c-rose:hover      { border-color:rgba(22,163,74,0.35); box-shadow:0 24px 60px -12px rgba(22,163,74,0.12); }
 
             /* Icon box */
             .feat-icon {
@@ -799,7 +812,7 @@
             /* NEW badge */
             .feat-new {
                 position:absolute; top:18px; right:18px;
-                background:linear-gradient(135deg,#4F46E5,#EC4899);
+                background: var(--secondary-color);
                 color:#fff; font-size:0.6rem; font-weight:800;
                 padding:3px 10px; border-radius:50px; letter-spacing:1px;
                 text-transform:uppercase; z-index:2;
@@ -820,15 +833,15 @@
                 <!-- Batch Intelligence -->
                 <div class="col-lg-4 col-md-6">
                     <div class="feat-card c-indigo h-100">
-                        <div class="feat-icon" style="background:#EEF2FF;color:#4F46E5;">
+                        <div class="feat-icon" style="background:rgba(27, 117, 215, 0.08);color:#1B75D7;">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <h3 class="feat-title">Batch Intelligence</h3>
                         <p class="feat-desc">Organize students into batches with specific subjects, class teachers, and timetables. Mark attendance in bulk with real-time logs and daily reports.</p>
                         <div class="feat-pills">
-                            <span class="feat-pill" style="background:#EEF2FF;color:#4F46E5;">Attendance</span>
-                            <span class="feat-pill" style="background:#EEF2FF;color:#4F46E5;">Timetable</span>
-                            <span class="feat-pill" style="background:#EEF2FF;color:#4F46E5;">Batches</span>
+                            <span class="feat-pill" style="background:rgba(27, 117, 215, 0.08);color:#1B75D7;">Attendance</span>
+                            <span class="feat-pill" style="background:rgba(27, 117, 215, 0.08);color:#1B75D7;">Timetable</span>
+                            <span class="feat-pill" style="background:rgba(27, 117, 215, 0.08);color:#1B75D7;">Batches</span>
                         </div>
                     </div>
                 </div>
@@ -836,15 +849,15 @@
                 <!-- Fee Automation — UPDATED with student app -->
                 <div class="col-lg-4 col-md-6">
                     <div class="feat-card c-green h-100">
-                        <div class="feat-icon" style="background:#ECFDF5;color:#10B981;">
+                        <div class="feat-icon" style="background:rgba(124, 209, 55, 0.08);color:#7CD137;">
                             <i class="fas fa-receipt"></i>
                         </div>
                         <h3 class="feat-title">Fee Automation</h3>
                         <p class="feat-desc">Set complex fee structures, record manual payments, and send automated WhatsApp reminders. Students can also <strong>pay their fees directly via the Student App</strong> — Stripe & Razorpay supported.</p>
                         <div class="feat-pills">
-                            <span class="feat-pill" style="background:#ECFDF5;color:#059669;">Online Payment</span>
-                            <span class="feat-pill" style="background:#ECFDF5;color:#059669;">WhatsApp Alerts</span>
-                            <span class="feat-pill" style="background:#ECFDF5;color:#059669;">Defaulter Reports</span>
+                            <span class="feat-pill" style="background:rgba(124, 209, 55, 0.08);color:#7CD137;">Online Payment</span>
+                            <span class="feat-pill" style="background:rgba(124, 209, 55, 0.08);color:#7CD137;">WhatsApp Alerts</span>
+                            <span class="feat-pill" style="background:rgba(124, 209, 55, 0.08);color:#7CD137;">Defaulter Reports</span>
                         </div>
                     </div>
                 </div>
@@ -867,15 +880,15 @@
                 <!-- Live Lectures -->
                 <div class="col-lg-4 col-md-6">
                     <div class="feat-card c-pink h-100">
-                        <div class="feat-icon" style="background:#FDF2F8;color:#DB2777;">
+                        <div class="feat-icon" style="background:#ECFDF5;color:#059669;">
                             <i class="fas fa-video"></i>
                         </div>
                         <h3 class="feat-title">Live Lectures</h3>
                         <p class="feat-desc">Built-in Jitsi video conferencing. Teachers start a live class from the dashboard and students join instantly — no external links, no third-party apps needed.</p>
                         <div class="feat-pills">
-                            <span class="feat-pill" style="background:#FDF2F8;color:#DB2777;">Jitsi Meet</span>
-                            <span class="feat-pill" style="background:#FDF2F8;color:#DB2777;">1-Click Join</span>
-                            <span class="feat-pill" style="background:#FDF2F8;color:#DB2777;">Recordings</span>
+                            <span class="feat-pill" style="background:#ECFDF5;color:#059669;">Jitsi Meet</span>
+                            <span class="feat-pill" style="background:#ECFDF5;color:#059669;">1-Click Join</span>
+                            <span class="feat-pill" style="background:#ECFDF5;color:#059669;">Recordings</span>
                         </div>
                     </div>
                 </div>
@@ -899,14 +912,14 @@
                 <!-- Enterprise Security -->
                 <div class="col-lg-4 col-md-6">
                     <div class="feat-card c-violet h-100">
-                        <div class="feat-icon" style="background:#F5F3FF;color:#8B5CF6;">
+                        <div class="feat-icon" style="background:#ECFDF5;color:#14B8A6;">
                             <i class="fas fa-lock"></i>
                         </div>
                         <h3 class="feat-title">Enterprise Security</h3>
                         <p class="feat-desc">Strict multi-tenant isolation at the database level. Your institute's data is completely separated. Granular role-based access ensures every staff member only sees what they need.</p>
                         <div class="feat-pills">
-                            <span class="feat-pill" style="background:#F5F3FF;color:#8B5CF6;">Multi-Tenant</span>
-                            <span class="feat-pill" style="background:#F5F3FF;color:#8B5CF6;">Role-Based Access</span>
+                            <span class="feat-pill" style="background:#ECFDF5;color:#14B8A6;">Multi-Tenant</span>
+                            <span class="feat-pill" style="background:#ECFDF5;color:#14B8A6;">Role-Based Access</span>
                         </div>
                     </div>
                 </div>
@@ -965,14 +978,14 @@
                 <!-- Leave Management -->
                 <div class="col-lg-4 col-md-6">
                     <div class="feat-card c-purple h-100">
-                        <div class="feat-icon" style="background:#EDE9FE;color:#7C3AED;">
+                        <div class="feat-icon" style="background:#CCFBF1;color:#0D9488;">
                             <i class="fas fa-user-clock"></i>
                         </div>
                         <h3 class="feat-title">Leave Management</h3>
                         <p class="feat-desc">Students and staff submit leave requests online. Admins and principals approve or reject with a single click, with full history logs.</p>
                         <div class="feat-pills">
-                            <span class="feat-pill" style="background:#EDE9FE;color:#7C3AED;">Staff Leaves</span>
-                            <span class="feat-pill" style="background:#EDE9FE;color:#7C3AED;">Student Leaves</span>
+                            <span class="feat-pill" style="background:#CCFBF1;color:#0D9488;">Staff Leaves</span>
+                            <span class="feat-pill" style="background:#CCFBF1;color:#0D9488;">Student Leaves</span>
                         </div>
                     </div>
                 </div>
@@ -995,14 +1008,14 @@
                 <!-- Multi-Role Access -->
                 <div class="col-lg-4 col-md-6">
                     <div class="feat-card c-rose h-100">
-                        <div class="feat-icon" style="background:#FFF1F2;color:#E11D48;">
+                        <div class="feat-icon" style="background:#FFF1F2;color:#16A34A;">
                             <i class="fas fa-users-cog"></i>
                         </div>
                         <h3 class="feat-title">Multi-Role Access</h3>
                         <p class="feat-desc">Admin, Principal, Teacher, Receptionist — each role sees a tailored interface with exactly the tools they need and nothing more.</p>
                         <div class="feat-pills">
-                            <span class="feat-pill" style="background:#FFF1F2;color:#E11D48;">4 Staff Roles</span>
-                            <span class="feat-pill" style="background:#FFF1F2;color:#E11D48;">Custom Views</span>
+                            <span class="feat-pill" style="background:#FFF1F2;color:#16A34A;">4 Staff Roles</span>
+                            <span class="feat-pill" style="background:#FFF1F2;color:#16A34A;">Custom Views</span>
                         </div>
                     </div>
                 </div>
@@ -1024,11 +1037,11 @@
             </div>
             <div class="row g-4">
                 @foreach([
-                    ['icon'=>'fas fa-chalkboard-teacher','color'=>'#4F46E5','bg'=>'#EEF2FF','title'=>'Coaching Centers','desc'=>'Manage multiple batches, subjects, and fee plans. Automate reminders for dues.'],
-                    ['icon'=>'fas fa-school','color'=>'#10B981','bg'=>'#ECFDF5','title'=>'K-12 Schools','desc'=>'Assign class teachers, mark daily attendance, manage exams and parent notifications.'],
-                    ['icon'=>'fas fa-music','color'=>'#EC4899','bg'=>'#FDF2F8','title'=>'Music & Arts Academies','desc'=>'Track individual student progress, schedule lessons, and manage monthly fee collection.'],
+                    ['icon'=>'fas fa-chalkboard-teacher','color'=>'#1B75D7','bg'=>'rgba(27, 117, 215, 0.08)','title'=>'Coaching Centers','desc'=>'Manage multiple batches, subjects, and fee plans. Automate reminders for dues.'],
+                    ['icon'=>'fas fa-school','color'=>'#7CD137','bg'=>'rgba(124, 209, 55, 0.08)','title'=>'K-12 Schools','desc'=>'Assign class teachers, mark daily attendance, manage exams and parent notifications.'],
+                    ['icon'=>'fas fa-music','color'=>'#7CD137','bg'=>'rgba(124, 209, 55, 0.08)','title'=>'Music & Arts Academies','desc'=>'Track individual student progress, schedule lessons, and manage monthly fee collection.'],
                     ['icon'=>'fas fa-language','color'=>'#F59E0B','bg'=>'#FEF3C7','title'=>'Language Schools','desc'=>'Run multiple language courses simultaneously with dedicated student portals.'],
-                    ['icon'=>'fas fa-dumbbell','color'=>'#8B5CF6','bg'=>'#F5F3FF','title'=>'Sports & Fitness Clubs','desc'=>'Manage memberships, attendance, schedules, and monthly billing with ease.'],
+                    ['icon'=>'fas fa-dumbbell','color'=>'#14B8A6','bg'=>'#ECFDF5','title'=>'Sports & Fitness Clubs','desc'=>'Manage memberships, attendance, schedules, and monthly billing with ease.'],
                     ['icon'=>'fas fa-laptop-code','color'=>'#0EA5E9','bg'=>'#F0F9FF','title'=>'Skill Training Centers','desc'=>'Deliver online and offline training with live lectures, homework, and assessments.'],
                 ] as $uc)
                 <div class="col-lg-4 col-md-6">
@@ -1063,7 +1076,7 @@
                                 <thead>
                                     <tr>
                                         <th style="min-width:220px;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;color:#64748B;">Feature</th>
-                                        <th class="text-center" style="color:#4F46E5;font-weight:800;">EduNex</th>
+                                        <th class="text-center" style="color:#1B75D7;font-weight:800;">EduNex</th>
                                         <th class="text-center text-muted" style="font-weight:600;">Spreadsheets</th>
                                         <th class="text-center text-muted" style="font-weight:600;">WhatsApp Groups</th>
                                     </tr>
@@ -1081,7 +1094,7 @@
                                     ] as [$feat, $a, $b, $c])
                                     <tr style="border-color:#F1F5F9;">
                                         <td class="fw-semibold text-dark">{{ $feat }}</td>
-                                        <td class="text-center"><span style="color:#10B981;font-size:1.1rem;">✓</span></td>
+                                        <td class="text-center"><span style="color:#7CD137;font-size:1.1rem;">✓</span></td>
                                         <td class="text-center"><span style="color:#EF4444;font-size:1.1rem;">{{ $b ? '✓' : '✗' }}</span></td>
                                         <td class="text-center"><span style="{{ $c ? 'color:#F59E0B' : 'color:#EF4444' }};font-size:1.1rem;">{{ $c ? '✓' : '✗' }}</span></td>
                                     </tr>
@@ -1104,9 +1117,9 @@
             </div>
             <div class="row g-4">
                 @foreach([
-                    ['name'=>'Rajesh Kumar','role'=>'Director, Apex Coaching Center','initials'=>'RK','color'=>'#4F46E5','quote'=>'EduNex completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month. The WhatsApp integration is a game changer.'],
-                    ['name'=>'Priya Sharma','role'=>'Principal, Bright Minds Academy','initials'=>'PS','color'=>'#EC4899','quote'=>'As a principal, the analytics dashboard gives me full visibility into attendance trends and student performance. I can now make data-driven decisions instead of guessing.'],
-                    ['name'=>'Arjun Mehta','role'=>'Owner, CodeCraft Skill Institute','initials'=>'AM','color'=>'#10B981','quote'=>'We run 6 different technology courses with 400 students. EduNex handles all of it — from live lectures to test scores — in one place. The student PWA is brilliant!'],
+                    ['name'=>'Rajesh Kumar','role'=>'Director, Apex Coaching Center','initials'=>'RK','color'=>'#1B75D7','quote'=>'EduNex completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month. The WhatsApp integration is a game changer.'],
+                    ['name'=>'Priya Sharma','role'=>'Principal, Bright Minds Academy','initials'=>'PS','color'=>'#7CD137','quote'=>'As a principal, the analytics dashboard gives me full visibility into attendance trends and student performance. I can now make data-driven decisions instead of guessing.'],
+                    ['name'=>'Arjun Mehta','role'=>'Owner, CodeCraft Skill Institute','initials'=>'AM','color'=>'#7CD137','quote'=>'We run 6 different technology courses with 400 students. EduNex handles all of it — from live lectures to test scores — in one place. The student PWA is brilliant!'],
                 ] as $t)
                 <div class="col-lg-4">
                     <div class="feature-card glass h-100" style="padding:36px;">
@@ -1131,7 +1144,7 @@
         <div class="container px-4 py-4">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 text-center">
-                    <div class="glass rounded-4 p-5 d-inline-block" style="background:linear-gradient(135deg,rgba(79,70,229,0.06),rgba(236,72,153,0.06));">
+                    <div class="glass rounded-4 p-5 d-inline-block" style="background:linear-gradient(135deg,rgba(27,117,215,0.06),rgba(124,209,55,0.06));">
                         <div class="mb-4">
                             <div style="font-size:4rem;">📱</div>
                         </div>
@@ -1139,7 +1152,7 @@
                             @foreach(['Students check timetables anytime','View attendance & fee status','Join live lectures with 1 tap','Submit leave requests on the go','Download homework attachments'] as $item)
                             <div class="col-12">
                                 <div class="d-flex align-items-center gap-3 p-3 rounded-3" style="background:rgba(255,255,255,0.7);">
-                                    <div style="width:28px;height:28px;border-radius:8px;background:#EEF2FF;color:#4F46E5;display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;"><i class="fas fa-check"></i></div>
+                                    <div style="width:28px;height:28px;border-radius:8px;background:rgba(27, 117, 215, 0.08);color:#1B75D7;display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;"><i class="fas fa-check"></i></div>
                                     <span class="fw-semibold" style="font-size:0.88rem;">{{ $item }}</span>
                                 </div>
                             </div>
@@ -1153,15 +1166,15 @@
                     <p class="text-muted fs-5 mb-4">EduNex is a full <strong>Progressive Web App (PWA)</strong>. No app store needed. Students simply open the link in their browser and tap "Add to Home Screen" — they get a native app experience instantly.</p>
                     <div class="d-flex flex-wrap gap-3 mb-4">
                         <div class="glass rounded-3 px-4 py-3 text-center" style="min-width:120px;">
-                            <div class="fw-black" style="font-size:1.8rem;color:#4F46E5;">0</div>
+                            <div class="fw-black" style="font-size:1.8rem;color:#1B75D7;">0</div>
                             <div class="text-muted small">App Store<br>Downloads</div>
                         </div>
                         <div class="glass rounded-3 px-4 py-3 text-center" style="min-width:120px;">
-                            <div class="fw-black" style="font-size:1.8rem;color:#10B981;">100%</div>
+                            <div class="fw-black" style="font-size:1.8rem;color:#7CD137;">100%</div>
                             <div class="text-muted small">Works on<br>Any Device</div>
                         </div>
                         <div class="glass rounded-3 px-4 py-3 text-center" style="min-width:120px;">
-                            <div class="fw-black" style="font-size:1.8rem;color:#EC4899;">1 tap</div>
+                            <div class="fw-black" style="font-size:1.8rem;color:#7CD137;">1 tap</div>
                             <div class="text-muted small">To Install<br>on Phone</div>
                         </div>
                     </div>
@@ -1208,7 +1221,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="p-5 bg-white border rounded-4 shadow-sm glass">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 60px;" class="mb-4">
+                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 85px;" class="mb-4">
                         <h4 class="fw-black mb-3">Save 20+ hours every month.</h4>
                         <p class="text-muted mb-4">"EduNex completely changed how we handle our 200+ students. The fee
                             reminders alone saved us hours of repetitive phone calls."</p>

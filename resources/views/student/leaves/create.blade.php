@@ -11,15 +11,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --indigo: #6366F1;
-            --indigo-dark: #4F46E5;
-            --pink: #EC4899;
-            --emerald: #10B981;
+            --primary-blue: #2563EB;
+            --primary-blue-light: #3B82F6;
+            --primary-blue-dark: #1D4ED8;
+            --primary-green: #10B981;
+            --primary-green-light: #34D399;
+            --primary-green-dark: #059669;
+            --gradient-blue-green: linear-gradient(135deg, #2563EB 0%, #0D9488 50%, #10B981 100%);
+            --gradient-blue-green-reverse: linear-gradient(135deg, #10B981 0%, #0D9488 50%, #2563EB 100%);
             --amber: #F59E0B;
             --red: #EF4444;
-            --bg: #F1F5F9;
+            --bg: #F0F9FF;
             --card: #ffffff;
-            --border: #E2E8F0;
+            --border: #E0F2FE;
             --text: #0F172A;
             --muted: #64748B;
             --radius: 20px;
@@ -27,7 +31,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg);
+            background: linear-gradient(180deg, #F0F9FF 0%, #ECFDF5 100%);
             color: var(--text);
             min-height: 100vh;
         }
@@ -53,16 +57,17 @@
         }
 
         .nav-brand .brand-badge {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--indigo), var(--pink));
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-blue-green);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 800;
             color: #fff;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .nav-brand .brand-name {
@@ -81,8 +86,8 @@
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 32px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            padding: 36px;
+            box-shadow: 0 8px 20px -6px rgba(37, 99, 235, 0.08);
         }
 
         .form-label {
@@ -105,27 +110,27 @@
 
         .form-control:focus, .form-select:focus {
             background: #fff;
-            border-color: var(--indigo);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, var(--indigo), #818CF8);
+            background: var(--gradient-blue-green);
             color: #fff;
             border: none;
-            border-radius: 12px;
-            padding: 14px;
+            border-radius: 14px;
+            padding: 16px;
             font-weight: 700;
             width: 100%;
             margin-top: 16px;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s;
         }
 
         .btn-submit:hover {
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
         }
 
         @media (max-width: 640px) {

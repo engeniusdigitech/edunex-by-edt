@@ -35,7 +35,7 @@
                         <tr>
                             <td class="ps-4">
                                 <div class="d-flex align-items-center">
-                                    <div class="avatar-sm bg-indigo-subtle text-indigo rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px; background: rgba(99, 102, 241, 0.1);">
+                                    <div class="avatar-sm bg-indigo-subtle text-indigo rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px; background: rgba(14, 165, 233, 0.1);">
                                         {{ substr($leave->student->name ?? '?', 0, 1) }}
                                     </div>
                                     <div>

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo 
-        title="Best Institute Management Software in {{ $city }}, {{ $country }} | {{ $city }} Education System" 
-        description="EduNex is the top-rated institute management system and institute management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} educational center." 
+        title="Best Institute and School Management Software in {{ $city }}, {{ $country }} | {{ $city }} Education System" 
+        description="EduNex is the top-rated Institute and School Management system and Institute and School Management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} educational center." 
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <!-- Fonts -->
@@ -34,13 +34,13 @@
             display: inline-flex;
             align-items: center;
             padding: 8px 16px;
-            background: rgba(79, 70, 229, 0.08);
+            background: rgba(37, 99, 235, 0.08);
             color: var(--primary-color);
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 24px;
-            border: 1px solid rgba(79, 70, 229, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.15);
         }
 
         .hero-title {
@@ -53,9 +53,7 @@
         }
 
         .hero-title span {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
         }
 
         .hero-subtitle {
@@ -184,7 +182,7 @@
         }
 
         .accordion-button:not(.collapsed) {
-            background: #EEF2FF;
+            background: #EFF6FF;
             color: var(--primary-color);
         }
 
@@ -215,7 +213,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.1), transparent 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 70%);
         }
 
 
@@ -229,12 +227,11 @@
 
         .portal-nav {
             display: inline-flex;
-            background: rgba(241, 245, 249, 0.8);
+            background: rgba(241, 245, 249, 1);
             padding: 4px;
             border-radius: 20px;
             margin-bottom: 20px;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(8px);
         }
 
         .portal-nav-btn {
@@ -360,11 +357,11 @@
                         ✨ Trusted by 100+ institutes across the country
                     </div>
                     <h1 class="hero-title animate__animated animate__zoomIn">
-                        Best Institute Management System in {{ $city }}.<br><span>For Every Type of Institute in {{ $country }}.</span>
+                        Best Institute and School Management System in {{ $city }}.<br><span>For Every Type of Institute in {{ $country }}.</span>
                     </h1>
                     <p class="hero-subtitle ms-lg-0 animate__animated animate__fadeInUp animate__delay-1s">
                         EduNex is the most complete, intuitive, and feature-rich <strong>institute software in {{ $city }}</strong> to manage your educational center. From 
-                        <strong>institute management</strong> to live classes — everything in one place.
+                        <strong>Institute and School Management</strong> to live classes — everything in one place.
                     </p>
 
                     {{-- Category Scroller --}}
@@ -398,7 +395,7 @@
                 <div class="col-lg-7">
                     <div class="portal-showcase mt-5 mt-lg-4">
                         <div class="d-flex justify-content-center justify-content-lg-start mb-2">
-                            <div class="portal-nav">
+                            <div class="portal-nav" style="transform: translateX(-30px);">
                                 <button class="portal-nav-btn active" onclick="switchPortal('admin')">Admin Hub</button>
                                 <button class="portal-nav-btn" onclick="switchPortal('student')">Student Portal</button>
                             </div>
@@ -408,7 +405,7 @@
                             <!-- Admin Portal Content -->
                             <div id="admin-portal" class="portal-content active">
                                 <div class="display-wrapper">
-                                    <img src="{{ asset('images/hero-banner.png') }}" alt="Admin Desktop"
+                                    <img src="{{ asset('images/hero-banner.jpg') }}" alt="Admin Desktop"
                                         class="desktop-mockup">
                                     <div class="mobile-mockup">
                                         <img src="{{ asset('images/hero-banner-mobile.png') }}" alt="Admin Mobile">
@@ -416,7 +413,7 @@
                                 </div>
                                 <div class="mt-5"
                                     style="max-width: 700px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem;">
-                                    <h3 class="fw-bold mb-3">Enterprise-Grade {{ $city }} Institute Management</h3>
+                                    <h3 class="fw-bold mb-3">Enterprise-Grade {{ $city }} Institute and School Management</h3>
                                     <p class="text-muted">Manage your entire institute in {{ $city }} with a powerful, intuitive
                                         interface. Track attendance, automate fees, and monitor growth in real-time — all with our 
                                         central <strong>institute ERP</strong> dashboard.</p>
@@ -486,14 +483,14 @@
             <div class="text-center mb-5">
                 <span class="section-tag">Powerful Features</span>
                 <h2 class="section-title">Best {{ $city }} Institute Software Features</h2>
-                <p class="text-muted fs-5">Everything you need to run a modern <strong>Institute management</strong> business in {{ $city }}.</p>
+                <p class="text-muted fs-5">Everything you need to run a modern <strong>Institute and School Management</strong> business in {{ $city }}.</p>
             </div>
 
             <div class="row g-4">
                 {{-- Group: Academic --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-box" style="background: #EEF2FF; color: #4F46E5;">
+                        <div class="icon-box" style="background: #EFF6FF; color: #2563EB;">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <h3 class="feature-title">Batch Intelligence</h3>
@@ -529,7 +526,7 @@
                 {{-- Group: Learning --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-box" style="background: #FDF2F8; color: #DB2777;">
+                        <div class="icon-box" style="background: #ECFDF5; color: #059669;">
                             <i class="fas fa-video"></i>
                         </div>
                         <h3 class="feature-title">Live Lectures</h3>
@@ -553,7 +550,7 @@
                 {{-- Group: Security --}}
                 <div class="col-lg-4 col-md-6">
                     <div class="feature-card">
-                        <div class="icon-box" style="background: #F5F3FF; color: #8B5CF6;">
+                        <div class="icon-box" style="background: #ECFDF5; color: #14B8A6;">
                             <i class="fas fa-lock"></i>
                         </div>
                         <h3 class="feature-title">Enterprise Security</h3>

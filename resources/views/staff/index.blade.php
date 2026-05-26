@@ -57,6 +57,7 @@
                     <tr>
                         <th class="ps-4 py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Name & Email</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Role</th>
+                        <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Biometric</th>
                         <th class="py-3 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Joined Date</th>
                         <th class="py-3 text-end pe-4 text-uppercase text-muted fw-semibold border-bottom-0" style="font-size: 0.75rem; letter-spacing: 1px;">Actions</th>
                     </tr>
@@ -84,6 +85,13 @@
                                 <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary-subtle rounded-pill px-3 py-2 fw-medium">Staff</span>
                             @endif
                         </td>
+                        <td class="py-3">
+                            @if($staff->hasFaceEnrolled())
+                                <span class="badge bg-success-subtle text-success border border-success-subtle"><i class="fas fa-fingerprint me-1"></i> Enrolled</span>
+                            @else
+                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle">Not enrolled</span>
+                            @endif
+                        </td>
                         <td class="py-3 text-muted fw-medium">{{ $staff->created_at->format('M d, Y') }}</td>
                         <td class="py-3 text-end pe-4">
                             <a href="{{ route('staff.edit', $staff) }}" class="btn btn-sm btn-light text-primary border shadow-sm rounded-circle p-2 me-1" title="Edit Staff"><i class="fas fa-edit"></i></a>
@@ -97,7 +105,7 @@
                     @endforeach
                     @if($staffMembers->isEmpty())
                     <tr>
-                        <td colspan="4" class="text-center py-5">
+                        <td colspan="5" class="text-center py-5">
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-user-tie fa-2x"></i>
                             </div>

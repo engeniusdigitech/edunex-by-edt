@@ -1,4 +1,4 @@
-# EduNex SaaS: The Future of Institute Institute Management
+# EduNex SaaS: The Future of Institute Institute and School Management
 
 ## Stop Managing Spreadsheets. Start Growing Your Academy.
 

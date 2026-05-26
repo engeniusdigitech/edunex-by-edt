@@ -64,7 +64,7 @@
             <h6 class="mb-3">Admin Account Details</h6>
             <div class="mb-3">
                 <label class="form-label">Admin Name <span class="text-danger">*</span></label>
-                <input type="text" name="admin_name" class="form-control" required placeholder="John Doe" value="{{ old('admin_name') }}">
+                <input type="text" name="admin_name" class="form-control" required placeholder="Billy mark" value="{{ old('admin_name') }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Admin Email <span class="text-danger">*</span></label>

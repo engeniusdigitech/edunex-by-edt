@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Best Institute Management Software Pricing & Institute ERP Plans | EduNex" description="Scalable, transparent pricing for the #1 institute management system. Get a custom quote for our premier institute management software." />
+    <x-seo title="Best Institute and School Management Software Pricing & Institute ERP Plans | EduNex" description="Scalable, transparent pricing for the #1 Institute and School Management system. Get a custom quote for our premier Institute and School Management software." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,9 +46,7 @@
         }
 
         .hero-title span {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
         }
 
         /* ── PRICING CARD ── */
@@ -71,7 +69,7 @@
 
         .plan-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 50px 100px -20px rgba(79, 70, 229, 0.12);
+            box-shadow: 0 50px 100px -20px rgba(37, 99, 235, 0.12);
         }
 
         .plan-badge {
@@ -79,7 +77,7 @@
             top: -18px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--secondary-color);
             color: #fff;
             font-size: 0.75rem;
             font-weight: 800;
@@ -87,7 +85,7 @@
             border-radius: 50px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(124, 209, 55, 0.4);
         }
 
         .plan-price {
@@ -135,14 +133,14 @@
             font-size: 1.15rem;
             text-decoration: none;
             transition: all 0.4s;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--primary-color);
             color: #fff;
-            box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.4);
         }
 
         .plan-cta:hover {
             transform: scale(1.02);
-            box-shadow: 0 20px 45px -5px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 20px 45px -5px rgba(37, 99, 235, 0.5);
             color: #fff;
         }
 
@@ -171,8 +169,7 @@
             border: none !important;
             border-radius: 28px !important;
             margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.6) !important;
-            backdrop-filter: blur(10px);
+            background: #ffffff !important;
             box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
             transition: all 0.3s;
         }
@@ -319,7 +316,7 @@
                 </div>
 
                 <div class="col-lg-5 ps-lg-5 mt-5 mt-lg-0 animate__animated animate__fadeInRight animate__delay-2s">
-                    <div class="p-4 rounded-4 glass" style="background: rgba(79, 70, 229, 0.03); border: 1px dashed rgba(79, 70, 229, 0.2);">
+                    <div class="p-4 rounded-4 glass" style="background: rgba(37, 99, 235, 0.03); border: 1px dashed rgba(37, 99, 235, 0.2);">
                         <h4 class="fw-black mb-3">Enterprise Needs?</h4>
                         <p class="text-muted mb-4 small">Looking for multi-branch setups or custom feature development for large-scale franchises?</p>
                         <a href="{{ route('contact') }}" class="btn btn-dark btn-modern w-100 py-3">Talk to our Experts</a>

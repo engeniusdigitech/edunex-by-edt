@@ -44,7 +44,7 @@
                         @else
 
                         <!-- Stripe Section -->
-                        <h5 class="fw-bold mb-3" style="color: #6366F1;"><i class="fab fa-stripe me-2"></i>Stripe Settings (International)</h5>
+                        <h5 class="fw-bold mb-3" style="color: #0EA5E9;"><i class="fab fa-stripe me-2"></i>Stripe Settings (International)</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold text-muted small">Stripe Publishable Key</label>

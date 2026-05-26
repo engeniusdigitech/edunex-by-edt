@@ -19,8 +19,8 @@
     <!-- Custom Styles -->
     <style>
         :root {
-            --primary-color: #4F46E5;
-            --secondary-color: #EC4899;
+            --primary-color: #2563EB;
+            --secondary-color: #10B981;
             --dark-bg: #0F172A;
             --sidebar-bg: #ffffff;
             --bg-color: #FAFAF9;
@@ -98,7 +98,7 @@
         }
 
         .sidebar a.active {
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(99, 102, 241, 0.2));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(14, 165, 233, 0.2));
             color: #ffffff;
             font-weight: 600;
             border-left: 3px solid var(--primary-color);
@@ -158,16 +158,14 @@
             right: -20vw;
             width: 60vw;
             height: 60vh;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.04), transparent 60%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.04), transparent 60%);
             z-index: 0;
             pointer-events: none;
         }
 
         /* Top Navbar */
         .top-navbar {
-            background: rgba(255, 255, 255, 0.8) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: #ffffff !important;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             padding: 16px 32px;
         }
@@ -215,8 +213,8 @@
             justify-content: center;
             font-size: 24px;
             color: white;
-            background: linear-gradient(135deg, var(--primary-color), #6366F1);
-            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+            background: linear-gradient(135deg, var(--primary-color), #0EA5E9);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
         }
 
         /* Badges & Overrides */
@@ -297,6 +295,30 @@
                         <a href="{{ route('staff.index') }}" class="{{ request()->routeIs('staff.*') ? 'active' : '' }}"><i
                                 class="fas fa-user-tie"></i> Staff</a>
                     @endcan
+                    @can('manage-institute-settings')
+                        @php
+                            $isHrActive = request()->routeIs('institute.attendance-settings.*')
+                                || request()->routeIs('staff-attendance.admin')
+                                || request()->routeIs('staff-salaries.*')
+                                || request()->routeIs('staff-payrolls.*');
+                        @endphp
+                        <a href="#hrCollapse" data-bs-toggle="collapse" class="{{ $isHrActive ? '' : 'collapsed' }}" aria-expanded="{{ $isHrActive ? 'true' : 'false' }}">
+                            <i class="fas fa-id-badge"></i>
+                            <span class="flex-grow-1">Staff HR</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isHrActive ? 'show' : '' }}" id="hrCollapse">
+                            <a href="{{ route('institute.attendance-settings.edit') }}" class="{{ request()->routeIs('institute.attendance-settings.*') ? 'active' : '' }} small py-2"><i class="fas fa-map-marker-alt"></i> Location Settings</a>
+                            <a href="{{ route('staff-attendance.admin') }}" class="{{ request()->routeIs('staff-attendance.admin') ? 'active' : '' }} small py-2"><i class="fas fa-clipboard-list"></i> Staff Attendance</a>
+                            <a href="{{ route('staff-salaries.index') }}" class="{{ request()->routeIs('staff-salaries.*') ? 'active' : '' }} small py-2"><i class="fas fa-rupee-sign"></i> Salaries</a>
+                            <a href="{{ route('staff-payrolls.index') }}" class="{{ request()->routeIs('staff-payrolls.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice-dollar"></i> Payroll</a>
+                        </div>
+                    @endcan
+                    @if(auth()->user()->canUseBiometricAttendance())
+                        <a href="{{ route('staff-attendance.mark') }}" class="{{ request()->routeIs('staff-attendance.mark') ? 'active' : '' }}">
+                            <i class="fas fa-fingerprint"></i> Mark Attendance
+                        </a>
+                    @endif
                     @can('manage-students')
                         <a href="{{ route('students.index') }}"
                             class="{{ request()->routeIs('students.*') ? 'active' : '' }}"><i class="fas fa-users"></i>
@@ -487,7 +509,7 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #4F46E5, #6366F1);
+            background: linear-gradient(135deg, #2563EB, #0EA5E9);
             color: #fff;
             display: flex;
             align-items: center;
@@ -495,11 +517,11 @@
             font-size: 1.3rem;
             cursor: pointer;
             z-index: 9000;
-            box-shadow: 0 8px 24px rgba(79,70,229,0.4);
+            box-shadow: 0 8px 24px rgba(37,99,235,0.4);
             transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
             border: none;
         }
-        #chatBubble:hover { transform: scale(1.12); box-shadow: 0 12px 32px rgba(79,70,229,0.5); }
+        #chatBubble:hover { transform: scale(1.12); box-shadow: 0 12px 32px rgba(37,99,235,0.5); }
         #chatBadge {
             position: absolute;
             top: -4px; right: -4px;
@@ -521,10 +543,8 @@
             width: 360px;
             height: 520px;
             border-radius: 24px;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(79,70,229,0.12);
+            background: #ffffff;
+            border: 1px solid rgba(37,99,235,0.12);
             box-shadow: 0 24px 64px -12px rgba(0,0,0,0.18);
             z-index: 8999;
             display: none;
@@ -540,7 +560,7 @@
         }
         /* Panel Header */
         .chat-header {
-            background: linear-gradient(135deg, #4F46E5, #6366F1);
+            background: linear-gradient(135deg, #2563EB, #0EA5E9);
             padding: 16px 20px;
             display: flex;
             align-items: center;
@@ -573,7 +593,7 @@
         .chat-bubble-wrap { display: flex; flex-direction: column; }
         .chat-msg.me .chat-bubble-wrap { align-items: flex-end; }
         .chat-sender { font-size: 0.65rem; font-weight: 700; color: #64748B; margin-bottom: 3px; }
-        .chat-msg.me .chat-sender { color: #4F46E5; }
+        .chat-msg.me .chat-sender { color: #2563EB; }
         .chat-text {
             background: #fff;
             border: 1px solid #E2E8F0;
@@ -586,13 +606,13 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         .chat-msg.me .chat-text {
-            background: linear-gradient(135deg, #4F46E5, #6366F1);
+            background: linear-gradient(135deg, #2563EB, #0EA5E9);
             color: #fff;
             border: none;
             border-radius: 16px 16px 4px 16px;
         }
         .chat-time { font-size: 0.6rem; color: #94A3B8; margin-top: 3px; }
-        .chat-mention { color: #4F46E5; font-weight: 700; background: rgba(79,70,229,0.08); border-radius: 4px; padding: 0 3px; }
+        .chat-mention { color: #2563EB; font-weight: 700; background: rgba(37,99,235,0.08); border-radius: 4px; padding: 0 3px; }
         .chat-msg.me .chat-mention { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.15); }
         /* Input Area */
         .chat-input-area {
@@ -619,16 +639,16 @@
             overflow-y: auto;
             background: #f8fafc;
         }
-        #chatInput:focus { border-color: #4F46E5; background: #fff; }
+        #chatInput:focus { border-color: #2563EB; background: #fff; }
         #chatSendBtn {
             width: 40px; height: 40px; border-radius: 12px;
-            background: linear-gradient(135deg, #4F46E5, #6366F1);
+            background: linear-gradient(135deg, #2563EB, #0EA5E9);
             color: #fff; border: none; font-size: 0.9rem;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; flex-shrink: 0;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        #chatSendBtn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(79,70,229,0.35); }
+        #chatSendBtn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(37,99,235,0.35); }
         /* Mention dropdown */
         #mentionDropdown {
             position: absolute;
@@ -652,7 +672,7 @@
             transition: background 0.15s;
             display: flex; align-items: center; gap: 8px;
         }
-        .mention-item:hover { background: #EEF2FF; color: #4F46E5; }
+        .mention-item:hover { background: #EFF6FF; color: #2563EB; }
         .mention-avatar-sm {
             width: 24px; height: 24px; border-radius: 50%;
             object-fit: cover; border: 1px solid #E2E8F0;
@@ -696,7 +716,7 @@
             </div>
         </div>
         <div class="chat-input-area">
-            <textarea id="chatInput" rows="1" placeholder="Type a message... use @ to mention someone"></textarea>
+            <textarea id="chatInput" rows="1" placeholder="Use @ to mention someone"></textarea>
             <button id="chatSendBtn" title="Send message"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
@@ -818,7 +838,7 @@
         function openChat() {
             isOpen = true;
             panel.classList.add('open');
-            bubble.style.background = 'linear-gradient(135deg, #EC4899, #F43F5E)';
+            bubble.style.background = 'linear-gradient(135deg, #10B981, #22C55E)';
             showBadge(0);
             fetchMessages(true);
             pollInterval = setInterval(() => fetchMessages(false), 3000);
@@ -828,7 +848,7 @@
         function closeChat() {
             isOpen = false;
             panel.classList.remove('open');
-            bubble.style.background = 'linear-gradient(135deg, #4F46E5, #6366F1)';
+            bubble.style.background = 'linear-gradient(135deg, #2563EB, #0EA5E9)';
             clearInterval(pollInterval);
             pollInterval = null;
             mentionDiv.style.display = 'none';

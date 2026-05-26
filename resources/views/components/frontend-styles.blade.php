@@ -1,8 +1,9 @@
 <style>
     :root {
-        --primary-color: #4F46E5;
-        --primary-light: #6366F1;
-        --secondary-color: #EC4899;
+        --primary-color: #1B75D7;
+        --primary-light: #5AA1ED;
+        --secondary-color: #7CD137;
+        --secondary-light: #9EE060;
         --dark-bg: #0F172A;
         --card-bg: #ffffff;
         --text-main: #1E293B;
@@ -11,6 +12,11 @@
         --glass-bg: rgba(255, 255, 255, 0.7);
         --glass-border: rgba(255, 255, 255, 0.3);
     }
+
+    .text-primary {
+        color: var(--primary-color) !important;
+    }
+
 
     body {
         font-family: 'Outfit', sans-serif;
@@ -27,30 +33,27 @@
     }
 
     .bg-light {
-        background-color: rgba(248, 250, 252, 0.5) !important;
+        background-color: #f8fafc !important;
     }
 
     .bg-white {
-        background-color: rgba(255, 255, 255, 0.5) !important;
+        background-color: #ffffff !important;
     }
 
     /* ── GLASSMORPHISM UTILITY ── */
     .glass {
-        background: rgba(255, 255, 255, 0.65);
-        backdrop-filter: blur(16px) saturate(180%);
-        -webkit-backdrop-filter: blur(16px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
     }
 
     .glass-dark {
-        background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #0f172a;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     }
 
-    /* ── MESH GRADIENT BACKGROUNDS ── */
+    /* ── CLEAN BACKGROUND ── */
     .mesh-bg {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
@@ -59,34 +62,18 @@
         pointer-events: none;
         background-color: #f8fafc;
     }
-    .mesh-circle {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(100px);
-        opacity: 0.3;
-    }
-    .mesh-circle-1 {
-        width: 1000px; height: 1000px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
-        top: -300px; right: -200px;
-    }
-    .mesh-circle-2 {
-        width: 800px; height: 800px;
-        background: radial-gradient(circle, rgba(236, 72, 153, 0.18) 0%, transparent 70%);
-        bottom: 20%; left: -200px;
-    }
-    .mesh-circle-3 {
-        width: 600px; height: 600px;
-        background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
-        top: 20%; left: 30%;
-    }
-    .mesh-circle-4 {
-        width: 900px; height: 900px;
-        background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
-        bottom: -200px; right: 10%;
+    /* mesh circles hidden — glass effect removed */
+    .mesh-circle, .mesh-circle-1, .mesh-circle-2, .mesh-circle-3, .mesh-circle-4 {
+        display: none;
     }
 
     /* ── NAVBAR ── */
+    .container {
+        max-width: 100% !important;
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+
     #frontend-navbar {
         background-color: transparent;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -95,14 +82,8 @@
         padding-bottom: 20px;
     }
 
-    #frontend-navbar .container {
-        max-width: 1400px; /* Wider container for premium feel */
-    }
-
     #frontend-navbar.scrolled {
-        background-color: rgba(255, 255, 255, 0.9) !important;
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        background-color: #ffffff !important;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
         box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08) !important;
         padding-top: 10px !important;
@@ -275,16 +256,14 @@
             padding: 18px !important;
         }
 
-        /* Backdrop Overlay - This provides the 'glass' effect behind the drawer */
+        /* Backdrop Overlay - This provides the overlay effect behind the drawer */
         .nav-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.6);
             z-index: 9998; /* Just below the drawer */
             opacity: 0;
             visibility: hidden;
@@ -314,12 +293,12 @@
     .btn-primary-glow {
         background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
         color: white !important;
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+        box-shadow: 0 4px 15px rgba(27, 117, 215, 0.25);
     }
     
     .btn-primary-glow:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+        box-shadow: 0 8px 25px rgba(27, 117, 215, 0.35);
     }
 
     .btn-outline-modern {
@@ -329,7 +308,7 @@
     }
 
     .btn-outline-modern:hover {
-        background: rgba(79, 70, 229, 0.05);
+        background: rgba(27, 117, 215, 0.06);
         border-color: var(--primary-color) !important;
         color: var(--primary-color) !important;
         transform: translateY(-2px);
@@ -337,13 +316,13 @@
 
     /* Hierarchy Fix */
     .btn-student-portal {
-        background: rgba(79, 70, 229, 0.04);
+        background: rgba(37, 99, 235, 0.04);
         color: var(--primary-color) !important;
-        border: 1px solid rgba(79, 70, 229, 0.1) !important;
+        border: 1px solid rgba(37, 99, 235, 0.1) !important;
     }
     
     .btn-student-portal:hover {
-        background: rgba(79, 70, 229, 0.08);
+        background: rgba(37, 99, 235, 0.08);
     }
 
     /* ── FOOTER ── */

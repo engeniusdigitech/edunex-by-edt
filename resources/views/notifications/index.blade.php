@@ -136,7 +136,7 @@
                 @forelse($history as $notif)
                 @php
                     $colorMap = [
-                        'primary' => ['bg' => 'rgba(99,102,241,0.1)', 'color' => '#6366F1'],
+                        'primary' => ['bg' => 'rgba(14,165,233,0.1)', 'color' => '#0EA5E9'],
                         'success' => ['bg' => 'rgba(16,185,129,0.1)', 'color' => '#10B981'],
                         'warning' => ['bg' => 'rgba(245,158,11,0.1)', 'color' => '#F59E0B'],
                         'danger'  => ['bg' => 'rgba(239,68,68,0.1)',  'color' => '#EF4444'],
@@ -159,7 +159,7 @@
                             @if($notif->read_at)
                                 <span class="badge rounded-pill flex-shrink-0" style="background:#F0FDF4;color:#166534;font-size:0.62rem;">Read</span>
                             @else
-                                <span class="badge rounded-pill flex-shrink-0" style="background:#EEF2FF;color:#4338CA;font-size:0.62rem;">Unread</span>
+                                <span class="badge rounded-pill flex-shrink-0" style="background:#EFF6FF;color:#4338CA;font-size:0.62rem;">Unread</span>
                             @endif
                         </div>
                         <div class="mt-1 d-flex gap-3" style="font-size:0.7rem;color:#94A3B8;">

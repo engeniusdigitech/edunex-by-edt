@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Best Institute Management Software & Institute ERP Vision | EduNex" description="Learn about the mission driving EduNex, the top institute management system and institute management software designed for modern educational centers." />
+    <x-seo title="Best Institute and School Management Software & Institute ERP Vision | EduNex" description="Learn about the mission driving EduNex, the top Institute and School Management system and Institute and School Management software designed for modern educational centers." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
             letter-spacing: 3px;
             margin-bottom: 20px;
             display: inline-block;
-            background: rgba(79, 70, 229, 0.08);
+            background: rgba(37, 99, 235, 0.08);
             padding: 6px 16px;
             border-radius: 50px;
         }
@@ -48,9 +48,7 @@
         }
 
         .page-title span {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
         }
 
         /* ── STORY SECTION ── */
@@ -67,12 +65,10 @@
 
         /* ── VISION/MISSION CARDS ── */
         .vision-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: #ffffff;
             border-radius: 40px;
             padding: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid #e2e8f0;
             height: 100%;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.05);
@@ -81,7 +77,7 @@
         .vision-card:hover {
             transform: translateY(-12px);
             border-color: var(--primary-color);
-            box-shadow: 0 40px 100px -20px rgba(79, 70, 229, 0.12);
+            box-shadow: 0 40px 100px -20px rgba(37, 99, 235, 0.12);
         }
 
         .icon-box {
@@ -108,7 +104,7 @@
             width: 56px;
             height: 56px;
             border-radius: 20px;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(236, 72, 153, 0.1));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
             color: var(--primary-color);
             display: flex;
             align-items: center;
@@ -133,7 +129,6 @@
             width: 400px;
             height: 400px;
             background: var(--primary-color);
-            filter: blur(150px);
             opacity: 0.1;
             bottom: -200px;
             left: -200px;
@@ -180,9 +175,9 @@
                 </div>
                 <div class="col-lg-6 animate__animated animate__fadeInRight ps-lg-5">
                     <span class="section-tag">Our History</span>
-                    <h2 class="fw-black mb-4 display-6" style="letter-spacing: -2px;">Best Institute Management System Vision.</h2>
+                    <h2 class="fw-black mb-4 display-6" style="letter-spacing: -2px;">Best Institute and School Management System Vision.</h2>
                     <p class="text-muted mb-4 fs-5 fw-500">At <strong>Engenius Digitech</strong>, we observed the administrative struggles of hundreds of coaching centers, academies, and schools. Manual fee tracking, fragmented attendance logs, and poor student communication were holding educators back.</p>
-                    <p class="text-muted mb-4 fw-500">We decided to build the ultimate <strong>institute management software</strong> that solves these problems once and for all. EduNex was crafted with a "premium-first" approach — ensuring that enterprise-grade power is accessible to every institute, regardless of size.</p>
+                    <p class="text-muted mb-4 fw-500">We decided to build the ultimate <strong>Institute and School Management software</strong> that solves these problems once and for all. EduNex was crafted with a "premium-first" approach — ensuring that enterprise-grade power is accessible to every institute, regardless of size.</p>
 
                     <div class="row g-4 mt-3">
                         <div class="col-sm-6">
@@ -205,7 +200,7 @@
             <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="vision-card glass">
-                        <div class="icon-box" style="background: #EEF2FF; color: #4F46E5;">
+                        <div class="icon-box" style="background: #EFF6FF; color: #2563EB;">
                             <i class="fas fa-eye"></i>
                         </div>
                         <h3 class="fw-black mb-3" style="letter-spacing: -1px;">Our Vision</h3>
@@ -214,11 +209,11 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="vision-card glass">
-                        <div class="icon-box" style="background: #FDF2F8; color: #DB2777;">
+                        <div class="icon-box" style="background: #ECFDF5; color: #059669;">
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <h3 class="fw-black mb-3" style="letter-spacing: -1px;">Our Mission</h3>
-                        <p class="text-muted mb-0 fs-5 lh-base fw-500">To simplify institute management through beautiful design and powerful automation, making administrative excellence achievable for every educator on the planet.</p>
+                        <p class="text-muted mb-0 fs-5 lh-base fw-500">To simplify Institute and School Management through beautiful design and powerful automation, making administrative excellence achievable for every educator on the planet.</p>
                     </div>
                 </div>
             </div>

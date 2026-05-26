@@ -87,7 +87,7 @@
 
         <div class="col-lg-4">
             <div class="card border-0 shadow-sm rounded-4 p-4"
-                style="background: linear-gradient(135deg, #4F46E5, #818CF8); color: white;">
+                style="background: linear-gradient(135deg, #2563EB, #38BDF8); color: white;">
                 <i class="fas fa-broadcast-tower fa-2x mb-3 text-white-50"></i>
                 <h5 class="fw-bold text-white">Powered by Jitsi Meet</h5>
                 <p class="text-white-50 small mb-0">Completely browser-based. No download required. Students join with a

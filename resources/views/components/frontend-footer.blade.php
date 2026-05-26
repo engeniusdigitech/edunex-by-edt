@@ -3,7 +3,7 @@
         <div class="row g-5">
             <div class="col-lg-4">
                 <div class="footer-logo mb-4">
-                    <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 50px;" class="me-2">
+                    <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height: 75px;" class="me-2">
                 </div>
                 <p class="text-muted small mb-4 fw-500">The ultimate SaaS platform for modern educational institutes. Built by educators, for educators.</p>
                 <div class="d-flex gap-3">

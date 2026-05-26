@@ -7,7 +7,7 @@
     <div class="col-md-6">
         <div class="card card-stat h-100">
             <div class="card-body p-4 d-flex align-items-center">
-                <div class="icon-box me-4" style="background: linear-gradient(135deg, #4F46E5, #818CF8); box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);">
+                <div class="icon-box me-4" style="background: linear-gradient(135deg, #2563EB, #38BDF8); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);">
                     <i class="fas fa-school"></i>
                 </div>
                 <div>

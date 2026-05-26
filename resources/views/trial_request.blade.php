@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Start Your Best Institute Management Software Free Trial | EduNex" description="Experience the #1 institute management system for free. Start your 7-day trial of EduNex institute software today and automate your educational center." />
+    <x-seo title="Start Your Best Institute and School Management Software Free Trial | EduNex" description="Experience the #1 Institute and School Management system for free. Start your 7-day trial of EduNex institute software today and automate your educational center." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,45 +17,63 @@
     
     <style>
         .page-header {
-            padding: 160px 0 80px;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(236, 72, 153, 0.05));
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 180px 0 100px;
+            position: relative;
         }
         
         .page-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: var(--dark-bg);
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 24px;
         }
 
-        /* Form */
-        .form-control, .form-select {
-            padding: 14px 20px;
-            border-radius: 12px;
-            border: 1px solid #E2E8F0;
-            background-color: #F8FAFC;
+        .page-title span {
+            color: var(--primary-color);
         }
 
-        .form-control:focus, .form-select:focus {
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        /* Form Styling */
+        .trial-card {
+            border-radius: 32px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .form-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            background: rgba(241, 245, 249, 0.5);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: #fff;
             border-color: var(--primary-color);
-            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
 
-        /* Footer */
-        .footer {
-            background: var(--dark-bg);
-            color: white;
-            padding: 80px 0 40px;
+        .btn-whatsapp {
+            background: #25D366;
+            color: white !important;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
         }
-        .footer-brand {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-            display: inline-block;
+
+        .btn-whatsapp:hover {
+            background: #22c35e;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
         }
     </style>
 </head>
@@ -71,45 +89,50 @@
     @include('components.frontend-navbar')
 
     <div class="page-header text-center">
-        <div class="container">
-            <h1 class="page-title animate__animated animate__fadeInUp">Start Your Free Institute Software Trial</h1>
-            <p class="fs-5 text-muted max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 700px;">
-                Ready to upgrade your workflow with the best <strong>institute management system</strong>? Fill the form below, and our team will get your institute set up.
+        <div class="container px-4">
+            <h1 class="page-title animate__animated animate__fadeInUp">
+                Start Your <span>Free Trial</span> Today
+            </h1>
+            <p class="fs-5 text-muted mx-auto animate__animated animate__fadeInUp animate__delay-1s" style="max-width: 700px;">
+                Experience the most complete and intuitive <strong>Institute and School Management system</strong>. Fill out the form below, and our team will get you started instantly.
             </p>
         </div>
     </div>
 
-    <section class="py-5 my-5">
-        <div class="container py-4">
+    <section class="py-5 mb-5">
+        <div class="container px-4">
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-8">
-                    <div class="card border-0 shadow-lg rounded-4 p-5 glass">
+                <div class="col-lg-6">
+                    <div class="trial-card glass animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="text-center mb-5">
-                            <h4 class="fw-bold"><i class="fab  text-success fa-2x mb-3"></i><br>Let's Get connected for trial</h4>
-                            <p class="text-muted">Fill out these basic details. This will send a direct WhatsApp message to our enrollment team.</p>
+                            <div class="icon-box mx-auto mb-4" style="background: #ECFDF5; color: #10B981; width: 80px; height: 80px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3 class="fw-bold mb-2">Registration for Trial</h3>
+                            <p class="text-muted small">We'll connect with you via WhatsApp to set up your account.</p>
                         </div>
 
                         <form id="trialForm" onsubmit="sendToWhatsApp(event)">
                             <div class="row g-4">
                                 <div class="col-12">
-                                    <label class="form-label fw-semibold text-muted small text-uppercase">Institute Name</label>
+                                    <label class="form-label">Institute Name</label>
                                     <input type="text" id="institute" class="form-control" placeholder="e.g. Apex Institute classes" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold text-muted small text-uppercase">Your Name</label>
-                                    <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                                    <label class="form-label">Your Name</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Billy Doe" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold text-muted small text-uppercase">Phone Number</label>
+                                    <label class="form-label">Phone Number</label>
                                     <input type="tel" id="phone" class="form-control" placeholder="12345 67890" required>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label fw-semibold text-muted small text-uppercase">Selected Plan</label>
-                                    <input type="text" id="plan" class="form-control bg-light" value="{{ $planName }}" readonly>
+                                    <label class="form-label">Selected Plan</label>
+                                    <input type="text" id="plan" class="form-control" value="{{ $planName }}" readonly style="background: rgba(0,0,0,0.03);">
                                 </div>
-                                <div class="col-12 mt-4 text-center">
-                                    <button type="submit" class="btn btn-modern w-100 py-3 text-white shadow-sm fw-bold fs-5" style="background-color: #25D366; border-radius: 16px;">
-                                        Submit <i class="fas fa-arrow-right ms-2"></i>
+                                <div class="col-12 mt-5">
+                                    <button type="submit" class="btn btn-modern btn-whatsapp w-100 py-3 fw-bold fs-6">
+                                        Submit Request <i class="fas fa-paper-plane ms-2"></i>
                                     </button>
                                 </div>
                             </div>
@@ -120,22 +143,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer text-center text-md-start">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <div class="footer-brand"><img src="{{ asset('images/logo.png') }}" alt="EduCore Logo" style="max-height: 64px;" class="me-2"></div>
-                    <p class="footer-text text-white-50 mb-0">Elevating institute management software.<br>A product by <a href="https://engeniusdigitech.netlify.app/" target="_blank" class="text-white fw-bold text-decoration-none border-bottom border-light pb-1">Engenius Digitech</a>.</p>
-                </div>
-                <div class="col-md-6 text-md-end footer-text">
-                    <a href="{{ route('about') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">About Us</a>
-                    <a href="{{ route('contact') }}" class="text-decoration-none text-white opacity-75 me-3 hover-opacity-100">Contact Us</a>
-                    <a href="#" class="text-decoration-none text-white opacity-75 hover-opacity-100">Privacy Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <x-frontend-footer />
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

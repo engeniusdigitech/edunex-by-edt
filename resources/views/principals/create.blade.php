@@ -26,7 +26,7 @@
             
             <div class="mb-3">
                 <label class="form-label">Full Name</label>
-                <input type="text" name="name" class="form-control" required placeholder="John Doe" value="{{ old('name') }}">
+                <input type="text" name="name" class="form-control" required placeholder="Billy mark" value="{{ old('name') }}">
             </div>
 
             <div class="mb-3">

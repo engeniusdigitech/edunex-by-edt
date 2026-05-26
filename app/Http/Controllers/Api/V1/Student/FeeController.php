@@ -63,4 +63,20 @@ class FeeController extends Controller
             })
         ]);
     }
+
+    public function checkoutLink(Request $request, StudentFee $fee)
+    {
+        $student = $request->user();
+        if ($fee->student_id !== $student->id) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $url = \Illuminate\Support\Facades\URL::temporarySignedRoute(
+            'student.magic_checkout',
+            now()->addMinutes(30),
+            ['student' => $student->id, 'fee' => $fee->id]
+        );
+
+        return response()->json(['checkout_url' => $url]);
+    }
 }

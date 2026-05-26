@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Contact Top Institute Management System Support | EduNex" description="Get in touch for EduNex institute software inquiries, custom institute management system deployments, and expert support." />
+    <x-seo title="Contact Top Institute and School Management System Support | EduNex" description="Get in touch for EduNex institute software inquiries, custom Institute and School Management system deployments, and expert support." />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
             letter-spacing: 3px;
             margin-bottom: 20px;
             display: inline-block;
-            background: rgba(79, 70, 229, 0.08);
+            background: rgba(37, 99, 235, 0.08);
             padding: 6px 16px;
             border-radius: 50px;
         }
@@ -48,9 +48,7 @@
         }
 
         .page-title span {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
         }
 
         /* ── CONTACT CONTAINER ── */
@@ -60,11 +58,9 @@
         }
 
         .contact-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: #ffffff;
             border-radius: 48px;
-            border: 1px solid var(--glass-border);
+            border: 1px solid #e2e8f0;
             overflow: hidden;
             box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08);
         }
@@ -104,7 +100,7 @@
         .form-select:focus {
             background: #ffffff;
             border-color: var(--primary-color);
-            box-shadow: 0 12px 24px -8px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.2);
             transform: translateY(-2px);
         }
 
@@ -125,7 +121,6 @@
             width: 300px;
             height: 300px;
             background: var(--primary-color);
-            filter: blur(120px);
             opacity: 0.15;
             top: -100px;
             right: -100px;
@@ -133,9 +128,7 @@
         }
 
         .info-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.06);
             border-radius: 28px;
             padding: 24px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -157,13 +150,13 @@
             height: 56px;
             min-width: 56px;
             border-radius: 18px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.4rem;
             color: #fff;
-            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
         }
 
         .info-content h6 {
@@ -220,7 +213,7 @@
             </h1>
             <p class="text-muted fs-5 mt-4 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s"
                 style="max-width: 700px;">
-                Whether you have a technical question or need a custom <strong>institute management system</strong> deployment, our team at Engenius
+                Whether you have a technical question or need a custom <strong>Institute and School Management system</strong> deployment, our team at Engenius
                 Digitech is here to help you scale.
             </p>
         </div>
@@ -287,7 +280,7 @@
                             </div>
 
                             <div class="info-card">
-                                <div class="info-icon" style="background: linear-gradient(135deg, var(--secondary-color), #ec4899);"><i class="fas fa-paper-plane"></i></div>
+                                <div class="info-icon" style="background: linear-gradient(135deg, var(--secondary-color), #10b981);"><i class="fas fa-paper-plane"></i></div>
                                 <div class="info-content">
                                     <h6>Sales & Partnerships</h6>
                                     <p>engeniusdigitech@gmail.com</p>

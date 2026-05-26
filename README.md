@@ -1,4 +1,4 @@
-# EduNex Institute Management SaaS
+# EduNex Institute and School Management SaaS
 
 EduNex is a comprehensive, multi-tenant Software as a Service (SaaS) application built to power modern institute institutes, tuition centers, and educational academies. It handles everything from student enrollment and daily attendance to fee tracking, advanced analytics, and academic learning management—all under a single, isolated, role-based architecture.
 

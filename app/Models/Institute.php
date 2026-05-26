@@ -14,10 +14,20 @@ class Institute extends Model
         'subdomain',
         'contact_email',
         'phone',
+        'address',
+        'latitude',
+        'longitude',
+        'attendance_radius_meters',
         'country',
         'logo',
         'type',
         'is_active',
+    ];
+
+    protected $casts = [
+        'latitude' => 'decimal:7',
+        'longitude' => 'decimal:7',
+        'attendance_radius_meters' => 'integer',
     ];
 
     public function users()

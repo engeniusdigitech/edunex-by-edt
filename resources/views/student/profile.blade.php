@@ -12,35 +12,239 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --indigo: #6366F1;
-            --indigo-dark: #4F46E5;
-            --pink: #EC4899;
-            --bg: #F1F5F9;
+            --primary-blue: #2563EB;
+            --primary-blue-light: #3B82F6;
+            --primary-blue-dark: #1D4ED8;
+            --primary-green: #10B981;
+            --primary-green-light: #34D399;
+            --primary-green-dark: #059669;
+            --gradient-blue-green: linear-gradient(135deg, #2563EB 0%, #0D9488 50%, #10B981 100%);
+            --gradient-blue-green-reverse: linear-gradient(135deg, #10B981 0%, #0D9488 50%, #2563EB 100%);
+            --bg: #F8FAFC;
             --card: #ffffff;
-            --border: #E2E8F0;
+            --border: #E0F2FE;
             --text: #0F172A;
             --muted: #64748B;
             --radius: 20px;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg);
+            background: #F8FAFC;
             color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── SIDEBAR LAYOUT ── */
+        .app-container {
+            display: flex;
             min-height: 100vh;
         }
 
-        .top-navbar {
+        .sidebar {
+            width: 280px;
             background: #fff;
+            border-right: 1px solid var(--border);
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
             border-bottom: 1px solid var(--border);
-            padding: 0 32px;
-            height: 64px;
+        }
+
+        .sidebar-brand {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            position: sticky;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .sidebar-brand .brand-logo {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-blue-green);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .sidebar-brand .brand-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+        }
+
+        .sidebar-brand .brand-sub {
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 20px 16px;
+            overflow-y: auto;
+        }
+
+        .nav-section {
+            margin-bottom: 24px;
+        }
+
+        .nav-section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            padding-left: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .nav-item:hover {
+            background: rgba(37, 99, 235, 0.06);
+            color: var(--primary-blue);
+        }
+
+        .nav-item.active {
+            background: var(--gradient-blue-green);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .user-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-radius: 14px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .user-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .user-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .user-role {
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+
+        .logout-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 10px;
+            color: var(--red);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logout-btn:hover {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 32px;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
 
         .nav-brand {
@@ -64,20 +268,36 @@
             letter-spacing: 1px;
         }
 
-        .container-tight {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            color: var(--muted);
         }
 
         .profile-header {
-            background: linear-gradient(135deg, var(--indigo), var(--indigo-dark));
+            background: var(--gradient-blue-green);
             border-radius: var(--radius);
-            padding: 40px;
+            padding: 48px;
             color: #fff;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.25), 0 10px 20px -8px rgba(16, 185, 129, 0.2);
         }
 
         .profile-header::after {
@@ -85,10 +305,10 @@
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
-            right: -20px;
-            bottom: -20px;
-            font-size: 10rem;
-            opacity: 0.1;
+            right: -30px;
+            bottom: -30px;
+            font-size: 12rem;
+            opacity: 0.08;
             transform: rotate(-15deg);
         }
 
@@ -102,26 +322,26 @@
         .profile-img {
             width: 100%;
             height: 100%;
-            border-radius: 30px;
+            border-radius: 32px;
             object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
 
         .img-edit-btn {
             position: absolute;
-            bottom: -5px;
-            right: -5px;
-            width: 32px;
-            height: 32px;
-            background: #fff;
-            border-radius: 10px;
+            bottom: -6px;
+            right: -6px;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-blue-green);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--indigo);
+            color: #fff;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
             transition: all 0.2s;
         }
 
@@ -133,8 +353,8 @@
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 36px;
+            box-shadow: 0 8px 20px -6px rgba(37, 99, 235, 0.08);
         }
 
         .form-label {
@@ -157,8 +377,8 @@
         }
 
         .form-control:focus {
-            border-color: var(--indigo);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
             background: #fff;
         }
 
@@ -175,60 +395,122 @@
         }
 
         .back-btn:hover {
-            color: var(--indigo);
+            color: var(--primary-blue);
         }
 
         .btn-save {
-            background: var(--indigo);
+            background: var(--gradient-blue-green);
             border: none;
-            border-radius: 12px;
-            padding: 12px 30px;
+            border-radius: 14px;
+            padding: 14px 36px;
             font-weight: 700;
             color: #fff;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .btn-save:hover {
-            background: var(--indigo-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
         }
 
         .batch-info-tag {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 6px 14px;
-            border-radius: 10px;
-            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.78rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            backdrop-filter: blur(4px);
+            gap: 8px;
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
 
 <body>
-    <header class="top-navbar">
-        <a href="{{ route('student.dashboard') }}" class="nav-brand">
-            @if($student->institute && $student->institute->logo)
-                <img src="{{ asset('storage/' . $student->institute->logo) }}" alt="Logo" style="max-height: 36px; border-radius: 8px;">
-            @else
-                <div class="brand-name">{{ $student->institute->name ?? 'EduNex' }}</div>
-            @endif
-            <div>
-                <div class="brand-name">My Profile</div>
-                <div class="brand-sub">View your identity</div>
-            </div>
-        </a>
-        <div class="nav-right">
-            <a href="{{ route('student.dashboard') }}" class="btn btn-sm btn-light rounded-pill px-3 fw-bold">
-                <i class="fas fa-home me-1"></i> Dashboard
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="mobile-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="{{ route('student.dashboard') }}" class="sidebar-brand">
+                @if($student->institute && $student->institute->logo)
+                    <img src="{{ asset('storage/' . $student->institute->logo) }}" alt="Logo"
+                        class="brand-logo" style="width: 44px; height: 44px; object-fit: cover;">
+                @else
+                    <div class="brand-logo">EN</div>
+                @endif
+                <div>
+                    <div class="brand-text">{{ $student->institute->name ?? 'EduNex' }}</div>
+                    <div class="brand-sub">Student Portal</div>
+                </div>
             </a>
         </div>
-    </header>
 
-    <div class="container-tight">
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">Main</div>
+                <a href="{{ route('student.dashboard') }}" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="{{ route('student.timetable.index') }}" class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Timetable</span>
+                </a>
+                <a href="{{ route('student.lectures.index') }}" class="nav-item">
+                    <i class="fas fa-video"></i>
+                    <span>Live Lectures</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Academics</div>
+                <a href="{{ route('student.fees.index') }}" class="nav-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Fees & Payments</span>
+                </a>
+                <a href="{{ route('student.leaves.index') }}" class="nav-item">
+                    <i class="fas fa-calendar-minus"></i>
+                    <span>Leave Requests</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Account</div>
+                <a href="{{ route('student.profile.edit') }}" class="nav-item active">
+                    <i class="fas fa-user-circle"></i>
+                    <span>My Profile</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-card">
+                <img src="{{ $student->profile_image_url }}" alt="Profile" class="user-avatar">
+                <div class="user-info">
+                    <div class="user-name">{{ $student->name }}</div>
+                    <div class="user-role">Student</div>
+                </div>
+                <form method="POST" action="{{ route('student.logout') }}" style="margin:0;">
+                    @csrf
+                    <button type="submit" class="logout-btn" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ── MAIN CONTENT ── -->
+    <div class="main-content">
+        <div class="page">
         <a href="{{ route('student.dashboard') }}" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to Home
         </a>
@@ -299,10 +581,17 @@
                     </p>
                 </div>
             </form>
-        </div>
-    </div>
+        </div><!-- /page -->
+    </div><!-- /main-content -->
 
     <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.mobile-overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
         document.getElementById('profile_image_input').addEventListener('change', function(e) {
             if (e.target.files && e.target.files[0]) {
                 const reader = new FileReader();

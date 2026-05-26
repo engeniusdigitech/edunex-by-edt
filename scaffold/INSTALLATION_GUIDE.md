@@ -1,4 +1,4 @@
-# EduNex – Institute Management SaaS Installation Guide
+# EduNex – Institute and School Management SaaS Installation Guide
 
 Welcome to the EduNex SaaS Application. This project is built dynamically on Laravel 10+ and MySQL, emphasizing a single-database multi-tenant structure using an `institute_id` global scope.
 

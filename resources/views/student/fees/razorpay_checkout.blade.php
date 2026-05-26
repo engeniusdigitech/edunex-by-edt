@@ -62,7 +62,7 @@
                 "contact": "{{ $student->phone }}"
             },
             "theme": {
-                "color": "#4F46E5"
+                "color": "#2563EB"
             },
             "modal": {
                 "ondismiss": function () {

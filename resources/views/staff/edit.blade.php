@@ -7,7 +7,7 @@
     <a href="{{ route('staff.index') }}" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Back to Staff Directory</a>
 </div>
 
-<div class="card border-0 shadow-sm col-md-8">
+<div class="card border-0 shadow-sm">
     <div class="card-header bg-white">
         <h5>Edit Staff Member: {{ $staff->name }}</h5>
     </div>
@@ -106,6 +106,10 @@
                         </div>
                     @endif
                 </div>
+            </div>
+
+            <div class="mb-4">
+                <x-face-capture :required="false" :existingFaceUrl="$staff->face_image_url" />
             </div>
 
             <hr>

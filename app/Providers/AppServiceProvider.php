@@ -50,5 +50,13 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Gate::define('manage-academics', function ($user) {
             return $user->isInstituteAdmin() || $user->isPrincipal() || $user->isTeacher();
         });
+
+        \Illuminate\Support\Facades\Gate::define('manage-institute-settings', function ($user) {
+            return $user->isInstituteAdmin();
+        });
+
+        \Illuminate\Support\Facades\Gate::define('manage-staff-payroll', function ($user) {
+            return $user->isInstituteAdmin();
+        });
     }
 }

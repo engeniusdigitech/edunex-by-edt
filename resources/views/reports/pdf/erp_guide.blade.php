@@ -5,11 +5,11 @@
     <title>EduNex ERP | Brief Guide</title>
     <style>
         body { font-family: sans-serif; font-size: 14px; line-height: 1.6; color: #333; }
-        .header { text-align: center; border-bottom: 2px solid #4F46E5; padding-bottom: 20px; margin-bottom: 30px; }
-        .logo { font-size: 28px; font-weight: bold; color: #4F46E5; }
+        .header { text-align: center; border-bottom: 2px solid #2563EB; padding-bottom: 20px; margin-bottom: 30px; }
+        .logo { font-size: 28px; font-weight: bold; color: #2563EB; }
         .section { margin-bottom: 25px; }
-        .section-title { font-size: 18px; font-weight: bold; color: #4F46E5; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 15px; }
-        .role-box { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #4F46E5; }
+        .section-title { font-size: 18px; font-weight: bold; color: #2563EB; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 15px; }
+        .role-box { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #2563EB; }
         .role-name { font-weight: bold; color: #333; margin-bottom: 5px; }
         .footer { text-align: center; font-size: 10px; color: #777; margin-top: 50px; border-top: 1px solid #eee; padding-top: 10px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -20,7 +20,7 @@
 <body>
     <div class="header">
         <div class="logo">EDUNEX ERP</div>
-        <div>Unified Institute Management Ecosystem</div>
+        <div>Unified Institute and School Management Ecosystem</div>
     </div>
 
     <div class="section">

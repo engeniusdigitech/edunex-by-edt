@@ -1,4 +1,4 @@
-@props(['wide' => false, 'hideLogo' => false])
+@props(['wide' => false, 'hideLogo' => false, 'split' => false])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -21,9 +21,9 @@
 
         <style>
             :root {
-                --primary: #6366f1;
-                --primary-hover: #4f46e5;
-                --secondary: #ec4899;
+                --primary: #1B75D7;
+                --primary-hover: #155cb0;
+                --secondary: #7CD137;
                 --bg-start: #0f172a;
                 --bg-end: #1e1b4b;
                 --glass-bg: rgba(255, 255, 255, 0.03);
@@ -34,7 +34,7 @@
 
             body {
                 font-family: 'Inter', sans-serif;
-                background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+                background: linear-gradient(135deg, #0f172a, #1e1b4b);
                 color: var(--text-main);
                 min-height: 100vh;
                 margin: 0;
@@ -49,46 +49,6 @@
                 font-family: 'Outfit', sans-serif;
             }
 
-            /* Animated Background Blobs */
-            .blob {
-                position: absolute;
-                filter: blur(80px);
-                z-index: 0;
-                opacity: 0.6;
-                animation: float 20s infinite ease-in-out alternate;
-            }
-
-            .blob-1 {
-                top: -10%;
-                left: -10%;
-                width: 500px;
-                height: 500px;
-                background: var(--primary);
-                border-radius: 50%;
-                animation-delay: 0s;
-            }
-
-            .blob-2 {
-                bottom: -20%;
-                right: -10%;
-                width: 600px;
-                height: 600px;
-                background: var(--secondary);
-                border-radius: 50%;
-                animation-delay: -5s;
-            }
-
-            .blob-3 {
-                top: 40%;
-                left: 50%;
-                width: 400px;
-                height: 400px;
-                background: #8b5cf6;
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                animation-delay: -10s;
-            }
-
             @keyframes float {
                 0% { transform: translate(0, 0) scale(1); }
                 33% { transform: translate(30px, -50px) scale(1.1); }
@@ -96,13 +56,13 @@
                 100% { transform: translate(0, 0) scale(1); }
             }
 
-            /* Premium Glassmorphic Card */
+            /* Blobs hidden — glass effect removed */
+            .blob { display: none; }
+
             .glass-card {
                 position: relative;
                 z-index: 10;
-                background: var(--glass-bg);
-                backdrop-filter: blur(24px);
-                -webkit-backdrop-filter: blur(24px);
+                background: rgba(255, 255, 255, 0.06);
                 border: 1px solid var(--glass-border);
                 box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 border-radius: 28px;
@@ -205,7 +165,7 @@
             .input-group input:focus {
                 border-color: var(--primary);
                 background: rgba(15, 23, 42, 0.6);
-                box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+                box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
             }
 
             .input-group input:focus + label,
@@ -216,7 +176,7 @@
             /* Premium Button */
             .btn-premium {
                 width: 100%;
-                background: linear-gradient(135deg, var(--primary), #8b5cf6);
+                background: linear-gradient(135deg, var(--primary), #14b8a6);
                 color: white;
                 border: none;
                 border-radius: 14px;
@@ -232,7 +192,7 @@
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
-                box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.6);
+                box-shadow: 0 10px 20px -10px rgba(14, 165, 233, 0.6);
             }
 
             .btn-premium::before {
@@ -245,7 +205,7 @@
 
             .btn-premium:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 15px 25px -10px rgba(99, 102, 241, 0.8);
+                box-shadow: 0 15px 25px -10px rgba(14, 165, 233, 0.8);
             }
 
             .btn-premium:hover::before {
@@ -294,8 +254,8 @@
             }
 
             .link-premium:hover {
-                color: #8b5cf6;
-                text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+                color: #14b8a6;
+                text-shadow: 0 0 10px rgba(20, 184, 166, 0.4);
             }
 
             /* Logo */
@@ -311,31 +271,44 @@
             }
 
             @keyframes pulse {
-                0% { filter: drop-shadow(0 0 10px rgba(139,92,246,0.2)); }
-                50% { filter: drop-shadow(0 0 20px rgba(139,92,246,0.6)); }
-                100% { filter: drop-shadow(0 0 10px rgba(139,92,246,0.2)); }
+                0% { filter: drop-shadow(0 0 10px rgba(20,184,166,0.2)); }
+                50% { filter: drop-shadow(0 0 20px rgba(20,184,166,0.6)); }
+                100% { filter: drop-shadow(0 0 10px rgba(20,184,166,0.2)); }
+            }
+
+            body.split-layout {
+                display: block !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                background: #ffffff !important;
             }
         </style>
     </head>
-    <body>
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <body class="{{ isset($split) && $split ? 'split-layout' : '' }}">
+        @if(!isset($split) || !$split)
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
 
-        <a href="{{ url('/') }}" style="position: absolute; top: 30px; left: 30px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 500; z-index: 20; transition: color 0.3s;">
-            <i class="fas fa-arrow-left"></i> Back to Home
-        </a>
+            <a href="{{ url('/') }}" style="position: absolute; top: 30px; left: 30px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 500; z-index: 20; transition: color 0.3s;">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        @endif
 
-        <div class="glass-card {{ $wide ? 'wide' : '' }}">
-            @if(!isset($hideLogo) || !$hideLogo)
-                <div class="auth-logo">
-                    <a href="{{ url('/') }}">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo">
-                    </a>
-                </div>
-            @endif
+        @if(isset($split) && $split)
             {{ $slot }}
-        </div>
+        @else
+            <div class="glass-card {{ $wide ? 'wide' : '' }}">
+                @if(!isset($hideLogo) || !$hideLogo)
+                    <div class="auth-logo">
+                        <a href="{{ url('/') }}">
+                            <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo">
+                        </a>
+                    </div>
+                @endif
+                {{ $slot }}
+            </div>
+        @endif
         
         <script>
             if ('serviceWorker' in navigator) {

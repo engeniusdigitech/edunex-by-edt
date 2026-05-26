@@ -6,8 +6,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.5);
         z-index: 9998;
         animation: fadeInWA 0.3s ease;
     }

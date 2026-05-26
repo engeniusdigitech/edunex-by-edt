@@ -137,5 +137,5 @@
 
 <style>
     .btn-modern { border-radius: 50px; padding: 10px 24px; font-weight: 600; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .btn-modern:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2); }
+    .btn-modern:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
 </style>

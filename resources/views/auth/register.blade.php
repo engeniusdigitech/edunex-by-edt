@@ -10,15 +10,15 @@
         <!-- Name -->
         <div>
             <label for="name" class="block font-semibold text-sm text-gray-700 uppercase tracking-wide mb-1">{{ __('Name') }}</label>
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="John Doe" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2 text-pink-600" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Billy mark" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2 text-emerald-600" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <label for="email" class="block font-semibold text-sm text-gray-700 uppercase tracking-wide mb-1">{{ __('Email Address') }}</label>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="admin@institute.com" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2 text-pink-600" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2 text-emerald-600" />
         </div>
 
         <!-- Password -->
@@ -30,7 +30,7 @@
                             name="password"
                             required autocomplete="new-password" placeholder="••••••••" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2 text-pink-600" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2 text-emerald-600" />
         </div>
 
         <!-- Confirm Password -->
@@ -41,7 +41,7 @@
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" placeholder="••••••••" />
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-pink-600" />
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-emerald-600" />
         </div>
 
         <div>
@@ -53,7 +53,7 @@
         <div class="mt-6 text-center">
             <p class="text-sm text-gray-600">
                 Already registered? 
-                <a href="{{ route('login') }}" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in here</a>
+                <a href="{{ route('login') }}" class="font-semibold text-blue-600 hover:text-blue-500">Sign in here</a>
             </p>
         </div>
     </form>

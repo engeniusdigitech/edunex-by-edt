@@ -26,13 +26,13 @@
     <div class="row g-3 mb-4">
         {{-- Total Students --}}
         <div class="col-6 col-md-3">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(79,70,229,0.08);">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(37,99,235,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <span class="text-uppercase fw-bold text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Students</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:rgba(79,70,229,0.1);color:#4F46E5;font-size:0.75rem;">
+                            style="width:30px;height:30px;background:rgba(37,99,235,0.1);color:#2563EB;font-size:0.75rem;">
                             <i class="fas fa-users"></i></div>
                     </div>
                     <h2 class="fw-black mb-0" style="color:#0F172A;">{{ $totalStudents }}</h2>
@@ -58,13 +58,13 @@
         </div>
         {{-- Homework --}}
         <div class="col-6 col-md-3">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(99,102,241,0.08);">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(14,165,233,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <span class="text-uppercase fw-bold text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Homework</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:rgba(99,102,241,0.1);color:#6366F1;font-size:0.75rem;">
+                            style="width:30px;height:30px;background:rgba(14,165,233,0.1);color:#0EA5E9;font-size:0.75rem;">
                             <i class="fas fa-book-open"></i></div>
                     </div>
                     <h2 class="fw-black mb-0" style="color:#0F172A;">{{ $activeHomework }}</h2>
@@ -97,7 +97,7 @@
                 <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.04); background: linear-gradient(to right, #ffffff, #f8faff);">
                     <div class="card-header bg-transparent border-bottom-0 pt-4 pb-0 px-4">
                         <div class="d-flex align-items-center gap-2">
-                             <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:rgba(79,70,229,0.1) !important;">
+                             <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:rgba(37,99,235,0.1) !important;">
                                 <i class="fas fa-calendar-check text-primary small"></i>
                              </div>
                             <h6 class="fw-bold text-dark mb-0">Today's Attendance {{ $isMyClassView ? '(My Class)' : '' }}</h6>
@@ -208,7 +208,7 @@
                                                 <div class="text-muted small">{{ $hw->due_date->format('Y') }}</div>
                                             </td>
                                             <td class="pe-4 py-3 border-bottom-0 text-center">
-                                                <span class="badge bg-indigo text-indigo border-0 small" style="background:rgba(79,70,229,0.1) !important; color:#4F46E5 !important;">Homework</span>
+                                                <span class="badge bg-indigo text-indigo border-0 small" style="background:rgba(37,99,235,0.1) !important; color:#2563EB !important;">Homework</span>
                                             </td>
                                         </tr>
                                     @empty
@@ -250,7 +250,7 @@
 
             <div class="col-lg-4">
                 {{-- Quick Actions --}}
-                <div class="card border-0 shadow-sm mb-4" style="border-radius:20px; background: linear-gradient(135deg, #4F46E5, #6366F1);">
+                <div class="card border-0 shadow-sm mb-4" style="border-radius:20px; background: linear-gradient(135deg, #2563EB, #0EA5E9);">
                     <div class="card-body p-4 text-white">
                         <h6 class="fw-bold mb-3">Quick Actions</h6>
                         <div class="row g-2">
@@ -305,7 +305,7 @@
                         labels: Object.keys(batchData),
                         datasets: [{
                             data: Object.values(batchData),
-                            backgroundColor: ['#4F46E5', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6', '#06B6D4'],
+                            backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#10B981', '#14B8A6', '#06B6D4'],
                             borderWidth: 0,
                             hoverOffset: 15
                         }]

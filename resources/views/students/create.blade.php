@@ -18,11 +18,11 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Full Name</label>
-                    <input type="text" name="name" class="form-control" required placeholder="John Doe">
+                    <input type="text" name="name" class="form-control" required placeholder="Billy mark">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-control" placeholder="john@example.com">
+                    <input type="email" name="email" class="form-control" placeholder="Billy@example.com">
                 </div>
             </div>
 

@@ -1,11 +1,11 @@
 {
     "name": "EduNex Student Portal",
     "short_name": "EduNex",
-    "description": "The unified student dashboard for EduNex Institute Management",
+    "description": "The unified student dashboard for EduNex Institute and School Management",
     "start_url": "/student/login",
     "display": "standalone",
     "background_color": "#FAFAF9",
-    "theme_color": "#4F46E5",
+    "theme_color": "#2563EB",
     "icons": [
         {
             "src": "/icons/icon-192x192.png",

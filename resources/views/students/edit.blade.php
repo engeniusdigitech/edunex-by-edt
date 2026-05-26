@@ -19,12 +19,12 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Full Name</label>
-                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{ old('name', $student->name) }}" placeholder="John Doe">
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" required value="{{ old('name', $student->name) }}" placeholder="Billy mark">
                     @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $student->email) }}" placeholder="john@example.com">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $student->email) }}" placeholder="Billy@example.com">
                     @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
             </div>

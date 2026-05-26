@@ -41,34 +41,8 @@
             font-family: 'Outfit', sans-serif;
         }
 
-        /* Animated Background Blobs */
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: 0;
-            opacity: 0.5;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-
-        .blob-1 {
-            top: -10%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: var(--primary);
-            border-radius: 50%;
-            animation-delay: 0s;
-        }
-
-        .blob-2 {
-            bottom: -20%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: var(--secondary);
-            border-radius: 50%;
-            animation-delay: -5s;
-        }
+        /* Blobs hidden — glass effect removed */
+        .blob { display: none; }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
@@ -81,9 +55,7 @@
         .glass-card {
             position: relative;
             z-index: 10;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--glass-border);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border-radius: 30px;

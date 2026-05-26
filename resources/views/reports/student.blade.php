@@ -15,7 +15,7 @@
 </div>
 
 {{-- ── HEADER CARD ── --}}
-<div class="card border-0 mb-4" style="background: linear-gradient(135deg, #4F46E5, #7C3AED 60%, #EC4899); border-radius: 18px; overflow: hidden;">
+<div class="card border-0 mb-4" style="background: linear-gradient(135deg, #2563EB, #0D9488 60%, #10B981); border-radius: 18px; overflow: hidden;">
     <div class="card-body p-4 d-flex align-items-center gap-4" style="position:relative;">
         {{-- Avatar --}}
         <div class="d-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0"
@@ -223,7 +223,7 @@
                                 <td class="py-3 fw-bold text-dark">₹{{ number_format($payment->amount_paid, 2) }}</td>
                                 <td class="py-3">
                                     @if($payment->payment_method === 'online')
-                                        <span class="badge rounded-pill px-3 py-1 fw-semibold" style="background:#EDE9FE;color:#4C1D95;font-size:0.68rem;"><i class="fas fa-credit-card me-1"></i>Online</span>
+                                        <span class="badge rounded-pill px-3 py-1 fw-semibold" style="background:#CCFBF1;color:#4C1D95;font-size:0.68rem;"><i class="fas fa-credit-card me-1"></i>Online</span>
                                     @else
                                         <span class="badge rounded-pill px-3 py-1 fw-semibold" style="background:#D1FAE5;color:#065F46;font-size:0.68rem;"><i class="fas fa-money-bill me-1"></i>Cash</span>
                                     @endif

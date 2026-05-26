@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <meta name="theme-color" content="#6366F1">
+    <meta name="theme-color" content="#0EA5E9">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --indigo: #6366F1;
-            --indigo-dark: #4F46E5;
-            --pink: #EC4899;
+            --indigo: #0EA5E9;
+            --indigo-dark: #2563EB;
+            --pink: #10B981;
             --emerald: #10B981;
             --amber: #F59E0B;
             --red: #EF4444;

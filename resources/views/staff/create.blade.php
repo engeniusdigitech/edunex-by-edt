@@ -7,7 +7,7 @@
     <a href="{{ route('staff.index') }}" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Back to Staff Directory</a>
 </div>
 
-<div class="card border-0 shadow-sm col-md-8">
+<div class="card border-0 shadow-sm">
     <div class="card-header bg-white">
         <h5>Register New Staff Member</h5>
     </div>
@@ -26,7 +26,7 @@
             
             <div class="mb-3">
                 <label class="form-label">Full Name</label>
-                <input type="text" name="name" class="form-control" required placeholder="Jane Doe">
+                <input type="text" name="name" class="form-control" required placeholder="Jane mark">
             </div>
 
             <div class="mb-3">
@@ -114,6 +114,10 @@
                         </div>
                     @endif
                 </div>
+            </div>
+
+            <div class="mb-4">
+                <x-face-capture :required="true" />
             </div>
 
             <div class="row">

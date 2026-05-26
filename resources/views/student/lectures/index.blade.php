@@ -10,22 +10,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary-color: #4F46E5; --secondary-color: #EC4899; --bg-color: #FAFAF9; }
-        body { font-family: 'Outfit', sans-serif; background-color: var(--bg-color); color: #1E293B; overflow-x: hidden; }
-        .bg-map { position: fixed; top: -20vh; left: -20vw; width: 60vw; height: 60vh; background: radial-gradient(circle, rgba(79, 70, 229, 0.05), transparent 60%); z-index: -1; pointer-events: none; }
-        .navbar { background: rgba(255, 255, 255, 0.9) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 16px 0; }
-        .card { border: 1px solid rgba(0,0,0,0.03); border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.02); background: #ffffff; }
-        .subject-header { color: var(--primary-color); border-bottom: 2px solid rgba(79, 70, 229, 0.1); padding-bottom: 10px; margin-bottom: 20px; font-weight: 700; }
+        :root { 
+            --primary-blue: #2563EB;
+            --primary-blue-light: #3B82F6;
+            --primary-blue-dark: #1D4ED8;
+            --primary-green: #10B981;
+            --primary-green-light: #34D399;
+            --primary-green-dark: #059669;
+            --gradient-blue-green: linear-gradient(135deg, #2563EB 0%, #0D9488 50%, #10B981 100%);
+            --gradient-blue-green-reverse: linear-gradient(135deg, #10B981 0%, #0D9488 50%, #2563EB 100%);
+            --bg-color: #F0F9FF;
+        }
+        body { font-family: 'Outfit', sans-serif; background: linear-gradient(180deg, #F0F9FF 0%, #ECFDF5 100%); color: #1E293B; overflow-x: hidden; }
+        .bg-map { position: fixed; top: -20vh; left: -20vw; width: 60vw; height: 60vh; background: radial-gradient(circle, rgba(37, 99, 235, 0.08), transparent 60%); z-index: -1; pointer-events: none; }
+        .navbar { background: #ffffff !important; border-bottom: 1px solid rgba(37, 99, 235, 0.08); padding: 16px 0; }
+        .card { border: 1px solid rgba(37, 99, 235, 0.08); border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.08); background: #ffffff; }
+        .subject-header { color: var(--primary-blue); border-bottom: 2px solid rgba(37, 99, 235, 0.15); padding-bottom: 10px; margin-bottom: 20px; font-weight: 700; }
         
         /* Live Card Styling */
         .live-session-card {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
+            background: linear-gradient(135deg, #2563EB, #10B981);
             color: white;
             border-radius: 20px;
             padding: 28px;
             position: relative;
             overflow: hidden;
             animation: pulse-shadow 2s infinite;
+            box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.3);
         }
         .live-session-card::before {
             content: '';
@@ -36,8 +47,8 @@
             pointer-events: none;
         }
         @keyframes pulse-shadow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.3); }
-            50% { box-shadow: 0 0 0 16px rgba(239,68,68,0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            50% { box-shadow: 0 0 0 16px rgba(37, 99, 235, 0); }
         }
         .live-badge-student {
             display: inline-flex; align-items: center; gap: 6px;
@@ -48,18 +59,19 @@
         .live-badge-student .dot { width: 8px; height: 8px; background: white; border-radius: 50%; animation: blink 1s infinite; }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
         .btn-join-live {
-            background: white; color: #ef4444;
+            background: white; color: var(--primary-blue);
             border: none; border-radius: 50px;
             padding: 12px 32px; font-weight: 800;
             font-size: 1rem; cursor: pointer;
             transition: all 0.2s;
             display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .btn-join-live:hover { transform: scale(1.04); box-shadow: 0 10px 20px rgba(0,0,0,0.2); color: #dc2626; }
+        .btn-join-live:hover { transform: scale(1.04); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); color: var(--primary-blue-dark); }
         
         /* Regular lecture card */
         .lecture-card { transition: all 0.3s ease; height: 100%; }
-        .lecture-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); transform: translateY(-2px); border-color: var(--primary-color) !important; }
+        .lecture-card:hover { box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.12); transform: translateY(-4px); border-color: var(--primary-blue) !important; }
     </style>
 </head>
 <body>

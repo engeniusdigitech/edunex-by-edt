@@ -9,13 +9,13 @@
         {{-- Total Students --}}
         @if(!auth()->user()->isReceptionist())
         <div class="col-6 col-md-4 {{ auth()->user()->isPrincipal() ? 'col-xl-2' : 'col-xl-2' }}">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(79,70,229,0.08);">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(37,99,235,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <span class="text-uppercase fw-bold text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Students</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:rgba(79,70,229,0.1);color:#4F46E5;font-size:0.75rem;">
+                            style="width:30px;height:30px;background:rgba(37,99,235,0.1);color:#2563EB;font-size:0.75rem;">
                             <i class="fas fa-users"></i></div>
                     </div>
                     <h2 class="fw-black mb-0" style="color:#0F172A;">{{ $totalStudents }}</h2>
@@ -64,13 +64,13 @@
         @if(!auth()->user()->isReceptionist())
         {{-- Staff --}}
         <div class="col-6 col-md-4 col-xl-2">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(236,72,153,0.08);">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <span class="text-uppercase fw-bold text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Staff</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:rgba(236,72,153,0.1);color:#EC4899;font-size:0.75rem;">
+                            style="width:30px;height:30px;background:rgba(16,185,129,0.1);color:#10B981;font-size:0.75rem;">
                             <i class="fas fa-user-tie"></i></div>
                     </div>
                     <h2 class="fw-black mb-0" style="color:#0F172A;">{{ $totalStaff }}</h2>
@@ -82,13 +82,13 @@
         @if(!auth()->user()->isReceptionist())
         {{-- Homework --}}
         <div class="col-6 col-md-4 col-xl-2">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(99,102,241,0.08);">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(14,165,233,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <span class="text-uppercase fw-bold text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Homework</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:rgba(99,102,241,0.1);color:#6366F1;font-size:0.75rem;">
+                            style="width:30px;height:30px;background:rgba(14,165,233,0.1);color:#0EA5E9;font-size:0.75rem;">
                             <i class="fas fa-book-open"></i></div>
                     </div>
                     <h2 class="fw-black mb-0" style="color:#0F172A;">{{ $activeHomework }}</h2>
@@ -130,7 +130,7 @@
                         <p class="text-muted small mb-0">Last 6 months</p>
                     </div>
                     <span class="badge rounded-pill px-3 py-2 fw-semibold"
-                        style="background:#EEF2FF;color:#4338CA;font-size:0.7rem;">₹{{ number_format($monthlyRevenue, 0) }}
+                        style="background:#EFF6FF;color:#4338CA;font-size:0.7rem;">₹{{ number_format($monthlyRevenue, 0) }}
                         this month</span>
                 </div>
                 <div class="card-body p-4">
@@ -236,7 +236,7 @@
                     @forelse($recentPayments as $payment)
                         <div class="d-flex align-items-center px-4 py-2 border-bottom" style="border-color:#F8FAFC!important;">
                             <div class="me-3 rounded-2 d-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0"
-                                style="width:34px;height:34px;background:linear-gradient(135deg,#4F46E5,#818CF8);font-size:0.72rem;">
+                                style="width:34px;height:34px;background:linear-gradient(135deg,#2563EB,#38BDF8);font-size:0.72rem;">
                                 {{ strtoupper(substr($payment->student->name ?? 'N', 0, 2)) }}
                             </div>
                             <div class="flex-grow-1 min-w-0">
@@ -280,8 +280,8 @@
         const revCtx = document.getElementById('revenueChart').getContext('2d');
         const revData = @json($revenueData);
         const revGrad = revCtx.createLinearGradient(0, 0, 0, 300);
-        revGrad.addColorStop(0, 'rgba(79,70,229,0.2)');
-        revGrad.addColorStop(1, 'rgba(79,70,229,0.0)');
+        revGrad.addColorStop(0, 'rgba(37,99,235,0.2)');
+        revGrad.addColorStop(1, 'rgba(37,99,235,0.0)');
         new Chart(revCtx, {
             type: 'line',
             data: {
@@ -289,11 +289,11 @@
                 datasets: [{
                     label: 'Revenue (₹)',
                     data: Object.values(revData),
-                    borderColor: '#4F46E5',
+                    borderColor: '#2563EB',
                     backgroundColor: revGrad,
                     borderWidth: 2.5,
                     pointBackgroundColor: '#fff',
-                    pointBorderColor: '#4F46E5',
+                    pointBorderColor: '#2563EB',
                     pointBorderWidth: 2,
                     pointRadius: 4,
                     fill: true,
@@ -362,7 +362,7 @@
                 labels: Object.keys(batchData),
                 datasets: [{
                     data: Object.values(batchData),
-                    backgroundColor: ['#4F46E5', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6', '#06B6D4'],
+                    backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#10B981', '#14B8A6', '#06B6D4'],
                     borderWidth: 0,
                     hoverOffset: 4
                 }]

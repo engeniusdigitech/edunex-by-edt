@@ -322,6 +322,17 @@
     @endforeach
 
     <style>
+        :root {
+            --primary-blue: #2563EB;
+            --primary-blue-light: #3B82F6;
+            --primary-blue-dark: #1D4ED8;
+            --primary-green: #10B981;
+            --primary-green-light: #34D399;
+            --primary-green-dark: #059669;
+            --gradient-blue-green: linear-gradient(135deg, #2563EB 0%, #0D9488 50%, #10B981 100%);
+            --gradient-blue-green-reverse: linear-gradient(135deg, #10B981 0%, #0D9488 50%, #2563EB 100%);
+        }
+
         .fw-black {
             font-weight: 900 !important;
         }
@@ -338,26 +349,27 @@
 
         .fee-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 0, 0, 0.05) !important;
+            border: 1px solid rgba(37, 99, 235, 0.08) !important;
         }
 
         .fee-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.1) !important;
-            border-color: var(--indigo) !important;
+            box-shadow: 0 25px 40px -12px rgba(37, 99, 235, 0.15) !important;
+            border-color: var(--primary-blue) !important;
         }
 
         .gateway-option {
             background: #fff;
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 1px solid #f0f0f0 !important;
+            border: 1px solid rgba(37, 99, 235, 0.1) !important;
         }
 
         .gateway-option:hover {
             background: #fcfdfe;
-            border-color: var(--indigo) !important;
+            border-color: var(--primary-blue) !important;
             transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
         }
 
         .gateway-icon {
@@ -370,19 +382,19 @@
         }
 
         .bg-blue-subtle {
-            background-color: #ecf3ff;
+            background: var(--gradient-blue-green);
         }
 
         .text-blue {
-            color: #2176ff;
+            color: #fff;
         }
 
         .bg-indigo-subtle {
-            background-color: #f1f0ff;
+            background: var(--gradient-blue-green-reverse);
         }
 
         .text-indigo {
-            color: #6366f1;
+            color: #fff;
         }
 
         input::-webkit-outer-spin-button,
@@ -393,6 +405,22 @@
 
         input[type=number] {
             -moz-appearance: textfield;
+        }
+
+        .bg-primary {
+            background: var(--gradient-blue-green) !important;
+        }
+
+        .bg-success {
+            background: var(--gradient-blue-green-reverse) !important;
+        }
+
+        .text-primary {
+            color: var(--primary-blue) !important;
+        }
+
+        .bg-primary-subtle {
+            background: rgba(37, 99, 235, 0.1) !important;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />

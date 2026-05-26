@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="EduNex Insights | Modern Institute Management & Technology Blog" 
-           description="Stay updated with the latest trends in institute management, institute automation, and technology insights from the EduNex team." />
+    <x-seo title="EduNex Insights | Modern Institute and School Management & Technology Blog" 
+           description="Stay updated with the latest trends in Institute and School Management, institute automation, and technology insights from the EduNex team." />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
             letter-spacing: 3px;
             margin-bottom: 20px;
             display: inline-block;
-            background: rgba(79, 70, 229, 0.08);
+            background: rgba(37, 99, 235, 0.08);
             padding: 6px 16px;
             border-radius: 50px;
         }
@@ -50,19 +50,15 @@
         }
 
         .page-title span {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
         }
 
         /* ── BLOG CARDS ── */
         .blog-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: #ffffff;
             border-radius: 32px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid #e2e8f0;
             height: 100%;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.05);
@@ -73,7 +69,7 @@
         .blog-card:hover {
             transform: translateY(-12px);
             border-color: var(--primary-color);
-            box-shadow: 0 40px 100px -20px rgba(79, 70, 229, 0.12);
+            box-shadow: 0 40px 100px -20px rgba(37, 99, 235, 0.12);
         }
 
         .blog-card-img-wrapper {
@@ -160,7 +156,7 @@
         .nav-pills .nav-link.active {
             background: var(--primary-color);
             color: #fff;
-            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
         }
     </style>
 </head>
@@ -219,7 +215,7 @@
                         </div>
                         <div class="blog-card-content">
                             <span class="blog-category">Technology</span>
-                            <h3 class="blog-card-title">How Generative AI is Transforming Institute Management.</h3>
+                            <h3 class="blog-card-title">How Generative AI is Transforming Institute and School Management.</h3>
                             <p class="blog-card-excerpt">Discover how modern ERP systems are leveraging AI to automate scheduling, attendance tracking, and predictive student performance analytics.</p>
                             <div class="blog-meta">
                                 <img src="https://ui-avatars.com/api/?name=Zaid+Khan&background=4f46e5&color=fff" class="blog-author-img">

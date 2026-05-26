@@ -19,6 +19,9 @@ class User extends Authenticatable
         'institute_id',
         'role_id',
         'profile_image',
+        'face_image',
+        'face_descriptor',
+        'face_enrolled_at',
         'responsibilities',
     ];
 
@@ -30,6 +33,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'face_descriptor' => 'array',
+        'face_enrolled_at' => 'datetime',
     ];
 
     public function institute()
@@ -99,5 +104,44 @@ class User extends Authenticatable
         }
 
         return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF';
+    }
+
+    public function getFaceImageUrlAttribute()
+    {
+        if ($this->face_image) {
+            return asset('storage/' . $this->face_image);
+        }
+
+        return null;
+    }
+
+    public function hasFaceEnrolled(): bool
+    {
+        return !empty($this->face_descriptor);
+    }
+
+    public function canUseBiometricAttendance(): bool
+    {
+        return $this->isTeacher() || $this->isReceptionist() || $this->isPrincipal();
+    }
+
+    public function staffAttendances()
+    {
+        return $this->hasMany(StaffAttendance::class);
+    }
+
+    public function activeStaffSalary()
+    {
+        return $this->hasOne(StaffSalary::class)->where('is_active', true);
+    }
+
+    public function staffSalaries()
+    {
+        return $this->hasMany(StaffSalary::class);
+    }
+
+    public function staffPayrolls()
+    {
+        return $this->hasMany(StaffPayroll::class);
     }
 }

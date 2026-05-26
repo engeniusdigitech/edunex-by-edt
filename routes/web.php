@@ -156,6 +156,31 @@ Route::middleware(['auth'])->group(function () {
             // Staff Group Chat
             Route::get('/chat/messages', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat.index');
             Route::post('/chat/messages', [\App\Http\Controllers\ChatController::class, 'store'])->name('chat.store');
+
+            // Staff biometric attendance (self mark in/out)
+            Route::get('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'index'])->name('staff-attendance.mark');
+            Route::post('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'mark'])->name('staff-attendance.mark.store');
+
+            // Institute attendance location (admin only)
+            Route::get('/institute/attendance-settings', [\App\Http\Controllers\InstituteAttendanceSettingController::class, 'edit'])
+                ->name('institute.attendance-settings.edit')->middleware('can:manage-institute-settings');
+            Route::put('/institute/attendance-settings', [\App\Http\Controllers\InstituteAttendanceSettingController::class, 'update'])
+                ->name('institute.attendance-settings.update')->middleware('can:manage-institute-settings');
+
+            // Staff attendance reports (admin only)
+            Route::get('/staff-attendance', [\App\Http\Controllers\StaffAttendanceAdminController::class, 'index'])
+                ->name('staff-attendance.admin')->middleware('can:manage-institute-settings');
+
+            // Staff salary & payroll (admin only)
+            Route::get('/staff-salaries', [\App\Http\Controllers\StaffSalaryController::class, 'index'])->name('staff-salaries.index')->middleware('can:manage-staff-payroll');
+            Route::get('/staff-salaries/create', [\App\Http\Controllers\StaffSalaryController::class, 'create'])->name('staff-salaries.create')->middleware('can:manage-staff-payroll');
+            Route::post('/staff-salaries', [\App\Http\Controllers\StaffSalaryController::class, 'store'])->name('staff-salaries.store')->middleware('can:manage-staff-payroll');
+            Route::get('/staff-salaries/{staffSalary}/edit', [\App\Http\Controllers\StaffSalaryController::class, 'edit'])->name('staff-salaries.edit')->middleware('can:manage-staff-payroll');
+            Route::put('/staff-salaries/{staffSalary}', [\App\Http\Controllers\StaffSalaryController::class, 'update'])->name('staff-salaries.update')->middleware('can:manage-staff-payroll');
+
+            Route::get('/staff-payrolls', [\App\Http\Controllers\StaffPayrollController::class, 'index'])->name('staff-payrolls.index')->middleware('can:manage-staff-payroll');
+            Route::post('/staff-payrolls/generate', [\App\Http\Controllers\StaffPayrollController::class, 'generate'])->name('staff-payrolls.generate')->middleware('can:manage-staff-payroll');
+            Route::patch('/staff-payrolls/{staffPayroll}', [\App\Http\Controllers\StaffPayrollController::class, 'updateStatus'])->name('staff-payrolls.update')->middleware('can:manage-staff-payroll');
         }
     );
 });
@@ -164,6 +189,15 @@ require __DIR__ . '/auth.php'; // assuming Laravel Breeze
 
 // Student Portal Routes
 Route::prefix('student')->name('student.')->group(function () {
+    Route::get('/magic-checkout/{student}/{fee}', function (\App\Models\Student $student, \App\Models\StudentFee $fee) {
+        if (!request()->hasValidSignature()) {
+            abort(401, 'This checkout link has expired or is invalid.');
+        }
+        
+        \Illuminate\Support\Facades\Auth::guard('student')->login($student);
+        return redirect()->route('student.fees.index')->with('success', 'Securely logged in. You can now pay your fee.');
+    })->name('magic_checkout');
+
     Route::middleware('guest:student')->group(
         function () {
             Route::get('login', [\App\Http\Controllers\Student\AuthController::class, 'showLoginForm'])->name('login');
