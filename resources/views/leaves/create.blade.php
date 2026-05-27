@@ -19,7 +19,7 @@
                         <i class="fas fa-edit fs-5"></i>
                     </div>
                     <div>
-                        <h5 class="fw-bold mb-0">Apply for Leave</h5>
+                        <h5 class="fw-medium mb-0">Apply for Leave</h5>
                         <p class="mb-0 opacity-75 small">Fill out the details below to submit your request.</p>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-modern py-3 shadow-sm fw-bold">
+                        <button type="submit" class="btn btn-primary btn-modern py-3 shadow-sm fw-medium">
                             Submit Application <i class="fas fa-paper-plane ms-2"></i>
                         </button>
                     </div>

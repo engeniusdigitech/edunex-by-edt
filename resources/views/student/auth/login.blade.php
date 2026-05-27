@@ -216,7 +216,7 @@
             <div style="background: linear-gradient(135deg, var(--primary), var(--secondary)); width: 64px; height: 64px; border-radius: 20px; display: inline-flex; justify-content: center; align-items: center; margin-bottom: 16px; box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.5);">
                 <i class="fas fa-user-graduate" style="font-size: 28px; color: white;"></i>
             </div>
-            <h2 class="brand-font" style="font-size: 1.75rem; font-weight: 700; color: white; margin: 0 0 8px 0;">Student Portal</h2>
+            <h2 class="brand-font" style="font-size: 1.75rem; font-weight: 500; color: white; margin: 0 0 8px 0;">Student Portal</h2>
             <p style="color: var(--text-muted); margin: 0; font-size: 0.95rem;">Empower your learning journey.</p>
         </div>
 

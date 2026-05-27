@@ -65,14 +65,14 @@
             align-items: center;
             justify-content: center;
             font-size: 0.95rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #fff;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .nav-brand .brand-name {
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--text);
         }
 
@@ -92,7 +92,7 @@
 
         .form-label {
             font-size: 0.72rem;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.8px;
             color: var(--muted);
@@ -120,7 +120,7 @@
             border: none;
             border-radius: 14px;
             padding: 16px;
-            font-weight: 700;
+            font-weight: 500;
             width: 100%;
             margin-top: 16px;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
@@ -147,13 +147,13 @@
             <div class="brand-name">EDUNEX <span style="font-size: 0.7rem; opacity: 0.6;">STUDENT</span></div>
         </a>
         <div class="d-flex align-items-center gap-3">
-            <a href="{{ route('student.leaves.index') }}" class="text-muted text-decoration-none small fw-bold">HISTORY</a>
+            <a href="{{ route('student.leaves.index') }}" class="text-muted text-decoration-none small fw-medium">HISTORY</a>
         </div>
     </nav>
 
     <div class="page">
         <div class="text-center mb-4">
-            <h4 class="fw-bold mb-1">Apply for Leave</h4>
+            <h4 class="fw-medium mb-1">Apply for Leave</h4>
             <p class="text-muted small">Submit your leave request for approval.</p>
         </div>
 

@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">School Principals</h4>
+        <h4 class="fw-medium text-dark mb-1">School Principals</h4>
         <p class="text-muted small mb-0">Manage principal accounts for your school</p>
     </div>
     <a href="{{ route('principals.create') }}" class="btn btn-primary btn-modern shadow-sm">
@@ -36,11 +36,11 @@
                     <tr>
                         <td class="ps-4 py-3">
                             <div class="d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold" style="width: 40px; height: 40px;">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex justify-content-center align-items-center me-3 fw-medium" style="width: 40px; height: 40px;">
                                     {{ substr($principal->name, 0, 2) }}
                                 </div>
                                 <div>
-                                    <div class="fw-bold text-dark">{{ $principal->name }}</div>
+                                    <div class="fw-medium text-dark">{{ $principal->name }}</div>
                                     <div class="small text-muted">{{ $principal->email }}</div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-user-shield fa-2x"></i>
                             </div>
-                            <h6 class="fw-bold text-dark">No principals found</h6>
+                            <h6 class="fw-medium text-dark">No principals found</h6>
                             <p class="text-muted small mb-0">Get started by creating your first principal.</p>
                         </td>
                     </tr>

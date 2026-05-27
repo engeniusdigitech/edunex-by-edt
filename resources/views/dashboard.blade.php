@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <x-biometric-attendance-card />
+
     {{-- ── ROW 1: 6 STAT CARDS ── --}}
     <div class="row g-3 mb-4">
         {{-- Total Students --}}
@@ -12,7 +14,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(37,99,235,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Students</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(37,99,235,0.1);color:#2563EB;font-size:0.75rem;">
@@ -30,7 +32,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Batches</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(16,185,129,0.1);color:#10B981;font-size:0.75rem;">
@@ -48,7 +50,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(245,158,11,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Revenue</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(245,158,11,0.1);color:#F59E0B;font-size:0.75rem;">
@@ -67,7 +69,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Staff</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(16,185,129,0.1);color:#10B981;font-size:0.75rem;">
@@ -85,7 +87,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(14,165,233,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Homework</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(14,165,233,0.1);color:#0EA5E9;font-size:0.75rem;">
@@ -103,7 +105,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(239,68,68,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Tests</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(239,68,68,0.1);color:#EF4444;font-size:0.75rem;">
@@ -126,7 +128,7 @@
                 <div
                     class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4 d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="fw-bold text-dark mb-0">Revenue Overview</h6>
+                        <h6 class="fw-medium text-dark mb-0">Revenue Overview</h6>
                         <p class="text-muted small mb-0">Last 6 months</p>
                     </div>
                     <span class="badge rounded-pill px-3 py-2 fw-semibold"
@@ -145,7 +147,7 @@
         <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-12' : 'col-lg-4' }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                    <h6 class="fw-bold text-dark mb-0">Today's Attendance</h6>
+                    <h6 class="fw-medium text-dark mb-0">Today's Attendance</h6>
                     <p class="text-muted small mb-0">{{ now()->format('D, d M Y') }}</p>
                 </div>
                 <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
@@ -161,16 +163,16 @@
                         </div>
                         <div class="d-flex gap-4 text-center mt-1">
                             <div>
-                                <div class="fw-bold text-success" style="font-size:1.1rem;">{{ $todayPresent }}</div>
+                                <div class="fw-medium text-success" style="font-size:1.1rem;">{{ $todayPresent }}</div>
                                 <div class="text-muted" style="font-size:0.7rem;">Present</div>
                             </div>
                             <div>
-                                <div class="fw-bold text-danger" style="font-size:1.1rem;">{{ $todayTotal - $todayPresent }}
+                                <div class="fw-medium text-danger" style="font-size:1.1rem;">{{ $todayTotal - $todayPresent }}
                                 </div>
                                 <div class="text-muted" style="font-size:0.7rem;">Absent</div>
                             </div>
                             <div>
-                                <div class="fw-bold text-dark" style="font-size:1.1rem;">{{ $todayTotal }}</div>
+                                <div class="fw-medium text-dark" style="font-size:1.1rem;">{{ $todayTotal }}</div>
                                 <div class="text-muted" style="font-size:0.7rem;">Total</div>
                             </div>
                         </div>
@@ -197,7 +199,7 @@
         <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-8' : 'col-lg-5' }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                    <h6 class="fw-bold text-dark mb-0">Attendance Trend</h6>
+                    <h6 class="fw-medium text-dark mb-0">Attendance Trend</h6>
                     <p class="text-muted small mb-0">Last 7 days — percentage</p>
                 </div>
                 <div class="card-body p-4">
@@ -212,7 +214,7 @@
         <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-4' : 'col-lg-3' }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                    <h6 class="fw-bold text-dark mb-0">Students by Batch</h6>
+                    <h6 class="fw-medium text-dark mb-0">Students by Batch</h6>
                     <p class="text-muted small mb-0">Distribution</p>
                 </div>
                 <div class="card-body p-4 d-flex align-items-center justify-content-center" style="min-height:220px;">
@@ -228,14 +230,14 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div
                     class="card-header bg-white border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
-                    <h6 class="fw-bold text-dark mb-0">Recent Payments</h6>
+                    <h6 class="fw-medium text-dark mb-0">Recent Payments</h6>
                     <a href="{{ route('payments.index') }}" class="text-primary fw-semibold" style="font-size:0.72rem;">View
                         all</a>
                 </div>
                 <div class="card-body p-0">
                     @forelse($recentPayments as $payment)
                         <div class="d-flex align-items-center px-4 py-2 border-bottom" style="border-color:#F8FAFC!important;">
-                            <div class="me-3 rounded-2 d-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0"
+                            <div class="me-3 rounded-2 d-flex align-items-center justify-content-center fw-medium text-white flex-shrink-0"
                                 style="width:34px;height:34px;background:linear-gradient(135deg,#2563EB,#38BDF8);font-size:0.72rem;">
                                 {{ strtoupper(substr($payment->student->name ?? 'N', 0, 2)) }}
                             </div>
@@ -245,7 +247,7 @@
                                 <div class="text-muted" style="font-size:0.68rem;">{{ $payment->payment_date->format('d M Y') }}
                                 </div>
                             </div>
-                            <div class="fw-bold text-success ms-2" style="font-size:0.82rem;white-space:nowrap;">
+                            <div class="fw-medium text-success ms-2" style="font-size:0.82rem;white-space:nowrap;">
                                 ₹{{ number_format($payment->amount_paid, 0) }}</div>
                         </div>
                     @empty
@@ -263,7 +265,7 @@
             style="background:#FEF3C7;border-radius:14px;padding:14px 20px;">
             <i class="fas fa-exclamation-triangle text-warning fs-5"></i>
             <div>
-                <span class="fw-bold text-dark" style="font-size:0.88rem;">Attendance not marked for {{ $noAttendanceToday }}
+                <span class="fw-medium text-dark" style="font-size:0.88rem;">Attendance not marked for {{ $noAttendanceToday }}
                     student{{ $noAttendanceToday > 1 ? 's' : '' }} today.</span>
                 <a href="{{ route('attendance.index') }}" class="text-primary fw-semibold ms-2" style="font-size:0.82rem;">Mark
                     attendance →</a>

@@ -66,7 +66,7 @@ Route::get('/robots.txt', function () {
         ->header('Content-Type', 'text/plain')
         ->header('X-Robots-Tag', 'index, follow');
 });
-Route::get('/institute-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
+Route::get('/best-institute-or-school-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
 Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
 
 Route::middleware(['auth'])->group(function () {

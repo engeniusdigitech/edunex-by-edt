@@ -8,7 +8,7 @@
         <i class="fas fa-arrow-left text-secondary"></i>
     </a>
     <div>
-        <h4 class="mb-0 fw-bold">Enter Marks: {{ $test->title }}</h4>
+        <h4 class="mb-0 fw-medium">Enter Marks: {{ $test->title }}</h4>
         <p class="text-muted small mb-0 mt-1">
             <span class="badge bg-secondary bg-opacity-10 text-secondary me-2">{{ $test->batch->name }}</span>
             <i class="fas fa-calendar-alt me-1"></i> {{ $test->test_date->format('d M, Y') }} 
@@ -19,7 +19,7 @@
 
 <div class="card border-0 shadow-sm rounded-4 overflow-hidden mt-4">
     <div class="p-4 bg-light bg-opacity-50 border-bottom d-flex justify-content-between align-items-center">
-        <h5 class="mb-0 fw-bold text-dark"><i class="fas fa-users text-primary me-2"></i> Student List</h5>
+        <h5 class="mb-0 fw-medium text-dark"><i class="fas fa-users text-primary me-2"></i> Student List</h5>
         <span class="badge bg-primary rounded-pill px-3 py-2">{{ $test->batch->students->count() }} Students</span>
     </div>
     
@@ -49,7 +49,7 @@
                                 @endphp
                                 <tr>
                                     <td class="px-4 py-3 text-muted fw-semibold">{{ $index + 1 }}</td>
-                                    <td class="px-4 py-3 fw-bold text-dark">
+                                    <td class="px-4 py-3 fw-medium text-dark">
                                         {{ $student->name }}
                                         <div class="small fw-normal text-muted">{{ $student->email }}</div>
                                     </td>
@@ -57,7 +57,7 @@
                                         <div class="input-group">
                                             <input type="number" 
                                                    name="scores[{{ $student->id }}][score]" 
-                                                   class="form-control text-center fw-bold" 
+                                                   class="form-control text-center fw-medium" 
                                                    value="{{ old('scores.'.$student->id.'.score', $existingScore?->score) }}" 
                                                    min="0" 
                                                    max="{{ $test->total_marks }}" 

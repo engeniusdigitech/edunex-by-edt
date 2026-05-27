@@ -50,7 +50,7 @@
 
         .sidebar-brand {
             font-size: 1.5rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #ffffff !important;
             letter-spacing: -0.5px;
             margin-bottom: 2rem;
@@ -58,7 +58,7 @@
 
         .sidebar-header {
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 6px;
@@ -177,7 +177,7 @@
         }
 
         .navbar-brand-title {
-            font-weight: 700;
+            font-weight: 500;
             font-size: 1.25rem;
             color: #1E293B;
         }
@@ -261,7 +261,7 @@
                         style="height:80px;width:80px;object-fit:contain;border-radius:14px;flex-shrink:0;">
                     <div style="line-height:1.2;min-width:0;">
                         <div
-                            style="font-size:0.82rem;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;">
+                            style="font-size:0.82rem;font-weight: 500;color:#fff;overflow:hidden;text-overflow:ellipsis;">
                             @if(auth()->check() && auth()->user()->institute_id && auth()->user()->institute)
                                 {{ auth()->user()->institute->name }}
                             @elseif(auth()->check() && auth()->user()->isSuperAdmin())
@@ -296,23 +296,25 @@
                                 class="fas fa-user-tie"></i> Staff</a>
                     @endcan
                     @can('manage-institute-settings')
-                        @php
-                            $isHrActive = request()->routeIs('institute.attendance-settings.*')
-                                || request()->routeIs('staff-attendance.admin')
-                                || request()->routeIs('staff-salaries.*')
-                                || request()->routeIs('staff-payrolls.*');
-                        @endphp
-                        <a href="#hrCollapse" data-bs-toggle="collapse" class="{{ $isHrActive ? '' : 'collapsed' }}" aria-expanded="{{ $isHrActive ? 'true' : 'false' }}">
-                            <i class="fas fa-id-badge"></i>
-                            <span class="flex-grow-1">Staff HR</span>
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
-                        </a>
-                        <div class="collapse {{ $isHrActive ? 'show' : '' }}" id="hrCollapse">
-                            <a href="{{ route('institute.attendance-settings.edit') }}" class="{{ request()->routeIs('institute.attendance-settings.*') ? 'active' : '' }} small py-2"><i class="fas fa-map-marker-alt"></i> Location Settings</a>
-                            <a href="{{ route('staff-attendance.admin') }}" class="{{ request()->routeIs('staff-attendance.admin') ? 'active' : '' }} small py-2"><i class="fas fa-clipboard-list"></i> Staff Attendance</a>
-                            <a href="{{ route('staff-salaries.index') }}" class="{{ request()->routeIs('staff-salaries.*') ? 'active' : '' }} small py-2"><i class="fas fa-rupee-sign"></i> Salaries</a>
-                            <a href="{{ route('staff-payrolls.index') }}" class="{{ request()->routeIs('staff-payrolls.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice-dollar"></i> Payroll</a>
-                        </div>
+                        @if(auth()->user()->institute->feature_hr)
+                            @php
+                                $isHrActive = request()->routeIs('institute.attendance-settings.*')
+                                    || request()->routeIs('staff-attendance.admin')
+                                    || request()->routeIs('staff-salaries.*')
+                                    || request()->routeIs('staff-payrolls.*');
+                            @endphp
+                            <a href="#hrCollapse" data-bs-toggle="collapse" class="{{ $isHrActive ? '' : 'collapsed' }}" aria-expanded="{{ $isHrActive ? 'true' : 'false' }}">
+                                <i class="fas fa-id-badge"></i>
+                                <span class="flex-grow-1">Staff HR</span>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </a>
+                            <div class="collapse {{ $isHrActive ? 'show' : '' }}" id="hrCollapse">
+                                <a href="{{ route('institute.attendance-settings.edit') }}" class="{{ request()->routeIs('institute.attendance-settings.*') ? 'active' : '' }} small py-2"><i class="fas fa-map-marker-alt"></i> Location Settings</a>
+                                <a href="{{ route('staff-attendance.admin') }}" class="{{ request()->routeIs('staff-attendance.admin') ? 'active' : '' }} small py-2"><i class="fas fa-clipboard-list"></i> Staff Attendance</a>
+                                <a href="{{ route('staff-salaries.index') }}" class="{{ request()->routeIs('staff-salaries.*') ? 'active' : '' }} small py-2"><i class="fas fa-rupee-sign"></i> Salaries</a>
+                                <a href="{{ route('staff-payrolls.index') }}" class="{{ request()->routeIs('staff-payrolls.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice-dollar"></i> Payroll</a>
+                            </div>
+                        @endif
                     @endcan
                     @if(auth()->user()->canUseBiometricAttendance())
                         <a href="{{ route('staff-attendance.mark') }}" class="{{ request()->routeIs('staff-attendance.mark') ? 'active' : '' }}">
@@ -350,27 +352,29 @@
                         </a>
                     @endif
                     @can('manage-payments')
-                        @php
-                            $isFeesActive = request()->routeIs('payments.*') || 
-                                           request()->routeIs('fee-allocations.*') || 
-                                           request()->routeIs('fee-categories.*') || 
-                                           request()->routeIs('fee-structures.*') || 
-                                           request()->routeIs('payment-gateways.*');
-                            $showFees = !auth()->user()->isPrincipal() && !auth()->user()->isTeacher();
-                        @endphp
-                        @if($showFees)
-                            <a href="#feesCollapse" data-bs-toggle="collapse" class="{{ $isFeesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isFeesActive ? 'true' : 'false' }}">
-                                <i class="fas fa-money-bill-wave"></i> 
-                                <span class="flex-grow-1">Fees & Payments</span>
-                                <i class="fas fa-chevron-down dropdown-arrow"></i>
-                            </a>
-                            <div class="collapse {{ $isFeesActive ? 'show' : '' }}" id="feesCollapse">
-                                <a href="{{ route('payments.index') }}" class="{{ request()->routeIs('payments.*') ? 'active' : '' }} small py-2"><i class="fas fa-wallet"></i> Payments</a>
-                                <a href="{{ route('fee-allocations.create') }}" class="{{ request()->routeIs('fee-allocations.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-plus"></i> Allocate Fees</a>
-                                <a href="{{ route('fee-categories.index') }}" class="{{ request()->routeIs('fee-categories.*') ? 'active' : '' }} small py-2"><i class="fas fa-tags"></i> Categories</a>
-                                <a href="{{ route('fee-structures.index') }}" class="{{ request()->routeIs('fee-structures.*') ? 'active' : '' }} small py-2"><i class="fas fa-sitemap"></i> Structures</a>
-                                <a href="{{ route('payment-gateways.settings') }}" class="{{ request()->routeIs('payment-gateways.*') ? 'active' : '' }} small py-2"><i class="fas fa-credit-card"></i> Settings</a>
-                            </div>
+                        @if(auth()->user()->institute->feature_fees)
+                            @php
+                                $isFeesActive = request()->routeIs('payments.*') || 
+                                               request()->routeIs('fee-allocations.*') || 
+                                               request()->routeIs('fee-categories.*') || 
+                                               request()->routeIs('fee-structures.*') || 
+                                               request()->routeIs('payment-gateways.*');
+                                $showFees = !auth()->user()->isPrincipal() && !auth()->user()->isTeacher();
+                            @endphp
+                            @if($showFees)
+                                <a href="#feesCollapse" data-bs-toggle="collapse" class="{{ $isFeesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isFeesActive ? 'true' : 'false' }}">
+                                    <i class="fas fa-money-bill-wave"></i> 
+                                    <span class="flex-grow-1">Fees & Payments</span>
+                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                </a>
+                                <div class="collapse {{ $isFeesActive ? 'show' : '' }}" id="feesCollapse">
+                                    <a href="{{ route('payments.index') }}" class="{{ request()->routeIs('payments.*') ? 'active' : '' }} small py-2"><i class="fas fa-wallet"></i> Payments</a>
+                                    <a href="{{ route('fee-allocations.create') }}" class="{{ request()->routeIs('fee-allocations.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-plus"></i> Allocate Fees</a>
+                                    <a href="{{ route('fee-categories.index') }}" class="{{ request()->routeIs('fee-categories.*') ? 'active' : '' }} small py-2"><i class="fas fa-tags"></i> Categories</a>
+                                    <a href="{{ route('fee-structures.index') }}" class="{{ request()->routeIs('fee-structures.*') ? 'active' : '' }} small py-2"><i class="fas fa-sitemap"></i> Structures</a>
+                                    <a href="{{ route('payment-gateways.settings') }}" class="{{ request()->routeIs('payment-gateways.*') ? 'active' : '' }} small py-2"><i class="fas fa-credit-card"></i> Settings</a>
+                                </div>
+                            @endif
                         @endif
                     @endcan
 
@@ -405,9 +409,11 @@
 
                         <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i
                                 class="fas fa-file-alt"></i> Tests & Exams</a>
-                        <a href="{{ route('live-lectures.index') }}"
-                            class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
-                            Live Lectures</a>
+                        @if(auth()->user()->institute->feature_live_classes)
+                            <a href="{{ route('live-lectures.index') }}"
+                                class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
+                                Live Lectures</a>
+                        @endif
                     @endif
 
                     @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist())
@@ -530,7 +536,7 @@
             border-radius: 50%;
             width: 20px; height: 20px;
             font-size: 0.65rem;
-            font-weight: 700;
+            font-weight: 500;
             display: none;
             align-items: center;
             justify-content: center;
@@ -567,7 +573,7 @@
             justify-content: space-between;
             flex-shrink: 0;
         }
-        .chat-header-title { color: #fff; font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+        .chat-header-title { color: #fff; font-weight: 500; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
         .chat-online-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; box-shadow: 0 0 6px #4ADE80; display: inline-block; }
         .chat-close-btn { background: rgba(255,255,255,0.2); border: none; color: #fff; border-radius: 8px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
         .chat-close-btn:hover { background: rgba(255,255,255,0.35); }
@@ -592,7 +598,7 @@
         }
         .chat-bubble-wrap { display: flex; flex-direction: column; }
         .chat-msg.me .chat-bubble-wrap { align-items: flex-end; }
-        .chat-sender { font-size: 0.65rem; font-weight: 700; color: #64748B; margin-bottom: 3px; }
+        .chat-sender { font-size: 0.65rem; font-weight: 500; color: #64748B; margin-bottom: 3px; }
         .chat-msg.me .chat-sender { color: #2563EB; }
         .chat-text {
             background: #fff;
@@ -612,7 +618,7 @@
             border-radius: 16px 16px 4px 16px;
         }
         .chat-time { font-size: 0.6rem; color: #94A3B8; margin-top: 3px; }
-        .chat-mention { color: #2563EB; font-weight: 700; background: rgba(37,99,235,0.08); border-radius: 4px; padding: 0 3px; }
+        .chat-mention { color: #2563EB; font-weight: 500; background: rgba(37,99,235,0.08); border-radius: 4px; padding: 0 3px; }
         .chat-msg.me .chat-mention { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.15); }
         /* Input Area */
         .chat-input-area {

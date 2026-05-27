@@ -36,7 +36,7 @@
 
             <div class="mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <label class="form-label text-primary fw-bold mb-0">Assign Batches & Subjects</label>
+                    <label class="form-label text-primary fw-medium mb-0">Assign Batches & Subjects</label>
                     <button type="button" id="toggleAll" class="btn btn-sm btn-outline-primary py-0" style="font-size: 0.7rem;">Select All</button>
                 </div>
                 <div class="border rounded p-3 bg-light mb-3">
@@ -50,7 +50,7 @@
                                         <div class="accordion-button collapsed bg-white rounded d-flex align-items-center p-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBatch{{ $batch->id }}" aria-expanded="false" aria-controls="collapseBatch{{ $batch->id }}">
                                             <div class="form-check me-3" onclick="event.stopPropagation();">
                                                 <input class="form-check-input batch-checkbox" type="checkbox" name="batches[]" value="{{ $batch->id }}" id="batch_{{ $batch->id }}" checked>
-                                                <label class="form-check-label fw-bold" for="batch_{{ $batch->id }}" style="cursor: pointer;">
+                                                <label class="form-check-label fw-medium" for="batch_{{ $batch->id }}" style="cursor: pointer;">
                                                     {{ $batch->name }}
                                                 </label>
                                             </div>

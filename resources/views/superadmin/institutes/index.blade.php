@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Onboarded Institutes</h4>
+        <h4 class="fw-medium text-dark mb-1">Onboarded Institutes</h4>
         <p class="text-muted small mb-0">Manage all schools and institutes using the platform</p>
     </div>
     <a href="{{ route('superadmin.institutes.create') }}" class="btn btn-primary btn-modern shadow-sm">
@@ -38,7 +38,7 @@
                     <tr>
                         <td class="ps-4 py-3 text-muted">#{{ $institute->id }}</td>
                         <td class="py-3">
-                            <div class="fw-bold text-dark">{{ $institute->name }}</div>
+                            <div class="fw-medium text-dark">{{ $institute->name }}</div>
                             <div class="small text-muted"><i class="far fa-envelope me-1"></i> {{ $institute->contact_email }} &bull; <i class="fas fa-phone-alt me-1"></i> {{ $institute->phone }}</div>
                         </td>
                         <td class="py-3">

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="mb-4">
-    <h3 class="fw-bold mb-1">Attendance Location Settings</h3>
+    <h3 class="fw-medium mb-1">Attendance Location Settings</h3>
     <p class="text-muted mb-0">Set your institute address and allowed radius for staff biometric mark-in / mark-out.</p>
 </div>
 

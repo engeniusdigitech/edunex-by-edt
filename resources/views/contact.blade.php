@@ -1,338 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Contact Top Institute and School Management System Support | EduNex" description="Get in touch for EduNex institute software inquiries, custom Institute and School Management system deployments, and expert support." />
-    <!-- Fonts -->
+    <x-seo title="Contact EduNex — AI-Powered Institute Management Software" description="Get in touch with the EduNex team for sales, demos, and support. We respond within 1 business day." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <!-- Bootstrap 5 CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     @include('components.frontend-styles')
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+body {
+    font-family:'Inter',system-ui,sans-serif;
+    background:hsl(222,47%,6%);
+    color:hsl(210,40%,98%);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+:root{
+    --bg:hsl(222,47%,6%);
+    --card:hsl(222,47%,8%);
+    --border:hsl(217,33%,17%);
+    --muted:hsl(215,20%,65%);
+    --primary:hsl(174,72%,56%);
+    --secondary:hsl(217,91%,60%);
+    --gradient:linear-gradient(135deg,hsl(174,72%,56%),hsl(217,91%,60%));
+}
+section{background:transparent!important;}
 
-    <style>
-        /* ── PAGE HEADER ── */
-        .page-header {
-            padding: 160px 0 80px;
-            position: relative;
-        }
+/* Hero */
+.contact-hero {
+    padding:160px 0 80px;
+    text-align:center; position:relative; overflow:hidden;
+}
+.contact-hero::before {
+    content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+    width:700px;height:500px;
+    background:radial-gradient(ellipse,hsla(174,72%,56%,0.14) 0%,transparent 70%);
+    pointer-events:none;
+}
+.eyebrow {
+    display:inline-flex;align-items:center;gap:7px;
+    background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);
+    border-radius:9999px;padding:5px 14px;
+    font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);
+    text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;
+}
+.page-h1 {
+    font-size:clamp(2.5rem,5vw,4rem);font-weight: 500;
+    letter-spacing:-2.5px;line-height:1.08;margin-bottom:18px;color:#fff;
+}
+.g-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-sub{font-size:1rem;color:var(--muted);line-height:1.85;max-width:520px;margin:0 auto;}
 
-        .section-tag {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            display: inline-block;
-            background: rgba(37, 99, 235, 0.08);
-            padding: 6px 16px;
-            border-radius: 50px;
-        }
+/* Contact card */
+.contact-card {
+    background:var(--card);border:1px solid var(--border);
+    border-radius:20px;overflow:hidden;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,0.4);
+    max-width:1000px;margin:0 auto;
+}
+.contact-form-col { padding:50px; }
+.contact-info-col {
+    background:hsla(222,47%,5%,0.8);
+    border-left:1px solid var(--border);
+    padding:50px; display:flex; flex-direction:column;
+    position:relative; overflow:hidden;
+}
+.contact-info-col::before {
+    content:'';position:absolute;top:-150px;right:-100px;
+    width:350px;height:350px;border-radius:50%;
+    background:hsla(174,72%,56%,0.08);filter:blur(60px);pointer-events:none;
+}
 
-        .page-title {
-            font-size: clamp(2.5rem, 6vw, 4.8rem);
-            font-weight: 950;
-            letter-spacing: -3px;
-            color: var(--dark-bg);
-            line-height: 1;
-        }
+/* Form */
+.form-group{margin-bottom:22px;}
+.form-lbl {
+    display:block;font-size:0.72rem;font-weight: 500;
+    text-transform:uppercase;letter-spacing:1px;
+    color:var(--muted);margin-bottom:8px;
+}
+.form-inp {
+    width:100%;padding:13px 16px;border-radius:10px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--border);color:hsl(210,40%,98%);
+    font-family:inherit;font-size:0.9rem;transition:all 0.2s;outline:none;
+}
+.form-inp:focus {
+    border-color:var(--primary);
+    background:rgba(255,255,255,0.08);
+    box-shadow:0 0 0 3px hsla(174,72%,56%,0.12);
+}
+.form-inp::placeholder{color:hsl(215,20%,40%);}
+.form-inp option{background:hsl(222,47%,10%);color:#fff;}
+textarea.form-inp{resize:vertical;min-height:130px;}
 
-        .page-title span {
-            color: var(--primary-color);
-        }
+.submit-btn {
+    width:100%;padding:14px;border-radius:10px;border:none;cursor:pointer;
+    background:var(--gradient);color:hsl(222,47%,6%);
+    font-weight: 500;font-size:0.95rem;font-family:inherit;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    box-shadow:0 0 24px hsla(174,72%,56%,0.3);
+    transition:all 0.25s ease;
+}
+.submit-btn:hover{opacity:0.9;transform:translateY(-2px);}
+.submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
 
-        /* ── CONTACT CONTAINER ── */
-        .contact-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+/* Info cards */
+.ic {
+    display:flex;align-items:center;gap:16px;
+    background:rgba(255,255,255,0.04);border:1px solid var(--border);
+    border-radius:12px;padding:16px 18px;margin-bottom:14px;
+    transition:all 0.2s;
+}
+.ic:hover{border-color:hsla(174,72%,56%,0.3);background:rgba(255,255,255,0.06);}
+.ic-icon {
+    width:42px;height:42px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.ic-icon.teal{background:hsla(174,72%,56%,0.15);color:hsl(174,72%,60%);}
+.ic-icon.blue{background:hsla(217,91%,60%,0.15);color:hsl(217,91%,70%);}
+.ic-icon.green{background:hsla(120,60%,50%,0.15);color:hsl(120,60%,60%);}
+.ic-title{font-size:0.85rem;font-weight: 500;color:#fff;margin-bottom:2px;}
+.ic-val{font-size:0.78rem;color:var(--muted);}
 
-        .contact-container {
-            background: #ffffff;
-            border-radius: 48px;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08);
-        }
+/* Success screen */
+.success-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 20px;}
+.success-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:24px;padding:60px 48px;max-width:540px;width:100%;text-align:center;
+    animation:pop 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(0.95)}to{opacity:1;transform:none}}
+.success-icon{
+    width:88px;height:88px;border-radius:50%;
+    background:hsla(174,72%,56%,0.12);border:2px solid hsla(174,72%,56%,0.3);
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.2rem;color:var(--primary);margin:0 auto 28px;
+    animation:pulse-icon 2.5s ease-in-out infinite;
+}
+@keyframes pulse-icon{0%,100%{box-shadow:0 0 0 0 hsla(174,72%,56%,0.3)}50%{box-shadow:0 0 0 16px hsla(174,72%,56%,0)}}
 
-        /* ── FORM STYLING ── */
-        .contact-form-side {
-            padding: 70px;
-        }
-
-        .form-label {
-            font-weight: 750;
-            font-size: 0.8rem;
-            color: var(--dark-bg);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            opacity: 0.8;
-        }
-
-        .form-control,
-        .form-select {
-            padding: 18px 24px;
-            border-radius: 20px;
-            border: 2px solid transparent;
-            background: #f1f5f9;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--dark-bg);
-        }
-
-        .form-control::placeholder {
-            color: #94a3b8;
-            font-weight: 500;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            background: #ffffff;
-            border-color: var(--primary-color);
-            box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* ── INFO SIDE ── */
-        .contact-info-side {
-            background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 70px;
-            color: #ffffff;
-            position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact-info-side::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--primary-color);
-            opacity: 0.15;
-            top: -100px;
-            right: -100px;
-            pointer-events: none;
-        }
-
-        .info-card {
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 28px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 24px;
-            transition: all 0.4s;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .info-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: scale(1.02) translateX(10px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .info-icon {
-            width: 56px;
-            height: 56px;
-            min-width: 56px;
-            border-radius: 18px;
-            background: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #fff;
-            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
-        }
-
-        .info-content h6 {
-            font-weight: 800;
-            font-size: 1rem;
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
-        }
-
-        .info-content p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-bottom: 0;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 991px) {
-            .contact-form-side, .contact-info-side {
-                padding: 40px 24px;
-            }
-            .page-header {
-                padding: 120px 0 60px;
-            }
-        }
-    </style>
+@media(max-width:991px){
+    .contact-form-col,.contact-info-col{padding:32px 24px;}
+    .contact-info-col{border-left:none;border-top:1px solid var(--border);}
+    .page-h1{font-size:2.5rem;letter-spacing:-2px;}
+}
+</style>
 </head>
-
 <body>
+@include('components.frontend-navbar')
 
-    <div class="mesh-bg">
-        <div class="mesh-circle-1"></div>
-        <div class="mesh-circle-2"></div>
-        <div class="mesh-circle-3"></div>
-        <div class="mesh-circle-4"></div>
-    </div>
-
-    <!-- Navigation -->
-    @include('components.frontend-navbar')
-
-    @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show text-center mb-0 rounded-0" role="alert" style="background:#ECFDF5; border:none; border-bottom:1px solid #A7F3D0; color:#065F46; font-weight:600;">
-        <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    @endif
-
-    <!-- Page Header -->
-    <header class="page-header text-center">
-        <div class="container px-4">
-            <span class="section-tag animate__animated animate__fadeInDown">Get in Touch</span>
-            <h1 class="page-title animate__animated animate__zoomIn">
-                Let's start your<br>
-                <span>digital transformation.</span>
-            </h1>
-            <p class="text-muted fs-5 mt-4 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s"
-                style="max-width: 700px;">
-                Whether you have a technical question or need a custom <strong>Institute and School Management system</strong> deployment, our team at Engenius
-                Digitech is here to help you scale.
-            </p>
+@if(session('success'))
+<div class="success-screen">
+    <div class="success-card">
+        <div class="success-icon"><i class="fas fa-check"></i></div>
+        <h2 style="font-size:1.8rem;font-weight: 500;color:#fff;letter-spacing:-1px;margin-bottom:12px;">Message Sent!</h2>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:32px;">{{ session('success') }}<br>Our team typically responds within <strong style="color:#fff;">1 business day</strong>.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;">
+            <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:9999px;padding:6px 14px;font-size:0.78rem;color:var(--muted);">
+                <i class="fas fa-clock" style="color:var(--primary);"></i> Within 1 business day
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:9999px;padding:6px 14px;font-size:0.78rem;color:var(--muted);">
+                <i class="fas fa-shield-alt" style="color:var(--primary);"></i> Your data is safe
+            </span>
         </div>
-    </header>
+        <a href="{{ url('/') }}" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient);color:hsl(222,47%,6%);text-decoration:none;padding:13px 28px;border-radius:10px;font-weight: 500;font-size:0.95rem;">
+            <i class="fas fa-home"></i> Back to Home
+        </a>
+    </div>
+</div>
+@else
 
-    <!-- Main Contact Section -->
-    <section class="py-5 mb-5 px-3">
-        <div class="contact-wrapper">
-            <div class="contact-container animate__animated animate__fadeInUp glass">
-                <div class="row g-0">
-                    <!-- Form Side -->
-                    <div class="col-lg-7">
-                        <div class="contact-form-side">
-                            <h3 class="fw-black mb-5" style="letter-spacing: -1px;">Send us a message</h3>
-                            <form action="{{ route('contact.send') }}" method="POST">
-                                @csrf
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Full Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="e.g. Arjun Sharma" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Email Address</label>
-                                        <input type="email" name="email" class="form-control" placeholder="arjun@institute.com" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label">Inquiry Type</label>
-                                        <select name="inquiry_type" class="form-select">
-                                            <option>General Sales Inquiry</option>
-                                            <option>Partner with us</option>
-                                            <option>Technical Support</option>
-                                            <option>Custom Enterprise Setup</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label">Your Message</label>
-                                        <textarea name="message" class="form-control" rows="5"
-                                            placeholder="Tell us about your institute and how we can help..." required></textarea>
-                                    </div>
-                                    <div class="col-12 pt-3">
-                                        <button type="submit" class="btn btn-primary-glow btn-modern w-100 py-3 shadow-lg">
-                                            Submit Inquiry <i class="fas fa-paper-plane ms-2"></i>
-                                        </button>
-                                        <p class="text-center text-muted small mt-4 fw-500">
-                                            <i class="fas fa-clock me-1 text-primary"></i> We typically respond within 1 business day.
-                                        </p>
-                                    </div>
+<!-- Hero -->
+<section class="contact-hero">
+    <div class="container px-4" style="position:relative;z-index:2;">
+        <div class="eyebrow"><i class="fas fa-paper-plane"></i> Get in Touch</div>
+        <h1 class="page-h1">Let's start your<br><span class="g-text">digital transformation.</span></h1>
+        <p class="page-sub">Whether you have a question, need a demo, or want a custom deployment — our team at Engenius Digitech is here.</p>
+    </div>
+</section>
+
+<!-- Contact Body -->
+<section style="padding:0 0 100px;">
+    <div class="container px-4">
+        <div class="contact-card">
+            <div class="row g-0">
+                <!-- Form -->
+                <div class="col-lg-7 contact-form-col">
+                    <h3 style="font-size:1.3rem;font-weight: 500;letter-spacing:-0.5px;color:#fff;margin-bottom:32px;">Send us a message</h3>
+                    <form id="ejs-contact-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-lbl">Full Name</label>
+                                    <input type="text" name="name" id="ejs_name" class="form-inp" placeholder="e.g. Arjun Sharma" required>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-lbl">Email Address</label>
+                                    <input type="email" name="email" id="ejs_email" class="form-inp" placeholder="arjun@institute.com" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-lbl">Inquiry Type</label>
+                                    <select name="inquiry_type" id="ejs_inquiry" class="form-inp">
+                                        <option>General Sales Inquiry</option>
+                                        <option>Partner with us</option>
+                                        <option>Technical Support</option>
+                                        <option>Custom Enterprise Setup</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-lbl">Your Message</label>
+                                    <textarea name="message" id="ejs_message" class="form-inp" placeholder="Tell us about your institute and how we can help..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" id="ejs-submit-btn" class="submit-btn">
+                                    <span id="ejs-btn-text">Submit Inquiry <i class="fas fa-paper-plane"></i></span>
+                                    <span id="ejs-btn-loading" style="display:none;">
+                                        <span class="spinner-border spinner-border-sm me-2"></span>Sending…
+                                    </span>
+                                </button>
+                                <p style="text-align:center;font-size:0.75rem;color:var(--muted);margin-top:14px;">
+                                    <i class="fas fa-clock me-1" style="color:var(--primary);"></i> We typically respond within 1 business day.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Info -->
+                <div class="col-lg-5 contact-info-col">
+                    <h3 style="font-size:1.3rem;font-weight: 500;letter-spacing:-0.5px;color:#fff;margin-bottom:32px;">Contact Details</h3>
+
+                    <div class="ic">
+                        <div class="ic-icon teal"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <div class="ic-title">Dedicated Support</div>
+                            <div class="ic-val">support@edunex.com</div>
                         </div>
                     </div>
 
-                    <!-- Info Side -->
-                    <div class="col-lg-5">
-                        <div class="contact-info-side glass-dark">
-                            <h3 class="fw-black mb-5" style="letter-spacing: -1px;">Contact Details</h3>
+                    <div class="ic">
+                        <div class="ic-icon blue"><i class="fas fa-paper-plane"></i></div>
+                        <div>
+                            <div class="ic-title">Sales &amp; Partnerships</div>
+                            <div class="ic-val">engeniusdigitech@gmail.com</div>
+                        </div>
+                    </div>
 
-                            <div class="info-card">
-                                <div class="info-icon"><i class="fas fa-headset"></i></div>
-                                <div class="info-content">
-                                    <h6>Dedicated Support</h6>
-                                    <p>support@edunex.com</p>
-                                </div>
-                            </div>
+                    <div class="ic">
+                        <div class="ic-icon green"><i class="fas fa-location-dot"></i></div>
+                        <div>
+                            <div class="ic-title">Headquarters</div>
+                            <div class="ic-val">Vadodara, Gujarat, India</div>
+                        </div>
+                    </div>
 
-                            <div class="info-card">
-                                <div class="info-icon" style="background: linear-gradient(135deg, var(--secondary-color), #10b981);"><i class="fas fa-paper-plane"></i></div>
-                                <div class="info-content">
-                                    <h6>Sales & Partnerships</h6>
-                                    <p>engeniusdigitech@gmail.com</p>
-                                </div>
-                            </div>
-
-                            <div class="info-card">
-                                <div class="info-icon" style="background: linear-gradient(135deg, #10B981, #059669);"><i class="fas fa-location-dot"></i></div>
-                                <div class="info-content">
-                                    <h6>Headquarters</h6>
-                                    <p>Vadodara, Gujarat, India.</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-auto pt-5 border-top border-white border-opacity-10">
-                                <p class="text-white-50 small mb-3 fw-bold text-uppercase ls-1">Crafted by</p>
-                                <a href="https://engeniusdigitech.com" target="_blank" class="text-decoration-none">
-                                    <h4 class="text-white fw-black mb-1">Engenius Digitech</h4>
-                                    <p class="text-white-50 small mb-4">Leading specialized SaaS solutions <i class="fas fa-external-link-alt ms-1 text-xs"></i></p>
-                                </a>
-                                <div class="d-flex gap-3">
-                                    <a href="https://www.linkedin.com/company/engenius-digitech" target="_blank" class="btn btn-primary rounded-circle shadow-sm" style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: #0077b5; border: none;">
-                                        <i class="fab fa-linkedin-in text-white"></i>
-                                    </a>
-                                </div>
-                            </div>
+                    <div style="margin-top:auto;padding-top:36px;border-top:1px solid var(--border);">
+                        <div style="font-size:0.68rem;font-weight: 500;text-transform:uppercase;letter-spacing:1.2px;color:var(--primary);margin-bottom:12px;">Crafted by</div>
+                        <a href="https://engeniusdigitech.netlify.app" target="_blank" style="text-decoration:none;">
+                            <div style="font-size:1.05rem;font-weight: 500;color:#fff;margin-bottom:4px;">Engenius Digitech</div>
+                            <div style="font-size:0.78rem;color:var(--muted);">Leading specialized SaaS solutions <i class="fas fa-external-link-alt" style="font-size:0.6rem;"></i></div>
+                        </a>
+                        <div style="margin-top:16px;">
+                            <a href="https://www.linkedin.com/company/engenius-digitech" target="_blank"
+                               style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:0.9rem;transition:all 0.2s;"
+                               onmouseover="this.style.color='hsl(174,72%,60%)';this.style.borderColor='hsl(174,72%,56%)';"
+                               onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)';">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Support Section -->
-    <section class="py-5 bg-light">
-        <div class="container px-4 py-5 text-center">
-            <h2 class="fw-black mb-4">Want a direct demo?</h2>
-            <p class="text-muted mb-5 mx-auto" style="max-width: 500px;">Our team can walk you through the entire
-                platform and help you set up your first batch in minutes.</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="mailto:engeniusdigitech@gmail.com" class="btn btn-dark btn-modern px-5">
-                    <i class="fas fa-envelope me-2"></i> Email Sales Team
-                </a>
-            </div>
-        </div>
-    </section>
+<x-frontend-footer/>
 
-    <x-frontend-footer />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function() { emailjs.init({ publicKey: 'lmK1jA7aTfhahMzac' }); })();
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    @include('components.whatsapp-widget')
+document.getElementById('ejs-contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn  = document.getElementById('ejs-submit-btn');
+    const txt  = document.getElementById('ejs-btn-text');
+    const load = document.getElementById('ejs-btn-loading');
+
+    btn.disabled = true;
+    txt.style.display  = 'none';
+    load.style.display = 'flex';
+
+    emailjs.sendForm('service_0xkqhcr', 'template_fghjchm', this)
+        .then(function() {
+            document.querySelector('.contact-form-col').innerHTML = `
+                <div style="text-align:center;padding:40px 20px;animation:pop 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;">
+                    <div style="width:80px;height:80px;border-radius:50%;background:hsla(174,72%,56%,0.12);border:2px solid hsla(174,72%,56%,0.3);display:flex;align-items:center;justify-content:center;font-size:2rem;color:hsl(174,72%,56%);margin:0 auto 24px;animation:pulse-icon 2.5s ease-in-out infinite;">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 style="font-size:1.5rem;font-weight: 500;color:#fff;letter-spacing:-0.5px;margin-bottom:10px;">Message Sent!</h3>
+                    <p style="color:var(--muted);line-height:1.8;margin-bottom:28px;">
+                        Thanks for reaching out!<br>
+                        Our team typically responds within <strong style="color:#fff;">1 business day</strong>.
+                    </p>
+                    <a href="{{ url('/') }}" style="display:inline-flex;align-items:center;gap:8px;background:var(--gradient);color:hsl(222,47%,6%);text-decoration:none;padding:12px 24px;border-radius:10px;font-weight: 500;">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                </div>`;
+        }, function(error) {
+            btn.disabled = false;
+            txt.style.display = 'flex';
+            load.style.display = 'none';
+            alert('Something went wrong. Please email us at engeniusdigitech@gmail.com');
+            console.error('EmailJS error:', error);
+        });
+});
+</script>
+@include('components.whatsapp-widget')
+@endif
 </body>
-
 </html>

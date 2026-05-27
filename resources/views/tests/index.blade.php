@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h4 class="mb-0 fw-bold">Tests & Exams</h4>
+    <h4 class="mb-0 fw-medium">Tests & Exams</h4>
     <a href="{{ route('tests.create') }}" class="btn btn-primary-glow btn-modern">
         <i class="fas fa-plus me-2"></i> Schedule Test
     </a>
@@ -79,7 +79,7 @@
                                 <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary-subtle">General</span>
                             @endif
                         </div>
-                        <div class="fw-bold text-dark">{{ $test->title }}</div>
+                        <div class="fw-medium text-dark">{{ $test->title }}</div>
                         @if($test->description)
                             <div class="small text-muted text-truncate" style="max-width: 250px;">{{ $test->description }}</div>
                         @endif
@@ -96,7 +96,7 @@
                             <span class="text-dark fw-medium">{{ $test->test_date->format('d M, Y') }}</span>
                         @endif
                     </td>
-                    <td class="px-4 py-3 fw-bold text-dark">
+                    <td class="px-4 py-3 fw-medium text-dark">
                         {{ $test->total_marks }}
                     </td>
                     <td class="px-4 py-3 text-center">

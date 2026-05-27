@@ -6,14 +6,14 @@
     <style>
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; color: #333; margin: 0; padding: 20px; }
         .header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 30px; }
-        .institute-name { font-size: 24px; font-weight: bold; color: #2563EB; }
+        .institute-name { font-size: 24px; font-weight: 500; color: #2563EB; }
         .receipt-title { font-size: 20px; float: right; color: #666; }
         .details-table { width: 100%; margin-bottom: 40px; }
         .details-table td { vertical-align: top; width: 50%; }
         .items-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
         .items-table th, .items-table td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
-        .items-table th { background: #f8fafc; font-weight: bold; color: #666; text-transform: uppercase; font-size: 12px; }
-        .total-row { font-weight: bold; font-size: 18px; color: #2563EB; }
+        .items-table th { background: #f8fafc; font-weight: 500; color: #666; text-transform: uppercase; font-size: 12px; }
+        .total-row { font-weight: 500; font-size: 18px; color: #2563EB; }
         .footer { text-align: center; color: #999; font-size: 12px; border-top: 1px solid #eee; padding-top: 20px; }
     </style>
 </head>

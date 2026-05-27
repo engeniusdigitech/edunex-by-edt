@@ -61,6 +61,29 @@
                 </div>
             </div>
             <hr class="my-4">
+            <h6 class="mb-3">Modules Configuration</h6>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_hr" id="feature_hr" value="1" {{ old('feature_hr', true) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="feature_hr">Staff HR Module</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_fees" id="feature_fees" value="1" {{ old('feature_fees', true) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="feature_fees">Fees & Payments</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_live_classes" id="feature_live_classes" value="1" {{ old('feature_live_classes', true) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="feature_live_classes">Live Lectures</label>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
             <h6 class="mb-3">Admin Account Details</h6>
             <div class="mb-3">
                 <label class="form-label">Admin Name <span class="text-danger">*</span></label>

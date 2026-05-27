@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h4 class="mb-0 fw-bold">Live Lectures</h4>
+    <h4 class="mb-0 fw-medium">Live Lectures</h4>
     <a href="{{ route('live-lectures.create') }}" class="btn btn-primary-glow btn-modern">
         <i class="fas fa-plus me-2"></i> Schedule Lecture
     </a>
@@ -33,7 +33,7 @@
                 @forelse($lectures as $lecture)
                 <tr>
                     <td class="px-4 py-3">
-                        <div class="fw-bold text-dark">{{ $lecture->title }}</div>
+                        <div class="fw-medium text-dark">{{ $lecture->title }}</div>
                         <div class="small text-muted">{{ $lecture->subject }}</div>
                     </td>
                     <td class="px-4 py-3">

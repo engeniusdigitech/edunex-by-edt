@@ -23,7 +23,7 @@
         
         .page-title {
             font-size: clamp(2.5rem, 5vw, 3.8rem);
-            font-weight: 900;
+            font-weight: 500;
             letter-spacing: -2px;
             line-height: 1.1;
             margin-bottom: 24px;
@@ -42,7 +42,7 @@
 
         .form-label {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-muted);
@@ -108,7 +108,7 @@
                             <div class="icon-box mx-auto mb-4" style="background: #ECFDF5; color: #10B981; width: 80px; height: 80px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
                                 <i class="fab fa-whatsapp"></i>
                             </div>
-                            <h3 class="fw-bold mb-2">Registration for Trial</h3>
+                            <h3 class="fw-medium mb-2">Registration for Trial</h3>
                             <p class="text-muted small">We'll connect with you via WhatsApp to set up your account.</p>
                         </div>
 
@@ -131,7 +131,7 @@
                                     <input type="text" id="plan" class="form-control" value="{{ $planName }}" readonly style="background: rgba(0,0,0,0.03);">
                                 </div>
                                 <div class="col-12 mt-5">
-                                    <button type="submit" class="btn btn-modern btn-whatsapp w-100 py-3 fw-bold fs-6">
+                                    <button type="submit" class="btn btn-modern btn-whatsapp w-100 py-3 fw-medium fs-6">
                                         Submit Request <i class="fas fa-paper-plane ms-2"></i>
                                     </button>
                                 </div>

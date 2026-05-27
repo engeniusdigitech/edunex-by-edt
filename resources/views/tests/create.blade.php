@@ -8,7 +8,7 @@
             style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-arrow-left text-secondary"></i>
         </a>
-        <h4 class="mb-0 fw-bold">Schedule New Test</h4>
+        <h4 class="mb-0 fw-medium">Schedule New Test</h4>
     </div>
 
     <div class="row">

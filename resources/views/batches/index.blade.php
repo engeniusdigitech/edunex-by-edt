@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Batches</h4>
+        <h4 class="fw-medium text-dark mb-1">Batches</h4>
         <p class="text-muted small mb-0">Manage the batches and classes offered by your institute</p>
     </div>
     <button type="button" class="btn btn-primary btn-modern shadow-sm" data-bs-toggle="modal" data-bs-target="#addBatchModal">
@@ -57,7 +57,7 @@
                 <tbody>
                     @foreach($batches as $batch)
                     <tr>
-                        <td class="ps-4 py-3 fw-bold text-dark">{{ $batch->name }}</td>
+                        <td class="ps-4 py-3 fw-medium text-dark">{{ $batch->name }}</td>
                         <td class="py-3 text-muted">{{ $batch->schedule_time ?? 'Not Specified' }}</td>
                         <td class="py-3">
                             @if($batch->is_active)
@@ -89,7 +89,7 @@
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-users-class fa-2x"></i>
                             </div>
-                            <h6 class="fw-bold text-dark">No batches found</h6>
+                            <h6 class="fw-medium text-dark">No batches found</h6>
                             <p class="text-muted small mb-0">Get started by creating your first batch.</p>
                         </td>
                     </tr>
@@ -121,7 +121,7 @@
                         <input type="text" name="name" class="form-control" required placeholder="e.g. Class 10th A, Morning Batch">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-bold small text-muted text-uppercase">Schedule Days</label>
+                        <label class="form-label fw-medium small text-muted text-uppercase">Schedule Days</label>
                         <div class="d-flex flex-wrap gap-2">
                             @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
                                 <div class="form-check form-check-inline m-0 border px-3 py-2 rounded-3 bg-light" style="cursor: pointer;">
@@ -133,11 +133,11 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <label class="form-label fw-bold small text-muted text-uppercase">Start Time</label>
+                            <label class="form-label fw-medium small text-muted text-uppercase">Start Time</label>
                             <input type="time" name="start_time" class="form-control rounded-3" id="start_time">
                         </div>
                         <div class="col-6">
-                            <label class="form-label fw-bold small text-muted text-uppercase">End Time</label>
+                            <label class="form-label fw-medium small text-muted text-uppercase">End Time</label>
                             <input type="time" name="end_time" class="form-control rounded-3" id="end_time">
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                         <input type="text" name="name" id="editBatchName" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-bold small text-muted text-uppercase">Schedule Days</label>
+                        <label class="form-label fw-medium small text-muted text-uppercase">Schedule Days</label>
                         <div class="d-flex flex-wrap gap-2">
                             @foreach(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as $day)
                                 <div class="form-check form-check-inline m-0 border px-3 py-2 rounded-3 bg-light" style="cursor: pointer;">
@@ -184,11 +184,11 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <label class="form-label fw-bold small text-muted text-uppercase">Start Time</label>
+                            <label class="form-label fw-medium small text-muted text-uppercase">Start Time</label>
                             <input type="time" name="start_time" class="form-control rounded-3" id="edit_start_time">
                         </div>
                         <div class="col-6">
-                            <label class="form-label fw-bold small text-muted text-uppercase">End Time</label>
+                            <label class="form-label fw-medium small text-muted text-uppercase">End Time</label>
                             <input type="time" name="end_time" class="form-control rounded-3" id="edit_end_time">
                         </div>
                     </div>

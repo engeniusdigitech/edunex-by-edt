@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
     <div>
-        <h3 class="fw-bold mb-1">Staff Payroll</h3>
+        <h3 class="fw-medium mb-1">Staff Payroll</h3>
         <p class="text-muted mb-0">Generate and manage monthly payroll (Admin only)</p>
     </div>
 </div>
@@ -42,7 +42,7 @@
 
 <div class="card border-0 shadow-sm rounded-4">
     <div class="card-header bg-white d-flex justify-content-between align-items-center">
-        <span class="fw-bold">{{ \Carbon\Carbon::create($year, $month, 1)->format('F Y') }}</span>
+        <span class="fw-medium">{{ \Carbon\Carbon::create($year, $month, 1)->format('F Y') }}</span>
         <form method="GET" class="d-flex gap-2">
             <select name="month" class="form-select form-select-sm" onchange="this.form.submit()">
                 @for($m = 1; $m <= 12; $m++)
@@ -70,7 +70,7 @@
                         <td class="fw-semibold">{{ $payroll->user->name }}</td>
                         <td>{{ $payroll->present_days }} / {{ $payroll->working_days }}</td>
                         <td>₹{{ number_format($payroll->gross_salary, 2) }}</td>
-                        <td class="fw-bold text-success">₹{{ number_format($payroll->net_salary, 2) }}</td>
+                        <td class="fw-medium text-success">₹{{ number_format($payroll->net_salary, 2) }}</td>
                         <td>
                             <span class="badge bg-{{ $payroll->status === 'paid' ? 'success' : ($payroll->status === 'processed' ? 'primary' : 'secondary') }}">
                                 {{ ucfirst($payroll->status) }}

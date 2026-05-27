@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1"><i class="fas fa-exclamation-triangle text-danger me-2"></i> Fee Defaulters</h4>
+        <h4 class="fw-medium text-dark mb-1"><i class="fas fa-exclamation-triangle text-danger me-2"></i> Fee Defaulters</h4>
         <p class="text-muted small mb-0">Monitor unpaid fees and send automated reminders</p>
     </div>
     @if(count($defaulters) > 0)
@@ -31,14 +31,14 @@
 <div class="glass rounded-4 p-4 mb-4 border-0 shadow-sm">
     <form action="{{ route('reports.defaulters') }}" method="GET" class="row g-3 align-items-end">
         <div class="col-md-4">
-            <label class="form-label small fw-bold text-muted text-uppercase" style="letter-spacing: 1px;">Search Student</label>
+            <label class="form-label small fw-medium text-muted text-uppercase" style="letter-spacing: 1px;">Search Student</label>
             <div class="input-group">
                 <span class="input-group-text bg-white border-end-0 text-muted"><i class="fas fa-search"></i></span>
                 <input type="text" name="search" class="form-control border-start-0 ps-0" placeholder="Name or Email..." value="{{ request('search') }}">
             </div>
         </div>
         <div class="col-md-3">
-            <label class="form-label small fw-bold text-muted text-uppercase" style="letter-spacing: 1px;">Batch</label>
+            <label class="form-label small fw-medium text-muted text-uppercase" style="letter-spacing: 1px;">Batch</label>
             <select name="batch_id" class="form-select">
                 <option value="">All Batches</option>
                 @foreach($batches as $batch)
@@ -49,7 +49,7 @@
             </select>
         </div>
         <div class="col-md-3">
-            <label class="form-label small fw-bold text-muted text-uppercase" style="letter-spacing: 1px;">Month</label>
+            <label class="form-label small fw-medium text-muted text-uppercase" style="letter-spacing: 1px;">Month</label>
             <input type="month" name="month" class="form-control" value="{{ $currentMonth }}">
         </div>
         <div class="col-md-2">
@@ -64,7 +64,7 @@
 
 <div class="card border-0 bg-white">
     <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4">
-        <h5 class="fw-bold text-dark mb-0">Defaulters List for {{ date('F Y', strtotime($currentMonth . '-01')) }}</h5>
+        <h5 class="fw-medium text-dark mb-0">Defaulters List for {{ date('F Y', strtotime($currentMonth . '-01')) }}</h5>
         <p class="text-muted small mt-1 mb-0">Students who have not recorded a payment in the current month.</p>
     </div>
     <div class="card-body p-0">
@@ -85,10 +85,10 @@
                     <tr>
                         <td class="ps-4 py-3">
                             <div class="d-flex align-items-center">
-                                <div class="bg-danger bg-opacity-10 text-danger border rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold" style="width: 40px; height: 40px; font-size: 0.9rem;">
+                                <div class="bg-danger bg-opacity-10 text-danger border rounded-circle d-flex justify-content-center align-items-center me-3 fw-medium" style="width: 40px; height: 40px; font-size: 0.9rem;">
                                     {{ substr($student->name, 0, 2) }}
                                 </div>
-                                <div class="fw-bold text-dark">{{ $student->name }}</div>
+                                <div class="fw-medium text-dark">{{ $student->name }}</div>
                             </div>
                         </td>
                         <td class="py-3">
@@ -99,7 +99,7 @@
                             <div class="small text-dark"><i class="fas fa-phone-alt text-muted me-1"></i> {{ $student->phone ?? 'Not provided' }}</div>
                         </td>
                         <td class="py-3">
-                            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle rounded-pill px-3 py-2 fw-bold">Unpaid</span>
+                            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle rounded-pill px-3 py-2 fw-medium">Unpaid</span>
                         </td>
                         <td class="py-3 text-end pe-4">
                             @php
@@ -137,7 +137,7 @@
             <div class="d-inline-flex border border-success p-4 rounded-circle mb-3 bg-success bg-opacity-10 text-success">
                 <i class="fas fa-check-double fa-2x"></i>
             </div>
-            <h5 class="fw-bold text-dark">All Clear!</h5>
+            <h5 class="fw-medium text-dark">All Clear!</h5>
             <p class="text-muted small mb-0">Every active student has made a payment this month.</p>
         </div>
         @endif

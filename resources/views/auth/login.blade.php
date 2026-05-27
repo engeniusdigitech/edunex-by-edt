@@ -71,7 +71,7 @@
 .brand-title {
     font-family: 'Outfit', sans-serif;
     font-size: 3.5rem;
-    font-weight: 800;
+    font-weight: 500;
     line-height: 1.15;
     margin-bottom: 24px;
     letter-spacing: -0.03em;
@@ -132,7 +132,7 @@
 .form-header h2 {
     font-family: 'Outfit', sans-serif;
     font-size: 2.2rem;
-    font-weight: 800;
+    font-weight: 500;
     color: #0F172A;
     margin-bottom: 8px;
     letter-spacing: -0.02em;
@@ -219,7 +219,7 @@
     position: absolute;
     color: #FFFFFF;
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 500;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -268,7 +268,7 @@
 .bottom-link a {
     color: #0F172A;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 500;
     transition: color 0.2s;
 }
 .bottom-link a:hover {

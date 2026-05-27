@@ -6,7 +6,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1"><i class="fas fa-bell text-primary me-2"></i>Notifications</h4>
+        <h4 class="fw-medium text-dark mb-1"><i class="fas fa-bell text-primary me-2"></i>Notifications</h4>
         <p class="text-muted small mb-0">Send targeted or general alerts to student portals</p>
     </div>
 </div>
@@ -23,7 +23,7 @@
     <div class="col-lg-5">
         <div class="card border-0 shadow-sm" style="border-radius:18px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4 pb-0">
-                <h6 class="fw-bold text-dark mb-0" style="font-size:0.82rem;text-transform:uppercase;letter-spacing:1px;">
+                <h6 class="fw-medium text-dark mb-0" style="font-size:0.82rem;text-transform:uppercase;letter-spacing:1px;">
                     <i class="fas fa-paper-plane text-primary me-2"></i>Send New Notification
                 </h6>
             </div>
@@ -127,7 +127,7 @@
     <div class="col-lg-7">
         <div class="card border-0 shadow-sm" style="border-radius:18px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4 pb-2 d-flex justify-content-between align-items-center">
-                <h6 class="fw-bold text-dark mb-0" style="font-size:0.82rem;text-transform:uppercase;letter-spacing:1px;">
+                <h6 class="fw-medium text-dark mb-0" style="font-size:0.82rem;text-transform:uppercase;letter-spacing:1px;">
                     <i class="fas fa-history text-primary me-2"></i>Recently Sent
                 </h6>
                 <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill" style="font-size:0.7rem;">Last 30</span>
@@ -171,7 +171,7 @@
                 @empty
                 <div class="text-center py-5 text-muted">
                     <i class="fas fa-bell-slash fa-2x opacity-25 mb-3 d-block"></i>
-                    <h6 class="fw-bold text-dark">No notifications sent yet</h6>
+                    <h6 class="fw-medium text-dark">No notifications sent yet</h6>
                     <p class="small mb-0">Use the form to send your first notification.</p>
                 </div>
                 @endforelse

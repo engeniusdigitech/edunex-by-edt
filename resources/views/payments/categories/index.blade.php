@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Fee Categories</h4>
+        <h4 class="fw-medium text-dark mb-1">Fee Categories</h4>
         <p class="text-muted small mb-0">Define custom fee types for your institute</p>
     </div>
     <button type="button" class="btn btn-primary btn-modern shadow-sm" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
@@ -34,7 +34,7 @@
                 <tbody>
                     @forelse($categories as $category)
                     <tr>
-                        <td class="ps-4 py-4 fw-bold text-dark">{{ $category->name }}</td>
+                        <td class="ps-4 py-4 fw-medium text-dark">{{ $category->name }}</td>
                         <td class="py-4 text-muted small">{{ $category->description ?? 'No description' }}</td>
                         <td class="py-4 text-muted small">{{ $category->created_at->format('M d, Y') }}</td>
                         <td class="pe-4 py-4 text-end">
@@ -58,7 +58,7 @@
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-tags fa-2x"></i>
                             </div>
-                            <h6 class="fw-bold text-dark">No categories found</h6>
+                            <h6 class="fw-medium text-dark">No categories found</h6>
                             <p class="text-muted small mb-0">Add your first fee category to get started.</p>
                         </td>
                     </tr>
@@ -87,16 +87,16 @@
                 @csrf
                 <div class="modal-body py-4">
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Category Name</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Category Name</label>
                         <input type="text" name="name" class="form-control rounded-3 py-2" placeholder="e.g. Tuition Fee" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Description</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Description</label>
                         <textarea name="description" class="form-control rounded-3" rows="3" placeholder="Brief description of this fee type..."></textarea>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0 pb-4 justify-content-center">
-                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-bold">Create Category</button>
+                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-medium">Create Category</button>
                 </div>
             </form>
         </div>
@@ -117,16 +117,16 @@
                 @method('PUT')
                 <div class="modal-body py-4">
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Category Name</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Category Name</label>
                         <input type="text" name="name" class="form-control rounded-3 py-2" value="{{ $category->name }}" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Description</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Description</label>
                         <textarea name="description" class="form-control rounded-3" rows="3">{{ $category->description }}</textarea>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0 pb-4 justify-content-center">
-                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-bold">Update Category</button>
+                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-medium">Update Category</button>
                 </div>
             </form>
         </div>

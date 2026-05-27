@@ -87,14 +87,14 @@
             align-items: center;
             justify-content: center;
             font-size: 1.1rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #fff;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .sidebar-brand .brand-text {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--text);
             line-height: 1.2;
         }
@@ -118,7 +118,7 @@
 
         .nav-section-title {
             font-size: 0.7rem;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1.2px;
             color: var(--muted);
@@ -268,14 +268,14 @@
             align-items: center;
             justify-content: center;
             font-size: 0.95rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #fff;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .nav-brand .brand-name {
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--text);
             line-height: 1.1;
         }
@@ -308,7 +308,7 @@
             align-items: center;
             justify-content: center;
             font-size: 0.82rem;
-            font-weight: 700;
+            font-weight: 500;
             color: #fff;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
@@ -347,7 +347,7 @@
             border-radius: 50%;
             font-size: 0.6rem;
             color: #fff;
-            font-weight: 700;
+            font-weight: 500;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -387,7 +387,7 @@
 
         .page-title {
             font-size: 1.75rem;
-            font-weight: 800;
+            font-weight: 500;
             color: var(--text);
             margin-bottom: 8px;
         }
@@ -494,7 +494,7 @@
 
         .hero h2 {
             font-size: 1.75rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #fff;
             margin-bottom: 6px;
             line-height: 1.2;
@@ -618,7 +618,7 @@
 
         .stat-value {
             font-size: 2.25rem;
-            font-weight: 800;
+            font-weight: 500;
             line-height: 1;
             margin-bottom: 4px;
             background: var(--gradient-blue-green);
@@ -1067,7 +1067,7 @@
 
         .card-head h6 {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text);
@@ -1143,7 +1143,7 @@
 
         .batch-info .b-name {
             font-size: 1rem;
-            font-weight: 700;
+            font-weight: 500;
             margin: 2px 0;
         }
 
@@ -1178,7 +1178,7 @@
         .lectures-cta h6 {
             color: #fff;
             font-size: 0.9rem;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 4px;
         }
 
@@ -1326,7 +1326,7 @@
 
         .t-month {
             font-size: 0.6rem;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--primary-blue);
@@ -1334,7 +1334,7 @@
 
         .t-day {
             font-size: 1.2rem;
-            font-weight: 800;
+            font-weight: 500;
             line-height: 1;
             color: var(--text);
         }
@@ -1352,7 +1352,7 @@
 
         .t-score {
             font-size: 0.95rem;
-            font-weight: 800;
+            font-weight: 500;
             color: var(--primary-blue);
         }
 
@@ -1405,7 +1405,7 @@
         }
 
         .pay-amt {
-            font-weight: 700;
+            font-weight: 500;
             font-variant-numeric: tabular-nums;
         }
 
@@ -1649,7 +1649,7 @@
 
         .app-card-title {
             font-size: 0.85rem;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--text);
             margin-bottom: 4px;
         }
@@ -1731,18 +1731,22 @@
                     <i class="fas fa-calendar-alt"></i>
                     <span>Timetable</span>
                 </a>
+                @if(auth()->guard('student')->user()->institute->feature_live_classes)
                 <a href="{{ route('student.lectures.index') }}" class="nav-item">
                     <i class="fas fa-video"></i>
                     <span>Live Lectures</span>
                 </a>
+                @endif
             </div>
 
             <div class="nav-section">
                 <div class="nav-section-title">Academics</div>
+                @if(auth()->guard('student')->user()->institute->feature_fees)
                 <a href="{{ route('student.fees.index') }}" class="nav-item">
                     <i class="fas fa-wallet"></i>
                     <span>Fees & Payments</span>
                 </a>
+                @endif
                 <a href="{{ route('student.leaves.index') }}" class="nav-item">
                     <i class="fas fa-calendar-minus"></i>
                     <span>Leave Requests</span>
@@ -1818,11 +1822,11 @@
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
                     <div>
                         <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px;">Overall Attendance</div>
-                        <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-blue-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{{ $attendancePercentage }}%</div>
+                        <div style="font-size: 2rem; font-weight: 500; background: var(--gradient-blue-green); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{{ $attendancePercentage }}%</div>
                     </div>
                     <div style="text-align: right;">
                         <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px;">Classes Attended</div>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: var(--text);">{{ $presentClasses ?? 0 }} / {{ $totalClasses ?? 0 }}</div>
+                        <div style="font-size: 1.25rem; font-weight: 500; color: var(--text);">{{ $presentClasses ?? 0 }} / {{ $totalClasses ?? 0 }}</div>
                     </div>
                 </div>
                 <div class="prog">
@@ -1839,16 +1843,20 @@
                 <div class="app-card-title">Homework</div>
                 <div class="app-card-badge">{{ $activeHomeworks->count() }} Active</div>
             </div>
+            @if(auth()->guard('student')->user()->institute->feature_live_classes)
             <div class="app-card" onclick="switchSection('lectures', this)">
                 <div class="app-card-icon bg-indigo"><i class="fas fa-video"></i></div>
                 <div class="app-card-title">Live Lectures</div>
                 <div class="app-card-badge">View Library</div>
             </div>
+            @endif
+            @if(auth()->guard('student')->user()->institute->feature_fees)
             <div class="app-card" onclick="switchSection('fees', this)">
                 <div class="app-card-icon bg-emerald"><i class="fas fa-wallet"></i></div>
                 <div class="app-card-title">Fees Details</div>
                 <div class="app-card-badge">Check Ledger</div>
             </div>
+            @endif
             <div class="app-card" onclick="window.location.href='{{ route('student.timetable.index') }}'">
                 <div class="app-card-icon bg-pink"><i class="fas fa-calendar-alt"></i></div>
                 <div class="app-card-title">Timetable</div>
@@ -1952,7 +1960,7 @@
             <div class="card-block mb-3 p-3 bg-primary bg-opacity-10 border-0 rounded-4">
                 <div class="d-flex align-items-center justify-content-between">
                     <div>
-                        <h6 class="mb-1 fw-bold text-primary">Manage Your Fees</h6>
+                        <h6 class="mb-1 fw-medium text-primary">Manage Your Fees</h6>
                         <p class="text-muted small mb-0">Check due amounts or pay online.</p>
                     </div>
                     <a href="{{ route('student.fees.index') }}" class="btn btn-primary rounded-pill px-3 shadow-sm" style="font-size:0.8rem; font-weight:600;">
@@ -2003,7 +2011,7 @@
                     <h6>Attendance Report</h6>
                 </div>
                 <div class="p-4 text-center">
-                    <h2 style="font-size:3rem; font-weight:800; color:var(--indigo);">{{ $attendancePercentage }}%</h2>
+                    <h2 style="font-size:3rem; font-weight: 500; color:var(--indigo);">{{ $attendancePercentage }}%</h2>
                     <p class="text-muted small">You attended {{ $presentClasses }} out of {{ $totalClasses }} classes
                     </p>
                     <div class="progress" style="height:10px; border-radius:50px;">

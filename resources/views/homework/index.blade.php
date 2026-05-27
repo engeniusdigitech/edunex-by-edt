@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h4 class="mb-0 fw-bold">Homework Assignments</h4>
+    <h4 class="mb-0 fw-medium">Homework Assignments</h4>
     <a href="{{ route('homework.create') }}" class="btn btn-primary-glow btn-modern">
         <i class="fas fa-plus me-2"></i> Assign Homework
     </a>
@@ -78,7 +78,7 @@
                                 <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary-subtle">General</span>
                             @endif
                         </div>
-                        <div class="fw-bold text-dark">{{ $hw->title }}</div>
+                        <div class="fw-medium text-dark">{{ $hw->title }}</div>
                         @if($hw->description)
                             <div class="small text-muted text-truncate" style="max-width: 250px;">{{ $hw->description }}</div>
                         @endif

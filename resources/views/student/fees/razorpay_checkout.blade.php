@@ -9,7 +9,7 @@
                 <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-                <h4 class="mt-4 fw-bold">Connecting to Razorpay Secure Checkout</h4>
+                <h4 class="mt-4 fw-medium">Connecting to Razorpay Secure Checkout</h4>
                 <p class="text-muted">Please wait, do not refresh or close this window.</p>
             </div>
         </div>

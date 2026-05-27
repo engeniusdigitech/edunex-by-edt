@@ -46,7 +46,7 @@
             </div>
 
             <div class="mb-3" id="teacherOptionsContainer" style="display: none;">
-                <label class="form-label fw-bold"><i class="fas fa-chalkboard-teacher me-1"></i> Class Teacher Appointment</label>
+                <label class="form-label fw-medium"><i class="fas fa-chalkboard-teacher me-1"></i> Class Teacher Appointment</label>
                 <div class="border rounded p-3 bg-light mb-4">
                     <p class="small text-muted mb-3">Select batches for which this teacher will be the **Main Class Teacher**. These batches will see this teacher's attendance and class details.</p>
                     @if($unassignedBatches->isEmpty())
@@ -69,7 +69,7 @@
                     @endif
                 </div>
 
-                <label class="form-label fw-bold"><i class="fas fa-book-reader me-1"></i> Subject & Batch Access</label>
+                <label class="form-label fw-medium"><i class="fas fa-book-reader me-1"></i> Subject & Batch Access</label>
                 <div class="border rounded p-3 bg-light mb-3">
                     <p class="small text-muted mb-3">Select batches and specific subjects this teacher is allowed to teach and access.</p>
                     @if($batches->isEmpty())
@@ -82,7 +82,7 @@
                                         <div class="accordion-button collapsed bg-white rounded d-flex align-items-center p-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBatch{{ $batch->id }}" aria-expanded="false" aria-controls="collapseBatch{{ $batch->id }}">
                                             <div class="form-check me-3" onclick="event.stopPropagation();">
                                                 <input class="form-check-input batch-checkbox" type="checkbox" name="batches[]" value="{{ $batch->id }}" id="batch_{{ $batch->id }}">
-                                                <label class="form-check-label fw-bold" for="batch_{{ $batch->id }}" style="cursor: pointer;">
+                                                <label class="form-check-label fw-medium" for="batch_{{ $batch->id }}" style="cursor: pointer;">
                                                     {{ $batch->name }}
                                                 </label>
                                             </div>

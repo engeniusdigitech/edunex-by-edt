@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Fee Structures</h4>
+        <h4 class="fw-medium text-dark mb-1">Fee Structures</h4>
         <p class="text-muted small mb-0">Manage exact fee amounts tied to categories</p>
     </div>
     <button type="button" class="btn btn-primary btn-modern shadow-sm" data-bs-toggle="modal" data-bs-target="#createStructureModal">
@@ -34,7 +34,7 @@
                 <tbody>
                     @forelse($structures as $structure)
                     <tr>
-                        <td class="ps-4 py-4 fw-bold text-dark">{{ $structure->name }}</td>
+                        <td class="ps-4 py-4 fw-medium text-dark">{{ $structure->name }}</td>
                         <td class="py-4">
                             <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle rounded-pill px-3 py-1">
                                 {{ $structure->category->name ?? 'General' }}
@@ -62,7 +62,7 @@
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-sitemap fa-2x"></i>
                             </div>
-                            <h6 class="fw-bold text-dark">No structures found</h6>
+                            <h6 class="fw-medium text-dark">No structures found</h6>
                             <p class="text-muted small mb-0">Create your first fee structure to start collecting payments.</p>
                         </td>
                     </tr>
@@ -91,7 +91,7 @@
                 @csrf
                 <div class="modal-body py-4">
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Fee Category</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Fee Category</label>
                         <select name="fee_category_id" class="form-select rounded-3" required>
                             <option value="">Select Category...</option>
                             @foreach($categories as $cat)
@@ -103,20 +103,20 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Structure Name</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Structure Name</label>
                         <input type="text" name="name" class="form-control rounded-3" placeholder="e.g. FY 2024 - Std 10 Tuition" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Total Amount (₹)</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Total Amount (₹)</label>
                         <input type="number" step="0.01" name="total_amount" class="form-control rounded-3" placeholder="25000.00" required>
                     </div>
                     <div class="mb-0">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Description</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Description</label>
                         <textarea name="description" class="form-control rounded-3" rows="3" placeholder="Optional details..."></textarea>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0 pb-4 justify-content-center">
-                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-bold">Save Structure</button>
+                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-medium">Save Structure</button>
                 </div>
             </form>
         </div>
@@ -137,7 +137,7 @@
                 @method('PUT')
                 <div class="modal-body py-4">
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Fee Category</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Fee Category</label>
                         <select name="fee_category_id" class="form-select rounded-3" required>
                             @foreach($categories as $cat)
                                 <option value="{{ $cat->id }}" {{ $structure->fee_category_id == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
@@ -145,20 +145,20 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Structure Name</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Structure Name</label>
                         <input type="text" name="name" class="form-control rounded-3" value="{{ $structure->name }}" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Total Amount (₹)</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Total Amount (₹)</label>
                         <input type="number" step="0.01" name="total_amount" class="form-control rounded-3" value="{{ $structure->total_amount }}" required>
                     </div>
                     <div class="mb-0">
-                        <label class="form-label small fw-bold text-muted text-uppercase">Description</label>
+                        <label class="form-label small fw-medium text-muted text-uppercase">Description</label>
                         <textarea name="description" class="form-control rounded-3" rows="3">{{ $structure->description }}</textarea>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0 pb-4 justify-content-center">
-                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-bold">Update Structure</button>
+                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-medium">Update Structure</button>
                 </div>
             </form>
         </div>
@@ -170,5 +170,5 @@
 <style>
     .btn-modern { border-radius: 50px; padding: 10px 24px; font-weight: 600; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .btn-modern:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
-    .fw-black { font-weight: 900; }
+    .fw-black { font-weight: 500; }
 </style>

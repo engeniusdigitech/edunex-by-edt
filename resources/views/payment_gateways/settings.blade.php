@@ -6,7 +6,7 @@
 <div class="container-fluid py-4">
     <div class="row mb-4">
         <div class="col-12">
-            <h3 class="mb-0 fw-bold">Payment Gateway Settings</h3>
+            <h3 class="mb-0 fw-medium">Payment Gateway Settings</h3>
             <p class="text-muted">Configure Razorpay and Stripe API keys for your institute to accept online payments.</p>
         </div>
     </div>
@@ -28,7 +28,7 @@
 
                         @if(auth()->user()->institute->country === 'IN')
                         <!-- Razorpay Section -->
-                        <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-wallet me-2"></i>Razorpay Settings (India)</h5>
+                        <h5 class="fw-medium mb-3 text-primary"><i class="fas fa-wallet me-2"></i>Razorpay Settings (India)</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold text-muted small">Razorpay Key ID</label>
@@ -44,7 +44,7 @@
                         @else
 
                         <!-- Stripe Section -->
-                        <h5 class="fw-bold mb-3" style="color: #0EA5E9;"><i class="fab fa-stripe me-2"></i>Stripe Settings (International)</h5>
+                        <h5 class="fw-medium mb-3" style="color: #0EA5E9;"><i class="fab fa-stripe me-2"></i>Stripe Settings (International)</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold text-muted small">Stripe Publishable Key</label>
@@ -66,7 +66,7 @@
                         @endif
 
                         <div class="text-end mt-4">
-                            <button type="submit" class="btn btn-primary px-4 py-2 fw-bold" style="border-radius: 12px;">
+                            <button type="submit" class="btn btn-primary px-4 py-2 fw-medium" style="border-radius: 12px;">
                                 <i class="fas fa-save me-2"></i>Save Settings
                             </button>
                         </div>
@@ -79,16 +79,16 @@
         <div class="col-lg-4 mt-4 mt-lg-0">
             <div class="card border-0 shadow-sm rounded-4 bg-light">
                 <div class="card-body p-4">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-info-circle me-2 text-info"></i>Configuration Help</h5>
+                    <h5 class="fw-medium mb-3"><i class="fas fa-info-circle me-2 text-info"></i>Configuration Help</h5>
                     
                     @if(auth()->user()->institute->country === 'IN')
-                    <h6 class="fw-bold mt-4 fs-6">Razorpay Webhooks</h6>
+                    <h6 class="fw-medium mt-4 fs-6">Razorpay Webhooks</h6>
                     <p class="text-muted small mb-2">Configure these endpoints in your Razorpay Dashboard:</p>
                     <code class="d-block bg-white p-2 rounded border small mb-3 text-break">
                         {{ url('/api/webhooks/razorpay') }}
                     </code>
                     @else
-                    <h6 class="fw-bold mt-4 fs-6">Stripe Webhooks</h6>
+                    <h6 class="fw-medium mt-4 fs-6">Stripe Webhooks</h6>
                     <p class="text-muted small mb-2">Configure these endpoints in your Stripe Dashboard:</p>
                     <code class="d-block bg-white p-2 rounded border small mb-3 text-break">
                         {{ url('/api/webhooks/stripe') }}

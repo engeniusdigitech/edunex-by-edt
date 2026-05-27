@@ -11,7 +11,7 @@
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
         th { background-color: #f4f6f9; color: #2c3e50; }
-        .text-danger { color: red; font-weight: bold; }
+        .text-danger { color: red; font-weight: 500; }
     </style>
 </head>
 <body>

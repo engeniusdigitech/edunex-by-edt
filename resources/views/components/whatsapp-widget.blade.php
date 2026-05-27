@@ -107,7 +107,7 @@
         <div class="card-header bg-whatsapp text-white d-flex justify-content-between align-items-center p-3">
             <div class="d-flex align-items-center gap-2">
                 <i class="fab fa-whatsapp fs-5"></i>
-                <span class="fw-bold small">Chat with us</span>
+                <span class="fw-medium small">Chat with us</span>
             </div>
             <button type="button" class="btn-close btn-close-white btn-sm" onclick="toggleWhatsappForm()"></button>
         </div>
@@ -133,7 +133,7 @@
                     <textarea id="wa-message" class="form-control form-control-sm" rows="3"
                         placeholder="How can we help?"></textarea>
                 </div>
-                <button type="submit" class="btn btn-whatsapp w-100 btn-sm text-white fw-bold">Send Message <i
+                <button type="submit" class="btn btn-whatsapp w-100 btn-sm text-white fw-medium">Send Message <i
                         class="fas fa-paper-plane ms-1"></i></button>
             </form>
         </div>

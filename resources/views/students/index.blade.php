@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Student Directory</h4>
+        <h4 class="fw-medium text-dark mb-1">Student Directory</h4>
         <p class="text-muted small mb-0">View and manage all enrolled students</p>
     </div>
     <a href="{{ route('students.create') }}" class="btn btn-primary btn-modern shadow-sm">
@@ -70,12 +70,12 @@
                                 @if($student->profile_image)
                                 <img src="{{ asset('storage/'.$student->profile_image) }}" class="rounded-circle me-3 object-fit-cover border" width="40" height="40">
                                 @else
-                                <div class="bg-secondary bg-opacity-10 text-secondary border rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold" style="width: 40px; height: 40px; font-size: 0.9rem;">
+                                <div class="bg-secondary bg-opacity-10 text-secondary border rounded-circle d-flex justify-content-center align-items-center me-3 fw-medium" style="width: 40px; height: 40px; font-size: 0.9rem;">
                                     {{ substr($student->name, 0, 2) }}
                                 </div>
                                 @endif
                                 <div>
-                                    <div class="fw-bold text-dark">{{ $student->name }}</div>
+                                    <div class="fw-medium text-dark">{{ $student->name }}</div>
                                     <div class="small text-muted" style="font-family: monospace;">ID: #{{ str_pad($student->id, 4, '0', STR_PAD_LEFT) }}</div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-user-graduate fa-2x"></i>
                             </div>
-                            <h6 class="fw-bold text-dark">No students found</h6>
+                            <h6 class="fw-medium text-dark">No students found</h6>
                             <p class="text-muted small mb-0">Start adding students to track performance and attendance.</p>
                         </td>
                     </tr>

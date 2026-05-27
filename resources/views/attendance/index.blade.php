@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Daily Attendance</h4>
+        <h4 class="fw-medium text-dark mb-1">Daily Attendance</h4>
         <p class="text-muted small mb-0">Record and monitor class attendance</p>
     </div>
 </div>
@@ -44,13 +44,13 @@
 @if($batchId && $students->isEmpty())
     <div class="alert alert-warning bg-warning bg-opacity-10 border border-warning-subtle text-warning-emphasis rounded-4 p-4 text-center">
         <i class="fas fa-exclamation-circle fa-2x mb-3"></i>
-        <h6 class="fw-bold">No Students Found</h6>
+        <h6 class="fw-medium">No Students Found</h6>
         <p class="small mb-0">There are no active students assigned to this batch.</p>
     </div>
 @elseif($batchId && $students->isNotEmpty())
     <div class="card border-0 bg-white shadow-sm">
         <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4">
-            <h5 class="fw-bold text-dark mb-0">Roster for {{ \Carbon\Carbon::parse($date)->format('M d, Y') }}</h5>
+            <h5 class="fw-medium text-dark mb-0">Roster for {{ \Carbon\Carbon::parse($date)->format('M d, Y') }}</h5>
         </div>
         <div class="card-body p-0">
             <form action="{{ route('attendance.store') }}" method="POST">
@@ -77,12 +77,12 @@
                                             @if($student->profile_image)
                                             <img src="{{ asset('storage/'.$student->profile_image) }}" class="rounded-circle me-3 object-fit-cover border" width="40" height="40">
                                             @else
-                                            <div class="bg-secondary bg-opacity-10 text-secondary border rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold" style="width: 40px; height: 40px; font-size: 0.9rem;">
+                                            <div class="bg-secondary bg-opacity-10 text-secondary border rounded-circle d-flex justify-content-center align-items-center me-3 fw-medium" style="width: 40px; height: 40px; font-size: 0.9rem;">
                                                 {{ substr($student->name, 0, 2) }}
                                             </div>
                                             @endif
                                             <div>
-                                                <div class="fw-bold text-dark">{{ $student->name }}</div>
+                                                <div class="fw-medium text-dark">{{ $student->name }}</div>
                                                 <div class="small text-muted"><i class="fas fa-phone-alt me-1 text-opacity-50"></i> {{ $student->phone }}</div>
                                             </div>
                                         </div>

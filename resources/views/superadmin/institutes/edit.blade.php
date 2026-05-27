@@ -9,7 +9,7 @@
 
 <div class="card col-md-8 border-0 shadow-sm rounded-4">
     <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
-        <h5 class="fw-bold"><i class="fas fa-building text-primary me-2"></i>Edit Institute Details</h5>
+        <h5 class="fw-medium"><i class="fas fa-building text-primary me-2"></i>Edit Institute Details</h5>
     </div>
     <div class="card-body p-4">
         <form action="{{ route('superadmin.institutes.update', $institute->id) }}" method="POST">
@@ -68,6 +68,30 @@
                 <div class="form-check form-switch p-0 d-flex align-items-center">
                     <label class="form-check-label fw-semibold text-muted small me-5" for="isActiveSwitch">Active Status</label>
                     <input class="form-check-input ms-0 mt-0" type="checkbox" id="isActiveSwitch" name="is_active" value="1" {{ old('is_active', $institute->is_active) ? 'checked' : '' }} style="width: 40px; height: 20px; cursor: pointer;">
+                </div>
+            </div>
+
+            <hr class="my-4">
+            
+            <h6 class="mb-3 fw-medium text-muted">Modules Configuration</h6>
+            <div class="row mb-4">
+                <div class="col-md-4 mb-2">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_hr" id="feature_hr" value="1" {{ old('feature_hr', $institute->feature_hr) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_hr">Staff HR Module</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_fees" id="feature_fees" value="1" {{ old('feature_fees', $institute->feature_fees) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_fees">Fees & Payments</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_live_classes" id="feature_live_classes" value="1" {{ old('feature_live_classes', $institute->feature_live_classes) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_live_classes">Live Lectures</label>
+                    </div>
                 </div>
             </div>
 

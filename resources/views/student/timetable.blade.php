@@ -32,19 +32,19 @@
         body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #F0F9FF 0%, #ECFDF5 100%); color: var(--text); min-height: 100vh; }
         .top-navbar { background: #fff; border-bottom: 1px solid var(--border); padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
         .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .nav-brand .brand-badge { width: 40px; height: 40px; background: var(--gradient-blue-green); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 800; color: #fff; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
-        .nav-brand .brand-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+        .nav-brand .brand-badge { width: 40px; height: 40px; background: var(--gradient-blue-green); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 500; color: #fff; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        .nav-brand .brand-name { font-size: 0.95rem; font-weight: 500; color: var(--text); }
         
         .page { max-width: 1400px; margin: 0 auto; padding: 28px 24px 60px; }
         .day-column { margin-bottom: 24px; }
-        .day-header { font-weight: 800; font-size: 0.85rem; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+        .day-header { font-weight: 500; font-size: 0.85rem; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
         .day-header::after { content: ''; flex-grow: 1; height: 1px; background: var(--border); }
         
         .slot-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 18px; transition: all 0.3s; box-shadow: 0 4px 12px -4px rgba(37, 99, 235, 0.08); }
         .slot-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -6px rgba(37, 99, 235, 0.15); border-color: var(--primary-blue); }
         
-        .slot-time { font-weight: 700; font-size: 0.85rem; color: var(--primary-blue); margin-bottom: 10px; }
-        .slot-subject { font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+        .slot-time { font-weight: 500; font-size: 0.85rem; color: var(--primary-blue); margin-bottom: 10px; }
+        .slot-subject { font-weight: 500; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
         .slot-teacher { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
         .slot-room { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-top: 12px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border-radius: 8px; }
         
@@ -61,17 +61,17 @@
             <div class="brand-name">EDUNEX <span class="d-none d-sm-inline" style="font-size: 0.7rem; opacity: 0.6; margin-left: 5px;">STUDENT TIMETABLE</span></div>
         </a>
         <div class="d-flex align-items-center gap-3">
-            <a href="{{ route('student.dashboard') }}" class="text-muted text-decoration-none small fw-bold">DASHBOARD</a>
+            <a href="{{ route('student.dashboard') }}" class="text-muted text-decoration-none small fw-medium">DASHBOARD</a>
             <form action="{{ route('student.logout') }}" method="POST" class="m-0">
                 @csrf
-                <button type="submit" class="btn btn-sm btn-outline-danger border-0 fw-bold">LOGOUT</button>
+                <button type="submit" class="btn btn-sm btn-outline-danger border-0 fw-medium">LOGOUT</button>
             </form>
         </div>
     </nav>
 
     <div class="page">
         <div class="mb-4">
-            <h4 class="fw-bold mb-1">Your Weekly Timetable</h4>
+            <h4 class="fw-medium mb-1">Your Weekly Timetable</h4>
             <p class="text-muted small mb-0">Full schedule for <strong>{{ auth('student')->user()->batch->name }}</strong></p>
         </div>
 
@@ -109,7 +109,7 @@
                     @empty
                         <div class="text-center py-4 opacity-25">
                             <i class="fas fa-calendar-minus fa-2x mb-2"></i>
-                            <p class="small fw-bold">No Classes</p>
+                            <p class="small fw-medium">No Classes</p>
                         </div>
                     @endforelse
                 </div>

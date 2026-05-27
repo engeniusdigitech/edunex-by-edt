@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h3 class="fw-bold mb-1">Staff Salaries</h3>
+        <h3 class="fw-medium mb-1">Staff Salaries</h3>
         <p class="text-muted mb-0">Manage monthly salary structures (Admin only)</p>
     </div>
     <a href="{{ route('staff-salaries.create') }}" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Add Salary</a>
@@ -45,7 +45,7 @@
                         <td>₹{{ number_format($salary->hra, 2) }}</td>
                         <td>₹{{ number_format($salary->allowances, 2) }}</td>
                         <td>₹{{ number_format($salary->deductions, 2) }}</td>
-                        <td class="fw-bold text-success">₹{{ number_format($salary->net_monthly, 2) }}</td>
+                        <td class="fw-medium text-success">₹{{ number_format($salary->net_monthly, 2) }}</td>
                         <td>{{ $salary->effective_from->format('d M Y') }}</td>
                         <td><a href="{{ route('staff-salaries.edit', $salary) }}" class="btn btn-sm btn-outline-primary">Edit</a></td>
                     </tr>

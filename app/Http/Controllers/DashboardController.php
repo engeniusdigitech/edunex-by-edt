@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\Batch;
 use App\Models\Payment;
 use App\Models\Attendance;
+use App\Models\StaffAttendance;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -25,6 +26,14 @@ class DashboardController extends Controller
 
         if ($user && $user->isReceptionist()) {
             return $this->receptionistDashboard($user);
+        }
+
+        $todayStaffAttendance = null;
+        if ($user->institute_id) {
+            $todayStaffAttendance = StaffAttendance::firstOrCreate(
+                ['user_id' => $user->id, 'date' => today(), 'institute_id' => $user->institute_id],
+                ['status' => 'absent', 'institute_id' => $user->institute_id]
+            );
         }
 
         // ── STAT CARDS ──
@@ -100,11 +109,18 @@ class DashboardController extends Controller
             'studentsPerBatch',
             'attendanceTrend',
             'recentPayments',
-            'noAttendanceToday'
+            'noAttendanceToday',
+            'todayStaffAttendance'
         ));
     }
     private function teacherDashboard($user)
     {
+        $todayStaffAttendance = $user->canUseBiometricAttendance()
+            ? StaffAttendance::firstOrCreate(
+                ['user_id' => $user->id, 'date' => today(), 'institute_id' => $user->institute_id],
+                ['status' => 'absent', 'institute_id' => $user->institute_id]
+              )
+            : null;
         $isMyClassView = request('view') === 'my_class';
         $isClassTeacher = $user->isClassTeacher();
 
@@ -199,12 +215,20 @@ class DashboardController extends Controller
             'isClassTeacher',
             'topHomework',
             'topTests',
-            'canSeeAttendance'
+            'canSeeAttendance',
+            'todayStaffAttendance'
         ));
     }
 
     private function principalDashboard($user)
     {
+        $todayStaffAttendance = null;
+        if ($user->institute_id) {
+            $todayStaffAttendance = StaffAttendance::firstOrCreate(
+                ['user_id' => $user->id, 'date' => today(), 'institute_id' => $user->institute_id],
+                ['status' => 'absent', 'institute_id' => $user->institute_id]
+            );
+        }
         // Principals see everything EXCEPT financial data
         $totalStudents = Student::count();
         $activeBatches = Batch::where('is_active', true)->count();
@@ -247,12 +271,19 @@ class DashboardController extends Controller
             'todayPresent',
             'studentsPerBatch',
             'attendanceTrend',
-            'noAttendanceToday'
+            'noAttendanceToday',
+            'todayStaffAttendance'
         ));
     }
 
     private function receptionistDashboard($user)
     {
+        $todayStaffAttendance = $user->canUseBiometricAttendance()
+            ? StaffAttendance::firstOrCreate(
+                ['user_id' => $user->id, 'date' => today(), 'institute_id' => $user->institute_id],
+                ['status' => 'absent', 'institute_id' => $user->institute_id]
+              )
+            : null;
         // Receptionists see ONLY financial data and notifications
         $monthlyRevenue = Payment::where('status', 'success')
             ->whereMonth('payment_date', now()->month)
@@ -297,7 +328,8 @@ class DashboardController extends Controller
             'todayAttendancePct',
             'studentsPerBatch',
             'attendanceTrend',
-            'noAttendanceToday'
+            'noAttendanceToday',
+            'todayStaffAttendance'
         ));
     }
 }

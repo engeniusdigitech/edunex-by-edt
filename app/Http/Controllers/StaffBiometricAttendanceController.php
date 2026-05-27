@@ -18,8 +18,8 @@ class StaffBiometricAttendanceController extends Controller
         $user = Auth::user();
         $institute = $user->institute;
         $today = StaffAttendance::firstOrCreate(
-            ['user_id' => $user->id, 'date' => today()],
-            ['status' => 'absent']
+            ['user_id' => $user->id, 'date' => today(), 'institute_id' => $user->institute_id],
+            ['status' => 'absent', 'institute_id' => $user->institute_id]
         );
 
         $recent = StaffAttendance::where('user_id', $user->id)
@@ -80,8 +80,8 @@ class StaffBiometricAttendanceController extends Controller
         }
 
         $attendance = StaffAttendance::firstOrCreate(
-            ['user_id' => $user->id, 'date' => today()],
-            ['status' => 'absent']
+            ['user_id' => $user->id, 'date' => today(), 'institute_id' => $user->institute_id],
+            ['status' => 'absent', 'institute_id' => $user->institute_id]
         );
 
         $action = $validated['action'];

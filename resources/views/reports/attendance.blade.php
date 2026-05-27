@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1"><i class="fas fa-chart-line text-primary me-2"></i> Attendance Report</h4>
+        <h4 class="fw-medium text-dark mb-1"><i class="fas fa-chart-line text-primary me-2"></i> Attendance Report</h4>
         <p class="text-muted small mb-0">Generate and view monthly student attendance records</p>
     </div>
     @if($batchId && count($reportData) > 0)
@@ -43,7 +43,7 @@
 @if($batchId)
     <div class="card border-0 bg-white shadow-sm">
         <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4">
-            <h5 class="fw-bold text-dark mb-0">Results for {{ date('F Y', strtotime($month . '-01')) }}</h5>
+            <h5 class="fw-medium text-dark mb-0">Results for {{ date('F Y', strtotime($month . '-01')) }}</h5>
         </div>
         <div class="card-body p-0">
             @if(count($reportData) > 0)
@@ -63,11 +63,11 @@
                         <tr>
                             <td class="ps-4 py-3">
                                 <div class="d-flex align-items-center">
-                                    <div class="bg-primary bg-opacity-10 text-primary border rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold" style="width: 40px; height: 40px; font-size: 0.9rem;">
+                                    <div class="bg-primary bg-opacity-10 text-primary border rounded-circle d-flex justify-content-center align-items-center me-3 fw-medium" style="width: 40px; height: 40px; font-size: 0.9rem;">
                                         {{ substr($row['student']->name, 0, 2) }}
                                     </div>
                                     <div>
-                                        <div class="fw-bold text-dark">{{ $row['student']->name }}</div>
+                                        <div class="fw-medium text-dark">{{ $row['student']->name }}</div>
                                         <small class="text-muted"><i class="far fa-envelope me-1 text-opacity-50"></i> {{ $row['student']->email }}</small>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                 <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                     <i class="fas fa-folder-open fa-2x opacity-50"></i>
                 </div>
-                <h5 class="fw-bold text-dark">No Data Available</h5>
+                <h5 class="fw-medium text-dark">No Data Available</h5>
                 <p class="text-muted small mb-0">No attendance records found for this batch in the selected month.</p>
             </div>
             @endif

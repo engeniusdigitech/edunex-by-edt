@@ -60,6 +60,9 @@ class InstituteController extends Controller
                 'country' => $validated['country'],
                 'type' => $validated['type'],
                 'subdomain' => $validated['subdomain'],
+                'feature_hr' => $request->has('feature_hr'),
+                'feature_fees' => $request->has('feature_fees'),
+                'feature_live_classes' => $request->has('feature_live_classes'),
             ]);
 
             $instituteAdminRole = Role::where('name', 'Institute Admin')->firstOrFail();
@@ -111,6 +114,9 @@ class InstituteController extends Controller
             'type' => $validated['type'],
             'subdomain' => $validated['subdomain'],
             'is_active' => $request->has('is_active'),
+            'feature_hr' => $request->has('feature_hr'),
+            'feature_fees' => $request->has('feature_fees'),
+            'feature_live_classes' => $request->has('feature_live_classes'),
         ]);
 
         return redirect()->route('superadmin.institutes.index')->with('success', 'Institute updated successfully.');

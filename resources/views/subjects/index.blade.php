@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Subjects</h4>
+        <h4 class="fw-medium text-dark mb-1">Subjects</h4>
         <p class="text-muted small mb-0">Manage the subjects offered by your institute</p>
     </div>
     <button type="button" class="btn btn-primary btn-modern shadow-sm" data-bs-toggle="modal" data-bs-target="#addSubjectModal">
@@ -35,7 +35,7 @@
                 <tbody>
                     @foreach($subjects as $subject)
                     <tr>
-                        <td class="ps-4 py-3 fw-bold text-dark">{{ $subject->name }}</td>
+                        <td class="ps-4 py-3 fw-medium text-dark">{{ $subject->name }}</td>
                         <td class="py-3">
                             <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle rounded-pill px-3 py-2 fw-medium">{{ $subject->batch->name ?? 'No Batch' }}</span>
                         </td>
@@ -68,7 +68,7 @@
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-book fa-2x"></i>
                             </div>
-                            <h6 class="fw-bold text-dark">No subjects found</h6>
+                            <h6 class="fw-medium text-dark">No subjects found</h6>
                             <p class="text-muted small mb-0">Get started by creating your first subject.</p>
                         </td>
                     </tr>

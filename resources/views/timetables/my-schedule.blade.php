@@ -11,7 +11,7 @@
                     <i class="fas fa-calendar-alt fa-2x"></i>
                 </div>
                 <div>
-                    <h4 class="fw-bold mb-1">Your Weekly Schedule</h4>
+                    <h4 class="fw-medium mb-1">Your Weekly Schedule</h4>
                     <p class="text-muted small mb-0">Overview of all your assigned batches and lectures.</p>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="col-xl col-lg-4 col-md-6">
                     <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
                         <div class="card-header bg-white py-3 border-0 text-center border-bottom">
-                            <h6 class="mb-0 fw-bold text-primary text-uppercase letter-spacing-1">{{ $dayName }}</h6>
+                            <h6 class="mb-0 fw-medium text-primary text-uppercase letter-spacing-1">{{ $dayName }}</h6>
                         </div>
                         <div class="card-body p-3 bg-light/30">
                             @php
@@ -36,8 +36,8 @@
 
                             @forelse($daySlots as $slot)
                                 <div class="bg-white border rounded-4 p-3 mb-3 shadow-sm hover-translate transition-all">
-                                    <h6 class="fw-bold text-dark mb-2">{{ $slot->subject->name }}</h6>
-                                    <div class="text-primary small fw-bold mb-2">
+                                    <h6 class="fw-medium text-dark mb-2">{{ $slot->subject->name }}</h6>
+                                    <div class="text-primary small fw-medium mb-2">
                                         <i class="far fa-clock me-1"></i> 
                                         {{ date('h:i A', strtotime($slot->start_time)) }} - {{ date('h:i A', strtotime($slot->end_time)) }}
                                     </div>

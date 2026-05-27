@@ -82,14 +82,14 @@
             align-items: center;
             justify-content: center;
             font-size: 1.1rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #fff;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .sidebar-brand .brand-text {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--text);
             line-height: 1.2;
         }
@@ -113,7 +113,7 @@
 
         .nav-section-title {
             font-size: 0.7rem;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1.2px;
             color: var(--muted);
@@ -256,7 +256,7 @@
 
         .brand-name {
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--text);
             line-height: 1.1;
         }
@@ -279,7 +279,7 @@
 
         .page-title {
             font-size: 1.75rem;
-            font-weight: 800;
+            font-weight: 500;
             color: var(--text);
             margin-bottom: 8px;
         }
@@ -303,7 +303,7 @@
         .profile-header::after {
             content: "\f19d";
             font-family: "Font Awesome 6 Free";
-            font-weight: 900;
+            font-weight: 500;
             position: absolute;
             right: -30px;
             bottom: -30px;
@@ -403,7 +403,7 @@
             border: none;
             border-radius: 14px;
             padding: 14px 36px;
-            font-weight: 700;
+            font-weight: 500;
             color: #fff;
             transition: all 0.3s;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
@@ -527,7 +527,7 @@
                     <img src="{{ $student->profile_image_url }}" alt="Profile" class="profile-img" id="display-img">
                 </div>
                 <div>
-                    <h2 class="mb-2 fw-bold">{{ $student->name }}</h2>
+                    <h2 class="mb-2 fw-medium">{{ $student->name }}</h2>
                     <div class="d-flex flex-wrap gap-2">
                         <div class="batch-info-tag">
                             <i class="fas fa-users"></i> {{ $student->batch->name ?? 'No Batch' }}

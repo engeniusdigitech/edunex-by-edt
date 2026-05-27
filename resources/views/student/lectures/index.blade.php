@@ -25,7 +25,7 @@
         .bg-map { position: fixed; top: -20vh; left: -20vw; width: 60vw; height: 60vh; background: radial-gradient(circle, rgba(37, 99, 235, 0.08), transparent 60%); z-index: -1; pointer-events: none; }
         .navbar { background: #ffffff !important; border-bottom: 1px solid rgba(37, 99, 235, 0.08); padding: 16px 0; }
         .card { border: 1px solid rgba(37, 99, 235, 0.08); border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.08); background: #ffffff; }
-        .subject-header { color: var(--primary-blue); border-bottom: 2px solid rgba(37, 99, 235, 0.15); padding-bottom: 10px; margin-bottom: 20px; font-weight: 700; }
+        .subject-header { color: var(--primary-blue); border-bottom: 2px solid rgba(37, 99, 235, 0.15); padding-bottom: 10px; margin-bottom: 20px; font-weight: 500; }
         
         /* Live Card Styling */
         .live-session-card {
@@ -53,7 +53,7 @@
         .live-badge-student {
             display: inline-flex; align-items: center; gap: 6px;
             background: rgba(255,255,255,0.25); color: white;
-            font-size: 0.75rem; font-weight: 700;
+            font-size: 0.75rem; font-weight: 500;
             padding: 4px 12px; border-radius: 20px; letter-spacing: 1px;
         }
         .live-badge-student .dot { width: 8px; height: 8px; background: white; border-radius: 50%; animation: blink 1s infinite; }
@@ -61,7 +61,7 @@
         .btn-join-live {
             background: white; color: var(--primary-blue);
             border: none; border-radius: 50px;
-            padding: 12px 32px; font-weight: 800;
+            padding: 12px 32px; font-weight: 500;
             font-size: 1rem; cursor: pointer;
             transition: all 0.2s;
             display: inline-flex; align-items: center; gap: 10px;
@@ -91,7 +91,7 @@
     <div class="container pb-5">
         <div class="d-flex justify-content-between align-items-center mb-5">
             <div>
-                <h1 class="fw-bold mb-1" style="letter-spacing: -1px;">Live Lectures</h1>
+                <h1 class="fw-medium mb-1" style="letter-spacing: -1px;">Live Lectures</h1>
                 <p class="text-muted fs-5 mb-0">Lectures for {{ auth('student')->user()->batch->name }}</p>
             </div>
             <i class="fas fa-broadcast-tower fa-3x" style="color: var(--primary-color); opacity: 0.1;"></i>
@@ -100,7 +100,7 @@
         {{-- ===== LIVE NOW SECTION ===== --}}
         @if($liveLectures->isNotEmpty())
         <div class="mb-5">
-            <h4 class="fw-bold mb-3 text-danger"><i class="fas fa-circle me-2" style="animation: blink 1s infinite; font-size: 0.8rem;"></i> Happening Now</h4>
+            <h4 class="fw-medium mb-3 text-danger"><i class="fas fa-circle me-2" style="animation: blink 1s infinite; font-size: 0.8rem;"></i> Happening Now</h4>
             <div class="row g-4">
                 @foreach($liveLectures as $lecture)
                 <div class="col-md-6 col-lg-4">
@@ -109,7 +109,7 @@
                             <div class="live-badge-student"><div class="dot"></div> LIVE</div>
                             <span class="text-white-50 small">{{ $lecture->subject }}</span>
                         </div>
-                        <h4 class="fw-bold text-white mb-1">{{ $lecture->title }}</h4>
+                        <h4 class="fw-medium text-white mb-1">{{ $lecture->title }}</h4>
                         @if($lecture->description)
                             <p class="text-white-50 small mb-4">{{ Str::limit($lecture->description, 80) }}</p>
                         @else
@@ -128,7 +128,7 @@
         {{-- ===== PAST LECTURES SECTION ===== --}}
         @if($groupedLectures->isNotEmpty())
         <div>
-            <h4 class="fw-bold mb-4">Recording Library</h4>
+            <h4 class="fw-medium mb-4">Recording Library</h4>
             @foreach($groupedLectures as $subject => $lectures)
             <div class="mb-5">
                 <h5 class="subject-header"><i class="fas fa-book me-2"></i>{{ $subject }}</h5>
@@ -137,7 +137,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card lecture-card p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
-                                <h5 class="fw-bold mb-0 text-dark">{{ $lecture->title }}</h5>
+                                <h5 class="fw-medium mb-0 text-dark">{{ $lecture->title }}</h5>
                                 <span class="badge bg-light text-secondary border rounded-pill px-2 py-1">
                                     <i class="far fa-calendar-alt me-1"></i>{{ $lecture->recorded_at->format('M d') }}
                                 </span>
@@ -164,7 +164,7 @@
         @if($liveLectures->isEmpty() && $groupedLectures->isEmpty())
         <div class="text-center py-5 bg-white border rounded-4 shadow-sm my-5">
             <i class="fas fa-broadcast-tower fa-4x text-muted mb-3 opacity-25"></i>
-            <h4 class="fw-bold text-dark">No Lectures Yet</h4>
+            <h4 class="fw-medium text-dark">No Lectures Yet</h4>
             <p class="text-muted mb-0">Check back when your teacher starts a live session!</p>
         </div>
         @endif

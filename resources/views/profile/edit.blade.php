@@ -24,7 +24,7 @@
                             </label>
                         @endif
                     </div>
-                    <h4 class="fw-bold mb-1 text-dark">{{ auth()->user()->name }}</h4>
+                    <h4 class="fw-medium mb-1 text-dark">{{ auth()->user()->name }}</h4>
                     <div class="badge bg-primary bg-opacity-10 text-primary py-2 px-3 rounded-pill mb-0">
                         <i class="fas fa-shield-alt me-1"></i> {{ auth()->user()->role->name }}
                     </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="overflow-hidden">
                             <p class="text-muted small mb-0 fw-semibold text-uppercase">Email Address</p>
-                            <p class="text-dark fw-bold mb-0 text-truncate">{{ auth()->user()->email }}</p>
+                            <p class="text-dark fw-medium mb-0 text-truncate">{{ auth()->user()->email }}</p>
                         </div>
                     </div>
 
@@ -47,7 +47,7 @@
                         </div>
                         <div>
                             <p class="text-muted small mb-0 fw-semibold text-uppercase">Member Since</p>
-                            <p class="text-dark fw-bold mb-0">{{ auth()->user()->created_at->format('M d, Y') }}</p>
+                            <p class="text-dark fw-medium mb-0">{{ auth()->user()->created_at->format('M d, Y') }}</p>
                         </div>
                     </div>
                 </div>
@@ -79,18 +79,18 @@
 
             <div class="card border-0 shadow-sm rounded-4 mb-4">
                 <div class="card-header bg-white py-4 border-0">
-                    <h5 class="fw-bold mb-0"><i class="fas fa-user-edit text-primary me-2"></i> Personal Details</h5>
+                    <h5 class="fw-medium mb-0"><i class="fas fa-user-edit text-primary me-2"></i> Personal Details</h5>
                 </div>
                 <div class="card-body p-4 pt-0">
                     <div class="row g-4">
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold text-muted">Full Name</label>
+                            <label class="form-label small fw-medium text-muted">Full Name</label>
                             <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}" 
                                    class="form-control border-0 bg-light py-2 rounded-3 shadow-none fw-semibold" required
                                    {{ (auth()->user()->isTeacher() || auth()->user()->isReceptionist()) ? 'readonly' : '' }}>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold text-muted">Email Address</label>
+                            <label class="form-label small fw-medium text-muted">Email Address</label>
                             <input type="email" name="email" value="{{ old('email', auth()->user()->email) }}" 
                                    class="form-control border-0 bg-light py-2 rounded-3 shadow-none fw-semibold" required
                                    {{ (auth()->user()->isTeacher() || auth()->user()->isReceptionist()) ? 'readonly' : '' }}>
@@ -102,17 +102,17 @@
             @if(auth()->user()->isTeacher())
                 <div class="card border-0 shadow-sm rounded-4 mb-4">
                     <div class="card-header bg-white py-4 border-0">
-                        <h5 class="fw-bold mb-0 text-indigo"><i class="fas fa-graduation-cap me-2"></i> Academic Assignments</h5>
+                        <h5 class="fw-medium mb-0 text-indigo"><i class="fas fa-graduation-cap me-2"></i> Academic Assignments</h5>
                     </div>
                     <div class="card-body p-4 pt-0">
                         @if(auth()->user()->isClassTeacher())
                             <div class="mb-4">
-                                <label class="form-label small fw-bold text-muted">Primary Responsibility</label>
+                                <label class="form-label small fw-medium text-muted">Primary Responsibility</label>
                                 @foreach(auth()->user()->managedBatches as $batch)
                                     <div class="d-flex align-items-center justify-content-between bg-primary bg-opacity-10 p-3 rounded-4 mb-2">
                                         <div>
                                             <span class="badge bg-primary mb-1">Class Teacher</span>
-                                            <h6 class="fw-bold mb-0 text-dark">{{ $batch->name }}</h6>
+                                            <h6 class="fw-medium mb-0 text-dark">{{ $batch->name }}</h6>
                                         </div>
                                         <a href="#" class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm">
                                             <i class="fab fa-whatsapp me-1"></i> Chat Class
@@ -124,7 +124,7 @@
 
                         <div class="row g-4 mt-1">
                             <div class="col-md-6">
-                                <label class="form-label small fw-bold text-muted">Allotted Subjects</label>
+                                <label class="form-label small fw-medium text-muted">Allotted Subjects</label>
                                 <div class="d-flex flex-wrap gap-2">
                                     @forelse(auth()->user()->subjects as $subject)
                                         <span class="badge bg-light text-dark border py-2 px-3 rounded-3 fw-semibold">
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label small fw-bold text-muted">Allotted Classes/Batches</label>
+                                <label class="form-label small fw-medium text-muted">Allotted Classes/Batches</label>
                                 <div class="d-flex flex-wrap gap-2">
                                     @forelse(auth()->user()->batches as $batch)
                                         <span class="badge bg-light text-dark border py-2 px-3 rounded-3 fw-semibold">
@@ -165,7 +165,7 @@
         @if(!auth()->user()->isTeacher() && !auth()->user()->isReceptionist())
             <div class="card border-0 shadow-sm rounded-4 mb-4">
                 <div class="card-header bg-white py-4 border-0">
-                    <h5 class="fw-bold mb-0 text-danger"><i class="fas fa-lock me-2"></i> Account Security</h5>
+                    <h5 class="fw-medium mb-0 text-danger"><i class="fas fa-lock me-2"></i> Account Security</h5>
                 </div>
                 <div class="card-body p-4 pt-0">
                     <p class="text-muted small">Update your password to keep your account secure. Ensure you use a strong, unique password.</p>
@@ -173,15 +173,15 @@
                         @csrf
                         @method('put')
                         <div class="col-md-4">
-                            <label class="form-label small fw-bold text-muted">Current Password</label>
+                            <label class="form-label small fw-medium text-muted">Current Password</label>
                             <input type="password" name="current_password" class="form-control border-0 bg-light py-2 rounded-3 shadow-none">
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label small fw-bold text-muted">New Password</label>
+                            <label class="form-label small fw-medium text-muted">New Password</label>
                             <input type="password" name="password" class="form-control border-0 bg-light py-2 rounded-3 shadow-none">
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label small fw-bold text-muted">Confirm New Password</label>
+                            <label class="form-label small fw-medium text-muted">Confirm New Password</label>
                             <input type="password" name="password_confirmation" class="form-control border-0 bg-light py-2 rounded-3 shadow-none">
                         </div>
                         <div class="col-12 d-flex justify-content-end">

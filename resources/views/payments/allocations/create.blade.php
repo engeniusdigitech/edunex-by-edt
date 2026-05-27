@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-5">
-        <h4 class="fw-bold text-dark mb-1">Fee Allocation</h4>
+        <h4 class="fw-medium text-dark mb-1">Fee Allocation</h4>
         <p class="text-muted small mb-0">Assign a fee structure to all students in a specific batch</p>
     </div>
 
@@ -22,7 +22,7 @@
                         @csrf
 
                         <div class="mb-4">
-                            <label class="form-label fw-bold text-dark small text-uppercase"
+                            <label class="form-label fw-medium text-dark small text-uppercase"
                                 style="letter-spacing: 1px;">Select Batch</label>
                             <select name="batch_id" class="form-select @error('batch_id') is-invalid @enderror" required>
                                 <option value="">-- Choose Batch --</option>
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label fw-bold text-dark small text-uppercase"
+                            <label class="form-label fw-medium text-dark small text-uppercase"
                                 style="letter-spacing: 1px;">Select Fee Structure</label>
                             <select name="fee_structure_id"
                                 class="form-select @error('fee_structure_id') is-invalid @enderror" required>
@@ -68,7 +68,7 @@
                     <div class="mb-4 text-primary opacity-25">
                         <i class="fas fa-users fa-4x"></i>
                     </div>
-                    <h5 class="fw-bold text-dark mb-3">Bulk Assignment</h5>
+                    <h5 class="fw-medium text-dark mb-3">Bulk Assignment</h5>
                     <p class="text-muted small px-3">
                         Allocating fees will create individual pending fee records for every student currently enrolled in
                         the selected batch.

@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row mb-4">
         <div class="col-md-6">
-            <h3 class="fw-bold"><i class="fas fa-calendar-minus text-primary me-2"></i> Leave Management</h3>
+            <h3 class="fw-medium"><i class="fas fa-calendar-minus text-primary me-2"></i> Leave Management</h3>
             <p class="text-muted">Track and apply for your own leave requests.</p>
         </div>
         <div class="col-md-6 text-md-end">
@@ -40,11 +40,11 @@
                         <tr>
                             <td class="ps-4">
                                 <div class="d-flex align-items-center">
-                                    <div class="avatar-sm bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold me-3" style="width: 40px; height: 40px; background: rgba(37, 99, 235, 0.1);">
+                                    <div class="avatar-sm bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center fw-medium me-3" style="width: 40px; height: 40px; background: rgba(37, 99, 235, 0.1);">
                                         {{ substr($leave->user->name ?? $leave->student->name ?? '?', 0, 1) }}
                                     </div>
                                     <div>
-                                        <div class="fw-bold">{{ $leave->user->name ?? $leave->student->name ?? 'N/A' }}</div>
+                                        <div class="fw-medium">{{ $leave->user->name ?? $leave->student->name ?? 'N/A' }}</div>
                                         <small class="text-muted">
                                             @if($leave->student_id)
                                                 <span class="badge bg-secondary-subtle text-secondary border">Student</span>
@@ -157,7 +157,7 @@
                             @method('PUT')
                             <input type="hidden" name="status" value="rejected">
                             <div class="modal-header border-0 pb-0">
-                                <h5 class="modal-title fw-bold">Reject Leave Request</h5>
+                                <h5 class="modal-title fw-medium">Reject Leave Request</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body py-4">

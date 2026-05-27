@@ -1,7 +1,7 @@
 @props(['required' => true, 'existingFaceUrl' => null])
 
 <div class="face-capture-widget border rounded-4 p-4 bg-light" id="faceCaptureWidget">
-    <h6 class="fw-bold mb-2"><i class="fas fa-user-check text-primary me-2"></i>Face Enrollment (Biometric)</h6>
+    <h6 class="fw-medium mb-2"><i class="fas fa-user-check text-primary me-2"></i>Face Enrollment (Biometric)</h6>
     <p class="small text-muted mb-3">Position your face in the camera. This profile is used for secure mark-in / mark-out attendance.</p>
 
     @if($existingFaceUrl)

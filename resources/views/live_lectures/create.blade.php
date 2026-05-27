@@ -8,7 +8,7 @@
             style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-arrow-left text-secondary"></i>
         </a>
-        <h4 class="mb-0 fw-bold">Schedule New Live Lecture</h4>
+        <h4 class="mb-0 fw-medium">Schedule New Live Lecture</h4>
     </div>
 
     <div class="row">
@@ -89,7 +89,7 @@
             <div class="card border-0 shadow-sm rounded-4 p-4"
                 style="background: linear-gradient(135deg, #2563EB, #38BDF8); color: white;">
                 <i class="fas fa-broadcast-tower fa-2x mb-3 text-white-50"></i>
-                <h5 class="fw-bold text-white">Powered by Jitsi Meet</h5>
+                <h5 class="fw-medium text-white">Powered by Jitsi Meet</h5>
                 <p class="text-white-50 small mb-0">Completely browser-based. No download required. Students join with a
                     single click — no account needed.</p>
             </div>

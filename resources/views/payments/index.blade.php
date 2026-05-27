@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-5">
         <div>
-            <h4 class="fw-bold text-dark mb-1">Fee Tracking</h4>
+            <h4 class="fw-medium text-dark mb-1">Fee Tracking</h4>
             <p class="text-muted small mb-0">Monitor student dues and payment statuses</p>
         </div>
         <div class="d-flex gap-2">
@@ -98,7 +98,7 @@
                         @foreach($fees as $fee)
                             <tr>
                                 <td class="ps-4 py-4">
-                                    <div class="fw-bold text-dark mb-1">{{ $fee->student->name ?? 'Deleted Student' }}</div>
+                                    <div class="fw-medium text-dark mb-1">{{ $fee->student->name ?? 'Deleted Student' }}</div>
                                     <div class="small text-muted">
                                         <i class="fas fa-layer-group text-opacity-50 me-1"></i>
                                         {{ $fee->student->batch->name ?? 'No Batch' }}
@@ -110,24 +110,24 @@
                                         {{ $fee->feeStructure->category->name ?? '' }}
                                     </div>
                                 </td>
-                                <td class="py-4 text-center fw-bold text-dark">₹{{ number_format($fee->amount, 2) }}</td>
+                                <td class="py-4 text-center fw-medium text-dark">₹{{ number_format($fee->amount, 2) }}</td>
                                 <td class="py-4 text-center">
-                                    <span class="text-success fw-bold">₹{{ number_format($fee->paid_amount, 2) }}</span>
+                                    <span class="text-success fw-medium">₹{{ number_format($fee->paid_amount, 2) }}</span>
                                 </td>
                                 <td class="py-4 text-center">
                                     <span
-                                        class="{{ $fee->due_amount > 0 ? 'text-danger' : 'text-muted' }} fw-bold">₹{{ number_format($fee->due_amount, 2) }}</span>
+                                        class="{{ $fee->due_amount > 0 ? 'text-danger' : 'text-muted' }} fw-medium">₹{{ number_format($fee->due_amount, 2) }}</span>
                                 </td>
                                 <td class="py-4">
                                     @if($fee->status == 'paid')
                                         <span
-                                            class="badge bg-success bg-opacity-10 text-success border border-success-subtle rounded-pill px-3 py-2 fw-bold">Paid</span>
+                                            class="badge bg-success bg-opacity-10 text-success border border-success-subtle rounded-pill px-3 py-2 fw-medium">Paid</span>
                                     @elseif($fee->status == 'partial')
                                         <span
-                                            class="badge bg-warning bg-opacity-10 text-warning border border-warning-subtle rounded-pill px-3 py-2 fw-bold">Partial</span>
+                                            class="badge bg-warning bg-opacity-10 text-warning border border-warning-subtle rounded-pill px-3 py-2 fw-medium">Partial</span>
                                     @else
                                         <span
-                                            class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle rounded-pill px-3 py-2 fw-bold">Pending</span>
+                                            class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle rounded-pill px-3 py-2 fw-medium">Pending</span>
                                     @endif
                                 </td>
                                 <td class="py-4 text-end pe-4">
@@ -155,7 +155,7 @@
                                     <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                         <i class="fas fa-search fa-2x"></i>
                                     </div>
-                                    <h6 class="fw-bold text-dark">No records found</h6>
+                                    <h6 class="fw-medium text-dark">No records found</h6>
                                     <p class="text-muted small mb-0">Try adjusting your filters or allocate some fees.</p>
                                 </td>
                             </tr>

@@ -13,7 +13,7 @@
     <style>
         .legal-header { padding: 120px 0 60px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
         .legal-content { font-size: 1.1rem; line-height: 1.8; color: #475569; }
-        .legal-content h2 { color: #1e293b; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .legal-content h2 { color: #1e293b; font-weight: 500; margin-top: 2.5rem; margin-bottom: 1.5rem; letter-spacing: -1px; }
         .legal-content p { margin-bottom: 1.5rem; }
     </style>
 </head>

@@ -7,7 +7,7 @@
     {{-- ── DASHBOARD HEADER & TOGGLE ── --}}
     <div class="d-flex align-items-center justify-content-between mb-4">
         <div>
-            <h4 class="fw-bold mb-0">Teacher Dashboard</h4>
+            <h4 class="fw-medium mb-0">Teacher Dashboard</h4>
             <p class="text-muted small mb-0">Welcome back, {{ auth()->user()->name }}</p>
         </div>
         @if($isClassTeacher)
@@ -22,6 +22,8 @@
         @endif
     </div>
 
+    <x-biometric-attendance-card />
+
     {{-- ── ROW 1: 4 STAT CARDS ── --}}
     <div class="row g-3 mb-4">
         {{-- Total Students --}}
@@ -29,7 +31,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(37,99,235,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Students</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(37,99,235,0.1);color:#2563EB;font-size:0.75rem;">
@@ -45,7 +47,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Batches</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(16,185,129,0.1);color:#10B981;font-size:0.75rem;">
@@ -61,7 +63,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(14,165,233,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Homework</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(14,165,233,0.1);color:#0EA5E9;font-size:0.75rem;">
@@ -77,7 +79,7 @@
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(239,68,68,0.08);">
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-bold text-muted"
+                        <span class="text-uppercase fw-medium text-muted"
                             style="font-size:0.62rem;letter-spacing:1px;">Tests</span>
                         <div class="rounded-2 d-flex align-items-center justify-content-center"
                             style="width:30px;height:30px;background:rgba(239,68,68,0.1);color:#EF4444;font-size:0.75rem;">
@@ -100,7 +102,7 @@
                              <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:rgba(37,99,235,0.1) !important;">
                                 <i class="fas fa-calendar-check text-primary small"></i>
                              </div>
-                            <h6 class="fw-bold text-dark mb-0">Today's Attendance {{ $isMyClassView ? '(My Class)' : '' }}</h6>
+                            <h6 class="fw-medium text-dark mb-0">Today's Attendance {{ $isMyClassView ? '(My Class)' : '' }}</h6>
                         </div>
                         <p class="text-muted small mb-0 mt-1">{{ now()->format('D, d M Y') }}</p>
                     </div>
@@ -117,15 +119,15 @@
                             </div>
                             <div class="d-flex gap-5 text-center mt-2">
                                 <div>
-                                    <div class="fw-bold text-success fs-5">{{ $todayPresent }}</div>
+                                    <div class="fw-medium text-success fs-5">{{ $todayPresent }}</div>
                                     <div class="text-muted small fw-medium">Present</div>
                                 </div>
                                 <div>
-                                    <div class="fw-bold text-danger fs-5">{{ $todayTotal - $todayPresent }}</div>
+                                    <div class="fw-medium text-danger fs-5">{{ $todayTotal - $todayPresent }}</div>
                                     <div class="text-muted small fw-medium">Absent</div>
                                 </div>
                                 <div>
-                                    <div class="fw-bold text-dark fs-5">{{ $todayTotal }}</div>
+                                    <div class="fw-medium text-dark fs-5">{{ $todayTotal }}</div>
                                     <div class="text-muted small fw-medium">Total</div>
                                 </div>
                             </div>
@@ -135,7 +137,7 @@
                                     <span class="display-6 opacity-25">🗓️</span>
                                 </div>
                                 <div class="fw-semibold text-muted">No attendance data for today yet</div>
-                                <a href="{{ route('attendance.index') }}" class="btn btn-sm btn-outline-primary mt-3 px-3 rounded-pill fw-bold">Mark Attendance Now</a>
+                                <a href="{{ route('attendance.index') }}" class="btn btn-sm btn-outline-primary mt-3 px-3 rounded-pill fw-medium">Mark Attendance Now</a>
                             </div>
                         @endif
                     </div>
@@ -148,7 +150,7 @@
             <div class="col-lg-7">
                 <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.04);">
                     <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                        <h6 class="fw-bold text-dark mb-0">Weekly Trend</h6>
+                        <h6 class="fw-medium text-dark mb-0">Weekly Trend</h6>
                         <p class="text-muted small mb-0">Class presence over the last 7 days</p>
                     </div>
                     <div class="card-body p-4">
@@ -159,7 +161,7 @@
             <div class="col-lg-5">
                 <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.04);">
                     <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                        <h6 class="fw-bold text-dark mb-0">Student Distribution</h6>
+                        <h6 class="fw-medium text-dark mb-0">Student Distribution</h6>
                         <p class="text-muted small mb-0">Students across managed batches</p>
                     </div>
                     <div class="card-body p-4 d-flex align-items-center justify-content-center">
@@ -177,7 +179,7 @@
                 <div class="card border-0 shadow-sm mb-4" style="border-radius:20px; overflow:hidden;">
                     <div class="card-header bg-white border-0 pt-4 px-4 pb-2">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h6 class="fw-bold text-dark mb-0"><i class="fas fa-tasks text-primary me-2"></i> Upcoming Agenda</h6>
+                            <h6 class="fw-medium text-dark mb-0"><i class="fas fa-tasks text-primary me-2"></i> Upcoming Agenda</h6>
                             <span class="badge bg-light text-primary rounded-pill px-3">Academic Focus</span>
                         </div>
                     </div>
@@ -196,7 +198,7 @@
                                     @forelse($topHomework as $hw)
                                         <tr>
                                             <td class="ps-4 py-3 border-bottom-0">
-                                                <div class="fw-bold text-dark">{{ $hw->title }}</div>
+                                                <div class="fw-medium text-dark">{{ $hw->title }}</div>
                                                 <div class="text-muted small truncate" style="max-width:200px;">{{ Str::limit($hw->description, 40) }}</div>
                                             </td>
                                             <td class="py-3 border-bottom-0">
@@ -225,7 +227,7 @@
                                     @foreach($topTests as $test)
                                         <tr class="border-top" style="border-top-color:rgba(0,0,0,0.03) !important;">
                                             <td class="ps-4 py-3 border-bottom-0">
-                                                <div class="fw-bold text-dark">{{ $test->title }}</div>
+                                                <div class="fw-medium text-dark">{{ $test->title }}</div>
                                                 <div class="text-muted small">{{ $test->total_marks }} Marks Test</div>
                                             </td>
                                             <td class="py-3 border-bottom-0">
@@ -252,24 +254,24 @@
                 {{-- Quick Actions --}}
                 <div class="card border-0 shadow-sm mb-4" style="border-radius:20px; background: linear-gradient(135deg, #2563EB, #0EA5E9);">
                     <div class="card-body p-4 text-white">
-                        <h6 class="fw-bold mb-3">Quick Actions</h6>
+                        <h6 class="fw-medium mb-3">Quick Actions</h6>
                         <div class="row g-2">
                             <div class="col-6">
                                 <a href="{{ route('homework.index') }}" class="btn btn-white w-100 p-3 text-start bg-white border-0 shadow-sm" style="border-radius:14px; text-decoration:none;">
                                     <div class="text-primary mb-1"><i class="fas fa-plus-circle"></i></div>
-                                    <div class="text-dark fw-bold small">Homework</div>
+                                    <div class="text-dark fw-medium small">Homework</div>
                                 </a>
                             </div>
                             <div class="col-6">
                                 <a href="{{ route('tests.index') }}" class="btn btn-white w-100 p-3 text-start bg-white border-0 shadow-sm" style="border-radius:14px; text-decoration:none;">
                                     <div class="text-danger mb-1"><i class="fas fa-file-invoice"></i></div>
-                                    <div class="text-dark fw-bold small">New Test</div>
+                                    <div class="text-dark fw-medium small">New Test</div>
                                 </a>
                             </div>
                             <div class="col-6">
                                 <a href="{{ route('live-lectures.index') }}" class="btn btn-white w-100 p-3 text-start bg-white border-0 shadow-sm" style="border-radius:14px; text-decoration:none;">
                                     <div class="text-success mb-1"><i class="fas fa-video"></i></div>
-                                    <div class="text-dark fw-bold small">Live Class</div>
+                                    <div class="text-dark fw-medium small">Live Class</div>
                                 </a>
                             </div>
                         </div>
@@ -279,7 +281,7 @@
                 {{-- Batch Chart --}}
                 <div class="card border-0 shadow-sm" style="border-radius:20px;">
                     <div class="card-body p-4">
-                         <h6 class="fw-bold text-dark mb-4">Batch Distribution</h6>
+                         <h6 class="fw-medium text-dark mb-4">Batch Distribution</h6>
                          <div style="height:250px;">
                             <canvas id="batchChart"></canvas>
                          </div>

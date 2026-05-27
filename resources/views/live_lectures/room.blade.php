@@ -19,7 +19,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
             flex-shrink: 0;
         }
-        .top-bar .lecture-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+        .top-bar .lecture-info h4 { font-size: 1rem; font-weight: 500; margin-bottom: 2px; }
         .top-bar .lecture-info span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
         .live-badge {
             display: inline-flex;
@@ -28,7 +28,7 @@
             background: #ef4444;
             color: white;
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 500;
             padding: 5px 14px;
             border-radius: 20px;
             letter-spacing: 1px;
@@ -58,7 +58,7 @@
             border: none;
             padding: 10px 28px;
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 500;
             cursor: pointer;
             font-size: 0.9rem;
             display: flex;

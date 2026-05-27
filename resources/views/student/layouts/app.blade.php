@@ -72,13 +72,13 @@
             align-items: center;
             justify-content: center;
             font-size: 0.9rem;
-            font-weight: 800;
+            font-weight: 500;
             color: #fff;
         }
 
         .nav-brand .brand-name {
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--text);
             line-height: 1.1;
         }
@@ -111,7 +111,7 @@
             align-items: center;
             justify-content: center;
             font-size: 0.78rem;
-            font-weight: 700;
+            font-weight: 500;
             color: #fff;
         }
 
@@ -150,7 +150,7 @@
             border-radius: 50%;
             font-size: 0.58rem;
             color: #fff;
-            font-weight: 700;
+            font-weight: 500;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -237,18 +237,22 @@
                     <div class="notif-dot">{{ $student->unreadNotifications->count() }}</div>
                 </a>
             @endif
-            <a href="{{ route('student.fees.index') }}"
-                class="nav-icon-btn d-none d-sm-flex {{ request()->routeIs('student.fees.*') ? 'bg-indigo text-white border-indigo' : '' }}"
-                title="My Fees"
-                style="{{ request()->routeIs('student.fees.*') ? 'background:var(--indigo);color:#fff;border-color:var(--indigo);' : '' }}">
-                <i class="fas fa-wallet"></i>
-            </a>
-            <a href="{{ route('student.lectures.index') }}"
-                class="nav-icon-btn d-none d-sm-flex {{ request()->routeIs('student.lectures.*') ? 'bg-indigo text-white border-indigo' : '' }}"
-                title="Live Lectures"
-                style="{{ request()->routeIs('student.lectures.*') ? 'background:var(--indigo);color:#fff;border-color:var(--indigo);' : '' }}">
-                <i class="fas fa-video"></i>
-            </a>
+            @if($student->institute && $student->institute->feature_fees)
+                <a href="{{ route('student.fees.index') }}"
+                    class="nav-icon-btn d-none d-sm-flex {{ request()->routeIs('student.fees.*') ? 'bg-indigo text-white border-indigo' : '' }}"
+                    title="My Fees"
+                    style="{{ request()->routeIs('student.fees.*') ? 'background:var(--indigo);color:#fff;border-color:var(--indigo);' : '' }}">
+                    <i class="fas fa-wallet"></i>
+                </a>
+            @endif
+            @if($student->institute && $student->institute->feature_live_classes)
+                <a href="{{ route('student.lectures.index') }}"
+                    class="nav-icon-btn d-none d-sm-flex {{ request()->routeIs('student.lectures.*') ? 'bg-indigo text-white border-indigo' : '' }}"
+                    title="Live Lectures"
+                    style="{{ request()->routeIs('student.lectures.*') ? 'background:var(--indigo);color:#fff;border-color:var(--indigo);' : '' }}">
+                    <i class="fas fa-video"></i>
+                </a>
+            @endif
             <span class="student-name d-none d-sm-inline">{{ $student->name }}</span>
             <div class="avatar">{{ strtoupper(substr($student->name, 0, 2)) }}</div>
             <form method="POST" action="{{ route('student.logout') }}" style="margin:0;">

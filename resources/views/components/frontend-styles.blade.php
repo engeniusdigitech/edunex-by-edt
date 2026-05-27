@@ -27,7 +27,6 @@
     }
 
     section {
-        background: transparent !important;
         position: relative;
         z-index: 10;
     }
@@ -247,7 +246,7 @@
             display: block;
             width: 100%;
             color: var(--text-main) !important;
-            font-weight: 700 !important; /* Bold links for premium feel */
+            font-weight: 500 !important; /* Bold links for premium feel */
         }
 
         .btn-modern {
@@ -279,7 +278,7 @@
     /* ── BUTTONS ── */
     .btn-modern {
         padding: 10px 24px;
-        font-weight: 700;
+        font-weight: 500;
         border-radius: 12px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         font-size: 0.88rem;
@@ -333,7 +332,7 @@
         position: relative;
         z-index: 50;
     }
-    .footer-logo { font-size: 1.8rem; font-weight: 900; color: var(--primary-color); }
+    .footer-logo { font-size: 1.8rem; font-weight: 500; color: var(--primary-color); }
     .footer-link { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
     .footer-link:hover { color: var(--primary-color); }
 </style>

@@ -22,12 +22,18 @@ class Institute extends Model
         'logo',
         'type',
         'is_active',
+        'feature_hr',
+        'feature_fees',
+        'feature_live_classes',
     ];
 
     protected $casts = [
         'latitude' => 'decimal:7',
         'longitude' => 'decimal:7',
         'attendance_radius_meters' => 'integer',
+        'feature_hr' => 'boolean',
+        'feature_fees' => 'boolean',
+        'feature_live_classes' => 'boolean',
     ];
 
     public function users()

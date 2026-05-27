@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="mb-4">
-    <h3 class="fw-bold mb-1"><i class="fas fa-fingerprint text-primary me-2"></i>Biometric Attendance</h3>
+    <h3 class="fw-medium mb-1"><i class="fas fa-fingerprint text-primary me-2"></i>Biometric Attendance</h3>
     <p class="text-muted mb-0">Mark IN / OUT with face verification within {{ $institute->attendance_radius_meters ?? 100 }}m of institute.</p>
 </div>
 
@@ -36,7 +36,7 @@
     </div>
     <div class="col-lg-5">
         <div class="card border-0 shadow-sm rounded-4 mb-4">
-            <div class="card-header bg-white fw-bold">Today — {{ today()->format('d M Y') }}</div>
+            <div class="card-header bg-white fw-medium">Today — {{ today()->format('d M Y') }}</div>
             <div class="card-body">
                 <div class="d-flex justify-content-between mb-2">
                     <span class="text-muted">Mark IN</span>
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="card border-0 shadow-sm rounded-4">
-            <div class="card-header bg-white fw-bold">Recent</div>
+            <div class="card-header bg-white fw-medium">Recent</div>
             <ul class="list-group list-group-flush">
                 @forelse($recent as $row)
                     <li class="list-group-item d-flex justify-content-between small">

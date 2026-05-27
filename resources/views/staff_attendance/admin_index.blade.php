@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
     <div>
-        <h3 class="fw-bold mb-1">Staff Attendance</h3>
+        <h3 class="fw-medium mb-1">Staff Attendance</h3>
         <p class="text-muted mb-0">Biometric mark-in / mark-out records</p>
     </div>
     <form method="GET" class="d-flex gap-2 align-items-center">

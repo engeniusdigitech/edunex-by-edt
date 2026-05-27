@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-5">
     <div>
-        <h4 class="fw-bold text-dark mb-1">Institute Staff</h4>
+        <h4 class="fw-medium text-dark mb-1">Institute Staff</h4>
         <p class="text-muted small mb-0">Manage teachers, receptionists, and administrators</p>
     </div>
     <a href="{{ route('staff.create') }}" class="btn btn-primary btn-modern shadow-sm">
@@ -67,11 +67,11 @@
                     <tr>
                         <td class="ps-4 py-3">
                             <div class="d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold" style="width: 40px; height: 40px;">
+                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex justify-content-center align-items-center me-3 fw-medium" style="width: 40px; height: 40px;">
                                     {{ substr($staff->name, 0, 2) }}
                                 </div>
                                 <div>
-                                    <div class="fw-bold text-dark">{{ $staff->name }}</div>
+                                    <div class="fw-medium text-dark">{{ $staff->name }}</div>
                                     <div class="small text-muted">{{ $staff->email }}</div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
                             <div class="d-inline-flex border p-4 rounded-circle mb-3 bg-light text-muted">
                                 <i class="fas fa-user-tie fa-2x"></i>
                             </div>
-                            <h6 class="fw-bold text-dark">No staff members found</h6>
+                            <h6 class="fw-medium text-dark">No staff members found</h6>
                             <p class="text-muted small mb-0">Get started by onboarding your first team member.</p>
                         </td>
                     </tr>

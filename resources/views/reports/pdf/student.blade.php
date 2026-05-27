@@ -17,7 +17,7 @@
             margin-bottom: 20px;
         }
         .header .institute { font-size: 10px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-        .header h1 { font-size: 20px; font-weight: bold; margin-bottom: 6px; }
+        .header h1 { font-size: 20px; font-weight: 500; margin-bottom: 6px; }
         .header .meta { font-size: 10px; opacity: 0.75; }
         .header .meta span { margin-right: 18px; }
         .generated { text-align: right; font-size: 9px; color: #94A3B8; margin-bottom: 16px; }
@@ -32,7 +32,7 @@
             text-align: center;
         }
         .stat-label { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: #64748B; margin-bottom: 4px; }
-        .stat-val { font-size: 22px; font-weight: bold; line-height: 1; }
+        .stat-val { font-size: 22px; font-weight: 500; line-height: 1; }
         .stat-sub { font-size: 8px; color: #94A3B8; margin-top: 3px; }
         .green { color: #10B981; }
         .red { color: #EF4444; }
@@ -48,7 +48,7 @@
             font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-weight: bold;
+            font-weight: 500;
             color: #64748B;
             border-bottom: 1px solid #E2E8F0;
             padding-bottom: 5px;
@@ -62,15 +62,15 @@
 
         /* Table */
         table { width: 100%; border-collapse: collapse; font-size: 10px; }
-        th { background: #F8FAFC; padding: 7px 10px; text-align: left; font-size: 8px; text-transform: uppercase; letter-spacing: 0.8px; color: #64748B; font-weight: bold; border-bottom: 1px solid #E2E8F0; }
+        th { background: #F8FAFC; padding: 7px 10px; text-align: left; font-size: 8px; text-transform: uppercase; letter-spacing: 0.8px; color: #64748B; font-weight: 500; border-bottom: 1px solid #E2E8F0; }
         td { padding: 7px 10px; border-bottom: 1px solid #F1F5F9; vertical-align: middle; }
         tr:last-child td { border-bottom: none; }
 
         /* Attendance log */
-        .att-month { background: #F8FAFC; padding: 4px 8px; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: #64748B; font-weight: bold; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; }
+        .att-month { background: #F8FAFC; padding: 4px 8px; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: #64748B; font-weight: 500; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: space-between; }
         .att-row { display: flex; align-items: center; padding: 4px 8px; border-bottom: 1px solid #F8FAFC; gap: 10px; }
         .att-date { font-size: 9px; color: #64748B; min-width: 80px; }
-        .badge { font-size: 8px; font-weight: bold; padding: 2px 8px; border-radius: 99px; }
+        .badge { font-size: 8px; font-weight: 500; padding: 2px 8px; border-radius: 99px; }
         .badge-present { background: #D1FAE5; color: #065F46; }
         .badge-late    { background: #FEF3C7; color: #92400E; }
         .badge-absent  { background: #FEE2E2; color: #991B1B; }
@@ -184,7 +184,7 @@
                     @foreach($tests as $test)
                     @php $score = $test->scores->first(); @endphp
                     <tr>
-                        <td style="font-weight:bold;">{{ $test->title }}</td>
+                        <td style="font-weight: 500;">{{ $test->title }}</td>
                         <td style="color:#64748B;">{{ $test->test_date->format('d M Y') }}</td>
                         <td>
                             @if($score)
@@ -231,8 +231,8 @@
                     @foreach($payments as $payment)
                     <tr>
                         <td style="color:#64748B;">{{ $payment->payment_date->format('d M Y') }}</td>
-                        <td style="font-weight:bold;">{{ $payment->feeStructure->name ?? 'General Fee' }}</td>
-                        <td style="font-weight:bold;">&#8377;{{ number_format($payment->amount_paid, 2) }}</td>
+                        <td style="font-weight: 500;">{{ $payment->feeStructure->name ?? 'General Fee' }}</td>
+                        <td style="font-weight: 500;">&#8377;{{ number_format($payment->amount_paid, 2) }}</td>
                         <td>
                             @if($payment->payment_method === 'online')
                                 <span class="badge badge-online">Online</span>

@@ -16,12 +16,12 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
             flex-shrink: 0;
         }
-        .top-bar .lecture-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+        .top-bar .lecture-info h4 { font-size: 1rem; font-weight: 500; margin-bottom: 2px; }
         .top-bar .lecture-info span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
         .live-badge {
             display: inline-flex; align-items: center; gap: 6px;
             background: #ef4444; color: white;
-            font-size: 0.75rem; font-weight: 700;
+            font-size: 0.75rem; font-weight: 500;
             padding: 5px 14px; border-radius: 20px; letter-spacing: 1px;
         }
         .live-badge .dot { width:8px;height:8px;background:white;border-radius:50%;animation:blink 1s infinite; }
