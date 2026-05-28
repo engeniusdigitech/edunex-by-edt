@@ -13,6 +13,11 @@
     @include('components.frontend-styles')
 
 <style>
+.hero-copy { margin-top: -60px; }
+@media(max-width:991px) {
+    .hero-copy { margin-top: 0; }
+}
+
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -184,10 +189,19 @@ body {
     line-height: 1.05; margin-bottom: 22px;
     color: hsl(210,40%,98%);
 }
+.hero-h2 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 500; letter-spacing: -3px;
+    line-height: 1.05; margin-bottom: 22px;
+    color: hsl(210,40%,98%);
+}
+.hero-h1 br, .hero-h2 br { display: none; }
+@media(min-width: 992px) { .hero-h1 br, .hero-h2 br { display: block; } }
 .hero-sub {
     font-size: 1.05rem; color: var(--muted);
     line-height: 1.9; margin-bottom: 36px; max-width: 500px;
 }
+@media(max-width: 991px) { .hero-sub { max-width: 100%; } }
 .hero-features {
     display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px;
 }
@@ -594,11 +608,43 @@ body {
 .trust-item { font-size: 0.78rem; color: var(--muted); display: inline-flex; align-items: center; gap: 5px; }
 .trust-item i { color: hsl(174,72%,56%); }
 
+@media(max-width:991px) {
+    .hero-content { padding: 90px 0 40px; }
+    .display-wrapper { padding-bottom: 0; }
+    .mobile-mockup { display: none; }
+    .desktop-mockup { border-radius: 10px; }
+}
+
 @media(max-width:768px) {
-    .hero-h1 { font-size: 2.5rem; letter-spacing: -2px; }
+    .hero { min-height: auto; }
+    .hero-content { padding: 180px 0 50px; }
+    .hero-h1, .hero-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem) !important; letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
+    .hero-sub { font-size: 0.92rem; margin-bottom: 20px; max-width: 100%; line-height: 1.7; }
+    .hero-kicker { font-size: 0.68rem; padding: 5px 12px; margin-bottom: 16px; }
+    .hero-features { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 20px; }
+    .hfeat { font-size: 0.7rem; padding: 5px 10px; justify-content: center; }
+    .hfeat i { font-size: 0.65rem; }
+    .hero-cta-btns { flex-direction: column !important; gap: 10px !important; }
+    .hero-cta-btns .btn-primary,
+    .hero-cta-btns .btn-outline { width: 100%; justify-content: center; font-size: 0.88rem; padding: 12px 20px; }
     .notif-card { display: none; }
     .cta-box { padding: 44px 24px; }
     .feat-grid { grid-template-columns: 1fr; }
+    .portal-tabs { gap: 8px; margin-bottom: 16px; flex-wrap: wrap; justify-content: center; }
+    .portal-tab-btn { font-size: 0.75rem; padding: 6px 16px; }
+    .portal-display { margin-top: 28px; }
+    .portal-text h3 { font-size: 1.1rem; }
+    .portal-text p { font-size: 0.83rem; }
+    .stats-strip { padding: 24px 0; }
+    .stat-val { font-size: 1.6rem; }
+    .stat-lbl { font-size: 0.65rem; margin-top: 2px; }
+}
+
+@media(max-width:480px) {
+    .hero-content { padding: 160px 0 28px; }
+    .hero-h1, .hero-h2 { font-size: 1.75rem !important; margin-bottom: 12px; }
+    .hero-sub { font-size: 0.88rem; margin-bottom: 16px; }
+    .stat-pipe { display: none; }
 }
 </style>
 
@@ -618,13 +664,13 @@ body {
             <div class="row align-items-center g-5">
 
                 <!-- Copy -->
-                <div class="col-lg-6 text-center text-lg-start" style="margin-top: -60px;">
+                <div class="col-lg-6 text-center text-lg-start hero-copy">
                     <h1 class="hero-h2">
                         The smartest way<br>to run your<br>
                         <span class="g-text">School or institute.</span>
                     </h1>
                     <p class="hero-sub">
-                        Smartly manage your entire school or institute. Automate online fee collections, academics, attendance, and WhatsApp updates — built specifically for India's coaching centers and schools.
+                        Smartly manage your entire school or institute. Automate online fee collections, academics, attendance, and WhatsApp updates — built specifically for coaching centers and schools.
                     </p>
 
                     <div class="hero-features">
@@ -636,7 +682,7 @@ body {
                         <span class="hfeat"><i class="fas fa-face-smile-beam"></i> AI Staff Biometrics</span>
                     </div>
 
-                    <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                    <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start hero-cta-btns">
                         @auth
                             <a href="{{ auth()->user()->isSuperAdmin() ? route('superadmin.dashboard') : url('/dashboard') }}" class="btn-primary">
                                 Dashboard <i class="fas fa-arrow-right"></i>
