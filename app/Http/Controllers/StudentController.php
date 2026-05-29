@@ -54,12 +54,23 @@ class StudentController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255|unique:students,email',
             'phone' => 'required|string|max:20',
+            'blood_group' => 'nullable|string|max:5',
+            'alternate_phone_1' => 'nullable|string|max:20',
+            'alternate_phone_2' => 'nullable|string|max:20',
+            'parent_email' => 'nullable|email|max:255',
+            'father_name' => 'nullable|string|max:255',
+            'mother_name' => 'nullable|string|max:255',
             'batch_id' => 'required|exists:batches,id',
             'enrollment_date' => 'required|date',
             'password' => 'required|string|min:8|confirmed',
+            'profile_image' => 'nullable|image|max:2048',
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+
+        if ($request->hasFile('profile_image')) {
+            $validated['profile_image'] = $request->file('profile_image')->store('students', 'public');
+        }
 
         Student::create($validated);
 
@@ -84,12 +95,26 @@ class StudentController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255|unique:students,email,' . $student->id,
             'phone' => 'required|string|max:20',
+            'blood_group' => 'nullable|string|max:5',
+            'alternate_phone_1' => 'nullable|string|max:20',
+            'alternate_phone_2' => 'nullable|string|max:20',
+            'parent_email' => 'nullable|email|max:255',
+            'father_name' => 'nullable|string|max:255',
+            'mother_name' => 'nullable|string|max:255',
             'batch_id' => 'required|exists:batches,id',
             'enrollment_date' => 'required|date',
             'password' => 'nullable|string|min:8|confirmed',
+            'profile_image' => 'nullable|image|max:2048',
         ];
 
         $validated = $request->validate($rules);
+
+        if ($request->hasFile('profile_image')) {
+            if ($student->profile_image) {
+                \Storage::disk('public')->delete($student->profile_image);
+            }
+            $validated['profile_image'] = $request->file('profile_image')->store('students', 'public');
+        }
 
         if (!empty($validated['password'])) {
             $validated['password'] = Hash::make($validated['password']);

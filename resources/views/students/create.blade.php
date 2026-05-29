@@ -32,6 +32,44 @@
                     <input type="text" name="phone" class="form-control" required placeholder="+91 9876543210">
                 </div>
                 <div class="col-md-6 mb-3">
+                    <label class="form-label">Blood Group</label>
+                    <select name="blood_group" class="form-select">
+                        <option value="">Select</option>
+                        @foreach(['A+','A-','B+','B-','AB+','AB-','O+','O-'] as $bg)
+                            <option value="{{ $bg }}">{{ $bg }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Alternate Phone 1</label>
+                    <input type="text" name="alternate_phone_1" class="form-control" placeholder="+91 9876543210">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Alternate Phone 2</label>
+                    <input type="text" name="alternate_phone_2" class="form-control" placeholder="+91 9876543210">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Father's Name</label>
+                    <input type="text" name="father_name" class="form-control" placeholder="Father's full name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Mother's Name</label>
+                    <input type="text" name="mother_name" class="form-control" placeholder="Mother's full name">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Parent Email</label>
+                    <input type="email" name="parent_email" class="form-control" placeholder="parent@example.com">
+                </div>
+                <div class="col-md-6 mb-3">
                     <label class="form-label">Enrollment Date</label>
                     <input type="date" name="enrollment_date" class="form-control" required value="{{ date('Y-m-d') }}">
                 </div>
@@ -47,6 +85,11 @@
                     <label class="form-label">Confirm Password</label>
                     <input type="password" name="password_confirmation" class="form-control" required placeholder="Re-enter password">
                 </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Student Photo <span class="text-muted small">(optional, max 2MB)</span></label>
+                <input type="file" name="profile_image" class="form-control" accept="image/*">
             </div>
 
             <div class="mb-3">

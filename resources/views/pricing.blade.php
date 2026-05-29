@@ -193,7 +193,7 @@ section{background:transparent!important;}
                             <div class="col-md-6">
                                 <ul class="feat-list ps-md-3">
                                     <li><i class="fas fa-check-circle"></i> Live Class Integration</li>
-                                    <li><i class="fas fa-check-circle"></i> Student Portal (PWA)</li>
+                                    <li><i class="fas fa-check-circle"></i> Student & Parent Mobile App</li>
                                     <li><i class="fas fa-check-circle"></i> WhatsApp Fee Reminders</li>
                                     <li><i class="fas fa-check-circle"></i> Custom PDF Reports</li>
                                     <li><i class="fas fa-check-circle"></i> 24/7 Priority Support</li>

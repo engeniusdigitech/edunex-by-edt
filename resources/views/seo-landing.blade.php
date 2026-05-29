@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -664,7 +664,7 @@ body {
                     <div class="portal-display">
                         <div class="portal-tabs">
                             <button class="portal-tab-btn active" onclick="switchPortal('admin')">Admin Portal</button>
-                            <button class="portal-tab-btn" onclick="switchPortal('student')">Student Portal</button>
+                            <button class="portal-tab-btn" onclick="switchPortal('student')">Student & Parent App</button>
                         </div>
 
                         <!-- Admin Portal Content -->
@@ -690,8 +690,8 @@ body {
                                 </div>
                             </div>
                             <div class="portal-text">
-                                <h3>Student Hub</h3>
-                                <p>Empower your students with a modern environment for schedules, dues, and live meetings.</p>
+                                <h3>Student & Parent App</h3>
+                                <p>Empower your students and parents with a dedicated mobile app for schedules, dues, and live updates.</p>
                             </div>
                         </div>
                     </div>
@@ -764,7 +764,7 @@ body {
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(139,92,246,0.12);color:hsl(262,83%,70%);"><i class="fas fa-video"></i></div>
                 <div class="feat-name">Live Lectures</div>
-                <div class="feat-desc">Host live classes inside EduNex. Students join via their mobile PWA â€” no Zoom needed.</div>
+                <div class="feat-desc">Host live classes inside EduNex. Students join via their dedicated mobile app â€” no Zoom needed.</div>
             </div>
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-chart-line"></i></div>
@@ -909,7 +909,40 @@ body {
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• HOW IT WORKS â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ MOBILE APP ══════════════ -->
+<section id="mobile-app" class="staff-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border);">
+    <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>
+    <div class="staff-blob-1" style="background:hsla(217,91%,60%,0.08); bottom:-80px; right:-80px;"></div>
+    <div class="container px-4" style="position:relative;z-index:2;">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="sec-eyebrow" style="color: hsl(262,83%,65%);">Dedicated Mobile App</span>
+                <h2 class="sec-title">The entire institute in <br><span class="g-text-2">their pocket.</span></h2>
+                <p class="sec-desc mb-4">Empower your students and parents with a modern, native-like mobile app. They can check timetables, track attendance, pay fees, and join live classes from anywhere.</p>
+                
+                <ul class="feat-list mb-4" style="max-width: 450px; list-style: none; padding: 0;">
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Real-time attendance & result notifications</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Online fee payments with instant receipts</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> One-tap join for live video lectures</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Access study materials & homework</li>
+                </ul>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a href="{{ route('contact') }}" class="btn-primary" style="background: var(--gradient-secondary); box-shadow: var(--glow-secondary);">See App Demo <i class="fas fa-mobile-alt"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div style="position:relative; display:inline-block;">
+                    <!-- Decorative glow behind phone -->
+                    <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
+                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 320px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ HOW IT WORKS ══════════════ -->
 <section class="how-section">
     <div class="container px-4">
         <div class="row align-items-center mb-5 g-4">
@@ -1006,7 +1039,7 @@ body {
                     ['c'=>'fa-credit-card','t'=>'Automated fee collection','d'=>'Online payments, auto-reminders, real-time dashboard. Fees track themselves.'],
                     ['c'=>'fa-money-bill-wave','t'=>'One-click payroll','d'=>'Payslips generated and sent to every staff member\'s WhatsApp in one click.'],
                     ['c'=>'fa-chart-bar','t'=>'Full visibility dashboard','d'=>'Live attendance, fee status, batch analytics â€” everything in one screen.'],
-                    ['c'=>'fa-mobile-screen','t'=>'Student PWA portal','d'=>'Students check timetables, results, and fees on their phone. Anytime.'],
+                    ['c'=>'fa-mobile-screen','t'=>'Dedicated Mobile App','d'=>'Students and parents check timetables, results, and fees on their phone app. Anytime.'],
                 ] as $a)
                 <div class="why-row">
                     <div class="why-icon-c"><i class="fas {{ $a['c'] }}"></i></div>
@@ -1067,7 +1100,7 @@ body {
                     @foreach([
                         ['q'=>'How does AI face biometric attendance work?','a'=>'Staff open the EduNex dashboard on any device with a camera. The on-device AI scans their face and matches it against their enrolled descriptor. GPS is verified simultaneously. Attendance is marked in under 2 seconds â€” no internet required for the face scan itself.'],
                         ['q'=>'How does payroll work?','a'=>'Set each staff member\'s basic salary, allowances, and deduction rules once. Every month, one click generates net pay, creates a PDF payslip, and can send it directly via WhatsApp to each staff member.'],
-                        ['q'=>'Can students use EduNex on their phone?','a'=>'Yes. The student portal is a Progressive Web App (PWA). Students visit the link in their mobile browser and tap "Add to Home Screen" for a native app-like experience â€” no Play Store download needed.'],
+                        ['q'=>'Can students use EduNex on their phone?','a'=>'Yes. We provide a dedicated Student & Parent Mobile App. Students and parents can check timetables, results, fees, and live updates on their phones anytime.'],
                         ['q'=>'Is my institute data secure?','a'=>'EduNex uses a multi-tenant architecture where each institute\'s data is fully isolated. Data is encrypted at rest and in transit. No institute can ever access another\'s data.'],
                         ['q'=>'Is there a student limit?','a'=>'No. We believe in supporting your growth. Enrol as many students as your institute can handle â€” your plan covers unlimited students.'],
                     ] as $i => $faq)
