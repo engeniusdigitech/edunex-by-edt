@@ -13,7 +13,7 @@
     @include('components.frontend-styles')
 
 <style>
-.hero-copy { margin-top: -60px; }
+.hero-copy { margin-top: 0; }
 @media(max-width:991px) {
     .hero-copy { margin-top: 0; }
 }
@@ -161,7 +161,7 @@ body {
 
 .hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 110px 0 80px;
+    padding: 150px 0 80px;
     position: relative; z-index: 2;
 }
 
