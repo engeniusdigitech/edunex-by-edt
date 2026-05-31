@@ -685,6 +685,11 @@ body {
                         <span class="hfeat"><i class="fas fa-book-open"></i> Academics Management</span>
                         <span class="hfeat"><i class="fas fa-video"></i> Live Lectures</span>
                         <span class="hfeat"><i class="fas fa-face-smile-beam"></i> AI Staff Biometrics</span>
+                        <span class="hfeat"><i class="fas fa-chart-line"></i> Analytics & Reports</span>
+                        <span class="hfeat"><i class="fas fa-book"></i> Library Management</span>
+                        <span class="hfeat"><i class="fas fa-mobile-alt"></i> Android & iOS App</span>
+                        <span class="hfeat"><i class="fas fa-users"></i> Parent & Student Portal</span>
+                        <span class="hfeat"><i class="fas fa-cogs"></i> And much more...</span>
                     </div>
 
                     <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start hero-cta-btns">
