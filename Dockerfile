@@ -2,9 +2,11 @@ FROM php:8.4-cli
 
 RUN apt-get update && apt-get install -y \
     git unzip libzip-dev zip libpq-dev curl \
+    libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
-    && docker-php-ext-install zip pdo_pgsql pgsql
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install zip pdo_pgsql pgsql gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
