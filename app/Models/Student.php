@@ -20,6 +20,8 @@ class Student extends Authenticatable
         'email',
         'password',
         'phone',
+        'roll_number',
+        'gender',
         'blood_group',
         'alternate_phone_1',
         'alternate_phone_2',

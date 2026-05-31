@@ -65,7 +65,7 @@
       "applicationCategory": "EducationalApplication",
       "aggregateRating": {
         "@@type": "AggregateRating",
-        "ratingValue": "4.9",
+        "ratingValue": "5",
         "reviewCount": "150"
       },
       "offers": {

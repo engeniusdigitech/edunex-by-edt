@@ -25,6 +25,8 @@ Route::prefix('v1')->group(function () {
         Route::get('/notifications', [\App\Http\Controllers\Api\V1\Student\NotificationController::class, 'index']);
         Route::get('/homework', [\App\Http\Controllers\Api\V1\Student\HomeworkController::class, 'index']);
         Route::get('/attendance', [\App\Http\Controllers\Api\V1\Student\AttendanceController::class, 'index']);
+        Route::get('/discipline', [\App\Http\Controllers\Api\V1\Student\DisciplineController::class, 'index']);
+        Route::get('/gallery', [\App\Http\Controllers\Api\V1\Student\GalleryController::class, 'index']);
         Route::get('/timetable', [\App\Http\Controllers\Api\V1\Student\TimetableController::class, 'index']);
         Route::get('/tests', [\App\Http\Controllers\Api\V1\Student\TestController::class, 'index']);
         

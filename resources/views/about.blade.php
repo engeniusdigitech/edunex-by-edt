@@ -177,7 +177,7 @@ section{background:transparent!important;}
                 </p>
                 <div class="d-flex gap-5 flex-wrap">
                     <div class="story-stat">
-                        <div class="s-val g-text">2023</div>
+                        <div class="s-val g-text">2020</div>
                         <div class="s-lbl">Founded</div>
                     </div>
                     <div class="story-stat">
@@ -185,8 +185,8 @@ section{background:transparent!important;}
                         <div class="s-lbl">Institutes</div>
                     </div>
                     <div class="story-stat">
-                        <div class="s-val g-text">India</div>
-                        <div class="s-lbl">Headquartered</div>
+                        <div class="s-val g-text">Vadodara</div>
+                        <div class="s-lbl">Headquarter</div>
                     </div>
                 </div>
             </div>
@@ -198,6 +198,7 @@ section{background:transparent!important;}
                         ['i'=>'fa-rocket','c'=>'bi-teal','t'=>'EduNex Launched','d'=>'AI-powered institute management platform goes live. 100+ institutes onboarded.'],
                         ['i'=>'fa-fingerprint','c'=>'bi-amber','t'=>'AI Biometrics Added','d'=>'Face recognition + GPS tracking for staff attendance launched.'],
                         ['i'=>'fa-money-bill-wave','c'=>'bi-violet','t'=>'Payroll Module','d'=>'One-click payroll, digital payslips, and salary management rolled out.'],
+                        ['i'=>'fa-book-reader','c'=>'bi-rose','t'=>'Library & Discipline','d'=>'Full digital library management and behavior tracking added natively.'],
                     ] as $ev)
                     <div class="d-flex gap-3 mb-4 {{ !$loop->last ? 'pb-4' : '' }}" style="{{ !$loop->last ? 'border-bottom:1px solid var(--border);' : '' }}">
                         <div style="width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.9rem;

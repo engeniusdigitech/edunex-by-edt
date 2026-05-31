@@ -624,7 +624,7 @@ body {
                 <div class="col-lg-6 text-center text-lg-start" style="margin-top: -60px;">
                     <h1 class="hero-h2">
                         The smartest way<br>to run your<br>
-                        <span class="g-text">School or institute.</span>
+                        <span class="g-text">School or institute in {{$city}}.</span>
                     </h1>
                     <p class="hero-sub">
                         Attendance, fees, live lectures, AI biometric staff management, and payroll. All automated in one platform built for {{ $city }}'s coaching centers and schools.
@@ -770,6 +770,21 @@ body {
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-chart-line"></i></div>
                 <div class="feat-name">Analytics &amp; Reports</div>
                 <div class="feat-desc">Full visibility: student performance, attendance trends, fee collection, and staff punctuality.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(236,72,153,0.1);color:hsl(330,81%,60%);"><i class="fas fa-book-reader"></i></div>
+                <div class="feat-name">Library Management</div>
+                <div class="feat-desc">Complete digital library system. Track books, manage issues, handle fines, and provide digital resources.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(234,88,12,0.1);color:hsl(24,98%,55%);"><i class="fas fa-balance-scale"></i></div>
+                <div class="feat-name">Discipline Management</div>
+                <div class="feat-desc">Track student behavior with dynamic scoring. Log infractions, deduct points, and monitor progress.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(14,165,233,0.1);color:hsl(199,89%,58%);"><i class="fas fa-images"></i></div>
+                <div class="feat-name">Image Gallery</div>
+                <div class="feat-desc">Share memories securely. Upload photos and videos of institute events directly to student dashboards.</div>
             </div>
         </div>
     </div>
@@ -1038,6 +1053,7 @@ body {
                     ['c'=>'fa-fingerprint','t'=>'AI face + GPS attendance','d'=>'Staff attendance marked automatically in under 2 seconds. Zero proxies.'],
                     ['c'=>'fa-credit-card','t'=>'Automated fee collection','d'=>'Online payments, auto-reminders, real-time dashboard. Fees track themselves.'],
                     ['c'=>'fa-money-bill-wave','t'=>'One-click payroll','d'=>'Payslips generated and sent to every staff member\'s WhatsApp in one click.'],
+                    ['c'=>'fa-book-reader','t'=>'Digital Library & Discipline','d'=>'Full control over books, resources, and student behavior tracking natively.'],
                     ['c'=>'fa-chart-bar','t'=>'Full visibility dashboard','d'=>'Live attendance, fee status, batch analytics â€” everything in one screen.'],
                     ['c'=>'fa-mobile-screen','t'=>'Dedicated Mobile App','d'=>'Students and parents check timetables, results, and fees on their phone app. Anytime.'],
                 ] as $a)

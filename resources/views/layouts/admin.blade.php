@@ -316,6 +316,9 @@
                             </div>
                         @endif
                     @endcan
+                    <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }}">
+                        <i class="fas fa-calendar-alt"></i> Leave Management
+                    </a>
                     @if(auth()->user()->canUseBiometricAttendance())
                         <a href="{{ route('staff-attendance.mark') }}" class="{{ request()->routeIs('staff-attendance.mark') ? 'active' : '' }}">
                             <i class="fas fa-fingerprint"></i> Mark Attendance
@@ -336,10 +339,6 @@
                                     class="fas fa-calendar-check"></i> Attendance</a>
                         @endif
                     @endcan
-
-                    <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }}">
-                        <i class="fas fa-calendar-alt"></i> Leave Management
-                    </a>
 
                     @php
                         $user = auth()->user();
@@ -409,12 +408,49 @@
 
                         <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i
                                 class="fas fa-file-alt"></i> Tests & Exams</a>
+
+                        <a href="{{ route('gallery.index') }}" class="{{ request()->routeIs('gallery.*') ? 'active' : '' }}"><i
+                                class="fas fa-images"></i> Image Gallery</a>
+
+                        <a href="{{ route('discipline.index') }}" class="{{ request()->routeIs('discipline.*') ? 'active' : '' }}"><i
+                                class="fas fa-balance-scale"></i> Discipline</a>
+
                         @if(auth()->user()->institute->feature_live_classes)
                             <a href="{{ route('live-lectures.index') }}"
                                 class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
                                 Live Lectures</a>
                         @endif
                     @endif
+
+                    @if(auth()->user()->isTeacher() || auth()->user()->isStaff())
+                        @if(!auth()->user()->can('manage-library'))
+                            <a href="{{ route('teacher.library.index') }}" class="{{ request()->routeIs('teacher.library.*') ? 'active' : '' }}">
+                                <i class="fas fa-book-reader"></i> Teacher/Staff Library
+                            </a>
+                        @endif
+                    @endif
+
+                    @can('manage-library')
+                        <a href="#libraryMainCollapse" data-bs-toggle="collapse" class="{{ request()->routeIs('library.*') ? '' : 'collapsed' }}">
+                            <i class="fas fa-book-reader"></i>
+                            <span class="flex-grow-1">Library Management</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ request()->routeIs('library.*') ? 'show' : '' }}" id="libraryMainCollapse">
+                            <a href="{{ route('library.dashboard') }}" class="{{ request()->routeIs('library.dashboard') ? 'active' : '' }} small py-2"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                            <a href="{{ route('library.books.index') }}" class="{{ request()->routeIs('library.books.*') ? 'active' : '' }} small py-2"><i class="fas fa-book"></i> Books Catalog</a>
+                            <a href="{{ route('library.categories.index') }}" class="{{ request()->routeIs('library.categories.*') ? 'active' : '' }} small py-2"><i class="fas fa-layer-group"></i> Categories</a>
+                            <a href="{{ route('library.authors.index') }}" class="{{ request()->routeIs('library.authors.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-edit"></i> Authors</a>
+                            <a href="{{ route('library.publishers.index') }}" class="{{ request()->routeIs('library.publishers.*') ? 'active' : '' }} small py-2"><i class="fas fa-building"></i> Publishers</a>
+                            <a href="{{ route('library.issues.index') }}" class="{{ request()->routeIs('library.issues.*') ? 'active' : '' }} small py-2"><i class="fas fa-hand-holding"></i> Book Issues</a>
+                            <a href="{{ route('library.returns.index') }}" class="{{ request()->routeIs('library.returns.*') ? 'active' : '' }} small py-2"><i class="fas fa-undo"></i> Book Returns</a>
+                            <a href="{{ route('library.reservations.index') }}" class="{{ request()->routeIs('library.reservations.*') ? 'active' : '' }} small py-2"><i class="fas fa-bookmark"></i> Reservations</a>
+                            <a href="{{ route('library.fines.index') }}" class="{{ request()->routeIs('library.fines.*') ? 'active' : '' }} small py-2"><i class="fas fa-coins"></i> Fines</a>
+                            <a href="{{ route('library.digital-resources.index') }}" class="{{ request()->routeIs('library.digital-resources.*') ? 'active' : '' }} small py-2"><i class="fas fa-desktop"></i> Digital Library</a>
+                            <a href="{{ route('library.reports.index') }}" class="{{ request()->routeIs('library.reports.*') ? 'active' : '' }} small py-2"><i class="fas fa-chart-pie"></i> Reports</a>
+                            <a href="{{ route('library.settings.edit') }}" class="{{ request()->routeIs('library.settings.*') ? 'active' : '' }} small py-2"><i class="fas fa-cog"></i> Settings</a>
+                        </div>
+                    @endcan
 
                     @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist())
                         <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
@@ -528,15 +564,28 @@
             border: none;
         }
         #chatBubble:hover { transform: scale(1.12); box-shadow: 0 12px 32px rgba(37,99,235,0.5); }
-        #chatBadge {
+        #chatBadgeLeft {
             position: absolute;
-            top: -4px; right: -4px;
+            top: -4px; left: -4px;
             background: #EF4444;
             color: #fff;
             border-radius: 50%;
             width: 20px; height: 20px;
             font-size: 0.65rem;
             font-weight: 500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        #chatBadgeRight {
+            position: absolute;
+            top: -4px; right: -4px;
+            background: #F59E0B;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px; height: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
             display: none;
             align-items: center;
             justify-content: center;
@@ -700,8 +749,9 @@
 
     <!-- Chat Bubble Button -->
     <button id="chatBubble" title="Staff Group Chat">
+        <span id="chatBadgeLeft"></span>
         <i class="fas fa-comments"></i>
-        <span id="chatBadge"></span>
+        <span id="chatBadgeRight"></span>
     </button>
 
     <!-- Chat Panel -->
@@ -735,7 +785,8 @@
         const msgList    = document.getElementById('chatMessages');
         const input      = document.getElementById('chatInput');
         const sendBtn    = document.getElementById('chatSendBtn');
-        const badge      = document.getElementById('chatBadge');
+        const badgeLeft  = document.getElementById('chatBadgeLeft');
+        const badgeRight = document.getElementById('chatBadgeRight');
         const mentionDiv = document.getElementById('mentionDropdown');
 
         let isOpen       = false;
@@ -744,6 +795,12 @@
         let staffList    = [];
         let isSending    = false;
         const CSRF       = document.querySelector('meta[name="csrf-token"]')?.content || '';
+        
+        const LOCAL_KEY  = 'chat_last_read_id_{{ auth()->id() ?? 0 }}';
+        let lastReadId   = parseInt(localStorage.getItem(LOCAL_KEY)) || 0;
+        let unreadCount  = 0;
+        let isMentioned  = false;
+        const myName     = "{{ auth()->user()->name ?? '' }}";
 
         // ── Helpers ──────────────────────────────────────────────────
         function highlightMentions(text) {
@@ -770,43 +827,81 @@
             msgList.scrollTop = msgList.scrollHeight;
         }
 
-        function showBadge(n) {
-            if (n > 0) { badge.style.display = 'flex'; badge.textContent = n > 9 ? '9+' : n; }
-            else { badge.style.display = 'none'; }
+        function updateBadges() {
+            if (unreadCount > 0) {
+                badgeLeft.style.display = 'flex';
+                badgeLeft.textContent = unreadCount > 9 ? '9+' : unreadCount;
+            } else {
+                badgeLeft.style.display = 'none';
+            }
+            
+            if (isMentioned) {
+                badgeRight.style.display = 'flex';
+                badgeRight.textContent = '@';
+            } else {
+                badgeRight.style.display = 'none';
+            }
+        }
+        
+        function markAsRead(id) {
+            if (id > lastReadId) {
+                lastReadId = id;
+                localStorage.setItem(LOCAL_KEY, lastReadId);
+            }
+            unreadCount = 0;
+            isMentioned = false;
+            updateBadges();
         }
 
         // ── Fetch messages ──────────────────────────────────────────
-        async function fetchMessages(initial = false) {
+        async function fetchMessages(isOpening = false, isFirstLoad = false) {
             try {
                 const res  = await fetch('{{ route("chat.index") }}', { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
                 const data = await res.json();
                 staffList  = data.staff || [];
 
-                if (initial) {
+                if (isOpening) {
                     msgList.innerHTML = '';
                     if (data.messages.length === 0) {
                         msgList.innerHTML = '<div class="chat-empty"><i class="fas fa-comments" style="font-size:2rem;opacity:0.3;"></i><div>No messages yet. Say hi! 👋</div></div>';
                     } else {
                         data.messages.forEach(m => { msgList.appendChild(renderMessage(m)); });
-                        if (data.messages.length) lastId = data.messages[data.messages.length - 1].id;
+                        lastId = data.messages[data.messages.length - 1].id;
                         scrollBottom();
                     }
+                    markAsRead(lastId);
                 } else {
-                    // Only append new ones
-                    let newCount = 0;
+                    let hasNew = false;
                     data.messages.forEach(m => {
                         if (m.id > lastId) {
-                            const empty = msgList.querySelector('.chat-empty');
-                            if (empty) empty.remove();
-                            msgList.appendChild(renderMessage(m));
+                            if (!isFirstLoad) {
+                                const empty = msgList.querySelector('.chat-empty');
+                                if (empty) empty.remove();
+                                msgList.appendChild(renderMessage(m));
+                            }
                             lastId = m.id;
-                            newCount++;
+                            hasNew = true;
                         }
                     });
-                    if (newCount > 0) {
+                    if (hasNew && !isFirstLoad && isOpen) {
                         scrollBottom();
-                        if (!isOpen) showBadge(newCount);
+                        markAsRead(lastId);
                     }
+                }
+                
+                // Recalculate unread count based on lastReadId if closed
+                if (!isOpen) {
+                    unreadCount = 0;
+                    isMentioned = false;
+                    data.messages.forEach(m => {
+                        if (m.id > lastReadId) {
+                            unreadCount++;
+                            if (m.message.includes('@' + myName)) {
+                                isMentioned = true;
+                            }
+                        }
+                    });
+                    updateBadges();
                 }
             } catch(e) { console.warn('Chat fetch error', e); }
         }
@@ -834,6 +929,7 @@
                     if (empty) empty.remove();
                     msgList.appendChild(renderMessage(m));
                     lastId = m.id;
+                    markAsRead(lastId);
                     scrollBottom();
                 }
             } catch(e) { input.value = text; console.warn('Send error', e); }
@@ -845,9 +941,8 @@
             isOpen = true;
             panel.classList.add('open');
             bubble.style.background = 'linear-gradient(135deg, #10B981, #22C55E)';
-            showBadge(0);
-            fetchMessages(true);
-            pollInterval = setInterval(() => fetchMessages(false), 3000);
+            fetchMessages(true, false);
+            pollInterval = setInterval(() => fetchMessages(false, false), 3000);
             setTimeout(() => input.focus(), 200);
         }
 
@@ -915,11 +1010,16 @@
         });
 
         // ── Poll even when closed (silent badge) ─────────────────────
+        // Fetch once on page load to initialize badges
+        fetchMessages(false, true);
+        
         // Light poll every 15s when panel is closed to show badge
-        setInterval(() => { if (!isOpen) fetchMessages(false); }, 15000);
+        setInterval(() => { if (!isOpen) fetchMessages(false, false); }, 15000);
     })();
     </script>
     @endif
+
+    @stack('modals')
 </body>
 
 </html>

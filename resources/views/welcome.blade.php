@@ -721,8 +721,8 @@ body {
                                 </div>
                             </div>
                             <div class="portal-text">
-                                <h3>Institute ERP</h3>
-                                <p>Manage your entire institute from one central interface. Track attendance, fees, and more.</p>
+                                <h3>All in One ERP</h3>
+                                <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
                             </div>
                         </div>
 
@@ -731,6 +731,40 @@ body {
             </div>
         </div>
     </div>
+
+    <!-- ══════════════ MOBILE APP ══════════════ -->
+<section id="mobile-app" class="staff-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border);">
+    <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>
+    <div class="staff-blob-1" style="background:hsla(217,91%,60%,0.08); bottom:-80px; right:-80px;"></div>
+    <div class="container px-4" style="position:relative;z-index:2;">
+        <div class="row align-items-center g-5">
+             <div class="col-lg-6 text-center">
+                <div style="position:relative; display:inline-block;">
+                    <!-- Decorative glow behind phone -->
+                    <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
+                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 320px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <span class="sec-eyebrow" style="color: hsl(262,83%,65%);">Dedicated Mobile App</span>
+                <h2 class="sec-title">The entire institute or School in <br><span class="g-text-2">their pocket.</span></h2>
+                <p class="sec-desc mb-4">Empower your students and parents with a modern, native-like mobile app. They can check timetables, track attendance, pay fees, and join live classes from anywhere.</p>
+                
+                <ul class="feat-list mb-4" style="max-width: 450px; list-style: none; padding: 0;">
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Real-time attendance & result notifications</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Online fee payments with instant receipts</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> One-tap join for live video lectures</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Access study materials & homework</li>
+                </ul>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a href="{{ route('contact') }}" class="btn-primary" style="background: var(--gradient-secondary); box-shadow: var(--glow-secondary);">See App Demo <i class="fas fa-mobile-alt"></i></a>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
 
     <!-- Stats strip -->
     <div class="stats-strip">
@@ -802,6 +836,21 @@ body {
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-chart-line"></i></div>
                 <div class="feat-name">Analytics &amp; Reports</div>
                 <div class="feat-desc">Full visibility: student performance, attendance trends, fee collection, and staff punctuality.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(236,72,153,0.1);color:hsl(330,81%,60%);"><i class="fas fa-book-reader"></i></div>
+                <div class="feat-name">Library Management</div>
+                <div class="feat-desc">Complete digital library system. Track books, manage issues, handle fines, and provide digital resources.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(234,88,12,0.1);color:hsl(24,98%,55%);"><i class="fas fa-balance-scale"></i></div>
+                <div class="feat-name">Discipline Management</div>
+                <div class="feat-desc">Track student behavior with dynamic scoring. Log infractions, deduct points, and monitor progress.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(14,165,233,0.1);color:hsl(199,89%,58%);"><i class="fas fa-images"></i></div>
+                <div class="feat-name">Image Gallery</div>
+                <div class="feat-desc">Share memories securely. Upload photos and videos of institute events directly to student dashboards.</div>
             </div>
         </div>
     </div>
@@ -941,38 +990,7 @@ body {
     </div>
 </section>
 
-<!-- ══════════════ MOBILE APP ══════════════ -->
-<section id="mobile-app" class="staff-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border);">
-    <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>
-    <div class="staff-blob-1" style="background:hsla(217,91%,60%,0.08); bottom:-80px; right:-80px;"></div>
-    <div class="container px-4" style="position:relative;z-index:2;">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <span class="sec-eyebrow" style="color: hsl(262,83%,65%);">Dedicated Mobile App</span>
-                <h2 class="sec-title">The entire institute in <br><span class="g-text-2">their pocket.</span></h2>
-                <p class="sec-desc mb-4">Empower your students and parents with a modern, native-like mobile app. They can check timetables, track attendance, pay fees, and join live classes from anywhere.</p>
-                
-                <ul class="feat-list mb-4" style="max-width: 450px; list-style: none; padding: 0;">
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Real-time attendance & result notifications</li>
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Online fee payments with instant receipts</li>
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> One-tap join for live video lectures</li>
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Access study materials & homework</li>
-                </ul>
 
-                <div class="d-flex gap-3 mt-4">
-                    <a href="{{ route('contact') }}" class="btn-primary" style="background: var(--gradient-secondary); box-shadow: var(--glow-secondary);">See App Demo <i class="fas fa-mobile-alt"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center">
-                <div style="position:relative; display:inline-block;">
-                    <!-- Decorative glow behind phone -->
-                    <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
-                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 320px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ══════════════ HOW IT WORKS ══════════════ -->
 <section class="how-section">
@@ -1070,6 +1088,7 @@ body {
                     ['c'=>'fa-fingerprint','t'=>'AI face + GPS attendance','d'=>'Staff attendance marked automatically in under 2 seconds. Zero proxies.'],
                     ['c'=>'fa-credit-card','t'=>'Automated fee collection','d'=>'Online payments, auto-reminders, real-time dashboard. Fees track themselves.'],
                     ['c'=>'fa-money-bill-wave','t'=>'One-click payroll','d'=>'Payslips generated and sent to every staff member\'s WhatsApp in one click.'],
+                    ['c'=>'fa-book-reader','t'=>'Digital Library & Discipline','d'=>'Full control over books, resources, and student behavior tracking natively.'],
                     ['c'=>'fa-chart-bar','t'=>'Full visibility dashboard','d'=>'Live attendance, fee status, batch analytics — everything in one screen.'],
                     ['c'=>'fa-mobile-screen','t'=>'Dedicated Mobile App','d'=>'Students and parents check timetables, results, and fees on their phone app. Anytime.'],
                 ] as $a)

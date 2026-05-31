@@ -57,12 +57,13 @@
 
 .ft-bottom {
     border-top: 1px solid var(--ft-border);
-    padding: 20px 32px;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    padding: 24px 32px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
 }
-.ft-copy { font-size: 0.78rem; color: var(--ft-muted); margin: 0; }
-.ft-made-by { font-size: 0.78rem; color: var(--ft-muted); }
-.ft-made-by strong { color: var(--ft-primary); font-weight: 500; }
+.ft-copy { font-size: 0.85rem; color: var(--ft-muted); margin: 0; }
+.ft-made-by { font-size: 0.85rem; color: var(--ft-muted); margin: 0; }
+.ft-made-by a { color: var(--ft-primary); font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
+.ft-made-by a:hover { opacity: 0.8; }
 </style>
 
 <footer class="site-footer">
@@ -127,6 +128,6 @@
 
     <div class="ft-bottom">
         <p class="ft-copy">© {{ date('Y') }} EduNex. All rights reserved.</p>
-        <span class="ft-made-by">A product of <strong>Engenius Digitech</strong></span>
+        <p class="ft-made-by">A product of <a href="https://engeniusdigitech.netlify.app" target="_blank">Engenius Digitech</a></p>
     </div>
 </footer>

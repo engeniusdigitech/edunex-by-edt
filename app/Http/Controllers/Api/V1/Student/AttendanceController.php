@@ -33,9 +33,12 @@ class AttendanceController extends Controller
             'summary' => [
                 'total' => $total,
                 'present' => $present,
+                'presents' => $present,
                 'absent' => $absent,
+                'absents' => $absent,
                 'late' => $late,
                 'half_day' => $half_day,
+                'leaves' => $late + $half_day,
                 'percentage' => $total > 0 ? round((($present + ($half_day * 0.5)) / $total) * 100, 2) : 0,
             ],
             'records' => $attendances->map(function ($att) {

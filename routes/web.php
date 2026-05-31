@@ -66,7 +66,8 @@ Route::get('/robots.txt', function () {
         ->header('Content-Type', 'text/plain')
         ->header('X-Robots-Tag', 'index, follow');
 });
-Route::get('/best-institute-or-school-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
+Route::get('/best-institute-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
+Route::get('/best-school-management-software-in-{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
 Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
 
 Route::middleware(['auth'])->group(function () {
@@ -153,6 +154,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
+            // Image Gallery
+            Route::resource('gallery', \App\Http\Controllers\GalleryMediaController::class)->only(['index', 'store', 'destroy']);
+
+            // Discipline
+            Route::resource('discipline', \App\Http\Controllers\DisciplineRecordController::class)->only(['index', 'store']);
+
+
             // Staff Group Chat
             Route::get('/chat/messages', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat.index');
             Route::post('/chat/messages', [\App\Http\Controllers\ChatController::class, 'store'])->name('chat.store');
@@ -181,6 +189,65 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/staff-payrolls', [\App\Http\Controllers\StaffPayrollController::class, 'index'])->name('staff-payrolls.index')->middleware('can:manage-staff-payroll');
             Route::post('/staff-payrolls/generate', [\App\Http\Controllers\StaffPayrollController::class, 'generate'])->name('staff-payrolls.generate')->middleware('can:manage-staff-payroll');
             Route::patch('/staff-payrolls/{staffPayroll}', [\App\Http\Controllers\StaffPayrollController::class, 'updateStatus'])->name('staff-payrolls.update')->middleware('can:manage-staff-payroll');
+
+            // --- Library Management System (Admin) ---
+            Route::prefix('library')->name('library.')->middleware('can:manage-library')->group(function () {
+                Route::get('dashboard', [\App\Http\Controllers\Library\DashboardController::class, 'index'])->name('dashboard');
+                
+                // Books
+                Route::post('books/bulk-delete', [\App\Http\Controllers\Library\BookController::class, 'bulkDelete'])->name('books.bulk-delete');
+                Route::get('books/export/csv', [\App\Http\Controllers\Library\BookController::class, 'exportCsv'])->name('books.export.csv');
+                Route::get('books/export/excel', [\App\Http\Controllers\Library\BookController::class, 'exportExcel'])->name('books.export.excel');
+                Route::get('books/{book}/print-qr', [\App\Http\Controllers\Library\BookController::class, 'printQR'])->name('books.print-qr');
+                Route::get('books/{book}/print-barcode', [\App\Http\Controllers\Library\BookController::class, 'printBarcode'])->name('books.print-barcode');
+                Route::post('books/scan-search', [\App\Http\Controllers\Library\BookController::class, 'scanSearch'])->name('books.scan-search');
+                Route::resource('books', \App\Http\Controllers\Library\BookController::class);
+                
+                // Masters
+                Route::resource('categories', \App\Http\Controllers\Library\CategoryController::class)->except(['create', 'show', 'edit']);
+                Route::resource('authors', \App\Http\Controllers\Library\AuthorController::class)->except(['create', 'show', 'edit']);
+                Route::resource('publishers', \App\Http\Controllers\Library\PublisherController::class)->except(['create', 'show', 'edit']);
+                
+                // Issues & Returns
+                Route::post('issues/scan-issue', [\App\Http\Controllers\Library\BookIssueController::class, 'scanIssue'])->name('issues.scan-issue');
+                Route::resource('issues', \App\Http\Controllers\Library\BookIssueController::class)->only(['index', 'create', 'store', 'show']);
+                
+                Route::get('returns', [\App\Http\Controllers\Library\BookReturnController::class, 'index'])->name('returns.index');
+                Route::post('returns/scan-return', [\App\Http\Controllers\Library\BookReturnController::class, 'scanReturn'])->name('returns.scan-return');
+                Route::get('returns/{issue}', [\App\Http\Controllers\Library\BookReturnController::class, 'returnBook'])->name('returns.returnBook');
+                Route::post('returns/{issue}', [\App\Http\Controllers\Library\BookReturnController::class, 'store'])->name('returns.store');
+                
+                // Fines
+                Route::post('fines/{fine}/collect', [\App\Http\Controllers\Library\FineController::class, 'collectFine'])->name('fines.collect');
+                Route::resource('fines', \App\Http\Controllers\Library\FineController::class)->only(['index', 'store']);
+                
+                // Reservations
+                Route::post('reservations/{reservation}/cancel', [\App\Http\Controllers\Library\ReservationController::class, 'cancel'])->name('reservations.cancel');
+                Route::post('reservations/{reservation}/fulfill', [\App\Http\Controllers\Library\ReservationController::class, 'fulfill'])->name('reservations.fulfill');
+                Route::resource('reservations', \App\Http\Controllers\Library\ReservationController::class)->only(['index', 'store']);
+                
+                // Digital Library
+                Route::get('digital-resources/{digitalResource}/download', [\App\Http\Controllers\Library\DigitalResourceController::class, 'download'])->name('digital-resources.download');
+                Route::get('digital-resources/{digitalResource}/preview', [\App\Http\Controllers\Library\DigitalResourceController::class, 'preview'])->name('digital-resources.preview');
+                Route::resource('digital-resources', \App\Http\Controllers\Library\DigitalResourceController::class);
+                
+                // Settings & Reports
+                Route::get('settings', [\App\Http\Controllers\Library\SettingController::class, 'edit'])->name('settings.edit');
+                Route::put('settings', [\App\Http\Controllers\Library\SettingController::class, 'update'])->name('settings.update');
+                
+                Route::get('reports', [\App\Http\Controllers\Library\ReportController::class, 'index'])->name('reports.index');
+                Route::get('reports/{type}', [\App\Http\Controllers\Library\ReportController::class, 'generate'])->name('reports.generate');
+                Route::get('reports/{type}/export/{format}', [\App\Http\Controllers\Library\ReportController::class, 'export'])->name('reports.export');
+            });
+
+            // --- Teacher Library Views ---
+            Route::prefix('teacher/library')->name('teacher.library.')->group(function () {
+                Route::get('/', [\App\Http\Controllers\TeacherLibraryController::class, 'index'])->name('index');
+                Route::get('/my-books', [\App\Http\Controllers\TeacherLibraryController::class, 'myBooks'])->name('my-books');
+                Route::get('/history', [\App\Http\Controllers\TeacherLibraryController::class, 'history'])->name('history');
+                Route::post('/reserve/{book}', [\App\Http\Controllers\TeacherLibraryController::class, 'reserve'])->name('reserve');
+                Route::get('/digital', [\App\Http\Controllers\TeacherLibraryController::class, 'digitalLibrary'])->name('digital');
+            });
         }
     );
 });
@@ -209,6 +276,18 @@ Route::prefix('student')->name('student.')->group(function () {
         function () {
             Route::get('dashboard', [\App\Http\Controllers\Student\DashboardController::class, 'index'])->name('dashboard');
 
+            // --- Student Library ---
+            Route::prefix('library')->name('library.')->group(function () {
+                Route::get('/', [\App\Http\Controllers\Student\LibraryController::class, 'index'])->name('index');
+                Route::get('/my-books', [\App\Http\Controllers\Student\LibraryController::class, 'myBooks'])->name('my-books');
+                Route::get('/history', [\App\Http\Controllers\Student\LibraryController::class, 'history'])->name('history');
+                Route::get('/fines', [\App\Http\Controllers\Student\LibraryController::class, 'fines'])->name('fines');
+                Route::post('/reserve/{book}', [\App\Http\Controllers\Student\LibraryController::class, 'reserve'])->name('reserve');
+                Route::get('/digital', [\App\Http\Controllers\Student\LibraryController::class, 'digitalLibrary'])->name('digital');
+                Route::get('/digital/{digitalResource}/download', [\App\Http\Controllers\Student\LibraryController::class, 'downloadResource'])->name('digital.download');
+                Route::get('/digital/{digitalResource}/preview', [\App\Http\Controllers\Student\LibraryController::class, 'previewResource'])->name('digital.preview');
+            });
+
             // Student Fees
             Route::get('fees', [FeePaymentController::class, 'index'])->name('fees.index');
             Route::post('fees/{fee}/pay', [FeePaymentController::class, 'pay'])->name('fees.pay');
@@ -231,6 +310,16 @@ Route::prefix('student')->name('student.')->group(function () {
 
             // Timetable
             Route::get('timetable', [\App\Http\Controllers\Student\TimetableController::class, 'index'])->name('timetable.index');
+
+            // Tests, Homework, Attendance, Gallery, Discipline
+            Route::get('attendance', [\App\Http\Controllers\Student\AttendanceController::class, 'index'])->name('attendance.index');
+            Route::get('tests', [\App\Http\Controllers\Student\TestController::class, 'index'])->name('tests.index');
+            Route::get('homework', [\App\Http\Controllers\Student\HomeworkController::class, 'index'])->name('homework.index');
+            Route::get('gallery', [\App\Http\Controllers\Student\GalleryController::class, 'index'])->name('gallery.index');
+            Route::get('discipline', [\App\Http\Controllers\Student\DisciplineController::class, 'index'])->name('discipline.index');
+
+            // Notifications
+            Route::get('notifications', [\App\Http\Controllers\Student\DashboardController::class, 'notifications'])->name('notifications.index');
 
             // Profile
             Route::get('profile', [\App\Http\Controllers\Student\ProfileController::class, 'edit'])->name('profile.edit');

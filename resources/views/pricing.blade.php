@@ -186,6 +186,7 @@ section{background:transparent!important;}
                                     <li><i class="fas fa-check-circle"></i> AI Face Biometric Attendance</li>
                                     <li><i class="fas fa-check-circle"></i> GPS Staff Location Tracking</li>
                                     <li><i class="fas fa-check-circle"></i> Smart Fee Tracking</li>
+                                    <li><i class="fas fa-check-circle"></i> Digital Library Management</li>
                                     <li><i class="fas fa-check-circle"></i> One-Click Payroll</li>
                                     <li><i class="fas fa-check-circle"></i> Digital Salary Slips</li>
                                 </ul>
@@ -193,7 +194,9 @@ section{background:transparent!important;}
                             <div class="col-md-6">
                                 <ul class="feat-list ps-md-3">
                                     <li><i class="fas fa-check-circle"></i> Live Class Integration</li>
+                                    <li><i class="fas fa-check-circle"></i> Discipline & Behavior Tracking</li>
                                     <li><i class="fas fa-check-circle"></i> Student & Parent Mobile App</li>
+                                    <li><i class="fas fa-check-circle"></i> Secure Media Gallery</li>
                                     <li><i class="fas fa-check-circle"></i> WhatsApp Fee Reminders</li>
                                     <li><i class="fas fa-check-circle"></i> Custom PDF Reports</li>
                                     <li><i class="fas fa-check-circle"></i> 24/7 Priority Support</li>
@@ -245,7 +248,7 @@ section{background:transparent!important;}
             <div class="stat-div d-none d-md-block"></div>
             <div><div class="stat-val g-text">100+</div><div class="stat-lbl">Institutes</div></div>
             <div class="stat-div d-none d-md-block"></div>
-            <div><div class="stat-val" style="color:hsl(38,92%,60%);">4.9★</div><div class="stat-lbl">Rating</div></div>
+            <div><div class="stat-val" style="color:hsl(38,92%,60%);">5★</div><div class="stat-lbl">Rating</div></div>
         </div>
     </div>
 </section>

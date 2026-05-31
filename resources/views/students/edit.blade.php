@@ -48,6 +48,22 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
+                    <label class="form-label">Roll Number</label>
+                    <input type="text" name="roll_number" class="form-control" value="{{ old('roll_number', $student->roll_number) }}" placeholder="e.g. 001922">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Gender</label>
+                    <select name="gender" class="form-select">
+                        <option value="">Select Gender</option>
+                        <option value="Male" {{ old('gender', $student->gender) == 'Male' ? 'selected' : '' }}>Male</option>
+                        <option value="Female" {{ old('gender', $student->gender) == 'Female' ? 'selected' : '' }}>Female</option>
+                        <option value="Other" {{ old('gender', $student->gender) == 'Other' ? 'selected' : '' }}>Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
                     <label class="form-label">Alternate Phone 1</label>
                     <input type="text" name="alternate_phone_1" class="form-control" value="{{ old('alternate_phone_1', $student->alternate_phone_1) }}" placeholder="+91 9876543210">
                 </div>

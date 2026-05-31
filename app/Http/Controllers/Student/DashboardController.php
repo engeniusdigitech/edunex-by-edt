@@ -39,7 +39,16 @@ class DashboardController extends Controller
             ->take(3)
             ->get();
 
-        return view('student.dashboard', compact('student', 'attendancePercentage', 'totalClasses', 'presentClasses', 'recentPayments', 'activeHomeworks', 'upcomingTests', 'pastTests'));
+        return view('student.dashboard', compact(
+            'student', 'attendancePercentage', 'presentClasses', 'totalClasses',
+            'recentPayments', 'activeHomeworks', 'upcomingTests', 'pastTests'
+        ));
+    }
+
+    public function notifications()
+    {
+        $student = auth()->guard('student')->user();
+        return view('student.notifications', compact('student'));
     }
 
     public function markAsRead($id)

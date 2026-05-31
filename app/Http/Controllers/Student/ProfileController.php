@@ -16,28 +16,21 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        return back()->with('error', 'Profile editing is disabled for students. Please contact administration for changes.');
-        
         $student = auth('student')->user();
         
         $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'current_password' => 'required',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $data = $request->only(['name', 'phone']);
-
-        if ($request->hasFile('profile_image')) {
-            // Delete old image
-            if ($student->profile_image) {
-                Storage::disk('public')->delete($student->profile_image);
-            }
-            $data['profile_image'] = $request->file('profile_image')->store('student_profiles', 'public');
+        if (!\Illuminate\Support\Facades\Hash::check($request->current_password, $student->password)) {
+            return back()->withErrors(['current_password' => 'The provided password does not match your current password.']);
         }
 
-        $student->update($data);
+        $student->update([
+            'password' => \Illuminate\Support\Facades\Hash::make($request->password)
+        ]);
 
-        return back()->with('success', 'Profile updated successfully.');
+        return back()->with('success', 'Password updated successfully.');
     }
 }

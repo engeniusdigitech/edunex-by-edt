@@ -58,5 +58,9 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Gate::define('manage-staff-payroll', function ($user) {
             return $user->isInstituteAdmin();
         });
+
+        \Illuminate\Support\Facades\Gate::define('manage-library', function ($user) {
+            return $user->isInstituteAdmin() || $user->isPrincipal() || $user->isLibrarian();
+        });
     }
 }

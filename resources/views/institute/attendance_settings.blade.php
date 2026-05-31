@@ -24,8 +24,8 @@
                 <textarea name="address" id="addressInput" class="form-control" rows="3" required placeholder="Full address including city and pin code">{{ old('address', $institute->address) }}</textarea>
                 @error('address')<div class="text-danger small">{{ $message }}</div>@enderror
                 <div class="form-check mt-2">
-                    <input class="form-check-input" type="checkbox" name="auto_geocode" value="1" id="autoGeocode" checked>
-                    <label class="form-check-label small" for="autoGeocode">Auto-detect coordinates from address (when saving)</label>
+                    <input class="form-check-input" type="checkbox" name="auto_geocode" value="1" id="autoGeocode" {{ ($institute->latitude && $institute->longitude) ? '' : 'checked' }}>
+                    <label class="form-check-label small" for="autoGeocode">Auto-detect coordinates from address (will overwrite current coordinates)</label>
                 </div>
             </div>
 

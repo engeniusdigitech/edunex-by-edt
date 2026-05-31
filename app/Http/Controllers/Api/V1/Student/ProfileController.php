@@ -16,6 +16,8 @@ class ProfileController extends Controller
             'name' => $student->name,
             'email' => $student->email,
             'phone' => $student->phone,
+            'roll_number' => $student->roll_number,
+            'gender' => $student->gender,
             'profile_image_url' => $student->profile_image_url,
             'enrollment_date' => $student->enrollment_date,
             'institute' => $student->institute ? [
