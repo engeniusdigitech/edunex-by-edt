@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduNex ERP Brochure | Engenius Digitech</title>
+    <style>
+        :root {
+            --teal: #27d9c8;
+            --blue: #2563eb;
+            --sky: #0ea5e9;
+            --green: #82cf29;
+            --ink: #08111f;
+            --dark: #0f172a;
+            --muted: #536174;
+            --line: #dbe5f0;
+            --soft: #eefcff;
+            --paper: #ffffff;
+            --warn: #f59e0b;
+            --red: #ef4444;
+        }
+
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            background: #dfe5ec;
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.32;
+        }
+
+        .sheet {
+            width: 210mm;
+            margin: 12mm auto;
+            background: var(--paper);
+            box-shadow: 0 18px 45px rgba(8, 17, 31, 0.18);
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 11mm 12mm 15mm;
+            position: relative;
+            overflow: hidden;
+            break-after: page;
+            background:
+                radial-gradient(circle at 92% 8%, rgba(39, 217, 200, 0.22), transparent 28%),
+                radial-gradient(circle at 5% 92%, rgba(37, 99, 235, 0.12), transparent 32%),
+                #fff;
+        }
+
+        .content { position: relative; z-index: 1; }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 8mm;
+        }
+
+        .logo { height: 15mm; width: auto; display: block; }
+        .tag {
+            color: #05766d;
+            background: rgba(39, 217, 200, 0.12);
+            border: 1px solid rgba(39, 217, 200, 0.55);
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+        }
+
+        h1 {
+            margin: 0 0 4mm;
+            font-size: 32pt;
+            line-height: 0.98;
+            letter-spacing: -0.8px;
+        }
+
+        h2 {
+            margin: 0 0 4mm;
+            font-size: 18pt;
+            letter-spacing: -0.2px;
+        }
+
+        h3 { margin: 0 0 1.8mm; font-size: 11pt; }
+        p { margin: 0; }
+
+        .lead {
+            color: var(--muted);
+            font-size: 11pt;
+            max-width: 118mm;
+        }
+
+        .small { color: var(--muted); font-size: 8.6pt; }
+        .gradient {
+            background: linear-gradient(135deg, var(--teal), var(--blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 8mm;
+            align-items: center;
+            margin-bottom: 7mm;
+        }
+
+        .visual-wrap {
+            min-height: 100mm;
+            position: relative;
+        }
+
+        .dashboard-shot {
+            background: #f8fafc;
+            border: 1px solid #dce6f2;
+            border-radius: 6mm;
+            box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+            overflow: hidden;
+        }
+
+        .dashbar {
+            background: var(--dark);
+            color: #fff;
+            padding: 4mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8pt;
+            font-weight: 700;
+        }
+
+        .dashbody { padding: 4mm; }
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5mm;
+            margin-bottom: 3mm;
+        }
+        .kpi, .mini-card {
+            background: #fff;
+            border: 1px solid #e4ebf5;
+            border-radius: 3mm;
+            padding: 3mm;
+        }
+        .kpi b { display: block; color: var(--blue); font-size: 12pt; line-height: 1; }
+        .kpi span { display: block; color: var(--muted); font-size: 6.8pt; margin-top: 1mm; }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 3mm;
+        }
+
+        .bars { height: 28mm; display: flex; align-items: end; gap: 2.2mm; padding-top: 3mm; }
+        .bars i {
+            display: block;
+            flex: 1;
+            border-radius: 2mm 2mm 0 0;
+            background: linear-gradient(180deg, var(--blue), var(--teal));
+        }
+        .ring {
+            width: 28mm;
+            height: 28mm;
+            border-radius: 50%;
+            background: conic-gradient(var(--green) 0 78%, #e8eef5 78% 100%);
+            margin: 1mm auto;
+            position: relative;
+        }
+        .ring::after {
+            content: "78%";
+            position: absolute;
+            inset: 5mm;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--green);
+            font-size: 10pt;
+        }
+
+        .phone {
+            position: absolute;
+            right: 2mm;
+            bottom: -4mm;
+            width: 34mm;
+            border-radius: 6mm;
+            filter: drop-shadow(0 12px 20px rgba(15, 23, 42, 0.32));
+        }
+
+        .stats, .grid-2, .grid-3, .grid-4 {
+            display: grid;
+            gap: 4mm;
+        }
+        .stats { grid-template-columns: repeat(4, 1fr); }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        .box {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--line);
+            border-radius: 4.5mm;
+            padding: 4.2mm;
+        }
+
+        .box.blue {
+            background: linear-gradient(135deg, rgba(39, 217, 200, 0.13), rgba(37, 99, 235, 0.08));
+            border-color: rgba(39, 217, 200, 0.5);
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--blue);
+            font-size: 16pt;
+            line-height: 1;
+        }
+        .stat span {
+            display: block;
+            color: var(--muted);
+            font-size: 8pt;
+            margin-top: 1.5mm;
+        }
+
+        .section { margin-top: 7mm; }
+
+        ul.clean {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: grid;
+            gap: 2mm;
+        }
+        ul.clean li {
+            color: var(--muted);
+            font-size: 8.6pt;
+            padding-left: 6mm;
+            position: relative;
+        }
+        ul.clean li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 1.4mm;
+            width: 3.4mm;
+            height: 3.4mm;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .icon {
+            width: 8mm;
+            height: 8mm;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--teal), var(--blue));
+            color: #fff;
+            font-weight: 800;
+            font-size: 8pt;
+            margin-bottom: 2.4mm;
+        }
+
+        .dark-band {
+            margin: 7mm -12mm 0;
+            padding: 7mm 12mm;
+            color: #fff;
+            background: linear-gradient(135deg, var(--dark), #10346a);
+        }
+        .dark-band p, .dark-band li { color: #dbeafe; }
+        .dark-band .box {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+        .dark-band h2, .dark-band h3 { color: #fff; }
+
+        .feature-matrix {
+            display: grid;
+            grid-template-columns: 34mm 1fr 1fr;
+            border: 1px solid var(--line);
+            border-radius: 4mm;
+            overflow: hidden;
+            background: #fff;
+        }
+        .feature-matrix div {
+            padding: 3mm;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            font-size: 8.2pt;
+        }
+        .feature-matrix div:nth-child(3n) { border-right: 0; }
+        .feature-matrix .head {
+            background: #eef6ff;
+            font-weight: 800;
+            color: var(--ink);
+        }
+        .feature-matrix .role-name { font-weight: 800; color: var(--blue); }
+
+        .mobile-panel {
+            display: grid;
+            grid-template-columns: 40mm 1fr;
+            gap: 7mm;
+            align-items: center;
+        }
+        .app-phone {
+            width: 38mm;
+            display: block;
+            filter: drop-shadow(0 12px 20px rgba(15, 23, 42, 0.25));
+        }
+
+        .cta {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 5mm;
+            align-items: center;
+            border-radius: 6mm;
+            padding: 6mm;
+            color: #071120;
+            background: linear-gradient(135deg, var(--teal), var(--blue));
+        }
+        .cta p { color: rgba(7, 17, 32, 0.78); font-size: 9pt; }
+        .contact {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 4mm;
+            padding: 4mm;
+            font-size: 8.5pt;
+        }
+
+        .footer {
+            position: absolute;
+            left: 12mm;
+            right: 12mm;
+            bottom: 7mm;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--line);
+            padding-top: 3mm;
+            color: var(--muted);
+            font-size: 7.8pt;
+        }
+
+        .print-note {
+            position: fixed;
+            right: 12px;
+            bottom: 12px;
+            background: var(--dark);
+            color: #fff;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            max-width: 310px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        @page { size: A4; margin: 0; }
+        @media print {
+            html, body { background: #fff; }
+            .sheet { margin: 0; box-shadow: none; }
+            .print-note { display: none; }
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+<main class="sheet">
+    <section class="page">
+        <div class="content">
+            <div class="topbar">
+                <img class="logo" src="images/logo-name.png" alt="EduNex logo">
+                <div class="tag">School, Institute and Coaching ERP</div>
+            </div>
+
+            <div class="hero">
+                <div>
+                    <h1>Complete <span class="gradient">EduNex ERP</span> for modern education.</h1>
+                    <p class="lead">Manage students, staff, admissions, batches, attendance, fees, exams, homework, timetable, library, payroll, communication, reports, and mobile app access from one platform.</p>
+                </div>
+                <div class="visual-wrap">
+                    <div class="dashboard-shot">
+                        <div class="dashbar"><span>Institute Dashboard</span><span>Admin Panel</span></div>
+                        <div class="dashbody">
+                            <div class="kpis">
+                                <div class="kpi"><b>850</b><span>Students</span></div>
+                                <div class="kpi"><b>32</b><span>Batches</span></div>
+                                <div class="kpi"><b>96%</b><span>Fees</span></div>
+                                <div class="kpi"><b>78%</b><span>Attendance</span></div>
+                            </div>
+                            <div class="chart-row">
+                                <div class="mini-card">
+                                    <h3>Revenue Overview</h3>
+                                    <div class="bars"><i style="height:35%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:76%"></i><i style="height:62%"></i><i style="height:88%"></i></div>
+                                </div>
+                                <div class="mini-card">
+                                    <h3>Today</h3>
+                                    <div class="ring"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="phone" src="images/mobile-screen.png" alt="EduNex mobile app preview">
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="box stat"><strong>All-in-one</strong><span>Academic, finance, HR, library, reports, and mobile app.</span></div>
+                <div class="box stat"><strong>Android + iOS</strong><span>Student mobile app first, PWA support as an extra option.</span></div>
+                <div class="box stat"><strong>Role based</strong><span>Different accounts for each department and user type.</span></div>
+                <div class="box stat"><strong>Cloud ERP</strong><span>Secure multi-tenant setup for institutes and branches.</span></div>
+            </div>
+
+            <div class="section grid-3">
+                <div class="box blue"><span class="icon">1</span><h3>Daily Operations</h3><p class="small">Students, staff, batches, subjects, attendance, leave, timetable, and discipline.</p></div>
+                <div class="box blue"><span class="icon">2</span><h3>Finance Control</h3><p class="small">Fee structures, allocations, receipts, online payments, defaulters, reminders, and reports.</p></div>
+                <div class="box blue"><span class="icon">3</span><h3>Mobile Access</h3><p class="small">Android and iOS app for students with homework, tests, fees, lectures, and notifications.</p></div>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | A product by Engenius Digitech</span><span>Page 1 of 8</span></div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <div class="topbar"><img class="logo" src="images/logo-name.png" alt="EduNex logo"><div class="tag">Detailed Feature Coverage</div></div>
+            <h2>Core ERP Modules</h2>
+            <p class="lead">EduNex covers the full institute workflow, from student admission to fee collection, teaching, exams, reports, and staff management.</p>
+
+            <div class="section grid-2">
+                <div class="box"><h3>Student Management</h3><ul class="clean"><li>Student profile, contact, parent details, batch assignment, and profile image.</li><li>Admission and student record maintenance.</li><li>Student-wise academic, attendance, fee, and report history.</li></ul></div>
+                <div class="box"><h3>Batch and Subject Management</h3><ul class="clean"><li>Create batches/classes with schedules and active status.</li><li>Assign subjects to batches.</li><li>Map teachers to subjects and class teacher responsibility.</li></ul></div>
+                <div class="box"><h3>Attendance Management</h3><ul class="clean"><li>Daily student attendance marking.</li><li>Class teacher-controlled attendance workflow.</li><li>Present/absent summary, attendance percentage, and PDF reports.</li></ul></div>
+                <div class="box"><h3>Fees and Payments</h3><ul class="clean"><li>Fee categories, structures, due dates, allocations, and student fees.</li><li>Payment ledger, receipts, balance tracking, and recent payments.</li><li>Defaulter reports and WhatsApp/portal reminders.</li></ul></div>
+                <div class="box"><h3>Online Payment Gateway</h3><ul class="clean"><li>Payment gateway settings for institute accounts.</li><li>Student fee checkout support.</li><li>Receipt download after successful payment.</li></ul></div>
+                <div class="box"><h3>Reports and Analytics</h3><ul class="clean"><li>Revenue overview, attendance trend, students by batch, and KPIs.</li><li>Attendance PDFs, defaulter PDFs, and student reports.</li><li>Useful dashboards for admin, teacher, student, and super admin.</li></ul></div>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | Detailed Modules</span><span>Page 2 of 8</span></div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <div class="topbar"><img class="logo" src="images/logo-name.png" alt="EduNex logo"><div class="tag">Academics and Learning</div></div>
+            <h2>Academic Features</h2>
+            <p class="lead">Teachers and academic heads get a structured workflow for classes, homework, tests, live lectures, timetable, and student progress.</p>
+
+            <div class="section grid-2">
+                <div class="box"><h3>Homework</h3><ul class="clean"><li>Create homework for selected batches and subjects.</li><li>Add due dates and instructions.</li><li>Students can view homework from the mobile app/student portal.</li></ul></div>
+                <div class="box"><h3>Tests and Exams</h3><ul class="clean"><li>Schedule tests with subject, batch, date, and total marks.</li><li>Fast mark entry for complete batches.</li><li>Publish marks, remarks, and results to students.</li></ul></div>
+                <div class="box"><h3>Live Lectures</h3><ul class="clean"><li>Create live lecture sessions for selected batches.</li><li>Teacher starts and ends live classes.</li><li>Students access live and ended lecture records from the app.</li></ul></div>
+                <div class="box"><h3>Timetable</h3><ul class="clean"><li>Build class-wise timetable slots.</li><li>Teachers can view their own schedule.</li><li>Students can view batch timetable from mobile app/student portal.</li></ul></div>
+                <div class="box"><h3>Leave Management</h3><ul class="clean"><li>Staff leave requests and student leave requests.</li><li>Review, approve, reject, and revert decisions.</li><li>Class teacher/principal/admin review support.</li></ul></div>
+                <div class="box"><h3>Discipline and Gallery</h3><ul class="clean"><li>Record student discipline details.</li><li>Maintain image gallery for institute updates.</li><li>Students can view gallery and discipline information.</li></ul></div>
+            </div>
+
+            <div class="dark-band">
+                <h2>Designed for Academic Clarity</h2>
+                <div class="grid-3">
+                    <div class="box"><h3>For Principals</h3><p class="small">Monitor academic progress, students, attendance, leaves, timetable, and reports.</p></div>
+                    <div class="box"><h3>For Teachers</h3><p class="small">Manage assigned batches, homework, tests, live classes, schedules, and attendance.</p></div>
+                    <div class="box"><h3>For Students</h3><p class="small">Use the mobile app for attendance, homework, tests, lectures, fees, timetable, and profile.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | Academics</span><span>Page 3 of 8</span></div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <div class="topbar"><img class="logo" src="images/logo-name.png" alt="EduNex logo"><div class="tag">User Accounts and Permissions</div></div>
+            <h2>User Account Details</h2>
+            <p class="lead">Every user gets access according to role. This keeps the system simple for users and secure for management.</p>
+
+            <div class="section feature-matrix">
+                <div class="head">Account</div><div class="head">Main Access</div><div class="head">Important Controls</div>
+                <div class="role-name">Super Admin</div><div>Manage SaaS platform, institutes, subscriptions, and plans.</div><div>Onboard institutes, manage global setup, view platform dashboard.</div>
+                <div class="role-name">Institute Admin / Owner</div><div>Full institute ERP control.</div><div>Students, staff, principals, batches, subjects, fees, reports, settings, HR, library, and communication.</div>
+                <div class="role-name">Principal</div><div>Academic and operational supervision.</div><div>Students, attendance, timetable, leaves, discipline, performance, and reports as permitted.</div>
+                <div class="role-name">Teacher</div><div>Teaching and class workflow.</div><div>Assigned batches, subjects, homework, tests, marks, live lectures, schedule, and library access.</div>
+                <div class="role-name">Class Teacher</div><div>Class ownership and attendance.</div><div>Mark attendance for managed class, review student leave, track class metrics.</div>
+                <div class="role-name">Receptionist / Accounts</div><div>Front office and fee workflow.</div><div>Collect fees, manage payment records, receipts, fee reports, and defaulter follow-up.</div>
+                <div class="role-name">Staff</div><div>Internal staff account.</div><div>Profile, attendance, leave, staff chat, schedule, and assigned access.</div>
+                <div class="role-name">Student</div><div>Mobile app and student portal.</div><div>Attendance, homework, tests, fees, receipts, lectures, timetable, leaves, library, profile, gallery, and notifications.</div>
+            </div>
+
+            <div class="section grid-3">
+                <div class="box blue"><h3>Secure Login</h3><p class="small">Separate staff and student authentication keeps ERP access organized.</p></div>
+                <div class="box blue"><h3>Role Permissions</h3><p class="small">Users see only the modules required for their work.</p></div>
+                <div class="box blue"><h3>Institute Isolation</h3><p class="small">Each institute works inside its own protected data scope.</p></div>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | User Accounts</span><span>Page 4 of 8</span></div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <div class="topbar"><img class="logo" src="images/logo-name.png" alt="EduNex logo"><div class="tag">Android and iOS Mobile App</div></div>
+            <h2>Mobile App for Android and iOS</h2>
+            <p class="lead">The mobile app is a main part of EduNex. Students can access important academic and fee information from their phone. PWA support is available as an additional web option.</p>
+
+            <div class="section mobile-panel">
+                <img class="app-phone" src="images/mobile-screen.png" alt="EduNex mobile app dashboard">
+                <div class="grid-2">
+                    <div class="box"><h3>Student Dashboard</h3><ul class="clean"><li>Attendance percentage and class status.</li><li>Fee summary and recent payments.</li><li>Quick buttons for every student module.</li></ul></div>
+                    <div class="box"><h3>Academics in App</h3><ul class="clean"><li>Homework, tests, exam marks, remarks, and results.</li><li>Live lectures and lecture records.</li><li>Timetable and daily schedule.</li></ul></div>
+                    <div class="box"><h3>Finance in App</h3><ul class="clean"><li>View assigned fees and balances.</li><li>Pay online where gateway is enabled.</li><li>Download fee receipts.</li></ul></div>
+                    <div class="box"><h3>Student Services</h3><ul class="clean"><li>Leave requests, profile, notifications, library, gallery, and discipline.</li><li>Digital resources and book reservation support.</li><li>Works alongside PWA support for web access.</li></ul></div>
+                </div>
+            </div>
+
+            <div class="dark-band">
+                <h2>Mobile-first Student Experience</h2>
+                <div class="grid-4">
+                    <div class="box"><h3>Android</h3><p class="small">App access for Android users.</p></div>
+                    <div class="box"><h3>iOS</h3><p class="small">App access for iPhone users.</p></div>
+                    <div class="box"><h3>Notifications</h3><p class="small">Homework, test, fee, and institute updates.</p></div>
+                    <div class="box"><h3>PWA Support</h3><p class="small">Secondary installable web option.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | Mobile App</span><span>Page 5 of 8</span></div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <div class="topbar"><img class="logo" src="images/logo-name.png" alt="EduNex logo"><div class="tag">Library, HR and Communication</div></div>
+            <h2>Additional Powerful Modules</h2>
+            <p class="lead">EduNex goes beyond basic student and fee management with library, staff HR, payroll, chat, notifications, and institute settings.</p>
+
+            <div class="section grid-2">
+                <div class="box"><h3>Library Management</h3><ul class="clean"><li>Books, categories, authors, publishers, and inventory.</li><li>Issue books, return books, reservations, fines, and reports.</li><li>QR/barcode print support and scan-based search/issue/return workflows.</li></ul></div>
+                <div class="box"><h3>Digital Library</h3><ul class="clean"><li>Upload digital resources.</li><li>Preview and download resources.</li><li>Role-based access for students and teachers.</li></ul></div>
+                <div class="box"><h3>Staff HR</h3><ul class="clean"><li>Staff attendance and biometric/location-based attendance support.</li><li>Attendance settings and admin review.</li><li>Staff salary records and payroll generation.</li></ul></div>
+                <div class="box"><h3>Communication</h3><ul class="clean"><li>Notifications and portal alerts.</li><li>Staff group chat with mentions.</li><li>WhatsApp reminders for pending fee follow-up.</li></ul></div>
+                <div class="box"><h3>Institute Settings</h3><ul class="clean"><li>Institute profile, logo, contact details, and system preferences.</li><li>Feature toggles such as fees, HR, library, and live classes.</li><li>Payment gateway configuration.</li></ul></div>
+                <div class="box"><h3>Library Reports</h3><ul class="clean"><li>Inventory, issued, returned, overdue, student, staff, fine, and most-borrowed reports.</li><li>Export support where available.</li><li>Clear tracking of library operations.</li></ul></div>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | Library, HR and Communication</span><span>Page 6 of 8</span></div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <div class="topbar"><img class="logo" src="images/logo-name.png" alt="EduNex logo"><div class="tag">Dashboards and Reports</div></div>
+            <h2>Dashboard Images and Reporting View</h2>
+            <p class="lead">EduNex dashboards are built for quick decisions: revenue, attendance, students, batches, homework, tests, payments, and operational alerts.</p>
+
+            <div class="section grid-2">
+                <div class="dashboard-shot">
+                    <div class="dashbar"><span>Admin Dashboard</span><span>Revenue + Attendance</span></div>
+                    <div class="dashbody">
+                        <div class="kpis"><div class="kpi"><b>1,240</b><span>Students</span></div><div class="kpi"><b>48</b><span>Staff</span></div><div class="kpi"><b>₹4.8L</b><span>Revenue</span></div><div class="kpi"><b>18</b><span>Tests</span></div></div>
+                        <div class="chart-row"><div class="mini-card"><h3>6 Month Revenue</h3><div class="bars"><i style="height:40%"></i><i style="height:50%"></i><i style="height:63%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:92%"></i></div></div><div class="mini-card"><h3>Attendance</h3><div class="ring"></div></div></div>
+                    </div>
+                </div>
+                <div class="dashboard-shot">
+                    <div class="dashbar"><span>Teacher Dashboard</span><span>Class View</span></div>
+                    <div class="dashbody">
+                        <div class="kpis"><div class="kpi"><b>62</b><span>Students</span></div><div class="kpi"><b>4</b><span>Batches</span></div><div class="kpi"><b>11</b><span>Homework</span></div><div class="kpi"><b>6</b><span>Tests</span></div></div>
+                        <div class="chart-row"><div class="mini-card"><h3>Weekly Trend</h3><div class="bars"><i style="height:70%"></i><i style="height:68%"></i><i style="height:80%"></i><i style="height:76%"></i><i style="height:85%"></i><i style="height:72%"></i></div></div><div class="mini-card"><h3>Class</h3><div class="ring"></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section grid-3">
+                <div class="box"><h3>Admin Reports</h3><ul class="clean"><li>Revenue, payments, attendance, defaulters, and students.</li><li>PDF export for important reports.</li></ul></div>
+                <div class="box"><h3>Academic Reports</h3><ul class="clean"><li>Student report, marks, attendance, homework, and test performance.</li><li>Class-wise and batch-wise tracking.</li></ul></div>
+                <div class="box"><h3>Operational Reports</h3><ul class="clean"><li>Library, staff attendance, payroll, leaves, and fee status.</li><li>Useful for owners and principals.</li></ul></div>
+            </div>
+
+            <div class="dark-band">
+                <h2>Security and Reliability</h2>
+                <div class="grid-3">
+                    <div class="box"><h3>Data Isolation</h3><p class="small">Each institute's students, staff, fees, and records are separated.</p></div>
+                    <div class="box"><h3>Permissions</h3><p class="small">Role-based access protects sensitive financial and academic data.</p></div>
+                    <div class="box"><h3>Cloud Ready</h3><p class="small">Built as SaaS for single or multi-branch education businesses.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | Dashboards and Reports</span><span>Page 7 of 8</span></div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <div class="topbar"><img class="logo" src="images/logo-name.png" alt="EduNex logo"><div class="tag">Demo and Contact</div></div>
+            <h2>Who Can Use EduNex?</h2>
+            <div class="grid-3">
+                <div class="box blue"><h3>Schools</h3><p class="small">KG to 12 schools, private schools, and academic institutions.</p></div>
+                <div class="box blue"><h3>Coaching Centers</h3><p class="small">Tuition classes, competitive exam centers, and subject academies.</p></div>
+                <div class="box blue"><h3>Skill Institutes</h3><p class="small">Computer, language, creative, technical, and professional training institutes.</p></div>
+            </div>
+
+            <div class="section">
+                <h2>Fast Setup Workflow</h2>
+                <div class="grid-4">
+                    <div class="box"><h3>1. Configure</h3><p class="small">Add institute profile, logo, contact details, features, and payment settings.</p></div>
+                    <div class="box"><h3>2. Add Users</h3><p class="small">Create admin, principal, teacher, receptionist, staff, and student accounts.</p></div>
+                    <div class="box"><h3>3. Build Academics</h3><p class="small">Create batches, subjects, timetable, fee structures, and class teachers.</p></div>
+                    <div class="box"><h3>4. Go Live</h3><p class="small">Start attendance, fees, homework, tests, library, reports, and mobile app access.</p></div>
+                </div>
+            </div>
+
+            <div class="section cta">
+                <div>
+                    <h2>Modernize your institute with EduNex ERP.</h2>
+                    <p>Book a demo to see the dashboard, Android/iOS mobile app, finance workflow, academic tools, reports, library, HR, and communication modules.</p>
+                </div>
+                <div class="contact">
+                    <b>Engenius Digitech</b><br>
+                    Vadodara, Gujarat, India<br>
+                    Sales: engeniusdigitech@gmail.com
+                </div>
+            </div>
+
+            <div class="section box">
+                <h3>Print-Ready Notes</h3>
+                <p class="small">Designed in A4 size with safe margins and print color preservation. For best output, print at 100% scale, enable background graphics, and use high-quality color printing on 170-250 GSM paper.</p>
+            </div>
+        </div>
+        <div class="footer"><span>EduNex ERP | A product by Engenius Digitech</span><span>Page 8 of 8</span></div>
+    </section>
+</main>
+
+<div class="print-note">Print tip: use A4, 100% scale, enable background graphics, and export to PDF from your browser for final print.</div>
+</body>
+</html>

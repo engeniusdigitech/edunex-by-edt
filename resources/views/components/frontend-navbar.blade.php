@@ -41,6 +41,61 @@
 }
 .nb-desktop a:hover { color: #fff; background: rgba(255,255,255,0.07); }
 .nb-desktop a.active { color: hsl(174,72%,56%); font-weight: 600; }
+.nb-dropdown {
+    position: relative;
+}
+.nb-drop-trigger {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.95rem; font-weight: 500;
+    color: hsl(215,20%,65%);
+    padding: 8px 16px; border-radius: 8px;
+    cursor: pointer; white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+}
+.nb-drop-trigger:hover,
+.nb-dropdown:focus-within .nb-drop-trigger,
+.nb-dropdown:hover .nb-drop-trigger {
+    color: #fff; background: rgba(255,255,255,0.07);
+}
+.nb-drop-trigger.active { color: hsl(174,72%,56%); font-weight: 600; }
+.nb-drop-trigger i { font-size: 0.68rem; transition: transform 0.2s; }
+.nb-dropdown:hover .nb-drop-trigger i,
+.nb-dropdown:focus-within .nb-drop-trigger i { transform: rotate(180deg); }
+.nb-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    min-width: 190px;
+    padding: 8px;
+    border-radius: 12px;
+    background: hsla(222,47%,7%,0.98);
+    border: 1px solid hsl(217,33%,17%);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+}
+.nb-dropdown:hover .nb-menu,
+.nb-dropdown:focus-within .nb-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.nb-desktop .nb-menu a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.86rem;
+    border-radius: 8px;
+}
+.nb-desktop .nb-menu a i {
+    width: 16px;
+    color: hsl(174,72%,56%);
+    text-align: center;
+}
 
 /* ── DESKTOP BUTTONS ── */
 .nb-ctas { display: flex; align-items: center; gap: 12px; }
@@ -234,6 +289,19 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
             <a href="{{ url('/') }}"         class="{{ request()->is('/')            ? 'active' : '' }}">Home</a>
             <a href="{{ route('about') }}"   class="{{ request()->routeIs('about')   ? 'active' : '' }}">About Us</a>
             <a href="{{ route('pricing') }}" class="{{ request()->routeIs('pricing') ? 'active' : '' }}">Pricing</a>
+            <div class="nb-dropdown">
+                <div class="nb-drop-trigger {{ request()->is('edunex-erp-brochure*') ? 'active' : '' }}" tabindex="0">
+                    Brochure <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="nb-menu">
+                    <a href="{{ asset('edunex-erp-brochure.html') }}">
+                        <i class="fas fa-eye"></i> View Brochure
+                    </a>
+                    <a href="{{ asset('edunex-erp-brochure.pdf') }}" download>
+                        <i class="fas fa-file-arrow-down"></i> Download PDF
+                    </a>
+                </div>
+            </div>
             <a href="{{ route('blogs') }}"   class="{{ request()->routeIs('blogs')   ? 'active' : '' }}">Blogs</a>
             <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a>
         </nav>
@@ -276,6 +344,8 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
         <a href="{{ url('/') }}"         class="{{ request()->is('/')            ? 'active' : '' }}">Home         <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('about') }}"   class="{{ request()->routeIs('about')   ? 'active' : '' }}">About Us     <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('pricing') }}" class="{{ request()->routeIs('pricing') ? 'active' : '' }}">Pricing      <i class="fas fa-arrow-right nb-arr"></i></a>
+        <a href="{{ asset('edunex-erp-brochure.html') }}" class="{{ request()->is('edunex-erp-brochure.html') ? 'active' : '' }}">View Brochure <i class="fas fa-arrow-right nb-arr"></i></a>
+        <a href="{{ asset('edunex-erp-brochure.pdf') }}" download>Download PDF <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('blogs') }}"   class="{{ request()->routeIs('blogs')   ? 'active' : '' }}">Blogs        <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us   <i class="fas fa-arrow-right nb-arr"></i></a>
     </div>
