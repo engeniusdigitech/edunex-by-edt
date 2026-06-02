@@ -26,7 +26,7 @@
     </url>
     <url>
         <loc>{{ route('blogs') }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
+        <lastmod>2026-05-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -56,8 +56,14 @@
     </url>
 @foreach($locations as $slug => $data)
     <url>
-        <loc>{{ url('/institute-management-software-in-' . $slug) }}</loc>
-        <lastmod>2026-04-20</lastmod>
+        <loc>{{ url('/best-institute-management-software-in-' . $slug) }}</loc>
+        <lastmod>{{ $lastmod }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ url('/best-school-management-software-in-' . $slug) }}</loc>
+        <lastmod>{{ $lastmod }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>

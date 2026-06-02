@@ -111,22 +111,31 @@ class SeoLandingController extends Controller
     public function landing($citySlug)
     {
         if (!array_key_exists($citySlug, $this->locations)) {
-            // Unmapped slug? Redirect to home.
             return redirect('/');
         }
-
         $locationInfo = $this->locations[$citySlug];
         $city = $locationInfo['city'];
         $country = $locationInfo['country'];
-
         return view('seo-landing', compact('city', 'country'));
+    }
+
+    public function schoolLanding($citySlug)
+    {
+        if (!array_key_exists($citySlug, $this->locations)) {
+            return redirect('/');
+        }
+        $locationInfo = $this->locations[$citySlug];
+        $city = $locationInfo['city'];
+        $country = $locationInfo['country'];
+        $type = 'school';
+        return view('seo-landing', compact('city', 'country', 'type'));
     }
 
     public function sitemap()
     {
         $locations  = $this->locations;
         $xmlHeader  = '<?xml version="1.0" encoding="UTF-8"?>';
-        $lastmod    = now()->toDateString(); // e.g. 2026-03-26
+        $lastmod    = now()->toDateString();
 
         return response()
             ->view('sitemap', compact('locations', 'xmlHeader', 'lastmod'))
