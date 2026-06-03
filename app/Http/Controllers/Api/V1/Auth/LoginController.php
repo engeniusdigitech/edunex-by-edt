@@ -20,25 +20,54 @@ class LoginController extends Controller
 
         $student = Student::where('email', $request->email)->first();
 
-        if (!$student || !Hash::check($request->password, $student->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+        if ($student) {
+            if (!Hash::check($request->password, $student->password)) {
+                throw ValidationException::withMessages([
+                    'email' => ['The provided credentials are incorrect.'],
+                ]);
+            }
+
+            if (!$student->is_active) {
+                return response()->json([
+                    'message' => 'Your account is deactivated. Please contact admin.'
+                ], 403);
+            }
+
+            return response()->json([
+                'token' => $student->createToken($request->device_name)->plainTextToken,
+                'user_type' => 'student',
+                'student' => [
+                    'name' => $student->name,
+                    'email' => $student->email,
+                    'institute_id' => $student->institute_id,
+                ]
             ]);
         }
 
-        if (!$student->is_active) {
+        // Try authenticating as Staff User
+        $user = \App\Models\User::where('email', $request->email)->first();
+
+        if ($user) {
+            if (!Hash::check($request->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'email' => ['The provided credentials are incorrect.'],
+                ]);
+            }
+
             return response()->json([
-                'message' => 'Your account is deactivated. Please contact admin.'
-            ], 403);
+                'token' => $user->createToken($request->device_name)->plainTextToken,
+                'user_type' => 'staff',
+                'user' => [
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role' => $user->role->name ?? 'Staff',
+                    'institute_id' => $user->institute_id,
+                ]
+            ]);
         }
 
-        return response()->json([
-            'token' => $student->createToken($request->device_name)->plainTextToken,
-            'student' => [
-                'name' => $student->name,
-                'email' => $student->email,
-                'institute_id' => $student->institute_id,
-            ]
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorrect.'],
         ]);
     }
 

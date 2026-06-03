@@ -1,7 +1,7 @@
 <x-guest-layout :split="true">
 
 <style>
-/* Custom premium login page layout inspired by Gateflow */
+/* Custom premium login page layout for EduNex */
 .split-container {
     display: flex;
     min-height: 100vh;
@@ -12,7 +12,7 @@
 /* LEFT PANEL (BRAND/VISUAL SIDE) */
 .brand-panel {
     flex: 1;
-    background: linear-gradient(135deg, #08321F 0%, #02140D 100%);
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
     position: relative;
     padding: 60px;
     display: flex;
@@ -30,7 +30,7 @@
     right: -20%;
     width: 60%;
     height: 60%;
-    background: radial-gradient(circle, rgba(16, 163, 79, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(27, 117, 215, 0.08) 0%, transparent 70%);
     z-index: 1;
 }
 .brand-panel::after {
@@ -40,7 +40,7 @@
     left: -10%;
     width: 50%;
     height: 50%;
-    background: radial-gradient(circle, rgba(16, 163, 79, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(27, 117, 215, 0.08) 0%, transparent 70%);
     z-index: 1;
 }
 
@@ -77,7 +77,7 @@
     letter-spacing: -0.03em;
 }
 .brand-title span {
-    color: #10A34F; /* Gateflow bright green */
+    color: #1B75D7; /* EduNex primary blue */
 }
 .brand-description {
     font-size: 1.1rem;
@@ -123,7 +123,7 @@
     transition: color 0.3s;
 }
 .back-to-home:hover {
-    color: #10A34F;
+    color: #1B75D7;
 }
 
 .form-header {
@@ -143,7 +143,7 @@
     margin-bottom: 0;
 }
 
-/* Form Styles matching Gateflow */
+/* Form Styles matching EduNex */
 .form-group {
     margin-bottom: 24px;
 }
@@ -180,8 +180,8 @@
     color: #94A3B8;
 }
 .input-field-wrapper input:focus {
-    border-color: #10A34F; /* focused green border */
-    box-shadow: 0 0 0 4px rgba(16, 163, 79, 0.08);
+    border-color: #1B75D7; /* focused blue border */
+    box-shadow: 0 0 0 4px rgba(27, 117, 215, 0.08);
 }
 
 /* Options Wrapper (Remember Me & Forgot Password) */
@@ -211,8 +211,8 @@
     transition: all 0.2s;
 }
 .remember-me-checkbox input:checked {
-    background: #10A34F;
-    border-color: #10A34F;
+    background: #1B75D7;
+    border-color: #1B75D7;
 }
 .remember-me-checkbox input:checked::after {
     content: '✓';
@@ -225,13 +225,13 @@
     transform: translate(-50%, -50%);
 }
 .forgot-password-link {
-    color: #10A34F; /* Gateflow bright green */
+    color: #1B75D7; /* EduNex primary blue */
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s;
 }
 .forgot-password-link:hover {
-    color: #0d8a42;
+    color: #155cb0;
 }
 
 /* Button & Action Link */
@@ -241,7 +241,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 1rem;
     font-weight: 600;
-    background: #10A34F; /* Gateflow bright green */
+    background: #1B75D7; /* EduNex primary blue */
     color: #FFFFFF;
     border: none;
     border-radius: 12px;
@@ -250,13 +250,13 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 10px 20px -10px rgba(16, 163, 79, 0.3);
+    box-shadow: 0 10px 20px -10px rgba(27, 117, 215, 0.3);
     transition: all 0.3s ease;
 }
 .btn-signin:hover {
-    background: #0d8a42;
+    background: #155cb0;
     transform: translateY(-1px);
-    box-shadow: 0 15px 25px -10px rgba(16, 163, 79, 0.4);
+    box-shadow: 0 15px 25px -10px rgba(27, 117, 215, 0.4);
 }
 
 .bottom-link {
@@ -272,7 +272,7 @@
     transition: color 0.2s;
 }
 .bottom-link a:hover {
-    color: #10A34F;
+    color: #1B75D7;
 }
 
 /* Error validation styling */
@@ -285,9 +285,9 @@
 
 /* Status Alert Box */
 .alert-status-box {
-    background: rgba(16, 163, 79, 0.08);
-    border: 1px solid rgba(16, 163, 79, 0.2);
-    color: #0d8a42;
+    background: rgba(27, 117, 215, 0.08);
+    border: 1px solid rgba(27, 117, 215, 0.2);
+    color: #155cb0;
     padding: 14px 16px;
     border-radius: 12px;
     margin-bottom: 24px;
@@ -315,17 +315,23 @@
     <!-- LEFT PANEL (BRAND/VISUAL SIDE) -->
     <div class="brand-panel">
         
+        <!-- BRAND HEADER -->
+        <div class="brand-header">
+            <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo" class="logo-icon">
+            <img src="{{ asset('images/logo-name.png') }}" alt="EduNex" class="logo-name">
+        </div>
+        
         <!-- CENTER CONTENT -->
         <div class="brand-content">
-            <h1 class="brand-title">Secure Your<br><span>Workspace.</span></h1>
+            <h1 class="brand-title">Empower Your<br><span>Institute.</span></h1>
             <p class="brand-description">
-                Log in to access your real-time analytics dashboard, manage visitor approvals, and enforce safety compliance across your facilities instantly.
+                Log in to access your real-time analytics dashboard, manage student records, track biometric attendance, and streamline academics seamlessly.
             </p>
         </div>
         
         <!-- BOTTOM FOOTER -->
         <div class="brand-footer">
-            &copy; 2026 Engenius digitech. All rights reserved.
+            &copy; {{ date('Y') }} Engenius Digitech. All rights reserved.
         </div>
         
     </div>

@@ -11,7 +11,7 @@ Route::prefix('v1')->group(function () {
     // Auth Routes
     Route::post('/login', [\App\Http\Controllers\Api\V1\Auth\LoginController::class, 'login']);
 
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum', 'tenant'])->group(function () {
         Route::post('/logout', [\App\Http\Controllers\Api\V1\Auth\LoginController::class, 'logout']);
         Route::get('/profile', [\App\Http\Controllers\Api\V1\Student\ProfileController::class, 'show']);
 
@@ -32,5 +32,13 @@ Route::prefix('v1')->group(function () {
         
         Route::get('/leave-requests', [\App\Http\Controllers\Api\V1\Student\LeaveRequestController::class, 'index']);
         Route::post('/leave-requests', [\App\Http\Controllers\Api\V1\Student\LeaveRequestController::class, 'store']);
+
+        // Class Chatroom API endpoints
+        Route::get('/class-chat/batches', [\App\Http\Controllers\Api\V1\Chat\ClassChatApiController::class, 'batches']);
+        Route::get('/class-chat/messages', [\App\Http\Controllers\Api\V1\Chat\ClassChatApiController::class, 'messages']);
+        Route::post('/class-chat/messages', [\App\Http\Controllers\Api\V1\Chat\ClassChatApiController::class, 'sendMessage']);
+
+        // Transport API endpoints
+        Route::get('/student/transport', [\App\Http\Controllers\Api\V1\Transport\TransportApiController::class, 'studentTransport']);
     });
 });

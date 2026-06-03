@@ -165,6 +165,49 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/chat/messages', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat.index');
             Route::post('/chat/messages', [\App\Http\Controllers\ChatController::class, 'store'])->name('chat.store');
 
+            // Class Chatroom (Staff/Admin)
+            Route::get('/class-chat', [\App\Http\Controllers\ClassChatroomController::class, 'index'])->name('class-chat.index');
+            Route::get('/class-chat/messages/{batch}', [\App\Http\Controllers\ClassChatroomController::class, 'fetchMessages'])->name('class-chat.messages');
+            Route::post('/class-chat/messages/{batch}', [\App\Http\Controllers\ClassChatroomController::class, 'sendMessage'])->name('class-chat.send');
+
+            // Transport Management (Staff/Admin)
+            Route::prefix('transport')->name('transport.')->group(function () {
+                Route::get('/dashboard', [\App\Http\Controllers\TransportController::class, 'dashboard'])->name('dashboard');
+                
+                // Vehicles
+                Route::get('/vehicles', [\App\Http\Controllers\TransportController::class, 'vehicles'])->name('vehicles');
+                Route::post('/vehicles', [\App\Http\Controllers\TransportController::class, 'storeVehicle'])->name('vehicles.store');
+                Route::put('/vehicles/{vehicle}', [\App\Http\Controllers\TransportController::class, 'updateVehicle'])->name('vehicles.update');
+                Route::delete('/vehicles/{vehicle}', [\App\Http\Controllers\TransportController::class, 'deleteVehicle'])->name('vehicles.delete');
+                
+                // Routes
+                Route::get('/routes', [\App\Http\Controllers\TransportController::class, 'routes'])->name('routes');
+                Route::post('/routes', [\App\Http\Controllers\TransportController::class, 'storeRoute'])->name('routes.store');
+                Route::put('/routes/{route}', [\App\Http\Controllers\TransportController::class, 'updateRoute'])->name('routes.update');
+                Route::delete('/routes/{route}', [\App\Http\Controllers\TransportController::class, 'deleteRoute'])->name('routes.delete');
+                
+                // Stops
+                Route::get('/stops', [\App\Http\Controllers\TransportController::class, 'stops'])->name('stops');
+                Route::post('/stops', [\App\Http\Controllers\TransportController::class, 'storeStop'])->name('stops.store');
+                Route::put('/stops/{stop}', [\App\Http\Controllers\TransportController::class, 'updateStop'])->name('stops.update');
+                Route::delete('/stops/{stop}', [\App\Http\Controllers\TransportController::class, 'deleteStop'])->name('stops.delete');
+                
+                // Drivers
+                Route::get('/drivers', [\App\Http\Controllers\TransportController::class, 'drivers'])->name('drivers');
+                Route::post('/drivers', [\App\Http\Controllers\TransportController::class, 'storeDriver'])->name('drivers.store');
+                Route::put('/drivers/{driver}', [\App\Http\Controllers\TransportController::class, 'updateDriver'])->name('drivers.update');
+                Route::delete('/drivers/{driver}', [\App\Http\Controllers\TransportController::class, 'deleteDriver'])->name('drivers.delete');
+                
+                // Student Allocations
+                Route::get('/allocations', [\App\Http\Controllers\TransportController::class, 'allocations'])->name('allocations');
+                Route::post('/allocations', [\App\Http\Controllers\TransportController::class, 'storeAllocation'])->name('allocations.store');
+                Route::put('/allocations/{allocation}', [\App\Http\Controllers\TransportController::class, 'updateAllocation'])->name('allocations.update');
+                Route::delete('/allocations/{allocation}', [\App\Http\Controllers\TransportController::class, 'deleteAllocation'])->name('allocations.delete');
+                
+                // Reports
+                Route::get('/reports', [\App\Http\Controllers\TransportController::class, 'reports'])->name('reports');
+            });
+
             // Staff biometric attendance (self mark in/out)
             Route::get('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'index'])->name('staff-attendance.mark');
             Route::post('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'mark'])->name('staff-attendance.mark.store');
@@ -324,6 +367,14 @@ Route::prefix('student')->name('student.')->group(function () {
             // Profile
             Route::get('profile', [\App\Http\Controllers\Student\ProfileController::class, 'edit'])->name('profile.edit');
             Route::post('profile', [\App\Http\Controllers\Student\ProfileController::class, 'update'])->name('profile.update');
+
+            // Student Class Chatroom
+            Route::get('class-chat', [\App\Http\Controllers\Student\StudentClassChatController::class, 'index'])->name('class-chat.index');
+            Route::get('class-chat/messages', [\App\Http\Controllers\Student\StudentClassChatController::class, 'fetchMessages'])->name('class-chat.messages');
+            Route::post('class-chat/messages', [\App\Http\Controllers\Student\StudentClassChatController::class, 'sendMessage'])->name('class-chat.send');
+
+            // Student Transport
+            Route::get('transport', [\App\Http\Controllers\Student\StudentTransportController::class, 'index'])->name('transport.index');
         }
     );
 });

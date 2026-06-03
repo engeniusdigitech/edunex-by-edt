@@ -194,6 +194,20 @@
             <span>Leaves</span>
         </a>
         
+        <!-- Class Chatroom -->
+        @if(auth()->guard('student')->user()->batch_id)
+        <a href="{{ route('student.class-chat.index') }}" class="page-btn">
+            <i class="fas fa-comments"></i>
+            <span>Class Chat</span>
+        </a>
+        @endif
+
+        <!-- Transport Details -->
+        <a href="{{ route('student.transport.index') }}" class="page-btn">
+            <i class="fas fa-bus"></i>
+            <span>Transport</span>
+        </a>
+        
         <!-- Profile -->
         <a href="{{ route('student.profile.edit') }}" class="page-btn">
             <i class="fas fa-user-circle"></i>

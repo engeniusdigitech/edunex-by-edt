@@ -409,17 +409,17 @@
                         <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i
                                 class="fas fa-file-alt"></i> Tests & Exams</a>
 
-                        <a href="{{ route('gallery.index') }}" class="{{ request()->routeIs('gallery.*') ? 'active' : '' }}"><i
-                                class="fas fa-images"></i> Image Gallery</a>
-
-                        <a href="{{ route('discipline.index') }}" class="{{ request()->routeIs('discipline.*') ? 'active' : '' }}"><i
-                                class="fas fa-balance-scale"></i> Discipline</a>
-
                         @if(auth()->user()->institute->feature_live_classes)
                             <a href="{{ route('live-lectures.index') }}"
                                 class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
                                 Live Lectures</a>
                         @endif
+                    @endif
+
+                    <h6 class="sidebar-header mt-3">Additionally</h6>
+                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher())
+                        <a href="{{ route('class-chat.index') }}" class="{{ request()->routeIs('class-chat.*') ? 'active' : '' }}"><i
+                                class="fas fa-comments"></i> Class Chatroom</a>
                     @endif
 
                     @if(auth()->user()->isTeacher() || auth()->user()->isStaff())
@@ -451,6 +451,19 @@
                             <a href="{{ route('library.settings.edit') }}" class="{{ request()->routeIs('library.settings.*') ? 'active' : '' }} small py-2"><i class="fas fa-cog"></i> Settings</a>
                         </div>
                     @endcan
+
+                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal())
+                        <a href="{{ route('transport.dashboard') }}" class="{{ request()->routeIs('transport.*') ? 'active' : '' }}"><i
+                                class="fas fa-bus"></i> Transport Management</a>
+                    @endif
+
+                    @if(!auth()->user()->isReceptionist())
+                        <a href="{{ route('gallery.index') }}" class="{{ request()->routeIs('gallery.*') ? 'active' : '' }}"><i
+                                class="fas fa-images"></i> Image Gallery</a>
+
+                        <a href="{{ route('discipline.index') }}" class="{{ request()->routeIs('discipline.*') ? 'active' : '' }}"><i
+                                class="fas fa-balance-scale"></i> Discipline</a>
+                    @endif
 
                     @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist())
                         <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
