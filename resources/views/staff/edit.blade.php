@@ -34,6 +34,7 @@
                         <option value="{{ $role->id }}" {{ $staff->role_id == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                     @endforeach
                 </select>
+                <small class="text-muted">Teachers can manage attendance. Receptionists can manage payments. Librarians can manage library resources.</small>
             </div>
 
             <div class="mb-3" id="teacherOptionsContainer" style="{{ $staff->isTeacher() ? '' : 'display: none;' }}">

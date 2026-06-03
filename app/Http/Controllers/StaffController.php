@@ -15,7 +15,11 @@ class StaffController extends Controller
 {
     public function index(Request $request)
     {
-        $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
+        $allowedRoleNames = ['Teacher', 'Receptionist'];
+        if (auth()->user()->isInstituteAdmin()) {
+            $allowedRoleNames[] = 'Librarian';
+        }
+        $roles = Role::whereIn('name', $allowedRoleNames)->get();
         $roleIds = $roles->pluck('id');
         
         $query = User::whereIn('role_id', $roleIds)
@@ -40,7 +44,11 @@ class StaffController extends Controller
 
     public function create()
     {
-        $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
+        $allowedRoleNames = ['Teacher', 'Receptionist'];
+        if (auth()->user()->isInstituteAdmin()) {
+            $allowedRoleNames[] = 'Librarian';
+        }
+        $roles = Role::whereIn('name', $allowedRoleNames)->get();
         // Get active batches with their active subjects
         $batches = Batch::with(['subjects' => function ($query) {
             $query->where('is_active', 1);
@@ -54,7 +62,11 @@ class StaffController extends Controller
 
     public function store(Request $request)
     {
-        $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->pluck('id')->toArray();
+        $allowedRoleNames = ['Teacher', 'Receptionist'];
+        if (auth()->user()->isInstituteAdmin()) {
+            $allowedRoleNames[] = 'Librarian';
+        }
+        $roles = Role::whereIn('name', $allowedRoleNames)->pluck('id')->toArray();
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -94,10 +106,17 @@ class StaffController extends Controller
 
         return redirect()->route('staff.index')->with('success', 'Staff member created successfully.');
     }
-
     public function edit(User $staff)
     {
-        $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->get();
+        if ($staff->isLibrarian() && !auth()->user()->isInstituteAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $allowedRoleNames = ['Teacher', 'Receptionist'];
+        if (auth()->user()->isInstituteAdmin()) {
+            $allowedRoleNames[] = 'Librarian';
+        }
+        $roles = Role::whereIn('name', $allowedRoleNames)->get();
         // Get active batches with their active subjects for the hierarchical UI
         $batches = Batch::with(['subjects' => function ($query) {
             $query->where('is_active', 1);
@@ -113,7 +132,15 @@ class StaffController extends Controller
 
     public function update(Request $request, User $staff)
     {
-        $roles = Role::whereIn('name', ['Teacher', 'Receptionist'])->pluck('id')->toArray();
+        if ($staff->isLibrarian() && !auth()->user()->isInstituteAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $allowedRoleNames = ['Teacher', 'Receptionist'];
+        if (auth()->user()->isInstituteAdmin()) {
+            $allowedRoleNames[] = 'Librarian';
+        }
+        $roles = Role::whereIn('name', $allowedRoleNames)->pluck('id')->toArray();
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -162,6 +189,10 @@ class StaffController extends Controller
 
     public function destroy(User $staff)
     {
+        if ($staff->isLibrarian() && !auth()->user()->isInstituteAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $staff->delete();
         return redirect()->route('staff.index')->with('success', 'Staff member removed successfully.');
     }

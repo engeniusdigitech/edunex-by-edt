@@ -22,7 +22,15 @@ class AttendanceController extends Controller
             ->orderBy('date', 'desc')
             ->get();
 
-        // Calculate summary for the month
+        // Calculate overall cumulative summary (all-time)
+        $allAttendances = Attendance::where('student_id', $student->id)->get();
+        $allPresent = $allAttendances->where('status', 'present')->count();
+        $allAbsent = $allAttendances->where('status', 'absent')->count();
+        $allLate = $allAttendances->where('status', 'late')->count();
+        $allHalfDay = $allAttendances->where('status', 'half_day')->count();
+        $allTotal = $allAttendances->count();
+
+        // Calculate monthly summary
         $present = $attendances->where('status', 'present')->count();
         $absent = $attendances->where('status', 'absent')->count();
         $late = $attendances->where('status', 'late')->count();
@@ -31,6 +39,17 @@ class AttendanceController extends Controller
 
         return response()->json([
             'summary' => [
+                'total' => $allTotal,
+                'present' => $allPresent,
+                'presents' => $allPresent,
+                'absent' => $allAbsent,
+                'absents' => $allAbsent,
+                'late' => $allLate,
+                'half_day' => $allHalfDay,
+                'leaves' => $allLate + $allHalfDay,
+                'percentage' => $allTotal > 0 ? round((($allPresent + ($allHalfDay * 0.5)) / $allTotal) * 100, 2) : 0,
+            ],
+            'monthly_summary' => [
                 'total' => $total,
                 'present' => $present,
                 'presents' => $present,

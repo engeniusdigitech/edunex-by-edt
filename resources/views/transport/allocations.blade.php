@@ -112,69 +112,6 @@
                                 </form>
                             </td>
                         </tr>
-
-                        <!-- Edit Allocation Modal -->
-                        <div class="modal fade" id="editAllocationModal{{ $alloc->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content border-0" style="border-radius: 20px;">
-                                    <div class="modal-header border-bottom-0 pt-4 px-4">
-                                        <h5 class="modal-title fw-bold text-dark">Edit Allocation</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form action="{{ route('transport.allocations.update', $alloc->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="modal-body px-4">
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Student</label>
-                                                <input type="text" class="form-control" readonly value="{{ $alloc->student->name }} (Roll: {{ $alloc->student->roll_number ?? 'N/A' }})">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Route Assignment</label>
-                                                <select name="transport_route_id" class="form-select route-select-edit" required data-target-stops-id="edit_stops_{{ $alloc->id }}">
-                                                    @foreach($routes as $route)
-                                                        <option value="{{ $route->id }}" {{ $alloc->transport_route_id === $route->id ? 'selected' : '' }}>
-                                                            {{ $route->route_name }} (Fee: {{ currencySymbol() }}{{ number_format($route->fee, 2) }})
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Stop Assignment</label>
-                                                <select name="transport_stop_id" id="edit_stops_{{ $alloc->id }}" class="form-select" required>
-                                                    @foreach($stops as $stop)
-                                                        <option value="{{ $stop->id }}" data-route-id="{{ $stop->transport_route_id }}" {{ $alloc->transport_stop_id === $stop->id ? 'selected' : '' }}>
-                                                            {{ $stop->stop_name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Vehicle Assignment</label>
-                                                <select name="vehicle_id" class="form-select" required>
-                                                    @foreach($vehicles as $vehicle)
-                                                        <option value="{{ $vehicle->id }}" {{ $alloc->vehicle_id === $vehicle->id ? 'selected' : '' }}>
-                                                            {{ $vehicle->vehicle_name }} ({{ $vehicle->vehicle_number }})
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Fee Status</label>
-                                                <select name="fee_status" class="form-select" required>
-                                                    <option value="Pending" {{ $alloc->fee_status === 'Pending' ? 'selected' : '' }}>Pending</option>
-                                                    <option value="Paid" {{ $alloc->fee_status === 'Paid' ? 'selected' : '' }}>Paid</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer border-top-0 pb-4 px-4">
-                                            <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary rounded-pill px-4">Save Changes</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     @empty
                         <tr>
                             <td colspan="6" class="text-center py-5 text-muted small">No students allocated to transport.</td>
@@ -185,7 +122,9 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('modals')
 <!-- Add Allocation Modal -->
 <div class="modal fade" id="addAllocationModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -249,7 +188,73 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Allocation Modals -->
+@foreach($allocations as $alloc)
+<div class="modal fade" id="editAllocationModal{{ $alloc->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 20px;">
+            <div class="modal-header border-bottom-0 pt-4 px-4">
+                <h5 class="modal-title fw-bold text-dark">Edit Allocation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('transport.allocations.update', $alloc->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body px-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Student</label>
+                        <input type="text" class="form-control" readonly value="{{ $alloc->student->name }} (Roll: {{ $alloc->student->roll_number ?? 'N/A' }})">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Route Assignment</label>
+                        <select name="transport_route_id" class="form-select route-select-edit" required data-target-stops-id="edit_stops_{{ $alloc->id }}">
+                            @foreach($routes as $route)
+                                <option value="{{ $route->id }}" {{ $alloc->transport_route_id === $route->id ? 'selected' : '' }}>
+                                    {{ $route->route_name }} (Fee: {{ currencySymbol() }}{{ number_format($route->fee, 2) }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Stop Assignment</label>
+                        <select name="transport_stop_id" id="edit_stops_{{ $alloc->id }}" class="form-select" required>
+                            @foreach($stops as $stop)
+                                <option value="{{ $stop->id }}" data-route-id="{{ $stop->transport_route_id }}" {{ $alloc->transport_stop_id === $stop->id ? 'selected' : '' }}>
+                                    {{ $stop->stop_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Vehicle Assignment</label>
+                        <select name="vehicle_id" class="form-select" required>
+                            @foreach($vehicles as $vehicle)
+                                <option value="{{ $vehicle->id }}" {{ $alloc->vehicle_id === $vehicle->id ? 'selected' : '' }}>
+                                    {{ $vehicle->vehicle_name }} ({{ $vehicle->vehicle_number }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Fee Status</label>
+                        <select name="fee_status" class="form-select" required>
+                            <option value="Pending" {{ $alloc->fee_status === 'Pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="Paid" {{ $alloc->fee_status === 'Paid' ? 'selected' : '' }}>Paid</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pb-4 px-4">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary rounded-pill px-4">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
+
 
 @push('scripts')
 <script>

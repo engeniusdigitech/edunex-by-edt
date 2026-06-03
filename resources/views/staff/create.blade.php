@@ -42,7 +42,7 @@
                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                     @endforeach
                 </select>
-                <small class="text-muted">Teachers can manage attendance. Receptionists can manage payments.</small>
+                <small class="text-muted">Teachers can manage attendance. Receptionists can manage payments. Librarians can manage library resources.</small>
             </div>
 
             <div class="mb-3" id="teacherOptionsContainer" style="display: none;">

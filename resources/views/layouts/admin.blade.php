@@ -257,8 +257,8 @@
             <div class="col-lg-2 col-md-3 sidebar d-flex flex-column h-100" id="adminSidebar">
                 <div class="d-flex flex-column align-items-center gap-1 px-3 py-2"
                     style="border-bottom:1px solid rgba(255,255,255,0.06);text-align:center;">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo"
-                        style="height:80px;width:80px;object-fit:contain;border-radius:14px;flex-shrink:0;">
+                    <!-- <img src="{{ asset('images/logo.png') }}" alt="Logo"
+                        style="height:80px;width:80px;object-fit:contain;border-radius:14px;flex-shrink:0;"> -->
                     <div style="line-height:1.2;min-width:0;">
                         <div
                             style="font-size:0.82rem;font-weight: 500;color:#fff;overflow:hidden;text-overflow:ellipsis;">
@@ -377,7 +377,7 @@
                         @endif
                     @endcan
 
-                    @if(!auth()->user()->isReceptionist())
+                    @if(!auth()->user()->isReceptionist() && !auth()->user()->isLibrarian())
                         <h6 class="sidebar-header mt-3">Academics</h6>
                         @can('manage-batches')
                             <a href="{{ route('batches.index') }}" class="{{ request()->routeIs('batches.*') ? 'active' : '' }}"><i
@@ -465,23 +465,25 @@
                                 class="fas fa-balance-scale"></i> Discipline</a>
                     @endif
 
-                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist())
-                        <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
-                        
-                        @if(!auth()->user()->isReceptionist())
-                            @php
-                                $showAttendanceRep = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
-                            @endphp
-                            @if($showAttendanceRep)
-                                <a href="{{ route('reports.attendance') }}"
-                                    class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
-                                        class="fas fa-chart-bar"></i> Attendance Rep</a>
-                            @endif
+                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist() || auth()->user()->isLibrarian())
+                        @if(!auth()->user()->isLibrarian())
+                            <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
                             
-                            @if(auth()->user()->isInstituteAdmin() || auth()->user()->isReceptionist())
-                                <a href="{{ route('reports.defaulters') }}"
-                                    class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i
-                                        class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                            @if(!auth()->user()->isReceptionist())
+                                @php
+                                    $showAttendanceRep = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
+                                @endphp
+                                @if($showAttendanceRep)
+                                    <a href="{{ route('reports.attendance') }}"
+                                        class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
+                                            class="fas fa-chart-bar"></i> Attendance Rep</a>
+                                @endif
+                                
+                                @if(auth()->user()->isInstituteAdmin() || auth()->user()->isReceptionist())
+                                    <a href="{{ route('reports.defaulters') }}"
+                                        class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i
+                                            class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                                @endif
                             @endif
                         @endif
 

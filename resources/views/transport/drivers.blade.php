@@ -98,47 +98,6 @@
                                 </form>
                             </td>
                         </tr>
-
-                        <!-- Edit Driver Modal -->
-                        <div class="modal fade" id="editDriverModal{{ $driver->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content border-0" style="border-radius: 20px;">
-                                    <div class="modal-header border-bottom-0 pt-4 px-4">
-                                        <h5 class="modal-title fw-bold text-dark">Edit Driver</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form action="{{ route('transport.drivers.update', $driver->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="modal-body px-4">
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Driver Name</label>
-                                                <input type="text" name="driver_name" class="form-control" required value="{{ $driver->driver_name }}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Mobile Number</label>
-                                                <input type="text" name="mobile_number" class="form-control" required value="{{ $driver->mobile_number }}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label small fw-semibold">Assigned Vehicle</label>
-                                                <select name="vehicle_id" class="form-select">
-                                                    <option value="">No Vehicle Assigned</option>
-                                                    @foreach($vehicles as $vehicle)
-                                                        <option value="{{ $vehicle->id }}" {{ $driver->vehicle_id === $vehicle->id ? 'selected' : '' }}>
-                                                            {{ $vehicle->vehicle_name }} ({{ $vehicle->vehicle_number }})
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer border-top-0 pb-4 px-4">
-                                            <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary rounded-pill px-4">Save Changes</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     @empty
                         <tr>
                             <td colspan="4" class="text-center py-5 text-muted small">No drivers registered in the database.</td>
@@ -149,7 +108,9 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('modals')
 <!-- Add Driver Modal -->
 <div class="modal fade" id="addDriverModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -187,4 +148,47 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Driver Modals -->
+@foreach($drivers as $driver)
+<div class="modal fade" id="editDriverModal{{ $driver->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0" style="border-radius: 20px;">
+            <div class="modal-header border-bottom-0 pt-4 px-4">
+                <h5 class="modal-title fw-bold text-dark">Edit Driver</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('transport.drivers.update', $driver->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body px-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Driver Name</label>
+                        <input type="text" name="driver_name" class="form-control" required value="{{ $driver->driver_name }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Mobile Number</label>
+                        <input type="text" name="mobile_number" class="form-control" required value="{{ $driver->mobile_number }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Assigned Vehicle</label>
+                        <select name="vehicle_id" class="form-select">
+                            <option value="">No Vehicle Assigned</option>
+                            @foreach($vehicles as $vehicle)
+                                <option value="{{ $vehicle->id }}" {{ $driver->vehicle_id === $vehicle->id ? 'selected' : '' }}>
+                                    {{ $vehicle->vehicle_name }} ({{ $vehicle->vehicle_number }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pb-4 px-4">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary rounded-pill px-4">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection

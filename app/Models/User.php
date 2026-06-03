@@ -128,7 +128,7 @@ class User extends Authenticatable
 
     public function canUseBiometricAttendance(): bool
     {
-        return $this->isTeacher() || $this->isReceptionist() || $this->isPrincipal();
+        return $this->isTeacher() || $this->isReceptionist() || $this->isPrincipal() || $this->isLibrarian();
     }
 
     public function staffAttendances()
