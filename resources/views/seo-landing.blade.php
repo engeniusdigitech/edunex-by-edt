@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -717,18 +717,17 @@ body {
 
 @include('components.frontend-navbar')
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section class="hero">
     <div class="hero-blob blob-1"></div>
     <div class="hero-blob blob-2"></div>
     <div class="hero-blob blob-3"></div>
 
-    <div class="hero-content">
+    <div class="hero-content" style="margin-top: -30px;">
         <div class="container px-4">
             <div class="row align-items-center g-5">
 
                 <!-- Copy -->
-                <div class="col-lg-6 text-center text-lg-start" style="margin-top: -60px;">
+                <div class="col-lg-6 text-center text-lg-start hero-copy">
                     <h1 class="hero-h2">
                         The smartest way<br>to run your<br>
                         <span class="g-text">School or institute in {{$city}}.</span>
@@ -738,15 +737,20 @@ body {
                     </p>
 
                     <div class="hero-features">
-                        <span class="hfeat"><i class="fas fa-face-smile-beam"></i> AI Face Biometrics</span>
-                        <span class="hfeat"><i class="fas fa-location-dot"></i> GPS Attendance</span>
-                        <span class="hfeat"><i class="fas fa-money-bill-wave"></i> Auto Payroll</span>
+                        <span class="hfeat"><i class="fas fa-university"></i> Complete ERP</span>
+                        <span class="hfeat"><i class="fas fa-credit-card"></i> Online Fee Payments</span>
+                        <span class="hfeat"><i class="fab fa-whatsapp"></i> WhatsApp Integration</span>
+                        <span class="hfeat"><i class="fas fa-book-open"></i> Academics Management</span>
                         <span class="hfeat"><i class="fas fa-video"></i> Live Lectures</span>
-                        <span class="hfeat"><i class="fab fa-whatsapp"></i> WhatsApp Alerts</span>
-                        <span class="hfeat"><i class="fas fa-file-invoice"></i> Digital Payslips</span>
+                        <span class="hfeat"><i class="fas fa-face-smile-beam"></i> AI Staff Biometrics</span>
+                        <span class="hfeat"><i class="fas fa-chart-line"></i> Analytics & Reports</span>
+                        <span class="hfeat"><i class="fas fa-book"></i> Library Management</span>
+                        <span class="hfeat"><i class="fas fa-mobile-alt"></i> Android & iOS App</span>
+                        <span class="hfeat"><i class="fas fa-users"></i> Parent & Student Portal</span>
+                        <span class="hfeat"><i class="fas fa-cogs"></i> And much more...</span>
                     </div>
 
-                    <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+                    <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start hero-cta-btns">
                         @auth
                             <a href="{{ auth()->user()->isSuperAdmin() ? route('superadmin.dashboard') : url('/dashboard') }}" class="btn-primary">
                                 Dashboard <i class="fas fa-arrow-right"></i>
@@ -761,14 +765,18 @@ body {
                         @endauth
                     </div>
                     <p style="margin-top:14px;font-size:0.75rem;color:var(--muted);">
-                        <i class="fas fa-shield-alt me-1" style="color:hsl(174,72%,56%);"></i> No credit card &nbsp;Â·&nbsp;
+                        <i class="fas fa-shield-alt me-1" style="color:hsl(174,72%,56%);"></i> No credit card &nbsp;·&nbsp;
                         <i class="fas fa-clock me-1" style="color:hsl(217,91%,60%);"></i> Live in 15 minutes
                     </p>
                 </div>
 
                 <!-- Visual -->
-                <div class="col-lg-6">
+                <div class="col-lg-6" >
                     <div class="portal-display">
+                        <div class="portal-text" style="max-width: 650px;">
+                                <h3>All in One ERP</h3>
+                                <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
+                            </div>
                         <div class="display-wrapper">
                             <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex ERP Dashboard" class="desktop-mockup">
                         </div>

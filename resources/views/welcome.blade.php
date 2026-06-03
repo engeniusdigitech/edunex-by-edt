@@ -713,8 +713,12 @@ body {
                 </div>
 
                 <!-- Visual -->
-                <div class="col-lg-6">
+                <div class="col-lg-6" style="margin-top:-80px;">
                     <div class="portal-display">
+                        <div class="portal-text" style="max-width: 650px;">
+                                <h3>All in One ERP</h3>
+                                <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
+                            </div>
                         <div class="display-wrapper">
                             <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex ERP Dashboard" class="desktop-mockup">
                         </div>
