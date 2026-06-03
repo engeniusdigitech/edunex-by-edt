@@ -26,6 +26,25 @@
                 <form method="POST" action="{{ route('library.issues.store') }}">
                     @csrf
 
+                    @if(session('error'))
+                    <div class="alert alert-danger d-flex align-items-center gap-2 mb-4">
+                        <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+                    </div>
+                    @endif
+
+                    @if($errors->any())
+                    <div class="alert alert-danger mb-4">
+                        <ul class="mb-0 small">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                    {{-- Hidden member_id populated by JS --}}
+                    <input type="hidden" name="member_id" id="member_id">
+
                     {{-- Member Type Selection --}}
                     <div class="mb-4">
                         <label class="form-label fw-semibold">Member Type <span class="text-danger">*</span></label>
@@ -154,14 +173,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const staffSection = document.getElementById('staffSection');
     const batchSelect = document.getElementById('batch_id');
     const studentSelect = document.getElementById('student_id');
+    const staffSelect = document.getElementById('staff_id');
+    const memberIdInput = document.getElementById('member_id');
     const bookSelect = document.getElementById('book_id');
     const availabilityInfo = document.getElementById('availabilityInfo');
-    const submitBtn = document.getElementById('submitBtn');
 
-    // Batch → Students mapping (embedded from server)
     const batchStudents = @json($batches->mapWithKeys(fn($b) => [$b->id => $b->students->map(fn($s) => ['id' => $s->id, 'name' => $s->name])]));
 
-    // Toggle member type sections
+    function syncMemberId() {
+        const selected = document.querySelector('input[name="member_type"]:checked')?.value;
+        memberIdInput.value = selected === 'staff' ? (staffSelect.value || '') : (studentSelect.value || '');
+    }
+
     function toggleMemberType() {
         const selected = document.querySelector('input[name="member_type"]:checked')?.value;
         if (selected === 'staff') {
@@ -173,16 +196,15 @@ document.addEventListener('DOMContentLoaded', function() {
             studentSection.style.display = '';
             staffSection.style.display = 'none';
         }
+        syncMemberId();
     }
 
     memberRadios.forEach(radio => radio.addEventListener('change', toggleMemberType));
     toggleMemberType();
 
-    // Cascade batch → student
     batchSelect.addEventListener('change', function() {
         const batchId = this.value;
         studentSelect.innerHTML = '<option value="">Select Student</option>';
-
         if (batchId && batchStudents[batchId]) {
             batchStudents[batchId].forEach(function(student) {
                 const opt = document.createElement('option');
@@ -191,7 +213,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 studentSelect.appendChild(opt);
             });
         }
+        syncMemberId();
     });
+
+    studentSelect.addEventListener('change', syncMemberId);
+    staffSelect.addEventListener('change', syncMemberId);
 
     // Restore old student_id if present
     @if(old('batch_id'))

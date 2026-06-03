@@ -129,7 +129,7 @@
                                 <i class="fas fa-eye"></i>
                             </a>
                             @if($issue->status === 'issued')
-                                <a href="{{ route('library.returns.show', $issue) }}" class="btn btn-outline-success btn-sm" title="Return">
+                                <a href="{{ route('library.returns.returnBook', $issue) }}" class="btn btn-outline-success btn-sm" title="Return">
                                     <i class="fas fa-undo"></i>
                                 </a>
                             @endif

@@ -55,16 +55,17 @@ class BookIssueController extends Controller
 
     public function create()
     {
-        $batches = Batch::where('is_active', true)->orderBy('name')->get();
+        $batches = Batch::where('is_active', true)->with('students')->orderBy('name')->get();
 
-        // Staff: Teacher, Receptionist, Principal, Librarian (NOT Institute Admin)
         $staffMembers = User::whereHas('role', function ($q) {
             $q->whereIn('name', ['Teacher', 'Receptionist', 'Principal', 'Librarian']);
         })->orderBy('name')->get();
 
         $books = Book::where('available_copies', '>', 0)->orderBy('title')->get();
 
-        return view('library.issues.create', compact('batches', 'staffMembers', 'books'));
+        $settings = \App\Models\Library\Setting::forInstitute();
+
+        return view('library.issues.create', compact('batches', 'staffMembers', 'books', 'settings'));
     }
 
     public function store(StoreBookIssueRequest $request)

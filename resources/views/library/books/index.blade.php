@@ -138,8 +138,8 @@
                             <div class="d-flex gap-1 flex-wrap">
                                 <a href="{{ route('library.books.show', $book) }}" class="btn btn-outline-primary btn-sm" title="View"><i class="fas fa-eye"></i></a>
                                 <a href="{{ route('library.books.edit', $book) }}" class="btn btn-outline-warning btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
-                                <a href="{{ route('library.books.qr', $book) }}" class="btn btn-outline-secondary btn-sm" title="Print QR" target="_blank"><i class="fas fa-qrcode"></i></a>
-                                <a href="{{ route('library.books.barcode', $book) }}" class="btn btn-outline-secondary btn-sm" title="Print Barcode" target="_blank"><i class="fas fa-barcode"></i></a>
+                                <a href="{{ route('library.books.print-qr', $book) }}" class="btn btn-outline-secondary btn-sm" title="Print QR" target="_blank"><i class="fas fa-qrcode"></i></a>
+                                <a href="{{ route('library.books.print-barcode', $book) }}" class="btn btn-outline-secondary btn-sm" title="Print Barcode" target="_blank"><i class="fas fa-barcode"></i></a>
                                 <form action="{{ route('library.books.destroy', $book) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this book?')">
                                     @csrf @method('DELETE')
                                     <button class="btn btn-outline-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>

@@ -56,13 +56,13 @@
     </url>
 @foreach($locations as $slug => $data)
     <url>
-        <loc>{{ url('/best-institute-management-software-in-' . $slug) }}</loc>
+        <loc>{{ url('/institute-erp/' . $slug) }}</loc>
         <lastmod>{{ $lastmod }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>{{ url('/best-school-management-software-in-' . $slug) }}</loc>
+        <loc>{{ url('/school-erp/' . $slug) }}</loc>
         <lastmod>{{ $lastmod }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>

@@ -715,22 +715,9 @@ body {
                 <!-- Visual -->
                 <div class="col-lg-6">
                     <div class="portal-display">
-                     
-
-                        <!-- Admin Portal Content -->
-                        <div id="admin-portal" class="portal-content active">
-                            <div class="display-wrapper">
-                                <img src="{{ asset('images/hero-banner.jpg') }}" alt="Admin Desktop" class="desktop-mockup">
-                                <div class="mobile-mockup">
-                                    <img src="{{ asset('images/hero-banner-mobile.png') }}" alt="Admin Mobile">
-                                </div>
-                            </div>
-                            <div class="portal-text">
-                                <h3>All in One ERP</h3>
-                                <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
-                            </div>
+                        <div class="display-wrapper">
+                            <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex ERP Dashboard" class="desktop-mockup">
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -747,7 +734,7 @@ body {
                 <div style="position:relative; display:inline-block;">
                     <!-- Decorative glow behind phone -->
                     <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
-                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 320px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 250px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
                 </div>
             </div>
             <div class="col-lg-6">

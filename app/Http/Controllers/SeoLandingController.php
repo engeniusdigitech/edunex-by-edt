@@ -76,6 +76,7 @@ class SeoLandingController extends Controller
         'jammu' => ['city' => 'Jammu', 'country' => 'India'],
         'mangalore' => ['city' => 'Mangalore', 'country' => 'India'],
         'belgaum' => ['city' => 'Belgaum', 'country' => 'India'],
+        'palanpur' => ['city' => 'Palanpur', 'country' => 'India'],
 
         // Major Global Cities for scaling
         'new-york' => ['city' => 'New York', 'country' => 'USA'],
@@ -108,6 +109,7 @@ class SeoLandingController extends Controller
         'kathmandu' => ['city' => 'Kathmandu', 'country' => 'Nepal'],
     ];
 
+
     public function landing($citySlug)
     {
         if (!array_key_exists($citySlug, $this->locations)) {
@@ -116,7 +118,8 @@ class SeoLandingController extends Controller
         $locationInfo = $this->locations[$citySlug];
         $city = $locationInfo['city'];
         $country = $locationInfo['country'];
-        return view('seo-landing', compact('city', 'country'));
+        $type = 'institute';
+        return view('seo-landing', compact('city', 'country', 'type'));
     }
 
     public function schoolLanding($citySlug)

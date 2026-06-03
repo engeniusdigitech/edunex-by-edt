@@ -4,6 +4,57 @@
 
 @section('content')
 
+    <style>
+        /* Dashboard Hero Custom Styles */
+        .dashboard-hero-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            line-height: 1.25;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+        }
+        .dashboard-hero-subtitle {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+
+    {{-- ── DASHBOARD HERO BANNER ── --}}
+    <div class="row g-4 mb-4">
+        <div class="col-12">
+            <div class="card border-0 overflow-hidden" style="border-radius:24px; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-7 p-4 p-md-5">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="badge rounded-pill px-3 py-1.5 fw-semibold" style="background: rgba(37, 99, 235, 0.15); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                <i class="fas fa-sparkles me-1 text-warning"></i> Quick Update
+                            </span>
+                            <span style="font-size: 0.8rem; color: #94A3B8;">System online & verified</span>
+                        </div>
+                        <h1 class="dashboard-hero-title mb-3">
+                            Welcome back, {{ explode(' ', auth()->user()->name)[0] }}! 🚀
+                        </h1>
+                        <p class="dashboard-hero-subtitle mb-4">
+                            Manage your institute efficiently with real-time analytics. Explore your biometric attendance, check payments, and assign homework seamlessly.
+                        </p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="{{ route('attendance.index') }}" class="btn btn-primary px-4 py-2.5 rounded-pill shadow-sm" style="background: #2563EB; border: none; font-weight: 500; font-size: 0.88rem;">
+                                <i class="fas fa-calendar-check me-2"></i> Mark Attendance
+                            </a>
+                            <a href="{{ route('students.index') }}" class="btn btn-outline-light px-4 py-2.5 rounded-pill" style="border-color: rgba(255,255,255,0.15); font-weight: 500; font-size: 0.88rem; color: #E2E8F0; background: rgba(255,255,255,0.03);">
+                                <i class="fas fa-user-plus me-2"></i> Manage Students
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 p-4 pe-lg-5 ps-lg-0 text-center d-flex align-items-center justify-content-center">
+                        <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex ERP Dashboard" class="img-fluid rounded-4" style="max-height: 250px; object-fit: contain; width: 100%; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <x-biometric-attendance-card />
 
     {{-- ── ROW 1: 6 STAT CARDS ── --}}
@@ -277,6 +328,8 @@
 
 @push('scripts')
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
         @if(!auth()->user()->isPrincipal())
         // ── 6-Month Revenue Line Chart ──
         const revCtx = document.getElementById('revenueChart').getContext('2d');

@@ -605,6 +605,113 @@ body {
 }
 </style>
 
+    <!-- FAQ Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@@type": "Question",
+          "name": "How fast can we set up Edunex ERP for our school?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Setting up Edunex ERP is incredibly fast. Because the software is hosted on a secure cloud network, there is no need for local server installations or complex IT setups. Once you sign up, our dedicated onboarding team can help migrate your student databases, configure your custom fee structures, and get your system live in under 15 minutes."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Does the Face Recognition Attendance system require expensive specialized hardware?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Not at all. Unlike legacy biometric systems that require expensive dedicated machines and wiring, Edunex ERP’s AI facial recognition runs smoothly on any standard Android or iOS tablet, smartphone, or laptop camera. This dramatically lowers the entry cost for schools and makes deployment effortless."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "How secure is our school's student and financial data on your platform?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Data security is our highest priority. Edunex ERP utilizes a modern multi-tenant cloud architecture, which means that your school's data is housed in a completely isolated database silo. It is fully encrypted at rest and in transit. Your records, fee histories, and employee payrolls are 100% invisible to any other academy on the platform."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Can we manage multiple school campuses or coaching branches from one account?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Yes! If you manage a chain of schools or coaching institutes across {{ $city }} and nearby regions, Edunex ERP offers a centralized dashboard. Trustees and administrators can view overall metrics, monitor financial reports, check overall attendance trends, and switch between campuses seamlessly using a single master login."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "How does the automated fee reminder system work on WhatsApp?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Our system integrates directly with authorized WhatsApp APIs. The billing engine automatically monitors pending tuition dues on your ledgers. With one click, administrators can dispatch personalized payment links directly to parents' WhatsApp numbers. Parents can click the link and securely clear the balance instantly using UPI or card."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Local Business Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "EducationalOrganization",
+      "name": "Edunex ERP {{ $city }}",
+      "description": "Provider of premium school management software, student ERP systems, and AI face biometric attendance platforms for schools and coaching institutes in {{ $city }}, {{ $country }}.",
+      "url": "https://edunex.com/best-school-management-software-in-{{ Str::slug($city) }}",
+      "logo": "https://edunex.com/images/logo.png",
+      "address": {
+        "@@type": "PostalAddress",
+        "addressLocality": "{{ $city }}",
+        "addressCountry": "{{ $country }}"
+      },
+      "contactPoint": {
+        "@@type": "ContactPoint",
+        "telephone": "+91-99999-88888",
+        "contactType": "customer service",
+        "areaServed": "{{ $city }}",
+        "availableLanguage": ["English", "Hindi"]
+      },
+      "aggregateRating": {
+        "@@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "184"
+      }
+    }
+    </script>
+
+    <!-- Breadcrumb Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://edunex.com"
+        },
+        {
+          "@@type": "ListItem",
+          "position": 2,
+          "name": "School ERP in {{ $country }}",
+          "item": "https://edunex.com/school-erp-in-{{ Str::slug($country) }}"
+        },
+        {
+          "@@type": "ListItem",
+          "position": 3,
+          "name": "Best School Management Software in {{ $city }}",
+          "item": "https://edunex.com/best-school-management-software-in-{{ Str::slug($city) }}"
+        }
+      ]
+    }
+    </script>
+
 </head>
 <body>
 
@@ -662,43 +769,50 @@ body {
                 <!-- Visual -->
                 <div class="col-lg-6">
                     <div class="portal-display">
-                        <div class="portal-tabs">
-                            <button class="portal-tab-btn active" onclick="switchPortal('admin')">Admin Portal</button>
-                            <button class="portal-tab-btn" onclick="switchPortal('student')">Student & Parent App</button>
-                        </div>
-
-                        <!-- Admin Portal Content -->
-                        <div id="admin-portal" class="portal-content active">
-                            <div class="display-wrapper">
-                                <img src="{{ asset('images/hero-banner.jpg') }}" alt="Admin Desktop" class="desktop-mockup">
-                                <div class="mobile-mockup">
-                                    <img src="{{ asset('images/hero-banner-mobile.png') }}" alt="Admin Mobile">
-                                </div>
-                            </div>
-                            <div class="portal-text">
-                                <h3>Institute ERP</h3>
-                                <p>Manage your entire institute from one central interface. Track attendance, fees, and more.</p>
-                            </div>
-                        </div>
-
-                        <!-- Student Portal Content -->
-                        <div id="student-portal" class="portal-content">
-                            <div class="display-wrapper">
-                                <img src="{{ asset('images/hero-banner-2.png') }}" alt="Student Desktop" class="desktop-mockup">
-                                <div class="mobile-mockup">
-                                    <img src="{{ asset('images/hero-banner-2-mobile.png') }}" alt="Student Mobile">
-                                </div>
-                            </div>
-                            <div class="portal-text">
-                                <h3>Student & Parent App</h3>
-                                <p>Empower your students and parents with a dedicated mobile app for schedules, dues, and live updates.</p>
-                            </div>
+                        <div class="display-wrapper">
+                            <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex ERP Dashboard" class="desktop-mockup">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
+<!-- ══════════════ MOBILE APP ══════════════ -->
+<section id="mobile-app" class="staff-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border);">
+    <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>
+    <div class="staff-blob-1" style="background:hsla(217,91%,60%,0.08); bottom:-80px; right:-80px;"></div>
+    <div class="container px-4" style="position:relative;z-index:2;">
+        <div class="row align-items-center g-5">
+            
+            <div class="col-lg-6 text-center">
+                <div style="position:relative; display:inline-block;">
+                    <!-- Decorative glow behind phone -->
+                    <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
+                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 250px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <span class="sec-eyebrow" style="color: hsl(262,83%,65%);">Dedicated Mobile App</span>
+                <h2 class="sec-title">The entire institute in <br><span class="g-text-2">their pocket.</span></h2>
+                <p class="sec-desc mb-4">Empower your students and parents with a modern, native-like mobile app. They can check timetables, track attendance, pay fees, and join live classes from anywhere.</p>
+                
+                <ul class="feat-list mb-4" style="max-width: 450px; list-style: none; padding: 0;">
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Real-time attendance & result notifications</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Online fee payments with instant receipts</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> One-tap join for live video lectures</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Access study materials & homework</li>
+                </ul>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a href="{{ route('contact') }}" class="btn-primary" style="background: var(--gradient-secondary); box-shadow: var(--glow-secondary);">See App Demo <i class="fas fa-mobile-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <!-- Stats strip -->
     <div class="stats-strip">
@@ -712,13 +826,83 @@ body {
                 <div class="stat-pipe d-none d-md-block"></div>
                 <div><div class="stat-val g-text">24/7</div><div class="stat-lbl">Support</div></div>
                 <div class="stat-pipe d-none d-md-block"></div>
-                <div><div class="stat-val" style="color:hsl(38,92%,60%);">5â˜…</div><div class="stat-lbl">Rating</div></div>
+                <div><div class="stat-val" style="color:hsl(38,92%,60%);">5★</div><div class="stat-lbl">Rating</div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• FEATURES â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ ABOUT SCHOOL ERP ══════════════ -->
+<section id="about-erp" class="feat-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border); padding: 90px 0;">
+    <div class="container px-4">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <span class="badge-pill mb-3"><i class="fas fa-school me-1"></i> Local Education Landscape</span>
+                <h2 class="sec-title" style="margin-bottom:20px;">Modernizing School Operations in <span class="g-text">{{ $city }}</span></h2>
+                <p class="sec-desc" style="font-size:0.95rem; margin-bottom:24px;">The educational landscape in {{ $city }} is experiencing an unprecedented evolution. As schools, colleges, and coaching academies strive to match global academic standards, the administrative burden on administrators, trustees, and educators has grown exponentially. From national curricula like CBSE and ICSE to prestigious international boards (IB/IGCSE) and regional state curricula, schools are tasked with managing dense, complex academic programs. With this rapid expansion comes a critical need for modernization: institutions can no longer afford to operate using siloed desktop applications, manual registers, or disjointed WhatsApp groups.</p>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle" style="color:var(--primary); margin-top:3px;"></i>
+                            <div>
+                                <h6 class="mb-1" style="font-weight:600; font-size:0.9rem;">State & Central Boards</h6>
+                                <p style="font-size:0.75rem; color:var(--muted); line-height:1.4; margin-bottom:0;">Tailored for CBSE, ICSE, IB, and State Board compliance.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle" style="color:var(--primary); margin-top:3px;"></i>
+                            <div>
+                                <h6 class="mb-1" style="font-weight:600; font-size:0.9rem;">Multi-Branch Sync</h6>
+                                <p style="font-size:0.75rem; color:var(--muted); line-height:1.4; margin-bottom:0;">Unify multiple campuses in {{ $city }} effortlessly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card-glass p-4" style="background: var(--card-bg); border-color: var(--border);">
+                    <h4 style="font-size:1.15rem; font-weight:600; margin-bottom:20px; letter-spacing:-0.5px;" class="g-text">Operational Bottlenecks We Solve:</h4>
+                    
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="bicon bi-rose" style="width:36px; height:36px; border-radius:8px; font-size:0.9rem; flex-shrink:0; margin-bottom:0; display:flex; align-items:center; justify-content:center;"><i class="fas fa-chart-pie"></i></div>
+                        <div>
+                            <h5 style="font-size:0.9rem; font-weight:500; color:var(--foreground); margin-bottom:4px;">Administration & Enrollment Bottlenecks</h5>
+                            <p style="font-size:0.8rem; color:var(--muted); line-height:1.6; margin-bottom:0;">Consolidate disconnected tools into a single multi-tenant cloud dashboard. Track student Lifecycle milestones seamlessly.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="bicon bi-amber" style="width:36px; height:36px; border-radius:8px; font-size:0.9rem; flex-shrink:0; margin-bottom:0; display:flex; align-items:center; justify-content:center;"><i class="fas fa-money-check-dollar"></i></div>
+                        <div>
+                            <h5 style="font-size:0.9rem; font-weight:500; color:var(--foreground); margin-bottom:4px;">Complex Cash Flow & Fee Collections</h5>
+                            <p style="font-size:0.8rem; color:var(--muted); line-height:1.6; margin-bottom:0;">Automate invoicing, online payments with Razorpay, and direct WhatsApp reminders to reduce fee outstanding to zero.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="bicon bi-blue" style="width:36px; height:36px; border-radius:8px; font-size:0.9rem; flex-shrink:0; margin-bottom:0; display:flex; align-items:center; justify-content:center;"><i class="fas fa-id-card"></i></div>
+                        <div>
+                            <h5 style="font-size:0.9rem; font-weight:500; color:var(--foreground); margin-bottom:4px;">Proxy Records & Attendance Drudgery</h5>
+                            <p style="font-size:0.8rem; color:var(--muted); line-height:1.6; margin-bottom:0;">Biometric AI face scanning verified by GPS geofencing prevents buddy punching and marks entries in under 2 seconds.</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="bicon bi-violet" style="width:36px; height:36px; border-radius:8px; font-size:0.9rem; flex-shrink:0; margin-bottom:0; display:flex; align-items:center; justify-content:center;"><i class="fas fa-comments"></i></div>
+                        <div>
+                            <h5 style="font-size:0.9rem; font-weight:500; color:var(--foreground); margin-bottom:4px;">Scattered Communication & WhatsApp Spam</h5>
+                            <p style="font-size:0.8rem; color:var(--muted); line-height:1.6; margin-bottom:0;">Deliver structured daily homework, results, and notifications directly on a sleek parent app without messy group chats.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ FEATURES ══════════════ -->
 <section id="features" class="feat-section">
     <div class="container px-4">
         <div class="row align-items-end mb-5">
@@ -727,7 +911,7 @@ body {
                 <h2 class="sec-title" style="margin-bottom:0;">Everything your institute<br>needs. <span class="g-text">All connected.</span></h2>
             </div>
             <div class="col-lg-5 mt-3 mt-lg-0">
-                <p class="sec-desc" style="margin-bottom:0;">Every module talks to each other â€” from a student's first enrolment to a teacher's monthly payslip. Nothing falls through the cracks.</p>
+                <p class="sec-desc" style="margin-bottom:0;">Every module talks to each other — from a student's first enrolment to a teacher's monthly payslip. Nothing falls through the cracks.</p>
             </div>
         </div>
         <div class="feat-magazine">
@@ -736,7 +920,7 @@ body {
                 <div class="feat-card is-hero" style="background:hsla(174,72%,56%,0.06);border-color:hsla(174,72%,56%,0.2);height:100%;">
                     <div class="feat-icon-wrap" style="background:hsla(174,72%,56%,0.18);color:hsl(174,72%,60%);"><i class="fas fa-fingerprint"></i></div>
                     <div class="feat-name">AI Biometric Staff Attendance</div>
-                    <div class="feat-desc">The world's most reliable staff attendance â€” face recognition verified by GPS in under 2 seconds. No buddy punching, no manual entries, no excuses.</div>
+                    <div class="feat-desc">The world's most reliable staff attendance — face recognition verified by GPS in under 2 seconds. No buddy punching, no manual entries, no excuses.</div>
                     <div class="feat-hero-chips">
                         <span class="feat-chip"><i class="fas fa-bolt"></i> &lt;2 sec verification</span>
                         <span class="feat-chip"><i class="fas fa-shield-alt"></i> Anti-spoof AI</span>
@@ -764,7 +948,7 @@ body {
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(139,92,246,0.12);color:hsl(262,83%,70%);"><i class="fas fa-video"></i></div>
                 <div class="feat-name">Live Lectures</div>
-                <div class="feat-desc">Host live classes inside EduNex. Students join via their dedicated mobile app â€” no Zoom needed.</div>
+                <div class="feat-desc">Host live classes inside EduNex. Students join via their dedicated mobile app — no Zoom needed.</div>
             </div>
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-chart-line"></i></div>
@@ -787,10 +971,132 @@ body {
                 <div class="feat-desc">Share memories securely. Upload photos and videos of institute events directly to student dashboards.</div>
             </div>
         </div>
+
+        <!-- In-depth features accordion -->
+        <div class="text-center mt-5 mb-4 pt-4">
+            <span class="badge-pill mb-2"><i class="fas fa-magnifying-glass me-1"></i> Deep-Dive Modules</span>
+            <h3 style="font-size:1.65rem; font-weight:600; letter-spacing:-0.5px; margin-bottom:12px;">Core Modules In-Depth</h3>
+            <p style="font-size:0.9rem; color:var(--muted); max-width:500px; margin:0 auto 30px;">Explore the full capabilities and workflow details of our twelve primary administration and educational management tools.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="accordion" id="featuresAccLeft">
+                    @foreach([
+                        [
+                            'title' => 'Student Information Management',
+                            'icon' => 'fa-user-graduate',
+                            'd1' => 'Manage the entire student lifecycle from initial inquiry and admission to final alumni graduation. Edunex ERP stores detailed student profiles, including emergency medical history, parent contact information, document repositories, and academic records in a highly secure, searchable cloud database.',
+                            'd2' => 'With this module, administrators can manage student transfers between sections, issue digital transfer certificates (TC), and track extracurricular milestones. The intuitive search interface allows teachers to instantly retrieve student profiles during parent-teacher meetings, ensuring that every discussion is backed by accurate, historical data.'
+                        ],
+                        [
+                            'title' => 'Attendance Management',
+                            'icon' => 'fa-calendar-check',
+                            'd1' => 'Say goodbye to dusty attendance registers and slow manual entries. The digital attendance module allows teachers to mark daily student presence in under a minute via a mobile phone or classroom tablet. The system automatically calculates monthly attendance percentages and alerts administrators to chronic absenteeism.',
+                            'd2' => 'Once marked, the system immediately cross-references the data and updates the parent app. If a student is marked absent without prior leave approval, an automated WhatsApp alert is dispatched to the parent, ensuring full transparency and keeping student safety at the center of school operations.'
+                        ],
+                        [
+                            'title' => 'Face Recognition Attendance',
+                            'icon' => 'fa-face-smile-beam',
+                            'd1' => 'The crown jewel of our attendance suite is the AI-powered Facial Recognition Module. Designed to run on any standard tablet or smartphone camera, the system utilizes advanced neural networks to identify and verify staff or student identities in under two seconds with 99.9% accuracy.',
+                            'd2' => 'To ensure absolute security, the system features sophisticated anti-spoofing technology, preventing the use of printed photos or digital screens to fake check-ins. Combined with GPS geofencing, this ensures that staff and students are physically present on school grounds before their mark-in time is recorded.'
+                        ],
+                        [
+                            'title' => 'Staff Management',
+                            'icon' => 'fa-users-gear',
+                            'd1' => 'Empower your HR department with a comprehensive staff directory, digital profiles, and a robust payroll processing system. Track teacher qualifications, contract renewals, historical teaching schedules, and leave balances in a single, organized interface.',
+                            'd2' => 'The payroll engine integrates directly with our biometric attendance logs. With one click, the system calculates working hours, deducts unpaid leaves, factors in bonuses or overtime, and generates compliant digital salary slips. These slips are automatically converted into PDFs and delivered to teachers\' phones via WhatsApp.'
+                        ],
+                        [
+                            'title' => 'Fee Collection',
+                            'icon' => 'fa-credit-card',
+                            'd1' => 'Simplify school financial administration with a powerful digital ledger system. Administrators can set up custom fee structures, accommodating monthly tuition, quarterly transport fees, one-time lab charges, sibling discounts, and individual scholarships.',
+                            'd2' => 'Parents can pay fees securely online through major payment gateways, instantly receiving an automated, digital tax receipt. The system automatically reconciles payments, flags outstanding accounts on a real-time ledger, and sends automated WhatsApp payment links to defaulters, reducing administrative cash management to zero.'
+                        ],
+                        [
+                            'title' => 'Examination Management',
+                            'icon' => 'fa-file-invoice',
+                            'd1' => 'Create, schedule, and execute exam structures across multiple terms, classes, and subjects. The exam manager allows controllers of examinations to set up grade scales, define passing criteria, and schedule exam dates with zero conflicts.',
+                            'd2' => 'Teachers can log marks directly into a fast, spreadsheet-like gradebook interface. Once finalized by the principal, report cards are compiled automatically. Parents can securely view and download high-quality digital PDF report cards via their mobile app, eliminating paper printing costs.'
+                        ]
+                    ] as $i => $feat)
+                    <div class="faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#featLeft{{ $i }}">
+                                <i class="fas {{ $feat['icon'] }} me-2 text-primary"></i> {{ $feat['title'] }}
+                            </button>
+                        </h2>
+                        <div id="featLeft{{ $i }}" class="accordion-collapse collapse" data-bs-parent="#featuresAccLeft">
+                            <div class="accordion-body">
+                                <p class="mb-3" style="color: var(--foreground); font-size: 0.88rem; font-weight: 500;">{{ $feat['d1'] }}</p>
+                                <p class="mb-0" style="color: var(--muted); font-size: 0.83rem; line-height: 1.75;">{{ $feat['d2'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-lg-6 mt-3 mt-lg-0">
+                <div class="accordion" id="featuresAccRight">
+                    @foreach([
+                        [
+                            'title' => 'Timetable Management',
+                            'icon' => 'fa-calendar-alt',
+                            'd1' => 'Designing a conflict-free school timetable is a massive administrative headache that usually takes days. Edunex ERP\'s smart scheduling algorithm automates this process in minutes, dynamically balancing teacher availability, classroom capacity, and subject requirements.',
+                            'd2' => 'If a teacher goes on sudden leave, the system immediately suggests substitute teachers who are free during those periods, ensuring that classes are never left unsupervised. Timetable updates are instantly pushed to the mobile apps of teachers, students, and parents.'
+                        ],
+                        [
+                            'title' => 'Parent Mobile App',
+                            'icon' => 'fa-mobile-screen',
+                            'd1' => 'Bring parents closer to their child\'s educational journey with our beautiful, highly intuitive mobile application. Available for both iOS and Android platforms, the app serves as a centralized hub for all school-related updates.',
+                            'd2' => 'Parents can check daily attendance logs, view teacher feedback, review homework assignments, download exam timetables, view gallery photos of school events, track their child\'s school bus, and pay outstanding fee invoices securely via UPI or cards—all from their smartphone.'
+                        ],
+                        [
+                            'title' => 'Homework Management',
+                            'icon' => 'fa-book-open',
+                            'd1' => 'Keep classrooms highly organized with our digital homework and assignment portal. Teachers can upload daily assignments, attach supplementary reading PDFs, link reference YouTube videos, and set clear submission deadlines.',
+                            'd2' => 'Students receive instant push notifications on their phones when homework is assigned. They can upload completed assignments directly through the app. Teachers can review submissions, provide personalized digital feedback, and assign grades, keeping parents informed of their child\'s academic consistency.'
+                        ],
+                        [
+                            'title' => 'Library Management',
+                            'icon' => 'fa-book-reader',
+                            'd1' => 'Transform your school library into a modern, digitized media center. The library management module tracks your entire catalog of books, journals, and digital assets, organizing them by subject, author, and publisher using smart indexing.',
+                            'd2' => 'Librarians can issue and return books with simple barcode scanning. The system automatically tracks due dates, calculates overdue fines, and sends automated return reminders to students through the mobile portal, ensuring a highly organized and fully utilized library ecosystem.'
+                        ],
+                        [
+                            'title' => 'Transport Management',
+                            'icon' => 'fa-bus',
+                            'd1' => 'Ensure absolute peace of mind during daily school commutes. The transport module allows administrators to map out routes, designate safe pickup/drop-off points, assign students to specific buses, and manage driver profiles and vehicle maintenance records.',
+                            'd2' => 'By integrating standard GPS trackers, parents can monitor the real-time location of their child\'s bus on the mobile app. The system automatically sends a notification when the bus is 5 minutes away from their stop, reducing wait times in extreme weather.'
+                        ],
+                        [
+                            'title' => 'Online Admissions',
+                            'icon' => 'fa-paper-plane',
+                            'd1' => 'Modernize your enrollment process and eliminate paper forms. The online admission portal allows prospective parents to submit application forms, upload required documents (birth certificates, transfer certificates, academic records), and pay registration fees online.',
+                            'd2' => 'Administrators can track inquiries, schedule admission tests, conduct interviews, and transition selected candidates into active students in a single click, eliminating manual data entry and creating a professional, welcoming first impression for new families.'
+                        ]
+                    ] as $i => $feat)
+                    <div class="faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#featRight{{ $i }}">
+                                <i class="fas {{ $feat['icon'] }} me-2 text-primary"></i> {{ $feat['title'] }}
+                            </button>
+                        </h2>
+                        <div id="featRight{{ $i }}" class="accordion-collapse collapse" data-bs-parent="#featuresAccRight">
+                            <div class="accordion-body">
+                                <p class="mb-3" style="color: var(--foreground); font-size: 0.88rem; font-weight: 500;">{{ $feat['d1'] }}</p>
+                                <p class="mb-0" style="color: var(--muted); font-size: 0.83rem; line-height: 1.75;">{{ $feat['d2'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• STAFF INTELLIGENCE â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ STAFF INTELLIGENCE ══════════════ -->
 <section id="staff" class="staff-section">
     <div class="staff-blob-1"></div>
     <div class="staff-blob-2"></div>
@@ -800,7 +1106,7 @@ body {
             <div class="col-lg-7">
                 <span class="sec-eyebrow">Staff Intelligence</span>
                 <h2 class="sec-title">AI-powered staff<br>management. <span class="g-text">Fully automated.</span></h2>
-                <p class="sec-desc">Biometric face recognition, GPS check-ins, one-click payroll â€” everything your HR team needs, on autopilot.</p>
+                <p class="sec-desc">Biometric face recognition, GPS check-ins, one-click payroll — everything your HR team needs, on autopilot.</p>
             </div>
             <div class="col-lg-5 text-lg-end mt-4 mt-lg-0 d-flex gap-3 justify-content-lg-end flex-wrap">
                 <a href="{{ route('contact') }}" class="btn-primary"><i class="fas fa-play"></i> See Live Demo</a>
@@ -814,7 +1120,7 @@ body {
             <div class="bcard b7">
                 <div class="bicon bi-blue"><i class="fas fa-face-smile-beam"></i></div>
                 <div class="bcard-title">AI Face Recognition</div>
-                <div class="bcard-desc">Staff mark attendance with a glance. On-device AI identifies and verifies in under 1 second â€” no PINs, cards, or manual entries.</div>
+                <div class="bcard-desc">Staff mark attendance with a glance. On-device AI identifies and verifies in under 1 second — no PINs, cards, or manual entries.</div>
                 <div class="mt-2 mb-1">
                     <span class="mtag"><i class="fas fa-bolt" style="color:hsl(38,92%,60%);"></i> &lt;1 sec scan</span>
                     <span class="mtag"><i class="fas fa-shield-alt" style="color:hsl(174,72%,56%);"></i> Anti-spoof</span>
@@ -823,7 +1129,7 @@ body {
                 <div class="scan-widget">
                     <div class="scan-avatar"><i class="fas fa-user"></i></div>
                     <div class="scan-bars">
-                        <div style="font-size:0.65rem;font-weight: 500;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:7px;">Scanning faceâ€¦</div>
+                        <div style="font-size:0.65rem;font-weight: 500;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:7px;">Scanning face…</div>
                         <div class="sbar"><div class="sline-fill sbar-fill"></div></div>
                         <div class="sbar"><div class="sline-fill sbar-fill d1"></div></div>
                         <div class="sbar"><div class="sline-fill sbar-fill d2"></div></div>
@@ -844,8 +1150,8 @@ body {
                 <div class="gps-widget">
                     <div class="gps-dot"></div>
                     <div style="flex:1;">
-                        <div style="font-size:0.78rem;font-weight: 500;color:hsl(174,72%,60%);">Location Verified âœ“</div>
-                        <div style="font-size:0.68rem;color:var(--muted);">Within 43m Â· Just now</div>
+                        <div style="font-size:0.78rem;font-weight: 500;color:hsl(174,72%,60%);">Location Verified ✓</div>
+                        <div style="font-size:0.68rem;color:var(--muted);">Within 43m · Just now</div>
                     </div>
                     <span style="background:hsla(174,72%,56%,0.12);border:1px solid hsla(174,72%,56%,0.25);border-radius:6px;padding:2px 8px;font-size:0.65rem;font-weight: 500;color:hsl(174,72%,60%);">LIVE</span>
                 </div>
@@ -892,10 +1198,10 @@ body {
                 <div class="bcard-title">Digital Salary Slips</div>
                 <div class="bcard-desc">Auto-generated payslips every month, delivered to staff via WhatsApp instantly.</div>
                 <div class="slip">
-                    <div class="slip-row"><span class="sl">Basic Salary</span><span class="sv">â‚¹22,000</span></div>
-                    <div class="slip-row"><span class="sl">Bonus</span><span class="sv g">+â‚¹2,500</span></div>
-                    <div class="slip-row"><span class="sl">Deductions</span><span class="sv r">âˆ’â‚¹1,200</span></div>
-                    <div class="slip-row"><span class="sl" style="font-weight: 500;color:var(--foreground);">Net Pay</span><span class="sv g" style="font-size:0.9rem;">â‚¹23,300</span></div>
+                    <div class="slip-row"><span class="sl">Basic Salary</span><span class="sv">₹22,000</span></div>
+                    <div class="slip-row"><span class="sl">Bonus</span><span class="sv g">+₹2,500</span></div>
+                    <div class="slip-row"><span class="sl">Deductions</span><span class="sv r">−₹1,200</span></div>
+                    <div class="slip-row"><span class="sl" style="font-weight: 500;color:var(--foreground);">Net Pay</span><span class="sv g" style="font-size:0.9rem;">₹23,300</span></div>
                 </div>
             </div>
 
@@ -924,39 +1230,6 @@ body {
     </div>
 </section>
 
-<!-- ══════════════ MOBILE APP ══════════════ -->
-<section id="mobile-app" class="staff-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border);">
-    <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>
-    <div class="staff-blob-1" style="background:hsla(217,91%,60%,0.08); bottom:-80px; right:-80px;"></div>
-    <div class="container px-4" style="position:relative;z-index:2;">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <span class="sec-eyebrow" style="color: hsl(262,83%,65%);">Dedicated Mobile App</span>
-                <h2 class="sec-title">The entire institute in <br><span class="g-text-2">their pocket.</span></h2>
-                <p class="sec-desc mb-4">Empower your students and parents with a modern, native-like mobile app. They can check timetables, track attendance, pay fees, and join live classes from anywhere.</p>
-                
-                <ul class="feat-list mb-4" style="max-width: 450px; list-style: none; padding: 0;">
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Real-time attendance & result notifications</li>
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Online fee payments with instant receipts</li>
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> One-tap join for live video lectures</li>
-                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:var(--muted);"><i class="fas fa-check-circle" style="color:hsl(262,83%,65%); font-size:1.1rem;"></i> Access study materials & homework</li>
-                </ul>
-
-                <div class="d-flex gap-3 mt-4">
-                    <a href="{{ route('contact') }}" class="btn-primary" style="background: var(--gradient-secondary); box-shadow: var(--glow-secondary);">See App Demo <i class="fas fa-mobile-alt"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center">
-                <div style="position:relative; display:inline-block;">
-                    <!-- Decorative glow behind phone -->
-                    <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
-                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 320px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- ══════════════ HOW IT WORKS ══════════════ -->
 <section class="how-section">
     <div class="container px-4">
@@ -970,9 +1243,9 @@ body {
                 <div class="row g-3">
                     @foreach([
                         ['n'=>'01','t'=>'Create your institute','d'=>'Sign up, enter your institute name, city, and contact. Done in 2 minutes.','c'=>'hsla(174,72%,56%,0.08)','bc'=>'hsla(174,72%,56%,0.2)'],
-                        ['n'=>'02','t'=>'Add batches & staff','d'=>'Create batches, assign teachers, set roles â€” all from a single screen.','c'=>'hsla(217,91%,60%,0.08)','bc'=>'hsla(217,91%,60%,0.2)'],
+                        ['n'=>'02','t'=>'Add batches & staff','d'=>'Create batches, assign teachers, set roles — all from a single screen.','c'=>'hsla(217,91%,60%,0.08)','bc'=>'hsla(217,91%,60%,0.2)'],
                         ['n'=>'03','t'=>'Enrol your students','d'=>'Add students, collect fees instantly, they get portal access on the spot.','c'=>'hsla(262,83%,58%,0.08)','bc'=>'hsla(262,83%,58%,0.2)'],
-                        ['n'=>'04','t'=>'Go live today','d'=>'Mark attendance, run live classes, track fees â€” from day one.','c'=>'hsla(38,92%,50%,0.08)','bc'=>'hsla(38,92%,50%,0.2)'],
+                        ['n'=>'04','t'=>'Go live today','d'=>'Mark attendance, run live classes, track fees — from day one.','c'=>'hsla(38,92%,50%,0.08)','bc'=>'hsla(38,92%,50%,0.2)'],
                     ] as $s)
                     <div class="col-md-6">
                         <div class="how-step" style="background:{{ $s['c'] }};border:1px solid {{ $s['bc'] }};border-radius:14px;">
@@ -991,7 +1264,65 @@ body {
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• USE CASES â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ LOCAL SUCCESS STORY ══════════════ -->
+<section id="success-story" class="feat-section" style="background: hsl(222,47%,6%); border-top: 1px solid var(--border); padding: 90px 0;">
+    <div class="container px-4">
+        <div class="text-center mb-5">
+            <span class="sec-eyebrow">Local Success Story</span>
+            <h2 class="sec-title">Empowering Excellence in <span class="g-text">{{ $city }}</span></h2>
+            <p class="sec-desc mx-auto" style="max-width: 600px;">How a leading local institution completely modernized operations, streamlined schedules, and recovered fee backlogs.</p>
+        </div>
+
+        <div class="card-glass p-4 p-md-5" style="background: var(--card-bg); border-color: var(--border);">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6">
+                    <div style="background: hsla(174,72%,56%,0.05); border: 1px dashed hsla(174,72%,56%,0.2); border-radius: 12px; padding: 24px;">
+                        <h4 style="font-size:1.15rem; font-weight:600; margin-bottom:16px;" class="g-text"><i class="fas fa-university me-2"></i> {{ $city }} Progressive Academy</h4>
+                        <p style="font-size:0.83rem; color:var(--muted); line-height:1.7; margin-bottom:14px;"><strong>The Challenge:</strong> Before implementing Edunex ERP, {{ $city }} Progressive Academy—a prestigious institution serving over 1,200 students—was struggling with severe administrative blockages. The school's administrative staff spent the first week of every month manually processing cash and checks at the fee counter, resulting in long queues and accounting errors. Teachers were losing nearly 15 minutes of every classroom day physically calling out roll attendance and filling out paper registers. More critically, the school struggled with tracking fee defaults, leading to nearly 30% of tuition payments remaining overdue at the end of each academic quarter.</p>
+                        <p style="font-size:0.83rem; color:var(--muted); line-height:1.7; margin-bottom:0;"><strong>The Transformation:</strong> In the summer of 2025, the academy partnered with Edunex ERP to execute a complete digital transformation. Within 48 hours, our onboarding team migrated their historical student databases into a secure multi-tenant cloud environment. Teachers began marking attendance in one tap on classroom tablets, and the academy deployed face biometrics at the staff entrance to automate HR check-ins, launching the Edunex Parent App for real-time progress tracking and online fee collections.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4 style="font-size:1.05rem; font-weight:600; margin-bottom:20px; letter-spacing:-0.3px;"><i class="fas fa-chart-line text-primary me-2"></i> Unprecedented 60-Day Results:</h4>
+                    
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div style="background: hsla(210,40%,98%,0.03); border: 1px solid var(--border); border-radius:10px; padding: 16px; text-align:center;">
+                                <div style="font-size:2rem; font-weight:600; color: hsl(174,72%,60%);">100%</div>
+                                <div style="font-size:0.75rem; color:var(--muted); margin-top:4px;">Fee Arrears Recovered</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div style="background: hsla(210,40%,98%,0.03); border: 1px solid var(--border); border-radius:10px; padding: 16px; text-align:center;">
+                                <div style="font-size:2rem; font-weight:600; color: hsl(217,91%,70%);">12 Hrs</div>
+                                <div style="font-size:0.75rem; color:var(--muted); margin-top:4px;">Saved Per Teacher/Mo</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div style="background: hsla(210,40%,98%,0.03); border: 1px solid var(--border); border-radius:10px; padding: 16px; text-align:center;">
+                                <div style="font-size:2rem; font-weight:600; color: hsl(38,92%,60%);">98%</div>
+                                <div style="font-size:0.75rem; color:var(--muted); margin-top:4px;">Staff Punctuality Improvement</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div style="background: hsla(210,40%,98%,0.03); border: 1px solid var(--border); border-radius:10px; padding: 16px; text-align:center;">
+                                <div style="font-size:2rem; font-weight:600; color: hsl(262,83%,70%);">4.8★</div>
+                                <div style="font-size:0.75rem; color:var(--muted); margin-top:4px;">Parent App Rating</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:24px; padding-left:14px; border-left: 3px solid var(--primary);">
+                        <p style="font-size:0.83rem; color:var(--foreground); font-style:italic; line-height:1.6; margin-bottom:6px;">"Edunex ERP didn't just digitize our spreadsheets; it completely transformed our school's culture. We are now running a highly efficient, paperless, and modern institution that parents trust."</p>
+                        <strong style="font-size:0.78rem; color:var(--muted);">— Dr. Sarah Mitchell, School Principal</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ USE CASES ══════════════ -->
 <section class="proof-section">
     <div class="container px-4">
         <div class="text-center mb-5">
@@ -1015,7 +1346,7 @@ body {
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• WHY EDUNEX â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ WHY EDUNEX ══════════════ -->
 <section class="compare-section">
     <div class="container px-4">
         <div class="row align-items-end mb-5 g-4">
@@ -1034,7 +1365,7 @@ body {
                 <div class="why-label before"><i class="fas fa-times-circle"></i> Before EduNex</div>
                 @foreach([
                     ['x'=>'fa-table','t'=>'Attendance in Excel','d'=>'Manual registers, daily data entry, and no parent notifications ever.'],
-                    ['x'=>'fa-whatsapp','t'=>'Fees via WhatsApp','d'=>'"Fee paid bhai" â€” and you have to manually track who actually paid.'],
+                    ['x'=>'fa-whatsapp','t'=>'Fees via WhatsApp','d'=>'"Fee paid bhai" — and you have to manually track who actually paid.'],
                     ['x'=>'fa-file-excel','t'=>'Payroll in spreadsheets','d'=>'3 hours every month calculating salaries. Wrong formulas. Late payments.'],
                     ['x'=>'fa-eye-slash','t'=>'Zero visibility','d'=>'No dashboards. No reports. No idea who\'s present, who paid, who\'s late.'],
                     ['x'=>'fa-mobile-alt','t'=>'No student portal','d'=>'Students call to check results, timetables, and fees. Your phone never stops.'],
@@ -1054,7 +1385,7 @@ body {
                     ['c'=>'fa-credit-card','t'=>'Automated fee collection','d'=>'Online payments, auto-reminders, real-time dashboard. Fees track themselves.'],
                     ['c'=>'fa-money-bill-wave','t'=>'One-click payroll','d'=>'Payslips generated and sent to every staff member\'s WhatsApp in one click.'],
                     ['c'=>'fa-book-reader','t'=>'Digital Library & Discipline','d'=>'Full control over books, resources, and student behavior tracking natively.'],
-                    ['c'=>'fa-chart-bar','t'=>'Full visibility dashboard','d'=>'Live attendance, fee status, batch analytics â€” everything in one screen.'],
+                    ['c'=>'fa-chart-bar','t'=>'Full visibility dashboard','d'=>'Live attendance, fee status, batch analytics — everything in one screen.'],
                     ['c'=>'fa-mobile-screen','t'=>'Dedicated Mobile App','d'=>'Students and parents check timetables, results, and fees on their phone app. Anytime.'],
                 ] as $a)
                 <div class="why-row">
@@ -1067,12 +1398,12 @@ body {
 
         <div class="text-center mt-5">
             <a href="{{ route('pricing') }}" class="btn-primary" style="font-size:0.92rem;padding:13px 28px;">Start Free Trial <i class="fas fa-arrow-right"></i></a>
-            <p style="margin-top:12px;font-size:0.75rem;color:var(--muted);"><i class="fas fa-shield-alt me-1" style="color:var(--primary);"></i> No credit card required Â· Live in 15 minutes</p>
+            <p style="margin-top:12px;font-size:0.75rem;color:var(--muted);"><i class="fas fa-shield-alt me-1" style="color:var(--primary);"></i> No credit card required — Live in 15 minutes</p>
         </div>
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• TESTIMONIALS â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ TESTIMONIALS ══════════════ -->
 <section class="testi-section">
     <div class="container px-4">
         <div class="text-center mb-5">
@@ -1082,12 +1413,12 @@ body {
         <div class="row g-4">
             @foreach([
                 ['n'=>'Rajesh Kumar','r'=>'Director, Apex Coaching Center','i'=>'RK','c'=>'var(--gradient-primary)','q'=>'EduNex completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month.'],
-                ['n'=>'Priya Sharma','r'=>'Principal, Bright Minds Academy','i'=>'PS','c'=>'var(--gradient-secondary)','q'=>'The AI face attendance was a game changer â€” zero proxy marking. And the analytics give me full visibility into every batch.'],
+                ['n'=>'Priya Sharma','r'=>'Principal, Bright Minds Academy','i'=>'PS','c'=>'var(--gradient-secondary)','q'=>'The AI face attendance was a game changer — zero proxy marking. And the analytics give me full visibility into every batch.'],
                 ['n'=>'Arjun Mehta','r'=>'Owner, CodeCraft Skill Institute','i'=>'AM','c'=>'linear-gradient(135deg,hsl(262,83%,58%),hsl(217,91%,60%))','q'=>'We run 6 tech courses with 400 students. EduNex handles everything from live lectures to payslips in one beautiful platform.'],
             ] as $t)
             <div class="col-lg-4">
                 <div class="t-card">
-                    <div class="t-stars">â˜…â˜…â˜…â˜…â˜…</div>
+                    <div class="t-stars">★★★★★</div>
                     <p class="t-quote">"{{ $t['q'] }}"</p>
                     <div class="d-flex align-items-center gap-3 mt-auto">
                         <div class="t-av" style="background:{{ $t['c'] }};">{{ $t['i'] }}</div>
@@ -1103,7 +1434,7 @@ body {
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• FAQ â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ FAQ ══════════════ -->
 <section class="faq-section">
     <div class="container px-4">
         <div class="text-center mb-5">
@@ -1114,19 +1445,74 @@ body {
             <div class="col-lg-8">
                 <div class="accordion" id="faqAcc">
                     @foreach([
-                        ['q'=>'How does AI face biometric attendance work?','a'=>'Staff open the EduNex dashboard on any device with a camera. The on-device AI scans their face and matches it against their enrolled descriptor. GPS is verified simultaneously. Attendance is marked in under 2 seconds â€” no internet required for the face scan itself.'],
-                        ['q'=>'How does payroll work?','a'=>'Set each staff member\'s basic salary, allowances, and deduction rules once. Every month, one click generates net pay, creates a PDF payslip, and can send it directly via WhatsApp to each staff member.'],
-                        ['q'=>'Can students use EduNex on their phone?','a'=>'Yes. We provide a dedicated Student & Parent Mobile App. Students and parents can check timetables, results, fees, and live updates on their phones anytime.'],
-                        ['q'=>'Is my institute data secure?','a'=>'EduNex uses a multi-tenant architecture where each institute\'s data is fully isolated. Data is encrypted at rest and in transit. No institute can ever access another\'s data.'],
-                        ['q'=>'Is there a student limit?','a'=>'No. We believe in supporting your growth. Enrol as many students as your institute can handle â€” your plan covers unlimited students.'],
+                        [
+                            'q' => 'How fast can we set up Edunex ERP for our school?',
+                            'a' => 'Setting up Edunex ERP is incredibly fast. Because the software is hosted on a secure cloud network, there is no need for local server installations or complex IT setups. Once you sign up, our dedicated onboarding team can help migrate your student databases, configure your custom fee structures, and get your system live in under 15 minutes.'
+                        ],
+                        [
+                            'q' => 'Does the Face Recognition Attendance system require expensive specialized hardware?',
+                            'a' => 'Not at all. Unlike legacy biometric systems that require expensive dedicated machines and wiring, Edunex ERP’s AI facial recognition runs smoothly on any standard Android or iOS tablet, smartphone, or laptop camera. This dramatically lowers the entry cost for schools and makes deployment effortless.'
+                        ],
+                        [
+                            'q' => 'How secure is our school\'s student and financial data on your platform?',
+                            'a' => 'Data security is our highest priority. Edunex ERP utilizes a modern multi-tenant cloud architecture, which means that your school\'s data is housed in a completely isolated database silo. It is fully encrypted at rest and in transit. Your records, fee histories, and employee payrolls are 100% invisible to any other academy on the platform.'
+                        ],
+                        [
+                            'q' => 'Can we manage multiple school campuses or coaching branches from one account?',
+                            'a' => 'Yes! If you manage a chain of schools or coaching institutes across {{ $city }} and nearby regions, Edunex ERP offers a centralized dashboard. Trustees and administrators can view overall metrics, monitor financial reports, check overall attendance trends, and switch between campuses seamlessly using a single master login.'
+                        ],
+                        [
+                            'q' => 'How does the automated fee reminder system work on WhatsApp?',
+                            'a' => 'Our system integrates directly with authorized WhatsApp APIs. The billing engine automatically monitors pending tuition dues on your ledgers. With one click, administrators can dispatch personalized payment links directly to parents\' WhatsApp numbers. Parents can click the link and securely clear the balance instantly using UPI or card.'
+                        ],
+                        [
+                            'q' => 'Can our teachers grade exams and generate report cards using Edunex ERP?',
+                            'a' => 'Absolutely. Edunex ERP features a highly flexible grading engine that supports CBSE, ICSE, IB, and regional state board structures. Teachers can input scores into a rapid, spreadsheet-style gradebook. The system automatically calculates aggregates, determines grades, and generates beautiful PDF report cards that parents can access directly on the app.'
+                        ],
+                        [
+                            'q' => 'What happens if the school\'s internet goes down during attendance marking?',
+                            'a' => 'We have designed our student and staff attendance modules with robust offline-first caching capabilities. If your school\'s internet connection drops, teachers can continue to mark student attendance or scan staff faces normally. The data is saved securely on the local device storage and automatically syncs to the cloud server once connection is restored.'
+                        ],
+                        [
+                            'q' => 'Is there a limit to the number of students we can enroll on the platform?',
+                            'a' => 'We believe in supporting the growth of your educational institution. Our plans do not penalize you for expanding. You can enroll as many students, create as many batches, and register as many parent accounts as your school requires—your license supports your growth with zero hidden student capacity fees.'
+                        ],
+                        [
+                            'q' => 'Does Edunex ERP support transport tracking for school buses?',
+                            'a' => 'Yes, we have a built-in Transport Management Module. By linking affordable GPS hardware on school buses or vans, the system streams live vehicle locations directly to the parent mobile app. The app automatically fires geofenced alerts when the bus is approaching the student\'s stop, ensuring safety and saving parents time.'
+                        ],
+                        [
+                            'q' => 'Can parents apply for admissions online through our website?',
+                            'a' => 'Yes, Edunex ERP provides a fully customizable public Online Admission Portal. You can link this portal directly to your school\'s website. Prospective parents can fill out application forms, securely upload necessary documents (birth certificates, photos), and pay admission fees online, which flows directly into your admissions queue.'
+                        ],
+                        [
+                            'q' => 'Can teachers upload homework and assignments on the app?',
+                            'a' => 'Yes. Through the teacher dashboard, educators can post daily homework, attach reading materials (PDFs, images), and link online resources or videos. Students receive an immediate push notification on their mobile devices, can submit their completed work through the app, and receive digital grades and feedback from teachers.'
+                        ],
+                        [
+                            'q' => 'Can we process staff payroll and generate payslips with this software?',
+                            'a' => 'Yes, Edunex ERP includes a comprehensive HR and payroll engine. Because it is directly integrated with our Face Biometrics and GPS check-in logs, the payroll engine automatically factors in working days, late arrivals, and unpaid leaves to calculate precise net salaries. It generates digital payslips and sends them to staff via WhatsApp.'
+                        ],
+                        [
+                            'q' => 'Does the parent mobile app work on both iOS and Android?',
+                            'a' => 'Yes. The Edunex Parent & Student App is fully optimized for both iOS and Android platforms. It is designed to be lightweight, incredibly fast, and exceptionally secure, offering families a modern, user-friendly interface to track all academic, fee, and transit updates.'
+                        ],
+                        [
+                            'q' => 'What kind of support does Edunex ERP provide to our administrative staff?',
+                            'a' => 'We pride ourselves on providing world-class, 24/7 technical support. Every school that joins the Edunex ERP family is assigned a dedicated customer success manager. We provide comprehensive virtual training sessions for your staff, supply detailed video guides, and are always available via call or WhatsApp to solve any query instantly.'
+                        ],
+                        [
+                            'q' => 'Is there a contract or can we cancel our subscription anytime?',
+                            'a' => 'We believe in earning your trust month after month. Edunex ERP offers flexible monthly and annual subscription options with no locked-in long-term contracts. You can choose the plan that best fits your school\'s budget and scale, and you have the complete freedom to upgrade, downgrade, or cancel your subscription at any time.'
+                        ]
                     ] as $i => $faq)
                     <div class="faq-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button {{ $i > 0 ? 'collapsed' : '' }}" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ $i }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ $i }}">
                                 {{ $faq['q'] }}
                             </button>
                         </h2>
-                        <div id="faq{{ $i }}" class="accordion-collapse collapse {{ $i === 0 ? 'show' : '' }}" data-bs-parent="#faqAcc">
+                        <div id="faq{{ $i }}" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
                             <div class="accordion-body">{{ $faq['a'] }}</div>
                         </div>
                     </div>
@@ -1137,7 +1523,48 @@ body {
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â• CTA â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══════════════ NEARBY AREAS SERVED ══════════════ -->
+<section id="nearby-areas" class="feat-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border); padding: 80px 0;">
+    <div class="container px-4">
+        <div class="text-center mb-5">
+            <span class="sec-eyebrow">Areas We Serve</span>
+            <h2 class="sec-title">Serving Schools & Institutes Across <span class="g-text">{{ $city }}</span></h2>
+            <p class="sec-desc mx-auto" style="max-width: 600px;">We proudly provide premium educational ERP and school management software solutions to institutions in {{ $city }} and its surrounding districts, suburbs, and neighborhoods:</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="row g-3">
+                    @foreach([
+                        'Central Business District (CBD)',
+                        'Metro North Education Hub',
+                        'Innovation Park Suburb',
+                        'South Valley Academic District',
+                        'Westside Residential Area',
+                        'East Coast Suburb',
+                        'Heights Knowledge Park',
+                        'Tech Corridor District',
+                        'Green Hills Academic Valley',
+                        'Old Town School District',
+                        'Harbor Side Education Zone',
+                        'Lakeside Academic Circle',
+                        'River Front Institutional Block',
+                        'Crescent Hill Suburb',
+                        'Metro South Transit Zone'
+                    ] as $area)
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card-glass p-3 text-center" style="background: var(--card-bg); border-color: var(--border); transition: all 0.2s ease;">
+                            <span style="font-size:0.88rem; font-weight:500; color:hsl(210,40%,85%);"><i class="fas fa-map-marker-alt text-primary me-2"></i> {{ $area }}</span>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ CTA ══════════════ -->
 <section class="cta-section">
     <div class="container px-4">
         <div class="cta-box">
