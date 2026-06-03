@@ -73,7 +73,7 @@ class StaffController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role_id' => ['required', Rule::in($roles)],
-            'face_descriptor' => 'required|json',
+            'face_descriptor' => 'nullable|json',
             'face_snapshot' => 'nullable|string',
             'subjects' => 'nullable|array',
             'subjects.*' => 'exists:subjects,id',

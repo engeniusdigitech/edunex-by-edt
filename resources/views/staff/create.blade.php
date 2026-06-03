@@ -117,7 +117,7 @@
             </div>
 
             <div class="mb-4">
-                <x-face-capture :required="true" />
+                <x-face-capture :required="false" />
             </div>
 
             <div class="row">
