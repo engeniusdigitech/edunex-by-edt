@@ -162,6 +162,12 @@
             <span>Tests</span>
         </a>
 
+        <!-- Online Exams -->
+        <a href="{{ route('student.online-exams.index') }}" class="page-btn">
+            <i class="fas fa-laptop-code"></i>
+            <span>Online Exams</span>
+        </a>
+
         <!-- Library -->
         <a href="{{ route('student.library.index') }}" class="page-btn">
             <i class="fas fa-book-reader"></i>

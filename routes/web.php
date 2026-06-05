@@ -38,12 +38,20 @@ Route::get('/trial-request', function () {
     return view('trial_request', compact('planName'));
 })->name('trial.request');
 
+Route::get('/digital-assessment', function () {
+    return view('digital-assessment');
+})->name('digital.assessment.landing');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 Route::get('/blogs', function () {
     return view('blogs');
 })->name('blogs');
+
+Route::get('/digital-assessment-platform', function () {
+    return view('digital-assessment');
+})->name('digital.assessment');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Legal Pages
@@ -120,6 +128,16 @@ Route::middleware(['auth'])->group(function () {
             Route::post('live-lectures/{liveLecture}/end', [\App\Http\Controllers\LiveLectureController::class, 'end'])->name('live-lectures.end')->middleware('can:manage-academics');
             Route::get('tests/{test}/marks', [\App\Http\Controllers\TestController::class, 'marks'])->name('tests.marks')->middleware('can:manage-academics');
             Route::post('tests/{test}/marks', [\App\Http\Controllers\TestController::class, 'storeMarks'])->name('tests.store_marks')->middleware('can:manage-academics');
+
+            // Online Exam & Question Bank Module
+            Route::resource('online-exams', \App\Http\Controllers\OnlineExamController::class)->middleware('can:manage-academics');
+            Route::get('online-exams/{onlineExam}/questions', [\App\Http\Controllers\OnlineExamController::class, 'questions'])->name('online-exams.questions')->middleware('can:manage-academics');
+            Route::post('online-exams/{onlineExam}/questions', [\App\Http\Controllers\OnlineExamController::class, 'addQuestion'])->name('online-exams.questions.store')->middleware('can:manage-academics');
+            Route::delete('online-exams/{onlineExam}/questions/{question}', [\App\Http\Controllers\OnlineExamController::class, 'removeQuestion'])->name('online-exams.questions.destroy')->middleware('can:manage-academics');
+            Route::post('online-exams/{onlineExam}/publish', [\App\Http\Controllers\OnlineExamController::class, 'publish'])->name('online-exams.publish')->middleware('can:manage-academics');
+            Route::post('online-exams/{onlineExam}/close', [\App\Http\Controllers\OnlineExamController::class, 'close'])->name('online-exams.close')->middleware('can:manage-academics');
+            Route::get('online-exams/{onlineExam}/results', [\App\Http\Controllers\OnlineExamController::class, 'results'])->name('online-exams.results')->middleware('can:manage-academics');
+            Route::resource('question-bank', \App\Http\Controllers\QuestionBankController::class)->middleware('can:manage-academics');
 
             // Notifications
             Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
@@ -357,6 +375,13 @@ Route::prefix('student')->name('student.')->group(function () {
             // Tests, Homework, Attendance, Gallery, Discipline
             Route::get('attendance', [\App\Http\Controllers\Student\AttendanceController::class, 'index'])->name('attendance.index');
             Route::get('tests', [\App\Http\Controllers\Student\TestController::class, 'index'])->name('tests.index');
+            Route::get('online-exams', [\App\Http\Controllers\Student\OnlineExamController::class, 'index'])->name('online-exams.index');
+            Route::post('online-exams/{onlineExam}/start', [\App\Http\Controllers\Student\OnlineExamController::class, 'start'])->name('online-exams.start');
+            Route::get('online-exams/{onlineExam}/take', [\App\Http\Controllers\Student\OnlineExamController::class, 'take'])->name('online-exams.take');
+            Route::post('online-exams/{onlineExam}/answer', [\App\Http\Controllers\Student\OnlineExamController::class, 'saveAnswer'])->name('online-exams.save-answer');
+            Route::post('online-exams/{onlineExam}/track-tab', [\App\Http\Controllers\Student\OnlineExamController::class, 'trackTabSwitch'])->name('online-exams.track-tab');
+            Route::post('online-exams/{onlineExam}/submit', [\App\Http\Controllers\Student\OnlineExamController::class, 'submit'])->name('online-exams.submit');
+            Route::get('online-exams/{onlineExam}/result', [\App\Http\Controllers\Student\OnlineExamController::class, 'result'])->name('online-exams.result');
             Route::get('homework', [\App\Http\Controllers\Student\HomeworkController::class, 'index'])->name('homework.index');
             Route::get('gallery', [\App\Http\Controllers\Student\GalleryController::class, 'index'])->name('gallery.index');
             Route::get('discipline', [\App\Http\Controllers\Student\DisciplineController::class, 'index'])->name('discipline.index');

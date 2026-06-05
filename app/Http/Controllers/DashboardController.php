@@ -16,6 +16,10 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
 
+        if ($user && $user->isLibrarian()) {
+            return redirect()->route('library.dashboard');
+        }
+
         if ($user && $user->isTeacher()) {
             return $this->teacherDashboard($user);
         }

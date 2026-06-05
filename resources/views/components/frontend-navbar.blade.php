@@ -302,6 +302,16 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                     </a>
                 </div>
             </div>
+            <div class="nb-dropdown">
+                <div class="nb-drop-trigger {{ request()->is('edunex-erp-what-s-new ?*') ? 'active' : '' }}" tabindex="0">
+                    What's New <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="nb-menu">
+                    <a href="{{ asset('digital-assessment') }}">
+                        <i class="fas fa-eye"></i> Online Assessment
+                    </a>
+                </div>
+            </div>
             <a href="{{ route('blogs') }}"   class="{{ request()->routeIs('blogs')   ? 'active' : '' }}">Blogs</a>
             <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a>
         </nav>

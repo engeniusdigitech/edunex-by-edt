@@ -414,6 +414,13 @@
                                 class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
                                 Live Lectures</a>
                         @endif
+
+                        <a href="{{ route('online-exams.index') }}" class="{{ request()->routeIs('online-exams.*') ? 'active' : '' }}">
+                            <i class="fas fa-laptop-code"></i> Online Exams
+                        </a>
+                        <a href="{{ route('question-bank.index') }}" class="{{ request()->routeIs('question-bank.*') ? 'active' : '' }}">
+                            <i class="fas fa-database"></i> Question Bank
+                        </a>
                     @endif
 
                     <h6 class="sidebar-header mt-3">Additionally</h6>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -159,7 +159,7 @@ body {
 
 .hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 110px 0 80px;
+    padding: 140px 0 80px;
     position: relative; z-index: 2;
 }
 
@@ -597,11 +597,21 @@ body {
 .trust-item { font-size: 0.78rem; color: var(--muted); display: inline-flex; align-items: center; gap: 5px; }
 .trust-item i { color: hsl(174,72%,56%); }
 
+@media(max-width:991px) {
+    .hero-content { padding: 120px 0 40px; }
+}
+
 @media(max-width:768px) {
-    .hero-h1 { font-size: 2.5rem; letter-spacing: -2px; }
+    .hero-content { padding: 210px 0 50px; }
+    .hero-h1, .hero-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem) !important; letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
+    .hero-kicker { font-size: 0.68rem; padding: 5px 12px; margin-bottom: 16px; }
     .notif-card { display: none; }
     .cta-box { padding: 44px 24px; }
     .feat-grid { grid-template-columns: 1fr; }
+}
+
+@media(max-width:480px) {
+    .hero-content { padding: 190px 0 28px; }
 }
 </style>
 
@@ -722,7 +732,7 @@ body {
     <div class="hero-blob blob-2"></div>
     <div class="hero-blob blob-3"></div>
 
-    <div class="hero-content" style="margin-top: -30px;">
+    <div class="hero-content">
         <div class="container px-4">
             <div class="row align-items-center g-5">
 
@@ -773,12 +783,12 @@ body {
                 <!-- Visual -->
                 <div class="col-lg-6" >
                     <div class="portal-display">
-                        <div class="portal-text" style="max-width: 650px;">
-                                <h3>All in One ERP</h3>
-                                <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
-                            </div>
                         <div class="display-wrapper">
                             <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex ERP Dashboard" class="desktop-mockup">
+                        </div>
+                        <div class="portal-text" style="max-width: 650px;">
+                            <h3>All in One ERP</h3>
+                            <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
                         </div>
                     </div>
                 </div>

@@ -161,7 +161,7 @@ body {
 
 .hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 150px 0 80px;
+    padding: 140px 0 80px;
     position: relative; z-index: 2;
 }
 
@@ -189,19 +189,10 @@ body {
     line-height: 1.05; margin-bottom: 22px;
     color: hsl(210,40%,98%);
 }
-.hero-h2 {
-    font-size: clamp(2.8rem, 6vw, 4.8rem);
-    font-weight: 500; letter-spacing: -3px;
-    line-height: 1.05; margin-bottom: 22px;
-    color: hsl(210,40%,98%);
-}
-.hero-h1 br, .hero-h2 br { display: none; }
-@media(min-width: 992px) { .hero-h1 br, .hero-h2 br { display: block; } }
 .hero-sub {
     font-size: 1.05rem; color: var(--muted);
     line-height: 1.9; margin-bottom: 36px; max-width: 500px;
 }
-@media(max-width: 991px) { .hero-sub { max-width: 100%; } }
 .hero-features {
     display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px;
 }
@@ -614,7 +605,7 @@ body {
 .trust-item i { color: hsl(174,72%,56%); }
 
 @media(max-width:991px) {
-    .hero-content { padding: 90px 0 40px; }
+    .hero-content { padding: 120px 0 40px; }
     .display-wrapper { padding-bottom: 0; }
     .mobile-mockup { display: none; }
     .desktop-mockup { border-radius: 10px; }
@@ -622,7 +613,7 @@ body {
 
 @media(max-width:768px) {
     .hero { min-height: auto; }
-    .hero-content { padding: 180px 0 50px; }
+    .hero-content { padding: 210px 0 50px; }
     .hero-h1, .hero-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem) !important; letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
     .hero-sub { font-size: 0.92rem; margin-bottom: 20px; max-width: 100%; line-height: 1.7; }
     .hero-kicker { font-size: 0.68rem; padding: 5px 12px; margin-bottom: 16px; }
@@ -646,7 +637,7 @@ body {
 }
 
 @media(max-width:480px) {
-    .hero-content { padding: 160px 0 28px; }
+    .hero-content { padding: 190px 0 28px; }
     .hero-h1, .hero-h2 { font-size: 1.75rem !important; margin-bottom: 12px; }
     .hero-sub { font-size: 0.88rem; margin-bottom: 16px; }
     .stat-pipe { display: none; }
@@ -659,12 +650,12 @@ body {
 @include('components.frontend-navbar')
 
 <!-- ══════════════ HERO ══════════════ -->
-<section class="hero">
+<section class="hero" >
     <div class="hero-blob blob-1"></div>
     <div class="hero-blob blob-2"></div>
     <div class="hero-blob blob-3"></div>
 
-    <div class="hero-content">
+    <div class="hero-content" style="margin-top: 50px;">
         <div class="container px-4">
             <div class="row align-items-center g-5">
 
@@ -713,21 +704,21 @@ body {
                 </div>
 
                 <!-- Visual -->
-                <div class="col-lg-6" style="margin-top:-80px;">
+                <div class="col-lg-6" style="margin-top:-40px;">
                     <div class="portal-display">
-                        <div class="portal-text" style="max-width: 650px;">
-                                <h3>All in One ERP</h3>
-                                <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
-                            </div>
                         <div class="display-wrapper">
                             <img src="{{ asset('images/hero-banner-2.png') }}" alt="EduNex ERP Dashboard" class="desktop-mockup">
+                        </div>
+                        <div class="portal-text" style="max-width: 650px;">
+                            <h3>All in One ERP</h3>
+                            <p>Manage your entire Educational Institute from one central interface. Track attendance, fees, and more.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+</section>
     <!-- ══════════════ MOBILE APP ══════════════ -->
 <section id="mobile-app" class="staff-section" style="background: hsl(222,47%,5%); border-top: 1px solid var(--border);">
     <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>

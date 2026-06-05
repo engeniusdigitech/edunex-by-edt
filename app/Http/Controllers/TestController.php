@@ -14,7 +14,7 @@ class TestController extends Controller
     public function index(Request $request)
     {
         $user = auth()->user();
-        $query = Test::with(['batch', 'subject']);
+        $query = Test::with(['batch', 'subject', 'scores']);
 
         if ($user->isTeacher()) {
             $batchIds = $user->batches()->where('is_active', true)->pluck('batches.id');
