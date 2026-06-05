@@ -194,6 +194,7 @@ section{background:transparent!important;}
                             <div class="col-md-6">
                                 <ul class="feat-list ps-md-3">
                                     <li><i class="fas fa-check-circle"></i> Live Class Integration</li>
+                                    <li><i class="fas fa-check-circle"></i> Online Proctored Exams & Question Banks</li>
                                     <li><i class="fas fa-check-circle"></i> Discipline & Behavior Tracking</li>
                                     <li><i class="fas fa-check-circle"></i> Student & Parent Mobile App</li>
                                     <li><i class="fas fa-check-circle"></i> Secure Media Gallery</li>

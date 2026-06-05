@@ -839,6 +839,11 @@ body {
                 <div class="feat-name">Image Gallery</div>
                 <div class="feat-desc">Share memories securely. Upload photos and videos of institute events directly to student dashboards.</div>
             </div>
+            <div class="feat-card" style="cursor: pointer;" onclick="window.location='{{ route('digital.assessment') }}'">
+                <div class="feat-icon-wrap" style="background:rgba(99,102,241,0.12);color:hsl(240,90%,70%);"><i class="fas fa-laptop-code"></i></div>
+                <div class="feat-name">Online Examinations <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">NEW</span></div>
+                <div class="feat-desc">Conduct secure online exams. Auto-grading MCQs, centralized question banks, performance charts, and remote proctoring alerts. <span style="color:hsl(174,72%,60%);font-weight:600;display:block;margin-top:6px;">Explore Platform <i class="fas fa-arrow-right"></i></span></div>
+            </div>
         </div>
     </div>
 </section>

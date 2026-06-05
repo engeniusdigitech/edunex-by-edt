@@ -303,11 +303,11 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 </div>
             </div>
             <div class="nb-dropdown">
-                <div class="nb-drop-trigger {{ request()->is('edunex-erp-what-s-new ?*') ? 'active' : '' }}" tabindex="0">
+                <div class="nb-drop-trigger {{ request()->routeIs('digital.assessment') ? 'active' : '' }}" tabindex="0">
                     What's New <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="nb-menu">
-                    <a href="{{ asset('digital-assessment') }}">
+                    <a href="{{ route('digital.assessment') }}">
                         <i class="fas fa-eye"></i> Online Assessment
                     </a>
                 </div>
@@ -354,6 +354,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
         <a href="{{ url('/') }}"         class="{{ request()->is('/')            ? 'active' : '' }}">Home         <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('about') }}"   class="{{ request()->routeIs('about')   ? 'active' : '' }}">About Us     <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('pricing') }}" class="{{ request()->routeIs('pricing') ? 'active' : '' }}">Pricing      <i class="fas fa-arrow-right nb-arr"></i></a>
+        <a href="{{ route('digital.assessment') }}" class="{{ request()->routeIs('digital.assessment') ? 'active' : '' }}">Online Assessment <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ asset('edunex-erp-brochure.html') }}" class="{{ request()->is('edunex-erp-brochure.html') ? 'active' : '' }}">View Brochure <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ asset('edunex-erp-brochure.pdf') }}" download>Download PDF <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('blogs') }}"   class="{{ request()->routeIs('blogs')   ? 'active' : '' }}">Blogs        <i class="fas fa-arrow-right nb-arr"></i></a>

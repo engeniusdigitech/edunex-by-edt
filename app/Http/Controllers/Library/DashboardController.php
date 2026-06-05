@@ -26,14 +26,17 @@ class DashboardController extends Controller
 
         // Chart data
         $booksByCategory = Category::withCount('books')->get()->pluck('books_count', 'name');
-        $monthlyIssues = BookIssue::selectRaw('MONTH(issue_date) as month, COUNT(*) as count')
-            ->whereYear('issue_date', now()->year)
-            ->groupBy('month')
-            ->orderBy('month')
-            ->get()
-            ->mapWithKeys(function ($item) {
-                return [date('M', mktime(0, 0, 0, $item->month, 10)) => $item->count];
-            });
+        $monthlyIssues = BookIssue::selectRaw("
+            EXTRACT(MONTH FROM issue_date) as month,
+            COUNT(*) as count
+        ")
+        ->whereRaw('EXTRACT(YEAR FROM issue_date) = ?', [now()->year])
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get()
+        ->mapWithKeys(function ($item) {
+            return [date('M', mktime(0, 0, 0, (int) $item->month, 10)) => $item->count];
+        });
 
         return view('library.dashboard', compact(
             'totalBooks',
