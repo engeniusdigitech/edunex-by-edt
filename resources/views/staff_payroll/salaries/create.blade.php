@@ -39,6 +39,22 @@
                     <input type="number" step="0.01" name="deductions" class="form-control" value="{{ old('deductions', 0) }}">
                 </div>
                 <div class="col-md-6">
+                    <label class="form-label">PF Deduction Rate (%)</label>
+                    <input type="number" step="0.01" name="pf_rate" class="form-control" value="{{ old('pf_rate', 0.00) }}" min="0" max="100">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">ESIC Deduction Rate (%)</label>
+                    <input type="number" step="0.01" name="esic_rate" class="form-control" value="{{ old('esic_rate', 0.00) }}" min="0" max="100">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Casual Leave (CL) Allowance (Annual)</label>
+                    <input type="number" name="cl_allowance" class="form-control" value="{{ old('cl_allowance', 0) }}" min="0">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Earned Leave (EL) Allowance (Annual)</label>
+                    <input type="number" name="el_allowance" class="form-control" value="{{ old('el_allowance', 0) }}" min="0">
+                </div>
+                <div class="col-md-6">
                     <label class="form-label">Effective From</label>
                     <input type="date" name="effective_from" class="form-control" value="{{ old('effective_from', now()->format('Y-m-d')) }}" required>
                 </div>

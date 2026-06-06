@@ -662,7 +662,7 @@ body {
                 <!-- Copy -->
                 <div class="col-lg-6 text-center text-lg-start hero-copy">
                     <h1 class="hero-h2">
-                        The smartest way<br>to run your<br>
+                        The smartest way<br> to run your<br>
                         <span class="g-text">School or institute.</span>
                     </h1>
                     <p class="hero-sub">
@@ -804,10 +804,10 @@ body {
                 <div class="feat-name">Fee &amp; Payments</div>
                 <div class="feat-desc">Online collection with Razorpay. Automatic WhatsApp reminders. Real-time dashboards.</div>
             </div>
-            <div class="feat-card">
-                <div class="feat-icon-wrap" style="background:rgba(245,158,11,0.12);color:hsl(38,92%,60%);"><i class="fas fa-money-bill-wave"></i></div>
-                <div class="feat-name">Payroll &amp; Salary Slips</div>
-                <div class="feat-desc">One click runs payroll. PDF payslips land on WhatsApp automatically every month.</div>
+            <div class="feat-card" style="cursor: pointer;" onclick="window.location='{{ auth()->check() ? route('staff-payrolls.index') : route('login') }}'">
+                <div class="feat-icon-wrap" style="background:rgba(245,158,11,0.12);color:hsl(38,92%,60%);"><i class="fas fa-file-invoice-dollar"></i></div>
+                <div class="feat-name">Statutory HR &amp; Payroll <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">ENHANCED</span></div>
+                <div class="feat-desc">Configurable PF/ESIC rates, automated Indian tax TDS brackets, separate Casual/Earned leave tracking, and attendance pro-rating.</div>
             </div>
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-calendar-check"></i></div>
@@ -843,6 +843,31 @@ body {
                 <div class="feat-icon-wrap" style="background:rgba(99,102,241,0.12);color:hsl(240,90%,70%);"><i class="fas fa-laptop-code"></i></div>
                 <div class="feat-name">Online Examinations <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">NEW</span></div>
                 <div class="feat-desc">Conduct secure online exams. Auto-grading MCQs, centralized question banks, performance charts, and remote proctoring alerts. <span style="color:hsl(174,72%,60%);font-weight:600;display:block;margin-top:6px;">Explore Platform <i class="fas fa-arrow-right"></i></span></div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(20,184,166,0.12);color:hsl(174,72%,60%);"><i class="fas fa-hotel"></i></div>
+                <div class="feat-name">Hostel Management <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">NEW</span></div>
+                <div class="feat-desc">Complete boarding school suite. Manage room allocations, roommates directory, mess menus, and auto-generate monthly billing statements.</div>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon-wrap" style="background:rgba(245,158,11,0.12);color:hsl(38,92%,60%);"><i class="fas fa-boxes"></i></div>
+                <div class="feat-name">Store &amp; Inventory <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">NEW</span></div>
+                <div class="feat-desc">Track stationery, uniforms, and lab supplies. Manage vendor directories, purchase requisitions, and auto-adjust stock levels upon delivery.</div>
+            </div>
+            <div class="feat-card" style="cursor: pointer;" onclick="window.location='{{ auth()->check() ? route('visitors.index') : route('login') }}'">
+                <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.12);color:hsl(174,72%,60%);"><i class="fas fa-id-badge"></i></div>
+                <div class="feat-name">Visitor Gate Security <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">NEW</span></div>
+                <div class="feat-desc">Self-registration QR gate poster, receptionist live approval wait status screen, and printable visitor gate passes.</div>
+            </div>
+            <div class="feat-card" style="cursor: pointer;" onclick="window.location='{{ auth()->check() ? route('accounting.dashboard') : route('login') }}'">
+                <div class="feat-icon-wrap" style="background:rgba(99,102,241,0.12);color:hsl(240,90%,70%);"><i class="fas fa-calculator"></i></div>
+                <div class="feat-name">Accounting &amp; Tally Sync <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">NEW</span></div>
+                <div class="feat-desc">Double-entry ledger journal vouchers, dynamic GST reports (CGST/SGST/IGST), and standard Tally XML sync data exporter.</div>
+            </div>
+            <div class="feat-card" style="cursor: pointer;" onclick="window.location='{{ auth()->check() ? route('transport.tracking.index') : route('login') }}'">
+                <div class="feat-icon-wrap" style="background:rgba(14,165,233,0.12);color:hsl(199,89%,58%);"><i class="fas fa-map-location-dot"></i></div>
+                <div class="feat-name">Transit Tracking &amp; TSP <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">NEW</span></div>
+                <div class="feat-desc">GPS route tracking simulator with Leaflet maps, nearest-neighbor TSP route optimizer, student boarding checklist, and parent alerts.</div>
             </div>
         </div>
     </div>
@@ -929,9 +954,9 @@ body {
 
             <!-- Payroll -->
             <div class="bcard b4">
-                <div class="bicon bi-amber"><i class="fas fa-money-bill-wave"></i></div>
-                <div class="bcard-title">Payroll Processing</div>
-                <div class="bcard-desc">One-click monthly payroll. Deductions, bonuses, and net salary calculated automatically.</div>
+                <div class="bicon bi-amber"><i class="fas fa-file-invoice-dollar"></i></div>
+                <div class="bcard-title">Statutory Payroll</div>
+                <div class="bcard-desc">Automatic PF/ESIC deductions, separate Casual/Earned leave caps, TDS tax slabs, and pro-rated net salary.</div>
                 <div class="mini-bars">
                     <div class="mbar" style="height:28%;"></div>
                     <div class="mbar" style="height:50%;"></div>
@@ -940,20 +965,20 @@ body {
                     <div class="mbar" style="height:55%;"></div>
                     <div class="mbar hi" style="height:90%;"></div>
                 </div>
-                <div style="font-size:0.67rem;color:var(--muted);margin-top:4px;">Monthly payroll volume (6 months)</div>
-                <div class="mt-2"><span class="mtag"><i class="fas fa-check" style="color:hsl(38,92%,60%);"></i> Auto deductions</span><span class="mtag">Bonus tracking</span></div>
+                <div style="font-size:0.67rem;color:var(--muted);margin-top:4px;">Payroll disbursement (6 months)</div>
+                <div class="mt-2"><span class="mtag"><i class="fas fa-check" style="color:hsl(38,92%,60%);"></i> PF & ESIC rates</span><span class="mtag">TDS slabs</span></div>
             </div>
 
             <!-- Salary Slips -->
             <div class="bcard b4">
                 <div class="bicon bi-violet"><i class="fas fa-file-invoice-dollar"></i></div>
-                <div class="bcard-title">Digital Salary Slips</div>
-                <div class="bcard-desc">Auto-generated payslips every month, delivered to staff via WhatsApp instantly.</div>
+                <div class="bcard-title">Digital Payslips</div>
+                <div class="bcard-desc">Detailed itemized payslips covering statutory splits, sent via WhatsApp/email automatically.</div>
                 <div class="slip">
-                    <div class="slip-row"><span class="sl">Basic Salary</span><span class="sv">₹22,000</span></div>
-                    <div class="slip-row"><span class="sl">Bonus</span><span class="sv g">+₹2,500</span></div>
-                    <div class="slip-row"><span class="sl">Deductions</span><span class="sv r">−₹1,200</span></div>
-                    <div class="slip-row"><span class="sl" style="font-weight: 500;color:var(--foreground);">Net Pay</span><span class="sv g" style="font-size:0.9rem;">₹23,300</span></div>
+                    <div class="slip-row"><span class="sl">Gross Salary</span><span class="sv">₹35,000</span></div>
+                    <div class="slip-row"><span class="sl">PF / ESIC Deductions</span><span class="sv r">−₹1,800</span></div>
+                    <div class="slip-row"><span class="sl">TDS Deduction</span><span class="sv r">−₹1,450</span></div>
+                    <div class="slip-row"><span class="sl" style="font-weight: 500;color:var(--foreground);">Net Disbursed</span><span class="sv g" style="font-size:0.9rem;">₹31,750</span></div>
                 </div>
             </div>
 

@@ -6,9 +6,16 @@
 <div class="row justify-content-center">
     <div class="col-md-10 col-lg-8">
         <div class="card border-0 shadow-sm" style="border-radius: 20px; background: #fff;">
-            <div class="card-header bg-white border-bottom-0 py-4 px-4" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                <h4 class="fw-bold text-dark mb-0"><i class="fas fa-bus text-primary me-2"></i>My Transport Details</h4>
-                <p class="text-muted small mb-0 mt-1">Information about your allocated route, stop, vehicle and driver</p>
+            <div class="card-header bg-white border-bottom-0 py-4 px-4 d-flex justify-content-between align-items-center" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <div>
+                    <h4 class="fw-bold text-dark mb-0"><i class="fas fa-bus text-primary me-2"></i>My Transport Details</h4>
+                    <p class="text-muted small mb-0 mt-1">Information about your allocated route, stop, vehicle and driver</p>
+                </div>
+                @if($allocation)
+                    <a href="{{ route('student.transport.tracking') }}" class="btn btn-primary rounded-pill px-3.5 btn-sm shadow-sm">
+                        <i class="fas fa-map-marked-alt me-1"></i>Track Live Bus
+                    </a>
+                @endif
             </div>
             
             <div class="card-body p-4 border-top">

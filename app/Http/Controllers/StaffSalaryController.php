@@ -45,6 +45,10 @@ class StaffSalaryController extends Controller
             'hra' => 'nullable|numeric|min:0',
             'allowances' => 'nullable|numeric|min:0',
             'deductions' => 'nullable|numeric|min:0',
+            'pf_rate' => 'nullable|numeric|min:0|max:100',
+            'esic_rate' => 'nullable|numeric|min:0|max:100',
+            'cl_allowance' => 'nullable|integer|min:0',
+            'el_allowance' => 'nullable|integer|min:0',
             'effective_from' => 'required|date',
         ]);
 
@@ -61,6 +65,10 @@ class StaffSalaryController extends Controller
             'hra' => $validated['hra'] ?? 0,
             'allowances' => $validated['allowances'] ?? 0,
             'deductions' => $validated['deductions'] ?? 0,
+            'pf_rate' => $validated['pf_rate'] ?? 0,
+            'esic_rate' => $validated['esic_rate'] ?? 0,
+            'cl_allowance' => $validated['cl_allowance'] ?? 0,
+            'el_allowance' => $validated['el_allowance'] ?? 0,
             'effective_from' => $validated['effective_from'],
             'is_active' => true,
         ]);
@@ -80,6 +88,10 @@ class StaffSalaryController extends Controller
             'hra' => 'nullable|numeric|min:0',
             'allowances' => 'nullable|numeric|min:0',
             'deductions' => 'nullable|numeric|min:0',
+            'pf_rate' => 'nullable|numeric|min:0|max:100',
+            'esic_rate' => 'nullable|numeric|min:0|max:100',
+            'cl_allowance' => 'nullable|integer|min:0',
+            'el_allowance' => 'nullable|integer|min:0',
             'effective_from' => 'required|date',
         ]);
 
@@ -88,6 +100,10 @@ class StaffSalaryController extends Controller
             'hra' => $validated['hra'] ?? 0,
             'allowances' => $validated['allowances'] ?? 0,
             'deductions' => $validated['deductions'] ?? 0,
+            'pf_rate' => $validated['pf_rate'] ?? 0,
+            'esic_rate' => $validated['esic_rate'] ?? 0,
+            'cl_allowance' => $validated['cl_allowance'] ?? 0,
+            'el_allowance' => $validated['el_allowance'] ?? 0,
             'effective_from' => $validated['effective_from'],
         ]);
 

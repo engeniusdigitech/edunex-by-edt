@@ -303,12 +303,24 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 </div>
             </div>
             <div class="nb-dropdown">
-                <div class="nb-drop-trigger {{ request()->routeIs('digital.assessment') ? 'active' : '' }}" tabindex="0">
+                <div class="nb-drop-trigger {{ request()->routeIs('digital.assessment') || request()->routeIs('features.*') ? 'active' : '' }}" tabindex="0">
                     What's New <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="nb-menu">
+                <div class="nb-menu" style="min-width: 260px;">
                     <a href="{{ route('digital.assessment') }}">
-                        <i class="fas fa-eye"></i> Online Assessment
+                        <i class="fas fa-laptop-code"></i> Online Assessment
+                    </a>
+                    <a href="{{ route('features.visitor-gate') }}">
+                        <i class="fas fa-id-badge"></i> Visitor Gate Security
+                    </a>
+                    <a href="{{ route('features.tally-accounting') }}">
+                        <i class="fas fa-calculator"></i> Tally Sync Accounting
+                    </a>
+                    <a href="{{ route('features.transit-tracking') }}">
+                        <i class="fas fa-map-location-dot"></i> Live GPS Transit Maps
+                    </a>
+                    <a href="{{ route('features.statutory-payroll') }}">
+                        <i class="fas fa-file-invoice-dollar"></i> Statutory Payroll
                     </a>
                 </div>
             </div>
@@ -355,6 +367,10 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
         <a href="{{ route('about') }}"   class="{{ request()->routeIs('about')   ? 'active' : '' }}">About Us     <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('pricing') }}" class="{{ request()->routeIs('pricing') ? 'active' : '' }}">Pricing      <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('digital.assessment') }}" class="{{ request()->routeIs('digital.assessment') ? 'active' : '' }}">Online Assessment <i class="fas fa-arrow-right nb-arr"></i></a>
+        <a href="{{ route('features.visitor-gate') }}" class="{{ request()->routeIs('features.visitor-gate') ? 'active' : '' }}">Visitor Gate Security <i class="fas fa-arrow-right nb-arr"></i></a>
+        <a href="{{ route('features.tally-accounting') }}" class="{{ request()->routeIs('features.tally-accounting') ? 'active' : '' }}">Tally Sync Accounting <i class="fas fa-arrow-right nb-arr"></i></a>
+        <a href="{{ route('features.transit-tracking') }}" class="{{ request()->routeIs('features.transit-tracking') ? 'active' : '' }}">Live GPS Transit Maps <i class="fas fa-arrow-right nb-arr"></i></a>
+        <a href="{{ route('features.statutory-payroll') }}" class="{{ request()->routeIs('features.statutory-payroll') ? 'active' : '' }}">Statutory Payroll <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ asset('edunex-erp-brochure.html') }}" class="{{ request()->is('edunex-erp-brochure.html') ? 'active' : '' }}">View Brochure <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ asset('edunex-erp-brochure.pdf') }}" download>Download PDF <i class="fas fa-arrow-right nb-arr"></i></a>
         <a href="{{ route('blogs') }}"   class="{{ request()->routeIs('blogs')   ? 'active' : '' }}">Blogs        <i class="fas fa-arrow-right nb-arr"></i></a>

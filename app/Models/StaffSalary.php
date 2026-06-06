@@ -16,6 +16,10 @@ class StaffSalary extends Model
         'hra',
         'allowances',
         'deductions',
+        'pf_rate',
+        'esic_rate',
+        'cl_allowance',
+        'el_allowance',
         'effective_from',
         'is_active',
     ];
@@ -25,6 +29,10 @@ class StaffSalary extends Model
         'hra' => 'decimal:2',
         'allowances' => 'decimal:2',
         'deductions' => 'decimal:2',
+        'pf_rate' => 'decimal:2',
+        'esic_rate' => 'decimal:2',
+        'cl_allowance' => 'integer',
+        'el_allowance' => 'integer',
         'effective_from' => 'date',
         'is_active' => 'boolean',
     ];

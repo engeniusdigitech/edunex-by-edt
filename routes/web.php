@@ -52,6 +52,23 @@ Route::get('/blogs', function () {
 Route::get('/digital-assessment-platform', function () {
     return view('digital-assessment');
 })->name('digital.assessment');
+
+Route::get('/features/visitor-gate', function () {
+    return view('features.visitor-gate');
+})->name('features.visitor-gate');
+
+Route::get('/features/tally-accounting', function () {
+    return view('features.tally-accounting');
+})->name('features.tally-accounting');
+
+Route::get('/features/transit-tracking', function () {
+    return view('features.transit-tracking');
+})->name('features.transit-tracking');
+
+Route::get('/features/statutory-payroll', function () {
+    return view('features.statutory-payroll');
+})->name('features.statutory-payroll');
+
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 // Legal Pages
@@ -77,6 +94,12 @@ Route::get('/robots.txt', function () {
 Route::get('/institute-erp/{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
 Route::get('/school-erp/{city}', [SeoLandingController::class, 'schoolLanding'])->name('seo.school.landing');
 Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
+
+// Public Visitor Registration & Check-in status
+Route::get('/visitors/register/{institute}', [\App\Http\Controllers\VisitorController::class, 'publicRegisterForm'])->name('visitors.public-register');
+Route::post('/visitors/register/{institute}', [\App\Http\Controllers\VisitorController::class, 'publicRegisterStore'])->name('visitors.public-store');
+Route::get('/visitors/register-status/{visitor}', [\App\Http\Controllers\VisitorController::class, 'publicRegisterStatus'])->name('visitors.public-status');
+Route::get('/visitors/register-status/{visitor}/check', [\App\Http\Controllers\VisitorController::class, 'checkStatus'])->name('visitors.check-status');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -138,6 +161,28 @@ Route::middleware(['auth'])->group(function () {
             Route::post('online-exams/{onlineExam}/close', [\App\Http\Controllers\OnlineExamController::class, 'close'])->name('online-exams.close')->middleware('can:manage-academics');
             Route::get('online-exams/{onlineExam}/results', [\App\Http\Controllers\OnlineExamController::class, 'results'])->name('online-exams.results')->middleware('can:manage-academics');
             Route::resource('question-bank', \App\Http\Controllers\QuestionBankController::class)->middleware('can:manage-academics');
+
+            // Hostel Management Module
+            Route::resource('hostels', \App\Http\Controllers\HostelController::class)->middleware('can:manage-academics');
+            Route::post('hostels/{hostel}/rooms', [\App\Http\Controllers\HostelController::class, 'storeRoom'])->name('hostels.rooms.store')->middleware('can:manage-academics');
+            Route::delete('hostels/{hostel}/rooms/{room}', [\App\Http\Controllers\HostelController::class, 'destroyRoom'])->name('hostels.rooms.destroy')->middleware('can:manage-academics');
+
+            Route::resource('hostel-allocations', \App\Http\Controllers\HostelAllocationController::class)->middleware('can:manage-academics');
+            Route::post('hostel-allocations/{allocation}/checkout', [\App\Http\Controllers\HostelAllocationController::class, 'checkout'])->name('hostel-allocations.checkout')->middleware('can:manage-academics');
+            Route::post('hostel-allocations/bills/generate', [\App\Http\Controllers\HostelAllocationController::class, 'generateBills'])->name('hostel-allocations.bills.generate')->middleware('can:manage-academics');
+            Route::resource('hostel-bills', \App\Http\Controllers\HostelBillController::class)->only(['index', 'update'])->middleware('can:manage-academics');
+
+            Route::resource('hostel-messes', \App\Http\Controllers\HostelMessController::class)->middleware('can:manage-academics');
+            Route::post('hostel-messes/{mess}/menu', [\App\Http\Controllers\HostelMessController::class, 'updateMenu'])->name('hostel-messes.menu.update')->middleware('can:manage-academics');
+            Route::post('hostel-messes/{mess}/subscribe', [\App\Http\Controllers\HostelMessController::class, 'subscribeStudent'])->name('hostel-messes.subscribe')->middleware('can:manage-academics');
+
+            // Inventory & Store Management Module
+            Route::resource('inventory-items', \App\Http\Controllers\InventoryItemController::class)->middleware('can:manage-academics');
+            Route::resource('inventory-suppliers', \App\Http\Controllers\InventorySupplierController::class)->middleware('can:manage-academics');
+            Route::resource('purchase-orders', \App\Http\Controllers\PurchaseOrderController::class)->middleware('can:manage-academics');
+            Route::post('purchase-orders/{purchase_order}/items', [\App\Http\Controllers\PurchaseOrderController::class, 'storeItem'])->name('purchase-orders.items.store')->middleware('can:manage-academics');
+            Route::delete('purchase-orders/{purchase_order}/items/{item}', [\App\Http\Controllers\PurchaseOrderController::class, 'destroyItem'])->name('purchase-orders.items.destroy')->middleware('can:manage-academics');
+            Route::post('purchase-orders/{purchase_order}/status', [\App\Http\Controllers\PurchaseOrderController::class, 'updateStatus'])->name('purchase-orders.status.update')->middleware('can:manage-academics');
 
             // Notifications
             Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
@@ -224,7 +269,25 @@ Route::middleware(['auth'])->group(function () {
                 
                 // Reports
                 Route::get('/reports', [\App\Http\Controllers\TransportController::class, 'reports'])->name('reports');
+
+                // Advanced Transport Tracking
+                Route::get('/tracking', [\App\Http\Controllers\TransportTrackingController::class, 'index'])->name('tracking.index');
+                Route::post('/trips', [\App\Http\Controllers\TransportTrackingController::class, 'startTrip'])->name('trips.start');
+                Route::post('/trips/{trip}/location', [\App\Http\Controllers\TransportTrackingController::class, 'updateLocation'])->name('trips.location');
+                Route::post('/trips/{trip}/board', [\App\Http\Controllers\TransportTrackingController::class, 'boardStudent'])->name('trips.board');
+                Route::post('/trips/{trip}/complete', [\App\Http\Controllers\TransportTrackingController::class, 'completeTrip'])->name('trips.complete');
+                Route::post('/routes/{route}/optimize', [\App\Http\Controllers\TransportTrackingController::class, 'optimizeRoute'])->name('routes.optimize');
             });
+
+            // Accounting & Tally Integration
+            Route::resource('expenses', \App\Http\Controllers\ExpenseController::class)->middleware('can:manage-payments');
+            Route::prefix('accounting')->name('accounting.')->group(function () {
+                Route::get('/dashboard', [\App\Http\Controllers\AccountingController::class, 'dashboard'])->name('dashboard');
+                Route::get('/ledgers', [\App\Http\Controllers\AccountingController::class, 'ledgers'])->name('ledgers.index');
+                Route::post('/ledgers', [\App\Http\Controllers\AccountingController::class, 'storeLedger'])->name('ledgers.store');
+                Route::get('/gst-reports', [\App\Http\Controllers\AccountingController::class, 'gstReports'])->name('gst.reports');
+                Route::get('/tally-export', [\App\Http\Controllers\AccountingController::class, 'tallyExport'])->name('tally.export');
+            })->middleware('can:manage-payments');
 
             // Staff biometric attendance (self mark in/out)
             Route::get('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'index'])->name('staff-attendance.mark');
@@ -250,6 +313,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/staff-payrolls', [\App\Http\Controllers\StaffPayrollController::class, 'index'])->name('staff-payrolls.index')->middleware('can:manage-staff-payroll');
             Route::post('/staff-payrolls/generate', [\App\Http\Controllers\StaffPayrollController::class, 'generate'])->name('staff-payrolls.generate')->middleware('can:manage-staff-payroll');
             Route::patch('/staff-payrolls/{staffPayroll}', [\App\Http\Controllers\StaffPayrollController::class, 'updateStatus'])->name('staff-payrolls.update')->middleware('can:manage-staff-payroll');
+            Route::get('/staff-payrolls/{staffPayroll}/payslip', [\App\Http\Controllers\StaffPayrollController::class, 'payslip'])->name('staff-payrolls.payslip')->middleware('can:manage-staff-payroll');
+
+            // Visitor Gate Register (Admin, Principal, Receptionist)
+            Route::resource('visitors', \App\Http\Controllers\VisitorController::class)->except(['destroy'])->middleware('can:manage-visitors');
+            Route::post('/visitors/{visitor}/checkout', [\App\Http\Controllers\VisitorController::class, 'checkout'])->name('visitors.checkout')->middleware('can:manage-visitors');
+            Route::get('/visitors/{visitor}/pass', [\App\Http\Controllers\VisitorController::class, 'pass'])->name('visitors.pass')->middleware('can:manage-visitors');
+            Route::post('/visitors/{visitor}/approve', [\App\Http\Controllers\VisitorController::class, 'approve'])->name('visitors.approve')->middleware('can:manage-visitors');
+            Route::post('/visitors/{visitor}/reject', [\App\Http\Controllers\VisitorController::class, 'reject'])->name('visitors.reject')->middleware('can:manage-visitors');
 
             // --- Library Management System (Admin) ---
             Route::prefix('library')->name('library.')->middleware('can:manage-library')->group(function () {
@@ -400,6 +471,12 @@ Route::prefix('student')->name('student.')->group(function () {
 
             // Student Transport
             Route::get('transport', [\App\Http\Controllers\Student\StudentTransportController::class, 'index'])->name('transport.index');
+            Route::get('transport/tracking', [\App\Http\Controllers\Student\StudentTrackingController::class, 'tracking'])->name('transport.tracking');
+
+            // Student Hostel Routes
+            Route::get('hostel/my-room', [\App\Http\Controllers\Student\HostelController::class, 'myRoom'])->name('hostel.my-room');
+            Route::get('hostel/mess-menu', [\App\Http\Controllers\Student\HostelController::class, 'messMenu'])->name('hostel.mess-menu');
+            Route::get('hostel/bills', [\App\Http\Controllers\Student\HostelBillController::class, 'index'])->name('hostel.bills');
         }
     );
 });

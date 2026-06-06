@@ -99,6 +99,22 @@ class DashboardController extends Controller
             ->whereDoesntHave('attendances', fn($q) => $q->whereDate('date', today()))
             ->count();
 
+        // ── VISITOR & PAYROLL STATS (PREMIUM SAAS LEVEL) ──
+        $visitorsPendingCount = \App\Models\Visitor::where('status', 'pending')->count();
+        $visitorsActiveCount = \App\Models\Visitor::where('status', 'checked_in')->count();
+        $visitorsTodayCount = \App\Models\Visitor::whereDate('created_at', today())->count();
+
+        $visitorTrend = collect();
+        for ($i = 6; $i >= 0; $i--) {
+            $day = now()->subDays($i);
+            $count = \App\Models\Visitor::whereDate('created_at', $day->toDateString())->count();
+            $visitorTrend[$day->format('D d')] = $count;
+        }
+
+        $recentVisitors = \App\Models\Visitor::with('whomToMeet')->latest()->take(5)->get();
+        $pendingStaffLeavesCount = \App\Models\LeaveRequest::whereNull('student_id')->where('status', 'pending')->count();
+        $totalPayrollThisMonth = \App\Models\StaffPayroll::whereMonth('created_at', now()->month)->sum('net_salary');
+
         return view('dashboard', compact(
             'totalStudents',
             'activeBatches',
@@ -114,7 +130,14 @@ class DashboardController extends Controller
             'attendanceTrend',
             'recentPayments',
             'noAttendanceToday',
-            'todayStaffAttendance'
+            'todayStaffAttendance',
+            'visitorsPendingCount',
+            'visitorsActiveCount',
+            'visitorsTodayCount',
+            'visitorTrend',
+            'recentVisitors',
+            'pendingStaffLeavesCount',
+            'totalPayrollThisMonth'
         ));
     }
     private function teacherDashboard($user)
@@ -264,6 +287,22 @@ class DashboardController extends Controller
             ->whereDoesntHave('attendances', fn($q) => $q->whereDate('date', today()))
             ->count();
 
+        // ── VISITOR & PAYROLL STATS (PREMIUM SAAS LEVEL) ──
+        $visitorsPendingCount = \App\Models\Visitor::where('status', 'pending')->count();
+        $visitorsActiveCount = \App\Models\Visitor::where('status', 'checked_in')->count();
+        $visitorsTodayCount = \App\Models\Visitor::whereDate('created_at', today())->count();
+
+        $visitorTrend = collect();
+        for ($i = 6; $i >= 0; $i--) {
+            $day = now()->subDays($i);
+            $count = \App\Models\Visitor::whereDate('created_at', $day->toDateString())->count();
+            $visitorTrend[$day->format('D d')] = $count;
+        }
+
+        $recentVisitors = \App\Models\Visitor::with('whomToMeet')->latest()->take(5)->get();
+        $pendingStaffLeavesCount = \App\Models\LeaveRequest::whereNull('student_id')->where('status', 'pending')->count();
+        $totalPayrollThisMonth = 0; // Hide financial data
+
         return view('dashboard', compact(
             'totalStudents',
             'activeBatches',
@@ -276,7 +315,14 @@ class DashboardController extends Controller
             'studentsPerBatch',
             'attendanceTrend',
             'noAttendanceToday',
-            'todayStaffAttendance'
+            'todayStaffAttendance',
+            'visitorsPendingCount',
+            'visitorsActiveCount',
+            'visitorsTodayCount',
+            'visitorTrend',
+            'recentVisitors',
+            'pendingStaffLeavesCount',
+            'totalPayrollThisMonth'
         ));
     }
 
@@ -320,6 +366,22 @@ class DashboardController extends Controller
         $attendanceTrend = collect();
         $noAttendanceToday = 0;
 
+        // ── VISITOR & PAYROLL STATS (PREMIUM SAAS LEVEL) ──
+        $visitorsPendingCount = \App\Models\Visitor::where('status', 'pending')->count();
+        $visitorsActiveCount = \App\Models\Visitor::where('status', 'checked_in')->count();
+        $visitorsTodayCount = \App\Models\Visitor::whereDate('created_at', today())->count();
+
+        $visitorTrend = collect();
+        for ($i = 6; $i >= 0; $i--) {
+            $day = now()->subDays($i);
+            $count = \App\Models\Visitor::whereDate('created_at', $day->toDateString())->count();
+            $visitorTrend[$day->format('D d')] = $count;
+        }
+
+        $recentVisitors = \App\Models\Visitor::with('whomToMeet')->latest()->take(5)->get();
+        $pendingStaffLeavesCount = 0;
+        $totalPayrollThisMonth = 0;
+
         return view('dashboard', compact(
             'monthlyRevenue',
             'revenueData',
@@ -333,7 +395,14 @@ class DashboardController extends Controller
             'studentsPerBatch',
             'attendanceTrend',
             'noAttendanceToday',
-            'todayStaffAttendance'
+            'todayStaffAttendance',
+            'visitorsPendingCount',
+            'visitorsActiveCount',
+            'visitorsTodayCount',
+            'visitorTrend',
+            'recentVisitors',
+            'pendingStaffLeavesCount',
+            'totalPayrollThisMonth'
         ));
     }
 }

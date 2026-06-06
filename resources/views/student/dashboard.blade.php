@@ -213,6 +213,22 @@
             <i class="fas fa-bus"></i>
             <span>Transport</span>
         </a>
+
+        <!-- Hostel details -->
+        <a href="{{ route('student.hostel.my-room') }}" class="page-btn">
+            <i class="fas fa-hotel"></i>
+            <span>My Room</span>
+        </a>
+
+        <a href="{{ route('student.hostel.mess-menu') }}" class="page-btn">
+            <i class="fas fa-utensils"></i>
+            <span>Mess Menu</span>
+        </a>
+
+        <a href="{{ route('student.hostel.bills') }}" class="page-btn">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Hostel Bills</span>
+        </a>
         
         <!-- Profile -->
         <a href="{{ route('student.profile.edit') }}" class="page-btn">

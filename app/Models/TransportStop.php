@@ -14,6 +14,9 @@ class TransportStop extends Model
         'institute_id',
         'stop_name',
         'transport_route_id',
+        'latitude',
+        'longitude',
+        'sort_order',
     ];
 
     public function route()

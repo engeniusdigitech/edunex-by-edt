@@ -37,10 +37,10 @@
         .sidebar {
             height: 100vh;
             overflow-y: auto;
-            background: var(--dark-bg);
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #eefaf3;
+            border-right: 1px solid #d3ebd6;
             padding-top: 0;
-            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.04);
             position: sticky;
             top: 0;
             z-index: 1040;
@@ -48,67 +48,115 @@
             flex-shrink: 0;
         }
 
-        .sidebar-brand {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #ffffff !important;
-            letter-spacing: -0.5px;
-            margin-bottom: 2rem;
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(25, 135, 84, 0.2);
+            border-radius: 10px;
+        }
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(25, 135, 84, 0.4);
+        }
+
+        .sidebar-brand-container {
+            padding: 28px 20px;
+            border-bottom: 1px solid #d3ebd6;
+            background-color: #e2f4e8;
+            position: relative;
+        }
+
+        .sidebar-brand-name {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #0f5132;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-brand-subtitle {
+            font-size: 0.6rem;
+            color: #198754;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            margin-top: 6px;
         }
 
         .sidebar-header {
-            font-size: 11px;
-            font-weight: 500;
+            font-size: 9px;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-            margin-top: 10px;
-            color: #64748B;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            margin-top: 28px;
+            color: #4a6d59;
             padding-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-header::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: #d3ebd6;
+            margin-right: 16px;
         }
 
         .sidebar a {
-            color: #cbd5e1;
+            color: #355245;
             text-decoration: none;
             display: flex;
             align-items: center;
-            padding: 12px 20px;
-            margin: 4px 12px;
+            padding: 10px 16px;
+            margin: 2px 14px;
             border-radius: 12px;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            font-size: 0.88rem;
+            position: relative;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
         }
 
         .sidebar a i {
-            width: 24px;
+            width: 22px;
             text-align: center;
             margin-right: 12px;
-            color: #94A3B8;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            color: #557c67;
+            transition: all 0.2s;
         }
 
         .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            transform: translateX(4px);
+            background-color: #dbf2e3;
+            color: #0f5132;
+            border-color: #c3ebd0;
+            padding-left: 20px;
         }
 
         .sidebar a:hover i {
-            color: #ffffff;
+            color: #198754;
+            transform: scale(1.05);
         }
 
         .sidebar a.active {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(14, 165, 233, 0.2));
-            color: #ffffff;
-            font-weight: 600;
-            border-left: 3px solid var(--primary-color);
+            background-color: #d1e7dd;
+            color: #0f5132;
+            font-weight: 700;
+            border-left: 4px solid #198754;
             border-radius: 0 12px 12px 0;
             margin-left: 0;
-            padding-left: 29px;
+            padding-left: 24px;
+            border-color: #b7dbcb #b7dbcb #b7dbcb #198754;
         }
 
         .sidebar a.active i {
-            color: var(--primary-color);
+            color: #0f5132;
         }
 
         .sidebar-overlay {
@@ -229,21 +277,43 @@
             position: relative;
         }
         .sidebar a[data-bs-toggle="collapse"] .dropdown-arrow {
-            transition: transform 0.3s ease;
-            font-size: 0.75rem;
+            transition: transform 0.2s ease;
+            font-size: 0.72rem;
+            color: #557c67;
         }
         .sidebar a[data-bs-toggle="collapse"]:not(.collapsed) .dropdown-arrow {
             transform: rotate(180deg);
+            color: #0f5132;
+        }
+        .sidebar .collapse {
+            position: relative;
+            padding-left: 8px;
+            margin-left: 28px;
+            border-left: 1px dashed #a3cfbb;
+            margin-bottom: 6px;
+            margin-top: 2px;
         }
         .sidebar .collapse a {
-            margin-left: 20px;
-            margin-right: 12px;
-            font-size: 0.85rem;
-            padding: 8px 16px;
+            margin: 2px 10px 2px 0 !important;
+            font-size: 0.82rem;
+            padding: 8px 12px !important;
+            color: #4a6d59;
+            border-radius: 8px;
+            font-weight: 500;
         }
-        .sidebar .collapse a i {
-            font-size: 0.85rem;
-            width: 20px;
+        .sidebar .collapse a:hover {
+            background-color: #dbf2e3 !important;
+            color: #0f5132;
+            padding-left: 16px !important;
+            border-left: none !important;
+        }
+        .sidebar .collapse a.active {
+            background-color: #d1e7dd !important;
+            color: #0f5132 !important;
+            border-left: none !important;
+            padding-left: 12px !important;
+            border-radius: 8px !important;
+            margin-left: 0 !important;
         }
     </style>
 </head>
@@ -255,24 +325,17 @@
         <div class="row g-0" style="height:100vh;overflow:hidden;">
             <!-- Sidebar -->
             <div class="col-lg-2 col-md-3 sidebar d-flex flex-column h-100" id="adminSidebar">
-                <div class="d-flex flex-column align-items-center gap-1 px-3 py-2"
-                    style="border-bottom:1px solid rgba(255,255,255,0.06);text-align:center;">
-                    <!-- <img src="{{ asset('images/logo.png') }}" alt="Logo"
-                        style="height:80px;width:80px;object-fit:contain;border-radius:14px;flex-shrink:0;"> -->
-                    <div style="line-height:1.2;min-width:0;">
-                        <div
-                            style="font-size:0.82rem;font-weight: 500;color:#fff;overflow:hidden;text-overflow:ellipsis;">
-                            @if(auth()->check() && auth()->user()->institute_id && auth()->user()->institute)
-                                {{ auth()->user()->institute->name }}
-                            @elseif(auth()->check() && auth()->user()->isSuperAdmin())
-                                Super Admin
-                            @else
-                                EduNex
-                            @endif
-                        </div>
-                        <div style="font-size:0.62rem;color:#64748B;text-transform:uppercase;letter-spacing:1px;">Admin
-                            Panel</div>
+                <div class="sidebar-brand-container text-center">
+                    <div class="sidebar-brand-name px-2 text-truncate">
+                        @if(auth()->check() && auth()->user()->institute_id && auth()->user()->institute)
+                            {{ auth()->user()->institute->name }}
+                        @elseif(auth()->check() && auth()->user()->isSuperAdmin())
+                            Super Admin
+                        @else
+                            EduNex
+                        @endif
                     </div>
+                    <div class="sidebar-brand-subtitle">Admin Portal</div>
                 </div>
 
                 @if(auth()->user() && auth()->user()->isSuperAdmin())
@@ -287,14 +350,41 @@
                     <h6 class="sidebar-header">Institute Panel</h6>
                     <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><i
                             class="fas fa-home"></i> Dashboard</a>
-                    @can('manage-staff')
-                        @if(auth()->user()->isInstituteAdmin() && auth()->user()->institute->isSchool())
-                            <a href="{{ route('principals.index') }}" class="{{ request()->routeIs('principals.*') ? 'active' : '' }}"><i
-                                    class="fas fa-user-shield"></i> Principals</a>
+
+                    @can('manage-attendance')
+                        @php
+                            $showAttendance = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
+                        @endphp
+                        @if($showAttendance)
+                            <a href="{{ route('attendance.index') }}" class="{{ request()->routeIs('attendance.*') ? 'active' : '' }}"><i class="fas fa-calendar-check"></i> Student's Attendance</a>
                         @endif
-                        <a href="{{ route('staff.index') }}" class="{{ request()->routeIs('staff.*') ? 'active' : '' }}"><i
-                                class="fas fa-user-tie"></i> Staff</a>
                     @endcan
+
+                    @php
+                        $isUsersActive = request()->routeIs('principals.*') || request()->routeIs('staff.*') || request()->routeIs('students.*');
+                        $canShowUsersDropdown = auth()->user()->can('manage-staff') || auth()->user()->can('manage-students');
+                    @endphp
+                    @if($canShowUsersDropdown)
+                        <a href="#usersCollapse" data-bs-toggle="collapse" class="{{ $isUsersActive ? '' : 'collapsed' }}" aria-expanded="{{ $isUsersActive ? 'true' : 'false' }}">
+                            <i class="fas fa-users-cog"></i>
+                            <span class="flex-grow-1">Users</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isUsersActive ? 'show' : '' }}" id="usersCollapse">
+                            @can('manage-staff')
+                                <a href="{{ route('staff.index') }}" class="{{ request()->routeIs('staff.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-tie"></i> Staff</a>
+                                @if(auth()->user()->isInstituteAdmin() && auth()->user()->institute->isSchool())
+                                    <a href="{{ route('principals.index') }}" class="{{ request()->routeIs('principals.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-shield"></i> Principal</a>
+                                @endif
+                            @endcan
+                            @can('manage-students')
+                                <a href="{{ route('students.index') }}" class="{{ request()->routeIs('students.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-graduate"></i> Students</a>
+                            @endcan
+                        </div>
+                    @endif
+                    
+                    
+
                     @can('manage-institute-settings')
                         @if(auth()->user()->institute->feature_hr)
                             @php
@@ -316,40 +406,36 @@
                             </div>
                         @endif
                     @endcan
-                    <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }}">
-                        <i class="fas fa-calendar-alt"></i> Leave Management
+
+                    @php
+                        $user = auth()->user();
+                        $canManageStudentLeaves = $user->isInstituteAdmin() || $user->isPrincipal() || $user->isClassTeacher();
+                        $isLeavesActive = request()->routeIs('leaves.index') || request()->routeIs('leaves.students');
+                    @endphp
+                    <a href="#leavesCollapse" data-bs-toggle="collapse" class="{{ $isLeavesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isLeavesActive ? 'true' : 'false' }}">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="flex-grow-1">Leave Management</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
                     </a>
+                    <div class="collapse {{ $isLeavesActive ? 'show' : '' }}" id="leavesCollapse">
+                        @if($canManageStudentLeaves)
+                            <a href="{{ route('leaves.students') }}" class="{{ request()->routeIs('leaves.students') ? 'active' : '' }} small py-2"><i class="fas fa-user-clock"></i> Student's Leaves</a>
+                        @endif
+                        <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }} small py-2"><i class="fas fa-user-tie"></i> Staff Leave</a>
+                    </div>
+
+                    @can('manage-visitors')
+                        <a href="{{ route('visitors.index') }}" class="{{ request()->routeIs('visitors.*') ? 'active' : '' }}">
+                            <i class="fas fa-id-badge"></i> Visitor Management
+                        </a>
+                    @endcan
+
                     @if(auth()->user()->canUseBiometricAttendance())
                         <a href="{{ route('staff-attendance.mark') }}" class="{{ request()->routeIs('staff-attendance.mark') ? 'active' : '' }}">
                             <i class="fas fa-fingerprint"></i> Mark Attendance
                         </a>
                     @endif
-                    @can('manage-students')
-                        <a href="{{ route('students.index') }}"
-                            class="{{ request()->routeIs('students.*') ? 'active' : '' }}"><i class="fas fa-users"></i>
-                            Students</a>
-                    @endcan
-                    @can('manage-attendance')
-                        @php
-                            $showAttendance = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
-                        @endphp
-                        @if($showAttendance)
-                            <a href="{{ route('attendance.index') }}"
-                                class="{{ request()->routeIs('attendance.*') ? 'active' : '' }}"><i
-                                    class="fas fa-calendar-check"></i> Attendance</a>
-                        @endif
-                    @endcan
 
-                    @php
-                        $user = auth()->user();
-                        $canManageStudentLeaves = $user->isInstituteAdmin() || $user->isPrincipal() || $user->isClassTeacher();
-                    @endphp
-
-                    @if($canManageStudentLeaves)
-                        <a href="{{ route('leaves.students') }}" class="{{ request()->routeIs('leaves.students') ? 'active' : '' }}">
-                            <i class="fas fa-user-clock"></i> Student Leaves
-                        </a>
-                    @endif
                     @can('manage-payments')
                         @if(auth()->user()->institute->feature_fees)
                             @php
@@ -377,56 +463,116 @@
                         @endif
                     @endcan
 
+                    @can('manage-payments')
+                        @php
+                            $isAccountingActive = request()->routeIs('accounting.*') || request()->routeIs('expenses.*');
+                        @endphp
+                        <a href="#accountingCollapse" data-bs-toggle="collapse" class="{{ $isAccountingActive ? '' : 'collapsed' }}" aria-expanded="{{ $isAccountingActive ? 'true' : 'false' }}">
+                            <i class="fas fa-calculator"></i> 
+                            <span class="flex-grow-1">Accounting &amp; Tally</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isAccountingActive ? 'show' : '' }}" id="accountingCollapse">
+                            <a href="{{ route('accounting.dashboard') }}" class="{{ request()->routeIs('accounting.dashboard') ? 'active' : '' }} small py-2"><i class="fas fa-chart-line"></i> Dashboard</a>
+                            <a href="{{ route('accounting.ledgers.index') }}" class="{{ request()->routeIs('accounting.ledgers.*') ? 'active' : '' }} small py-2"><i class="fas fa-list-ul"></i> Chart of Accounts</a>
+                            <a href="{{ route('expenses.index') }}" class="{{ request()->routeIs('expenses.*') ? 'active' : '' }} small py-2"><i class="fas fa-receipt"></i> Expense Ledger</a>
+                            <a href="{{ route('accounting.gst.reports') }}" class="{{ request()->routeIs('accounting.gst.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice"></i> GST Statements</a>
+                        </div>
+                    @endcan
+
+                    
+
                     @if(!auth()->user()->isReceptionist() && !auth()->user()->isLibrarian())
-                        <h6 class="sidebar-header mt-3">Academics</h6>
-                        @can('manage-batches')
-                            <a href="{{ route('batches.index') }}" class="{{ request()->routeIs('batches.*') ? 'active' : '' }}"><i
-                                    class="fas fa-layer-group"></i> Batches</a>
-                        @endcan
-                        
-                        @if(!auth()->user()->isTeacher())
-                            <a href="{{ route('subjects.index') }}"
-                                class="{{ request()->routeIs('subjects.*') ? 'active' : '' }}"><i class="fas fa-book"></i>
-                                Subjects</a>
-                        @endif
-
-                        <a href="{{ route('homework.index') }}"
-                            class="{{ request()->routeIs('homework.*') ? 'active' : '' }}"><i class="fas fa-book-open"></i>
-                            Homework</a>
-                        
-                        @if(!auth()->user()->isTeacher())
-                            <a href="{{ route('timetables.index') }}" class="{{ request()->routeIs('timetables.index') ? 'active' : '' }}">
-                                <i class="fas fa-calendar-alt"></i> Timetable
-                            </a>
-                        @endif
-                        
-                        @if(auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isInstituteAdmin())
-                            <a href="{{ route('timetables.my-schedule') }}" class="{{ request()->routeIs('timetables.my-schedule') ? 'active' : '' }}">
-                                <i class="fas fa-user-clock"></i> My Schedule
-                            </a>
-                        @endif
-
-                        <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }}"><i
-                                class="fas fa-file-alt"></i> Tests & Exams</a>
-
-                        @if(auth()->user()->institute->feature_live_classes)
-                            <a href="{{ route('live-lectures.index') }}"
-                                class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }}"><i class="fas fa-video"></i>
-                                Live Lectures</a>
-                        @endif
-
-                        <a href="{{ route('online-exams.index') }}" class="{{ request()->routeIs('online-exams.*') ? 'active' : '' }}">
-                            <i class="fas fa-laptop-code"></i> Online Exams
+                        @php
+                            $isAcademicsActive = request()->routeIs('batches.*')
+                                || request()->routeIs('subjects.*')
+                                || request()->routeIs('timetables.index')
+                                || request()->routeIs('timetables.my-schedule');
+                        @endphp
+                        <a href="#academicsCollapse" data-bs-toggle="collapse" class="{{ $isAcademicsActive ? '' : 'collapsed' }}" aria-expanded="{{ $isAcademicsActive ? 'true' : 'false' }}">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="flex-grow-1">Academics</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
-                        <a href="{{ route('question-bank.index') }}" class="{{ request()->routeIs('question-bank.*') ? 'active' : '' }}">
-                            <i class="fas fa-database"></i> Question Bank
-                        </a>
-                    @endif
+                        <div class="collapse {{ $isAcademicsActive ? 'show' : '' }}" id="academicsCollapse">
+                            @can('manage-batches')
+                                <a href="{{ route('batches.index') }}" class="{{ request()->routeIs('batches.*') ? 'active' : '' }} small py-2"><i class="fas fa-layer-group"></i> Batches</a>
+                            @endcan
+                            @if(!auth()->user()->isTeacher())
+                                <a href="{{ route('subjects.index') }}" class="{{ request()->routeIs('subjects.*') ? 'active' : '' }} small py-2"><i class="fas fa-book"></i> Subjects</a>
+                            @endif
+                            @if(!auth()->user()->isTeacher())
+                                <a href="{{ route('timetables.index') }}" class="{{ request()->routeIs('timetables.index') ? 'active' : '' }} small py-2"><i class="fas fa-calendar-alt"></i> Timetable</a>
+                            @endif
+                            @if(auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isInstituteAdmin())
+                                <a href="{{ route('timetables.my-schedule') }}" class="{{ request()->routeIs('timetables.my-schedule') ? 'active' : '' }} small py-2"><i class="fas fa-user-clock"></i> My Schedule</a>
+                            @endif
+                        </div>
 
-                    <h6 class="sidebar-header mt-3">Additionally</h6>
-                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher())
-                        <a href="{{ route('class-chat.index') }}" class="{{ request()->routeIs('class-chat.*') ? 'active' : '' }}"><i
-                                class="fas fa-comments"></i> Class Chatroom</a>
+                        @php
+                            $isHomeworkLecturesActive = request()->routeIs('homework.*') || request()->routeIs('live-lectures.*');
+                        @endphp
+                        <a href="#homeworkLecturesCollapse" data-bs-toggle="collapse" class="{{ $isHomeworkLecturesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isHomeworkLecturesActive ? 'true' : 'false' }}">
+                            <i class="fas fa-book-open"></i>
+                            <span class="flex-grow-1">Homework &amp; Lectures</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isHomeworkLecturesActive ? 'show' : '' }}" id="homeworkLecturesCollapse">
+                            <a href="{{ route('homework.index') }}" class="{{ request()->routeIs('homework.*') ? 'active' : '' }} small py-2"><i class="fas fa-book-open"></i> Homework</a>
+                            @if(auth()->user()->institute->feature_live_classes)
+                                <a href="{{ route('live-lectures.index') }}" class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }} small py-2"><i class="fas fa-video"></i> Live Lectures</a>
+                            @endif
+                        </div>
+
+                        @php
+                            $isExamsTestsActive = request()->routeIs('tests.*') || request()->routeIs('online-exams.*') || request()->routeIs('question-bank.*');
+                        @endphp
+                        <a href="#examsTestsCollapse" data-bs-toggle="collapse" class="{{ $isExamsTestsActive ? '' : 'collapsed' }}" aria-expanded="{{ $isExamsTestsActive ? 'true' : 'false' }}">
+                            <i class="fas fa-file-signature"></i>
+                            <span class="flex-grow-1">Exams &amp; Tests</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isExamsTestsActive ? 'show' : '' }}" id="examsTestsCollapse">
+                            <a href="{{ route('tests.index') }}" class="{{ request()->routeIs('tests.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-alt"></i> Tests &amp; Exams</a>
+                            <a href="{{ route('online-exams.index') }}" class="{{ request()->routeIs('online-exams.*') ? 'active' : '' }} small py-2"><i class="fas fa-laptop-code"></i> Online Exams</a>
+                            <a href="{{ route('question-bank.index') }}" class="{{ request()->routeIs('question-bank.*') ? 'active' : '' }} small py-2"><i class="fas fa-database"></i> Question Banks</a>
+                        </div>
+
+                        <!-- Hostel Management -->
+                        @php
+                            $isHostelActive = request()->routeIs('hostels.*')
+                                || request()->routeIs('hostel-allocations.*')
+                                || request()->routeIs('hostel-messes.*')
+                                || request()->routeIs('hostel-bills.*');
+                        @endphp
+                        <a href="#hostelCollapse" data-bs-toggle="collapse" class="{{ $isHostelActive ? '' : 'collapsed' }}" aria-expanded="{{ $isHostelActive ? 'true' : 'false' }}">
+                            <i class="fas fa-hotel"></i>
+                            <span class="flex-grow-1">Hostel Management</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isHostelActive ? 'show' : '' }}" id="hostelCollapse">
+                            <a href="{{ route('hostels.index') }}" class="{{ request()->routeIs('hostels.*') ? 'active' : '' }} small py-2"><i class="fas fa-hotel"></i> Hostels &amp; Rooms</a>
+                            <a href="{{ route('hostel-allocations.index') }}" class="{{ request()->routeIs('hostel-allocations.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-tag"></i> Room Allocations</a>
+                            <a href="{{ route('hostel-messes.index') }}" class="{{ request()->routeIs('hostel-messes.*') ? 'active' : '' }} small py-2"><i class="fas fa-utensils"></i> Mess &amp; Menus</a>
+                            <a href="{{ route('hostel-bills.index') }}" class="{{ request()->routeIs('hostel-bills.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice-dollar"></i> Hostel Invoices</a>
+                        </div>
+
+                        <!-- Store & Inventory -->
+                        @php
+                            $isStoreActive = request()->routeIs('inventory-items.*')
+                                || request()->routeIs('inventory-suppliers.*')
+                                || request()->routeIs('purchase-orders.*');
+                        @endphp
+                        <a href="#storeCollapse" data-bs-toggle="collapse" class="{{ $isStoreActive ? '' : 'collapsed' }}" aria-expanded="{{ $isStoreActive ? 'true' : 'false' }}">
+                            <i class="fas fa-boxes-stacked"></i>
+                            <span class="flex-grow-1">Store &amp; Inventory</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isStoreActive ? 'show' : '' }}" id="storeCollapse">
+                            <a href="{{ route('inventory-items.index') }}" class="{{ request()->routeIs('inventory-items.*') ? 'active' : '' }} small py-2"><i class="fas fa-boxes-stacked"></i> Stock Items</a>
+                            <a href="{{ route('inventory-suppliers.index') }}" class="{{ request()->routeIs('inventory-suppliers.*') ? 'active' : '' }} small py-2"><i class="fas fa-truck-field"></i> Suppliers / Vendors</a>
+                            <a href="{{ route('purchase-orders.index') }}" class="{{ request()->routeIs('purchase-orders.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-signature"></i> Purchase Orders</a>
+                        </div>
                     @endif
 
                     @if(auth()->user()->isTeacher() || auth()->user()->isStaff())
@@ -460,43 +606,72 @@
                     @endcan
 
                     @if(auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal())
-                        <a href="{{ route('transport.dashboard') }}" class="{{ request()->routeIs('transport.*') ? 'active' : '' }}"><i
-                                class="fas fa-bus"></i> Transport Management</a>
+                        @php
+                            $isTransportActive = request()->routeIs('transport.*');
+                        @endphp
+                        <a href="#transportCollapse" data-bs-toggle="collapse" class="{{ $isTransportActive ? '' : 'collapsed' }}" aria-expanded="{{ $isTransportActive ? 'true' : 'false' }}">
+                            <i class="fas fa-bus"></i>
+                            <span class="flex-grow-1">Transport Management</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="collapse {{ $isTransportActive ? 'show' : '' }}" id="transportCollapse">
+                            <a href="{{ route('transport.dashboard') }}" class="{{ request()->routeIs('transport.dashboard') ? 'active' : '' }} small py-2"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                            <a href="{{ route('transport.tracking.index') }}" class="{{ request()->routeIs('transport.tracking.*') ? 'active' : '' }} small py-2"><i class="fas fa-map-marker-alt"></i> Live Tracking</a>
+                            <a href="{{ route('transport.vehicles') }}" class="{{ request()->routeIs('transport.vehicles') ? 'active' : '' }} small py-2"><i class="fas fa-bus-alt"></i> Vehicles</a>
+                            <a href="{{ route('transport.routes') }}" class="{{ request()->routeIs('transport.routes') ? 'active' : '' }} small py-2"><i class="fas fa-route"></i> Routes</a>
+                            <a href="{{ route('transport.stops') }}" class="{{ request()->routeIs('transport.stops') ? 'active' : '' }} small py-2"><i class="fas fa-map-pin"></i> Stops</a>
+                            <a href="{{ route('transport.drivers') }}" class="{{ request()->routeIs('transport.drivers') ? 'active' : '' }} small py-2"><i class="fas fa-id-card"></i> Drivers</a>
+                            <a href="{{ route('transport.allocations') }}" class="{{ request()->routeIs('transport.allocations') ? 'active' : '' }} small py-2"><i class="fas fa-user-check"></i> Allocations</a>
+                        </div>
                     @endif
 
-                    @if(!auth()->user()->isReceptionist())
-                        <a href="{{ route('gallery.index') }}" class="{{ request()->routeIs('gallery.*') ? 'active' : '' }}"><i
-                                class="fas fa-images"></i> Image Gallery</a>
-
-                        <a href="{{ route('discipline.index') }}" class="{{ request()->routeIs('discipline.*') ? 'active' : '' }}"><i
-                                class="fas fa-balance-scale"></i> Discipline</a>
-                    @endif
+                    @php
+                        $isCurriculumActive = request()->routeIs('class-chat.*') || request()->routeIs('gallery.*') || request()->routeIs('discipline.*') || request()->routeIs('notifications.*');
+                        $showChat = auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher();
+                        $showGallery = !auth()->user()->isReceptionist();
+                        $showDiscipline = !auth()->user()->isReceptionist();
+                    @endphp
+                    <a href="#curriculumCollapse" data-bs-toggle="collapse" class="{{ $isCurriculumActive ? '' : 'collapsed' }}" aria-expanded="{{ $isCurriculumActive ? 'true' : 'false' }}">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="flex-grow-1">Curriculum</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <div class="collapse {{ $isCurriculumActive ? 'show' : '' }}" id="curriculumCollapse">
+                        @if($showChat)
+                            <a href="{{ route('class-chat.index') }}" class="{{ request()->routeIs('class-chat.*') ? 'active' : '' }} small py-2"><i class="fas fa-comments"></i> Class Chatroom</a>
+                        @endif
+                        @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist() || auth()->user()->isLibrarian())
+                            <a href="{{ route('notifications.index') }}" class="{{ request()->routeIs('notifications.*') ? 'active' : '' }} small py-2"><i class="fas fa-bell"></i> Notifications</a>
+                        @endif
+                        @if($showGallery)
+                            <a href="{{ route('gallery.index') }}" class="{{ request()->routeIs('gallery.*') ? 'active' : '' }} small py-2"><i class="fas fa-images"></i> Image Gallery</a>
+                        @endif
+                        @if($showDiscipline)
+                            <a href="{{ route('discipline.index') }}" class="{{ request()->routeIs('discipline.*') ? 'active' : '' }} small py-2"><i class="fas fa-balance-scale"></i> Discipline</a>
+                        @endif
+                    </div>
 
                     @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist() || auth()->user()->isLibrarian())
-                        @if(!auth()->user()->isLibrarian())
-                            <h6 class="sidebar-header mt-3">Analytics & Reports</h6>
-                            
-                            @if(!auth()->user()->isReceptionist())
-                                @php
-                                    $showAttendanceRep = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
-                                @endphp
+                        @php
+                            $isReportsActive = request()->routeIs('reports.defaulters') || request()->routeIs('reports.attendance');
+                            $showAttendanceRep = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
+                            $showDefaultersRep = auth()->user()->isInstituteAdmin() || auth()->user()->isReceptionist();
+                        @endphp
+                        @if(!auth()->user()->isLibrarian() && ($showAttendanceRep || $showDefaultersRep))
+                            <a href="#reportsCollapse" data-bs-toggle="collapse" class="{{ $isReportsActive ? '' : 'collapsed' }}" aria-expanded="{{ $isReportsActive ? 'true' : 'false' }}">
+                                <i class="fas fa-chart-pie"></i>
+                                <span class="flex-grow-1">Reports</span>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </a>
+                            <div class="collapse {{ $isReportsActive ? 'show' : '' }}" id="reportsCollapse">
+                                @if($showDefaultersRep)
+                                    <a href="{{ route('reports.defaulters') }}" class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }} small py-2"><i class="fas fa-exclamation-triangle"></i> Defaulters</a>
+                                @endif
                                 @if($showAttendanceRep)
-                                    <a href="{{ route('reports.attendance') }}"
-                                        class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }}"><i
-                                            class="fas fa-chart-bar"></i> Attendance Rep</a>
+                                    <a href="{{ route('reports.attendance') }}" class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }} small py-2"><i class="fas fa-chart-bar"></i> Attendance Report</a>
                                 @endif
-                                
-                                @if(auth()->user()->isInstituteAdmin() || auth()->user()->isReceptionist())
-                                    <a href="{{ route('reports.defaulters') }}"
-                                        class="{{ request()->routeIs('reports.defaulters') ? 'active' : '' }}"><i
-                                            class="fas fa-exclamation-triangle"></i> Defaulters</a>
-                                @endif
-                            @endif
+                            </div>
                         @endif
-
-                        <a href="{{ route('notifications.index') }}"
-                            class="{{ request()->routeIs('notifications.*') ? 'active' : '' }}"><i class="fas fa-bell"></i>
-                            Notifications</a>
 
                         <a href="{{ route('profile.edit') }}"
                             class="{{ request()->routeIs('profile.*') ? 'active' : '' }}"><i class="fas fa-user-circle text-primary"></i>

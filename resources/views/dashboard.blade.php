@@ -119,6 +119,119 @@
         @endif
     </div>
 
+    {{-- ── PREMIUM SAAS OPERATIONS CONSOLE ── --}}
+    <h5 class="fw-bold mb-3 text-dark d-flex align-items-center gap-2">
+        <i class="fas fa-shield-alt text-success" style="font-size: 1.1rem;"></i>
+        <span>Campus Operations Console</span>
+        <span class="badge bg-success-subtle text-success border border-success-subtle fw-medium px-2 py-1" style="font-size: 0.65rem;">Premium SaaS Level</span>
+    </h5>
+    <div class="row g-3 mb-4">
+        {{-- Visitor Gate: Awaiting Approval --}}
+        <div class="col-6 col-md-3">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Gate Approvals</span>
+                        <div class="rounded-2 d-flex align-items-center justify-content-center"
+                            style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
+                            <i class="fas fa-qrcode"></i></div>
+                    </div>
+                    <h3 class="fw-black mb-0 d-flex align-items-center gap-2" style="color:#0F172A;">
+                        {{ $visitorsPendingCount }}
+                        @if($visitorsPendingCount > 0)
+                            <span class="spinner-grow spinner-grow-sm text-danger" role="status"></span>
+                        @endif
+                    </h3>
+                    <div class="d-flex justify-content-between align-items-center mt-1">
+                        <span class="text-muted" style="font-size:0.7rem;">awaiting entry</span>
+                        @can('manage-visitors')
+                            <a href="{{ route('visitors.index', ['status' => 'pending']) }}" class="text-success fw-semibold" style="font-size:0.68rem;text-decoration:none;">Review →</a>
+                        @endcan
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Visitors Inside Campus --}}
+        <div class="col-6 col-md-3">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Guests On-Campus</span>
+                        <div class="rounded-2 d-flex align-items-center justify-content-center"
+                            style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
+                            <i class="fas fa-door-open"></i></div>
+                    </div>
+                    <h3 class="fw-black mb-0" style="color:#0F172A;">{{ $visitorsActiveCount }}</h3>
+                    <div class="d-flex justify-content-between align-items-center mt-1">
+                        <span class="text-muted" style="font-size:0.7rem;">currently inside</span>
+                        @can('manage-visitors')
+                            <a href="{{ route('visitors.index', ['status' => 'checked_in']) }}" class="text-success fw-semibold" style="font-size:0.68rem;text-decoration:none;">Console →</a>
+                        @endcan
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Staff Leave Requests --}}
+        <div class="col-6 col-md-3">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Staff Leaves</span>
+                        <div class="rounded-2 d-flex align-items-center justify-content-center"
+                            style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
+                            <i class="fas fa-calendar-minus"></i></div>
+                    </div>
+                    <h3 class="fw-black mb-0" style="color:#0F172A;">{{ $pendingStaffLeavesCount }}</h3>
+                    <div class="d-flex justify-content-between align-items-center mt-1">
+                        <span class="text-muted" style="font-size:0.7rem;">pending review</span>
+                        @can('manage-staff')
+                            <a href="{{ route('leaves.index') }}" class="text-success fw-semibold" style="font-size:0.68rem;text-decoration:none;">Approve →</a>
+                        @endcan
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Staff Payroll Monthly Disbursal --}}
+        @if(!auth()->user()->isPrincipal() && !auth()->user()->isReceptionist())
+        <div class="col-6 col-md-3">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Monthly Payroll</span>
+                        <div class="rounded-2 d-flex align-items-center justify-content-center"
+                            style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
+                            <i class="fas fa-hand-holding-usd"></i></div>
+                    </div>
+                    <h3 class="fw-black mb-0" style="color:#0F172A; font-size:1.3rem;">₹{{ number_format($totalPayrollThisMonth, 0) }}</h3>
+                    <div class="d-flex justify-content-between align-items-center mt-1">
+                        <span class="text-muted" style="font-size:0.7rem;">disbursed this month</span>
+                        <a href="{{ route('staff-payrolls.index') }}" class="text-success fw-semibold" style="font-size:0.68rem;text-decoration:none;">Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @else
+        {{-- Total Visits Today --}}
+        <div class="col-6 col-md-3">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Today's Visits</span>
+                        <div class="rounded-2 d-flex align-items-center justify-content-center"
+                            style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
+                            <i class="fas fa-history"></i></div>
+                    </div>
+                    <h3 class="fw-black mb-0" style="color:#0F172A;">{{ $visitorsTodayCount }}</h3>
+                    <div class="text-muted mt-1" style="font-size:0.7rem;">registered today</div>
+                </div>
+            </div>
+        </div>
+        @endif
+    </div>
+
     {{-- ── ROW 2: REVENUE CHART + TODAY'S ATTENDANCE ── --}}
     <div class="row g-4 mb-4">
         @if(!auth()->user()->isPrincipal())
@@ -259,6 +372,94 @@
         @endif
     </div>
 
+    {{-- ── ROW 4: PREMIUM VISITOR TREND & REALTIME TICKERS ── --}}
+    <div class="row g-4 mb-4">
+        {{-- Visitor Entries Trend --}}
+        <div class="col-lg-6">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04); background: #ffffff;">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
+                    <h6 class="fw-semibold text-dark mb-0">Visitor Traffic Trend</h6>
+                    <p class="text-muted small mb-0">Daily registrations over the last 7 days</p>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 220px; position: relative;">
+                        <canvas id="visitorTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Live Gate Logs --}}
+        <div class="col-lg-6">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04); background: #ffffff;">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-semibold text-dark mb-0">Live Gate Register Ticker</h6>
+                        <p class="text-muted small mb-0">Recent guest check-ins</p>
+                    </div>
+                    @can('manage-visitors')
+                        <a href="{{ route('visitors.index') }}" class="text-success fw-semibold" style="font-size:0.72rem; text-decoration:none;">Full Console</a>
+                    @endcan
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                        <table class="table table-hover align-middle mb-0" style="font-size: 0.82rem;">
+                            <thead class="table-light text-uppercase text-muted" style="font-size: 0.65rem; letter-spacing: 0.5px; position: sticky; top:0; z-index:1;">
+                                <tr>
+                                    <th class="border-0 px-4">Visitor</th>
+                                    <th class="border-0">Whom to Meet</th>
+                                    <th class="border-0">Time</th>
+                                    <th class="border-0 px-4 text-end">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($recentVisitors as $visitor)
+                                    <tr style="border-color:#F8FAFC!important;">
+                                        <td class="px-4">
+                                            <div class="fw-semibold text-dark">{{ $visitor->visitor_name }}</div>
+                                            <div class="text-muted" style="font-size:0.7rem;">{{ $visitor->purpose }}</div>
+                                        </td>
+                                        <td>
+                                            @if($visitor->whomToMeet)
+                                                <div class="text-dark">{{ $visitor->whomToMeet->name }}</div>
+                                            @else
+                                                <div class="text-dark">{{ $visitor->whom_to_meet_name ?? '—' }}</div>
+                                            @endif
+                                            <div class="text-muted" style="font-size:0.7rem;">{{ $visitor->vehicle_number ?? 'No Vehicle' }}</div>
+                                        </td>
+                                        <td>
+                                            @if($visitor->check_in_time)
+                                                <div>{{ $visitor->check_in_time->format('h:i A') }}</div>
+                                                <div class="text-muted" style="font-size:0.7rem;">{{ $visitor->check_in_time->format('d M') }}</div>
+                                            @else
+                                                <div class="text-muted italic">Pending</div>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 text-end">
+                                            @if($visitor->status === 'pending')
+                                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-2 py-1" style="font-size:0.65rem;">Awaiting</span>
+                                            @elseif($visitor->status === 'checked_in')
+                                                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1" style="font-size:0.65rem;">Inside</span>
+                                            @elseif($visitor->status === 'checked_out')
+                                                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2 py-1" style="font-size:0.65rem;">Out</span>
+                                            @else
+                                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1" style="font-size:0.65rem;">Rejected</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center py-4 text-muted">No visitor records logged.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- ── NEEDS ATTENTION BANNER ── --}}
     @if($noAttendanceToday > 0 && !auth()->user()->isReceptionist())
         <div class="alert border-0 d-flex align-items-center gap-3 mb-0"
@@ -374,6 +575,45 @@
                 maintainAspectRatio: false,
                 cutout: '68%',
                 plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 12, font: { size: 10 } } } }
+            }
+        });
+
+        // ── Visitor Traffic Trend Line Chart ──
+        const visCtx = document.getElementById('visitorTrendChart').getContext('2d');
+        const visData = @json($visitorTrend);
+        const visGrad = visCtx.createLinearGradient(0, 0, 0, 180);
+        visGrad.addColorStop(0, 'rgba(25, 135, 84, 0.15)');
+        visGrad.addColorStop(1, 'rgba(25, 135, 84, 0.0)');
+        new Chart(visCtx, {
+            type: 'line',
+            data: {
+                labels: Object.keys(visData),
+                datasets: [{
+                    label: 'Visitors',
+                    data: Object.values(visData),
+                    borderColor: '#198754',
+                    backgroundColor: visGrad,
+                    borderWidth: 2,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#198754',
+                    pointBorderWidth: 1.5,
+                    pointRadius: 3,
+                    fill: true,
+                    tension: 0.35
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        grid: { color: 'rgba(0,0,0,0.03)' }, 
+                        ticks: { stepSize: 1, font: { size: 9 } } 
+                    },
+                    x: { grid: { display: false }, ticks: { font: { size: 9 } } }
+                }
             }
         });
     </script>

@@ -56,39 +56,62 @@
         <table class="table table-hover mb-0 align-middle">
             <thead class="table-light">
                 <tr>
-                    <th>Staff</th>
-                    <th>Present Days</th>
-                    <th>Gross</th>
-                    <th>Net Pay</th>
+                    <th>Staff Member</th>
+                    <th>Attendance / Paid Leaves</th>
+                    <th>Gross Salary</th>
+                    <th>Statutory Deductions</th>
+                    <th>Net Salary</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th class="text-end" style="width: 200px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($payrolls as $payroll)
                     <tr>
-                        <td class="fw-semibold">{{ $payroll->user->name }}</td>
-                        <td>{{ $payroll->present_days }} / {{ $payroll->working_days }}</td>
-                        <td>₹{{ number_format($payroll->gross_salary, 2) }}</td>
-                        <td class="fw-medium text-success">₹{{ number_format($payroll->net_salary, 2) }}</td>
                         <td>
-                            <span class="badge bg-{{ $payroll->status === 'paid' ? 'success' : ($payroll->status === 'processed' ? 'primary' : 'secondary') }}">
+                            <div class="fw-semibold text-dark">{{ $payroll->user->name }}</div>
+                            <div class="text-muted small">{{ $payroll->user->role->name }}</div>
+                        </td>
+                        <td>
+                            <div>Present: <strong>{{ $payroll->present_days }}</strong> / {{ $payroll->working_days }} days</div>
+                            <div class="text-muted small">Paid Leaves: {{ $payroll->paid_leaves_used ?? 0 }} used</div>
+                        </td>
+                        <td>
+                            <div>₹{{ number_format($payroll->gross_salary, 2) }}</div>
+                            <div class="text-muted small" style="font-size:0.75rem;">Basic: ₹{{ number_format($payroll->basic_salary, 2) }}</div>
+                        </td>
+                        <td>
+                            <div class="text-xs">
+                                <div>PF: ₹{{ number_format($payroll->pf_deduction ?? 0, 2) }}</div>
+                                <div>ESIC: ₹{{ number_format($payroll->esic_deduction ?? 0, 2) }}</div>
+                                <div>TDS: ₹{{ number_format($payroll->tds_deduction ?? 0, 2) }}</div>
+                                <div class="text-muted">Other: ₹{{ number_format($payroll->deductions, 2) }}</div>
+                            </div>
+                        </td>
+                        <td class="fw-bold text-success" style="font-size: 0.95rem;">₹{{ number_format($payroll->net_salary, 2) }}</td>
+                        <td>
+                            <span class="badge bg-{{ $payroll->status === 'paid' ? 'success' : ($payroll->status === 'processed' ? 'primary' : 'secondary') }} rounded-pill px-2.5 py-1">
                                 {{ ucfirst($payroll->status) }}
                             </span>
                         </td>
-                        <td>
-                            <form action="{{ route('staff-payrolls.update', $payroll) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('PATCH')
-                                <input type="hidden" name="status" value="{{ $payroll->status === 'paid' ? 'processed' : 'paid' }}">
-                                <button type="submit" class="btn btn-sm btn-outline-{{ $payroll->status === 'paid' ? 'secondary' : 'success' }}">
-                                    {{ $payroll->status === 'paid' ? 'Mark Unpaid' : 'Mark Paid' }}
-                                </button>
-                            </form>
+                        <td class="text-end">
+                            <div class="d-flex gap-1 justify-content-end">
+                                <a href="{{ route('staff-payrolls.payslip', $payroll) }}" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill px-2.5">
+                                    <i class="fas fa-print me-1"></i>Payslip
+                                </a>
+                                <form action="{{ route('staff-payrolls.update', $payroll) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="{{ $payroll->status === 'paid' ? 'processed' : 'paid' }}">
+                                    <button type="submit" class="btn btn-sm btn-{{ $payroll->status === 'paid' ? 'outline-secondary' : 'success' }} rounded-pill px-2.5">
+                                        {{ $payroll->status === 'paid' ? 'Unpay' : 'Pay' }}
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="6" class="text-center text-muted py-4">No payroll for this period. Click Generate Payroll above.</td></tr>
+                    <tr><td colspan="7" class="text-center text-muted py-4">No payroll generated for this period. Click Generate Payroll above.</td></tr>
                 @endforelse
             </tbody>
         </table>
