@@ -23,7 +23,7 @@
             --secondary-color: #10B981;
             --dark-bg: #0F172A;
             --sidebar-bg: #ffffff;
-            --bg-color: #FAFAF9;
+            --bg-color: #d9f1e1;
         }
 
         body {

@@ -19,7 +19,7 @@
             --emerald: #10B981;
             --amber: #F59E0B;
             --red: #EF4444;
-            --bg: #F8FAFC;
+            --bg: #d9f1e1;
             --card: #ffffff;
             --border: #E2E8F0;
             --text: #0F172A;

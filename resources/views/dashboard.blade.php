@@ -123,7 +123,6 @@
     <h5 class="fw-bold mb-3 text-dark d-flex align-items-center gap-2">
         <i class="fas fa-shield-alt text-success" style="font-size: 1.1rem;"></i>
         <span>Campus Operations Console</span>
-        <span class="badge bg-success-subtle text-success border border-success-subtle fw-medium px-2 py-1" style="font-size: 0.65rem;">Premium SaaS Level</span>
     </h5>
     <div class="row g-3 mb-4">
         {{-- Visitor Gate: Awaiting Approval --}}
