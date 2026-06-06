@@ -1,7 +1,7 @@
 @props([
-    'title'       => 'Best Institute and School Management Software & Institute ERP | EduNex',
-    'description' => 'EduNex is the #1 Institute and School Management system and Institute and School Management software. Automate fees, attendance, and student portals with our premium Institute and School Management ERP.',
-    'keywords'    => 'Institute and School Management software, Institute and School Management system, best Institute and School Management software, coaching center software, training institute software, school software, student management system, edunex',
+    'title'       => 'EduNex ERP | Best School Management Software, School ERP & Institute Software',
+    'description' => 'EduNex is the best School Management Software & Institute ERP in India. Our School Management System automates student attendance, online fee collection, school ERP, payroll, library & more. Trusted by 100+ schools and institutes.',
+    'keywords'    => 'school erp, schoolerp, school software, school management software, school management system, institute software, institute management software, institute erp, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software, online school management system, school management app, institute management system, coaching institute software, edunex, edunex erp',
     'image'       => null,
 ])
 
@@ -43,7 +43,7 @@
       "sameAs": [
         "https://www.linkedin.com/company/engenius-digitech/"
       ],
-      "description": "The ultimate SaaS platform for modern educational institutes. Built by educators, for educators."
+      "description": "EduNex — India's best School Management Software, School ERP, and Institute Management System. Built by educators, for educators."
     },
     {
       "@@type": "WebSite",
@@ -74,7 +74,8 @@
         "priceCurrency": "USD",
         "description": "Free 7-day trial available for schools and institutes."
       },
-      "description": "Leading Institute and School Management software and Institute and School Management system. EduNex automates student attendance, fee tracking, and provides a premium student portal for modern educational centers."
+      "applicationSubCategory": "School Management Software, Institute ERP, School ERP, Coaching Center Software",
+      "description": "EduNex is India's #1 School Management Software and Institute ERP. Our School Management System automates student attendance, online fee collection, school payroll, library management, live lectures, and parent communication. Best school ERP and institute management software for schools and coaching centers across India."
     },
     {
       "@@type": "BreadcrumbList",

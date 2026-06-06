@@ -8,4 +8,4 @@ Disallow: /student/dashboard
 Disallow: /login
 Disallow: /register
 
-Sitemap: https://edunexerp.online/sitemap.xml
+Sitemap: {{ url('/sitemap.xml') }}

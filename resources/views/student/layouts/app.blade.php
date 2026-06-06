@@ -182,6 +182,34 @@
             .logout-btn span { display: none; }
             .page { padding: 16px 12px 60px; }
         }
+
+        /* Global button color alignment to match branding theme buttons */
+        .btn-primary, .btn-success {
+            background-color: #d1e7dd !important;
+            color: #0f5132 !important;
+            border-color: #a3cfbb !important;
+            font-weight: 600 !important;
+            box-shadow: 0 2px 4px rgba(15, 81, 50, 0.05) !important;
+        }
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+        .btn-success:hover, .btn-success:focus, .btn-success:active {
+            background-color: #dbf2e3 !important;
+            color: #0f5132 !important;
+            border-color: #85c2a3 !important;
+            box-shadow: 0 4px 8px rgba(15, 81, 50, 0.1) !important;
+        }
+        .btn-outline-primary, .btn-outline-success {
+            color: #0f5132 !important;
+            border-color: #a3cfbb !important;
+            background-color: transparent !important;
+            font-weight: 600 !important;
+        }
+        .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active,
+        .btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active {
+            background-color: #d1e7dd !important;
+            color: #0f5132 !important;
+            border-color: #85c2a3 !important;
+        }
     </style>
     @stack('styles')
 </head>

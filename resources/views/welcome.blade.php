@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo />
+    <x-seo
+        title="EduNex | #1 School Management Software, School ERP & Institute Management System in India"
+        description="EduNex is India's best School Management Software & Institute ERP. Our complete School Management System automates student attendance, online fee collection, school payroll, library, live lectures, and parent portal. Trusted by 100+ schools and institutes. Start free."
+        keywords="school management software, school erp, schoolerp, school software, school management system, institute software, institute erp, institute management software, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software India, school management app, online school management, school fee management software, school attendance software, institute management system, EduNex"
+    />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -84,16 +84,39 @@ Route::get('/refund-policy', function () {
     return view('legal.refund');
 })->name('legal.refund');
 
-// SEO Landing Pages, Sitemap & Robots
+// Robots.txt
 Route::get('/robots.txt', function () {
     $content = view('robots')->render();
     return response($content, 200)
         ->header('Content-Type', 'text/plain')
         ->header('X-Robots-Tag', 'index, follow');
 });
-Route::get('/institute-erp/{city}', [SeoLandingController::class, 'landing'])->name('seo.landing');
-Route::get('/school-erp/{city}', [SeoLandingController::class, 'schoolLanding'])->name('seo.school.landing');
+
+// ═══════════════════════════════════════════════════════════════════════
+// SEO Landing Pages — school-erp & institute-erp location hierarchy
+// ORDER MATTERS: most-specific routes must come before wildcard {city}
+// ═══════════════════════════════════════════════════════════════════════
+
+// Location Directory Hub Pages
+Route::get('/school-erp-locations',    [SeoLandingController::class, 'locations'])->name('seo.locations.school');
+Route::get('/institute-erp-locations', [SeoLandingController::class, 'locations'])->name('seo.locations.institute');
+
+// ── School ERP ───────────────────────────────────────────────────────────
+Route::get('/school-erp/{country}',             [SeoLandingController::class, 'schoolCountryLanding'])->name('seo.school.country');
+Route::get('/school-erp/{state}',                 [SeoLandingController::class, 'schoolStateLanding'])->name('seo.school.state');
+Route::get('/school-erp/{city}/{state}/{country}',      [SeoLandingController::class, 'schoolCityStateCountryLanding'])->name('seo.school.city.state.country');
+Route::get('/school-erp/{city}/{state}',                [SeoLandingController::class, 'schoolCityStateLanding'])->name('seo.school.city.state');
+Route::get('/school-erp/{city}',                        [SeoLandingController::class, 'schoolLanding'])->name('seo.school.landing');
+
+// ── Institute ERP ────────────────────────────────────────────────────────
+Route::get('/institute-erp/{country}',          [SeoLandingController::class, 'instituteCountryLanding'])->name('seo.institute.country');
+Route::get('/institute-erp/{state}',              [SeoLandingController::class, 'instituteStateLanding'])->name('seo.institute.state');
+Route::get('/institute-erp/{city}/{state}/{country}',   [SeoLandingController::class, 'instituteCityStateCountryLanding'])->name('seo.institute.city.state.country');
+Route::get('/institute-erp/{city}/{state}',             [SeoLandingController::class, 'instituteCityStateLanding'])->name('seo.institute.city.state');
+Route::get('/institute-erp/{city}',                     [SeoLandingController::class, 'landing'])->name('seo.landing');
+
 Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
+
 
 // Public Visitor Registration & Check-in status
 Route::get('/visitors/register/{institute}', [\App\Http\Controllers\VisitorController::class, 'publicRegisterForm'])->name('visitors.public-register');
@@ -289,6 +312,11 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/tally-export', [\App\Http\Controllers\AccountingController::class, 'tallyExport'])->name('tally.export');
             })->middleware('can:manage-payments');
 
+            // Study Materials (LMS Mockup)
+            Route::get('/study-materials', function () {
+                return view('study-materials');
+            })->name('study-materials.index');
+
             // Staff biometric attendance (self mark in/out)
             Route::get('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'index'])->name('staff-attendance.mark');
             Route::post('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'mark'])->name('staff-attendance.mark.store');
@@ -439,6 +467,11 @@ Route::prefix('student')->name('student.')->group(function () {
             // Leave Management (Student)
             Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
             Route::resource('leaves', \App\Http\Controllers\Student\LeaveController::class)->only(['index', 'create', 'store']);
+
+            // Student Study Materials (LMS Mockup)
+            Route::get('study-materials', function () {
+                return view('student.study-materials');
+            })->name('student.study-materials.index');
 
             // Timetable
             Route::get('timetable', [\App\Http\Controllers\Student\TimetableController::class, 'index'])->name('timetable.index');

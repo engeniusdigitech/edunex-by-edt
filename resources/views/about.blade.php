@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="About EduNex — AI-Powered Institute Management Software by Engenius Digitech" description="Learn about the mission driving EduNex, the top AI-powered institute management platform designed for modern educational centers across India." />
+    <x-seo title="About EduNex — School Management Software Company | Institute ERP by Engenius Digitech" description="EduNex is built by Engenius Digitech — a team of engineers and educators creating India's best School Management System and Institute ERP. Learn our mission to digitize schools and institutes across India." keywords="about school management software company, school ERP company India, institute software developer, school software company, EduNex about, Engenius Digitech school ERP, best school management system India, school software brand" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

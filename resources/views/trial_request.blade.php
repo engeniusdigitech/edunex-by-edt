@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Start Your Best Institute and School Management Software Free Trial | EduNex" description="Experience the #1 Institute and School Management system for free. Start your 7-day trial of EduNex institute software today and automate your educational center." />
+    <x-seo title="Start Free School Management Software Trial | Institute ERP Free Demo — EduNex" description="Start your 7-day free trial of EduNex — India's best School Management Software and Institute ERP. No credit card required. Get full access to all features including online fees, attendance, payroll, and student portal. Go live in 15 minutes." keywords="school management software free trial, institute ERP free trial, free school software demo, school ERP free trial India, institute software free demo, schoolerp free trial, best school software free, EduNex free trial, school management system free, start school erp" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

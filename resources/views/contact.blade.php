@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Contact EduNex — AI-Powered Institute Management Software" description="Get in touch with the EduNex team for sales, demos, and support. We respond within 1 business day." />
+    <x-seo title="Contact EduNex | Get School Management Software Demo & Support" description="Contact EduNex to book a free demo of our school management software and institute ERP. Talk to our school software experts today. We respond within 1 business day." keywords="school management software demo, institute ERP contact, school software free demo, book school ERP demo, contact school management system, EduNex contact, school software support, institute software sales, school ERP sales India" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

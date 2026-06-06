@@ -174,17 +174,23 @@
             <span>Library</span>
         </a>
         
-        <!-- Homework (Placeholder) -->
+        <!-- Study Materials -->
+        <a href="{{ route('student.study-materials.index') }}" class="page-btn">
+            <i class="fas fa-folder-open"></i>
+            <span>Study Materials</span>
+        </a>
+
+        <!-- Assignments (Homework) -->
         <a href="{{ route('student.homework.index') }}" class="page-btn">
             <i class="fas fa-tasks"></i>
-            <span>Homework</span>
+            <span>Assignments</span>
         </a>
         
-        <!-- Lectures -->
+        <!-- Recorded Lectures -->
         @if(auth()->guard('student')->user()->institute->feature_live_classes)
         <a href="{{ route('student.lectures.index') }}" class="page-btn">
             <i class="fas fa-video"></i>
-            <span>Lectures</span>
+            <span>Recorded Lectures</span>
         </a>
         @endif
         

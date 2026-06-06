@@ -314,6 +314,32 @@
             padding-left: 12px !important;
             border-radius: 8px !important;
             margin-left: 0 !important;
+        /* Global button color alignment to match sidebar buttons */
+        .btn-primary, .btn-success {
+            background-color: #d1e7dd !important;
+            color: #0f5132 !important;
+            border-color: #a3cfbb !important;
+            font-weight: 600 !important;
+            box-shadow: 0 2px 4px rgba(15, 81, 50, 0.05) !important;
+        }
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+        .btn-success:hover, .btn-success:focus, .btn-success:active {
+            background-color: #dbf2e3 !important;
+            color: #0f5132 !important;
+            border-color: #85c2a3 !important;
+            box-shadow: 0 4px 8px rgba(15, 81, 50, 0.1) !important;
+        }
+        .btn-outline-primary, .btn-outline-success {
+            color: #0f5132 !important;
+            border-color: #a3cfbb !important;
+            background-color: transparent !important;
+            font-weight: 600 !important;
+        }
+        .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active,
+        .btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active {
+            background-color: #d1e7dd !important;
+            color: #0f5132 !important;
+            border-color: #85c2a3 !important;
         }
     </style>
 </head>
@@ -510,18 +536,19 @@
                         </div>
 
                         @php
-                            $isHomeworkLecturesActive = request()->routeIs('homework.*') || request()->routeIs('live-lectures.*');
+                            $isLmsActive = request()->routeIs('homework.*') || request()->routeIs('live-lectures.*') || request()->routeIs('study-materials.*');
                         @endphp
-                        <a href="#homeworkLecturesCollapse" data-bs-toggle="collapse" class="{{ $isHomeworkLecturesActive ? '' : 'collapsed' }}" aria-expanded="{{ $isHomeworkLecturesActive ? 'true' : 'false' }}">
-                            <i class="fas fa-book-open"></i>
-                            <span class="flex-grow-1">Homework &amp; Lectures</span>
+                        <a href="#lmsCollapse" data-bs-toggle="collapse" class="{{ $isLmsActive ? '' : 'collapsed' }}" aria-expanded="{{ $isLmsActive ? 'true' : 'false' }}">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="flex-grow-1">LMS</span>
                             <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
-                        <div class="collapse {{ $isHomeworkLecturesActive ? 'show' : '' }}" id="homeworkLecturesCollapse">
-                            <a href="{{ route('homework.index') }}" class="{{ request()->routeIs('homework.*') ? 'active' : '' }} small py-2"><i class="fas fa-book-open"></i> Homework</a>
+                        <div class="collapse {{ $isLmsActive ? 'show' : '' }}" id="lmsCollapse">
+                            <a href="{{ route('study-materials.index') }}" class="{{ request()->routeIs('study-materials.*') ? 'active' : '' }} small py-2"><i class="fas fa-folder-open"></i> Study Materials</a>
                             @if(auth()->user()->institute->feature_live_classes)
-                                <a href="{{ route('live-lectures.index') }}" class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }} small py-2"><i class="fas fa-video"></i> Live Lectures</a>
+                                <a href="{{ route('live-lectures.index') }}" class="{{ request()->routeIs('live-lectures.*') ? 'active' : '' }} small py-2"><i class="fas fa-video"></i> Live/Recorded Lectures</a>
                             @endif
+                            <a href="{{ route('homework.index') }}" class="{{ request()->routeIs('homework.*') ? 'active' : '' }} small py-2"><i class="fas fa-tasks"></i> Assignments</a>
                         </div>
 
                         @php

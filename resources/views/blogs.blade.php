@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="EduNex Blog — Insights for Modern Institute Management" description="Stay updated with the latest trends in institute management, AI attendance, payroll automation, and education technology from the EduNex team." />
+    <x-seo title="EduNex Blog | School Management Software Guides & Institute ERP Insights" description="Read the EduNex blog for the latest school management software tips, institute ERP guides, attendance automation, payroll, and education technology insights for schools and coaching centers in India." keywords="school management software blog, institute ERP blog, school software guide, education technology blog India, school ERP tips, institute software articles, school management system guide, coaching software blog, EduNex blog" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

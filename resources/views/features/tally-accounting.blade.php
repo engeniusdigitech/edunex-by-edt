@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compliant Double-Entry Accounting &amp; Tally Sync – EduNex ERP</title>
-    <meta name="description" content="Manage finances with dual-entry ledger accounts, real-time GST tax reports, and standard Tally synchronization.">
+    <x-seo
+        title="School & Institute Accounting Software | GST Reports & Tally Sync — EduNex ERP"
+        description="Manage your school or institute finances with EduNex's compliant double-entry accounting module. Automate GST (CGST/SGST/IGST) tracking, generate real-time balance sheets, and export data directly to Tally Prime in one click."
+        keywords="school accounting software, institute accounting software, school finance management software, school ERP accounting, GST software for schools, Tally integration for schools, institute financial management, school ledger software, double entry accounting school, school fee accounting system, institute GST reports, school financial ERP, EduNex accounting"
+    />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

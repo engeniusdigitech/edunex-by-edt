@@ -91,6 +91,8 @@
                         <li><a href="{{ url('/') }}#staff">AI Biometrics</a></li>
                         <li><a href="{{ route('pricing') }}">Pricing</a></li>
                         <li><a href="{{ route('trial.request') }}">Live Demo</a></li>
+                        <li><a href="{{ url('/school-erp-locations') }}">School ERP Directory</a></li>
+                        <li><a href="{{ url('/institute-erp-locations') }}">Institute ERP Directory</a></li>
                     </ul>
                 </div>
 
@@ -122,6 +124,7 @@
                         <div style="font-size:0.78rem;color:var(--ft-muted);">Specialized SaaS solutions <i class="fas fa-external-link-alt" style="font-size:0.6rem;"></i></div>
                     </a>
                 </div>
+
             </div>
         </div>
     </div>

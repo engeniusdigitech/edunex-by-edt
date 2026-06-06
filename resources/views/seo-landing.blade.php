@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo 
-        title="Best Institute and School Management Software in {{ $city }}, {{ $country }} | {{ $city }} Education System" 
-        description="EduNex is the top-rated Institute and School Management system and Institute and School Management software in {{ $city }}. Automate fees, attendance, and student portals for your {{ $city }} educational center." 
+@php
+    // Determine terminology based on page type
+    $isSchool    = isset($type) && $type === 'school';
+    $typeLabel   = $isSchool ? 'School'    : 'Institute';
+    $erpLabel    = $isSchool ? 'School ERP' : 'Institute ERP';
+    $softLabel   = $isSchool ? 'School Management Software' : 'Institute Management Software';
+    $systemLabel = $isSchool ? 'School Management System'   : 'Institute Management System';
+
+    // State support: guard against null/undefined
+    $stateVal    = isset($state) && $state ? $state : null;
+    $statePart   = $stateVal ? ", {$stateVal}" : '';        // e.g. ", Maharashtra"
+    $locationStr = "{$city}{$statePart}, {$country}";      // e.g. "Pune, Maharashtra, India"
+
+    $seoTitle = "Best {$softLabel} in {$locationStr} | {$erpLabel} & {$typeLabel} Software — EduNex";
+
+    $seoDesc = $isSchool
+        ? "EduNex is the #1 School Management Software & School ERP in {$locationStr}. Our School Management System automates student attendance, online fee collection, school payroll, library, and parent communication for schools in {$city}."
+        : "EduNex is the top-rated Institute Management Software & Institute ERP in {$locationStr}. Automate student attendance, fees, academics, and payroll for coaching centers and institutes in {$city}.";
+
+    $stateKw = $stateVal ? ", school erp {$stateVal}, school software {$stateVal}, school management system {$stateVal}" : '';
+    $seoKeywords = $isSchool
+        ? "school erp {$city}, school software {$city}, school management software {$city}, school management system {$city}, schoolerp {$city}{$stateKw}, school administration software, best school management software, online school management system, school ERP {$country}, student management system, school fee management software, EduNex school"
+        : "institute erp {$city}, institute software {$city}, institute management software {$city}, coaching class software {$city}, coaching center software {$city}{$stateKw}, training institute software, institute management system, coaching institute ERP, student management system, EduNex institute, best institute software {$city}";
+@endphp
+    <x-seo
+        :title="$seoTitle"
+        :description="$seoDesc"
+        :keywords="$seoKeywords"
     />
+
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -739,11 +765,15 @@ body {
                 <!-- Copy -->
                 <div class="col-lg-6 text-center text-lg-start hero-copy">
                     <h1 class="hero-h2">
-                        The smartest way<br>to run your<br>
-                        <span class="g-text">School or institute in {{$city}}.</span>
+                        {{ $isSchool ? 'Best School Management Software' : 'Smartest Institute ERP' }}<br>
+                        <span class="g-text">for {{ $typeLabel }}s in {{ $city }}.</span>
                     </h1>
                     <p class="hero-sub">
-                        Attendance, fees, live lectures, AI biometric staff management, and payroll. All automated in one platform built for {{ $city }}'s coaching centers and schools.
+                        @if($isSchool)
+                            The complete <strong>School Management System</strong> for {{ $city }} schools. Automate attendance, fees, payroll, and parent communication with the #1 <strong>School ERP Software</strong>.
+                        @else
+                            The complete <strong>Institute Management Software</strong> for {{ $city }} coaching centers. Automate fees, attendance, live lectures, and payroll with our top-rated <strong>Institute ERP</strong>.
+                        @endif
                     </p>
 
                     <div class="hero-features">
@@ -856,8 +886,12 @@ body {
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
                 <span class="badge-pill mb-3"><i class="fas fa-school me-1"></i> Local Education Landscape</span>
-                <h2 class="sec-title" style="margin-bottom:20px;">Modernizing School Operations in <span class="g-text">{{ $city }}</span></h2>
-                <p class="sec-desc" style="font-size:0.95rem; margin-bottom:24px;">The educational landscape in {{ $city }} is experiencing an unprecedented evolution. As schools, colleges, and coaching academies strive to match global academic standards, the administrative burden on administrators, trustees, and educators has grown exponentially. From national curricula like CBSE and ICSE to prestigious international boards (IB/IGCSE) and regional state curricula, schools are tasked with managing dense, complex academic programs. With this rapid expansion comes a critical need for modernization: institutions can no longer afford to operate using siloed desktop applications, manual registers, or disjointed WhatsApp groups.</p>
+                <h2 class="sec-title" style="margin-bottom:20px;">Modernizing {{ $typeLabel }} Operations in <span class="g-text">{{ $city }}</span></h2>
+                @if($isSchool)
+                <p class="sec-desc" style="font-size:0.95rem; margin-bottom:24px;">{{ $city }}'s educational sector is undergoing a digital transformation. Schools running on manual registers, disjointed spreadsheets, and WhatsApp groups are falling behind. Our <strong>School Management Software</strong> — a fully-integrated <strong>School ERP System</strong> — centralizes all operations: student enrolment, fee collections, attendance, academics, payroll, and parent communication. From CBSE and ICSE to state boards, EduNex's <strong>School Management System</strong> is built for the complexity of modern schools in {{ $city }}.</p>
+                @else
+                <p class="sec-desc" style="font-size:0.95rem; margin-bottom:24px;">The educational landscape in {{ $city }} is experiencing rapid growth. Coaching institutes, training centers, and skill academies can no longer afford to operate using manual registers, disjointed spreadsheets, or WhatsApp groups. Our <strong>Institute Management Software</strong> — a powerful <strong>Institute ERP</strong> — automates student enrollments, fee collections, attendance, live lectures, and payroll in one unified platform.</p>
+                @endif
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <div class="d-flex align-items-start gap-2">

@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live GPS Transit Tracking &amp; Route Optimizer – EduNex ERP</title>
-    <meta name="description" content="Simulate, track, and optimize route transit stops with Leaflet maps, student check-ins, and automated boarding notifications.">
+    <x-seo
+        title="School Bus GPS Tracking & Transport Management Software | EduNex ERP"
+        description="EduNex provides real-time GPS bus tracking for schools and institutes. Optimize student transport routes, track live vehicle locations on maps, log student boarding, and send instant parent alerts. Best school transport management software."
+        keywords="school bus GPS tracking software, student transport management software, school transport ERP, school bus tracking system, real-time school bus tracking, institute transport software, route optimization school bus, school vehicle tracking, student bus boarding management, parent bus alert system, school transport management system, EduNex transport"
+    />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

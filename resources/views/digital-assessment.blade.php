@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Assessment Platform – EduNex ERP | Online Exam, Analytics & Report Cards</title>
-    <meta name="description" content="Transform traditional examinations into a fully digital assessment ecosystem. Create exams, evaluate automatically, analyze performance, and publish results from a single platform.">
+    <x-seo
+        title="Digital Assessment Platform & Online Exam Software for Schools | EduNex ERP"
+        description="EduNex's Digital Assessment Platform lets schools and institutes create, conduct, auto-grade exams and publish report cards online. The best online exam software for schools with question banks, analytics, tab-switch prevention, and instant results."
+        keywords="online exam software for schools, digital assessment platform, school exam management system, online test software for schools, school assessment software, MCQ exam software school, student exam portal, digital examination system, automated grading school software, school report card software, question bank software school, institute exam management, online examination platform, EduNex assessment"
+    />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

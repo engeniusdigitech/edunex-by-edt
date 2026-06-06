@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="EduNex Pricing — Simple, Transparent Institute Management Software Plans" description="One plan, everything included. Get a custom quote for our AI-powered institute management platform. No hidden fees." />
+    <x-seo title="School Management Software Pricing | Institute ERP Plans & Free Trial — EduNex" description="EduNex offers affordable, transparent pricing for school management software and institute ERP. One plan, all features included. Start a free 7-day trial of India's best school ERP system with no credit card required." keywords="school management software price, institute ERP pricing, school software cost, best school management software India, school ERP subscription, affordable institute software, school management system pricing, coaching class software pricing, EduNex pricing, school software free trial" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">

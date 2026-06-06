@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visitor Gate Security &amp; Lobby Check-in – EduNex ERP</title>
-    <meta name="description" content="Secure your campus check-in with dynamic QR visitor gate self-registrations, receptionist approval wait tickers, and tenant isolated passes.">
+    <x-seo
+        title="School Visitor Gate Security & Campus Lobby Management Software | EduNex ERP"
+        description="Secure your school or institute with EduNex's Visitor Gate Management module. QR-based self-registration, live receptionist approval, printable passes, and complete visitor audit logs for schools and institutes."
+        keywords="school visitor management software, campus visitor gate system, visitor gate security software, school lobby management system, institute visitor check-in, school gate security software, visitor pass software for school, campus security ERP, school visitor log software, digital visitor register school"
+    />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

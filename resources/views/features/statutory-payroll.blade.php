@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statutory HR &amp; Payroll Management – EduNex ERP</title>
-    <meta name="description" content="Manage employee salaries with PF, ESIC deductions, pro-rated attendance check-ins, separate CL/EL allowances, and automated TDS tax slabs.">
+    <x-seo
+        title="School & Institute Payroll Software | HR Statutory Payroll Management — EduNex ERP"
+        description="Run compliant school and institute payroll in one click. EduNex automates PF, ESIC, TDS calculations, CL/EL leave caps, biometric salary pro-rating, and generates PDF payslips. Best payroll software for schools and coaching institutes."
+        keywords="school payroll software, institute payroll software, school HR software, school salary management system, payroll software for schools, institute salary management, school staff payroll ERP, PF ESIC TDS school software, school staff management software, coaching institute payroll, employee payroll software for schools, EduNex payroll"
+    />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
