@@ -202,6 +202,55 @@ class ReportController extends Controller
         return $pdf->download('Fee_Defaulters_Report_' . $currentMonth . '.pdf');
     }
 
+    public function sendBulkWhatsAppReminders(Request $request)
+    {
+        $month = $request->get('month', date('Y-m'));
+        $batchId = $request->get('batch_id');
+        $search = $request->get('search');
+
+        $query = Student::where('is_active', true)
+            ->whereDoesntHave('payments', function ($q) use ($month) {
+                $q->where('payment_date', 'like', $month . '%');
+            });
+
+        if ($batchId) {
+            $query->where('batch_id', $batchId);
+        }
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        $defaulters = $query->with(['batch', 'institute'])->get();
+
+        if ($defaulters->isEmpty()) {
+            return back()->with('error', 'No fee defaulters found to notify for this selection.');
+        }
+
+        $sentCount = 0;
+        foreach ($defaulters as $student) {
+            if (!$student->phone) {
+                continue;
+            }
+
+            $instituteName = $student->institute->name ?? 'EduNex';
+            $message = "Dear {$student->name},\n\nThis is an automated reminder from *{$instituteName}* that your fee payment for the month of " . date('F Y', strtotime($month . '-01')) . " is currently pending.\n\nPlease clear your outstanding dues at your earliest convenience.\n\nThank you!";
+
+            // Send via service
+            if (\App\Services\WhatsAppService::sendWhatsApp($student->name, $student->phone, $message, 'fee_reminder')) {
+                $sentCount++;
+            }
+        }
+
+        $mode = \App\Services\WhatsAppService::getSettings()['mode'] ?? 'simulator';
+        $statusText = $mode === 'simulator' ? 'simulated and logged' : 'sent';
+
+        return back()->with('success', "WhatsApp fee reminders successfully {$statusText} for {$sentCount} defaulter(s).");
+    }
+
     public function exportErpGuidePdf()
     {
         $pdf = Pdf::loadView('reports.pdf.erp_guide')->setPaper('a4', 'portrait');

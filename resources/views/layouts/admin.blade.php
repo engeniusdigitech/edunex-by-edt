@@ -374,8 +374,10 @@
                             class="fas fa-school"></i> Institutes</a>
                 @else
                     <h6 class="sidebar-header">Institute Panel</h6>
-                    <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><i
-                            class="fas fa-home"></i> Dashboard</a>
+                    @if(!auth()->user()->isWarden())
+                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"><i
+                                class="fas fa-home"></i> Dashboard</a>
+                    @endif
 
                     @can('manage-attendance')
                         @php
@@ -451,9 +453,32 @@
                     </div>
 
                     @can('manage-visitors')
-                        <a href="{{ route('visitors.index') }}" class="{{ request()->routeIs('visitors.*') ? 'active' : '' }}">
-                            <i class="fas fa-id-badge"></i> Visitor Management
+                        @php
+                            $isVisitorsActive = request()->routeIs('visitors.*');
+                        @endphp
+                        <a href="#visitorCollapse" data-bs-toggle="collapse" class="{{ $isVisitorsActive ? '' : 'collapsed' }}" aria-expanded="{{ $isVisitorsActive ? 'true' : 'false' }}">
+                            <i class="fas fa-id-badge"></i>
+                            <span class="flex-grow-1">Visitor Management</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
+                        <div class="collapse {{ $isVisitorsActive ? 'show' : '' }}" id="visitorCollapse">
+                            <a href="{{ route('visitors.index', ['status' => 'pending']) }}" class="{{ $isVisitorsActive && request('status', 'pending') === 'pending' ? 'active' : '' }} small py-2">
+                                <i class="fas fa-clock"></i> Awaiting Approval
+                                <span class="badge rounded-pill bg-danger bg-opacity-10 text-danger ms-auto" style="font-size:0.7rem; border: 1px solid rgba(239, 68, 68, 0.25);">{{ \App\Models\Visitor::where('status', 'pending')->count() }}</span>
+                            </a>
+                            <a href="{{ route('visitors.index', ['status' => 'checked_in']) }}" class="{{ $isVisitorsActive && request('status') === 'checked_in' ? 'active' : '' }} small py-2">
+                                <i class="fas fa-sign-in-alt"></i> Inside Campus
+                                <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary ms-auto" style="font-size:0.7rem; border: 1px solid rgba(37, 99, 235, 0.25);">{{ \App\Models\Visitor::where('status', 'checked_in')->count() }}</span>
+                            </a>
+                            <a href="{{ route('visitors.index', ['status' => 'checked_out']) }}" class="{{ $isVisitorsActive && request('status') === 'checked_out' ? 'active' : '' }} small py-2">
+                                <i class="fas fa-sign-out-alt"></i> Checked Out
+                                <span class="badge rounded-pill bg-success bg-opacity-10 text-success ms-auto" style="font-size:0.7rem; border: 1px solid rgba(16, 185, 129, 0.25);">{{ \App\Models\Visitor::where('status', 'checked_out')->count() }}</span>
+                            </a>
+                            <a href="{{ route('visitors.index', ['status' => 'rejected']) }}" class="{{ $isVisitorsActive && request('status') === 'rejected' ? 'active' : '' }} small py-2">
+                                <i class="fas fa-times-circle"></i> Rejected
+                                <span class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary ms-auto" style="font-size:0.7rem; border: 1px solid rgba(100, 116, 139, 0.25);">{{ \App\Models\Visitor::where('status', 'rejected')->count() }}</span>
+                            </a>
+                        </div>
                     @endcan
 
                     @if(auth()->user()->canUseBiometricAttendance())
@@ -508,7 +533,7 @@
 
                     
 
-                    @if(!auth()->user()->isReceptionist() && !auth()->user()->isLibrarian())
+                    @if(!auth()->user()->isReceptionist() && !auth()->user()->isLibrarian() && !auth()->user()->isWarden())
                         @php
                             $isAcademicsActive = request()->routeIs('batches.*')
                                 || request()->routeIs('subjects.*')
@@ -565,7 +590,28 @@
                             <a href="{{ route('question-bank.index') }}" class="{{ request()->routeIs('question-bank.*') ? 'active' : '' }} small py-2"><i class="fas fa-database"></i> Question Banks</a>
                         </div>
 
-                        <!-- Hostel Management -->
+                        <!-- Store & Inventory -->
+                        @can('manage-inventory')
+                            @php
+                                $isStoreActive = request()->routeIs('inventory-items.*')
+                                    || request()->routeIs('inventory-suppliers.*')
+                                    || request()->routeIs('purchase-orders.*');
+                            @endphp
+                            <a href="#storeCollapse" data-bs-toggle="collapse" class="{{ $isStoreActive ? '' : 'collapsed' }}" aria-expanded="{{ $isStoreActive ? 'true' : 'false' }}">
+                                <i class="fas fa-boxes-stacked"></i>
+                                <span class="flex-grow-1">Store &amp; Inventory</span>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </a>
+                            <div class="collapse {{ $isStoreActive ? 'show' : '' }}" id="storeCollapse">
+                                <a href="{{ route('inventory-items.index') }}" class="{{ request()->routeIs('inventory-items.*') ? 'active' : '' }} small py-2"><i class="fas fa-boxes-stacked"></i> Stock Items</a>
+                                <a href="{{ route('inventory-suppliers.index') }}" class="{{ request()->routeIs('inventory-suppliers.*') ? 'active' : '' }} small py-2"><i class="fas fa-truck-field"></i> Suppliers / Vendors</a>
+                                <a href="{{ route('purchase-orders.index') }}" class="{{ request()->routeIs('purchase-orders.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-signature"></i> Purchase Orders</a>
+                            </div>
+                        @endcan
+                    @endif
+
+                    <!-- Hostel Management -->
+                    @can('manage-hostels')
                         @php
                             $isHostelActive = request()->routeIs('hostels.*')
                                 || request()->routeIs('hostel-allocations.*')
@@ -583,24 +629,7 @@
                             <a href="{{ route('hostel-messes.index') }}" class="{{ request()->routeIs('hostel-messes.*') ? 'active' : '' }} small py-2"><i class="fas fa-utensils"></i> Mess &amp; Menus</a>
                             <a href="{{ route('hostel-bills.index') }}" class="{{ request()->routeIs('hostel-bills.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice-dollar"></i> Hostel Invoices</a>
                         </div>
-
-                        <!-- Store & Inventory -->
-                        @php
-                            $isStoreActive = request()->routeIs('inventory-items.*')
-                                || request()->routeIs('inventory-suppliers.*')
-                                || request()->routeIs('purchase-orders.*');
-                        @endphp
-                        <a href="#storeCollapse" data-bs-toggle="collapse" class="{{ $isStoreActive ? '' : 'collapsed' }}" aria-expanded="{{ $isStoreActive ? 'true' : 'false' }}">
-                            <i class="fas fa-boxes-stacked"></i>
-                            <span class="flex-grow-1">Store &amp; Inventory</span>
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
-                        </a>
-                        <div class="collapse {{ $isStoreActive ? 'show' : '' }}" id="storeCollapse">
-                            <a href="{{ route('inventory-items.index') }}" class="{{ request()->routeIs('inventory-items.*') ? 'active' : '' }} small py-2"><i class="fas fa-boxes-stacked"></i> Stock Items</a>
-                            <a href="{{ route('inventory-suppliers.index') }}" class="{{ request()->routeIs('inventory-suppliers.*') ? 'active' : '' }} small py-2"><i class="fas fa-truck-field"></i> Suppliers / Vendors</a>
-                            <a href="{{ route('purchase-orders.index') }}" class="{{ request()->routeIs('purchase-orders.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-signature"></i> Purchase Orders</a>
-                        </div>
-                    @endif
+                    @endcan
 
                     @if(auth()->user()->isTeacher() || auth()->user()->isStaff())
                         @if(!auth()->user()->can('manage-library'))
@@ -667,7 +696,7 @@
                         @if($showChat)
                             <a href="{{ route('class-chat.index') }}" class="{{ request()->routeIs('class-chat.*') ? 'active' : '' }} small py-2"><i class="fas fa-comments"></i> Class Chatroom</a>
                         @endif
-                        @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist() || auth()->user()->isLibrarian())
+                        @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist() || auth()->user()->isLibrarian() || auth()->user()->isWarden())
                             <a href="{{ route('notifications.index') }}" class="{{ request()->routeIs('notifications.*') ? 'active' : '' }} small py-2"><i class="fas fa-bell"></i> Notifications</a>
                         @endif
                         @if($showGallery)
@@ -698,6 +727,12 @@
                                     <a href="{{ route('reports.attendance') }}" class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }} small py-2"><i class="fas fa-chart-bar"></i> Attendance Report</a>
                                 @endif
                             </div>
+                        @endif
+
+                        @if(auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher())
+                            <a href="{{ route('whatsapp.index') }}" class="{{ request()->routeIs('whatsapp.*') ? 'active' : '' }}">
+                                <i class="fab fa-whatsapp" style="color: #198754;"></i> WhatsApp Center
+                            </a>
                         @endif
 
                         <a href="{{ route('profile.edit') }}"

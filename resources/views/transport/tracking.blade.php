@@ -296,46 +296,6 @@
     </div>
 </div>
 
-<!-- Boarding Checklist Modal -->
-<div class="modal fade" id="boardingModal" tabindex="-1" aria-labelledby="boardingModalLabel" aria-hidden="true" style="z-index: 1050;">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 glass-card">
-            <div class="modal-header border-bottom-0 pb-0 pt-4 px-4">
-                <div>
-                    <h5 class="modal-title fw-bold text-dark" id="boardingModalLabel">Boarding Check-In</h5>
-                    <p class="text-muted small mb-0" id="boarding-subtitle">Stop: <span class="fw-bold text-primary" id="modal-stop-name">Name</span></p>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-4">
-                <!-- Trip log state selection -->
-                <div class="row g-2 text-center mb-3">
-                    <div class="col-6">
-                        <label class="d-block p-2 rounded border cursor-pointer bg-light">
-                            <input type="radio" name="direction" value="pickup" checked class="form-check-input me-1">
-                            <span class="small fw-semibold text-dark">Morning Pickup</span>
-                        </label>
-                    </div>
-                    <div class="col-6">
-                        <label class="d-block p-2 rounded border cursor-pointer bg-light">
-                            <input type="radio" name="direction" value="dropoff" class="form-check-input me-1">
-                            <span class="small fw-semibold text-dark">Evening Dropoff</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Students list -->
-                <h6 class="fw-bold text-dark text-xs text-uppercase tracking-wider mb-2">Allocated Students</h6>
-                <div id="modal-students-container" class="list-group list-group-flush border rounded overflow-auto" style="max-height: 280px;">
-                    <!-- Javascript populates this -->
-                </div>
-            </div>
-            <div class="modal-footer border-top-0 pt-0 pb-4 px-4">
-                <button type="button" class="btn btn-outline-secondary w-100 rounded-pill" data-bs-dismiss="modal">Close &amp; Save</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Leaflet.js script -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -808,4 +768,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+@endsection
+
+@section('modals')
+<!-- Boarding Checklist Modal -->
+<div class="modal fade" id="boardingModal" tabindex="-1" aria-labelledby="boardingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 glass-card">
+            <div class="modal-header border-bottom-0 pb-0 pt-4 px-4">
+                <div>
+                    <h5 class="modal-title fw-bold text-dark" id="boardingModalLabel">Boarding Check-In</h5>
+                    <p class="text-muted small mb-0" id="boarding-subtitle">Stop: <span class="fw-bold text-primary" id="modal-stop-name">Name</span></p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <!-- Trip log state selection -->
+                <div class="row g-2 text-center mb-3">
+                    <div class="col-6">
+                        <label class="d-block p-2 rounded border cursor-pointer bg-light">
+                            <input type="radio" name="direction" value="pickup" checked class="form-check-input me-1">
+                            <span class="small fw-semibold text-dark">Morning Pickup</span>
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="d-block p-2 rounded border cursor-pointer bg-light">
+                            <input type="radio" name="direction" value="dropoff" class="form-check-input me-1">
+                            <span class="small fw-semibold text-dark">Evening Dropoff</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Students list -->
+                <h6 class="fw-bold text-dark text-xs text-uppercase tracking-wider mb-2">Allocated Students</h6>
+                <div id="modal-students-container" class="list-group list-group-flush border rounded overflow-auto" style="max-height: 280px;">
+                    <!-- Javascript populates this -->
+                </div>
+            </div>
+            <div class="modal-footer border-top-0 pt-0 pb-4 px-4">
+                <button type="button" class="btn btn-outline-secondary w-100 rounded-pill" data-bs-dismiss="modal">Close &amp; Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

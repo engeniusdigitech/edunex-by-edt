@@ -90,13 +90,27 @@ class TestController extends Controller
         }
 
         // Notify all students in this batch
-        $students = \App\Models\Student::where('batch_id', $test->batch_id)->get();
+        $students = \App\Models\Student::where('batch_id', $test->batch_id)->with('institute')->get();
         if ($students->count() > 0) {
             \Illuminate\Support\Facades\Notification::send($students, new \App\Notifications\NewTestNotification($test));
+
+            // Notify all students via WhatsApp
+            $subject = Subject::find($test->subject_id);
+            $subjectName = $subject->name ?? 'Subject';
+            $formattedDate = date('d M Y', strtotime($test->test_date));
+
+            foreach ($students as $student) {
+                if ($student->phone) {
+                    $instituteName = $student->institute->name ?? 'EduNex';
+                    $message = "Dear Student,\n\nA new test *'{$test->title}'* for subject *{$subjectName}* has been scheduled on *{$formattedDate}*.\n\nTotal Marks: {$test->total_marks}\n\nPlease prepare accordingly.\n\nBest of luck!\n— *{$instituteName}*";
+
+                    \App\Services\WhatsAppService::sendWhatsApp($student->name, $student->phone, $message, 'exam_notification');
+                }
+            }
         }
 
         return redirect()->route('tests.index')
-            ->with('success', 'Test scheduled successfully and students notified.');
+            ->with('success', 'Test scheduled successfully, students notified, and WhatsApp alerts triggered.');
     }
 
     public function edit(Test $test)
@@ -198,6 +212,11 @@ class TestController extends Controller
             'scores.*.remarks' => 'nullable|string',
         ]);
 
+        $students = Student::whereIn('id', array_keys($validated['scores']))->with('institute')->get()->keyBy('id');
+        $subject = Subject::find($test->subject_id);
+        $subjectName = $subject->name ?? 'Subject';
+        $sentCount = 0;
+
         foreach ($validated['scores'] as $studentId => $data) {
             if ($data['score'] !== null) {
                 TestScore::updateOrCreate(
@@ -210,10 +229,26 @@ class TestController extends Controller
                         'remarks' => $data['remarks'] ?? null,
                     ]
                 );
+
+                if (isset($students[$studentId])) {
+                    $student = $students[$studentId];
+                    if ($student->phone) {
+                        $instituteName = $student->institute->name ?? 'EduNex';
+                        $remarksPart = !empty($data['remarks']) ? "\nRemarks: " . $data['remarks'] : "";
+                        $message = "Dear Parent/Student,\n\nTest results are out! *{$student->name}* scored *{$data['score']} / {$test->total_marks}* in the test *'{$test->title}'* ({$subjectName}).{$remarksPart}\n\nKeep up the effort!\n— *{$instituteName}*";
+
+                        if (\App\Services\WhatsAppService::sendWhatsApp($student->name, $student->phone, $message, 'exam_marks')) {
+                            $sentCount++;
+                        }
+                    }
+                }
             }
         }
 
+        $mode = \App\Services\WhatsAppService::getSettings()['mode'] ?? 'simulator';
+        $statusText = $mode === 'simulator' ? 'simulated and logged' : 'sent';
+
         return redirect()->route('tests.index')
-            ->with('success', 'Test marks saved successfully.');
+            ->with('success', "Test marks saved successfully and {$sentCount} WhatsApp alerts {$statusText}.");
     }
 }

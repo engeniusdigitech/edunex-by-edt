@@ -162,11 +162,24 @@ class TransportController extends Controller
     public function updateStop(Request $request, TransportStop $stop)
     {
         $request->validate([
-            'stop_name' => 'required|string|max:100',
-            'transport_route_id' => 'required|exists:transport_routes,id',
+            'stop_name' => 'sometimes|required|string|max:100',
+            'transport_route_id' => 'sometimes|required|exists:transport_routes,id',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'sort_order' => 'nullable|integer',
         ]);
 
-        $stop->update($request->only('stop_name', 'transport_route_id'));
+        $data = [];
+        foreach (['stop_name', 'transport_route_id', 'latitude', 'longitude', 'sort_order'] as $field) {
+            if ($request->has($field)) {
+                $data[$field] = $request->input($field);
+            }
+        }
+        $stop->update($data);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['success' => true, 'message' => 'Stop updated successfully.']);
+        }
 
         return redirect()->route('transport.stops')->with('success', 'Stop updated successfully.');
     }

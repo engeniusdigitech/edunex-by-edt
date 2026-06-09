@@ -35,10 +35,20 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $institute = \App\Models\Institute::create([
+            'name' => $request->name . ' Institute',
+            'subdomain' => \Illuminate\Support\Str::slug($request->name) . '-' . uniqid(),
+            'contact_email' => $request->email,
+        ]);
+
+        $role = \App\Models\Role::firstOrCreate(['name' => 'Institute Admin']);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'institute_id' => $institute->id,
+            'role_id' => $role->id,
         ]);
 
         event(new Registered($user));

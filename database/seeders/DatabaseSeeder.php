@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $studentRole = Role::firstOrCreate(['name' => 'Student']);
         $principalRole = Role::firstOrCreate(['name' => 'Principal']);
         $librarianRole = Role::firstOrCreate(['name' => 'Librarian']);
+        $wardenRole = Role::firstOrCreate(['name' => 'Warden']);
 
         // 2. Super Admin User
         User::firstOrCreate(
@@ -122,6 +123,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Abid Saiyed',
             'password' => Hash::make('password'),
             'role_id' => $studentRole->id,
+            'institute_id' => $institute->id,
+        ]
+        );
+
+        User::firstOrCreate(
+        ['email' => 'warden@apexinstitute.com'],
+        [
+            'name' => 'John Warden',
+            'password' => Hash::make('password'),
+            'role_id' => $wardenRole->id,
             'institute_id' => $institute->id,
         ]
         );

@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function isStaff()
     {
-        return in_array($this->role->name ?? '', ['Staff', 'Teacher', 'Receptionist', 'Principal', 'Librarian']);
+        return in_array($this->role->name ?? '', ['Staff', 'Teacher', 'Receptionist', 'Principal', 'Librarian', 'Warden']);
     }
 
     public function isTeacher()
@@ -81,6 +81,11 @@ class User extends Authenticatable
     public function isLibrarian()
     {
         return ($this->role->name ?? '') === 'Librarian';
+    }
+
+    public function isWarden()
+    {
+        return ($this->role->name ?? '') === 'Warden';
     }
 
     public function isClassTeacher()
@@ -128,7 +133,7 @@ class User extends Authenticatable
 
     public function canUseBiometricAttendance(): bool
     {
-        return $this->isTeacher() || $this->isReceptionist() || $this->isPrincipal() || $this->isLibrarian();
+        return $this->isTeacher() || $this->isReceptionist() || $this->isPrincipal() || $this->isLibrarian() || $this->isWarden();
     }
 
     public function staffAttendances()

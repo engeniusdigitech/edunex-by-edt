@@ -20,6 +20,10 @@ class DashboardController extends Controller
             return redirect()->route('library.dashboard');
         }
 
+        if ($user && $user->isWarden()) {
+            return redirect()->route('hostels.index');
+        }
+
         if ($user && $user->isTeacher()) {
             return $this->teacherDashboard($user);
         }

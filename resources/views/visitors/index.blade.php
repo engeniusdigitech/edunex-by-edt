@@ -102,12 +102,12 @@
 <!-- Visitor Metrics Summary -->
 <div class="row g-3 mb-4">
     <!-- Pending Approvals -->
-    <div class="col-12 col-md-4">
+    <div class="col-6 col-lg-3">
         <div class="card border-0 shadow-sm h-100 metric-card" style="border-radius: 16px; border-left: 4px solid #EF4444 !important;">
-            <div class="card-body p-3.5">
+            <div class="card-body p-3">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="text-uppercase fw-semibold text-muted text-xs" style="letter-spacing: 0.5px;">Pending Gate Requests</span>
-                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-danger-subtle text-danger" style="width: 38px; height: 38px;">
+                    <span class="text-uppercase fw-semibold text-muted text-xs" style="letter-spacing: 0.5px;">Pending Requests</span>
+                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-danger-subtle text-danger" style="width: 36px; height: 36px;">
                         <i class="fas fa-clock"></i>
                     </div>
                 </div>
@@ -117,39 +117,55 @@
                         <span class="pulse-dot"></span>
                     @endif
                 </h3>
-                <span class="text-muted small">Awaiting guard/host action</span>
+                <span class="text-muted small" style="font-size: 0.75rem;">Awaiting action</span>
             </div>
         </div>
     </div>
 
     <!-- Active Visitors Inside -->
-    <div class="col-12 col-md-4">
+    <div class="col-6 col-lg-3">
         <div class="card border-0 shadow-sm h-100 metric-card" style="border-radius: 16px; border-left: 4px solid #2563EB !important;">
-            <div class="card-body p-3.5">
+            <div class="card-body p-3">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="text-uppercase fw-semibold text-muted text-xs" style="letter-spacing: 0.5px;">Active Inside Campus</span>
-                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-primary-subtle text-primary" style="width: 38px; height: 38px;">
+                    <span class="text-uppercase fw-semibold text-muted text-xs" style="letter-spacing: 0.5px;">Inside Campus</span>
+                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-primary-subtle text-primary" style="width: 36px; height: 36px;">
                         <i class="fas fa-sign-in-alt"></i>
                     </div>
                 </div>
                 <h3 class="fw-bold mb-0 text-dark">{{ $activeCount }}</h3>
-                <span class="text-muted small">Currently inside premises</span>
+                <span class="text-muted small" style="font-size: 0.75rem;">Currently inside</span>
             </div>
         </div>
     </div>
 
-    <!-- Total Today -->
-    <div class="col-12 col-md-4">
+    <!-- Checked Out -->
+    <div class="col-6 col-lg-3">
         <div class="card border-0 shadow-sm h-100 metric-card" style="border-radius: 16px; border-left: 4px solid #10B981 !important;">
-            <div class="card-body p-3.5">
+            <div class="card-body p-3">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span class="text-uppercase fw-semibold text-muted text-xs" style="letter-spacing: 0.5px;">Total Logged Today</span>
-                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success" style="width: 38px; height: 38px;">
-                        <i class="fas fa-users"></i>
+                    <span class="text-uppercase fw-semibold text-muted text-xs" style="letter-spacing: 0.5px;">Checked Out</span>
+                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-success-subtle text-success" style="width: 36px; height: 36px;">
+                        <i class="fas fa-sign-out-alt"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $totalToday }}</h3>
-                <span class="text-muted small">Cumulative day logs</span>
+                <h3 class="fw-bold mb-0 text-dark">{{ $checkedOutCount }}</h3>
+                <span class="text-muted small" style="font-size: 0.75rem;">Exited premises</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rejected -->
+    <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm h-100 metric-card" style="border-radius: 16px; border-left: 4px solid #64748B !important;">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span class="text-uppercase fw-semibold text-muted text-xs" style="letter-spacing: 0.5px;">Rejected Requests</span>
+                    <div class="rounded-3 d-flex align-items-center justify-content-center bg-secondary-subtle text-secondary" style="width: 36px; height: 36px;">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-0 text-dark">{{ $rejectedCount }}</h3>
+                <span class="text-muted small" style="font-size: 0.75rem;">Entry denied</span>
             </div>
         </div>
     </div>

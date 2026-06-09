@@ -18,6 +18,7 @@ class StaffController extends Controller
         $allowedRoleNames = ['Teacher', 'Receptionist'];
         if (auth()->user()->isInstituteAdmin()) {
             $allowedRoleNames[] = 'Librarian';
+            $allowedRoleNames[] = 'Warden';
         }
         $roles = Role::whereIn('name', $allowedRoleNames)->get();
         $roleIds = $roles->pluck('id');
@@ -47,6 +48,7 @@ class StaffController extends Controller
         $allowedRoleNames = ['Teacher', 'Receptionist'];
         if (auth()->user()->isInstituteAdmin()) {
             $allowedRoleNames[] = 'Librarian';
+            $allowedRoleNames[] = 'Warden';
         }
         $roles = Role::whereIn('name', $allowedRoleNames)->get();
         // Get active batches with their active subjects
@@ -65,6 +67,7 @@ class StaffController extends Controller
         $allowedRoleNames = ['Teacher', 'Receptionist'];
         if (auth()->user()->isInstituteAdmin()) {
             $allowedRoleNames[] = 'Librarian';
+            $allowedRoleNames[] = 'Warden';
         }
         $roles = Role::whereIn('name', $allowedRoleNames)->pluck('id')->toArray();
 
@@ -108,13 +111,14 @@ class StaffController extends Controller
     }
     public function edit(User $staff)
     {
-        if ($staff->isLibrarian() && !auth()->user()->isInstituteAdmin()) {
+        if (($staff->isLibrarian() || $staff->isWarden()) && !auth()->user()->isInstituteAdmin()) {
             abort(403, 'Unauthorized action.');
         }
 
         $allowedRoleNames = ['Teacher', 'Receptionist'];
         if (auth()->user()->isInstituteAdmin()) {
             $allowedRoleNames[] = 'Librarian';
+            $allowedRoleNames[] = 'Warden';
         }
         $roles = Role::whereIn('name', $allowedRoleNames)->get();
         // Get active batches with their active subjects for the hierarchical UI
@@ -132,13 +136,14 @@ class StaffController extends Controller
 
     public function update(Request $request, User $staff)
     {
-        if ($staff->isLibrarian() && !auth()->user()->isInstituteAdmin()) {
+        if (($staff->isLibrarian() || $staff->isWarden()) && !auth()->user()->isInstituteAdmin()) {
             abort(403, 'Unauthorized action.');
         }
 
         $allowedRoleNames = ['Teacher', 'Receptionist'];
         if (auth()->user()->isInstituteAdmin()) {
             $allowedRoleNames[] = 'Librarian';
+            $allowedRoleNames[] = 'Warden';
         }
         $roles = Role::whereIn('name', $allowedRoleNames)->pluck('id')->toArray();
 
@@ -189,7 +194,7 @@ class StaffController extends Controller
 
     public function destroy(User $staff)
     {
-        if ($staff->isLibrarian() && !auth()->user()->isInstituteAdmin()) {
+        if (($staff->isLibrarian() || $staff->isWarden()) && !auth()->user()->isInstituteAdmin()) {
             abort(403, 'Unauthorized action.');
         }
 

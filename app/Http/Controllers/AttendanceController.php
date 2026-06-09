@@ -47,17 +47,32 @@ class AttendanceController extends Controller
         ]);
 
         $date = $validated['date'];
+        
+        // Load student models to get their phones and names for WhatsApp alerts
+        $students = Student::whereIn('id', array_keys($validated['attendance']))->with('institute')->get()->keyBy('id');
 
         foreach ($validated['attendance'] as $studentId => $status) {
             Attendance::updateOrCreate(
-            ['student_id' => $studentId, 'date' => $date],
-            ['status' => $status]
+                ['student_id' => $studentId, 'date' => $date],
+                ['status' => $status]
             );
+
+            // Send WhatsApp alert automatically if student is absent
+            if ($status === 'absent' && isset($students[$studentId])) {
+                $student = $students[$studentId];
+                if ($student->phone) {
+                    $instituteName = $student->institute->name ?? 'EduNex';
+                    $formattedDate = date('d M Y', strtotime($date));
+                    $message = "Dear Parent/Student,\n\nThis is to notify you that *{$student->name}* was marked ABSENT today ({$formattedDate}) at *{$instituteName}*.\n\nIf this was an error, please contact the administration office.\n\nThank you!";
+
+                    \App\Services\WhatsAppService::sendWhatsApp($student->name, $student->phone, $message, 'attendance_alert');
+                }
+            }
         }
 
         return redirect()->route('attendance.index', [
             'batch_id' => $validated['batch_id'],
             'date' => $date
-        ])->with('success', 'Attendance recorded successfully!');
+        ])->with('success', 'Attendance recorded successfully and absent WhatsApp notifications triggered!');
     }
 }

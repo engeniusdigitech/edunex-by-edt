@@ -66,5 +66,13 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Gate::define('manage-visitors', function ($user) {
             return $user->isInstituteAdmin() || $user->isPrincipal() || $user->isReceptionist();
         });
+
+        \Illuminate\Support\Facades\Gate::define('manage-hostels', function ($user) {
+            return $user->isInstituteAdmin() || $user->isPrincipal() || $user->isWarden();
+        });
+
+        \Illuminate\Support\Facades\Gate::define('manage-inventory', function ($user) {
+            return $user->isInstituteAdmin() || $user->isPrincipal();
+        });
     }
 }

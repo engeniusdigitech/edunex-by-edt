@@ -34,8 +34,9 @@
             <h1 style="font-size:1.7rem;font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:6px;">Centralized Question Repository</h1>
             <p style="font-size:.85rem;color:rgba(255,255,255,.5);margin:0;">Store, organize, and reuse questions across multiple online exams.</p>
         </div>
-        <div class="col-lg-4 text-lg-end d-flex gap-2 justify-content-lg-end">
+        <div class="col-lg-4 text-lg-end d-flex gap-2 justify-content-lg-end align-items-center">
             <a href="{{ route('online-exams.index') }}" style="padding:10px 18px;border-radius:10px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);color:#fff;text-decoration:none;font-size:.82rem;font-weight:600;display:inline-flex;align-items:center;gap:7px;transition:all .2s;"><i class="fas fa-arrow-left"></i> Exams</a>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#importQuestionsModal" style="padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,#059669,#0D9488);color:#fff;border:none;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:7px;box-shadow:0 4px 14px rgba(5,150,105,.35);transition:all .2s;"><i class="fas fa-file-upload"></i> Import CSV</button>
             <a href="{{ route('question-bank.create') }}" style="padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;text-decoration:none;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:7px;box-shadow:0 4px 14px rgba(79,70,229,.35);transition:all .2s;"><i class="fas fa-plus"></i> Add Question</a>
         </div>
     </div>
@@ -46,6 +47,21 @@
     <i class="fas fa-check-circle" style="color:#059669;"></i>
     <span style="font-size:.85rem;font-weight:600;color:#047857;">{{ session('success') }}</span>
     <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+</div>
+@endif
+
+@if($errors->any())
+<div class="alert border-0 mb-4 d-flex flex-column gap-1" style="background:#FEF2F2;border-left:4px solid #DC2626 !important;border-radius:12px;" role="alert">
+    <div class="d-flex align-items-center gap-3">
+        <i class="fas fa-exclamation-circle" style="color:#DC2626;"></i>
+        <span style="font-size:.85rem;font-weight:700;color:#991B1B;">Import or Validation Error:</span>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+    </div>
+    <ul class="mb-0 text-danger small" style="padding-left: 30px;">
+        @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </div>
 @endif
 
@@ -138,3 +154,66 @@
     @endif
 </div>
 @endsection
+
+@section('modals')
+<!-- Import Questions Modal -->
+<div class="modal fade" id="importQuestionsModal" tabindex="-1" aria-labelledby="importQuestionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow" style="border-radius: 16px;">
+            <div class="modal-header border-0 px-4 pt-4">
+                <h5 class="modal-title fw-bold">Import Questions from CSV</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('question-bank.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body px-4 py-3">
+                    <p class="text-muted small mb-3">Upload a CSV file containing questions, options, correct answers, and explanations. All questions will be imported as Multiple Choice Questions (MCQ).</p>
+                    
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Target Subject <span class="text-danger">*</span></label>
+                        <select name="subject_id" class="form-select rounded-3" required>
+                            <option value="">Select Subject</option>
+                            @foreach($subjects as $s)
+                                <option value="{{ $s->id }}">{{ $s->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Target Batch (Optional)</label>
+                        <select name="batch_id" class="form-select rounded-3">
+                            <option value="">Select Batch</option>
+                            @foreach($batches as $b)
+                                <option value="{{ $b->id }}">{{ $b->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold text-secondary">Choose CSV File <span class="text-danger">*</span></label>
+                        <input type="file" name="file" class="form-control rounded-3" accept=".csv" required>
+                    </div>
+
+                    <div class="bg-light p-3 rounded-3 mt-2">
+                        <div class="fw-bold small text-secondary mb-1"><i class="fas fa-info-circle me-1"></i> CSV Format Notes:</div>
+                        <ul class="mb-0 text-muted" style="font-size: 0.72rem; padding-left: 20px;">
+                            <li>Required columns: <strong>question, option_a, option_b, correct_option</strong>.</li>
+                            <li>Optional columns: <strong>option_c, option_d, marks, difficulty, explanation</strong>.</li>
+                            <li><strong>correct_option</strong> values must be one of: <strong>a, b, c, d</strong>.</li>
+                            <li><strong>difficulty</strong> values must be one of: <strong>easy, medium, hard</strong> (defaults to medium).</li>
+                        </ul>
+                        <div class="mt-2 text-end">
+                            <a href="{{ route('question-bank.download-template') }}" class="btn btn-xs btn-outline-primary rounded-pill px-3 py-1" style="font-size: 0.72rem;"><i class="fas fa-download me-1"></i> Download Template CSV</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 px-4 pb-4 gap-2">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Import Questions</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+

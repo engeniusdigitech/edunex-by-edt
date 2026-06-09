@@ -29,6 +29,12 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'role_id' => fn () => \App\Models\Role::firstOrCreate(['name' => 'Institute Admin'])->id,
+            'institute_id' => fn () => \App\Models\Institute::first() ? \App\Models\Institute::first()->id : \App\Models\Institute::create([
+                'name' => 'Apex Institute',
+                'subdomain' => 'apex-' . uniqid(),
+                'contact_email' => 'apex-' . uniqid() . '@example.com',
+            ])->id,
         ];
     }
 

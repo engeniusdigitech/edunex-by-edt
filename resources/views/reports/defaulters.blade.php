@@ -9,9 +9,17 @@
         <p class="text-muted small mb-0">Monitor unpaid fees and send automated reminders</p>
     </div>
     @if(count($defaulters) > 0)
-    <a href="{{ route('reports.defaulters.pdf', request()->all()) }}" class="btn btn-danger btn-modern shadow-sm">
-        <i class="fas fa-file-pdf me-2"></i> Download PDF
-    </a>
+    <div class="d-flex gap-2">
+        <form action="{{ route('reports.defaulters.whatsapp-bulk', request()->all()) }}" method="POST" onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').innerHTML='<i class=\'fas fa-spinner fa-spin me-1\'></i> Sending...';">
+            @csrf
+            <button type="submit" class="btn btn-success btn-modern shadow-sm" style="background-color: #198754 !important; border-color: #198754 !important; color: #fff !important;">
+                <i class="fab fa-whatsapp me-2"></i> Send Bulk WhatsApp Reminders
+            </button>
+        </form>
+        <a href="{{ route('reports.defaulters.pdf', request()->all()) }}" class="btn btn-danger btn-modern shadow-sm">
+            <i class="fas fa-file-pdf me-2"></i> Download PDF
+        </a>
+    </div>
     @endif
 </div>
 

@@ -183,29 +183,31 @@ Route::middleware(['auth'])->group(function () {
             Route::post('online-exams/{onlineExam}/publish', [\App\Http\Controllers\OnlineExamController::class, 'publish'])->name('online-exams.publish')->middleware('can:manage-academics');
             Route::post('online-exams/{onlineExam}/close', [\App\Http\Controllers\OnlineExamController::class, 'close'])->name('online-exams.close')->middleware('can:manage-academics');
             Route::get('online-exams/{onlineExam}/results', [\App\Http\Controllers\OnlineExamController::class, 'results'])->name('online-exams.results')->middleware('can:manage-academics');
+            Route::post('question-bank/import', [\App\Http\Controllers\QuestionBankController::class, 'import'])->name('question-bank.import')->middleware('can:manage-academics');
+            Route::get('question-bank/download-template', [\App\Http\Controllers\QuestionBankController::class, 'downloadTemplate'])->name('question-bank.download-template')->middleware('can:manage-academics');
             Route::resource('question-bank', \App\Http\Controllers\QuestionBankController::class)->middleware('can:manage-academics');
 
             // Hostel Management Module
-            Route::resource('hostels', \App\Http\Controllers\HostelController::class)->middleware('can:manage-academics');
-            Route::post('hostels/{hostel}/rooms', [\App\Http\Controllers\HostelController::class, 'storeRoom'])->name('hostels.rooms.store')->middleware('can:manage-academics');
-            Route::delete('hostels/{hostel}/rooms/{room}', [\App\Http\Controllers\HostelController::class, 'destroyRoom'])->name('hostels.rooms.destroy')->middleware('can:manage-academics');
+            Route::resource('hostels', \App\Http\Controllers\HostelController::class)->middleware('can:manage-hostels');
+            Route::post('hostels/{hostel}/rooms', [\App\Http\Controllers\HostelController::class, 'storeRoom'])->name('hostels.rooms.store')->middleware('can:manage-hostels');
+            Route::delete('hostels/{hostel}/rooms/{room}', [\App\Http\Controllers\HostelController::class, 'destroyRoom'])->name('hostels.rooms.destroy')->middleware('can:manage-hostels');
 
-            Route::resource('hostel-allocations', \App\Http\Controllers\HostelAllocationController::class)->middleware('can:manage-academics');
-            Route::post('hostel-allocations/{allocation}/checkout', [\App\Http\Controllers\HostelAllocationController::class, 'checkout'])->name('hostel-allocations.checkout')->middleware('can:manage-academics');
-            Route::post('hostel-allocations/bills/generate', [\App\Http\Controllers\HostelAllocationController::class, 'generateBills'])->name('hostel-allocations.bills.generate')->middleware('can:manage-academics');
-            Route::resource('hostel-bills', \App\Http\Controllers\HostelBillController::class)->only(['index', 'update'])->middleware('can:manage-academics');
+            Route::resource('hostel-allocations', \App\Http\Controllers\HostelAllocationController::class)->middleware('can:manage-hostels');
+            Route::post('hostel-allocations/{allocation}/checkout', [\App\Http\Controllers\HostelAllocationController::class, 'checkout'])->name('hostel-allocations.checkout')->middleware('can:manage-hostels');
+            Route::post('hostel-allocations/bills/generate', [\App\Http\Controllers\HostelAllocationController::class, 'generateBills'])->name('hostel-allocations.bills.generate')->middleware('can:manage-hostels');
+            Route::resource('hostel-bills', \App\Http\Controllers\HostelBillController::class)->only(['index', 'update'])->middleware('can:manage-hostels');
 
-            Route::resource('hostel-messes', \App\Http\Controllers\HostelMessController::class)->middleware('can:manage-academics');
-            Route::post('hostel-messes/{mess}/menu', [\App\Http\Controllers\HostelMessController::class, 'updateMenu'])->name('hostel-messes.menu.update')->middleware('can:manage-academics');
-            Route::post('hostel-messes/{mess}/subscribe', [\App\Http\Controllers\HostelMessController::class, 'subscribeStudent'])->name('hostel-messes.subscribe')->middleware('can:manage-academics');
+            Route::resource('hostel-messes', \App\Http\Controllers\HostelMessController::class)->middleware('can:manage-hostels');
+            Route::post('hostel-messes/{mess}/menu', [\App\Http\Controllers\HostelMessController::class, 'updateMenu'])->name('hostel-messes.menu.update')->middleware('can:manage-hostels');
+            Route::post('hostel-messes/{mess}/subscribe', [\App\Http\Controllers\HostelMessController::class, 'subscribeStudent'])->name('hostel-messes.subscribe')->middleware('can:manage-hostels');
 
             // Inventory & Store Management Module
-            Route::resource('inventory-items', \App\Http\Controllers\InventoryItemController::class)->middleware('can:manage-academics');
-            Route::resource('inventory-suppliers', \App\Http\Controllers\InventorySupplierController::class)->middleware('can:manage-academics');
-            Route::resource('purchase-orders', \App\Http\Controllers\PurchaseOrderController::class)->middleware('can:manage-academics');
-            Route::post('purchase-orders/{purchase_order}/items', [\App\Http\Controllers\PurchaseOrderController::class, 'storeItem'])->name('purchase-orders.items.store')->middleware('can:manage-academics');
-            Route::delete('purchase-orders/{purchase_order}/items/{item}', [\App\Http\Controllers\PurchaseOrderController::class, 'destroyItem'])->name('purchase-orders.items.destroy')->middleware('can:manage-academics');
-            Route::post('purchase-orders/{purchase_order}/status', [\App\Http\Controllers\PurchaseOrderController::class, 'updateStatus'])->name('purchase-orders.status.update')->middleware('can:manage-academics');
+            Route::resource('inventory-items', \App\Http\Controllers\InventoryItemController::class)->middleware('can:manage-inventory');
+            Route::resource('inventory-suppliers', \App\Http\Controllers\InventorySupplierController::class)->middleware('can:manage-inventory');
+            Route::resource('purchase-orders', \App\Http\Controllers\PurchaseOrderController::class)->middleware('can:manage-inventory');
+            Route::post('purchase-orders/{purchase_order}/items', [\App\Http\Controllers\PurchaseOrderController::class, 'storeItem'])->name('purchase-orders.items.store')->middleware('can:manage-inventory');
+            Route::delete('purchase-orders/{purchase_order}/items/{item}', [\App\Http\Controllers\PurchaseOrderController::class, 'destroyItem'])->name('purchase-orders.items.destroy')->middleware('can:manage-inventory');
+            Route::post('purchase-orders/{purchase_order}/status', [\App\Http\Controllers\PurchaseOrderController::class, 'updateStatus'])->name('purchase-orders.status.update')->middleware('can:manage-inventory');
 
             // Notifications
             Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
@@ -221,12 +223,18 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/defaulters/pdf', [\App\Http\Controllers\ReportController::class, 'exportDefaultersPdf'])->name('defaulters.pdf')->middleware('can:manage-payments');
 
                 Route::post('/defaulters/notify/{student}', [\App\Http\Controllers\NotificationController::class, 'sendPortalAlert'])->name('notify')->middleware('can:manage-payments');
+                Route::post('/defaulters/whatsapp-bulk', [\App\Http\Controllers\ReportController::class, 'sendBulkWhatsAppReminders'])->name('defaulters.whatsapp-bulk')->middleware('can:manage-payments');
 
                 Route::get('/students/{student}', [\App\Http\Controllers\ReportController::class, 'studentReport'])->name('student')->middleware('can:manage-academics');
                 Route::get('/students/{student}/pdf', [\App\Http\Controllers\ReportController::class, 'exportStudentReportPdf'])->name('student.pdf')->middleware('can:manage-academics');
                 Route::get('/erp-guide/pdf', [\App\Http\Controllers\ReportController::class, 'exportErpGuidePdf'])->name('erp-guide.pdf');
             }
             );
+
+            // WhatsApp Automation Center
+            Route::get('/whatsapp-center', [\App\Http\Controllers\WhatsAppController::class, 'index'])->name('whatsapp.index');
+            Route::post('/whatsapp-center/settings', [\App\Http\Controllers\WhatsAppController::class, 'saveSettings'])->name('whatsapp.settings');
+            Route::post('/whatsapp-center/clear', [\App\Http\Controllers\WhatsAppController::class, 'clearLogs'])->name('whatsapp.clear');
             // Leave Management (Staff)
             Route::get('leaves/students', [\App\Http\Controllers\LeaveRequestController::class, 'studentLeaves'])->name('leaves.students');
             Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
@@ -239,6 +247,7 @@ Route::middleware(['auth'])->group(function () {
             // Profile
             Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+            Route::delete('/profile', [\App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 
             // Image Gallery
             Route::resource('gallery', \App\Http\Controllers\GalleryMediaController::class)->only(['index', 'store', 'destroy']);
@@ -312,10 +321,9 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/tally-export', [\App\Http\Controllers\AccountingController::class, 'tallyExport'])->name('tally.export');
             })->middleware('can:manage-payments');
 
-            // Study Materials (LMS Mockup)
-            Route::get('/study-materials', function () {
-                return view('study-materials');
-            })->name('study-materials.index');
+            // Study Materials (LMS)
+            Route::resource('study-materials', \App\Http\Controllers\StudyMaterialController::class)->only(['index', 'store', 'destroy']);
+            Route::get('study-materials/{studyMaterial}/download', [\App\Http\Controllers\StudyMaterialController::class, 'download'])->name('study-materials.download');
 
             // Staff biometric attendance (self mark in/out)
             Route::get('/staff-attendance/mark', [\App\Http\Controllers\StaffBiometricAttendanceController::class, 'index'])->name('staff-attendance.mark');
@@ -468,10 +476,9 @@ Route::prefix('student')->name('student.')->group(function () {
             Route::post('leaves/{id}/revert', [\App\Http\Controllers\LeaveRequestController::class, 'revert'])->name('leaves.revert');
             Route::resource('leaves', \App\Http\Controllers\Student\LeaveController::class)->only(['index', 'create', 'store']);
 
-            // Student Study Materials (LMS Mockup)
-            Route::get('study-materials', function () {
-                return view('student.study-materials');
-            })->name('student.study-materials.index');
+            // Student Study Materials (LMS)
+            Route::get('study-materials', [\App\Http\Controllers\StudyMaterialController::class, 'studentIndex'])->name('student.study-materials.index');
+            Route::get('study-materials/{studyMaterial}/download', [\App\Http\Controllers\StudyMaterialController::class, 'download'])->name('student.study-materials.download');
 
             // Timetable
             Route::get('timetable', [\App\Http\Controllers\Student\TimetableController::class, 'index'])->name('timetable.index');

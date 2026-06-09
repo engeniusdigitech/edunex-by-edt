@@ -27,6 +27,21 @@
     </div>
 </div>
 
+@if($errors->any())
+<div class="alert border-0 mb-4 d-flex flex-column gap-1" style="background:#FEF2F2;border-left:4px solid #DC2626 !important;border-radius:12px;" role="alert">
+    <div class="d-flex align-items-center gap-3">
+        <i class="fas fa-exclamation-circle" style="color:#DC2626;"></i>
+        <span style="font-size:.85rem;font-weight:700;color:#991B1B;">Validation Errors:</span>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+    </div>
+    <ul class="mb-0 text-danger small" style="padding-left: 30px;">
+        @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="row g-4">
     <div class="col-lg-8">
         <div class="qb-form-card">
