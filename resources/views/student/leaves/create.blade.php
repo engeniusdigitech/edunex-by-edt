@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply for Leave — EduNex</title>
+    <title>Apply for Leave — EduNex ERP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -144,7 +144,7 @@
     <nav class="top-navbar">
         <a href="{{ route('student.dashboard') }}" class="nav-brand">
             <div class="brand-badge text-uppercase">EN</div>
-            <div class="brand-name">EDUNEX <span style="font-size: 0.7rem; opacity: 0.6;">STUDENT</span></div>
+            <div class="brand-name">EDUNEX ERP <span style="font-size: 0.7rem; opacity: 0.6;">STUDENT</span></div>
         </a>
         <div class="d-flex align-items-center gap-3">
             <a href="{{ route('student.leaves.index') }}" class="text-muted text-decoration-none small fw-medium">HISTORY</a>

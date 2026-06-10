@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Contact EduNex | Get School Management Software Demo & Support" description="Contact EduNex to book a free demo of our school management software and institute ERP. Talk to our school software experts today. We respond within 1 business day." keywords="school management software demo, institute ERP contact, school software free demo, book school ERP demo, contact school management system, EduNex contact, school software support, institute software sales, school ERP sales India" />
+    <x-seo title="Contact EduNex ERP | Get School Management Software Demo & Support" description="Contact EduNex ERP to book a free demo of our school management software and institute ERP. Talk to our school software experts today. We respond within 1 business day." keywords="school management software demo, institute ERP contact, school software free demo, book school ERP demo, contact school management system, EduNex ERP contact, school software support, institute software sales, school ERP sales" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -245,7 +245,7 @@ textarea.form-inp{resize:vertical;min-height:130px;}
                         <div class="ic-icon teal"><i class="fas fa-headset"></i></div>
                         <div>
                             <div class="ic-title">Dedicated Support</div>
-                            <div class="ic-val">support@edunex.com</div>
+                            <div class="ic-val">support@edunex-erp.com</div>
                         </div>
                     </div>
 

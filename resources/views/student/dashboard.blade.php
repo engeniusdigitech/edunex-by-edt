@@ -113,7 +113,7 @@
 <div class="dashboard-container">
     <div class="row g-4 mb-4">
         <!-- Attendance Block -->
-        <div class="col-md-6">
+        <div class="{{ auth()->guard('student')->user()->institute && auth()->guard('student')->user()->institute->feature_fees ? 'col-md-6' : 'col-md-12' }}">
             <div class="box-attendance d-flex flex-column justify-content-between">
                 <div>
                     <h5 class="mb-3" style="font-weight: 600; opacity: 0.9;">Attendance</h5>
@@ -128,6 +128,7 @@
             </div>
         </div>
         
+        @if(auth()->guard('student')->user()->institute && auth()->guard('student')->user()->institute->feature_fees)
         <!-- Fees Block -->
         <div class="col-md-6">
             <div class="box-fees d-flex flex-column justify-content-between">
@@ -152,6 +153,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 
     <!-- Page Buttons Grid -->
@@ -168,11 +170,13 @@
             <span>Online Exams</span>
         </a>
 
+        @if(auth()->guard('student')->user()->institute && auth()->guard('student')->user()->institute->feature_library)
         <!-- Library -->
         <a href="{{ route('student.library.index') }}" class="page-btn">
             <i class="fas fa-book-reader"></i>
             <span>Library</span>
         </a>
+        @endif
         
         <!-- Study Materials -->
         <a href="{{ route('student.study-materials.index') }}" class="page-btn">
@@ -214,12 +218,15 @@
         </a>
         @endif
 
+        @if(auth()->guard('student')->user()->institute && auth()->guard('student')->user()->institute->feature_transport)
         <!-- Transport Details -->
         <a href="{{ route('student.transport.index') }}" class="page-btn">
             <i class="fas fa-bus"></i>
             <span>Transport</span>
         </a>
+        @endif
 
+        @if(auth()->guard('student')->user()->institute && auth()->guard('student')->user()->institute->feature_hostel)
         <!-- Hostel details -->
         <a href="{{ route('student.hostel.my-room') }}" class="page-btn">
             <i class="fas fa-hotel"></i>
@@ -235,6 +242,7 @@
             <i class="fas fa-file-invoice-dollar"></i>
             <span>Hostel Bills</span>
         </a>
+        @endif
         
         <!-- Profile -->
         <a href="{{ route('student.profile.edit') }}" class="page-btn">

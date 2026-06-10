@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
         title="School & Institute Accounting Software | GST Reports & Tally Sync — EduNex ERP"
-        description="Manage your school or institute finances with EduNex's compliant double-entry accounting module. Automate GST (CGST/SGST/IGST) tracking, generate real-time balance sheets, and export data directly to Tally Prime in one click."
-        keywords="school accounting software, institute accounting software, school finance management software, school ERP accounting, GST software for schools, Tally integration for schools, institute financial management, school ledger software, double entry accounting school, school fee accounting system, institute GST reports, school financial ERP, EduNex accounting"
+        description="Manage your school or institute finances with EduNex ERP's compliant double-entry accounting module. Automate GST (CGST/SGST/IGST) tracking, generate real-time balance sheets, and export data directly to Tally Prime in one click."
+        keywords="school accounting software, institute accounting software, school finance management software, school ERP accounting, GST software for schools, Tally integration for schools, institute financial management, school ledger software, double entry accounting school, school fee accounting system, institute GST reports, school financial ERP, EduNex ERP accounting"
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -268,7 +268,7 @@ body {
             </div>
             <div class="col-md-6">
                 <div class="p-4 h-100" style="background: hsla(174, 50%, 10%, 0.1); border: 1px solid hsla(174, 72%, 56%, 0.2); border-radius: 16px;">
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex Tally Sync</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex ERP Tally Sync</span>
                     <ul class="list-unstyled d-flex flex-column gap-3 small text-muted mb-0">
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>System-locked compliance ledger groups prevent accidental configuration changes.</span></li>
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>One-click XML journal exports import cleanly directly into Tally Prime.</span></li>

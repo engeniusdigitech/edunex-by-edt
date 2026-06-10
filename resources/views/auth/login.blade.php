@@ -1,7 +1,7 @@
 <x-guest-layout :split="true">
 
 <style>
-/* Custom premium login page layout for EduNex */
+/* Custom premium login page layout for EduNex ERP */
 .split-container {
     display: flex;
     min-height: 100vh;
@@ -77,7 +77,7 @@
     letter-spacing: -0.03em;
 }
 .brand-title span {
-    color: #1B75D7; /* EduNex primary blue */
+    color: #1B75D7; /* EduNex ERP primary blue */
 }
 .brand-description {
     font-size: 1.1rem;
@@ -143,7 +143,7 @@
     margin-bottom: 0;
 }
 
-/* Form Styles matching EduNex */
+/* Form Styles matching EduNex ERP */
 .form-group {
     margin-bottom: 24px;
 }
@@ -225,7 +225,7 @@
     transform: translate(-50%, -50%);
 }
 .forgot-password-link {
-    color: #1B75D7; /* EduNex primary blue */
+    color: #1B75D7; /* EduNex ERP primary blue */
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s;
@@ -241,7 +241,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 1rem;
     font-weight: 600;
-    background: #1B75D7; /* EduNex primary blue */
+    background: #1B75D7; /* EduNex ERP primary blue */
     color: #FFFFFF;
     border: none;
     border-radius: 12px;
@@ -317,8 +317,8 @@
         
         <!-- BRAND HEADER -->
         <div class="brand-header">
-            <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo" class="logo-icon">
-            <img src="{{ asset('images/logo-name.png') }}" alt="EduNex" class="logo-name">
+            <img src="{{ asset('images/logo.png') }}" alt="EduNex ERP Logo" class="logo-icon">
+            <img src="{{ asset('images/logo-name.png') }}" alt="EduNex ERP" class="logo-name">
         </div>
         
         <!-- CENTER CONTENT -->

@@ -61,7 +61,7 @@ class AttendanceController extends Controller
             if ($status === 'absent' && isset($students[$studentId])) {
                 $student = $students[$studentId];
                 if ($student->phone) {
-                    $instituteName = $student->institute->name ?? 'EduNex';
+                    $instituteName = $student->institute->name ?? 'EduNex ERP';
                     $formattedDate = date('d M Y', strtotime($date));
                     $message = "Dear Parent/Student,\n\nThis is to notify you that *{$student->name}* was marked ABSENT today ({$formattedDate}) at *{$instituteName}*.\n\nIf this was an error, please contact the administration office.\n\nThank you!";
 

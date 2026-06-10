@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Refund Policy | EduNex 100% Satisfaction Guarantee" description="Learn about our 7-day money-back guarantee and refund process." />
+    <x-seo title="Refund Policy | EduNex ERP 100% Satisfaction Guarantee" description="Learn about our 7-day money-back guarantee and refund process." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <div class="legal-content">
-                    <p>At <strong>EduNex</strong>, we want to ensure you are 100% satisfied with our platform. We offer a transparent refund policy for our valued partners.</p>
+                    <p>At <strong>EduNex ERP</strong>, we want to ensure you are 100% satisfied with our platform. We offer a transparent refund policy for our valued partners.</p>
 
                     <h2>1. 7-Day Money Back Guarantee</h2>
                     <p>If you are not satisfied with our service within the first 7 days of your paid subscription, you are eligible for a full refund, no questions asked.</p>

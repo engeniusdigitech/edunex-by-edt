@@ -55,6 +55,6 @@ class LiveLecture extends Model
      */
     public static function generateRoomName(string $title): string
     {
-        return 'edunex-' . Str::slug($title) . '-' . Str::random(8);
+        return 'edunex-erp-' . Str::slug($title) . '-' . Str::random(8);
     }
 }

@@ -1,4 +1,4 @@
-# EduNex Usage Guide
+# EduNex ERP Usage Guide
 
 ---
 

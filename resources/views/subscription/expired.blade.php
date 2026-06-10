@@ -9,7 +9,7 @@
             <h1 class="display-1 text-danger mb-4"><i class="fas fa-exclamation-triangle"></i></h1>
             <h2 class="card-title mb-3">Subscription Expired</h2>
             <p class="card-text text-muted mb-4">
-                Your institute's subscription to Edunex has expired. To restore full access to all features, please renew your subscription.
+                Your institute's subscription to Edunex ERP has expired. To restore full access to all features, please renew your subscription.
             </p>
             
             @if(session('error'))
@@ -20,7 +20,7 @@
 
             <p class="text-muted small">
                 If you are an Institute Admin, please contact the Super Admin for a renewal. <br>
-                For support, email: <strong>support@edunex.com</strong>
+                For support, email: <strong>support@edunex-erp.com</strong>
             </p>
             
             <!-- Optional: Replace with a button to a billing page if you ever build one -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="EduNex Blog | School Management Software Guides & Institute ERP Insights" description="Read the EduNex blog for the latest school management software tips, institute ERP guides, attendance automation, payroll, and education technology insights for schools and coaching centers in India." keywords="school management software blog, institute ERP blog, school software guide, education technology blog India, school ERP tips, institute software articles, school management system guide, coaching software blog, EduNex blog" />
+    <x-seo title="EduNex ERP Blog | School Management Software Guides & Institute ERP Insights" description="Read the EduNex ERP blog for the latest school management software tips, institute ERP guides, attendance automation, payroll, and education technology insights for schools and coaching centers worldwide." keywords="school management software blog, institute ERP blog, school software guide, education technology blog, school ERP tips, institute software articles, school management system guide, coaching software blog, EduNex ERP blog" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -158,7 +158,7 @@ section{background:transparent!important;}
 <section class="blog-hero">
     <div class="container px-4" style="position:relative;z-index:2;">
         <div class="eyebrow"><i class="fas fa-newspaper"></i> Insights &amp; Innovation</div>
-        <h1 class="page-h1">The <span class="g-text">EduNex Blog.</span></h1>
+        <h1 class="page-h1">The <span class="g-text">EduNex ERP Blog.</span></h1>
         <p class="page-sub">Tips, stories, and insights for institute owners, principals, and educators building the future of education.</p>
     </div>
 </section>
@@ -224,7 +224,7 @@ section{background:transparent!important;}
                     <div class="blog-body">
                         <span class="blog-cat" style="background:hsla(38,92%,50%,0.12);border-color:hsla(38,92%,50%,0.22);color:hsl(38,92%,65%);">Guides</span>
                         <div class="blog-title">Data Privacy in 2026: Protecting Student Information.</div>
-                        <div class="blog-excerpt">Why institute security should be your #1 priority this year, and how EduNex ensures your data is encrypted and isolated by default.</div>
+                        <div class="blog-excerpt">Why institute security should be your #1 priority this year, and how EduNex ERP ensures your data is encrypted and isolated by default.</div>
                         <div class="blog-meta">
                             <div class="blog-meta-left">
                                 <div class="blog-av" style="background:linear-gradient(135deg,hsl(174,72%,40%),hsl(217,91%,50%));">SL</div>
@@ -251,7 +251,7 @@ section{background:transparent!important;}
         <span style="display:inline-flex;align-items:center;gap:6px;background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);border-radius:9999px;padding:4px 14px;font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;">
             <i class="fas fa-rocket"></i> Ready to Innovate?
         </span>
-        <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:14px;">Join 100+ institutes already using EduNex.</h2>
+        <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:14px;">Join 100+ institutes already using EduNex ERP.</h2>
         <p style="color:var(--muted);font-size:1rem;max-width:420px;margin:0 auto 32px;line-height:1.8;">Start your free trial today — no credit card, no setup fee.</p>
         <a href="{{ route('pricing') }}" class="cta-btn">View Pricing Plans <i class="fas fa-arrow-right"></i></a>
     </div>

@@ -23,7 +23,14 @@ class Institute extends Model
         'type',
         'is_active',
         'feature_hr',
+        'feature_visitor',
         'feature_fees',
+        'feature_accounting',
+        'feature_inventory',
+        'feature_hostel',
+        'feature_library',
+        'feature_transport',
+        'feature_whatsapp',
         'feature_live_classes',
     ];
 
@@ -32,7 +39,14 @@ class Institute extends Model
         'longitude' => 'decimal:7',
         'attendance_radius_meters' => 'integer',
         'feature_hr' => 'boolean',
+        'feature_visitor' => 'boolean',
         'feature_fees' => 'boolean',
+        'feature_accounting' => 'boolean',
+        'feature_inventory' => 'boolean',
+        'feature_hostel' => 'boolean',
+        'feature_library' => 'boolean',
+        'feature_transport' => 'boolean',
+        'feature_whatsapp' => 'boolean',
         'feature_live_classes' => 'boolean',
     ];
 

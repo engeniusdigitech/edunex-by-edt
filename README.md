@@ -1,6 +1,6 @@
-# EduNex Institute and School Management SaaS
+# EduNex ERP Institute and School Management SaaS
 
-EduNex is a comprehensive, multi-tenant Software as a Service (SaaS) application built to power modern institute institutes, tuition centers, and educational academies. It handles everything from student enrollment and daily attendance to fee tracking, advanced analytics, and academic learning management—all under a single, isolated, role-based architecture.
+EduNex ERP is a comprehensive, multi-tenant Software as a Service (SaaS) application built to power modern institute institutes, tuition centers, and educational academies. It handles everything from student enrollment and daily attendance to fee tracking, advanced analytics, and academic learning management—all under a single, isolated, role-based architecture.
 
 ## 🚀 Key Features
 
@@ -59,12 +59,12 @@ npm run build
 ```
 
 ### 3. Database Preparation
-Create a MySQL database named `edunex_db`. Duplicate your `.env.example` to `.env` and verify the DB credentials:
+Create a MySQL database named `edunex_erp_db`. Duplicate your `.env.example` to `.env` and verify the DB credentials:
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=edunex_db
+DB_DATABASE=edunex_erp_db
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -88,7 +88,7 @@ php artisan serve
 To immediately test the application's isolated multi-tenant capabilities, login at `http://localhost:8000/login` using the following seeded credentials:
 
 **1. The Platform Owner (Super Admin)**
-- Email: `superadmin@edunex.com`
+- Email: `superadmin@edunex-erp.com`
 - Password: `password`
 
 **2. Institute Institute Owner (Institute Admin)**

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="About EduNex — School Management Software Company | Institute ERP by Engenius Digitech" description="EduNex is built by Engenius Digitech — a team of engineers and educators creating India's best School Management System and Institute ERP. Learn our mission to digitize schools and institutes across India." keywords="about school management software company, school ERP company India, institute software developer, school software company, EduNex about, Engenius Digitech school ERP, best school management system India, school software brand" />
+    <x-seo title="About EduNex ERP — School Management Software Company | Institute ERP by Engenius Digitech" description="EduNex ERP is built by Engenius Digitech — a team of engineers and educators creating best School Management System and Institute ERP. Learn our mission to digitize schools and institutes." keywords="about school management software company, school ERP company, institute software developer, school software company, EduNex ERP about, Engenius Digitech school ERP, best school management system, school software brand" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -131,9 +131,9 @@ section{background:transparent!important;}
 <!-- Hero -->
 <section class="about-hero">
     <div class="container px-4" style="position:relative;z-index:2;">
-        <div class="eyebrow"><i class="fas fa-info-circle"></i> About EduNex</div>
+        <div class="eyebrow"><i class="fas fa-info-circle"></i> About EduNex ERP</div>
         <h1 class="page-h1">Built to transform<br>how <span class="g-text">institutes work.</span></h1>
-        <p class="page-sub">We believe every institute deserves world-class software. EduNex is the AI-powered platform that makes it possible — for coaching centers, schools, and skill institutes across India.</p>
+        <p class="page-sub">We believe every institute deserves world-class software. EduNex ERP is the AI-powered platform that makes it possible — for coaching centers, schools, and skill institutes.</p>
     </div>
 </section>
 
@@ -148,7 +148,7 @@ section{background:transparent!important;}
             @foreach([
                 ['i'=>'fa-bolt','bg'=>'rgba(16,185,129,0.1)','c'=>'hsl(174,72%,38%)','t'=>'Simplify','d'=>'Complex institute operations — attendance, fees, payroll, academics — should be manageable in one click. Not spreadsheets.'],
                 ['i'=>'fa-robot','bg'=>'rgba(37,99,235,0.08)','c'=>'hsl(217,91%,50%)','t'=>'Automate','d'=>'Manual work kills productivity. We automate everything that can be automated — so your staff focuses on what actually matters.'],
-                ['i'=>'fa-seedling','bg'=>'rgba(245,158,11,0.1)','c'=>'hsl(38,92%,45%)','t'=>'Empower','d'=>'Every teacher, owner, and student deserves tools that make their experience better. EduNex is built for every stakeholder.'],
+                ['i'=>'fa-seedling','bg'=>'rgba(245,158,11,0.1)','c'=>'hsl(38,92%,45%)','t'=>'Empower','d'=>'Every teacher, owner, and student deserves tools that make their experience better. EduNex ERP is built for every stakeholder.'],
             ] as $m)
             <div class="col-md-4">
                 <div class="m-card">
@@ -170,10 +170,10 @@ section{background:transparent!important;}
                 <span style="display:block;font-size:0.72rem;font-weight: 500;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary);margin-bottom:14px;">Our Story</span>
                 <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:20px;">Started with one question:<br><em style="font-style:normal;">"Why is this so hard?"</em></h2>
                 <p style="color:var(--muted);font-size:0.95rem;line-height:1.9;margin-bottom:20px;">
-                    EduNex was born from frustration. Institute owners across India were managing hundreds of students using WhatsApp groups, paper registers, and disconnected tools. It was chaotic — and it didn't have to be.
+                    EduNex ERP was born from frustration. Institute owners were managing hundreds of students using WhatsApp groups, paper registers, and disconnected tools. It was chaotic — and it didn't have to be.
                 </p>
                 <p style="color:var(--muted);font-size:0.95rem;line-height:1.9;margin-bottom:32px;">
-                    The team at <strong style="color:#fff;">Engenius Digitech</strong> — a SaaS company based in Vadodara, Gujarat — built EduNex to solve this from the ground up. One platform, every operation, zero chaos.
+                    The team at <strong style="color:#fff;">Engenius Digitech</strong> — a SaaS company based in Vadodara, Gujarat — built EduNex ERP to solve this from the ground up. One platform, every operation, zero chaos.
                 </p>
                 <div class="d-flex gap-5 flex-wrap">
                     <div class="story-stat">
@@ -194,8 +194,8 @@ section{background:transparent!important;}
                 <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;overflow:hidden;">
                     <div style="position:absolute;top:-100px;right:-80px;width:300px;height:300px;border-radius:50%;background:hsla(217,91%,60%,0.08);filter:blur(60px);pointer-events:none;"></div>
                     @foreach([
-                        ['i'=>'fa-building','c'=>'bi-blue','t'=>'Engenius Digitech','d'=>'Founded with the mission of building specialized SaaS products for India.'],
-                        ['i'=>'fa-rocket','c'=>'bi-teal','t'=>'EduNex Launched','d'=>'AI-powered institute management platform goes live. 100+ institutes onboarded.'],
+                        ['i'=>'fa-building','c'=>'bi-blue','t'=>'Engenius Digitech','d'=>'Founded with the mission of building specialized SaaS products.'],
+                        ['i'=>'fa-rocket','c'=>'bi-teal','t'=>'EduNex ERP Launched','d'=>'AI-powered institute management platform goes live. 100+ institutes onboarded.'],
                         ['i'=>'fa-fingerprint','c'=>'bi-amber','t'=>'AI Biometrics Added','d'=>'Face recognition + GPS tracking for staff attendance launched.'],
                         ['i'=>'fa-money-bill-wave','c'=>'bi-violet','t'=>'Payroll Module','d'=>'One-click payroll, digital payslips, and salary management rolled out.'],
                         ['i'=>'fa-book-reader','c'=>'bi-rose','t'=>'Library & Discipline','d'=>'Full digital library management and behavior tracking added natively.'],
@@ -267,7 +267,7 @@ section{background:transparent!important;}
             <span style="display:inline-flex;align-items:center;gap:6px;background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);border-radius:9999px;padding:4px 14px;font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;">
                 <i class="fas fa-rocket"></i> Get Started
             </span>
-            <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:14px;">Join 100+ institutes<br>already using EduNex.</h2>
+            <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:14px;">Join 100+ institutes<br>already using EduNex ERP.</h2>
             <p style="color:var(--muted);font-size:1rem;max-width:460px;margin:0 auto 32px;line-height:1.8;">Start your free trial today. No credit card, no setup fee, no commitments.</p>
             <div class="d-flex gap-3 flex-wrap justify-content-center">
                 <a href="{{ route('pricing') }}" class="cta-btn">Start Free Trial <i class="fas fa-rocket"></i></a>

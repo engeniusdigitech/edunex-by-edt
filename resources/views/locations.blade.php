@@ -10,8 +10,8 @@
         $oppPrefix = $isSchool ? 'institute-erp' : 'school-erp';
         $oppLabel = $isSchool ? 'Institute ERP' : 'School ERP';
         $oppUrl = $isSchool ? url('/institute-erp-locations') : url('/school-erp-locations');
-        $seoTitle = "{$erpLabel} Locations Directory — Best School & Institute Software | EduNex";
-        $seoDesc = "Browse the locations directory for EduNex {$erpLabel}. Find localized school and institute management software solutions for cities, states, and countries across India and globally.";
+        $seoTitle = "{$erpLabel} Locations Directory — Best School & Institute Software | EduNex ERP";
+        $seoDesc = "Browse the locations directory for EduNex ERP {$erpLabel}. Find localized school and institute management software solutions for cities, states, and countries globally.";
         $seoKeywords = "{$prefix} locations, school erp directory, institute erp directory, school management software locations, school software index";
     @endphp
     <x-seo
@@ -174,7 +174,7 @@
     <div class="container px-4">
         <span class="badge-pill"><i class="fas fa-map-marker-alt"></i> SEO Site Index</span>
         <h1 class="page-h1 mt-3">EduNex ERP <span class="g-text">Locations Directory</span></h1>
-        <p class="page-sub">Explore our comprehensive range of school and institute ERP software deployments across India and worldwide.</p>
+        <p class="page-sub">Explore our comprehensive range of school and institute ERP software deployments worldwide.</p>
         
         <div class="toggle-btn">
             <a href="{{ url('/school-erp-locations') }}" class="toggle-item {{ $isSchool ? 'active' : '' }}">
@@ -191,7 +191,7 @@
     
     <!-- Indian States -->
     <div class="section-card">
-        <h2 class="section-title"><i class="fas fa-map text-primary"></i> Indian States & Union Territories</h2>
+        <h2 class="section-title"><i class="fas fa-map text-primary"></i> States &amp; Territories Index</h2>
         <div class="row g-3">
             @foreach($states as $slug => $state)
                 <div class="col-6 col-sm-4 col-md-3">

@@ -34,7 +34,7 @@ Route::get('/pricing', function () {
 
 
 Route::get('/trial-request', function () {
-    $planName = request('plan', 'EduNex Platform');
+    $planName = request('plan', 'EduNex ERP Platform');
     return view('trial_request', compact('planName'));
 })->name('trial.request');
 
@@ -334,6 +334,8 @@ Route::middleware(['auth'])->group(function () {
                 ->name('institute.attendance-settings.edit')->middleware('can:manage-institute-settings');
             Route::put('/institute/attendance-settings', [\App\Http\Controllers\InstituteAttendanceSettingController::class, 'update'])
                 ->name('institute.attendance-settings.update')->middleware('can:manage-institute-settings');
+
+
 
             // Staff attendance reports (admin only)
             Route::get('/staff-attendance', [\App\Http\Controllers\StaffAttendanceAdminController::class, 'index'])

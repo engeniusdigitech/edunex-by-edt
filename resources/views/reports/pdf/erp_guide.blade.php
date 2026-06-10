@@ -25,7 +25,7 @@
 
     <div class="section">
         <div class="section-title">1. Introduction</div>
-        <p>EduNex is a next-generation ERP designed to automate school and institute operations. Built with role-based security, it ensures every user—from Admin to Student—has a tailored academic experience.</p>
+        <p>EduNex ERP is a next-generation ERP designed to automate school and institute operations. Built with role-based security, it ensures every user—from Admin to Student—has a tailored academic experience.</p>
     </div>
 
     <div class="section">

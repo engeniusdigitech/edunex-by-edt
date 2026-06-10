@@ -35,7 +35,7 @@
                 <label class="form-label fw-semibold text-muted small">Subdomain</label>
                 <div class="input-group">
                     <input type="text" name="subdomain" class="form-control" value="{{ old('subdomain', $institute->subdomain) }}">
-                    <span class="input-group-text bg-light text-muted">.edunex.test</span>
+                    <span class="input-group-text bg-light text-muted">.edunex-erp.test</span>
                 </div>
             </div>
             
@@ -75,19 +75,61 @@
             
             <h6 class="mb-3 fw-medium text-muted">Modules Configuration</h6>
             <div class="row mb-4">
-                <div class="col-md-4 mb-2">
+                <div class="col-md-4 mb-3">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" name="feature_hr" id="feature_hr" value="1" {{ old('feature_hr', $institute->feature_hr) ? 'checked' : '' }}>
                         <label class="form-check-label fw-semibold text-muted small" for="feature_hr">Staff HR Module</label>
                     </div>
                 </div>
-                <div class="col-md-4 mb-2">
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_visitor" id="feature_visitor" value="1" {{ old('feature_visitor', $institute->feature_visitor) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_visitor">Visitor Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" name="feature_fees" id="feature_fees" value="1" {{ old('feature_fees', $institute->feature_fees) ? 'checked' : '' }}>
                         <label class="form-check-label fw-semibold text-muted small" for="feature_fees">Fees & Payments</label>
                     </div>
                 </div>
-                <div class="col-md-4 mb-2">
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_accounting" id="feature_accounting" value="1" {{ old('feature_accounting', $institute->feature_accounting) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_accounting">Accounting & Tally</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_inventory" id="feature_inventory" value="1" {{ old('feature_inventory', $institute->feature_inventory) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_inventory">Store & Inventory</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_hostel" id="feature_hostel" value="1" {{ old('feature_hostel', $institute->feature_hostel) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_hostel">Hostel Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_library" id="feature_library" value="1" {{ old('feature_library', $institute->feature_library) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_library">Library Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_transport" id="feature_transport" value="1" {{ old('feature_transport', $institute->feature_transport) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_transport">Transport Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_whatsapp" id="feature_whatsapp" value="1" {{ old('feature_whatsapp', $institute->feature_whatsapp) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_whatsapp">WhatsApp Center</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" name="feature_live_classes" id="feature_live_classes" value="1" {{ old('feature_live_classes', $institute->feature_live_classes) ? 'checked' : '' }}>
                         <label class="form-check-label fw-semibold text-muted small" for="feature_live_classes">Live Lectures</label>

@@ -25,7 +25,7 @@ class ContactController extends Controller
         Mail::raw($body, function ($mail) use ($validated) {
             $mail->to('engeniusdigitech@gmail.com')
                  ->replyTo($validated['email'], $validated['name'])
-                 ->subject("EduNex Inquiry: {$validated['inquiry_type']} from {$validated['name']}");
+                 ->subject("EduNex ERP Inquiry: {$validated['inquiry_type']} from {$validated['name']}");
         });
 
         return redirect()->route('contact')->with('success', 'Your message has been sent! We will get back to you within 1 business day.');

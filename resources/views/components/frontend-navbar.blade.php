@@ -280,14 +280,29 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
     <div class="nb-bar">
         {{-- Logo --}}
         <a href="{{ url('/') }}" class="nb-logo">
-            <img src="{{ asset('images/logo.png') }}"      alt="EduNex" style="height:64px;">
-            <img src="{{ asset('images/logo-name.png') }}" alt="EduNex" style="height:44px; margin-left:8px;">
+            <img src="{{ asset('images/logo.png') }}"      alt="EduNex ERP" style="height:64px;">
+            <img src="{{ asset('images/logo-name.png') }}" alt="EduNex ERP" style="height:44px; margin-left:8px;">
         </a>
 
         {{-- Desktop nav links --}}
         <nav class="nb-desktop">
             <a href="{{ url('/') }}"         class="{{ request()->is('/')            ? 'active' : '' }}">Home</a>
-            <a href="{{ route('about') }}"   class="{{ request()->routeIs('about')   ? 'active' : '' }}">About Us</a>
+            <div class="nb-dropdown">
+                <div class="nb-drop-trigger {{ request()->is('engenius-digitech*') ? 'active' : '' }}" tabindex="0">
+                    Engenius Digitech <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="nb-menu">
+                    <a href="https://engeniusdigitech.netlify.app" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-link"></i> Engenius Digitech
+                    </a>
+                    <a href="{{ asset('about') }}">
+                        <i class="fas fa-building"></i> About EduNex ERP
+                    </a>
+                    <a href="{{ asset('blog') }}">
+                        <i class="fas fa-file"></i> Blog 
+                    </a>
+                </div>
+            </div>
             <a href="{{ route('pricing') }}" class="{{ request()->routeIs('pricing') ? 'active' : '' }}">Pricing</a>
             <div class="nb-dropdown">
                 <div class="nb-drop-trigger {{ request()->is('edunex-erp-brochure*') ? 'active' : '' }}" tabindex="0">
@@ -324,7 +339,6 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                     </a>
                 </div>
             </div>
-            <a href="{{ route('blogs') }}"   class="{{ request()->routeIs('blogs')   ? 'active' : '' }}">Blogs</a>
             <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a>
         </nav>
 

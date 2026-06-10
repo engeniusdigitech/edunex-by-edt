@@ -236,7 +236,7 @@ class ReportController extends Controller
                 continue;
             }
 
-            $instituteName = $student->institute->name ?? 'EduNex';
+            $instituteName = $student->institute->name ?? 'EduNex ERP';
             $message = "Dear {$student->name},\n\nThis is an automated reminder from *{$instituteName}* that your fee payment for the month of " . date('F Y', strtotime($month . '-01')) . " is currently pending.\n\nPlease clear your outstanding dues at your earliest convenience.\n\nThank you!";
 
             // Send via service

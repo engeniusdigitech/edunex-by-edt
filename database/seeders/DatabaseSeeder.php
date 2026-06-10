@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         // 2. Super Admin User
         User::firstOrCreate(
-        ['email' => 'superadmin@edunex.com'],
+        ['email' => 'superadmin@edunex-erp.com'],
         [
             'name' => 'System Owner',
             'password' => Hash::make('password'),

@@ -101,7 +101,7 @@ class TestController extends Controller
 
             foreach ($students as $student) {
                 if ($student->phone) {
-                    $instituteName = $student->institute->name ?? 'EduNex';
+                    $instituteName = $student->institute->name ?? 'EduNex ERP';
                     $message = "Dear Student,\n\nA new test *'{$test->title}'* for subject *{$subjectName}* has been scheduled on *{$formattedDate}*.\n\nTotal Marks: {$test->total_marks}\n\nPlease prepare accordingly.\n\nBest of luck!\n— *{$instituteName}*";
 
                     \App\Services\WhatsAppService::sendWhatsApp($student->name, $student->phone, $message, 'exam_notification');
@@ -233,7 +233,7 @@ class TestController extends Controller
                 if (isset($students[$studentId])) {
                     $student = $students[$studentId];
                     if ($student->phone) {
-                        $instituteName = $student->institute->name ?? 'EduNex';
+                        $instituteName = $student->institute->name ?? 'EduNex ERP';
                         $remarksPart = !empty($data['remarks']) ? "\nRemarks: " . $data['remarks'] : "";
                         $message = "Dear Parent/Student,\n\nTest results are out! *{$student->name}* scored *{$data['score']} / {$test->total_marks}* in the test *'{$test->title}'* ({$subjectName}).{$remarksPart}\n\nKeep up the effort!\n— *{$instituteName}*";
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'EduNex') - Dashboard</title>
+    <title>@yield('title', 'EduNex ERP') - Dashboard</title>
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -358,7 +358,7 @@
                         @elseif(auth()->check() && auth()->user()->isSuperAdmin())
                             Super Admin
                         @else
-                            EduNex
+                            EduNex ERP
                         @endif
                     </div>
                     <div class="sidebar-brand-subtitle">Admin Portal</div>
@@ -410,8 +410,6 @@
                             @endcan
                         </div>
                     @endif
-                    
-                    
 
                     @can('manage-institute-settings')
                         @if(auth()->user()->institute->feature_hr)
@@ -452,6 +450,7 @@
                         <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }} small py-2"><i class="fas fa-user-tie"></i> Staff Leave</a>
                     </div>
 
+                    @if(auth()->user()->institute && auth()->user()->institute->feature_visitor)
                     @can('manage-visitors')
                         @php
                             $isVisitorsActive = request()->routeIs('visitors.*');
@@ -480,6 +479,7 @@
                             </a>
                         </div>
                     @endcan
+                    @endif
 
                     @if(auth()->user()->canUseBiometricAttendance())
                         <a href="{{ route('staff-attendance.mark') }}" class="{{ request()->routeIs('staff-attendance.mark') ? 'active' : '' }}">
@@ -514,6 +514,7 @@
                         @endif
                     @endcan
 
+                    @if(auth()->user()->institute && auth()->user()->institute->feature_accounting)
                     @can('manage-payments')
                         @php
                             $isAccountingActive = request()->routeIs('accounting.*') || request()->routeIs('expenses.*');
@@ -530,6 +531,7 @@
                             <a href="{{ route('accounting.gst.reports') }}" class="{{ request()->routeIs('accounting.gst.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice"></i> GST Statements</a>
                         </div>
                     @endcan
+                    @endif
 
                     
 
@@ -591,6 +593,7 @@
                         </div>
 
                         <!-- Store & Inventory -->
+                        @if(auth()->user()->institute && auth()->user()->institute->feature_inventory)
                         @can('manage-inventory')
                             @php
                                 $isStoreActive = request()->routeIs('inventory-items.*')
@@ -608,9 +611,11 @@
                                 <a href="{{ route('purchase-orders.index') }}" class="{{ request()->routeIs('purchase-orders.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-signature"></i> Purchase Orders</a>
                             </div>
                         @endcan
+                        @endif
                     @endif
 
                     <!-- Hostel Management -->
+                    @if(auth()->user()->institute && auth()->user()->institute->feature_hostel)
                     @can('manage-hostels')
                         @php
                             $isHostelActive = request()->routeIs('hostels.*')
@@ -630,7 +635,9 @@
                             <a href="{{ route('hostel-bills.index') }}" class="{{ request()->routeIs('hostel-bills.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-invoice-dollar"></i> Hostel Invoices</a>
                         </div>
                     @endcan
+                    @endif
 
+                    @if(auth()->user()->institute && auth()->user()->institute->feature_library)
                     @if(auth()->user()->isTeacher() || auth()->user()->isStaff())
                         @if(!auth()->user()->can('manage-library'))
                             <a href="{{ route('teacher.library.index') }}" class="{{ request()->routeIs('teacher.library.*') ? 'active' : '' }}">
@@ -660,8 +667,9 @@
                             <a href="{{ route('library.settings.edit') }}" class="{{ request()->routeIs('library.settings.*') ? 'active' : '' }} small py-2"><i class="fas fa-cog"></i> Settings</a>
                         </div>
                     @endcan
+                    @endif
 
-                    @if(auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal())
+                    @if((auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal()) && auth()->user()->institute && auth()->user()->institute->feature_transport)
                         @php
                             $isTransportActive = request()->routeIs('transport.*');
                         @endphp
@@ -729,7 +737,7 @@
                             </div>
                         @endif
 
-                        @if(auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher())
+                        @if((auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher()) && auth()->user()->institute && auth()->user()->institute->feature_whatsapp)
                             <a href="{{ route('whatsapp.index') }}" class="{{ request()->routeIs('whatsapp.*') ? 'active' : '' }}">
                                 <i class="fab fa-whatsapp" style="color: #198754;"></i> WhatsApp Center
                             </a>

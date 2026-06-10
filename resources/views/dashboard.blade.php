@@ -44,7 +44,7 @@
             </div>
         </div>
         @endif
-        @if(!auth()->user()->isPrincipal())
+        @if(!auth()->user()->isPrincipal() && auth()->user()->institute && auth()->user()->institute->feature_fees)
         {{-- Monthly Revenue --}}
         <div class="col-6 col-md-4 col-xl-2">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(245,158,11,0.08);">
@@ -120,12 +120,14 @@
     </div>
 
     {{-- ── PREMIUM SAAS OPERATIONS CONSOLE ── --}}
+    @if(auth()->user()->institute && (auth()->user()->institute->feature_hr || auth()->user()->institute->feature_visitor))
     <h5 class="fw-bold mb-3 text-dark d-flex align-items-center gap-2">
         <i class="fas fa-shield-alt text-success" style="font-size: 1.1rem;"></i>
         <span>Campus Operations Console</span>
     </h5>
     <div class="row g-3 mb-4">
         {{-- Visitor Gate: Awaiting Approval --}}
+        @if(auth()->user()->institute->feature_visitor)
         <div class="col-6 col-md-3">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
                 <div class="card-body p-3">
@@ -150,8 +152,10 @@
                 </div>
             </div>
         </div>
+        @endif
 
         {{-- Visitors Inside Campus --}}
+        @if(auth()->user()->institute->feature_visitor)
         <div class="col-6 col-md-3">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
                 <div class="card-body p-3">
@@ -171,8 +175,10 @@
                 </div>
             </div>
         </div>
+        @endif
 
         {{-- Staff Leave Requests --}}
+        @if(auth()->user()->institute->feature_hr)
         <div class="col-6 col-md-3">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
                 <div class="card-body p-3">
@@ -192,48 +198,54 @@
                 </div>
             </div>
         </div>
+        @endif
 
         {{-- Staff Payroll Monthly Disbursal --}}
         @if(!auth()->user()->isPrincipal() && !auth()->user()->isReceptionist())
-        <div class="col-6 col-md-3">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
-                <div class="card-body p-3">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Monthly Payroll</span>
-                        <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
-                            <i class="fas fa-hand-holding-usd"></i></div>
-                    </div>
-                    <h3 class="fw-black mb-0" style="color:#0F172A; font-size:1.3rem;">₹{{ number_format($totalPayrollThisMonth, 0) }}</h3>
-                    <div class="d-flex justify-content-between align-items-center mt-1">
-                        <span class="text-muted" style="font-size:0.7rem;">disbursed this month</span>
-                        <a href="{{ route('staff-payrolls.index') }}" class="text-success fw-semibold" style="font-size:0.68rem;text-decoration:none;">Details →</a>
+            @if(auth()->user()->institute->feature_hr)
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Monthly Payroll</span>
+                            <div class="rounded-2 d-flex align-items-center justify-content-center"
+                                style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
+                                <i class="fas fa-hand-holding-usd"></i></div>
+                        </div>
+                        <h3 class="fw-black mb-0" style="color:#0F172A; font-size:1.3rem;">₹{{ number_format($totalPayrollThisMonth, 0) }}</h3>
+                        <div class="d-flex justify-content-between align-items-center mt-1">
+                            <span class="text-muted" style="font-size:0.7rem;">disbursed this month</span>
+                            <a href="{{ route('staff-payrolls.index') }}" class="text-success fw-semibold" style="font-size:0.68rem;text-decoration:none;">Details →</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            @endif
         @else
-        {{-- Total Visits Today --}}
-        <div class="col-6 col-md-3">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
-                <div class="card-body p-3">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Today's Visits</span>
-                        <div class="rounded-2 d-flex align-items-center justify-content-center"
-                            style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
-                            <i class="fas fa-history"></i></div>
+            {{-- Total Visits Today --}}
+            @if(auth()->user()->institute->feature_visitor)
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(16,185,129,0.06); background: #ffffff;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="text-uppercase fw-medium text-muted" style="font-size:0.62rem;letter-spacing:1px;">Today's Visits</span>
+                            <div class="rounded-2 d-flex align-items-center justify-content-center"
+                                style="width:30px;height:30px;background:#eefaf3;color:#198754;font-size:0.75rem;">
+                                <i class="fas fa-history"></i></div>
+                        </div>
+                        <h3 class="fw-black mb-0" style="color:#0F172A;">{{ $visitorsTodayCount }}</h3>
+                        <div class="text-muted mt-1" style="font-size:0.7rem;">registered today</div>
                     </div>
-                    <h3 class="fw-black mb-0" style="color:#0F172A;">{{ $visitorsTodayCount }}</h3>
-                    <div class="text-muted mt-1" style="font-size:0.7rem;">registered today</div>
                 </div>
             </div>
-        </div>
+            @endif
         @endif
     </div>
+    @endif
 
     {{-- ── ROW 2: REVENUE CHART + TODAY'S ATTENDANCE ── --}}
     <div class="row g-4 mb-4">
-        @if(!auth()->user()->isPrincipal())
+        @if(!auth()->user()->isPrincipal() && auth()->user()->institute && auth()->user()->institute->feature_fees)
         {{-- 6-Month Revenue Chart --}}
         <div class="col-lg-8">
             <div class="card border-0" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
@@ -336,7 +348,7 @@
         </div>
         @endif
 
-        @if(!auth()->user()->isPrincipal())
+        @if(!auth()->user()->isPrincipal() && auth()->user()->institute && auth()->user()->institute->feature_fees)
         {{-- Recent Payments --}}
         <div class="col-lg-4">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
@@ -372,6 +384,7 @@
     </div>
 
     {{-- ── ROW 4: PREMIUM VISITOR TREND & REALTIME TICKERS ── --}}
+    @if(auth()->user()->institute && auth()->user()->institute->feature_visitor)
     <div class="row g-4 mb-4">
         {{-- Visitor Entries Trend --}}
         <div class="col-lg-6">
@@ -458,6 +471,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     {{-- ── NEEDS ATTENTION BANNER ── --}}
     @if($noAttendanceToday > 0 && !auth()->user()->isReceptionist())

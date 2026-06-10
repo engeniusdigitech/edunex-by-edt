@@ -98,7 +98,7 @@
                 <span class="text-muted small d-block uppercase fw-bold mb-2" style="font-size:.7rem;">Shipping Destination</span>
                 <h5 class="fw-bold text-dark mb-1">{{ auth()->user()->institute->name ?? 'Main Campus Store' }}</h5>
                 <p class="text-muted small mb-0" style="font-size:.8rem;line-height:1.5;">
-                    EduNex School Administration Block<br>
+                    EduNex ERP School Administration Block<br>
                     Central Store Room, Ground Floor<br>
                     <strong>Expected Delivery:</strong> {{ $purchaseOrder->delivery_date ? \Carbon\Carbon::parse($purchaseOrder->delivery_date)->format('M d, Y') : 'Immediate / Flexible' }}
                 </p>

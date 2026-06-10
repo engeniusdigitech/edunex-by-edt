@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
         title="School & Institute Payroll Software | HR Statutory Payroll Management — EduNex ERP"
-        description="Run compliant school and institute payroll in one click. EduNex automates PF, ESIC, TDS calculations, CL/EL leave caps, biometric salary pro-rating, and generates PDF payslips. Best payroll software for schools and coaching institutes."
-        keywords="school payroll software, institute payroll software, school HR software, school salary management system, payroll software for schools, institute salary management, school staff payroll ERP, PF ESIC TDS school software, school staff management software, coaching institute payroll, employee payroll software for schools, EduNex payroll"
+        description="Run compliant school and institute payroll in one click. EduNex ERP automates PF, ESIC, TDS calculations, CL/EL leave caps, biometric salary pro-rating, and generates PDF payslips. Best payroll software for schools and coaching institutes."
+        keywords="school payroll software, institute payroll software, school HR software, school salary management system, payroll software for schools, institute salary management, school staff payroll ERP, PF ESIC TDS school software, school staff management software, coaching institute payroll, employee payroll software for schools, EduNex ERP payroll"
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +101,7 @@ body {
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem;">HR Module</span>
             <h1 class="fw-bold display-4 mb-3">Statutory HR &amp; <span class="g-text">Payroll Management</span></h1>
             <p class="lead text-muted mb-4">
-                Run compliant educational payroll in one click. Customize provident fund (PF) and employee state insurance (ESIC) deduction ratios. Restrict paid leave entitlements with distinct annual Casual Leave (CL) and Earned Leave (EL) caps, pro-rating salaries based on biometric check-ins and Indian tax (TDS) slabs.
+                Run compliant educational payroll in one click. Customize provident fund (PF) and employee state insurance (ESIC) deduction ratios. Restrict paid leave entitlements with distinct annual Casual Leave (CL) and Earned Leave (EL) caps, pro-rating salaries based on biometric check-ins and tax (TDS) slabs.
             </p>
             <div class="hero-feat-pills mb-4">
                 <span class="hpill"><i class="fas fa-percent"></i> Custom PF &amp; ESIC rates</span>
@@ -143,7 +143,7 @@ body {
                             <span class="text-danger">-₹562.50</span>
                         </div>
                         <div class="d-flex justify-content-between py-2 border-bottom border-secondary text-muted">
-                            <span>TDS (Indian Tax Slab Deduction)</span>
+                            <span>TDS (Tax Slab Deduction)</span>
                             <span class="text-danger">-₹3,750.00</span>
                         </div>
                         <div class="d-flex justify-content-between py-2 text-muted fw-bold">
@@ -268,11 +268,11 @@ body {
             </div>
             <div class="col-md-6">
                 <div class="p-4 h-100" style="background: hsla(174, 50%, 10%, 0.1); border: 1px solid hsla(174, 72%, 56%, 0.2); border-radius: 16px;">
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex HR Payroll</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex ERP HR Payroll</span>
                     <ul class="list-unstyled d-flex flex-column gap-3 small text-muted mb-0">
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>Biometric logins automatically calculate pro-rated workdays with precision.</span></li>
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>Leaves automatically checked and tracked against distinct annual CL and EL caps.</span></li>
-                        <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>Automated TDS calculations based on real-time Indian tax bracket configurations.</span></li>
+                        <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>Automated TDS calculations based on real-time tax bracket configurations.</span></li>
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>One-click PDF payslip generation and auto-ledger bookkeeping vouchers.</span></li>
                     </ul>
                 </div>

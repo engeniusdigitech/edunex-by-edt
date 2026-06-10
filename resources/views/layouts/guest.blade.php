@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'EduNex') }} - Premium Authentication</title>
+        <title>{{ config('app.name', 'EduNex ERP') }} - Premium Authentication</title>
         <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
 
         <!-- Fonts -->
@@ -302,7 +302,7 @@
                 @if(!isset($hideLogo) || !$hideLogo)
                     <div class="auth-logo">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('images/logo.png') }}" alt="EduNex Logo">
+                            <img src="{{ asset('images/logo.png') }}" alt="EduNex ERP Logo">
                         </a>
                     </div>
                 @endif

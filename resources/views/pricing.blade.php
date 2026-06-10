@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="School Management Software Pricing | Institute ERP Plans & Free Trial — EduNex" description="EduNex offers affordable, transparent pricing for school management software and institute ERP. One plan, all features included. Start a free 7-day trial of India's best school ERP system with no credit card required." keywords="school management software price, institute ERP pricing, school software cost, best school management software India, school ERP subscription, affordable institute software, school management system pricing, coaching class software pricing, EduNex pricing, school software free trial" />
+    <x-seo title="School Management Software Pricing | Institute ERP Plans & Free Trial — EduNex ERP" description="EduNex ERP offers affordable, transparent pricing for school management software and institute ERP. One plan, all features included. Start a free 7-day trial of the best school ERP system with no credit card required." keywords="school management software price, institute ERP pricing, school software cost, best school management software, school ERP subscription, affordable institute software, school management system pricing, coaching class software pricing, EduNex ERP pricing, school software free trial" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     @include('components.frontend-styles')
     @verbatim
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens after the 7-day trial?","acceptedAnswer":{"@type":"Answer","text":"You can choose to continue using EduNex. If not, your data stays secure but features become restricted."}},{"@type":"Question","name":"Are there hidden limits?","acceptedAnswer":{"@type":"Answer","text":"No. One plan with everything included — no feature tiers, no upgrade walls."}},{"@type":"Question","name":"Is there a setup fee?","acceptedAnswer":{"@type":"Answer","text":"Zero. No onboarding fees, no implementation fees."}},{"@type":"Question","name":"How does onboarding work?","acceptedAnswer":{"@type":"Answer","text":"Our team guides you through every step and helps you import existing data seamlessly."}}]}
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens after the 7-day trial?","acceptedAnswer":{"@type":"Answer","text":"You can choose to continue using EduNex ERP. If not, your data stays secure but features become restricted."}},{"@type":"Question","name":"Are there hidden limits?","acceptedAnswer":{"@type":"Answer","text":"No. One plan with everything included — no feature tiers, no upgrade walls."}},{"@type":"Question","name":"Is there a setup fee?","acceptedAnswer":{"@type":"Answer","text":"Zero. No onboarding fees, no implementation fees."}},{"@type":"Question","name":"How does onboarding work?","acceptedAnswer":{"@type":"Answer","text":"Our team guides you through every step and helps you import existing data seamlessly."}}]}
     </script>
     @endverbatim
 <style>
@@ -266,8 +266,8 @@ section{background:transparent!important;}
                 <div class="accordion" id="pricingFaq">
                     @php
                     $faqs = [
-                        ['q'=>'What happens after the 7-day trial?','a'=>'You can choose to continue using EduNex for your institute. If you decide not to continue, your data remains secure but the portal features will be restricted.'],
-                        ['q'=>'Are there any hidden limits?','a'=>'We offer a single comprehensive platform that includes everything. There are no feature tiers to worry about — you always have the best version of EduNex.'],
+                        ['q'=>'What happens after the 7-day trial?','a'=>'You can choose to continue using EduNex ERP for your institute. If you decide not to continue, your data remains secure but the portal features will be restricted.'],
+                        ['q'=>'Are there any hidden limits?','a'=>'We offer a single comprehensive platform that includes everything. There are no feature tiers to worry about — you always have the best version of EduNex ERP.'],
                         ['q'=>'Is there a setup fee?','a'=>'Zero. No onboarding fees, no implementation fees. We want you to start with full confidence.'],
                         ['q'=>'How does onboarding work?','a'=>'Once you start your trial, our team provides full support to help you import your existing data and set up your institute seamlessly within minutes.'],
                         ['q'=>'Can I get a custom quote for my institute?','a'=>'Absolutely. Use the Get Best Quote button above or contact our team directly. We respond within 1 business day with a tailored pricing proposal.'],

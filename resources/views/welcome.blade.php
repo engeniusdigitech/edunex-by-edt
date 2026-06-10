@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
-        title="EduNex | #1 School Management Software, School ERP & Institute Management System in India"
-        description="EduNex is India's best School Management Software & Institute ERP. Our complete School Management System automates student attendance, online fee collection, school payroll, library, live lectures, and parent portal. Trusted by 100+ schools and institutes. Start free."
-        keywords="school management software, school erp, schoolerp, school software, school management system, institute software, institute erp, institute management software, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software India, school management app, online school management, school fee management software, school attendance software, institute management system, EduNex"
+        title="EduNex ERP | #1 School Management Software, School ERP & Institute Management System"
+        description="EduNex ERP is the best School Management Software & Institute ERP. Our complete School Management System automates student attendance, online fee collection, school payroll, library, live lectures, and parent portal. Trusted by 100+ schools and institutes. Start free."
+        keywords="school management software, school erp, schoolerp, school software, school management system, institute software, institute erp, institute management software, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software, school management app, online school management, school fee management software, school attendance software, institute management system, EduNex ERP"
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -347,7 +347,7 @@ body {
 @media(max-width:767px) { .how-step-arrow { display: none; } .how-step-num { font-size: 5rem; } }
 .how-step-t { font-size: 1rem; font-weight: 500; color: hsl(210,40%,98%); margin-bottom: 8px; }
 .how-step-d { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
-/* Why EduNex - before/after */
+/* Why EduNex ERP - before/after */
 .why-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--card-border); border-radius: 20px; overflow: hidden; }
 @media(max-width:767px) { .why-split { grid-template-columns: 1fr; } }
 .why-before { background: hsla(0,50%,15%,0.25); border-right: 1px solid var(--card-border); padding: 36px; }
@@ -733,7 +733,7 @@ body {
                 <div style="position:relative; display:inline-block;">
                     <!-- Decorative glow behind phone -->
                     <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
-                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 250px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex ERP Mobile App" style="max-width: 250px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -811,7 +811,7 @@ body {
             <div class="feat-card" style="cursor: pointer;" onclick="window.location='{{ auth()->check() ? route('staff-payrolls.index') : route('login') }}'">
                 <div class="feat-icon-wrap" style="background:rgba(245,158,11,0.12);color:hsl(38,92%,60%);"><i class="fas fa-file-invoice-dollar"></i></div>
                 <div class="feat-name">Statutory HR &amp; Payroll <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill" style="font-size:0.6rem;padding:2px 8px;margin-left:4px;">ENHANCED</span></div>
-                <div class="feat-desc">Configurable PF/ESIC rates, automated Indian tax TDS brackets, separate Casual/Earned leave tracking, and attendance pro-rating.</div>
+                <div class="feat-desc">Configurable PF/ESIC rates, automated tax TDS brackets, separate Casual/Earned leave tracking, and attendance pro-rating.</div>
             </div>
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-calendar-check"></i></div>
@@ -821,7 +821,7 @@ body {
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(139,92,246,0.12);color:hsl(262,83%,70%);"><i class="fas fa-video"></i></div>
                 <div class="feat-name">Live Lectures</div>
-                <div class="feat-desc">Host live classes inside EduNex. Students join via their dedicated mobile app — no Zoom needed.</div>
+                <div class="feat-desc">Host live classes inside EduNex ERP. Students join via their dedicated mobile app — no Zoom needed.</div>
             </div>
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-chart-line"></i></div>
@@ -1071,23 +1071,23 @@ body {
     </div>
 </section>
 
-<!-- ══════════════ WHY EDUNEX ══════════════ -->
+<!-- ══════════════ WHY EDUNEX ERP ══════════════ -->
 <section class="compare-section">
     <div class="container px-4">
         <div class="row align-items-end mb-5 g-4">
             <div class="col-lg-6">
-                <span class="sec-eyebrow">Why EduNex?</span>
+                <span class="sec-eyebrow">Why EduNex ERP?</span>
                 <h2 class="sec-title" style="margin-bottom:0;">Your team deserves<br>better than <span class="g-text">WhatsApp groups.</span></h2>
             </div>
             <div class="col-lg-5 offset-lg-1">
-                <p class="sec-desc" style="margin-bottom:0;">Real institutes, real pain. Here's what running an institute looks like before and after EduNex.</p>
+                <p class="sec-desc" style="margin-bottom:0;">Real institutes, real pain. Here's what running an institute looks like before and after EduNex ERP.</p>
             </div>
         </div>
 
         <div class="why-split">
             <!-- BEFORE -->
             <div class="why-before">
-                <div class="why-label before"><i class="fas fa-times-circle"></i> Before EduNex</div>
+                <div class="why-label before"><i class="fas fa-times-circle"></i> Before EduNex ERP</div>
                 @foreach([
                     ['x'=>'fa-table','t'=>'Attendance in Excel','d'=>'Manual registers, daily data entry, and no parent notifications ever.'],
                     ['x'=>'fa-whatsapp','t'=>'Fees via WhatsApp','d'=>'"Fee paid bhai" — and you have to manually track who actually paid.'],
@@ -1104,7 +1104,7 @@ body {
 
             <!-- AFTER -->
             <div class="why-after">
-                <div class="why-label after"><i class="fas fa-check-circle"></i> With EduNex</div>
+                <div class="why-label after"><i class="fas fa-check-circle"></i> With EduNex ERP</div>
                 @foreach([
                     ['c'=>'fa-fingerprint','t'=>'AI face + GPS attendance','d'=>'Staff attendance marked automatically in under 2 seconds. Zero proxies.'],
                     ['c'=>'fa-credit-card','t'=>'Automated fee collection','d'=>'Online payments, auto-reminders, real-time dashboard. Fees track themselves.'],
@@ -1133,13 +1133,13 @@ body {
     <div class="container px-4">
         <div class="text-center mb-5">
             <span class="sec-eyebrow">Real Stories</span>
-            <h2 class="sec-title">Loved by institutes<br>across India.</h2>
+            <h2 class="sec-title">Loved by institutes<br>worldwide.</h2>
         </div>
         <div class="row g-4">
             @foreach([
-                ['n'=>'Rajesh Kumar','r'=>'Director, Apex Coaching Center','i'=>'RK','c'=>'var(--gradient-primary)','q'=>'EduNex completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month.'],
+                ['n'=>'Rajesh Kumar','r'=>'Director, Apex Coaching Center','i'=>'RK','c'=>'var(--gradient-primary)','q'=>'EduNex ERP completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month.'],
                 ['n'=>'Priya Sharma','r'=>'Principal, Bright Minds Academy','i'=>'PS','c'=>'var(--gradient-secondary)','q'=>'The AI face attendance was a game changer — zero proxy marking. And the analytics give me full visibility into every batch.'],
-                ['n'=>'Arjun Mehta','r'=>'Owner, CodeCraft Skill Institute','i'=>'AM','c'=>'linear-gradient(135deg,hsl(262,83%,58%),hsl(217,91%,60%))','q'=>'We run 6 tech courses with 400 students. EduNex handles everything from live lectures to payslips in one beautiful platform.'],
+                ['n'=>'Arjun Mehta','r'=>'Owner, CodeCraft Skill Institute','i'=>'AM','c'=>'linear-gradient(135deg,hsl(262,83%,58%),hsl(217,91%,60%))','q'=>'We run 6 tech courses with 400 students. EduNex ERP handles everything from live lectures to payslips in one beautiful platform.'],
             ] as $t)
             <div class="col-lg-4">
                 <div class="t-card">
@@ -1170,11 +1170,16 @@ body {
             <div class="col-lg-8">
                 <div class="accordion" id="faqAcc">
                     @foreach([
-                        ['q'=>'How does AI face biometric attendance work?','a'=>'Staff open the EduNex dashboard on any device with a camera. The on-device AI scans their face and matches it against their enrolled descriptor. GPS is verified simultaneously. Attendance is marked in under 2 seconds — no internet required for the face scan itself.'],
+                        ['q'=>'How does AI face biometric attendance work?','a'=>'Staff open the EduNex ERP dashboard on any device with a camera. The on-device AI scans their face and matches it against their enrolled descriptor. GPS is verified simultaneously. Attendance is marked in under 2 seconds — no internet required for the face scan itself.'],
                         ['q'=>'How does payroll work?','a'=>'Set each staff member\'s basic salary, allowances, and deduction rules once. Every month, one click generates net pay, creates a PDF payslip, and can send it directly via WhatsApp to each staff member.'],
-                        ['q'=>'Can students use EduNex on their phone?','a'=>'Yes. We provide a dedicated Student & Parent Mobile App. Students and parents can check timetables, results, fees, and live updates on their phones anytime.'],
-                        ['q'=>'Is my institute data secure?','a'=>'EduNex uses a multi-tenant architecture where each institute\'s data is fully isolated. Data is encrypted at rest and in transit. No institute can ever access another\'s data.'],
+                        ['q'=>'Can students use EduNex ERP on their phone?','a'=>'Yes. We provide a dedicated Student & Parent Mobile App. Students and parents can check timetables, results, fees, and live updates on their phones anytime.'],
+                        ['q'=>'Is my institute data secure?','a'=>'EduNex ERP uses a multi-tenant architecture where each institute\'s data is fully isolated. Data is encrypted at rest and in transit. No institute can ever access another\'s data.'],
                         ['q'=>'Is there a student limit?','a'=>'No. We believe in supporting your growth. Enrol as many students as your institute can handle — your plan covers unlimited students.'],
+                        ['q'=>'How do we import our existing student and staff data?','a'=>'We make data migration seamless. You can upload all your existing student, parent, and staff data using our standard Excel/CSV templates, or our support team will help you migrate your legacy records at zero cost.'],
+                        ['q'=>'Does the system support global currencies and localized payment systems?','a'=>'Yes. EduNex ERP is built for global operations. It supports multiple currencies (USD, INR, EUR, etc.) and integrates with leading payment gateways like Stripe (global) and Razorpay (India) to enable online fee collections anywhere.'],
+                        ['q'=>'Can we use our own custom domain or subdomain for branding?','a'=>'Absolutely. You can configure your portal to run on a custom subdomain (e.g. portal.youracademy.com) or a custom root domain to ensure a fully white-labeled, professional experience for your students and staff.'],
+                        ['q'=>'Do we need to download apps from the App Store or Google Play Store?','a'=>'EduNex ERP leverages Progressive Web App (PWA) technology. Students and parents can install the app instantly on Android or iOS directly from their web browser. This saves phone storage and ensures they always run the latest version.'],
+                        ['q'=>'Are software updates and technical support included in the plan?','a'=>'Yes. We release new features, security updates, and performance enhancements regularly. All updates, along with 24/7 priority email and WhatsApp support, are fully included in your subscription plan.'],
                     ] as $i => $faq)
                     <div class="faq-item">
                         <h2 class="accordion-header">

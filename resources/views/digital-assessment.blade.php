@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
         title="Digital Assessment Platform & Online Exam Software for Schools | EduNex ERP"
-        description="EduNex's Digital Assessment Platform lets schools and institutes create, conduct, auto-grade exams and publish report cards online. The best online exam software for schools with question banks, analytics, tab-switch prevention, and instant results."
-        keywords="online exam software for schools, digital assessment platform, school exam management system, online test software for schools, school assessment software, MCQ exam software school, student exam portal, digital examination system, automated grading school software, school report card software, question bank software school, institute exam management, online examination platform, EduNex assessment"
+        description="EduNex ERP's Digital Assessment Platform lets schools and institutes create, conduct, auto-grade exams and publish report cards online. The best online exam software for schools with question banks, analytics, tab-switch prevention, and instant results."
+        keywords="online exam software for schools, digital assessment platform, school exam management system, online test software for schools, school assessment software, MCQ exam software school, student exam portal, digital examination system, automated grading school software, school report card software, question bank software school, institute exam management, online examination platform, EduNex ERP assessment"
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -952,7 +952,7 @@ body {
                                     <div class="topbar-dot"></div>
                                     <div class="topbar-dot"></div>
                                 </div>
-                                <div class="topbar-title">EduNex · Assessment Dashboard</div>
+                                <div class="topbar-title">EduNex ERP · Assessment Dashboard</div>
                                 <div class="topbar-status">
                                     <div class="status-dot"></div>
                                     Live
@@ -1730,7 +1730,7 @@ body {
             <div class="col-lg-7">
                 <div class="report-card-ui">
                     <div class="rc-header">
-                        <div class="rc-school">EduNex · Assessment Platform</div>
+                        <div class="rc-school">EduNex ERP · Assessment Platform</div>
                         <div class="rc-title">Academic Report Card · 2024–25</div>
                         <div class="rc-student-row">
                             <div class="rc-avatar">AS</div>
@@ -1854,7 +1854,7 @@ body {
             <span class="sec-eyebrow"><i class="fas fa-exchange-alt"></i> The Transformation</span>
             <h2 class="sec-title mx-auto" style="max-width:680px;">
                 Why schools choose<br>
-                <span class="g-text">EduNex over paper exams.</span>
+                <span class="g-text">EduNex ERP over paper exams.</span>
             </h2>
         </div>
         <div class="vs-grid">
@@ -1882,7 +1882,7 @@ body {
                 </div>
             </div>
             <div class="vs-after">
-                <div class="vs-label after"><i class="fas fa-check"></i> With EduNex</div>
+                <div class="vs-label after"><i class="fas fa-check"></i> With EduNex ERP</div>
                 <div class="vs-item">
                     <div class="vs-icon-c"><i class="fas fa-check"></i></div>
                     <div class="vs-text"><strong>Instant auto-grading</strong> — MCQ results available within 2 seconds of submission</div>

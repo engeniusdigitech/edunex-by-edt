@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
         title="School Visitor Gate Security & Campus Lobby Management Software | EduNex ERP"
-        description="Secure your school or institute with EduNex's Visitor Gate Management module. QR-based self-registration, live receptionist approval, printable passes, and complete visitor audit logs for schools and institutes."
+        description="Secure your school or institute with EduNex ERP's Visitor Gate Management module. QR-based self-registration, live receptionist approval, printable passes, and complete visitor audit logs for schools and institutes."
         keywords="school visitor management software, campus visitor gate system, visitor gate security software, school lobby management system, institute visitor check-in, school gate security software, visitor pass software for school, campus security ERP, school visitor log software, digital visitor register school"
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
@@ -268,7 +268,7 @@ body {
             </div>
             <div class="col-md-6">
                 <div class="p-4 h-100" style="background: hsla(174, 50%, 10%, 0.1); border: 1px solid hsla(174, 72%, 56%, 0.2); border-radius: 16px;">
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex QR Lobby</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex ERP QR Lobby</span>
                     <ul class="list-unstyled d-flex flex-column gap-3 small text-muted mb-0">
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>Clean, digital database of all past and current campus visitors.</span></li>
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>Required verification fields and photo capture capabilities for security.</span></li>

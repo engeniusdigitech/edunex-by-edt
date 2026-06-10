@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Plot Hub
-    L.marker([defaultLat, defaultLng], {icon: hubIcon}).addTo(map).bindPopup("<b>EduNex central Hub</b>");
+    L.marker([defaultLat, defaultLng], {icon: hubIcon}).addTo(map).bindPopup("<b>EduNex ERP central Hub</b>");
 
     // Route stops from allocation
     const allocation = @json($allocation);

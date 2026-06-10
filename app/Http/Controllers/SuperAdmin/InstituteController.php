@@ -61,7 +61,14 @@ class InstituteController extends Controller
                 'type' => $validated['type'],
                 'subdomain' => $validated['subdomain'],
                 'feature_hr' => $request->has('feature_hr'),
+                'feature_visitor' => $request->has('feature_visitor'),
                 'feature_fees' => $request->has('feature_fees'),
+                'feature_accounting' => $request->has('feature_accounting'),
+                'feature_inventory' => $request->has('feature_inventory'),
+                'feature_hostel' => $request->has('feature_hostel'),
+                'feature_library' => $request->has('feature_library'),
+                'feature_transport' => $request->has('feature_transport'),
+                'feature_whatsapp' => $request->has('feature_whatsapp'),
                 'feature_live_classes' => $request->has('feature_live_classes'),
             ]);
 
@@ -115,7 +122,14 @@ class InstituteController extends Controller
             'subdomain' => $validated['subdomain'],
             'is_active' => $request->has('is_active'),
             'feature_hr' => $request->has('feature_hr'),
+            'feature_visitor' => $request->has('feature_visitor'),
             'feature_fees' => $request->has('feature_fees'),
+            'feature_accounting' => $request->has('feature_accounting'),
+            'feature_inventory' => $request->has('feature_inventory'),
+            'feature_hostel' => $request->has('feature_hostel'),
+            'feature_library' => $request->has('feature_library'),
+            'feature_transport' => $request->has('feature_transport'),
+            'feature_whatsapp' => $request->has('feature_whatsapp'),
             'feature_live_classes' => $request->has('feature_live_classes'),
         ]);
 

@@ -16,16 +16,16 @@
     $statePart   = $stateVal ? ", {$stateVal}" : '';        // e.g. ", Maharashtra"
     $locationStr = "{$city}{$statePart}, {$country}";      // e.g. "Pune, Maharashtra, India"
 
-    $seoTitle = "Best {$softLabel} in {$locationStr} | {$erpLabel} & {$typeLabel} Software — EduNex";
+    $seoTitle = "Best {$softLabel} in {$locationStr} | {$erpLabel} & {$typeLabel} Software — EduNex ERP";
 
     $seoDesc = $isSchool
-        ? "EduNex is the #1 School Management Software & School ERP in {$locationStr}. Our School Management System automates student attendance, online fee collection, school payroll, library, and parent communication for schools in {$city}."
-        : "EduNex is the top-rated Institute Management Software & Institute ERP in {$locationStr}. Automate student attendance, fees, academics, and payroll for coaching centers and institutes in {$city}.";
+        ? "EduNex ERP is the #1 School Management Software & School ERP in {$locationStr}. Our School Management System automates student attendance, online fee collection, school payroll, library, and parent communication for schools in {$city}."
+        : "EduNex ERP is the top-rated Institute Management Software & Institute ERP in {$locationStr}. Automate student attendance, fees, academics, and payroll for coaching centers and institutes in {$city}.";
 
     $stateKw = $stateVal ? ", school erp {$stateVal}, school software {$stateVal}, school management system {$stateVal}" : '';
     $seoKeywords = $isSchool
-        ? "school erp {$city}, school software {$city}, school management software {$city}, school management system {$city}, schoolerp {$city}{$stateKw}, school administration software, best school management software, online school management system, school ERP {$country}, student management system, school fee management software, EduNex school"
-        : "institute erp {$city}, institute software {$city}, institute management software {$city}, coaching class software {$city}, coaching center software {$city}{$stateKw}, training institute software, institute management system, coaching institute ERP, student management system, EduNex institute, best institute software {$city}";
+        ? "school erp {$city}, school software {$city}, school management software {$city}, school management system {$city}, schoolerp {$city}{$stateKw}, school administration software, best school management software, online school management system, school ERP {$country}, student management system, school fee management software, EduNex ERP school"
+        : "institute erp {$city}, institute software {$city}, institute management software {$city}, coaching class software {$city}, coaching center software {$city}{$stateKw}, training institute software, institute management system, coaching institute ERP, student management system, EduNex ERP institute, best institute software {$city}";
 @endphp
     <x-seo
         :title="$seoTitle"
@@ -362,7 +362,7 @@ body {
 @media(max-width:767px) { .how-step-arrow { display: none; } .how-step-num { font-size: 5rem; } }
 .how-step-t { font-size: 1rem; font-weight: 500; color: hsl(210,40%,98%); margin-bottom: 8px; }
 .how-step-d { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
-/* Why EduNex - before/after */
+/* Why EduNex ERP - before/after */
 .why-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--card-border); border-radius: 20px; overflow: hidden; }
 @media(max-width:767px) { .why-split { grid-template-columns: 1fr; } }
 .why-before { background: hsla(0,50%,15%,0.25); border-right: 1px solid var(--card-border); padding: 36px; }
@@ -698,8 +698,8 @@ body {
       "@@type": "EducationalOrganization",
       "name": "Edunex ERP {{ $city }}",
       "description": "Provider of premium school management software, student ERP systems, and AI face biometric attendance platforms for schools and coaching institutes in {{ $city }}, {{ $country }}.",
-      "url": "https://edunex.com/best-school-management-software-in-{{ Str::slug($city) }}",
-      "logo": "https://edunex.com/images/logo.png",
+      "url": "https://edunex-erp.com/best-school-management-software-in-{{ Str::slug($city) }}",
+      "logo": "https://edunex-erp.com/images/logo.png",
       "address": {
         "@@type": "PostalAddress",
         "addressLocality": "{{ $city }}",
@@ -730,19 +730,19 @@ body {
           "@@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://edunex.com"
+          "item": "https://edunex-erp.com"
         },
         {
           "@@type": "ListItem",
           "position": 2,
           "name": "School ERP in {{ $country }}",
-          "item": "https://edunex.com/school-erp-in-{{ Str::slug($country) }}"
+          "item": "https://edunex-erp.com/school-erp-in-{{ Str::slug($country) }}"
         },
         {
           "@@type": "ListItem",
           "position": 3,
           "name": "Best School Management Software in {{ $city }}",
-          "item": "https://edunex.com/best-school-management-software-in-{{ Str::slug($city) }}"
+          "item": "https://edunex-erp.com/best-school-management-software-in-{{ Str::slug($city) }}"
         }
       ]
     }
@@ -838,7 +838,7 @@ body {
                 <div style="position:relative; display:inline-block;">
                     <!-- Decorative glow behind phone -->
                     <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
-                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex Mobile App" style="max-width: 250px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+                    <img src="{{ asset('images/mobile-screen.png') }}" alt="EduNex ERP Mobile App" style="max-width: 250px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -888,7 +888,7 @@ body {
                 <span class="badge-pill mb-3"><i class="fas fa-school me-1"></i> Local Education Landscape</span>
                 <h2 class="sec-title" style="margin-bottom:20px;">Modernizing {{ $typeLabel }} Operations in <span class="g-text">{{ $city }}</span></h2>
                 @if($isSchool)
-                <p class="sec-desc" style="font-size:0.95rem; margin-bottom:24px;">{{ $city }}'s educational sector is undergoing a digital transformation. Schools running on manual registers, disjointed spreadsheets, and WhatsApp groups are falling behind. Our <strong>School Management Software</strong> — a fully-integrated <strong>School ERP System</strong> — centralizes all operations: student enrolment, fee collections, attendance, academics, payroll, and parent communication. From CBSE and ICSE to state boards, EduNex's <strong>School Management System</strong> is built for the complexity of modern schools in {{ $city }}.</p>
+                <p class="sec-desc" style="font-size:0.95rem; margin-bottom:24px;">{{ $city }}'s educational sector is undergoing a digital transformation. Schools running on manual registers, disjointed spreadsheets, and WhatsApp groups are falling behind. Our <strong>School Management Software</strong> — a fully-integrated <strong>School ERP System</strong> — centralizes all operations: student enrolment, fee collections, attendance, academics, payroll, and parent communication. From CBSE and ICSE to state boards, EduNex ERP's <strong>School Management System</strong> is built for the complexity of modern schools in {{ $city }}.</p>
                 @else
                 <p class="sec-desc" style="font-size:0.95rem; margin-bottom:24px;">The educational landscape in {{ $city }} is experiencing rapid growth. Coaching institutes, training centers, and skill academies can no longer afford to operate using manual registers, disjointed spreadsheets, or WhatsApp groups. Our <strong>Institute Management Software</strong> — a powerful <strong>Institute ERP</strong> — automates student enrollments, fee collections, attendance, live lectures, and payroll in one unified platform.</p>
                 @endif
@@ -1000,7 +1000,7 @@ body {
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(139,92,246,0.12);color:hsl(262,83%,70%);"><i class="fas fa-video"></i></div>
                 <div class="feat-name">Live Lectures</div>
-                <div class="feat-desc">Host live classes inside EduNex. Students join via their dedicated mobile app — no Zoom needed.</div>
+                <div class="feat-desc">Host live classes inside EduNex ERP. Students join via their dedicated mobile app — no Zoom needed.</div>
             </div>
             <div class="feat-card">
                 <div class="feat-icon-wrap" style="background:rgba(16,185,129,0.1);color:hsl(174,72%,60%);"><i class="fas fa-chart-line"></i></div>
@@ -1361,7 +1361,7 @@ body {
                     <div style="background: hsla(174,72%,56%,0.05); border: 1px dashed hsla(174,72%,56%,0.2); border-radius: 12px; padding: 24px;">
                         <h4 style="font-size:1.15rem; font-weight:600; margin-bottom:16px;" class="g-text"><i class="fas fa-university me-2"></i> {{ $city }} Progressive Academy</h4>
                         <p style="font-size:0.83rem; color:var(--muted); line-height:1.7; margin-bottom:14px;"><strong>The Challenge:</strong> Before implementing Edunex ERP, {{ $city }} Progressive Academy—a prestigious institution serving over 1,200 students—was struggling with severe administrative blockages. The school's administrative staff spent the first week of every month manually processing cash and checks at the fee counter, resulting in long queues and accounting errors. Teachers were losing nearly 15 minutes of every classroom day physically calling out roll attendance and filling out paper registers. More critically, the school struggled with tracking fee defaults, leading to nearly 30% of tuition payments remaining overdue at the end of each academic quarter.</p>
-                        <p style="font-size:0.83rem; color:var(--muted); line-height:1.7; margin-bottom:0;"><strong>The Transformation:</strong> In the summer of 2025, the academy partnered with Edunex ERP to execute a complete digital transformation. Within 48 hours, our onboarding team migrated their historical student databases into a secure multi-tenant cloud environment. Teachers began marking attendance in one tap on classroom tablets, and the academy deployed face biometrics at the staff entrance to automate HR check-ins, launching the Edunex Parent App for real-time progress tracking and online fee collections.</p>
+                        <p style="font-size:0.83rem; color:var(--muted); line-height:1.7; margin-bottom:0;"><strong>The Transformation:</strong> In the summer of 2025, the academy partnered with Edunex ERP to execute a complete digital transformation. Within 48 hours, our onboarding team migrated their historical student databases into a secure multi-tenant cloud environment. Teachers began marking attendance in one tap on classroom tablets, and the academy deployed face biometrics at the staff entrance to automate HR check-ins, launching the Edunex ERP Parent App for real-time progress tracking and online fee collections.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -1428,23 +1428,23 @@ body {
     </div>
 </section>
 
-<!-- ══════════════ WHY EDUNEX ══════════════ -->
+<!-- ══════════════ WHY EDUNEX ERP ══════════════ -->
 <section class="compare-section">
     <div class="container px-4">
         <div class="row align-items-end mb-5 g-4">
             <div class="col-lg-6">
-                <span class="sec-eyebrow">Why EduNex?</span>
+                <span class="sec-eyebrow">Why EduNex ERP?</span>
                 <h2 class="sec-title" style="margin-bottom:0;">Your team deserves<br>better than <span class="g-text">WhatsApp groups.</span></h2>
             </div>
             <div class="col-lg-5 offset-lg-1">
-                <p class="sec-desc" style="margin-bottom:0;">Real institutes, real pain. Here's what running an institute looks like before and after EduNex.</p>
+                <p class="sec-desc" style="margin-bottom:0;">Real institutes, real pain. Here's what running an institute looks like before and after EduNex ERP.</p>
             </div>
         </div>
 
         <div class="why-split">
             <!-- BEFORE -->
             <div class="why-before">
-                <div class="why-label before"><i class="fas fa-times-circle"></i> Before EduNex</div>
+                <div class="why-label before"><i class="fas fa-times-circle"></i> Before EduNex ERP</div>
                 @foreach([
                     ['x'=>'fa-table','t'=>'Attendance in Excel','d'=>'Manual registers, daily data entry, and no parent notifications ever.'],
                     ['x'=>'fa-whatsapp','t'=>'Fees via WhatsApp','d'=>'"Fee paid bhai" — and you have to manually track who actually paid.'],
@@ -1461,7 +1461,7 @@ body {
 
             <!-- AFTER -->
             <div class="why-after">
-                <div class="why-label after"><i class="fas fa-check-circle"></i> With EduNex</div>
+                <div class="why-label after"><i class="fas fa-check-circle"></i> With EduNex ERP</div>
                 @foreach([
                     ['c'=>'fa-fingerprint','t'=>'AI face + GPS attendance','d'=>'Staff attendance marked automatically in under 2 seconds. Zero proxies.'],
                     ['c'=>'fa-credit-card','t'=>'Automated fee collection','d'=>'Online payments, auto-reminders, real-time dashboard. Fees track themselves.'],
@@ -1494,9 +1494,9 @@ body {
         </div>
         <div class="row g-4">
             @foreach([
-                ['n'=>'Rajesh Kumar','r'=>'Director, Apex Coaching Center','i'=>'RK','c'=>'var(--gradient-primary)','q'=>'EduNex completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month.'],
+                ['n'=>'Rajesh Kumar','r'=>'Director, Apex Coaching Center','i'=>'RK','c'=>'var(--gradient-primary)','q'=>'EduNex ERP completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month.'],
                 ['n'=>'Priya Sharma','r'=>'Principal, Bright Minds Academy','i'=>'PS','c'=>'var(--gradient-secondary)','q'=>'The AI face attendance was a game changer — zero proxy marking. And the analytics give me full visibility into every batch.'],
-                ['n'=>'Arjun Mehta','r'=>'Owner, CodeCraft Skill Institute','i'=>'AM','c'=>'linear-gradient(135deg,hsl(262,83%,58%),hsl(217,91%,60%))','q'=>'We run 6 tech courses with 400 students. EduNex handles everything from live lectures to payslips in one beautiful platform.'],
+                ['n'=>'Arjun Mehta','r'=>'Owner, CodeCraft Skill Institute','i'=>'AM','c'=>'linear-gradient(135deg,hsl(262,83%,58%),hsl(217,91%,60%))','q'=>'We run 6 tech courses with 400 students. EduNex ERP handles everything from live lectures to payslips in one beautiful platform.'],
             ] as $t)
             <div class="col-lg-4">
                 <div class="t-card">
@@ -1577,7 +1577,7 @@ body {
                         ],
                         [
                             'q' => 'Does the parent mobile app work on both iOS and Android?',
-                            'a' => 'Yes. The Edunex Parent & Student App is fully optimized for both iOS and Android platforms. It is designed to be lightweight, incredibly fast, and exceptionally secure, offering families a modern, user-friendly interface to track all academic, fee, and transit updates.'
+                            'a' => 'Yes. The Edunex ERP Parent & Student App is fully optimized for both iOS and Android platforms. It is designed to be lightweight, incredibly fast, and exceptionally secure, offering families a modern, user-friendly interface to track all academic, fee, and transit updates.'
                         ],
                         [
                             'q' => 'What kind of support does Edunex ERP provide to our administrative staff?',

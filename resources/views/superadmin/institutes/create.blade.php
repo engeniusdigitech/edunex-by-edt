@@ -32,7 +32,7 @@
                 <label class="form-label">Subdomain</label>
                 <div class="input-group">
                     <input type="text" name="subdomain" class="form-control" placeholder="apex">
-                    <span class="input-group-text">.edunex.test</span>
+                    <span class="input-group-text">.edunex-erp.test</span>
                 </div>
                 <small class="text-muted">Leave blank to auto-generate from name.</small>
             </div>
@@ -61,24 +61,66 @@
                 </div>
             </div>
             <hr class="my-4">
-            <h6 class="mb-3">Modules Configuration</h6>
-            <div class="row mb-3">
-                <div class="col-md-4">
+            <h6 class="mb-3 fw-medium text-muted">Modules Configuration</h6>
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" name="feature_hr" id="feature_hr" value="1" {{ old('feature_hr', true) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="feature_hr">Staff HR Module</label>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_hr">Staff HR Module</label>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_visitor" id="feature_visitor" value="1" {{ old('feature_visitor', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_visitor">Visitor Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" name="feature_fees" id="feature_fees" value="1" {{ old('feature_fees', true) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="feature_fees">Fees & Payments</label>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_fees">Fees & Payments</label>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_accounting" id="feature_accounting" value="1" {{ old('feature_accounting', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_accounting">Accounting & Tally</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_inventory" id="feature_inventory" value="1" {{ old('feature_inventory', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_inventory">Store & Inventory</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_hostel" id="feature_hostel" value="1" {{ old('feature_hostel', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_hostel">Hostel Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_library" id="feature_library" value="1" {{ old('feature_library', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_library">Library Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_transport" id="feature_transport" value="1" {{ old('feature_transport', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_transport">Transport Management</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_whatsapp" id="feature_whatsapp" value="1" {{ old('feature_whatsapp', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_whatsapp">WhatsApp Center</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" name="feature_live_classes" id="feature_live_classes" value="1" {{ old('feature_live_classes', true) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="feature_live_classes">Live Lectures</label>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_live_classes">Live Lectures</label>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
-# EduNex – Institute and School Management SaaS Installation Guide
+# EduNex ERP – Institute and School Management SaaS Installation Guide
 
-Welcome to the EduNex SaaS Application. This project is built dynamically on Laravel 10+ and MySQL, emphasizing a single-database multi-tenant structure using an `institute_id` global scope.
+Welcome to the EduNex ERP SaaS Application. This project is built dynamically on Laravel 10+ and MySQL, emphasizing a single-database multi-tenant structure using an `institute_id` global scope.
 
 ## 1. Prerequisites
 - PHP 8.1+
@@ -37,7 +37,7 @@ Copy `.env.example` to `.env` and set up your database:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=edunex_db
+DB_DATABASE=edunex_erp_db
 DB_USERNAME=root
 DB_PASSWORD=
 

@@ -1,7 +1,7 @@
 {
-    "name": "EduNex Student Portal",
-    "short_name": "EduNex",
-    "description": "The unified student dashboard for EduNex Institute and School Management",
+    "name": "EduNex ERP Student Portal",
+    "short_name": "EduNex ERP",
+    "description": "The unified student dashboard for EduNex ERP Institute and School Management",
     "start_url": "/student/login",
     "display": "standalone",
     "background_color": "#FAFAF9",

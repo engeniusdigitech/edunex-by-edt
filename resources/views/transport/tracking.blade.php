@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add Institute Hub Pin
     L.marker([defaultLat, defaultLng], {icon: instituteIcon})
         .addTo(map)
-        .bindPopup("<b>EduNex Central Institute</b><br>Delhi Campus Transit Hub")
+        .bindPopup("<b>EduNex ERP Central Institute</b><br>Delhi Campus Transit Hub")
         .openPopup();
 
     // Map state variables

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Student Portal') — {{ auth()->guard('student')->user()->institute->name ?? 'EduNex' }}</title>
+    <title>@yield('title', 'Student Portal') — {{ auth()->guard('student')->user()->institute->name ?? 'EduNex ERP' }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -231,7 +231,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" style="max-height: 40px; border-radius: 8px;">
                 @endif
                 <div>
-                    <div class="brand-name">{{ $student->institute->name ?? 'EduNex' }}</div>
+                    <div class="brand-name">{{ $student->institute->name ?? 'EduNex ERP' }}</div>
                     <div class="brand-sub">Student Portal</div>
                 </div>
             </a>

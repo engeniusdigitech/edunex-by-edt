@@ -73,7 +73,7 @@
                 <!-- Brand -->
                 <div class="col-lg-4">
                     <div class="ft-brand">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex" style="height:52px;">
+                        <img src="{{ asset('images/logo.png') }}" alt="EduNex ERP" style="height:52px;">
                     </div>
                     <p class="ft-tagline">The AI-powered platform for modern institutes. Built by educators, for educators — across coaching centers, schools, and skill institutes.</p>
                     <div class="ft-social">
@@ -130,7 +130,7 @@
     </div>
 
     <div class="ft-bottom">
-        <p class="ft-copy">© {{ date('Y') }} EduNex. All rights reserved.</p>
+        <p class="ft-copy">© {{ date('Y') }} EduNex ERP. All rights reserved.</p>
         <p class="ft-made-by">A product of <a href="https://engeniusdigitech.netlify.app" target="_blank">Engenius Digitech</a></p>
     </div>
 </footer>

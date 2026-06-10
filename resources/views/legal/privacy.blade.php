@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="Privacy Policy | EduNex Institute and School Management Software" description="Read our privacy policy to understand how we protect your institute's data." />
+    <x-seo title="Privacy Policy | EduNex ERP Institute and School Management Software" description="Read our privacy policy to understand how we protect your institute's data." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <div class="legal-content">
-                    <p>At <strong>EduNex</strong> (a product of Engenius Digitech), we take your privacy and the security of your institute's data extremely seriously. This Privacy Policy outlines how we collect, use, and protect your information.</p>
+                    <p>At <strong>EduNex ERP</strong> (a product of Engenius Digitech), we take your privacy and the security of your institute's data extremely seriously. This Privacy Policy outlines how we collect, use, and protect your information.</p>
 
                     <h2>1. Data Collection</h2>
                     <p>We collect information necessary to provide our Institute and School Management services, including:</p>
@@ -47,7 +47,7 @@
                     <p>Your data is used exclusively to facilitate the operations of your institute through our platform. We do not sell or share your data with third-party advertisers.</p>
 
                     <h2>3. Data Security</h2>
-                    <p>EduNex uses industry-standard encryption (SSL/TLS) for data in transit and secure server-side storage. Our multi-tenant architecture ensures that your institute's data is logically isolated from others.</p>
+                    <p>EduNex ERP uses industry-standard encryption (SSL/TLS) for data in transit and secure server-side storage. Our multi-tenant architecture ensures that your institute's data is logically isolated from others.</p>
 
                     <h2>4. Your Rights</h2>
                     <p>You retain full ownership of the data you upload. You can export or request deletion of your data at any time through our support team.</p>

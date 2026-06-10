@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
         title="School Bus GPS Tracking & Transport Management Software | EduNex ERP"
-        description="EduNex provides real-time GPS bus tracking for schools and institutes. Optimize student transport routes, track live vehicle locations on maps, log student boarding, and send instant parent alerts. Best school transport management software."
-        keywords="school bus GPS tracking software, student transport management software, school transport ERP, school bus tracking system, real-time school bus tracking, institute transport software, route optimization school bus, school vehicle tracking, student bus boarding management, parent bus alert system, school transport management system, EduNex transport"
+        description="EduNex ERP provides real-time GPS bus tracking for schools and institutes. Optimize student transport routes, track live vehicle locations on maps, log student boarding, and send instant parent alerts. Best school transport management software."
+        keywords="school bus GPS tracking software, student transport management software, school transport ERP, school bus tracking system, real-time school bus tracking, institute transport software, route optimization school bus, school vehicle tracking, student bus boarding management, parent bus alert system, school transport management system, EduNex ERP transport"
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -268,7 +268,7 @@ body {
             </div>
             <div class="col-md-6">
                 <div class="p-4 h-100" style="background: hsla(174, 50%, 10%, 0.1); border: 1px solid hsla(174, 72%, 56%, 0.2); border-radius: 16px;">
-                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex Live GPS</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-4 text-uppercase fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">EduNex ERP Live GPS</span>
                     <ul class="list-unstyled d-flex flex-column gap-3 small text-muted mb-0">
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>Real-time GPS bus location tracking displayed live in student and parent portals.</span></li>
                         <li class="d-flex gap-2"><i class="fas fa-check-circle text-success mt-1"></i> <span>TSP-optimized sequences sort route stops to minimize travel distance.</span></li>

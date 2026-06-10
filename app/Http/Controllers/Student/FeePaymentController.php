@@ -171,21 +171,22 @@ class FeePaymentController extends Controller
     }
 
     /**
-     * Download receipt for a completed payment.
+     * Display receipt for a payment linked to the authenticated student.
      */
     public function receipt(Payment $payment)
     {
         $student = Auth::guard('student')->user();
+
+        // Ensure the payment belongs to this student
         if ($payment->student_id !== $student->id) {
             abort(403);
         }
 
-        if ($payment->status !== 'success') {
-            return back()->with('error', 'Receipt is only available for successful payments.');
-        }
+        $payment->load(['feeStructure.category', 'studentFee']);
 
-        // We will implement generating a PDF in a separate task.
-        // For now, return a view.
-        return view('student.fees.receipt', compact('payment', 'student'));
+        $studentFee = $payment->studentFee;
+        $institute  = $student->institute;
+
+        return view('student.fees.receipt', compact('payment', 'student', 'studentFee', 'institute'));
     }
 }
