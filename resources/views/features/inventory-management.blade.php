@@ -10,20 +10,20 @@
     />
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
       "itemListElement": [{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 1,
         "name": "Home",
         "item": "{{ url('/') }}"
       },{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 2,
         "name": "Features",
         "item": "{{ url('/') }}#features"
       },{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 3,
         "name": "Inventory Management",
         "item": "{{ route('features.inventory-management') }}"
@@ -32,21 +32,49 @@
     </script>
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
       "mainEntity": [{
-        "@type": "Question",
+        "@@type": "Question",
         "name": "What is school inventory management software?",
         "acceptedAnswer": {
-          "@type": "Answer",
+          "@@type": "Answer",
           "text": "School inventory management software helps educational institutions track store items, manage suppliers, raise purchase orders, and monitor consumption across departments automatically."
         }
       },{
-        "@type": "Question",
+        "@@type": "Question",
         "name": "Does EduNex ERP support Tally integration for store purchases?",
         "acceptedAnswer": {
-          "@type": "Answer",
+          "@@type": "Answer",
           "text": "Yes, EduNex ERP (also commonly searched as EduNext ERP) features direct integration with Tally, allowing you to export purchase invoices and inventory expenses with one click."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How do low-stock thresholds work?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "You can configure minimum stock levels for each item catalog entry. When the stock falls below that threshold, the system auto-sends notifications and places a warning badge on the dashboard."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can we manage multiple departments or sub-stores separately?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, you can create distinct sub-stores (such as Chemistry Lab, Sports Store, IT Department, or Hostel Mess Stock) with independent access controls for staff."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the inventory system track assets and depreciation?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Absolutely. You can register school assets, record purchase dates and warranties, track shelf locations, and automatically compute annual depreciation values."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How is the purchase order approval workflow configured?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Store wardens can create purchase requests. The system routes these requests to administrators or finance heads for digital approval before purchase orders are generated."
         }
       }]
     }
@@ -131,6 +159,13 @@ body {
     border-color: hsla(174, 72%, 56%, 0.4);
     box-shadow: 0 0 32px hsla(174, 72%, 56%, 0.12);
     transform: translateY(-3px);
+}
+.accordion-button:not(.collapsed) {
+    background: hsla(174,72%,56%,0.08) !important;
+    color: var(--primary) !important;
+}
+.accordion-button::after {
+    filter: invert(1);
 }
 </style>
 </head>
@@ -330,6 +365,157 @@ body {
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Operational Benefits & ROI Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Procurement &amp; Assets</span>
+            <h2 class="fw-bold display-5 mb-3">Key Benefits &amp; Impact</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Optimize school store operations, track asset deprecation, and eliminate leaks or unauthorized resource consumption.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(174, 72%, 56%, 0.1); border-radius: 10px; color: var(--primary); font-size: 1.15rem;">
+                        <i class="fas fa-boxes-stacked"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Multi-Store Segregation</h6>
+                    <p class="small text-muted mb-0">Manage separate stock registers for hostels, sports, science labs, and office stationery from a single dashboard.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1.15rem;">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Automated Low-Stock Alerts</h6>
+                    <p class="small text-muted mb-0">Get notified the moment item levels fall below defined re-order thresholds, preventing critical supply shortages.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(262, 83%, 58%, 0.1); border-radius: 10px; color: #a855f7; font-size: 1.15rem;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Asset Depreciation Logs</h6>
+                    <p class="small text-muted mb-0">Register assets, record purchase values, keep warranty dates, and automatically compute yearly asset write-down rates.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(142, 72%, 29%, 0.1); border-radius: 10px; color: #22c55e; font-size: 1.15rem;">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Purchase Approval Flows</h6>
+                    <p class="small text-muted mb-0">Route purchase requisitions digitally through department heads and finance managers before generating purchase orders.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visible FAQ Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: var(--bg);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">FAQ</span>
+            <h2 class="fw-bold display-5 mb-3">Frequently Asked Questions</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Have questions about Inventory &amp; Store Management? Find clear answers below.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                What is school inventory management software?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                School inventory management software helps educational institutions track store items, manage suppliers, raise purchase orders, and monitor consumption across departments automatically.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does EduNex ERP support Tally integration for store purchases?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, EduNex ERP (also commonly searched as EduNext ERP) features direct integration with Tally, allowing you to export purchase invoices and inventory expenses with one click.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How do low-stock thresholds work?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                You can configure minimum stock levels for each item catalog entry. When the stock falls below that threshold, the system auto-sends notifications and places a warning badge on the dashboard.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can we manage multiple departments or sub-stores separately?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, you can create distinct sub-stores (such as Chemistry Lab, Sports Store, IT Department, or Hostel Mess Stock) with independent access controls for staff.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the inventory system track assets and depreciation?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Absolutely. You can register school assets, record purchase dates and warranties, track shelf locations, and automatically compute annual depreciation values.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How is the purchase order approval workflow configured?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Store wardens can create purchase requests. The system routes these requests to administrators or finance heads for digital approval before purchase orders are generated.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA Section -->
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+    <div class="container py-5">
+        <h2 class="fw-bold display-5 mb-3">Take Control of Your Institute Store &amp; Assets</h2>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Streamline your procurement workflows, eliminate waste, and monitor consumption in real-time.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
+            <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>
         </div>
     </div>
 </section>

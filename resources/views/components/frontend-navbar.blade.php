@@ -94,6 +94,13 @@
     min-width: 200px;
     pointer-events: none;
 }
+.nb-panel::before {
+    content: '';
+    position: absolute;
+    top: -16px; left: 0; right: 0;
+    height: 16px;
+    background: transparent;
+}
 .nb-drop.open .nb-panel {
     opacity: 1; visibility: visible;
     transform: translateY(0) scale(1);
@@ -749,8 +756,13 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
     /* ── Desktop dropdowns (click + keyboard) ── */
     document.querySelectorAll('.nb-drop').forEach(function (drop) {
         var btn = drop.querySelector('.nb-drop-btn');
+        var leaveTimeout = null;
 
         function openDrop() {
+            if (leaveTimeout) {
+                clearTimeout(leaveTimeout);
+                leaveTimeout = null;
+            }
             // close others
             document.querySelectorAll('.nb-drop.open').forEach(function (d) {
                 if (d !== drop) {
@@ -772,11 +784,21 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleDrop(); }
         });
 
-        /* Close when mouse leaves the whole drop */
-        drop.addEventListener('mouseleave', closeDrop);
+        /* Close when mouse leaves the whole drop (with brief delay to bridge gaps) */
+        drop.addEventListener('mouseleave', function () {
+            if (window.innerWidth >= 992) {
+                leaveTimeout = setTimeout(closeDrop, 250);
+            } else {
+                closeDrop();
+            }
+        });
 
-        /* Open on hover for desktop */
+        /* Open on hover for desktop (cancelling close timeouts) */
         drop.addEventListener('mouseenter', function () {
+            if (leaveTimeout) {
+                clearTimeout(leaveTimeout);
+                leaveTimeout = null;
+            }
             if (window.innerWidth >= 992) openDrop();
         });
     });

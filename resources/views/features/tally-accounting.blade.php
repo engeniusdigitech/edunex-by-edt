@@ -8,6 +8,77 @@
         description="Manage your school or institute finances with EduNex ERP's compliant double-entry accounting module. Automate GST (CGST/SGST/IGST) tracking, generate real-time balance sheets, and export data directly to Tally Prime in one click."
         keywords="school accounting software, institute accounting software, school finance management software, school ERP accounting, GST software for schools, Tally integration for schools, institute financial management, school ledger software, double entry accounting school, school fee accounting system, institute GST reports, school financial ERP, EduNex ERP accounting"
     />
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ url('/') }}"
+      },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "Features",
+        "item": "{{ url('/') }}#features"
+      },{
+        "@@type": "ListItem",
+        "position": 3,
+        "name": "Accounting & Tally",
+        "item": "{{ route('features.tally-accounting') }}"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
+      "mainEntity": [{
+        "@@type": "Question",
+        "name": "How does Tally integration work in EduNex ERP?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "EduNex ERP allows schools to export all fee collections, voucher entries, and department expenses into Tally-compatible XML format with one click, eliminating manual data entry for accounts teams."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can we generate GST-ready reports?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, the accounting module automatically calculates GST input/output tax liability and generates ready-to-file reports for school audits and chartered accountants."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the system support double-entry accounting rules?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, the software enforces standard double-entry bookkeeping rules. Every transaction posts corresponding debit and credit entries to respective ledgers, ensuring strict accounting standards."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can we manage multiple bank accounts and cash boxes?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes. You can set up and reconcile multiple bank accounts, track petty cash boxes, and record bank transfers directly through the accounts module."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How are department budgets and expense approvals managed?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Administrators can define annual budgets for departments (e.g., science lab, library, sports). Expense vouchers go through a multi-level approval process before being paid out."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can chartered accountants access financial records directly?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, you can create a dedicated accountant role with read-only permissions, allowing your auditor to inspect general ledgers, trial balances, and tax audits directly online."
+        }
+      }]
+    }
+    </script>
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +159,13 @@ body {
     border-color: hsla(174, 72%, 56%, 0.4);
     box-shadow: 0 0 32px hsla(174, 72%, 56%, 0.12);
     transform: translateY(-3px);
+}
+.accordion-button:not(.collapsed) {
+    background: hsla(174,72%,56%,0.08) !important;
+    color: var(--primary) !important;
+}
+.accordion-button::after {
+    filter: invert(1);
 }
 </style>
 </head>
@@ -277,6 +355,157 @@ body {
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Operational Benefits & ROI Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Financial Control</span>
+            <h2 class="fw-bold display-5 mb-3">Key Benefits &amp; Impact</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Streamline school accounting, enforce strict internal controls, and save hundreds of hours of manual bookkeeping.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(174, 72%, 56%, 0.1); border-radius: 10px; color: var(--primary); font-size: 1.15rem;">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Automated Fee Ledger Sync</h6>
+                    <p class="small text-muted mb-0">No manual entry needed for receipts. All online gate check-ins and counter cash payments post to ledgers instantly.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1.15rem;">
+                        <i class="fas fa-arrows-spin"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">One-Click Tally Export</h6>
+                    <p class="small text-muted mb-0">Download day-books or monthly collections as Tally Prime XML files and import them directly with zero errors.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(262, 83%, 58%, 0.1); border-radius: 10px; color: #a855f7; font-size: 1.15rem;">
+                        <i class="fas fa-percent"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">GST Statutory Tax Splits</h6>
+                    <p class="small text-muted mb-0">Automatically calculate input-tax credits, split CGST/SGST/IGST dynamically on bills, and export tax summaries.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(142, 72%, 29%, 0.1); border-radius: 10px; color: #22c55e; font-size: 1.15rem;">
+                        <i class="fas fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Direct CA Audits</h6>
+                    <p class="small text-muted mb-0">Give your auditor direct access to profit &amp; loss statements, balance sheets, and ledgers for faster filing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visible FAQ Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: var(--bg);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">FAQ</span>
+            <h2 class="fw-bold display-5 mb-3">Frequently Asked Questions</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Have questions about Accounting &amp; Tally? Find clear answers below.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How does Tally integration work in EduNex ERP?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                EduNex ERP allows schools to export all fee collections, voucher entries, and department expenses into Tally-compatible XML format with one click, eliminating manual data entry for accounts teams.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can we generate GST-ready reports?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, the accounting module automatically calculates GST input/output tax liability and generates ready-to-file reports for school audits and chartered accountants.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the system support double-entry accounting rules?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, the software enforces standard double-entry bookkeeping rules. Every transaction posts corresponding debit and credit entries to respective ledgers, ensuring strict accounting standards.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can we manage multiple bank accounts and cash boxes?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes. You can set up and reconcile multiple bank accounts, track petty cash boxes, and record bank transfers directly through the accounts module.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How are department budgets and expense approvals managed?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Administrators can define annual budgets for departments (e.g., science lab, library, sports). Expense vouchers go through a multi-level approval process before being paid out.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can chartered accountants access financial records directly?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, you can create a dedicated accountant role with read-only permissions, allowing your auditor to inspect general ledgers, trial balances, and tax audits directly online.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA Section -->
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+    <div class="container py-5">
+        <h2 class="fw-bold display-5 mb-3">Ready to Automate Your School Finances?</h2>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Eliminate manual entry errors, generate compliant financial statements, and export directly to Tally Prime in one click.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
+            <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>
         </div>
     </div>
 </section>

@@ -10,20 +10,20 @@
     />
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
       "itemListElement": [{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 1,
         "name": "Home",
         "item": "{{ url('/') }}"
       },{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 2,
         "name": "Features",
         "item": "{{ url('/') }}#features"
       },{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 3,
         "name": "Library Management",
         "item": "{{ route('features.library-management') }}"
@@ -32,21 +32,49 @@
     </script>
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
       "mainEntity": [{
-        "@type": "Question",
+        "@@type": "Question",
         "name": "How does the QR barcode library software work?",
         "acceptedAnswer": {
-          "@type": "Answer",
+          "@@type": "Answer",
           "text": "EduNex ERP generates unique barcodes/QR codes for library books. Librarians can scan these codes to instantly issue or return books using any device, speeding up counter operations."
         }
       },{
-        "@type": "Question",
+        "@@type": "Question",
         "name": "Does the school library system support digital books?",
         "acceptedAnswer": {
-          "@type": "Answer",
+          "@@type": "Answer",
           "text": "Yes, EduNex (EduNext) ERP includes a Digital Resource Library where teachers can upload PDFs, e-books, and video lectures that students can access directly from the student portal."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can students search for books and reserve them from home?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Absolutely. The web OPAC (Online Public Access Catalogue) lets students and teachers search the entire inventory by author, title, or publisher, check real-time availability, and reserve books online."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How are overdue notices and fines handled?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "The system calculates overdue fines automatically based on daily rates configured by the admin. Overdue alerts are sent automatically via SMS, and unpaid fines are posted to the student's primary bill."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the software support cataloguing multi-volume series or journals?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, the catalog supports custom fields, serial tracking, multi-volume books, journals, news subscriptions, and teacher reference materials."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can teachers upload digital assignments and reading lists?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, teachers can link reading lists, worksheets, PDFs, and links directly to classes, so students can view and download them from the student dashboard."
         }
       }]
     }
@@ -131,6 +159,13 @@ body {
     border-color: hsla(174, 72%, 56%, 0.4);
     box-shadow: 0 0 32px hsla(174, 72%, 56%, 0.12);
     transform: translateY(-3px);
+}
+.accordion-button:not(.collapsed) {
+    background: hsla(174,72%,56%,0.08) !important;
+    color: var(--primary) !important;
+}
+.accordion-button::after {
+    filter: invert(1);
 }
 </style>
 </head>
@@ -330,6 +365,157 @@ body {
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Operational Benefits & ROI Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Educational Impact</span>
+            <h2 class="fw-bold display-5 mb-3">Key Benefits &amp; Impact</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Transform your library from a storage room into an active, digital-friendly knowledge hub.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(174, 72%, 56%, 0.1); border-radius: 10px; color: var(--primary); font-size: 1.15rem;">
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">90% Faster Counter Work</h6>
+                    <p class="small text-muted mb-0">Scan printed barcodes on book covers to issue or return items in 2 seconds, reducing front desk lines dramatically.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1.15rem;">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Zero Lost Books</h6>
+                    <p class="small text-muted mb-0">Automated system tracking, student borrower limits, and daily overdue fine computations keep your books returning on schedule.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(262, 83%, 58%, 0.1); border-radius: 10px; color: #a855f7; font-size: 1.15rem;">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">24/7 Portal OPAC</h6>
+                    <p class="small text-muted mb-0">Allows students to browse physical shelf locations, search titles, read reviews, and request reserves from home.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(142, 72%, 29%, 0.1); border-radius: 10px; color: #22c55e; font-size: 1.15rem;">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Paperless E-Library</h6>
+                    <p class="small text-muted mb-0">Upload revision PDFs, study guides, video lessons, and links directly, creating a centralized academic resources bank.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visible FAQ Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: var(--bg);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">FAQ</span>
+            <h2 class="fw-bold display-5 mb-3">Frequently Asked Questions</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Have questions about Digital Library Management? Find clear answers below.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How does the QR barcode library software work?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                EduNex ERP generates unique barcodes/QR codes for library books. Librarians can scan these codes to instantly issue or return books using any device, speeding up counter operations.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the school library system support digital books?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, EduNex (EduNext) ERP includes a Digital Resource Library where teachers can upload PDFs, e-books, and video lectures that students can access directly from the student portal.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can students search for books and reserve them from home?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Absolutely. The web OPAC (Online Public Access Catalogue) lets students and teachers search the entire inventory by author, title, or publisher, check real-time availability, and reserve books online.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How are overdue notices and fines handled?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                The system calculates overdue fines automatically based on daily rates configured by the admin. Overdue alerts are sent automatically via SMS, and unpaid fines are posted to the student's primary bill.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the software support cataloguing multi-volume series or journals?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, the catalog supports custom fields, serial tracking, multi-volume books, journals, news subscriptions, and teacher reference materials.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can teachers upload digital assignments and reading lists?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, teachers can link reading lists, worksheets, PDFs, and links directly to classes, so students can view and download them from the student dashboard.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA Section -->
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+    <div class="container py-5">
+        <h2 class="fw-bold display-5 mb-3">Ready to Modernize Your School Library?</h2>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Go fully paperless, barcode-track physical book collections, and provide access to rich digital learning media.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
+            <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>
         </div>
     </div>
 </section>

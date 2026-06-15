@@ -8,6 +8,77 @@
         description="Run compliant school and institute payroll in one click. EduNex ERP automates PF, ESIC, TDS calculations, CL/EL leave caps, biometric salary pro-rating, and generates PDF payslips. Best payroll software for schools and coaching institutes."
         keywords="school payroll software, institute payroll software, school HR software, school salary management system, payroll software for schools, institute salary management, school staff payroll ERP, PF ESIC TDS school software, school staff management software, coaching institute payroll, employee payroll software for schools, EduNex ERP payroll"
     />
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ url('/') }}"
+      },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "Features",
+        "item": "{{ url('/') }}#features"
+      },{
+        "@@type": "ListItem",
+        "position": 3,
+        "name": "Statutory Payroll",
+        "item": "{{ route('features.statutory-payroll') }}"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
+      "mainEntity": [{
+        "@@type": "Question",
+        "name": "Does the payroll module support statutory deductions like PF and ESI?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes. The system automatically computes Provident Fund (PF) contributions, Employee State Insurance (ESI), Professional Tax (PT), and Tax Deducted at Source (TDS) based on real-time salary structures and active tax slabs."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can teachers download their payslips online?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes. Once payroll is generated and approved, staff members receive an email notification and can securely download their detailed PDF payslips directly from their employee self-service portal."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How is attendance integrated with salary calculations?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "EduNex ERP integrates directly with your campus biometric machines. Logins/logouts are synced automatically to calculate actual present days, pro-rated payables, and unpaid absences based on shift configurations."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can we configure custom salary structures for different staff groups?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, administrators can set up unique salary templates for teaching staff, administration, non-teaching staff, and temporary contractors, defining base pays and custom allowances."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the software generate tax declaration forms and TDS reports?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, the platform generates tax calculations, processes employee tax declarations, and exports standard TDS reports that help accounting teams during quarterly filings."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How does payroll handle paid leaves, unpaid leaves, and half-days?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Leaves approved through the HR module (such as casual leaves or medical leaves) are fully synchronized. The system automatically calculates pro-rated deductions for half-days or unauthorized unpaid absences."
+        }
+      }]
+    }
+    </script>
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +159,13 @@ body {
     border-color: hsla(174, 72%, 56%, 0.4);
     box-shadow: 0 0 32px hsla(174, 72%, 56%, 0.12);
     transform: translateY(-3px);
+}
+.accordion-button:not(.collapsed) {
+    background: hsla(174,72%,56%,0.08) !important;
+    color: var(--primary) !important;
+}
+.accordion-button::after {
+    filter: invert(1);
 }
 </style>
 </head>
@@ -281,8 +359,160 @@ body {
     </div>
 </section>
 
+<!-- Key Operational Benefits & ROI Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">HR Operations</span>
+            <h2 class="fw-bold display-5 mb-3">Key Benefits &amp; Impact</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Streamline staff administration, automate complex tax computations, and provide self-service tools to your team.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(174, 72%, 56%, 0.1); border-radius: 10px; color: var(--primary); font-size: 1.15rem;">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Biometric Attendance Sync</h6>
+                    <p class="small text-muted mb-0">Directly sync log sheets to pro-rate monthly payouts, process late check-in penalties, and calculate overtime hours automatically.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1.15rem;">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">100% Tax Compliance</h6>
+                    <p class="small text-muted mb-0">System-enforced statutory computations automatically deduct correct PF, ESIC, Professional Tax, and TDS allocations.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(262, 83%, 58%, 0.1); border-radius: 10px; color: #a855f7; font-size: 1.15rem;">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Staff Self-Service Portal</h6>
+                    <p class="small text-muted mb-0">Teachers can log in to view payslip histories, download tax statements, apply for leaves, and inspect leave balance limits.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(142, 72%, 29%, 0.1); border-radius: 10px; color: #22c55e; font-size: 1.15rem;">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Single-Click Payouts</h6>
+                    <p class="small text-muted mb-0">Generate pre-formatted bank upload files and detailed ledger logs to settle monthly salaries in a few minutes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visible FAQ Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: var(--bg);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">FAQ</span>
+            <h2 class="fw-bold display-5 mb-3">Frequently Asked Questions</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Have questions about HR &amp; Statutory Payroll? Find clear answers below.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the payroll module support statutory deductions like PF and ESI?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes. The system automatically computes Provident Fund (PF) contributions, Employee State Insurance (ESI), Professional Tax (PT), and Tax Deducted at Source (TDS) based on real-time salary structures and active tax slabs.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can teachers download their payslips online?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes. Once payroll is generated and approved, staff members receive an email notification and can securely download their detailed PDF payslips directly from their employee self-service portal.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How is attendance integrated with salary calculations?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                EduNex ERP integrates directly with your campus biometric machines. Logins/logouts are synced automatically to calculate actual present days, pro-rated payables, and unpaid absences based on shift configurations.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can we configure custom salary structures for different staff groups?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, administrators can set up unique salary templates for teaching staff, administration, non-teaching staff, and temporary contractors, defining base pays and custom allowances.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the software generate tax declaration forms and TDS reports?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, the platform generates tax calculations, processes employee tax declarations, and exports standard TDS reports that help accounting teams during quarterly filings.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How does payroll handle paid leaves, unpaid leaves, and half-days?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Leaves approved through the HR module (such as casual leaves or medical leaves) are fully synchronized. The system automatically calculates pro-rated deductions for half-days or unauthorized unpaid absences.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA Section -->
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+    <div class="container py-5">
+        <h2 class="fw-bold display-5 mb-3">Simplify School Staff &amp; Payroll Management</h2>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Automate shift tracking, process salary payouts with one click, and stay 100% compliant with statutory guidelines.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
+            <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>
+        </div>
+    </div>
+</section>
+
 <x-frontend-footer/>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+@include('components.whatsapp-widget')
 </body>
 </html>

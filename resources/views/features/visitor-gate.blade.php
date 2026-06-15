@@ -8,6 +8,77 @@
         description="Secure your school or institute with EduNex ERP's Visitor Gate Management module. QR-based self-registration, live receptionist approval, printable passes, and complete visitor audit logs for schools and institutes."
         keywords="school visitor management software, campus visitor gate system, visitor gate security software, school lobby management system, institute visitor check-in, school gate security software, visitor pass software for school, campus security ERP, school visitor log software, digital visitor register school"
     />
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ url('/') }}"
+      },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "Features",
+        "item": "{{ url('/') }}#features"
+      },{
+        "@@type": "ListItem",
+        "position": 3,
+        "name": "Visitor Gate Security",
+        "item": "{{ route('features.visitor-gate') }}"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
+      "mainEntity": [{
+        "@@type": "Question",
+        "name": "How do visitors register at the school gate contactless?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Visitors scan the QR code posted at the entry gate using their smartphone cameras. This opens a secure registration page where they enter their details, host name, and vehicle number without downloading any app."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can receptionists approve or reject visitor requests?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, receptionists or admins monitor check-ins in real-time from the dashboard lobby console. They can click to approve or reject requests, print physical passes, and notify hosts instantly."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Are visitor logs secure and tenant-isolated?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Absolutely. All visitor records, including contact numbers, check-in timestamps, and host departments, are stored securely and fully isolated per tenant (institute), ensuring absolute data privacy."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can we restrict access for specific blacklisted visitors?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, administrators can flag specific contact numbers or individuals as blacklisted. If they attempt to scan and register at the gate, the reception desk is immediately alerted to deny entry."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the system support OTP verification for phone numbers?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, to prevent fake details, you can enable one-time password (OTP) verification. Visitors must verify their phone number via a quick SMS code before completing their gate registration request."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How does the host receive notification of visitor arrival?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Once the receptionist approves a visitor pass, the host teacher or staff member receives an instant email, SMS, or notification on their portal dashboard to alert them that their guest has arrived."
+        }
+      }]
+    }
+    </script>
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +159,13 @@ body {
     border-color: hsla(174, 72%, 56%, 0.4);
     box-shadow: 0 0 32px hsla(174, 72%, 56%, 0.12);
     transform: translateY(-3px);
+}
+.accordion-button:not(.collapsed) {
+    background: hsla(174,72%,56%,0.08) !important;
+    color: var(--primary) !important;
+}
+.accordion-button::after {
+    filter: invert(1);
 }
 </style>
 </head>
@@ -281,8 +359,160 @@ body {
     </div>
 </section>
 
+<!-- Key Operational Benefits & ROI Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Campus Security</span>
+            <h2 class="fw-bold display-5 mb-3">Key Benefits &amp; Impact</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Replace unreadable paper logbooks with automated screening workflows that secure your campus entryways.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(174, 72%, 56%, 0.1); border-radius: 10px; color: var(--primary); font-size: 1.15rem;">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">100% Contactless Check-In</h6>
+                    <p class="small text-muted mb-0">Guests scan gate QR posters to self-register in 15 seconds, keeping lines clear and front desks uncrowded.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1.15rem;">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Instant Host Alerts</h6>
+                    <p class="small text-muted mb-0">Hosts receive automated dashboard and SMS notifications the second a visitor checks in, streamlining meetings.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(262, 83%, 58%, 0.1); border-radius: 10px; color: #a855f7; font-size: 1.15rem;">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Printed Badges &amp; Passes</h6>
+                    <p class="small text-muted mb-0">Auto-generate professional visitor badges containing checkout QR codes, visitor photos, and vehicle IDs.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(142, 72%, 29%, 0.1); border-radius: 10px; color: #22c55e; font-size: 1.15rem;">
+                        <i class="fas fa-user-lock"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Visitor Blacklists</h6>
+                    <p class="small text-muted mb-0">Block unauthorized persons instantly. The system flags restricted phone numbers and alerts guards immediately.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visible FAQ Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: var(--bg);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">FAQ</span>
+            <h2 class="fw-bold display-5 mb-3">Frequently Asked Questions</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Have questions about Visitor Gate Security? Find clear answers below.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How do visitors register at the school gate contactless?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Visitors scan the QR code posted at the entry gate using their smartphone cameras. This opens a secure registration page where they enter their details, host name, and vehicle number without downloading any app.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can receptionists approve or reject visitor requests?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, receptionists or admins monitor check-ins in real-time from the dashboard lobby console. They can click to approve or reject requests, print physical passes, and notify hosts instantly.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Are visitor logs secure and tenant-isolated?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Absolutely. All visitor records, including contact numbers, check-in timestamps, and host departments, are stored securely and fully isolated per tenant (institute), ensuring absolute data privacy.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can we restrict access for specific blacklisted visitors?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, administrators can flag specific contact numbers or individuals as blacklisted. If they attempt to scan and register at the gate, the reception desk is immediately alerted to deny entry.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the system support OTP verification for phone numbers?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, to prevent fake details, you can enable one-time password (OTP) verification. Visitors must verify their phone number via a quick SMS code before completing their gate registration request.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How does the host receive notification of visitor arrival?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Once the receptionist approves a visitor pass, the host teacher or staff member receives an instant email, SMS, or notification on their portal dashboard to alert them that their guest has arrived.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA Section -->
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+    <div class="container py-5">
+        <h2 class="fw-bold display-5 mb-3">Ready to Secure Your Campus Entryways?</h2>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Secure your lobby, speed up visitor check-ins, and keep a clean digital record of who is on your campus.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
+            <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>
+        </div>
+    </div>
+</section>
+
 <x-frontend-footer/>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+@include('components.whatsapp-widget')
 </body>
 </html>

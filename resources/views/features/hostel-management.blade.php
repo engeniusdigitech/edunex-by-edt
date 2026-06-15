@@ -10,20 +10,20 @@
     />
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
       "itemListElement": [{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 1,
         "name": "Home",
         "item": "{{ url('/') }}"
       },{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 2,
         "name": "Features",
         "item": "{{ url('/') }}#features"
       },{
-        "@type": "ListItem",
+        "@@type": "ListItem",
         "position": 3,
         "name": "Hostel Management",
         "item": "{{ route('features.hostel-management') }}"
@@ -32,21 +32,49 @@
     </script>
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
       "mainEntity": [{
-        "@type": "Question",
+        "@@type": "Question",
         "name": "What is school hostel management software?",
         "acceptedAnswer": {
-          "@type": "Answer",
+          "@@type": "Answer",
           "text": "School hostel management software automates boarding operations, including room allocation, hostel billing, mess planning, gate passes, and check-ins/check-outs from a single dashboard."
         }
       },{
-        "@type": "Question",
+        "@@type": "Question",
         "name": "Can parents pay hostel fees online?",
         "acceptedAnswer": {
-          "@type": "Answer",
+          "@@type": "Answer",
           "text": "Yes, hostel billing in EduNex ERP (also commonly searched as EduNext ERP) is fully integrated with the main online payment gateway, allowing parents to pay all tuition, transport, and hostel fees in a single unified transaction."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How does the room allocation process handle roommate matching?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "The system allows wardens to assign rooms based on student preference, class, or department. It maintains bed occupancy records and room histories, making room transfers easy."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the mess management module allow tracking guest meals?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes, the mess module logs active boarding subscriptions, tracks daily meal counts, and lets wardens issue mess tokens for visiting parents and guests."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How does the student leave and gate pass workflow operate?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Parents can request leave passes directly via the parent portal. Once approved by the warden, the digital gate pass is scanned at check-out, and parents get SMS notifications."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the software integrate with biometric or facial recognition gates?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Absolutely. EduNex ERP connects with RFID card systems and biometric scanners at hostel gates, automatically logging boarder entries and exits to ensure security."
         }
       }]
     }
@@ -131,6 +159,13 @@ body {
     border-color: hsla(174, 72%, 56%, 0.4);
     box-shadow: 0 0 32px hsla(174, 72%, 56%, 0.12);
     transform: translateY(-3px);
+}
+.accordion-button:not(.collapsed) {
+    background: hsla(174,72%,56%,0.08) !important;
+    color: var(--primary) !important;
+}
+.accordion-button::after {
+    filter: invert(1);
 }
 </style>
 </head>
@@ -334,6 +369,157 @@ body {
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Operational Benefits & ROI Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Operational Value</span>
+            <h2 class="fw-bold display-5 mb-3">Key Benefits &amp; Impact</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">See how automating hostel operations enhances administrative efficiency, financial control, and parent confidence.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(174, 72%, 56%, 0.1); border-radius: 10px; color: var(--primary); font-size: 1.15rem;">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Visual Occupancy Grid</h6>
+                    <p class="small text-muted mb-0">Wardens get a live map showing vacant beds, room shapes, and roommates, eliminating duplicate bookings and matching errors.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1.15rem;">
+                        <i class="fas fa-trash-arrow-up"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Mess Cost Optimization</h6>
+                    <p class="small text-muted mb-0">Forecast ingredient needs using active boarder checklists and dynamic attendance records, cutting food waste by up to 25%.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(262, 83%, 58%, 0.1); border-radius: 10px; color: #a855f7; font-size: 1.15rem;">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Unified Ledgers</h6>
+                    <p class="small text-muted mb-0">Automatically post room rents, laundry dues, and security deposits onto the student's primary fee card, fully synced to Tally Prime.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(142, 72%, 29%, 0.1); border-radius: 10px; color: #22c55e; font-size: 1.15rem;">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Automated Parent Alerts</h6>
+                    <p class="small text-muted mb-0">Instantly notify parents via SMS or mobile push notifications the moment a student checks out at the gate or gets leave approval.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visible FAQ Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: var(--bg);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">FAQ</span>
+            <h2 class="fw-bold display-5 mb-3">Frequently Asked Questions</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Have questions about Hostel Management? Find clear answers below.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                What is school hostel management software?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                School hostel management software automates boarding operations, including room allocation, hostel billing, mess planning, gate passes, and check-ins/check-outs from a single dashboard.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can parents pay hostel fees online?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, hostel billing in EduNex ERP (also commonly searched as EduNext ERP) is fully integrated with the main online payment gateway, allowing parents to pay all tuition, transport, and hostel fees in a single unified transaction.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How does the room allocation process handle roommate matching?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                The system allows wardens to assign rooms based on student preference, class, or department. It maintains bed occupancy records and room histories, making room transfers easy.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the mess management module allow tracking guest meals?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes, the mess module logs active boarding subscriptions, tracks daily meal counts, and lets wardens issue mess tokens for visiting parents and guests.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How does the student leave and gate pass workflow operate?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Parents can request leave passes directly via the parent portal. Once approved by the warden, the digital gate pass is scanned at check-out, and parents get SMS notifications.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the software integrate with biometric or facial recognition gates?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Absolutely. EduNex ERP connects with RFID card systems and biometric scanners at hostel gates, automatically logging boarder entries and exits to ensure security.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA Section -->
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+    <div class="container py-5">
+        <h2 class="fw-bold display-5 mb-3">Ready to Streamline Your School Boarding Operations?</h2>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Automate room allocation, track mess subscriptions, and simplify hostel fee management.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
+            <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>
         </div>
     </div>
 </section>

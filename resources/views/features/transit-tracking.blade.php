@@ -8,6 +8,77 @@
         description="EduNex ERP provides real-time GPS bus tracking for schools and institutes. Optimize student transport routes, track live vehicle locations on maps, log student boarding, and send instant parent alerts. Best school transport management software."
         keywords="school bus GPS tracking software, student transport management software, school transport ERP, school bus tracking system, real-time school bus tracking, institute transport software, route optimization school bus, school vehicle tracking, student bus boarding management, parent bus alert system, school transport management system, EduNex ERP transport"
     />
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ url('/') }}"
+      },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "Features",
+        "item": "{{ url('/') }}#features"
+      },{
+        "@@type": "ListItem",
+        "position": 3,
+        "name": "GPS Transit Tracking",
+        "item": "{{ route('features.transit-tracking') }}"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
+      "mainEntity": [{
+        "@@type": "Question",
+        "name": "How do parents track the school bus in real-time?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Parents can log into the EduNex parent mobile app or web portal to see the school bus live location on an interactive map, along with the estimated time of arrival (ETA) at their student's assigned stop."
+        }
+      },{
+        "@@type": "Question",
+        "name": "What is Route Optimization and how does it reduce costs?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Our transport module includes route-optimizing algorithms that automatically sequence stop points to calculate the shortest and quickest path. This reduces fuel consumption, vehicle wear and tear, and student transit times."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Does the system alert parents when a child boards the bus?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes. As students scan their ID cards (RFID or biometrics) upon boarding or drop-off, the bus conductor's console logs the entry/exit, and the system sends instant SMS or push notifications to parents."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Can track driver speed, harsh braking, and route violations?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Absolutely. The system monitors live vehicle diagnostics, including speeding, unexpected stops, harsh accelerations, and route detours, sending real-time safety alerts to the admin console."
+        }
+      },{
+        "@@type": "Question",
+        "name": "How does the system handle temporary route changes or vehicle breakdowns?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Admins can dynamically re-assign vehicles or alter routes from the dashboard. The system instantly updates live stops, calculates new ETAs, and notifies parents of the change automatically."
+        }
+      },{
+        "@@type": "Question",
+        "name": "Is the transit data private and secure for families?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Yes. All GPS coordinates, route maps, and student boarding logs are fully encrypted and restricted to authorized school staff and the respective student's parents, ensuring absolute privacy."
+        }
+      }]
+    }
+    </script>
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +159,13 @@ body {
     border-color: hsla(174, 72%, 56%, 0.4);
     box-shadow: 0 0 32px hsla(174, 72%, 56%, 0.12);
     transform: translateY(-3px);
+}
+.accordion-button:not(.collapsed) {
+    background: hsla(174,72%,56%,0.08) !important;
+    color: var(--primary) !important;
+}
+.accordion-button::after {
+    filter: invert(1);
 }
 </style>
 </head>
@@ -281,8 +359,160 @@ body {
     </div>
 </section>
 
+<!-- Key Operational Benefits & ROI Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Fleet Security</span>
+            <h2 class="fw-bold display-5 mb-3">Key Benefits &amp; Impact</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Optimize route efficiency, reduce operational transport costs, and keep parents connected to their children's safety.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(174, 72%, 56%, 0.1); border-radius: 10px; color: var(--primary); font-size: 1.15rem;">
+                        <i class="fas fa-map-location-dot"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Live Map Dashboards</h6>
+                    <p class="small text-muted mb-0">Monitor your entire fleet's live positions, headings, and speeds on a unified map console, ensuring absolute route compliance.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(217, 91%, 60%, 0.1); border-radius: 10px; color: var(--secondary); font-size: 1.15rem;">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">AI-Optimized Routes</h6>
+                    <p class="small text-muted mb-0">Compute the absolute shortest routes for student pickup points, saving up to 20% on monthly fuel bills and transit wear.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(262, 83%, 58%, 0.1); border-radius: 10px; color: #a855f7; font-size: 1.15rem;">
+                        <i class="fas fa-address-card"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">RFID Boarding Logs</h6>
+                    <p class="small text-muted mb-0">Students tap their ID cards upon boarding or drop-off, logging attendance timestamps and preventing boarding mix-ups.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feat-card p-4">
+                    <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px; background: hsla(142, 72%, 29%, 0.1); border-radius: 10px; color: #22c55e; font-size: 1.15rem;">
+                        <i class="fas fa-circle-exclamation"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">Speed &amp; Safety Alerts</h6>
+                    <p class="small text-muted mb-0">Get instant alerts for speeding, harsh braking, unscheduled stops, or route violations to enforce driver safety standards.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visible FAQ Section -->
+<section class="border-top py-5" style="border-color: var(--border) !important; background: var(--bg);">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">FAQ</span>
+            <h2 class="fw-bold display-5 mb-3">Frequently Asked Questions</h2>
+            <p class="mx-auto text-muted mb-0" style="max-width: 600px;">Have questions about GPS Transit Tracking? Find clear answers below.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How do parents track the school bus in real-time?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Parents can log into the EduNex parent mobile app or web portal to see the school bus live location on an interactive map, along with the estimated time of arrival (ETA) at their student's assigned stop.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                What is Route Optimization and how does it reduce costs?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Our transport module includes route-optimizing algorithms that automatically sequence stop points to calculate the shortest and quickest path. This reduces fuel consumption, vehicle wear and tear, and student transit times.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Does the system alert parents when a child boards the bus?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes. As students scan their ID cards (RFID or biometrics) upon boarding or drop-off, the bus conductor's console logs the entry/exit, and the system sends instant SMS or push notifications to parents.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Can we track driver speed, harsh braking, and route violations?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Absolutely. The system monitors live vehicle diagnostics, including speeding, unexpected stops, harsh accelerations, and route detours, sending real-time safety alerts to the admin console.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                How does the system handle temporary route changes or vehicle breakdowns?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Admins can dynamically re-assign vehicles or alter routes from the dashboard. The system instantly updates live stops, calculates new ETAs, and notifies parents of the change automatically.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" style="background: transparent; color: var(--foreground); box-shadow: none;">
+                                Is the transit data private and secure for families?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
+                                Yes. All GPS coordinates, route maps, and student boarding logs are fully encrypted and restricted to authorized school staff and the respective student's parents, ensuring absolute privacy.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bottom CTA Section -->
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+    <div class="container py-5">
+        <h2 class="fw-bold display-5 mb-3">Optimize and Secure Your School Fleet</h2>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Provide live tracking to parents, optimize route planning, and keep children safe throughout their commute.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
+            <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>
+        </div>
+    </div>
+</section>
+
 <x-frontend-footer/>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+@include('components.whatsapp-widget')
 </body>
 </html>
