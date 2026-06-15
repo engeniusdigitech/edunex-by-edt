@@ -1,8 +1,13 @@
 User-agent: *
 Allow: /
+Allow: /edunex
+Allow: /edunext
+Allow: /edunex-erp
+Allow: /edunext-erp
 Disallow: /dashboard
 Disallow: /superadmin
 Disallow: /student/dashboard
 Disallow: /register
 
 Sitemap: https://edunexerp.online/sitemap.xml
+

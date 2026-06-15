@@ -185,7 +185,7 @@ body {
 
 .hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 140px 0 80px;
+    padding: 100px 0 80px;
     position: relative; z-index: 2;
 }
 

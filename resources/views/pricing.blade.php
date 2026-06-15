@@ -38,7 +38,7 @@ section{background:transparent!important;}
 
 /* Hero */
 .pricing-hero{
-    padding:150px 0 70px;
+    padding:100px 0 70px;
     text-align:center;position:relative;overflow:hidden;
 }
 .pricing-hero::before{

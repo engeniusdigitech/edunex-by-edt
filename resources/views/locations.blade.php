@@ -51,7 +51,7 @@
             background-clip: text;
         }
         .directory-hero {
-            padding: 140px 0 60px;
+            padding: 100px 0 60px;
             text-align: center;
             position: relative;
         }

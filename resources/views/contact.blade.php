@@ -241,13 +241,7 @@ textarea.form-inp{resize:vertical;min-height:130px;}
                 <div class="col-lg-5 contact-info-col">
                     <h3 style="font-size:1.3rem;font-weight: 500;letter-spacing:-0.5px;color:#fff;margin-bottom:32px;">Contact Details</h3>
 
-                    <div class="ic">
-                        <div class="ic-icon teal"><i class="fas fa-headset"></i></div>
-                        <div>
-                            <div class="ic-title">Dedicated Support</div>
-                            <div class="ic-val">support@edunex-erp.com</div>
-                        </div>
-                    </div>
+                    
 
                     <div class="ic">
                         <div class="ic-icon blue"><i class="fas fa-paper-plane"></i></div>

@@ -7,6 +7,30 @@
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>{{ url('/edunex') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ url('/edunext') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ url('/edunex-erp') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ url('/edunext-erp') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>{{ route('about') }}</loc>
         <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
@@ -61,6 +85,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>{{ route('digital.assessment.landing') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>{{ route('features.visitor-gate') }}</loc>
         <lastmod>{{ now()->toDateString() }}</lastmod>
         <changefreq>monthly</changefreq>
@@ -83,6 +113,42 @@
         <lastmod>{{ now()->toDateString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ route('features.inventory-management') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ route('features.hostel-management') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ route('features.library-management') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ route('features.accounting-tally') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>{{ route('seo.locations.school') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ route('seo.locations.institute') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 @foreach($locations as $slug => $loc)
     {{-- City-only --}}

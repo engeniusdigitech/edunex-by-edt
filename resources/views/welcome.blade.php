@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
         title="EduNex ERP | #1 School Management Software, School ERP & Institute Management System"
-        description="EduNex ERP is the best School Management Software & Institute ERP. Our complete School Management System automates student attendance, online fee collection, school payroll, library, live lectures, and parent portal. Trusted by 100+ schools and institutes. Start free."
-        keywords="school management software, school erp, schoolerp, school software, school management system, institute software, institute erp, institute management software, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software, school management app, online school management, school fee management software, school attendance software, institute management system, EduNex ERP"
+        description="EduNex ERP — the leading School Management Software & School ERP in India. Also searched as EduNext ERP. Automates student attendance, online fee collection, school payroll, library, live lectures, and parent portal. Trusted by 100+ schools. Start free trial today."
+        keywords="edunex, edunext, edunex erp, edunext erp, EduNex ERP, EduNext ERP, edunexerp, school management software, school erp, schoolerp, school software, school management system, institute software, institute erp, institute management software, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software, school management app, online school management, school fee management software, school attendance software, institute management system, EduNex ERP school, edunex school software"
     />
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,7 +165,7 @@ body {
 
 .hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 140px 0 80px;
+    padding: 108px 0 80px;
     position: relative; z-index: 2;
 }
 
@@ -609,7 +609,7 @@ body {
 .trust-item i { color: hsl(174,72%,56%); }
 
 @media(max-width:991px) {
-    .hero-content { padding: 120px 0 40px; }
+    .hero-content { padding: 96px 0 40px; }
     .display-wrapper { padding-bottom: 0; }
     .mobile-mockup { display: none; }
     .desktop-mockup { border-radius: 10px; }
@@ -617,7 +617,7 @@ body {
 
 @media(max-width:768px) {
     .hero { min-height: auto; }
-    .hero-content { padding: 210px 0 50px; }
+    .hero-content { padding: 110px 0 50px; }
     .hero-h1, .hero-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem) !important; letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
     .hero-sub { font-size: 0.92rem; margin-bottom: 20px; max-width: 100%; line-height: 1.7; }
     .hero-kicker { font-size: 0.68rem; padding: 5px 12px; margin-bottom: 16px; }
@@ -641,12 +641,96 @@ body {
 }
 
 @media(max-width:480px) {
-    .hero-content { padding: 190px 0 28px; }
+    .hero-content { padding: 96px 0 28px; }
     .hero-h1, .hero-h2 { font-size: 1.75rem !important; margin-bottom: 12px; }
     .hero-sub { font-size: 0.88rem; margin-bottom: 16px; }
     .stat-pipe { display: none; }
 }
 </style>
+
+<!-- FAQ Schema for brand + product questions -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "Is EduNex ERP the same as EduNext ERP?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes! EduNex ERP and EduNext ERP refer to the same product. Our official brand name is 'EduNex ERP' — a school and institute management platform by Engenius Digitech. Many users also spell it as EduNext ERP, Edunex, or Edunext. Whether you searched for edunex, edunext, or edunexerp — you are in the right place."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "What does EduNex ERP stand for?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "EduNex ERP stands for Education Nexus Enterprise Resource Planning. It is a complete, AI-powered school and institute management platform that connects student management, fees, attendance, payroll, library, live lectures, and parent communication in one unified system."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "What is EduNex ERP?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "EduNex ERP (also known as EduNext ERP or Edunex) is the #1 School Management Software and Institute ERP built by Engenius Digitech. It automates student attendance using AI face recognition, enables online fee collection, manages payroll, library, live lectures, and provides a mobile app for students and parents. Trusted by 100+ schools and institutes."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "How does AI face biometric attendance work in EduNex ERP?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Staff open the EduNex ERP dashboard on any device with a camera. The on-device AI scans their face and matches it against their enrolled descriptor. GPS is verified simultaneously. Attendance is marked in under 2 seconds — no dedicated hardware or internet required for the face scan itself."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is there a free trial for EduNex ERP?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes! EduNex ERP offers a 7-day free trial with full access to all features. No credit card required. You can go live in under 15 minutes. Visit the pricing page to start your free trial."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Organization",
+  "name": "EduNex ERP",
+  "alternateName": ["EduNext ERP", "Edunex", "Edunext", "EduNex School Software", "EduNexERP"],
+  "url": "{{ url('/') }}",
+  "logo": {
+    "@@type": "ImageObject",
+    "url": "{{ asset('images/logo.png') }}"
+  },
+  "description": "EduNex ERP (also known as EduNext ERP) is the leading School Management Software and Institute ERP built by Engenius Digitech. Trusted by 100+ schools and coaching institutes.",
+  "sameAs": [
+    "https://www.linkedin.com/company/engenius-digitech/",
+    "https://www.facebook.com/edunexerp",
+    "https://www.instagram.com/edunexerp",
+    "https://twitter.com/edunexerp",
+    "https://www.youtube.com/@edunexerp"
+  ],
+  "foundingDate": "2020",
+  "founders": [{
+    "@@type": "Person",
+    "name": "Engenius Digitech Team"
+  }],
+  "address": {
+    "@@type": "PostalAddress",
+    "addressLocality": "Vadodara",
+    "addressRegion": "Gujarat",
+    "addressCountry": "IN"
+  }
+}
+</script>
 
 </head>
 <body>
@@ -1170,6 +1254,8 @@ body {
             <div class="col-lg-8">
                 <div class="accordion" id="faqAcc">
                     @foreach([
+                        ['q'=>'Is EduNex ERP the same as EduNext ERP?','a'=>'Yes! EduNex ERP and EduNext ERP refer to the same product. Our official brand name is "EduNex ERP" — a school and institute management platform by Engenius Digitech. Many users and partners also spell it as "EduNext ERP", "Edunex", or "Edunext". Whether you searched for edunex, edunext, edunexerp, or EduNext school software — you are in the right place.'],
+                        ['q'=>'What does EduNex ERP stand for?','a'=>'EduNex ERP stands for Education Nexus Enterprise Resource Planning — a complete, AI-powered school and institute management platform. It connects every aspect of your institute: student management, fees, attendance, payroll, library, live lectures, and parent communication — all in one unified platform.'],
                         ['q'=>'How does AI face biometric attendance work?','a'=>'Staff open the EduNex ERP dashboard on any device with a camera. The on-device AI scans their face and matches it against their enrolled descriptor. GPS is verified simultaneously. Attendance is marked in under 2 seconds — no internet required for the face scan itself.'],
                         ['q'=>'How does payroll work?','a'=>'Set each staff member\'s basic salary, allowances, and deduction rules once. Every month, one click generates net pay, creates a PDF payslip, and can send it directly via WhatsApp to each staff member.'],
                         ['q'=>'Can students use EduNex ERP on their phone?','a'=>'Yes. We provide a dedicated Student & Parent Mobile App. Students and parents can check timetables, results, fees, and live updates on their phones anytime.'],
@@ -1219,7 +1305,54 @@ body {
     </div>
 </section>
 
+
+<!-- ══════════════ BRAND CLARIFICATION (SEO) ══════════════ -->
+<section style="background: hsl(222,47%,5%); padding: 40px 0; border-top: 1px solid hsl(217,33%,17%);">
+    <div class="container px-4">
+        <div class="text-center">
+            <p style="font-size: 0.8rem; color: hsl(215,20%,50%); line-height: 1.8; max-width: 700px; margin: 0 auto;">
+                <strong style="color: hsl(215,20%,65%);">EduNex ERP</strong> is the official name of our School &amp; Institute Management Platform, developed by <strong style="color: hsl(215,20%,65%);">Engenius Digitech</strong>. 
+                Our platform is also commonly referred to as <strong style="color: hsl(215,20%,65%);">EduNext ERP</strong>, <strong style="color: hsl(215,20%,65%);">Edunex</strong>, <strong style="color: hsl(215,20%,65%);">Edunext</strong>, or <em>EduNex School Software</em>.
+                Whether you are searching for <em>edunex erp</em>, <em>edunext erp</em>, <em>edunexerp</em>, or <em>edunex school management</em> — you have found the right place.
+                <a href="{{ url('/') }}" style="color: hsl(174,72%,56%); text-decoration: none;">EduNex ERP</a> serves 100+ schools and coaching institutes with AI-powered attendance, online fees, payroll, and a dedicated student mobile app.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Brand JSON-LD -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "SoftwareApplication",
+  "name": "EduNex ERP",
+  "alternateName": ["EduNext ERP", "Edunex", "Edunext", "EduNex School Software", "EduNex Institute Software", "edunexerp"],
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web, Android, iOS",
+  "url": "{{ url('/') }}",
+  "description": "EduNex ERP (also known as EduNext ERP or Edunex) is the #1 School Management Software and Institute ERP. Features include AI face biometric attendance, online fee collection, payroll, live lectures, library management, and a mobile app for students and parents.",
+  "offers": {
+    "@@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR",
+    "description": "Free 7-day trial with no credit card required"
+  },
+  "aggregateRating": {
+    "@@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "150",
+    "bestRating": "5"
+  },
+  "publisher": {
+    "@@type": "Organization",
+    "name": "Engenius Digitech",
+    "url": "{{ url('/') }}"
+  }
+}
+</script>
+
 <x-frontend-footer/>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function switchPortal(portalId) {

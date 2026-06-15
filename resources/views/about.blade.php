@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="About EduNex ERP — School Management Software Company | Institute ERP by Engenius Digitech" description="EduNex ERP is built by Engenius Digitech — a team of engineers and educators creating best School Management System and Institute ERP. Learn our mission to digitize schools and institutes." keywords="about school management software company, school ERP company, institute software developer, school software company, EduNex ERP about, Engenius Digitech school ERP, best school management system, school software brand" />
+    <x-seo title="About EduNex ERP — School Management Software Company | Institute ERP by Engenius Digitech" description="EduNex ERP (also known as EduNext ERP) is built by Engenius Digitech — engineers and educators creating the best School Management System and Institute ERP. Learn our mission to digitize schools and institutes across India." keywords="edunex, edunext, edunex erp, edunext erp, about edunex, about edunext erp, about school management software company, school ERP company, institute software developer, school software company, EduNex ERP about, Engenius Digitech school ERP, best school management system, school software brand" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@ section{background:transparent!important;}
 
 /* Hero */
 .about-hero{
-    padding:150px 0 80px;
+    padding:100px 0 80px;
     text-align:center;position:relative;overflow:hidden;
 }
 .about-hero::before{

@@ -1,7 +1,7 @@
 @props([
-    'title'       => 'EduNex ERP | Best School Management Software, School ERP & Institute Software',
-    'description' => 'EduNex ERP is the best School Management Software & Institute ERP. Our School Management System automates student attendance, online fee collection, school ERP, payroll, library & more. Trusted by 100+ schools and institutes.',
-    'keywords'    => 'school erp, schoolerp, school software, school management software, school management system, institute software, institute management software, institute erp, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software, online school management system, school management app, institute management system, coaching institute software, edunex erp, edunex erp',
+    'title'       => 'EduNex ERP | #1 School Management Software & Institute ERP',
+    'description' => 'EduNex ERP (also known as EduNext ERP) is the best School Management Software & Institute ERP. Automates student attendance, online fee collection, school ERP, payroll, library & more. Trusted by 100+ schools and institutes. Try free.',
+    'keywords'    => 'edunex, edunext, edunex erp, edunext erp, edunexerp, EduNex ERP, EduNext ERP, school erp, schoolerp, school software, school management software, school management system, institute software, institute management software, institute erp, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software, online school management system, school management app, institute management system, coaching institute software',
     'image'       => null,
 ])
 
@@ -10,6 +10,10 @@
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
 <meta name="keywords" content="{{ $keywords }}">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="EduNex ERP by Engenius Digitech">
+<meta name="application-name" content="EduNex ERP">
+<meta name="theme-color" content="#1B75D7">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -37,18 +41,36 @@
     {
       "@@type": "Organization",
       "name": "EduNex ERP",
-      "alternateName": "EduNex ERP Software",
+      "alternateName": ["EduNext ERP", "Edunex", "Edunext", "EduNex School ERP", "EduNex Institute ERP"],
       "url": "{{ url('/') }}",
-      "logo": "{{ asset('images/logo.png') }}",
+      "logo": {
+        "@@type": "ImageObject",
+        "url": "{{ asset('images/logo.png') }}",
+        "width": 200,
+        "height": 60
+      },
       "sameAs": [
-        "https://www.linkedin.com/company/engenius-digitech/"
+        "https://www.linkedin.com/company/engenius-digitech/",
+        "https://edunexerp.online",
+        "https://www.facebook.com/edunexerp",
+        "https://twitter.com/edunexerp",
+        "https://www.youtube.com/@edunexerp",
+        "https://www.instagram.com/edunexerp"
       ],
-      "description": "EduNex ERP — The best School Management Software, School ERP, and Institute Management System. Built by educators, for educators."
+      "contactPoint": {
+        "@@type": "ContactPoint",
+        "contactType": "customer support",
+        "availableLanguage": ["English", "Hindi"],
+        "contactOption": "TollFree"
+      },
+      "description": "EduNex ERP (also known as EduNext ERP or Edunex) — The best School Management Software, School ERP, and Institute Management System. Built by educators, for educators."
     },
     {
       "@@type": "WebSite",
       "name": "EduNex ERP",
+      "alternateName": "EduNext ERP",
       "url": "{{ url('/') }}",
+      "description": "EduNex ERP: School Management Software and Institute ERP System",
       "potentialAction": {
         "@@type": "SearchAction",
         "target": {
@@ -61,6 +83,7 @@
     {
       "@@type": "SoftwareApplication",
       "name": "EduNex ERP",
+      "alternateName": ["EduNext ERP", "Edunex School Software", "Edunext School Software"],
       "operatingSystem": "Web, Android, iOS",
       "applicationCategory": "EducationalApplication",
       "aggregateRating": {
@@ -71,7 +94,7 @@
       "offers": {
         "@@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD",
+        "priceCurrency": "INR",
         "description": "Free 7-day trial available for schools and institutes."
       },
       "applicationSubCategory": "School Management Software, Institute ERP, School ERP, Coaching Center Software",

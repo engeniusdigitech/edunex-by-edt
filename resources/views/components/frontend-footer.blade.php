@@ -73,12 +73,24 @@
                 <!-- Brand -->
                 <div class="col-lg-4">
                     <div class="ft-brand">
-                        <img src="{{ asset('images/logo.png') }}" alt="EduNex ERP" style="height:52px;">
+                        <img src="{{ asset('images/logo.png') }}" alt="EduNex ERP — School Management Software & Institute ERP" style="height:52px;">
                     </div>
-                    <p class="ft-tagline">The AI-powered platform for modern institutes. Built by educators, for educators — across coaching centers, schools, and skill institutes.</p>
-                    <div class="ft-social">
-                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" title="LinkedIn">
+                    <p class="ft-tagline">EduNex ERP (also known as EduNext ERP) — the AI-powered platform for modern institutes. Built by educators, for educators — across coaching centers, schools, and skill institutes.</p>
+                    <div class="ft-social" style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" rel="noopener" title="EduNex ERP on LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/edunexerp" target="_blank" rel="noopener" title="EduNex ERP on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/edunexerp" target="_blank" rel="noopener" title="EduNex ERP on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/edunexerp" target="_blank" rel="noopener" title="EduNex ERP on Twitter">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@edunexerp" target="_blank" rel="noopener" title="EduNex ERP on YouTube">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -130,7 +142,7 @@
     </div>
 
     <div class="ft-bottom">
-        <p class="ft-copy">© {{ date('Y') }} EduNex ERP. All rights reserved.</p>
-        <p class="ft-made-by">A product of <a href="https://engeniusdigitech.netlify.app" target="_blank">Engenius Digitech</a></p>
+        <p class="ft-copy">© {{ date('Y') }} EduNex ERP. All rights reserved. &nbsp;·&nbsp; Also known as <strong>EduNext ERP</strong></p>
+        <p class="ft-made-by">A product of <a href="https://engeniusdigitech.netlify.app" target="_blank" rel="noopener">Engenius Digitech</a></p>
     </div>
 </footer>

@@ -112,7 +112,7 @@
             @endif
             <div>
                 <h4 class="fw-bold mb-0 text-dark">{{ $staffPayroll->user->institute->name ?? 'EduNex ERP Institution' }}</h4>
-                <span class="text-muted small">{{ $staffPayroll->user->institute->contact_email ?? 'support@edunex-erp.com' }} | {{ $staffPayroll->user->institute->phone ?? 'Gate Office' }}</span>
+                <span class="text-muted small">{{ $staffPayroll->user->institute->contact_email ?? 'engeniusdigitech@gmail.com' }} | {{ $staffPayroll->user->institute->phone ?? 'Gate Office' }}</span>
             </div>
         </div>
         <div class="text-md-end">

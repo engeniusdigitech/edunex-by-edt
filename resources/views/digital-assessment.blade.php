@@ -156,7 +156,7 @@ body {
 }
 .dap-hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 150px 0 80px; position: relative; z-index: 2;
+    padding: 100px 0 80px; position: relative; z-index: 2;
 }
 
 /* Hero Kicker */

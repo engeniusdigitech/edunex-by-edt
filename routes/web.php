@@ -23,6 +23,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ── Brand Search Routes (edunex / edunext) ──────────────────────────────
+// These dedicated pages help Google associate brand searches with this site
+Route::get('/edunex', function () {
+    return view('welcome');
+})->name('brand.edunex');
+
+Route::get('/edunext', function () {
+    return view('welcome');
+})->name('brand.edunext');
+
+Route::get('/edunex-erp', function () {
+    return view('welcome');
+})->name('brand.edunex-erp');
+
+Route::get('/edunext-erp', function () {
+    return view('welcome');
+})->name('brand.edunext-erp');
+
+Route::get('/edunexerp', function () {
+    return redirect()->route('brand.edunex-erp', [], 301);
+})->name('brand.edunexerp');
+
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -68,6 +91,22 @@ Route::get('/features/transit-tracking', function () {
 Route::get('/features/statutory-payroll', function () {
     return view('features.statutory-payroll');
 })->name('features.statutory-payroll');
+
+Route::get('/features/inventory-management', function () {
+    return view('features.inventory-management');
+})->name('features.inventory-management');
+
+Route::get('/features/hostel-management', function () {
+    return view('features.hostel-management');
+})->name('features.hostel-management');
+
+Route::get('/features/library-management', function () {
+    return view('features.library-management');
+})->name('features.library-management');
+
+Route::get('/features/accounting-tally', function () {
+    return view('features.accounting-tally');
+})->name('features.accounting-tally');
 
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
