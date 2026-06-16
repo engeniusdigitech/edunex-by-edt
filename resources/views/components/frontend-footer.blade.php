@@ -80,17 +80,8 @@
                         <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" rel="noopener" title="EduNex ERP on LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.facebook.com/edunexerp" target="_blank" rel="noopener" title="EduNex ERP on Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/edunexerp" target="_blank" rel="noopener" title="EduNex ERP on Instagram">
+                        <a href="https://www.instagram.com/engenius.digitech" target="_blank" rel="noopener" title="EDT on Instagram">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://twitter.com/edunexerp" target="_blank" rel="noopener" title="EduNex ERP on Twitter">
-                            <i class="fab fa-x-twitter"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@edunexerp" target="_blank" rel="noopener" title="EduNex ERP on YouTube">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -103,8 +94,6 @@
                         <li><a href="{{ url('/') }}#staff">AI Biometrics</a></li>
                         <li><a href="{{ route('pricing') }}">Pricing</a></li>
                         <li><a href="{{ route('trial.request') }}">Live Demo</a></li>
-                        <li><a href="{{ url('/school-erp-locations') }}">School ERP Directory</a></li>
-                        <li><a href="{{ url('/institute-erp-locations') }}">Institute ERP Directory</a></li>
                     </ul>
                 </div>
 
