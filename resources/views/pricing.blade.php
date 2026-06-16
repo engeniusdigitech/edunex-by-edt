@@ -328,6 +328,7 @@ section{background:transparent!important;}
     padding: 100px 0;
     border-top: 1px solid var(--border);
     position: relative;
+    overflow: hidden;
 }
 .comparison-section::before {
     content: '';
@@ -347,6 +348,7 @@ section{background:transparent!important;}
     padding: 36px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 .comp-table {
     width: 100%;
@@ -466,6 +468,138 @@ section{background:transparent!important;}
     .pricing-card { padding: 36px 20px; }
     .comp-table-wrap { padding: 20px; }
 }
+
+@media (max-width: 576px) {
+    /* Hero Section */
+    .pricing-hero {
+        padding: 80px 0 40px !important;
+    }
+    .page-h1 {
+        font-size: 2.0rem !important;
+        letter-spacing: -1.5px !important;
+        line-height: 1.15 !important;
+    }
+    .page-sub {
+        font-size: 0.9rem !important;
+        line-height: 1.6 !important;
+        padding: 0 10px;
+    }
+
+    /* Interactive Inline ChatGPT Banner */
+    .ai-banner-btn {
+        padding: 6px 12px !important;
+        font-size: 0.72rem !important;
+        gap: 6px !important;
+        margin-top: 16px !important;
+        max-width: 100%;
+        white-space: nowrap;
+    }
+    .ai-banner-btn img {
+        width: 14px !important;
+        height: 14px !important;
+        flex-shrink: 0;
+    }
+    .ai-banner-btn i {
+        font-size: 0.6rem !important;
+        flex-shrink: 0;
+    }
+
+    /* Billing Switcher */
+    .pricing-toggle-wrap {
+        padding: 4px 6px !important;
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        margin-top: 15px !important;
+    }
+    .pricing-toggle-btn {
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
+        flex: 1;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    /* Pricing Cards */
+    .pricing-card {
+        padding: 28px 16px !important;
+        border-radius: 18px !important;
+    }
+    .plan-icon {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 18px !important;
+    }
+    .plan-name {
+        font-size: 1.25rem !important;
+    }
+    .plan-subtitle {
+        font-size: 0.72rem !important;
+        margin-bottom: 16px !important;
+    }
+    .plan-price-wrap {
+        margin-bottom: 20px !important;
+        min-height: 70px !important;
+    }
+    .price-number {
+        font-size: 2.3rem !important;
+    }
+    .plan-features {
+        margin-bottom: 24px !important;
+    }
+    .plan-features li {
+        font-size: 0.8rem !important;
+        gap: 8px !important;
+        padding: 8px 0 !important;
+    }
+    .plan-btn {
+        padding: 10px 18px !important;
+        font-size: 0.85rem !important;
+        border-radius: 10px !important;
+    }
+
+    /* Stats Strip */
+    .stats-strip {
+        padding: 30px 0 !important;
+    }
+    .stat-val {
+        font-size: 1.6rem !important;
+    }
+    .stat-lbl {
+        font-size: 0.65rem !important;
+    }
+
+    /* Detailed Feature Matrix Sticky Layout */
+    .comp-table th:first-child,
+    .comp-table td:first-child {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        left: 0 !important;
+        background: hsl(222, 47%, 6%) !important;
+        z-index: 5 !important;
+        width: 140px !important;
+        min-width: 140px !important;
+        border-right: 1px solid var(--border) !important;
+    }
+    .comp-table tr.category-row td {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        left: 0 !important;
+        background: rgba(255, 255, 255, 0.02) !important;
+        z-index: 4 !important;
+    }
+
+    /* FAQ accordion adjustments */
+    .accordion-button {
+        padding: 16px 20px !important;
+        font-size: 0.85rem !important;
+    }
+    .accordion-body {
+        padding: 0 20px 18px !important;
+        font-size: 0.8rem !important;
+    }
+}
 </style>
 </head>
 <body>
@@ -477,11 +611,11 @@ section{background:transparent!important;}
         <div class="eyebrow"><i class="fas fa-tag"></i> PRICING PLANS</div>
         <h1 class="page-h1">Choose the perfect plan<br>for your <span class="g-text">Institute</span></h1>
         <p class="page-sub">Simple, predictable pricing plans designed to help institutes digitalize seamlessly, improve operations, and connect better with parents.</p>
-        <!-- Interactive Inline ChatGPT Badge -->
+        <!-- Interactive Inline Perplexity Badge -->
         <div class="d-flex justify-content-center">
-            <a href="https://chatgpt.com/?q=About+Edunex+erp+by+Engenius+Digitech" target="_blank" class="ai-banner-btn">
-                <img src="{{ asset('images/gpt.jpeg') }}" alt="ChatGPT">
-                <span>Ask ChatGPT about Edunex ERP</span>
+            <a href="https://www.perplexity.ai/search?q=About+Edunex+erp+by+Engenius+Digitech" target="_blank" class="ai-banner-btn">
+                <img src="{{ asset('images/gpt.png') }}" alt="Perplexity">
+                <span>Ask Perplexity about Edunex ERP</span>
                 <i class="fas fa-arrow-up-right-from-square ms-2" style="font-size: 0.68rem; opacity: 0.8;"></i>
             </a>
         </div>
@@ -489,9 +623,9 @@ section{background:transparent!important;}
         <!-- Billing Switcher -->
         <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-4">
             <div class="pricing-toggle-wrap">
-                <button class="pricing-toggle-btn active" id="btn-monthly" onclick="setBillingCycle('monthly')">Monthly Billing</button>
+                <button class="pricing-toggle-btn active" id="btn-monthly" onclick="setBillingCycle('monthly')">Monthly</button>
                 <button class="pricing-toggle-btn" id="btn-annual" onclick="setBillingCycle('annual')">
-                    Annual Billing <span class="badge bg-success-subtle text-success ms-1" style="font-size:0.65rem;">Save 20%</span>
+                    Annually <span class="badge bg-success-subtle text-success ms-1" style="font-size:0.65rem;">Save 20%</span>
                 </button>
             </div>
         </div>

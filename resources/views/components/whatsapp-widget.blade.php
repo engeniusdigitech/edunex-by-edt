@@ -157,6 +157,34 @@
         opacity: 1;
         transform: translateY(-50%) scale(1);
     }
+
+    @media (max-width: 576px) {
+        .whatsapp-widget {
+            bottom: 15px !important;
+            left: 15px !important;
+        }
+        .whatsapp-btn {
+            width: 44px !important;
+            height: 44px !important;
+            font-size: 22px !important;
+        }
+        .whatsapp-form-card {
+            bottom: 52px !important;
+            left: 0 !important;
+            width: 250px !important;
+        }
+        .gpt-widget {
+            bottom: 15px !important;
+            right: 15px !important;
+        }
+        .gpt-btn {
+            width: 44px !important;
+            height: 44px !important;
+        }
+        .gpt-tooltip {
+            display: none !important;
+        }
+    }
 </style>
 
 <!-- Backdrop -->
@@ -206,11 +234,11 @@
     </button>
 </div>
 
-<!-- Floating ChatGPT Widget -->
+<!-- Floating Perplexity Widget -->
 <div class="gpt-widget">
-    <a href="https://chatgpt.com/?q=About+Edunex+erp+by+Engenius+Digitech" target="_blank" class="gpt-btn">
-        <img src="{{ asset('images/gpt.jpeg') }}" alt="ChatGPT">
-        <span class="gpt-tooltip">Ask ChatGPT about us</span>
+    <a href="https://www.perplexity.ai/search?q=About+Edunex+erp+by+Engenius+Digitech" target="_blank" class="gpt-btn">
+        <img src="{{ asset('images/gpt.png') }}" alt="Perplexity">
+        <span class="gpt-tooltip">Ask Perplexity about us</span>
     </a>
 </div>
 <script>

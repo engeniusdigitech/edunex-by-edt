@@ -3,6 +3,19 @@
 @section('title', 'Payment Receipt')
 
 @section('content')
+@php
+    $currencyCode = strtoupper($payment->currency ?? 'INR');
+    $currencySymbols = [
+        'INR' => '₹',
+        'USD' => '$',
+        'EUR' => '€',
+        'GBP' => '£',
+        'JPY' => '¥',
+        'AUD' => '$',
+        'CAD' => '$',
+    ];
+    $currencySymbol = $currencySymbols[$currencyCode] ?? $currencyCode;
+@endphp
 <div class="container py-4 animate__animated animate__fadeIn">
 
     {{-- Back button --}}
@@ -117,7 +130,7 @@
                                         <div class="small text-muted">Category: {{ $payment->feeStructure->category->name ?? 'General' }}</div>
                                     </td>
                                     <td class="py-3 text-end pe-3 fw-bold text-dark fs-5">
-                                        ₹{{ number_format($payment->amount_paid, 2) }}
+                                        {{ $currencySymbol }}{{ number_format($payment->amount_paid, 2) }}
                                     </td>
                                 </tr>
 
@@ -127,21 +140,21 @@
                                     @if($prevPaid > 0)
                                     <tr>
                                         <td class="ps-3 py-2 text-muted small">Previously Paid</td>
-                                        <td class="py-2 text-end pe-3 text-muted small fw-medium">+ ₹{{ number_format($prevPaid, 2) }}</td>
+                                        <td class="py-2 text-end pe-3 text-muted small fw-medium">+ {{ $currencySymbol }}{{ number_format($prevPaid, 2) }}</td>
                                     </tr>
                                     @endif
                                     <tr class="table-light">
                                         <td class="ps-3 py-3 fw-semibold text-dark">Total Paid to Date</td>
-                                        <td class="py-3 text-end pe-3 fw-bold text-success fs-6">₹{{ number_format($studentFee->paid_amount, 2) }}</td>
+                                        <td class="py-3 text-end pe-3 fw-bold text-success fs-6">{{ $currencySymbol }}{{ number_format($studentFee->paid_amount, 2) }}</td>
                                     </tr>
                                     <tr>
                                         <td class="ps-3 py-2 text-muted small">Total Fee Amount</td>
-                                        <td class="py-2 text-end pe-3 text-muted small fw-medium">₹{{ number_format($studentFee->amount, 2) }}</td>
+                                        <td class="py-2 text-end pe-3 text-muted small fw-medium">{{ $currencySymbol }}{{ number_format($studentFee->amount, 2) }}</td>
                                     </tr>
                                     @if($studentFee->due_amount > 0)
                                     <tr class="table-warning">
                                         <td class="ps-3 py-3 fw-semibold text-warning-emphasis">Outstanding Balance</td>
-                                        <td class="py-3 text-end pe-3 fw-bold text-danger">₹{{ number_format($studentFee->due_amount, 2) }}</td>
+                                        <td class="py-3 text-end pe-3 fw-bold text-danger">{{ $currencySymbol }}{{ number_format($studentFee->due_amount, 2) }}</td>
                                     </tr>
                                     @else
                                     <tr class="table-success">
@@ -160,16 +173,16 @@
                     <div class="row g-0 text-center border-bottom">
                         <div class="col-4 p-3 border-end">
                             <div class="small text-muted text-uppercase fw-semibold mb-1" style="font-size:0.6rem; letter-spacing:1px;">Total Fee</div>
-                            <div class="fw-bold text-dark">₹{{ number_format($studentFee->amount, 2) }}</div>
+                            <div class="fw-bold text-dark">{{ $currencySymbol }}{{ number_format($studentFee->amount, 2) }}</div>
                         </div>
                         <div class="col-4 p-3 border-end">
                             <div class="small text-muted text-uppercase fw-semibold mb-1" style="font-size:0.6rem; letter-spacing:1px;">This Payment</div>
-                            <div class="fw-bold text-success">₹{{ number_format($payment->amount_paid, 2) }}</div>
+                            <div class="fw-bold text-success">{{ $currencySymbol }}{{ number_format($payment->amount_paid, 2) }}</div>
                         </div>
                         <div class="col-4 p-3">
                             <div class="small text-muted text-uppercase fw-semibold mb-1" style="font-size:0.6rem; letter-spacing:1px;">Balance</div>
                             <div class="fw-bold {{ $studentFee->due_amount > 0 ? 'text-danger' : 'text-success' }}">
-                                ₹{{ number_format($studentFee->due_amount, 2) }}
+                                {{ $currencySymbol }}{{ number_format($studentFee->due_amount, 2) }}
                             </div>
                         </div>
                     </div>

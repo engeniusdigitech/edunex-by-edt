@@ -316,11 +316,52 @@
         @endif
     </div>
 
-    {{-- ── ROW 3: ATTENDANCE TREND + BATCH DONUT + RECENT PAYMENTS ── --}}
+    {{-- ── ROW 3: ATTENDANCE TREND + REALTIME GATE TICKER ── --}}
+    @php
+        $showAttendanceTrend = !auth()->user()->isReceptionist();
+        $showLiveGateTicker = auth()->user()->institute && auth()->user()->institute->feature_visitor;
+        $showRecentPayments = !auth()->user()->isPrincipal() && auth()->user()->institute && auth()->user()->institute->feature_fees;
+        
+        // Determine column widths for Row 3 (Stretched Gate Register Ticker)
+        if ($showAttendanceTrend && $showLiveGateTicker) {
+            $attendanceCol = 'col-lg-5';
+            $gateCol = 'col-lg-7';
+        } elseif ($showAttendanceTrend) {
+            $attendanceCol = 'col-lg-12';
+        } elseif ($showLiveGateTicker) {
+            $gateCol = 'col-lg-12';
+        }
+
+        $showVisitorTrend = auth()->user()->institute && auth()->user()->institute->feature_visitor;
+        $showStudentsByBatch = !auth()->user()->isReceptionist();
+
+        // Determine column widths for Row 4 (Visitor Trend, Students by Batch, and Recent Payments)
+        if ($showVisitorTrend && $showStudentsByBatch && $showRecentPayments) {
+            $visitorTrendCol = 'col-lg-5';
+            $batchCol = 'col-lg-3';
+            $paymentsCol = 'col-lg-4';
+        } elseif ($showVisitorTrend && $showStudentsByBatch) {
+            $visitorTrendCol = 'col-lg-8';
+            $batchCol = 'col-lg-4';
+        } elseif ($showVisitorTrend && $showRecentPayments) {
+            $visitorTrendCol = 'col-lg-8';
+            $paymentsCol = 'col-lg-4';
+        } elseif ($showStudentsByBatch && $showRecentPayments) {
+            $batchCol = 'col-lg-4';
+            $paymentsCol = 'col-lg-8';
+        } elseif ($showVisitorTrend) {
+            $visitorTrendCol = 'col-lg-12';
+        } elseif ($showStudentsByBatch) {
+            $batchCol = 'col-lg-12';
+        } elseif ($showRecentPayments) {
+            $paymentsCol = 'col-lg-12';
+        }
+    @endphp
+
     <div class="row g-4 mb-4">
-        @if(!auth()->user()->isReceptionist())
+        @if($showAttendanceTrend)
         {{-- 7-day Attendance % Bar Chart --}}
-        <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-8' : 'col-lg-5' }}">
+        <div class="{{ $attendanceCol }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <h6 class="fw-medium text-dark mb-0">Attendance Trend</h6>
@@ -333,76 +374,9 @@
         </div>
         @endif
 
-        @if(!auth()->user()->isReceptionist())
-        {{-- Students per Batch --}}
-        <div class="{{ auth()->user()->isPrincipal() ? 'col-lg-4' : 'col-lg-3' }}">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
-                <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                    <h6 class="fw-medium text-dark mb-0">Students by Batch</h6>
-                    <p class="text-muted small mb-0">Distribution</p>
-                </div>
-                <div class="card-body p-4 d-flex align-items-center justify-content-center" style="min-height:220px;">
-                    <canvas id="batchChart"></canvas>
-                </div>
-            </div>
-        </div>
-        @endif
-
-        @if(!auth()->user()->isPrincipal() && auth()->user()->institute && auth()->user()->institute->feature_fees)
-        {{-- Recent Payments --}}
-        <div class="col-lg-4">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
-                <div
-                    class="card-header bg-white border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
-                    <h6 class="fw-medium text-dark mb-0">Recent Payments</h6>
-                    <a href="{{ route('payments.index') }}" class="text-primary fw-semibold" style="font-size:0.72rem;">View
-                        all</a>
-                </div>
-                <div class="card-body p-0">
-                    @forelse($recentPayments as $payment)
-                        <div class="d-flex align-items-center px-4 py-2 border-bottom" style="border-color:#F8FAFC!important;">
-                            <div class="me-3 rounded-2 d-flex align-items-center justify-content-center fw-medium text-white flex-shrink-0"
-                                style="width:34px;height:34px;background:linear-gradient(135deg,#2563EB,#38BDF8);font-size:0.72rem;">
-                                {{ strtoupper(substr($payment->student->name ?? 'N', 0, 2)) }}
-                            </div>
-                            <div class="flex-grow-1 min-w-0">
-                                <div class="fw-semibold text-dark text-truncate" style="font-size:0.8rem;">
-                                    {{ $payment->student->name ?? '—' }}</div>
-                                <div class="text-muted" style="font-size:0.68rem;">{{ $payment->payment_date->format('d M Y') }}
-                                </div>
-                            </div>
-                            <div class="fw-medium text-success ms-2" style="font-size:0.82rem;white-space:nowrap;">
-                                ₹{{ number_format($payment->amount_paid, 0) }}</div>
-                        </div>
-                    @empty
-                        <div class="text-center py-4 text-muted small">No payments this month.</div>
-                    @endforelse
-                </div>
-            </div>
-        </div>
-        @endif
-    </div>
-
-    {{-- ── ROW 4: PREMIUM VISITOR TREND & REALTIME TICKERS ── --}}
-    @if(auth()->user()->institute && auth()->user()->institute->feature_visitor)
-    <div class="row g-4 mb-4">
-        {{-- Visitor Entries Trend --}}
-        <div class="col-lg-6">
-            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04); background: #ffffff;">
-                <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                    <h6 class="fw-semibold text-dark mb-0">Visitor Traffic Trend</h6>
-                    <p class="text-muted small mb-0">Daily registrations over the last 7 days</p>
-                </div>
-                <div class="card-body p-4">
-                    <div style="height: 220px; position: relative;">
-                        <canvas id="visitorTrendChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @if($showLiveGateTicker)
         {{-- Live Gate Logs --}}
-        <div class="col-lg-6">
+        <div class="{{ $gateCol }}">
             <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04); background: #ffffff;">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
                     <div>
@@ -470,6 +444,77 @@
                 </div>
             </div>
         </div>
+        @endif
+    </div>
+
+    {{-- ── ROW 4: PREMIUM VISITOR TREND, BATCH DONUT CHART & RECENT PAYMENTS ── --}}
+    @if($showVisitorTrend || $showStudentsByBatch || $showRecentPayments)
+    <div class="row g-4 mb-4">
+        @if($showVisitorTrend)
+        {{-- Visitor Entries Trend --}}
+        <div class="{{ $visitorTrendCol }}">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04); background: #ffffff;">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
+                    <h6 class="fw-semibold text-dark mb-0">Visitor Traffic Trend</h6>
+                    <p class="text-muted small mb-0">Daily registrations over the last 7 days</p>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 220px; position: relative;">
+                        <canvas id="visitorTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if($showStudentsByBatch)
+        {{-- Students per Batch --}}
+        <div class="{{ $batchCol }}">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
+                <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
+                    <h6 class="fw-medium text-dark mb-0">Students by Batch</h6>
+                    <p class="text-muted small mb-0">Distribution</p>
+                </div>
+                <div class="card-body p-4 d-flex align-items-center justify-content-center" style="min-height:220px;">
+                    <canvas id="batchChart"></canvas>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if($showRecentPayments)
+        {{-- Recent Payments --}}
+        <div class="{{ $paymentsCol }}">
+            <div class="card border-0 h-100" style="border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
+                <div
+                    class="card-header bg-white border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
+                    <h6 class="fw-medium text-dark mb-0">Recent Payments</h6>
+                    <a href="{{ route('payments.index') }}" class="text-primary fw-semibold" style="font-size:0.72rem;">View
+                        all</a>
+                </div>
+                <div class="card-body p-0">
+                    @forelse($recentPayments as $payment)
+                        <div class="d-flex align-items-center px-4 py-2 border-bottom" style="border-color:#F8FAFC!important;">
+                            <div class="me-3 rounded-2 d-flex align-items-center justify-content-center fw-medium text-white flex-shrink-0"
+                                style="width:34px;height:34px;background:linear-gradient(135deg,#2563EB,#38BDF8);font-size:0.72rem;">
+                                {{ strtoupper(substr($payment->student->name ?? 'N', 0, 2)) }}
+                            </div>
+                            <div class="flex-grow-1 min-w-0">
+                                <div class="fw-semibold text-dark text-truncate" style="font-size:0.8rem;">
+                                    {{ $payment->student->name ?? '—' }}</div>
+                                <div class="text-muted" style="font-size:0.68rem;">{{ $payment->payment_date->format('d M Y') }}
+                                </div>
+                            </div>
+                            <div class="fw-medium text-success ms-2" style="font-size:0.82rem;white-space:nowrap;">
+                                ₹{{ number_format($payment->amount_paid, 0) }}</div>
+                        </div>
+                    @empty
+                        <div class="text-center py-4 text-muted small">No payments this month.</div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
     @endif
 
@@ -493,141 +538,156 @@
     <script>
         @if(!auth()->user()->isPrincipal())
         // ── 6-Month Revenue Line Chart ──
-        const revCtx = document.getElementById('revenueChart').getContext('2d');
-        const revData = @json($revenueData);
-        const revGrad = revCtx.createLinearGradient(0, 0, 0, 300);
-        revGrad.addColorStop(0, 'rgba(37,99,235,0.2)');
-        revGrad.addColorStop(1, 'rgba(37,99,235,0.0)');
-        new Chart(revCtx, {
-            type: 'line',
-            data: {
-                labels: Object.keys(revData),
-                datasets: [{
-                    label: 'Revenue (₹)',
-                    data: Object.values(revData),
-                    borderColor: '#2563EB',
-                    backgroundColor: revGrad,
-                    borderWidth: 2.5,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#2563EB',
-                    pointBorderWidth: 2,
-                    pointRadius: 4,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: v => '₹' + v.toLocaleString() } },
-                    x: { grid: { display: false } }
+        const revCanvas = document.getElementById('revenueChart');
+        if (revCanvas) {
+            const revCtx = revCanvas.getContext('2d');
+            const revData = @json($revenueData);
+            const revGrad = revCtx.createLinearGradient(0, 0, 0, 300);
+            revGrad.addColorStop(0, 'rgba(37,99,235,0.2)');
+            revGrad.addColorStop(1, 'rgba(37,99,235,0.0)');
+            new Chart(revCtx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(revData),
+                    datasets: [{
+                        label: 'Revenue (₹)',
+                        data: Object.values(revData),
+                        borderColor: '#2563EB',
+                        backgroundColor: revGrad,
+                        borderWidth: 2.5,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#2563EB',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: v => '₹' + v.toLocaleString() } },
+                        x: { grid: { display: false } }
+                    }
                 }
-            }
-        });
+            });
+        }
         @endif
 
         // ── Today's Attendance Ring ──
         @if($todayAttendancePct !== null)
-            const ringCtx = document.getElementById('attendanceRing').getContext('2d');
-            const pct = {{ $todayAttendancePct }};
-            new Chart(ringCtx, {
-                type: 'doughnut',
-                data: {
-                    datasets: [{
-                        data: [pct, 100 - pct],
-                        backgroundColor: [pct >= 75 ? '#10B981' : '#EF4444', '#F1F5F9'],
-                        borderWidth: 0
-                    }]
-                },
-                options: { cutout: '78%', plugins: { legend: { display: false }, tooltip: { enabled: false } }, animation: { animateRotate: true } }
-            });
+            const ringCanvas = document.getElementById('attendanceRing');
+            if (ringCanvas) {
+                const ringCtx = ringCanvas.getContext('2d');
+                const pct = {{ $todayAttendancePct }};
+                new Chart(ringCtx, {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [pct, 100 - pct],
+                            backgroundColor: [pct >= 75 ? '#10B981' : '#EF4444', '#F1F5F9'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: { cutout: '78%', plugins: { legend: { display: false }, tooltip: { enabled: false } }, animation: { animateRotate: true } }
+                });
+            }
         @endif
 
-    // ── 7-Day Attendance Trend Bar ──
-    const trendCtx = document.getElementById('attendanceTrendChart').getContext('2d');
-        const trendData = @json($attendanceTrend);
-        new Chart(trendCtx, {
-            type: 'bar',
-            data: {
-                labels: Object.keys(trendData),
-                datasets: [{
-                    label: 'Attendance %',
-                    data: Object.values(trendData),
-                    backgroundColor: Object.values(trendData).map(v => v >= 75 ? 'rgba(16,185,129,0.75)' : 'rgba(239,68,68,0.7)'),
-                    borderRadius: 6,
-                    borderSkipped: false,
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.raw + '%' } } },
-                scales: {
-                    y: { beginAtZero: true, max: 100, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: v => v + '%' } },
-                    x: { grid: { display: false } }
+        // ── 7-Day Attendance Trend Bar ──
+        const trendCanvas = document.getElementById('attendanceTrendChart');
+        if (trendCanvas) {
+            const trendCtx = trendCanvas.getContext('2d');
+            const trendData = @json($attendanceTrend);
+            new Chart(trendCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(trendData),
+                    datasets: [{
+                        label: 'Attendance %',
+                        data: Object.values(trendData),
+                        backgroundColor: Object.values(trendData).map(v => v >= 75 ? 'rgba(16,185,129,0.75)' : 'rgba(239,68,68,0.7)'),
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.raw + '%' } } },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: v => v + '%' } },
+                        x: { grid: { display: false } }
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // ── Students per Batch Donut ──
-        const batchCtx = document.getElementById('batchChart').getContext('2d');
-        const batchData = @json($studentsPerBatch);
-        new Chart(batchCtx, {
-            type: 'doughnut',
-            data: {
-                labels: Object.keys(batchData),
-                datasets: [{
-                    data: Object.values(batchData),
-                    backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#10B981', '#14B8A6', '#06B6D4'],
-                    borderWidth: 0,
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '68%',
-                plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 12, font: { size: 10 } } } }
-            }
-        });
+        const batchCanvas = document.getElementById('batchChart');
+        if (batchCanvas) {
+            const batchCtx = batchCanvas.getContext('2d');
+            const batchData = @json($studentsPerBatch);
+            new Chart(batchCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(batchData),
+                    datasets: [{
+                        data: Object.values(batchData),
+                        backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#10B981', '#14B8A6', '#06B6D4'],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '68%',
+                    plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 12, font: { size: 10 } } } }
+                }
+            });
+        }
 
         // ── Visitor Traffic Trend Line Chart ──
-        const visCtx = document.getElementById('visitorTrendChart').getContext('2d');
-        const visData = @json($visitorTrend);
-        const visGrad = visCtx.createLinearGradient(0, 0, 0, 180);
-        visGrad.addColorStop(0, 'rgba(25, 135, 84, 0.15)');
-        visGrad.addColorStop(1, 'rgba(25, 135, 84, 0.0)');
-        new Chart(visCtx, {
-            type: 'line',
-            data: {
-                labels: Object.keys(visData),
-                datasets: [{
-                    label: 'Visitors',
-                    data: Object.values(visData),
-                    borderColor: '#198754',
-                    backgroundColor: visGrad,
-                    borderWidth: 2,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#198754',
-                    pointBorderWidth: 1.5,
-                    pointRadius: 3,
-                    fill: true,
-                    tension: 0.35
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { 
-                        beginAtZero: true, 
-                        grid: { color: 'rgba(0,0,0,0.03)' }, 
-                        ticks: { stepSize: 1, font: { size: 9 } } 
-                    },
-                    x: { grid: { display: false }, ticks: { font: { size: 9 } } }
+        const visCanvas = document.getElementById('visitorTrendChart');
+        if (visCanvas) {
+            const visCtx = visCanvas.getContext('2d');
+            const visData = @json($visitorTrend);
+            const visGrad = visCtx.createLinearGradient(0, 0, 0, 180);
+            visGrad.addColorStop(0, 'rgba(25, 135, 84, 0.15)');
+            visGrad.addColorStop(1, 'rgba(25, 135, 84, 0.0)');
+            new Chart(visCtx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(visData),
+                    datasets: [{
+                        label: 'Visitors',
+                        data: Object.values(visData),
+                        borderColor: '#198754',
+                        backgroundColor: visGrad,
+                        borderWidth: 2,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#198754',
+                        pointBorderWidth: 1.5,
+                        pointRadius: 3,
+                        fill: true,
+                        tension: 0.35
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            grid: { color: 'rgba(0,0,0,0.03)' }, 
+                            ticks: { stepSize: 1, font: { size: 9 } } 
+                        },
+                        x: { grid: { display: false }, ticks: { font: { size: 9 } } }
+                    }
                 }
-            }
-        });
+            });
+        }
     </script>
 @endpush
