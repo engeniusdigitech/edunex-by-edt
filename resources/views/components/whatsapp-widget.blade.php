@@ -96,6 +96,67 @@
             opacity: 1;
         }
     }
+
+
+
+    /* ── CHATGPT WIDGET ── */
+    .gpt-widget {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index: 9999;
+    }
+    .gpt-btn {
+        width: 56px;
+        height: 56px;
+        background-color: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(16, 163, 127, 0.35);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        text-decoration: none;
+    }
+    .gpt-btn img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    .gpt-btn:hover {
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 8px 22px rgba(16, 163, 127, 0.5);
+    }
+    .gpt-btn:hover img {
+        transform: rotate(90deg);
+    }
+    .gpt-tooltip {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%) scale(0.9);
+        background: #0d1117;
+        border: 1px solid #21262d;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        font-family: system-ui, -apple-system, sans-serif;
+    }
+    .gpt-btn:hover .gpt-tooltip {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
 </style>
 
 <!-- Backdrop -->
@@ -145,6 +206,13 @@
     </button>
 </div>
 
+<!-- Floating ChatGPT Widget -->
+<div class="gpt-widget">
+    <a href="https://chatgpt.com/?q=About+Edunex+erp+by+Engenius+Digitech" target="_blank" class="gpt-btn">
+        <img src="{{ asset('images/gpt.jpeg') }}" alt="ChatGPT">
+        <span class="gpt-tooltip">Ask ChatGPT about us</span>
+    </a>
+</div>
 <script>
     function toggleWhatsappForm() {
         const card = document.getElementById('whatsapp-form-card');

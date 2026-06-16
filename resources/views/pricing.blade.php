@@ -427,7 +427,34 @@ section{background:transparent!important;}
     font-size:0.88rem;line-height:1.8;
     padding:0 24px 22px;border-top:1px solid var(--border);
 }
-
+/* AI Banner */
+.ai-banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(16, 163, 127, 0.08);
+    border: 1px solid rgba(16, 163, 127, 0.25);
+    color: #10a37f !important;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 8px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 24px;
+}
+.ai-banner-btn:hover {
+    background: rgba(16, 163, 127, 0.16);
+    border-color: rgba(16, 163, 127, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(16, 163, 127, 0.15);
+}
+.ai-banner-btn img {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 @media(max-width:1200px){
     .pricing-card { padding: 40px 24px; }
 }
@@ -450,7 +477,15 @@ section{background:transparent!important;}
         <div class="eyebrow"><i class="fas fa-tag"></i> PRICING PLANS</div>
         <h1 class="page-h1">Choose the perfect plan<br>for your <span class="g-text">Institute</span></h1>
         <p class="page-sub">Simple, predictable pricing plans designed to help institutes digitalize seamlessly, improve operations, and connect better with parents.</p>
-        
+        <!-- Interactive Inline ChatGPT Badge -->
+        <div class="d-flex justify-content-center">
+            <a href="https://chatgpt.com/?q=About+Edunex+erp+by+Engenius+Digitech" target="_blank" class="ai-banner-btn">
+                <img src="{{ asset('images/gpt.jpeg') }}" alt="ChatGPT">
+                <span>Ask ChatGPT about Edunex ERP</span>
+                <i class="fas fa-arrow-up-right-from-square ms-2" style="font-size: 0.68rem; opacity: 0.8;"></i>
+            </a>
+        </div>
+
         <!-- Billing Switcher -->
         <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-4">
             <div class="pricing-toggle-wrap">
@@ -782,7 +817,7 @@ section{background:transparent!important;}
                         <td><i class="fa-solid fa-circle-check"></i></td>
                     </tr>
 
-                    <!-- Mobile App & Channels -->
+                    <!-- Mobile App & Communication -->
                     <tr class="category-row">
                         <td colspan="5">Mobile App & Communication</td>
                     </tr>
@@ -944,6 +979,7 @@ section{background:transparent!important;}
         </div>
     </div>
 </section>
+
 
 <x-frontend-footer/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
