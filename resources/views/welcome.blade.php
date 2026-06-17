@@ -1311,10 +1311,7 @@ body {
     <div class="container px-4">
         <div class="text-center">
             <p style="font-size: 0.8rem; color: hsl(215,20%,50%); line-height: 1.8; max-width: 700px; margin: 0 auto;">
-                <strong style="color: hsl(215,20%,65%);">EduNex ERP</strong> is the official name of our School &amp; Institute Management Platform, developed by <strong style="color: hsl(215,20%,65%);">Engenius Digitech</strong>. 
-                Our platform is also commonly referred to as <strong style="color: hsl(215,20%,65%);">EduNext ERP</strong>, <strong style="color: hsl(215,20%,65%);">Edunex</strong>, <strong style="color: hsl(215,20%,65%);">Edunext</strong>, or <em>EduNex School Software</em>.
-                Whether you are searching for <em>edunex erp</em>, <em>edunext erp</em>, <em>edunexerp</em>, or <em>edunex school management</em> — you have found the right place.
-                <a href="{{ url('/') }}" style="color: hsl(174,72%,56%); text-decoration: none;">EduNex ERP</a> serves 100+ schools and coaching institutes with AI-powered attendance, online fees, payroll, and a dedicated student mobile app.
+                <strong style="color: hsl(215,20%,65%);">EduNex ERP</strong> is a comprehensive School and Institute Management Platform developed by <strong style="color: hsl(215,20%,65%);">Engenius Digitech</strong>. Also commonly searched as <strong style="color: hsl(215,20%,65%);">EduNext ERP</strong>, <strong style="color: hsl(215,20%,65%);">Edunex</strong>, or <strong style="color: hsl(215,20%,65%);">Edunext</strong>, our AI-powered solution helps schools, colleges, coaching institutes, and educational institutions manage admissions, attendance, fee collection, examinations, payroll, communication, and academic operations from a single platform. Trusted by 100+ educational institutions, <a href="{{ url('/') }}" style="color: hsl(174,72%,56%); text-decoration: none;">EduNex ERP</a> improves efficiency, transparency, and collaboration through an integrated web and mobile app ecosystem for administrators, teachers, students, and parents.
             </p>
         </div>
     </div>
