@@ -3,9 +3,13 @@
     'description' => 'EduNex ERP (also known as EduNext ERP) is the best School Management Software & Institute ERP. Automates student attendance, online fee collection, school ERP, payroll, library & more. Trusted by 100+ schools and institutes. Try free.',
     'keywords'    => 'edunex, edunext, edunex erp, edunext erp, edunexerp, EduNex ERP, EduNext ERP, school erp, schoolerp, school software, school management software, school management system, institute software, institute management software, institute erp, coaching class software, coaching center software, training institute software, student management system, school administration software, best school management software, online school management system, school management app, institute management system, coaching institute software',
     'image'       => null,
+    'canonical'   => null,   // Pass explicit canonical URL; falls back to current URL
 ])
 
-@php $ogImage = $image ?? asset('images/og-image.png'); @endphp
+@php
+    $ogImage      = $image ?? asset('images/og-image.png');
+    $canonicalUrl = $canonical ?? url()->current();
+@endphp
 
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
@@ -17,7 +21,7 @@
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:url" content="{{ $canonicalUrl }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:image" content="{{ $ogImage }}">
@@ -25,13 +29,13 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="{{ url()->current() }}">
+<meta name="twitter:url" content="{{ $canonicalUrl }}">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:image" content="{{ $ogImage }}">
 
-<!-- Canonical URL -->
-<link rel="canonical" href="{{ url()->current() }}">
+<!-- Self-referencing Canonical URL -->
+<link rel="canonical" href="{{ $canonicalUrl }}">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">

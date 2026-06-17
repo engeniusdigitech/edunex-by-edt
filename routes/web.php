@@ -133,28 +133,44 @@ Route::get('/robots.txt', function () {
 
 // ═══════════════════════════════════════════════════════════════════════
 // SEO Landing Pages — school-erp & institute-erp location hierarchy
-// ORDER MATTERS: most-specific routes must come before wildcard {city}
+//
+// CANONICAL URL FORMAT:
+//   /{prefix}/{country}                    → country page
+//   /{prefix}/{country}/{state}            → state page
+//   /{prefix}/{country}/{state}/{city}     → city page
+//
+// ORDER MATTERS: 3-segment routes registered before 2-segment and 1-segment.
+// Legacy (old-format) routes issue 301 redirects to canonical URLs.
 // ═══════════════════════════════════════════════════════════════════════
 
-// Location Directory Hub Pages
+// ── Location Directory Hub Pages ─────────────────────────────────────
 Route::get('/school-erp-locations',    [SeoLandingController::class, 'locations'])->name('seo.locations.school');
 Route::get('/institute-erp-locations', [SeoLandingController::class, 'locations'])->name('seo.locations.institute');
 
-// ── School ERP ───────────────────────────────────────────────────────────
-Route::get('/school-erp/{country}',             [SeoLandingController::class, 'schoolCountryLanding'])->name('seo.school.country');
-Route::get('/school-erp/{state}',                 [SeoLandingController::class, 'schoolStateLanding'])->name('seo.school.state');
-Route::get('/school-erp/{city}/{state}/{country}',      [SeoLandingController::class, 'schoolCityStateCountryLanding'])->name('seo.school.city.state.country');
-Route::get('/school-erp/{city}/{state}',                [SeoLandingController::class, 'schoolCityStateLanding'])->name('seo.school.city.state');
-Route::get('/school-erp/{city}',                        [SeoLandingController::class, 'schoolLanding'])->name('seo.school.landing');
+// ── School ERP — Canonical Hierarchy ─────────────────────────────────
+// 3-segment (most specific) must be registered first
+Route::get('/school-erp/{country}/{state}/{city}', [SeoLandingController::class, 'schoolCity'])
+    ->name('seo.school.city');
 
-// ── Institute ERP ────────────────────────────────────────────────────────
-Route::get('/institute-erp/{country}',          [SeoLandingController::class, 'instituteCountryLanding'])->name('seo.institute.country');
-Route::get('/institute-erp/{state}',              [SeoLandingController::class, 'instituteStateLanding'])->name('seo.institute.state');
-Route::get('/institute-erp/{city}/{state}/{country}',   [SeoLandingController::class, 'instituteCityStateCountryLanding'])->name('seo.institute.city.state.country');
-Route::get('/institute-erp/{city}/{state}',             [SeoLandingController::class, 'instituteCityStateLanding'])->name('seo.institute.city.state');
-Route::get('/institute-erp/{city}',                     [SeoLandingController::class, 'landing'])->name('seo.landing');
+Route::get('/school-erp/{country}/{state}', [SeoLandingController::class, 'schoolState'])
+    ->name('seo.school.state');
 
+Route::get('/school-erp/{country}', [SeoLandingController::class, 'schoolCountry'])
+    ->name('seo.school.country');
+
+// ── Institute ERP — Canonical Hierarchy ──────────────────────────────
+Route::get('/institute-erp/{country}/{state}/{city}', [SeoLandingController::class, 'instituteCity'])
+    ->name('seo.institute.city');
+
+Route::get('/institute-erp/{country}/{state}', [SeoLandingController::class, 'instituteState'])
+    ->name('seo.institute.state');
+
+Route::get('/institute-erp/{country}', [SeoLandingController::class, 'instituteCountry'])
+    ->name('seo.institute.country');
+
+// ── Sitemap ───────────────────────────────────────────────────────────
 Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
+
 
 
 // Public Visitor Registration & Check-in status

@@ -1,5 +1,7 @@
 {!! $xmlHeader !!}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    {{-- ── Static Pages ──────────────────────────────────────────────────── --}}
     <url>
         <loc>{{ url('/') }}</loc>
         <lastmod>2026-05-20</lastmod>
@@ -8,25 +10,25 @@
     </url>
     <url>
         <loc>{{ url('/edunex') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>{{ url('/edunext') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>{{ url('/edunex-erp') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>{{ url('/edunext-erp') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -80,151 +82,123 @@
     </url>
     <url>
         <loc>{{ route('digital.assessment') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>{{ route('digital.assessment.landing') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>{{ route('features.visitor-gate') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('features.tally-accounting') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('features.transit-tracking') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('features.statutory-payroll') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('features.inventory-management') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('features.hostel-management') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('features.library-management') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('features.accounting-tally') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>{{ route('seo.locations.school') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2026-06-17</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>{{ route('seo.locations.institute') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2026-06-17</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-    </url>
-@foreach($locations as $slug => $loc)
-    {{-- City-only --}}
-    <url>
-        <loc>{{ url('/school-erp/' . $slug) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>{{ url('/institute-erp/' . $slug) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
     </url>
 
-    {{-- City + State --}}
-    @if(isset($loc['state_slug']))
+    {{-- ── Country Pages (canonical: /{prefix}/{country}) ─────────────────── --}}
+    @foreach($countries as $loc)
+    {{-- School ERP --}}
     <url>
-        <loc>{{ url('/school-erp/' . $slug . '/' . $loc['state_slug']) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
+        <loc>{{ url('school-erp/' . $loc->country_slug) }}</loc>
+        <lastmod>{{ $loc->lastmodString() }}</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.85</priority>
     </url>
+    {{-- Institute ERP --}}
     <url>
-        <loc>{{ url('/institute-erp/' . $slug . '/' . $loc['state_slug']) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
+        <loc>{{ url('institute-erp/' . $loc->country_slug) }}</loc>
+        <lastmod>{{ $loc->lastmodString() }}</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.85</priority>
     </url>
-    @endif
+    @endforeach
 
-    {{-- City + State + Country --}}
-    @if(isset($loc['state_slug']) && isset($loc['country_slug']))
+    {{-- ── State Pages (canonical: /{prefix}/{country}/{state}) ──────────── --}}
+    @foreach($states as $loc)
+    {{-- School ERP --}}
     <url>
-        <loc>{{ url('/school-erp/' . $slug . '/' . $loc['state_slug'] . '/' . $loc['country_slug']) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
+        <loc>{{ url('school-erp/' . $loc->country_slug . '/' . $loc->state_slug) }}</loc>
+        <lastmod>{{ $loc->lastmodString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    {{-- Institute ERP --}}
+    <url>
+        <loc>{{ url('institute-erp/' . $loc->country_slug . '/' . $loc->state_slug) }}</loc>
+        <lastmod>{{ $loc->lastmodString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+    @endforeach
+
+    {{-- ── City Pages (canonical: /{prefix}/{country}/{state}/{city}) ──────── --}}
+    @foreach($cities as $loc)
+    {{-- School ERP --}}
+    <url>
+        <loc>{{ url('school-erp/' . $loc->country_slug . '/' . $loc->state_slug . '/' . $loc->city_slug) }}</loc>
+        <lastmod>{{ $loc->lastmodString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
+    {{-- Institute ERP --}}
     <url>
-        <loc>{{ url('/institute-erp/' . $slug . '/' . $loc['state_slug'] . '/' . $loc['country_slug']) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
+        <loc>{{ url('institute-erp/' . $loc->country_slug . '/' . $loc->state_slug . '/' . $loc->city_slug) }}</loc>
+        <lastmod>{{ $loc->lastmodString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
-    @endif
-@endforeach
+    @endforeach
 
-@foreach($states as $slug => $state)
-    <url>
-        <loc>{{ url('/school-erp/' . $slug) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>{{ url('/institute-erp/' . $slug) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-@endforeach
-
-@foreach($countries as $slug => $country)
-    <url>
-        <loc>{{ url('/school-erp/' . $slug) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>{{ url('/institute-erp/' . $slug) }}</loc>
-        <lastmod>{{ $lastmod }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-@endforeach
 </urlset>

@@ -4,25 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 @php
+    use Illuminate\Support\Str;
     // Determine terminology based on page type
     $isSchool    = isset($type) && $type === 'school';
     $typeLabel   = $isSchool ? 'School'    : 'Institute';
     $erpLabel    = $isSchool ? 'School ERP' : 'Institute ERP';
     $softLabel   = $isSchool ? 'School Management Software' : 'Institute Management Software';
     $systemLabel = $isSchool ? 'School Management System'   : 'Institute Management System';
+    $prefix      = $isSchool ? 'school-erp' : 'institute-erp';
 
-    // State support: guard against null/undefined
-    $stateVal    = isset($state) && $state ? $state : null;
-    $statePart   = $stateVal ? ", {$stateVal}" : '';        // e.g. ", Maharashtra"
-    $locationStr = "{$city}{$statePart}, {$country}";      // e.g. "Pune, Maharashtra, India"
+    // Location fields — support both new model-based vars and legacy plain vars
+    $city    = $city    ?? 'India';
+    $state   = $state   ?? null;
+    $country = $country ?? 'India';
 
+    $stateVal    = $state ?: null;
+    $statePart   = $stateVal ? ", {$stateVal}" : '';
+    $locationStr = "{$city}{$statePart}, {$country}";
+
+    // Canonical URL — use model-generated URL if passed, else current URL
+    $canonicalUrl = $canonicalUrl ?? url()->current();
+
+    // Breadcrumbs — use model-generated breadcrumbs if passed, else build minimal ones
+    $breadcrumbs = $breadcrumbs ?? [
+        ['label' => 'Home',    'url' => url('/')],
+        ['label' => $country,  'url' => url("{$prefix}/" . Str::slug($country))],
+        ['label' => $city,     'url' => $canonicalUrl],
+    ];
+
+    // SEO meta — unique title + description per location
     $seoTitle = "Best {$softLabel} in {$locationStr} | {$erpLabel} & {$typeLabel} Software — EduNex ERP";
 
     $seoDesc = $isSchool
         ? "EduNex ERP is the #1 School Management Software & School ERP in {$locationStr}. Our School Management System automates student attendance, online fee collection, school payroll, library, and parent communication for schools in {$city}."
         : "EduNex ERP is the top-rated Institute Management Software & Institute ERP in {$locationStr}. Automate student attendance, fees, academics, and payroll for coaching centers and institutes in {$city}.";
 
-    $stateKw = $stateVal ? ", school erp {$stateVal}, school software {$stateVal}, school management system {$stateVal}" : '';
+    $stateKw = $stateVal ? ", {$erpLabel} {$stateVal}, school erp {$stateVal}, school management system {$stateVal}" : '';
     $seoKeywords = $isSchool
         ? "school erp {$city}, school software {$city}, school management software {$city}, school management system {$city}, schoolerp {$city}{$stateKw}, school administration software, best school management software, online school management system, school ERP {$country}, student management system, school fee management software, EduNex ERP school"
         : "institute erp {$city}, institute software {$city}, institute management software {$city}, coaching class software {$city}, coaching center software {$city}{$stateKw}, training institute software, institute management system, coaching institute ERP, student management system, EduNex ERP institute, best institute software {$city}";
@@ -31,6 +48,7 @@
         :title="$seoTitle"
         :description="$seoDesc"
         :keywords="$seoKeywords"
+        :canonical="$canonicalUrl"
     />
 
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
@@ -720,30 +738,20 @@ body {
     }
     </script>
 
-    <!-- Breadcrumb Schema JSON-LD -->
+    <!-- Hierarchical BreadcrumbList JSON-LD (dynamic, matches visual breadcrumb) -->
     <script type="application/ld+json">
     {
       "@@context": "https://schema.org",
       "@@type": "BreadcrumbList",
       "itemListElement": [
+        @foreach($breadcrumbs as $i => $crumb)
         {
           "@@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://edunex-erp.com"
-        },
-        {
-          "@@type": "ListItem",
-          "position": 2,
-          "name": "School ERP in {{ $country }}",
-          "item": "https://edunex-erp.com/school-erp-in-{{ Str::slug($country) }}"
-        },
-        {
-          "@@type": "ListItem",
-          "position": 3,
-          "name": "Best School Management Software in {{ $city }}",
-          "item": "https://edunex-erp.com/best-school-management-software-in-{{ Str::slug($city) }}"
-        }
+          "position": {{ $i + 1 }},
+          "name": "{{ addslashes($crumb['label']) }}",
+          "item": "{{ $crumb['url'] }}"
+        }{{ !$loop->last ? ',' : '' }}
+        @endforeach
       ]
     }
     </script>
@@ -752,6 +760,9 @@ body {
 <body>
 
 @include('components.frontend-navbar')
+
+
+
 
 <section class="hero">
     <div class="hero-blob blob-1"></div>
@@ -1646,6 +1657,67 @@ body {
     </div>
 </section>
 
+
+{{-- ── Internal Location Linking (SEO: passes link equity through hierarchy) ── --}}
+@if((isset($siblingsInState) && $siblingsInState->isNotEmpty()) || (isset($statesInCountry) && $statesInCountry->isNotEmpty()))
+<section style="background:hsl(222,47%,5%); padding:60px 0; border-top:1px solid hsl(217,33%,13%);">
+    <div class="container px-4">
+        <div class="text-center mb-5">
+            <span class="badge-pill"><i class="fas fa-map-marker-alt"></i> Explore Nearby</span>
+            <h2 class="sec-title mt-3" style="font-size:clamp(1.5rem,3vw,2rem);">
+                More <span class="g-text">{{ $erpLabel }}</span> Locations
+            </h2>
+        </div>
+
+        {{-- Sibling cities in the same state --}}
+        @if(isset($siblingsInState) && $siblingsInState->isNotEmpty())
+        <div class="mb-5">
+            <h3 style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:hsl(174,72%,56%); margin-bottom:18px;">
+                <i class="fas fa-city me-2"></i>Other Cities in {{ $state ?? $country }}
+            </h3>
+            <div class="row g-2">
+                @foreach($siblingsInState as $sib)
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="{{ $sib->canonicalUrl($prefix) }}"
+                       class="d-flex align-items-center gap-2 p-3 rounded"
+                       style="background:hsl(222,47%,8%); border:1px solid hsl(217,33%,17%); color:hsl(210,40%,85%); font-size:0.82rem; font-weight:500; text-decoration:none; transition:all .2s;"
+                       onmouseover="this.style.borderColor='hsla(174,72%,56%,.4)';this.style.color='hsl(174,72%,60%)'"
+                       onmouseout="this.style.borderColor='hsl(217,33%,17%)';this.style.color='hsl(210,40%,85%)'">
+                        <i class="fas fa-map-pin" style="color:hsl(174,72%,56%);font-size:.7rem;flex-shrink:0;"></i>
+                        {{ $sib->city_name }}
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
+        {{-- States in the same country --}}
+        @if(isset($statesInCountry) && $statesInCountry->isNotEmpty())
+        <div>
+            <h3 style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:hsl(217,91%,65%); margin-bottom:18px;">
+                <i class="fas fa-map me-2"></i>States &amp; Provinces in {{ $country }}
+            </h3>
+            <div class="row g-2">
+                @foreach($statesInCountry as $st)
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <a href="{{ url($prefix . '/' . $st->country_slug . '/' . $st->state_slug) }}"
+                       class="d-flex align-items-center gap-2 p-3 rounded"
+                       style="background:hsl(222,47%,8%); border:1px solid hsl(217,33%,17%); color:hsl(210,40%,85%); font-size:0.82rem; font-weight:500; text-decoration:none; transition:all .2s;"
+                       onmouseover="this.style.borderColor='hsla(217,91%,60%,.4)';this.style.color='hsl(217,91%,70%)'"
+                       onmouseout="this.style.borderColor='hsl(217,33%,17%)';this.style.color='hsl(210,40%,85%)'">
+                        <i class="fas fa-layer-group" style="color:hsl(217,91%,60%);font-size:.7rem;flex-shrink:0;"></i>
+                        {{ $st->state_name }}
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+    </div>
+</section>
+@endif
+
 <!-- ══════════════ CTA ══════════════ -->
 <section class="cta-section">
     <div class="container px-4">
@@ -1666,6 +1738,7 @@ body {
         </div>
     </div>
 </section>
+
 
 <x-frontend-footer/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

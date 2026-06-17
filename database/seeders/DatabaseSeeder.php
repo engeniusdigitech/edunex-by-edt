@@ -136,5 +136,8 @@ class DatabaseSeeder extends Seeder
             'institute_id' => $institute->id,
         ]
         );
+
+        // Location Pages (SEO hierarchical location database)
+        $this->call(LocationPageSeeder::class);
     }
 }
