@@ -19,28 +19,50 @@
     <!-- Custom Styles -->
     <style>
         :root {
-            --primary-color: #2563EB;
+            /* ── Brand Tokens ── */
+            --primary:       #0D9488;  /* teal-600 */
+            --primary-hover: #0F766E;  /* teal-700 */
+            --primary-light: rgba(13,148,136,0.12);
+            --blue:          #2563EB;
+            --blue-light:    rgba(37,99,235,0.10);
+            --amber:         #F59E0B;
+            --emerald:       #10B981;
+            --red:           #EF4444;
+            --sky:           #0EA5E9;
+
+            /* ── Surfaces ── */
+            --bg:            #F1F5F9;  /* slate-100 */
+            --sidebar-bg:    #0F172A;  /* slate-900 */
+            --card:          #FFFFFF;
+            --border:        #E2E8F0;  /* slate-200 */
+            --border-dark:   #CBD5E1;
+
+            /* ── Text ── */
+            --text-primary:  #0F172A;
+            --text-secondary:#475569;
+            --text-muted:    #94A3B8;
+
+            /* ── Legacy compat ── */
+            --primary-color: #0D9488;
             --secondary-color: #10B981;
             --dark-bg: #0F172A;
-            --sidebar-bg: #ffffff;
-            --bg-color: #d9f1e1;
         }
 
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: #1E293B;
+            background-color: var(--bg);
+            color: var(--text-primary);
             overflow-x: hidden;
         }
 
-        /* Sidebar Styling */
+        /* ── Sidebar ── */
         .sidebar {
             height: 100vh;
             overflow-y: auto;
-            background-color: #eefaf3;
-            border-right: 1px solid #d3ebd6;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid rgba(255,255,255,0.05);
             padding-top: 0;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.04);
+            box-shadow: 4px 0 24px rgba(0,0,0,0.18);
             position: sticky;
             top: 0;
             z-index: 1040;
@@ -48,53 +70,58 @@
             flex-shrink: 0;
         }
 
-        .sidebar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .sidebar::-webkit-scrollbar-track {
-            background: transparent;
-        }
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
         .sidebar::-webkit-scrollbar-thumb {
-            background: rgba(25, 135, 84, 0.2);
+            background: rgba(255,255,255,0.12);
             border-radius: 10px;
         }
         .sidebar::-webkit-scrollbar-thumb:hover {
-            background: rgba(25, 135, 84, 0.4);
+            background: rgba(255,255,255,0.22);
         }
 
         .sidebar-brand-container {
-            padding: 28px 20px;
-            border-bottom: 1px solid #d3ebd6;
-            background-color: #e2f4e8;
+            padding: 22px 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
             position: relative;
         }
 
+        .sidebar-logo-badge {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: #2563EB;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; color: #fff;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+            flex-shrink: 0;
+        }
+
         .sidebar-brand-name {
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: #0f5132;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #F1F5F9;
+            letter-spacing: 0.2px;
+            line-height: 1.2;
         }
 
         .sidebar-brand-subtitle {
-            font-size: 0.6rem;
-            color: #198754;
+            font-size: 0.58rem;
+            color: #64748B;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 800;
-            margin-top: 6px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-top: 2px;
         }
 
         .sidebar-header {
-            font-size: 9px;
-            font-weight: 800;
+            font-size: 9.5px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            margin-top: 28px;
-            color: #4a6d59;
-            padding-left: 20px;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+            margin-top: 24px;
+            color: #475569;
+            padding: 0 20px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -104,264 +131,371 @@
             content: '';
             flex-grow: 1;
             height: 1px;
-            background: #d3ebd6;
-            margin-right: 16px;
+            background: rgba(255,255,255,0.07);
+            margin-right: 4px;
         }
 
         .sidebar a {
-            color: #355245;
+            color: #94A3B8;
             text-decoration: none;
             display: flex;
             align-items: center;
-            padding: 10px 16px;
-            margin: 2px 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.88rem;
+            padding: 9px 14px;
+            margin: 1px 10px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.85rem;
             position: relative;
-            transition: all 0.2s ease;
+            transition: all 0.18s ease;
             border: 1px solid transparent;
         }
 
         .sidebar a i {
-            width: 22px;
+            width: 20px;
             text-align: center;
-            margin-right: 12px;
-            font-size: 1.1rem;
-            color: #557c67;
-            transition: all 0.2s;
+            margin-right: 10px;
+            font-size: 0.95rem;
+            color: #64748B;
+            transition: all 0.18s;
+            flex-shrink: 0;
         }
 
         .sidebar a:hover {
-            background-color: #dbf2e3;
-            color: #0f5132;
-            border-color: #c3ebd0;
-            padding-left: 20px;
+            background-color: rgba(255,255,255,0.07);
+            color: #E2E8F0;
         }
 
         .sidebar a:hover i {
-            color: #198754;
-            transform: scale(1.05);
+            color: #94A3B8;
         }
 
         .sidebar a.active {
-            background-color: #d1e7dd;
-            color: #0f5132;
-            font-weight: 700;
-            border-left: 4px solid #198754;
-            border-radius: 0 12px 12px 0;
+            background-color: rgba(13,148,136,0.18);
+            color: #5EEAD4;
+            font-weight: 600;
+            border-left: 3px solid #0D9488;
+            border-radius: 0 10px 10px 0;
             margin-left: 0;
-            padding-left: 24px;
-            border-color: #b7dbcb #b7dbcb #b7dbcb #198754;
+            padding-left: 21px;
         }
 
         .sidebar a.active i {
-            color: #0f5132;
+            color: #14B8A6;
         }
 
         .sidebar-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(2px);
             z-index: 1030;
         }
-
-        .sidebar-overlay.show {
-            display: block;
-        }
+        .sidebar-overlay.show { display: block; }
 
         @media (max-width: 767.98px) {
-            .sidebar {
-                position: fixed;
-                left: -280px;
-                width: 280px;
-            }
-
-            .sidebar.show {
-                left: 0;
-            }
+            .sidebar { position: fixed; left: -280px; width: 280px; }
+            .sidebar.show { left: 0; }
         }
 
-        /* Main Content Styling */
+        /* ── Main Content ── */
         .main-content {
-            padding: 32px;
+            padding: 28px 32px;
             position: relative;
             z-index: 1;
         }
+        @media (max-width: 767.98px) { .main-content { padding: 16px; } }
 
-        @media (max-width: 767.98px) {
-            .main-content {
-                padding: 16px;
-            }
-        }
-
-        /* Background Gradient Map */
+        /* Subtle background texture */
         .bg-map {
             position: fixed;
-            top: -20vh;
-            right: -20vw;
-            width: 60vw;
-            height: 60vh;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.04), transparent 60%);
+            top: -20vh; right: -20vw;
+            width: 55vw; height: 55vh;
+            background: radial-gradient(circle, rgba(13,148,136,0.04), transparent 65%);
             z-index: 0;
             pointer-events: none;
         }
 
-        /* Top Navbar */
+        /* ── Top Navbar ── */
         .top-navbar {
             background: #ffffff !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 16px 32px;
+            border-bottom: 1px solid var(--border);
+            padding: 14px 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
-
-        @media (max-width: 767.98px) {
-            .top-navbar {
-                padding: 12px 16px;
-            }
-        }
+        @media (max-width: 767.98px) { .top-navbar { padding: 12px 16px; } }
 
         .navbar-brand-title {
-            font-weight: 500;
-            font-size: 1.25rem;
-            color: #1E293B;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
         }
 
         .user-profile {
             font-weight: 600;
-            color: #475569;
-            background: #F1F5F9;
-            padding: 8px 16px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            background: #F8FAFC;
+            padding: 7px 14px;
             border-radius: 50px;
+            border: 1px solid var(--border);
         }
 
-        /* Cards */
+        /* ── Cards ── */
         .card {
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
+            transition: box-shadow 0.25s ease, transform 0.25s ease;
             background: #ffffff;
         }
-
         .card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.06);
             transform: translateY(-2px);
         }
 
         .icon-box {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
             color: white;
-            background: linear-gradient(135deg, var(--primary-color), #0EA5E9);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+            background: linear-gradient(135deg, var(--primary), var(--sky));
+            box-shadow: 0 4px 12px rgba(13,148,136,0.25);
+            flex-shrink: 0;
         }
 
-        /* Badges & Overrides */
-        .btn-modern {
-            border-radius: 50px;
-            padding: 8px 24px;
-            font-weight: 600;
-        }
+        /* ── Buttons ── */
+        .btn-modern { border-radius: 50px; padding: 8px 24px; font-weight: 600; }
 
-        /* Sidebar Dropdown Styling */
-        .sidebar a[data-bs-toggle="collapse"] {
-            position: relative;
-        }
+        /* ── Sidebar Dropdowns ── */
+        .sidebar a[data-bs-toggle="collapse"] { position: relative; }
         .sidebar a[data-bs-toggle="collapse"] .dropdown-arrow {
             transition: transform 0.2s ease;
-            font-size: 0.72rem;
-            color: #557c67;
+            font-size: 0.68rem;
+            color: #475569;
         }
         .sidebar a[data-bs-toggle="collapse"]:not(.collapsed) .dropdown-arrow {
             transform: rotate(180deg);
-            color: #0f5132;
+            color: #94A3B8;
         }
         .sidebar .collapse {
             position: relative;
-            padding-left: 8px;
-            margin-left: 28px;
-            border-left: 1px dashed #a3cfbb;
-            margin-bottom: 6px;
+            padding-left: 6px;
+            margin-left: 24px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 4px;
             margin-top: 2px;
         }
         .sidebar .collapse a {
-            margin: 2px 10px 2px 0 !important;
-            font-size: 0.82rem;
-            padding: 8px 12px !important;
-            color: #4a6d59;
-            border-radius: 8px;
-            font-weight: 500;
+            margin: 1px 8px 1px 0 !important;
+            font-size: 0.8rem !important;
+            padding: 7px 10px !important;
+            color: #64748B !important;
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            border: none !important;
         }
         .sidebar .collapse a:hover {
-            background-color: #dbf2e3 !important;
-            color: #0f5132;
-            padding-left: 16px !important;
-            border-left: none !important;
+            background-color: rgba(255,255,255,0.07) !important;
+            color: #CBD5E1 !important;
+            padding-left: 14px !important;
         }
         .sidebar .collapse a.active {
-            background-color: #d1e7dd !important;
-            color: #0f5132 !important;
+            background-color: rgba(13,148,136,0.15) !important;
+            color: #5EEAD4 !important;
             border-left: none !important;
-            padding-left: 12px !important;
+            padding-left: 10px !important;
             border-radius: 8px !important;
             margin-left: 0 !important;
-        /* Global button color alignment to match sidebar buttons */
-        .btn-primary, .btn-success {
-            background-color: #d1e7dd !important;
-            color: #0f5132 !important;
-            border-color: #a3cfbb !important;
+        }
+        .sidebar .collapse a i { color: #475569 !important; font-size: 0.8rem !important; }
+        .sidebar .collapse a:hover i { color: #94A3B8 !important; }
+        .sidebar .collapse a.active i { color: #14B8A6 !important; }
+
+        /* ── Global Buttons ── */
+        .btn-primary {
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: #fff !important;
             font-weight: 600 !important;
-            box-shadow: 0 2px 4px rgba(15, 81, 50, 0.05) !important;
         }
-        .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-        .btn-success:hover, .btn-success:focus, .btn-success:active {
-            background-color: #dbf2e3 !important;
-            color: #0f5132 !important;
-            border-color: #85c2a3 !important;
-            box-shadow: 0 4px 8px rgba(15, 81, 50, 0.1) !important;
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            background-color: var(--primary-hover) !important;
+            border-color: var(--primary-hover) !important;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.3) !important;
         }
-        .btn-outline-primary, .btn-outline-success {
-            color: #0f5132 !important;
-            border-color: #a3cfbb !important;
+        .btn-success {
+            background-color: #059669 !important;
+            border-color: #059669 !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+        }
+        .btn-success:hover, .btn-success:focus {
+            background-color: #047857 !important;
+            border-color: #047857 !important;
+        }
+        .btn-outline-primary {
+            color: var(--primary) !important;
+            border-color: var(--primary) !important;
             background-color: transparent !important;
             font-weight: 600 !important;
         }
-        .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active,
-        .btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active {
-            background-color: #d1e7dd !important;
-            color: #0f5132 !important;
-            border-color: #85c2a3 !important;
+        .btn-outline-primary:hover, .btn-outline-primary:focus {
+            background-color: var(--primary-light) !important;
+            color: var(--primary) !important;
         }
+        .btn-outline-success {
+            color: #059669 !important;
+            border-color: #059669 !important;
+            background-color: transparent !important;
+            font-weight: 600 !important;
+        }
+        .btn-outline-success:hover {
+            background-color: rgba(5,150,105,0.1) !important;
+        }
+        .btn-outline-danger {
+            color: var(--red) !important;
+            border-color: rgba(239,68,68,0.4) !important;
+            background: transparent !important;
+            font-weight: 600 !important;
+        }
+        .btn-outline-danger:hover {
+            background: rgba(239,68,68,0.08) !important;
+            border-color: var(--red) !important;
+        }
+
+        /* ── Table enhancements ── */
+        .table { --bs-table-hover-bg: rgba(13,148,136,0.04); }
+        .table thead th { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.6px; color: var(--text-muted); text-transform: uppercase; border-color: var(--border) !important; }
+        .table-light { background-color: #F8FAFC !important; --bs-table-bg: #F8FAFC; }
+
+        /* ── Badge refinements ── */
+        .badge { font-weight: 600; letter-spacing: 0.2px; }
+
+        /* ── Page header ── */
+        .page-header {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-header-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.4px;
+        }
+        .page-header-subtitle {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ── KPI Card specific ── */
+        .kpi-card { overflow: hidden; position: relative; }
+        .kpi-icon-wrap {
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+        }
+        .kpi-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+        .kpi-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .kpi-trend {
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 2px 7px;
+            border-radius: 20px;
+        }
+        .kpi-trend.up { color: #059669; background: rgba(5,150,105,0.1); }
+        .kpi-trend.down { color: var(--red); background: rgba(239,68,68,0.1); }
+        .kpi-trend.neutral { color: #0EA5E9; background: rgba(14,165,233,0.1); }
+        .kpi-sparkline { opacity: 0.5; margin-top: 8px; }
+
+        /* ── Chart card header ── */
+        .chart-card-header {
+            padding: 20px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .chart-card-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .chart-card-subtitle {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ── Section label ── */
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Scrollbar for content area ── */
+        .col-lg-10::-webkit-scrollbar { width: 6px; }
+        .col-lg-10::-webkit-scrollbar-track { background: transparent; }
+        .col-lg-10::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 6px; }
     </style>
 </head>
 
 <body>
-    <div class="bg-map"></div>
+    <div class="bg-map" aria-hidden="true"></div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="container-fluid p-0" style="height:100vh;overflow:hidden;">
         <div class="row g-0" style="height:100vh;overflow:hidden;">
             <!-- Sidebar -->
             <div class="col-lg-2 col-md-3 sidebar d-flex flex-column h-100" id="adminSidebar">
-                <div class="sidebar-brand-container text-center">
-                    <div class="sidebar-brand-name px-2 text-truncate">
-                        @if(auth()->check() && auth()->user()->institute_id && auth()->user()->institute)
-                            {{ auth()->user()->institute->name }}
-                        @elseif(auth()->check() && auth()->user()->isSuperAdmin())
-                            Super Admin
-                        @else
-                            EduNex ERP
-                        @endif
+                <div class="sidebar-brand-container d-flex align-items-center gap-3">
+                    <div class="sidebar-logo-badge">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <div class="sidebar-brand-subtitle">Admin Portal</div>
+                    <div class="min-w-0" style="overflow:hidden;">
+                        <div class="sidebar-brand-name text-truncate">
+                            @if(auth()->check() && auth()->user()->institute_id && auth()->user()->institute)
+                                {{ auth()->user()->institute->name }}
+                            @elseif(auth()->check() && auth()->user()->isSuperAdmin())
+                                Super Admin
+                            @else
+                                EduNex ERP
+                            @endif
+                        </div>
+                        <div class="sidebar-brand-subtitle">Admin Portal</div>
+                    </div>
                 </div>
 
                 @if(auth()->user() && auth()->user()->isSuperAdmin())
@@ -758,25 +892,34 @@
                 <!-- Top Navbar -->
                 <nav class="navbar navbar-expand-lg top-navbar sticky-top">
                     <div class="container-fluid px-0">
-                        <button class="btn border-0 d-md-none me-2 shadow-none" id="sidebarToggle">
-                            <i class="fas fa-bars fs-4 text-dark"></i>
+                        <button class="btn border-0 d-md-none me-2 shadow-none p-1" id="sidebarToggle" style="color:#64748B;">
+                            <i class="fas fa-bars" style="font-size:1.15rem;"></i>
                         </button>
                         <span class="navbar-brand-title mb-0">@yield('title', 'Overview')</span>
-                        <div class="d-flex align-items-center ms-auto">
-                            <a href="{{ route('profile.edit') }}" class="text-decoration-none d-flex align-items-center me-3">
-                                <img src="{{ auth()->user()->profile_image_url }}" 
-                                     alt="Profile" 
-                                     class="rounded-circle border border-2 border-white shadow-sm me-2" 
-                                     style="width: 32px; height: 32px; object-fit: cover;">
-                                <span class="user-profile d-none d-sm-inline-block text-dark fw-semibold">
-                                    {{ auth()->user()->name ?? 'Admin User' }}
-                                </span>
+                        <div class="d-flex align-items-center ms-auto gap-2">
+                            <a href="{{ route('profile.edit') }}" class="text-decoration-none d-flex align-items-center gap-2 user-profile">
+                                <img src="{{ auth()->user()->profile_image_url }}"
+                                     alt="Profile"
+                                     class="rounded-circle"
+                                     style="width:28px;height:28px;object-fit:cover;border:2px solid #E2E8F0;">
+                                <div class="d-none d-sm-block" style="line-height:1.2;">
+                                    <div style="font-size:0.8rem;font-weight:700;color:#0F172A;">{{ auth()->user()->name ?? 'Admin User' }}</div>
+                                    <div style="font-size:0.65rem;color:#94A3B8;text-transform:uppercase;letter-spacing:0.5px;">
+                                        @if(auth()->user()->isSuperAdmin()) Super Admin
+                                        @elseif(auth()->user()->isInstituteAdmin()) Admin
+                                        @elseif(auth()->user()->isPrincipal()) Principal
+                                        @elseif(auth()->user()->isTeacher()) Teacher
+                                        @elseif(auth()->user()->isReceptionist()) Receptionist
+                                        @else Staff @endif
+                                    </div>
+                                </div>
                             </a>
                             <form method="POST" action="{{ route('logout') }}" class="m-0">
                                 @csrf
-                                <button class="btn btn-outline-danger btn-modern btn-sm"><i
-                                        class="fas fa-sign-out-alt me-1"></i> <span
-                                        class="d-none d-sm-inline">Logout</span></button>
+                                <button class="btn btn-outline-danger btn-sm" style="border-radius:10px;padding:7px 14px;font-size:0.78rem;font-weight:600;">
+                                    <i class="fas fa-sign-out-alt me-1"></i>
+                                    <span class="d-none d-sm-inline">Logout</span>
+                                </button>
                             </form>
                         </div>
                     </div>
