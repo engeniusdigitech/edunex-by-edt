@@ -13,15 +13,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --indigo: #0EA5E9;
-            --indigo-dark: #2563EB;
-            --pink: #10B981;
+            --indigo: #6366F1;
+            --indigo-dark: #4F46E5;
+            --teal: #0D9488;
+            --pink: #EC4899;
             --emerald: #10B981;
             --amber: #F59E0B;
             --red: #EF4444;
-            --bg: #d9f1e1;
+            --sky: #0EA5E9;
+            --bg: #F8FAFC;
             --card: #ffffff;
-            --border: #E2E8F0;
+            --border: #E8EDF5;
             --text: #0F172A;
             --muted: #64748B;
             --radius: 16px;
@@ -183,32 +185,34 @@
             .page { padding: 16px 12px 60px; }
         }
 
-        /* Global button color alignment to match branding theme buttons */
-        .btn-primary, .btn-success {
-            background-color: #d1e7dd !important;
-            color: #0f5132 !important;
-            border-color: #a3cfbb !important;
+        /* Global button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #6366F1, #4F46E5) !important;
+            color: #fff !important;
+            border-color: #6366F1 !important;
             font-weight: 600 !important;
-            box-shadow: 0 2px 4px rgba(15, 81, 50, 0.05) !important;
+            box-shadow: 0 4px 12px rgba(99,102,241,0.25) !important;
         }
-        .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-        .btn-success:hover, .btn-success:focus, .btn-success:active {
-            background-color: #dbf2e3 !important;
-            color: #0f5132 !important;
-            border-color: #85c2a3 !important;
-            box-shadow: 0 4px 8px rgba(15, 81, 50, 0.1) !important;
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            background: linear-gradient(135deg, #4F46E5, #4338CA) !important;
+            border-color: #4F46E5 !important;
+            box-shadow: 0 6px 16px rgba(99,102,241,0.35) !important;
         }
-        .btn-outline-primary, .btn-outline-success {
-            color: #0f5132 !important;
-            border-color: #a3cfbb !important;
+        .btn-success {
+            background: linear-gradient(135deg, #10B981, #059669) !important;
+            color: #fff !important;
+            border-color: #10B981 !important;
+            font-weight: 600 !important;
+        }
+        .btn-outline-primary {
+            color: #6366F1 !important;
+            border-color: #6366F1 !important;
             background-color: transparent !important;
             font-weight: 600 !important;
         }
-        .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active,
-        .btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active {
-            background-color: #d1e7dd !important;
-            color: #0f5132 !important;
-            border-color: #85c2a3 !important;
+        .btn-outline-primary:hover {
+            background-color: #6366F1 !important;
+            color: #fff !important;
         }
     </style>
     @stack('styles')

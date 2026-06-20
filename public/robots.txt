@@ -1,13 +1,155 @@
+# EduNex ERP — robots.txt
+# https://edunexerp.online
+
+# ── Googlebot ──
+User-agent: Googlebot
+Allow: /
+Allow: /pricing
+Allow: /about
+Allow: /contact
+Allow: /blogs
+Allow: /features/
+Allow: /digital-assessment
+Disallow: /dashboard
+Disallow: /superadmin/
+Disallow: /student/
+Disallow: /login
+Disallow: /register
+Disallow: /profile/
+Disallow: /attendance
+Disallow: /students/
+Disallow: /staff/
+Disallow: /batches/
+Disallow: /payments/
+Disallow: /fees/
+Disallow: /homework/
+Disallow: /tests/
+Disallow: /timetables/
+Disallow: /visitors/
+Disallow: /transport/
+Disallow: /library/
+Disallow: /hostels/
+Disallow: /accounting/
+Disallow: /reports/
+Disallow: /notifications/
+Disallow: /gallery/
+Disallow: /leaves/
+Disallow: /logout
+Crawl-delay: 1
+
+# ── Bingbot ──
+User-agent: Bingbot
+Allow: /
+Disallow: /dashboard
+Disallow: /superadmin/
+Disallow: /student/
+Disallow: /login
+Disallow: /register
+Crawl-delay: 2
+
+# ── Other good bots ──
+User-agent: Slurp
+Allow: /
+Disallow: /dashboard
+Disallow: /superadmin/
+Crawl-delay: 3
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /dashboard
+Disallow: /superadmin/
+
+User-agent: facebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Applebot
+Allow: /
+Disallow: /dashboard
+Disallow: /superadmin/
+
+# ── Block scrapers ──
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# ── All other bots ──
 User-agent: *
 Allow: /
-Allow: /edunex
-Allow: /edunext
-Allow: /edunex-erp
-Allow: /edunext-erp
+Allow: /pricing
+Allow: /about
+Allow: /contact
+Allow: /blogs
+Allow: /features/
+Allow: /digital-assessment
+Allow: /sitemap.xml
 Disallow: /dashboard
-Disallow: /superadmin
-Disallow: /student/dashboard
+Disallow: /superadmin/
+Disallow: /student/
+Disallow: /login
 Disallow: /register
+Disallow: /profile/
+Disallow: /attendance
+Disallow: /students/
+Disallow: /staff/
+Disallow: /batches/
+Disallow: /payments/
+Disallow: /fee-categories/
+Disallow: /fee-structures/
+Disallow: /fee-allocations/
+Disallow: /payment-gateways/
+Disallow: /homework/
+Disallow: /tests/
+Disallow: /online-exams/
+Disallow: /question-bank/
+Disallow: /timetables/
+Disallow: /subjects/
+Disallow: /visitors/
+Disallow: /transport/
+Disallow: /library/
+Disallow: /hostels/
+Disallow: /accounting/
+Disallow: /expenses/
+Disallow: /reports/
+Disallow: /notifications/
+Disallow: /gallery/
+Disallow: /leaves/
+Disallow: /discipline/
+Disallow: /class-chat/
+Disallow: /study-materials/
+Disallow: /live-lectures/
+Disallow: /whatsapp/
+Disallow: /staff-attendance/
+Disallow: /staff-salaries/
+Disallow: /staff-payrolls/
+Disallow: /inventory-items/
+Disallow: /purchase-orders/
+Disallow: /logout
 
+# ── Sitemap ──
 Sitemap: https://edunexerp.online/sitemap.xml
-

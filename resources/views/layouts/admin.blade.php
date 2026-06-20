@@ -38,9 +38,9 @@
             --border-dark:   #CBD5E1;
 
             /* ── Text ── */
-            --text-primary:  #0F172A;
-            --text-secondary:#475569;
-            --text-muted:    #94A3B8;
+            --text-primary:  #0A0F1E;
+            --text-secondary:#1E293B;
+            --text-muted:    #475569;
 
             /* ── Legacy compat ── */
             --primary-color: #0D9488;
@@ -51,18 +51,22 @@
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg);
-            color: var(--text-primary);
+            color: #0A0F1E;
             overflow-x: hidden;
         }
+        p, span, div, td, th, li, label, input, select, textarea { color: inherit; }
+        .text-muted { color: #475569 !important; }
+        .text-secondary { color: #334155 !important; }
+        small, .small { color: #334155; }
 
         /* ── Sidebar ── */
         .sidebar {
             height: 100vh;
             overflow-y: auto;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid rgba(255,255,255,0.05);
+            background-color: #FFFFFF;
+            border-right: 1px solid #E8EDF5;
             padding-top: 0;
-            box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+            box-shadow: 2px 0 16px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1040;
@@ -73,54 +77,54 @@
         .sidebar::-webkit-scrollbar { width: 4px; }
         .sidebar::-webkit-scrollbar-track { background: transparent; }
         .sidebar::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.12);
+            background: #E2E8F0;
             border-radius: 10px;
         }
         .sidebar::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.22);
+            background: #CBD5E1;
         }
 
         .sidebar-brand-container {
             padding: 22px 20px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid #F1F5F9;
             position: relative;
         }
 
         .sidebar-logo-badge {
             width: 36px; height: 36px;
             border-radius: 10px;
-            background: #2563EB;
+            background: linear-gradient(135deg,#2563EB,#0D9488);
             display: flex; align-items: center; justify-content: center;
             font-size: 1rem; color: #fff;
-            box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+            box-shadow: 0 2px 8px rgba(37,99,235,0.2);
             flex-shrink: 0;
         }
 
         .sidebar-brand-name {
             font-size: 0.88rem;
-            font-weight: 700;
-            color: #F1F5F9;
-            letter-spacing: 0.2px;
+            font-weight: 800;
+            color: #0F172A;
+            letter-spacing: -0.2px;
             line-height: 1.2;
         }
 
         .sidebar-brand-subtitle {
             font-size: 0.58rem;
-            color: #64748B;
+            color: #94A3B8;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 2px;
         }
 
         .sidebar-header {
             font-size: 9.5px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 4px;
-            margin-top: 24px;
-            color: #475569;
+            margin-top: 22px;
+            color: #64748B;
             padding: 0 20px;
             display: flex;
             align-items: center;
@@ -131,20 +135,20 @@
             content: '';
             flex-grow: 1;
             height: 1px;
-            background: rgba(255,255,255,0.07);
+            background: #F1F5F9;
             margin-right: 4px;
         }
 
         .sidebar a {
-            color: #94A3B8;
+            color: #1E293B;
             text-decoration: none;
             display: flex;
             align-items: center;
             padding: 9px 14px;
             margin: 1px 10px;
             border-radius: 10px;
-            font-weight: 500;
-            font-size: 0.85rem;
+            font-weight: 600;
+            font-size: 0.83rem;
             position: relative;
             transition: all 0.18s ease;
             border: 1px solid transparent;
@@ -154,25 +158,26 @@
             width: 20px;
             text-align: center;
             margin-right: 10px;
-            font-size: 0.95rem;
-            color: #64748B;
+            font-size: 0.9rem;
+            color: #475569;
             transition: all 0.18s;
             flex-shrink: 0;
         }
 
         .sidebar a:hover {
-            background-color: rgba(255,255,255,0.07);
-            color: #E2E8F0;
+            background-color: #F8FAFC;
+            color: #0F172A;
         }
 
         .sidebar a:hover i {
-            color: #94A3B8;
+            color: #64748B;
         }
 
         .sidebar a.active {
-            background-color: rgba(13,148,136,0.18);
-            color: #5EEAD4;
-            font-weight: 600;
+            background: linear-gradient(135deg,#EFF6FF,#F0FDFA);
+            color: #0D9488;
+            font-weight: 700;
+            border: 1px solid #CCFBF1;
             border-left: 3px solid #0D9488;
             border-radius: 0 10px 10px 0;
             margin-left: 0;
@@ -180,14 +185,14 @@
         }
 
         .sidebar a.active i {
-            color: #14B8A6;
+            color: #0D9488;
         }
 
         .sidebar-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.55);
+            background: rgba(0,0,0,0.35);
             backdrop-filter: blur(2px);
             z-index: 1030;
         }
@@ -284,35 +289,35 @@
             position: relative;
             padding-left: 6px;
             margin-left: 24px;
-            border-left: 1px solid rgba(255,255,255,0.1);
+            border-left: 2px solid #F1F5F9;
             margin-bottom: 4px;
             margin-top: 2px;
         }
         .sidebar .collapse a {
             margin: 1px 8px 1px 0 !important;
-            font-size: 0.8rem !important;
+            font-size: 0.79rem !important;
             padding: 7px 10px !important;
-            color: #64748B !important;
+            color: #334155 !important;
             border-radius: 8px !important;
-            font-weight: 500 !important;
+            font-weight: 600 !important;
             border: none !important;
         }
         .sidebar .collapse a:hover {
-            background-color: rgba(255,255,255,0.07) !important;
-            color: #CBD5E1 !important;
+            background-color: #F8FAFC !important;
+            color: #0F172A !important;
             padding-left: 14px !important;
         }
         .sidebar .collapse a.active {
-            background-color: rgba(13,148,136,0.15) !important;
-            color: #5EEAD4 !important;
+            background: #F0FDFA !important;
+            color: #0D9488 !important;
             border-left: none !important;
             padding-left: 10px !important;
             border-radius: 8px !important;
             margin-left: 0 !important;
         }
-        .sidebar .collapse a i { color: #475569 !important; font-size: 0.8rem !important; }
-        .sidebar .collapse a:hover i { color: #94A3B8 !important; }
-        .sidebar .collapse a.active i { color: #14B8A6 !important; }
+        .sidebar .collapse a i { color: #64748B !important; font-size: 0.78rem !important; }
+        .sidebar .collapse a:hover i { color: #64748B !important; }
+        .sidebar .collapse a.active i { color: #0D9488 !important; }
 
         /* ── Global Buttons ── */
         .btn-primary {
@@ -471,6 +476,7 @@
         .col-lg-10::-webkit-scrollbar-track { background: transparent; }
         .col-lg-10::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 6px; }
     </style>
+    @stack('styles')
 </head>
 
 <body>
@@ -517,7 +523,7 @@
                         @php
                             $showAttendance = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
                         @endphp
-                        @if($showAttendance)
+                        @if($showAttendance && auth()->user()->institute && auth()->user()->institute->feature_attendance)
                             <a href="{{ route('attendance.index') }}" class="{{ request()->routeIs('attendance.*') ? 'active' : '' }}"><i class="fas fa-calendar-check"></i> Student's Attendance</a>
                         @endif
                     @endcan
@@ -567,6 +573,7 @@
                         @endif
                     @endcan
 
+                    @if(!auth()->user()->institute || auth()->user()->institute->feature_hr)
                     @php
                         $user = auth()->user();
                         $canManageStudentLeaves = $user->isInstituteAdmin() || $user->isPrincipal() || $user->isClassTeacher();
@@ -583,6 +590,7 @@
                         @endif
                         <a href="{{ route('leaves.index') }}" class="{{ request()->routeIs('leaves.index') ? 'active' : '' }} small py-2"><i class="fas fa-user-tie"></i> Staff Leave</a>
                     </div>
+                    @endif
 
                     @if(auth()->user()->institute && auth()->user()->institute->feature_visitor)
                     @can('manage-visitors')
@@ -670,6 +678,7 @@
                     
 
                     @if(!auth()->user()->isReceptionist() && !auth()->user()->isLibrarian() && !auth()->user()->isWarden())
+                        @if(auth()->user()->institute && auth()->user()->institute->feature_academics)
                         @php
                             $isAcademicsActive = request()->routeIs('batches.*')
                                 || request()->routeIs('subjects.*')
@@ -695,7 +704,9 @@
                                 <a href="{{ route('timetables.my-schedule') }}" class="{{ request()->routeIs('timetables.my-schedule') ? 'active' : '' }} small py-2"><i class="fas fa-user-clock"></i> My Schedule</a>
                             @endif
                         </div>
+                        @endif
 
+                        @if(auth()->user()->institute && auth()->user()->institute->feature_lms)
                         @php
                             $isLmsActive = request()->routeIs('homework.*') || request()->routeIs('live-lectures.*') || request()->routeIs('study-materials.*');
                         @endphp
@@ -711,7 +722,9 @@
                             @endif
                             <a href="{{ route('homework.index') }}" class="{{ request()->routeIs('homework.*') ? 'active' : '' }} small py-2"><i class="fas fa-tasks"></i> Assignments</a>
                         </div>
+                        @endif
 
+                        @if(auth()->user()->institute && auth()->user()->institute->feature_exams)
                         @php
                             $isExamsTestsActive = request()->routeIs('tests.*') || request()->routeIs('online-exams.*') || request()->routeIs('question-bank.*');
                         @endphp
@@ -725,6 +738,7 @@
                             <a href="{{ route('online-exams.index') }}" class="{{ request()->routeIs('online-exams.*') ? 'active' : '' }} small py-2"><i class="fas fa-laptop-code"></i> Online Exams</a>
                             <a href="{{ route('question-bank.index') }}" class="{{ request()->routeIs('question-bank.*') ? 'active' : '' }} small py-2"><i class="fas fa-database"></i> Question Banks</a>
                         </div>
+                        @endif
 
                         <!-- Store & Inventory -->
                         @if(auth()->user()->institute && auth()->user()->institute->feature_inventory)
@@ -823,6 +837,7 @@
                         </div>
                     @endif
 
+                    @if(!auth()->user()->institute || auth()->user()->institute->feature_curriculum)
                     @php
                         $isCurriculumActive = request()->routeIs('class-chat.*') || request()->routeIs('gallery.*') || request()->routeIs('discipline.*') || request()->routeIs('notifications.*');
                         $showChat = auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher();
@@ -848,14 +863,20 @@
                             <a href="{{ route('discipline.index') }}" class="{{ request()->routeIs('discipline.*') ? 'active' : '' }} small py-2"><i class="fas fa-balance-scale"></i> Discipline</a>
                         @endif
                     </div>
+                    @endif
 
                     @if(auth()->user()->isInstituteAdmin() || auth()->user()->isTeacher() || auth()->user()->isPrincipal() || auth()->user()->isReceptionist() || auth()->user()->isLibrarian())
+                        @if(!auth()->user()->institute || auth()->user()->institute->feature_reports)
                         @php
-                            $isReportsActive = request()->routeIs('reports.defaulters') || request()->routeIs('reports.attendance');
+                            $isReportsActive = request()->routeIs('reports.defaulters')
+                                || request()->routeIs('reports.attendance')
+                                || request()->routeIs('reports.lms')
+                                || request()->routeIs('reports.exams');
                             $showAttendanceRep = !auth()->user()->isTeacher() || auth()->user()->isClassTeacher();
                             $showDefaultersRep = auth()->user()->isInstituteAdmin() || auth()->user()->isReceptionist();
+                            $showAcademicsRep  = auth()->user()->can('manage-academics');
                         @endphp
-                        @if(!auth()->user()->isLibrarian() && ($showAttendanceRep || $showDefaultersRep))
+                        @if(!auth()->user()->isLibrarian() && ($showAttendanceRep || $showDefaultersRep || $showAcademicsRep))
                             <a href="#reportsCollapse" data-bs-toggle="collapse" class="{{ $isReportsActive ? '' : 'collapsed' }}" aria-expanded="{{ $isReportsActive ? 'true' : 'false' }}">
                                 <i class="fas fa-chart-pie"></i>
                                 <span class="flex-grow-1">Reports</span>
@@ -868,7 +889,16 @@
                                 @if($showAttendanceRep)
                                     <a href="{{ route('reports.attendance') }}" class="{{ request()->routeIs('reports.attendance') ? 'active' : '' }} small py-2"><i class="fas fa-chart-bar"></i> Attendance Report</a>
                                 @endif
+                                @if($showAcademicsRep)
+                                    @if(!auth()->user()->institute || auth()->user()->institute->feature_lms)
+                                        <a href="{{ route('reports.lms') }}" class="{{ request()->routeIs('reports.lms') ? 'active' : '' }} small py-2"><i class="fas fa-graduation-cap"></i> LMS Report</a>
+                                    @endif
+                                    @if(!auth()->user()->institute || auth()->user()->institute->feature_exams)
+                                        <a href="{{ route('reports.exams') }}" class="{{ request()->routeIs('reports.exams') ? 'active' : '' }} small py-2"><i class="fas fa-file-signature"></i> Exams Report</a>
+                                    @endif
+                                @endif
                             </div>
+                        @endif
                         @endif
 
                         @if((auth()->user()->isInstituteAdmin() || auth()->user()->isPrincipal() || auth()->user()->isTeacher()) && auth()->user()->institute && auth()->user()->institute->feature_whatsapp)
@@ -953,237 +983,191 @@
     @if(auth()->check() && !auth()->user()->isSuperAdmin() && auth()->user()->institute_id)
     <!-- ─── Staff Group Chat Widget ─── -->
     <style>
-        /* Chat Bubble */
+        /* ── Bubble ── */
         #chatBubble {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2563EB, #0EA5E9);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            z-index: 9000;
-            box-shadow: 0 8px 24px rgba(37,99,235,0.4);
-            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
-            border: none;
+            position: fixed; bottom: 24px; right: 24px;
+            display: flex; align-items: center; gap: 10px;
+            background: #0F172A; color: #fff;
+            border: none; border-radius: 50px;
+            padding: 0 20px 0 6px; height: 50px;
+            cursor: pointer; z-index: 9000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: box-shadow 0.2s, transform 0.2s;
+            font-family: 'Outfit', sans-serif;
         }
-        #chatBubble:hover { transform: scale(1.12); box-shadow: 0 12px 32px rgba(37,99,235,0.5); }
+        #chatBubble:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.28); transform: translateY(-2px); }
+        .cb-icon {
+            width: 38px; height: 38px; border-radius: 50%;
+            background: linear-gradient(135deg,#6366F1,#0D9488);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+        .cb-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1px; }
         #chatBadgeLeft {
-            position: absolute;
-            top: -4px; left: -4px;
-            background: #EF4444;
-            color: #fff;
-            border-radius: 50%;
-            width: 20px; height: 20px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: -5px; right: -5px;
+            background: #EF4444; color: #fff; border-radius: 50%;
+            width: 18px; height: 18px; font-size: 0.6rem; font-weight: 600;
+            display: none; align-items: center; justify-content: center;
+            border: 2px solid #fff;
         }
         #chatBadgeRight {
-            position: absolute;
-            top: -4px; right: -4px;
-            background: #F59E0B;
-            color: #fff;
-            border-radius: 50%;
-            width: 20px; height: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: -5px; right: 14px;
+            background: #F59E0B; color: #fff; border-radius: 50%;
+            width: 18px; height: 18px; font-size: 0.6rem; font-weight: 600;
+            display: none; align-items: center; justify-content: center;
+            border: 2px solid #fff;
         }
-        /* Chat Panel */
+
+        /* ── Panel ── */
         #chatPanel {
-            position: fixed;
-            bottom: 96px;
-            right: 28px;
-            width: 360px;
-            height: 520px;
-            border-radius: 24px;
-            background: #ffffff;
-            border: 1px solid rgba(37,99,235,0.12);
-            box-shadow: 0 24px 64px -12px rgba(0,0,0,0.18);
-            z-index: 8999;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
+            position: fixed; bottom: 86px; right: 24px;
+            width: 360px; height: 520px;
+            border-radius: 20px;
+            background: #fff;
+            border: 1px solid #E8EDF5;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.14);
+            z-index: 8999; display: none; flex-direction: column; overflow: hidden;
             transform-origin: bottom right;
-            animation: chatOpen 0.3s cubic-bezier(0.34,1.56,0.64,1);
         }
-        #chatPanel.open { display: flex; }
-        @keyframes chatOpen {
-            from { opacity: 0; transform: scale(0.85); }
-            to   { opacity: 1; transform: scale(1); }
-        }
-        /* Panel Header */
+        #chatPanel.open { display: flex; animation: chatPop 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+        @keyframes chatPop { from { opacity:0; transform:scale(0.88) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
+
+        /* ── Header ── */
         .chat-header {
-            background: linear-gradient(135deg, #2563EB, #0EA5E9);
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-shrink: 0;
+            background: #0F172A;
+            padding: 14px 16px;
+            display: flex; align-items: center; gap: 12px; flex-shrink: 0;
         }
-        .chat-header-title { color: #fff; font-weight: 500; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
-        .chat-online-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; box-shadow: 0 0 6px #4ADE80; display: inline-block; }
-        .chat-close-btn { background: rgba(255,255,255,0.2); border: none; color: #fff; border-radius: 8px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
-        .chat-close-btn:hover { background: rgba(255,255,255,0.35); }
-        /* Messages */
+        .chat-header-av {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg,#6366F1,#0D9488);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; flex-shrink: 0;
+        }
+        .chat-header-info { flex: 1; }
+        .chat-header-name { font-size: 0.88rem; font-weight: 500; color: #fff; }
+        .chat-header-status { font-size: 0.65rem; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+        .chat-online-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; display: inline-block; box-shadow: 0 0 5px #4ADE80; }
+        .chat-close-btn {
+            width: 28px; height: 28px; border-radius: 8px;
+            background: rgba(255,255,255,0.08); border: none; color: rgba(255,255,255,0.6);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: background 0.15s, color 0.15s; flex-shrink: 0;
+        }
+        .chat-close-btn:hover { background: rgba(255,255,255,0.16); color: #fff; }
+
+        /* ── Messages ── */
         #chatMessages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: #f8fafc;
+            flex: 1; overflow-y: auto; padding: 14px 14px 8px;
+            display: flex; flex-direction: column; gap: 12px;
+            background: #F8FAFC;
         }
-        #chatMessages::-webkit-scrollbar { width: 4px; }
-        #chatMessages::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .chat-msg { display: flex; gap: 8px; align-items: flex-end; max-width: 88%; }
+        #chatMessages::-webkit-scrollbar { width: 3px; }
+        #chatMessages::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 3px; }
+
+        .chat-msg { display: flex; gap: 8px; align-items: flex-end; max-width: 85%; }
         .chat-msg.me { flex-direction: row-reverse; align-self: flex-end; }
-        .chat-avatar {
-            width: 30px; height: 30px; border-radius: 50%;
-            object-fit: cover; flex-shrink: 0;
-            border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+        .chat-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
         .chat-bubble-wrap { display: flex; flex-direction: column; }
         .chat-msg.me .chat-bubble-wrap { align-items: flex-end; }
-        .chat-sender { font-size: 0.65rem; font-weight: 500; color: #64748B; margin-bottom: 3px; }
-        .chat-msg.me .chat-sender { color: #2563EB; }
+        .chat-sender { font-size: 0.62rem; color: #94A3B8; margin-bottom: 3px; }
+        .chat-msg.me .chat-sender { color: #6366F1; }
         .chat-text {
-            background: #fff;
-            border: 1px solid #E2E8F0;
-            border-radius: 16px 16px 16px 4px;
-            padding: 8px 12px;
-            font-size: 0.82rem;
-            color: #1E293B;
-            line-height: 1.5;
-            word-break: break-word;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            background: #fff; border: 1px solid #EEF2F7;
+            border-radius: 14px 14px 14px 3px;
+            padding: 8px 12px; font-size: 0.8rem; color: #1E293B;
+            line-height: 1.5; word-break: break-word;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
         }
         .chat-msg.me .chat-text {
-            background: linear-gradient(135deg, #2563EB, #0EA5E9);
-            color: #fff;
-            border: none;
-            border-radius: 16px 16px 4px 16px;
+            background: #0F172A; color: #E2E8F0;
+            border: none; border-radius: 14px 14px 3px 14px;
         }
-        .chat-time { font-size: 0.6rem; color: #94A3B8; margin-top: 3px; }
-        .chat-mention { color: #2563EB; font-weight: 500; background: rgba(37,99,235,0.08); border-radius: 4px; padding: 0 3px; }
-        .chat-msg.me .chat-mention { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.15); }
-        /* Input Area */
+        .chat-time { font-size: 0.58rem; color: #CBD5E1; margin-top: 3px; }
+        .chat-mention { color: #6366F1; background: rgba(99,102,241,0.08); border-radius: 4px; padding: 0 3px; }
+        .chat-msg.me .chat-mention { color: #A5B4FC; background: rgba(255,255,255,0.1); }
+
+        /* ── Input ── */
         .chat-input-area {
-            padding: 12px 16px;
-            background: #fff;
-            border-top: 1px solid #E2E8F0;
-            display: flex;
-            align-items: flex-end;
-            gap: 10px;
-            flex-shrink: 0;
+            padding: 10px 12px; background: #fff;
+            border-top: 1px solid #F1F5F9;
+            display: flex; align-items: flex-end; gap: 8px; flex-shrink: 0;
         }
         #chatInput {
-            flex: 1;
-            border: 1.5px solid #E2E8F0;
-            border-radius: 14px;
-            padding: 10px 14px;
-            font-size: 0.83rem;
-            font-family: 'Outfit', sans-serif;
-            resize: none;
-            outline: none;
-            transition: border-color 0.2s;
-            line-height: 1.4;
-            max-height: 100px;
-            overflow-y: auto;
-            background: #f8fafc;
+            flex: 1; border: 1.5px solid #E8EDF5; border-radius: 12px;
+            padding: 9px 12px; font-size: 0.8rem; font-family: 'Outfit', sans-serif;
+            resize: none; outline: none; color: #0F172A;
+            transition: border-color 0.2s; line-height: 1.4;
+            max-height: 90px; overflow-y: auto; background: #F8FAFC;
         }
-        #chatInput:focus { border-color: #2563EB; background: #fff; }
+        #chatInput:focus { border-color: #6366F1; background: #fff; }
+        #chatInput::placeholder { color: #CBD5E1; }
         #chatSendBtn {
-            width: 40px; height: 40px; border-radius: 12px;
-            background: linear-gradient(135deg, #2563EB, #0EA5E9);
-            color: #fff; border: none; font-size: 0.9rem;
+            width: 36px; height: 36px; border-radius: 10px;
+            background: #0F172A; color: #fff; border: none; font-size: 0.82rem;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; flex-shrink: 0;
-            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; flex-shrink: 0; transition: background 0.2s, transform 0.15s;
         }
-        #chatSendBtn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(37,99,235,0.35); }
-        /* Mention dropdown */
+        #chatSendBtn:hover { background: #1E293B; transform: scale(1.06); }
+
+        /* ── Mention dropdown ── */
         #mentionDropdown {
-            position: absolute;
-            bottom: 78px;
-            right: 28px;
-            width: 200px;
-            background: #fff;
-            border: 1px solid #E2E8F0;
-            border-radius: 14px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            z-index: 9001;
-            display: none;
-            overflow: hidden;
+            position: absolute; bottom: 72px; right: 24px;
+            width: 210px; background: #fff;
+            border: 1px solid #E8EDF5; border-radius: 14px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+            z-index: 9001; display: none; overflow: hidden;
         }
         .mention-item {
-            padding: 10px 14px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: #1E293B;
-            transition: background 0.15s;
+            padding: 9px 14px; cursor: pointer; font-size: 0.8rem;
+            color: #1E293B; transition: background 0.12s;
             display: flex; align-items: center; gap: 8px;
         }
-        .mention-item:hover { background: #EFF6FF; color: #2563EB; }
-        .mention-avatar-sm {
-            width: 24px; height: 24px; border-radius: 50%;
-            object-fit: cover; border: 1px solid #E2E8F0;
-        }
-        /* Empty state */
+        .mention-item:hover { background: #F5F3FF; color: #6366F1; }
+        .mention-avatar-sm { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+
+        /* ── Empty ── */
         .chat-empty {
             flex: 1; display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            color: #94A3B8; font-size: 0.82rem; text-align: center; gap: 8px;
+            color: #CBD5E1; font-size: 0.8rem; text-align: center; gap: 8px;
         }
         @media (max-width: 480px) {
-            #chatPanel { width: calc(100vw - 32px); right: 16px; bottom: 80px; }
-            #mentionDropdown { right: 16px; }
+            #chatPanel { width: calc(100vw - 24px); right: 12px; }
+            #mentionDropdown { right: 12px; }
         }
     </style>
 
     <!-- Mention Dropdown -->
     <div id="mentionDropdown"></div>
 
-    <!-- Chat Bubble Button -->
+    <!-- Chat Bubble -->
     <button id="chatBubble" title="Staff Group Chat">
+        <div class="cb-icon"><i class="fas fa-comments"></i></div>
+        <span class="cb-label">Staff Chat</span>
         <span id="chatBadgeLeft"></span>
-        <i class="fas fa-comments"></i>
         <span id="chatBadgeRight"></span>
     </button>
 
     <!-- Chat Panel -->
     <div id="chatPanel">
         <div class="chat-header">
-            <div class="chat-header-title">
-                <span class="chat-online-dot"></span>
-                Staff Group Chat
+            <div class="chat-header-av"><i class="fas fa-comments" style="color:#fff;font-size:0.9rem;"></i></div>
+            <div class="chat-header-info">
+                <div class="chat-header-name">Staff Group Chat</div>
+                <div class="chat-header-status"><span class="chat-online-dot"></span> Active now</div>
             </div>
-            <button class="chat-close-btn" id="chatCloseBtn" title="Close chat">
-                <i class="fas fa-times" style="font-size:0.8rem;"></i>
-            </button>
+            <button class="chat-close-btn" id="chatCloseBtn"><i class="fas fa-xmark" style="font-size:0.75rem;"></i></button>
         </div>
         <div id="chatMessages">
             <div class="chat-empty">
-                <i class="fas fa-comments" style="font-size:2rem; opacity:0.3;"></i>
-                <div>Loading messages...</div>
+                <i class="fas fa-comments" style="font-size:2rem;opacity:0.2;display:block;margin-bottom:6px;"></i>
+                Loading messages...
             </div>
         </div>
         <div class="chat-input-area">
-            <textarea id="chatInput" rows="1" placeholder="Use @ to mention someone"></textarea>
-            <button id="chatSendBtn" title="Send message"><i class="fas fa-paper-plane"></i></button>
+            <textarea id="chatInput" rows="1" placeholder="Message staff… @ to mention"></textarea>
+            <button id="chatSendBtn" title="Send"><i class="fas fa-paper-plane" style="font-size:0.8rem;"></i></button>
         </div>
     </div>
 

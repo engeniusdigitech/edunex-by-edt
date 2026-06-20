@@ -10,6 +10,24 @@
     </div>
 </div>
 
+<style>
+.att-btn-group { display: inline-flex; background: #F1F5F9; border-radius: 50px; padding: 4px; gap: 3px; }
+.att-btn-group input[type="radio"] { display: none; }
+.att-btn-group label {
+    padding: 6px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 500;
+    cursor: pointer; transition: all 0.18s; color: #64748B; background: transparent; border: none;
+    user-select: none;
+}
+.att-btn-group input#present_{id}:checked + label,
+.att-btn-group input[id^="present_"]:checked + label { background: #10B981; color: #fff; box-shadow: 0 2px 8px rgba(16,185,129,0.35); }
+.att-btn-group input[id^="late_"]:checked    + label { background: #F59E0B; color: #fff; box-shadow: 0 2px 8px rgba(245,158,11,0.35); }
+.att-btn-group input[id^="absent_"]:checked  + label { background: #EF4444; color: #fff; box-shadow: 0 2px 8px rgba(239,68,68,0.35); }
+.att-btn-group label:hover { background: #E2E8F0; color: #0F172A; }
+.att-btn-group input[id^="present_"]:checked + label:hover { background: #059669; }
+.att-btn-group input[id^="late_"]:checked    + label:hover { background: #D97706; }
+.att-btn-group input[id^="absent_"]:checked  + label:hover { background: #DC2626; }
+</style>
+
 @if(session('success'))
 <div class="alert alert-success bg-white border border-success border-start-0 border-end-0 border-bottom-0 border-top-4 shadow-sm rounded-4 mb-4">
     <i class="fas fa-check-circle text-success me-2"></i> {{ session('success') }}
@@ -88,15 +106,15 @@
                                         </div>
                                     </td>
                                     <td class="py-3 text-end pe-4">
-                                        <div class="btn-group shadow-sm rounded-pill p-1 bg-light border" role="group">
-                                            <input type="radio" class="btn-check" name="attendance[{{ $student->id }}]" id="present_{{ $student->id }}" value="present" {{ $status == 'present' ? 'checked' : '' }}>
-                                            <label class="btn btn-sm btn-outline-success rounded-pill px-4 fw-medium border-0" for="present_{{ $student->id }}">Present</label>
+                                        <div class="att-btn-group">
+                                            <input type="radio" name="attendance[{{ $student->id }}]" id="present_{{ $student->id }}" value="present" {{ $status == 'present' ? 'checked' : '' }}>
+                                            <label for="present_{{ $student->id }}">Present</label>
 
-                                            <input type="radio" class="btn-check" name="attendance[{{ $student->id }}]" id="late_{{ $student->id }}" value="late" {{ $status == 'late' ? 'checked' : '' }}>
-                                            <label class="btn btn-sm btn-outline-warning rounded-pill px-4 fw-medium border-0 mx-1" for="late_{{ $student->id }}">Late</label>
+                                            <input type="radio" name="attendance[{{ $student->id }}]" id="late_{{ $student->id }}" value="late" {{ $status == 'late' ? 'checked' : '' }}>
+                                            <label for="late_{{ $student->id }}">Late</label>
 
-                                            <input type="radio" class="btn-check" name="attendance[{{ $student->id }}]" id="absent_{{ $student->id }}" value="absent" {{ $status == 'absent' ? 'checked' : '' }}>
-                                            <label class="btn btn-sm btn-outline-danger rounded-pill px-4 fw-medium border-0" for="absent_{{ $student->id }}">Absent</label>
+                                            <input type="radio" name="attendance[{{ $student->id }}]" id="absent_{{ $student->id }}" value="absent" {{ $status == 'absent' ? 'checked' : '' }}>
+                                            <label for="absent_{{ $student->id }}">Absent</label>
                                         </div>
                                     </td>
                                 </tr>

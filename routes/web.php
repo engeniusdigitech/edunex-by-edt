@@ -23,23 +23,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// ── Brand Search Routes (edunex / edunext) ──────────────────────────────
-// These dedicated pages help Google associate brand searches with this site
+// ── Brand Search Routes ──────────────────────────────────────────────────
 Route::get('/edunex', function () {
     return view('welcome');
 })->name('brand.edunex');
 
-Route::get('/edunext', function () {
-    return view('welcome');
-})->name('brand.edunext');
-
 Route::get('/edunex-erp', function () {
     return view('welcome');
 })->name('brand.edunex-erp');
-
-Route::get('/edunext-erp', function () {
-    return view('welcome');
-})->name('brand.edunext-erp');
 
 Route::get('/edunexerp', function () {
     return redirect()->route('brand.edunex-erp', [], 301);
@@ -283,6 +274,9 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/students/{student}', [\App\Http\Controllers\ReportController::class, 'studentReport'])->name('student')->middleware('can:manage-academics');
                 Route::get('/students/{student}/pdf', [\App\Http\Controllers\ReportController::class, 'exportStudentReportPdf'])->name('student.pdf')->middleware('can:manage-academics');
                 Route::get('/erp-guide/pdf', [\App\Http\Controllers\ReportController::class, 'exportErpGuidePdf'])->name('erp-guide.pdf');
+
+                Route::get('/lms', [\App\Http\Controllers\ReportController::class, 'lmsReport'])->name('lms')->middleware('can:manage-academics');
+                Route::get('/exams', [\App\Http\Controllers\ReportController::class, 'examsReport'])->name('exams')->middleware('can:manage-academics');
             }
             );
 
@@ -534,8 +528,8 @@ Route::prefix('student')->name('student.')->group(function () {
             Route::resource('leaves', \App\Http\Controllers\Student\LeaveController::class)->only(['index', 'create', 'store']);
 
             // Student Study Materials (LMS)
-            Route::get('study-materials', [\App\Http\Controllers\StudyMaterialController::class, 'studentIndex'])->name('student.study-materials.index');
-            Route::get('study-materials/{studyMaterial}/download', [\App\Http\Controllers\StudyMaterialController::class, 'download'])->name('student.study-materials.download');
+            Route::get('study-materials', [\App\Http\Controllers\StudyMaterialController::class, 'studentIndex'])->name('study-materials.index');
+            Route::get('study-materials/{studyMaterial}/download', [\App\Http\Controllers\StudyMaterialController::class, 'download'])->name('study-materials.download');
 
             // Timetable
             Route::get('timetable', [\App\Http\Controllers\Student\TimetableController::class, 'index'])->name('timetable.index');

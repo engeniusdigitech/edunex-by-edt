@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="EduNex ERP Blog | School Management Software Guides & Institute ERP Insights" description="Read the EduNex ERP blog for the latest school management software tips, institute ERP guides, attendance automation, payroll, and education technology insights for schools and coaching centers worldwide." keywords="school management software blog, institute ERP blog, school software guide, education technology blog, school ERP tips, institute software articles, school management system guide, coaching software blog, EduNex ERP blog" />
+    <x-seo title="EduNex ERP Blog | School Management Software Tips, ERP Guides & EdTech Insights" description="Read the EduNex ERP blog for expert school management software tips, institute ERP guides, AI attendance tutorials, payroll automation, fee collection strategies, and education technology insights for schools and coaching centres across India." keywords="school management software blog, institute ERP blog, school software guide, education technology blog india, school ERP tips, school attendance automation guide, online fee collection school, school payroll guide, coaching class software guide, school erp articles, best school management practices, edunex blog, school software insights india" pageType="Blog" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -14,19 +14,19 @@
 *,*::before,*::after{box-sizing:border-box;}
 body{
     font-family:'Inter',system-ui,sans-serif;
-    background:hsl(222,47%,6%);
-    color:hsl(210,40%,98%);
+    background:#F8FAFC;
+    color:#0F172A;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
 }
 :root{
-    --bg:hsl(222,47%,6%);
-    --card:hsl(222,47%,8%);
-    --border:hsl(217,33%,17%);
-    --muted:hsl(215,20%,65%);
-    --primary:hsl(174,72%,56%);
+    --bg:#F8FAFC;
+    --card:#FFFFFF;
+    --border:#E2E8F0;
+    --muted:#64748B;
+    --primary:#0D9488;
     --secondary:hsl(217,91%,60%);
-    --gradient:linear-gradient(135deg,hsl(174,72%,56%),hsl(217,91%,60%));
+    --gradient:linear-gradient(135deg,#0D9488,hsl(217,91%,60%));
 }
 section{background:transparent!important;}
 .g-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -39,31 +39,31 @@ section{background:transparent!important;}
 .blog-hero::before{
     content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
     width:700px;height:500px;
-    background:radial-gradient(ellipse,hsla(174,72%,56%,0.12) 0%,transparent 70%);
+    background:radial-gradient(ellipse,hsla(174,72%,56%,0.08) 0%,transparent 70%);
     pointer-events:none;
 }
 .eyebrow{
     display:inline-flex;align-items:center;gap:7px;
     background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);
     border-radius:9999px;padding:5px 14px;
-    font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);
+    font-size:0.72rem;font-weight:600;color:#0D9488;
     text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;
 }
-.page-h1{font-size:clamp(2.5rem,5vw,4rem);font-weight: 500;letter-spacing:-2.5px;line-height:1.08;margin-bottom:18px;color:#fff;}
+.page-h1{font-size:clamp(2.5rem,5vw,4rem);font-weight: 500;letter-spacing:-2.5px;line-height:1.08;margin-bottom:18px;color:#0F172A;}
 .page-sub{font-size:1rem;color:var(--muted);line-height:1.85;max-width:520px;margin:0 auto;}
 
 /* Category pills */
 .cat-pill{
     display:inline-flex;align-items:center;gap:5px;
-    background:rgba(255,255,255,0.05);border:1px solid var(--border);
+    background:#F8FAFC;border:1px solid var(--border);
     border-radius:9999px;padding:7px 16px;
     font-size:0.78rem;font-weight:600;color:var(--muted);
     cursor:pointer;transition:all 0.2s;text-decoration:none;
 }
 .cat-pill:hover,.cat-pill.active{
-    background:hsla(174,72%,56%,0.12);
+    background:hsla(174,72%,56%,0.08);
     border-color:hsla(174,72%,56%,0.35);
-    color:hsl(174,72%,65%);
+    color:#0D9488;
 }
 
 /* Blog cards */
@@ -72,6 +72,7 @@ section{background:transparent!important;}
     border-radius:16px;overflow:hidden;height:100%;
     display:flex;flex-direction:column;
     transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow:0 1px 4px rgba(0,0,0,0.06);
 }
 .blog-card:hover{
     border-color:hsla(174,72%,56%,0.35);
@@ -88,13 +89,13 @@ section{background:transparent!important;}
 .blog-body{padding:24px;display:flex;flex-direction:column;flex:1;}
 .blog-cat{
     display:inline-block;
-    background:hsla(174,72%,56%,0.12);border:1px solid hsla(174,72%,56%,0.22);
-    color:hsl(174,72%,65%);border-radius:6px;
+    background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);
+    color:#0D9488;border-radius:6px;
     font-size:0.65rem;font-weight: 500;text-transform:uppercase;letter-spacing:1px;
     padding:3px 10px;margin-bottom:14px;
 }
 .blog-title{
-    font-size:1rem;font-weight: 500;color:#fff;
+    font-size:1rem;font-weight: 500;color:#0F172A;
     line-height:1.45;margin-bottom:10px;letter-spacing:-0.3px;
 }
 .blog-excerpt{
@@ -111,7 +112,7 @@ section{background:transparent!important;}
 .blog-av{
     width:28px;height:28px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
-    font-size:0.65rem;font-weight: 500;color:hsl(222,47%,6%);flex-shrink:0;
+    font-size:0.65rem;font-weight: 500;color:#FFFFFF;flex-shrink:0;
 }
 .blog-read-more{
     display:inline-flex;align-items:center;gap:5px;
@@ -134,19 +135,19 @@ section{background:transparent!important;}
 
 /* CTA */
 .blog-cta{
-    background:hsl(222,47%,5%);
+    background:#F1F5F9;
     border-top:1px solid var(--border);
     padding:80px 0;text-align:center;
 }
 .cta-btn{
     display:inline-flex;align-items:center;gap:8px;
-    background:var(--gradient);color:hsl(222,47%,6%);
+    background:var(--gradient);color:#FFFFFF;
     text-decoration:none;padding:13px 28px;border-radius:10px;
     font-weight: 500;font-size:0.95rem;
     box-shadow:0 0 24px hsla(174,72%,56%,0.28);
     transition:all 0.25s;
 }
-.cta-btn:hover{opacity:0.9;transform:translateY(-2px);color:hsl(222,47%,6%);}
+.cta-btn:hover{opacity:0.9;transform:translateY(-2px);color:#FFFFFF;}
 
 @media(max-width:768px){.page-h1{font-size:2.5rem;letter-spacing:-2px;}}
 </style>
@@ -251,7 +252,7 @@ section{background:transparent!important;}
         <span style="display:inline-flex;align-items:center;gap:6px;background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);border-radius:9999px;padding:4px 14px;font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;">
             <i class="fas fa-rocket"></i> Ready to Innovate?
         </span>
-        <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:14px;">Join 100+ institutes already using EduNex ERP.</h2>
+        <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#0F172A;margin-bottom:14px;">Join 100+ institutes already using EduNex ERP.</h2>
         <p style="color:var(--muted);font-size:1rem;max-width:420px;margin:0 auto 32px;line-height:1.8;">Start your free trial today — no credit card, no setup fee.</p>
         <a href="{{ route('pricing') }}" class="cta-btn">View Pricing Plans <i class="fas fa-arrow-right"></i></a>
     </div>

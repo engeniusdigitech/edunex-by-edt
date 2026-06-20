@@ -1506,7 +1506,7 @@ body {
         <div class="row g-4">
             @foreach([
                 ['n'=>'Rajesh Kumar','r'=>'Director, Apex Coaching Center','i'=>'RK','c'=>'var(--gradient-primary)','q'=>'EduNex ERP completely changed how we manage our 300+ students. The fee reminders alone saved us 10+ hours of phone calls every month.'],
-                ['n'=>'Priya Sharma','r'=>'Principal, Bright Minds Academy','i'=>'PS','c'=>'var(--gradient-secondary)','q'=>'The AI face attendance was a game changer — zero proxy marking. And the analytics give me full visibility into every batch.'],
+                ['n'=>'SanjaySharma','r'=>'Principal, Bright Minds Academy','i'=>'PS','c'=>'var(--gradient-secondary)','q'=>'The AI face attendance was a game changer — zero proxy marking. And the analytics give me full visibility into every batch.'],
                 ['n'=>'Arjun Mehta','r'=>'Owner, CodeCraft Skill Institute','i'=>'AM','c'=>'linear-gradient(135deg,hsl(262,83%,58%),hsl(217,91%,60%))','q'=>'We run 6 tech courses with 400 students. EduNex ERP handles everything from live lectures to payslips in one beautiful platform.'],
             ] as $t)
             <div class="col-lg-4">

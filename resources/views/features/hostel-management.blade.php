@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
-        title="School Hostel Management Software | EduNex (EduNext) ERP Mess Module"
-        description="Automate room allocation, hostel billing, mess planning, and student check-ins/check-outs with the EduNex ERP (also known as EduNext ERP) Hostel Management system."
-        keywords="edunex hostel, edunext hostel, school hostel management software, hostel room allocation software, hostel billing software, student hostel ERP, mess management software, hostel warden software, boarding school management software, hostel fee management, edunext erp hostel"
+        title="School Hostel Management Software | EduNex ERP Mess Module"
+        description="Automate room allocation, hostel billing, mess planning, and student check-ins/check-outs with the EduNex ERP Hostel Management system."
+        keywords="edunex hostel, edunex erp hostel, school hostel management software, hostel room allocation software, hostel billing software, student hostel ERP, mess management software, hostel warden software, boarding school management software, hostel fee management"
     />
     <script type="application/ld+json">
     {
@@ -46,7 +46,7 @@
         "name": "Can parents pay hostel fees online?",
         "acceptedAnswer": {
           "@@type": "Answer",
-          "text": "Yes, hostel billing in EduNex ERP (also commonly searched as EduNext ERP) is fully integrated with the main online payment gateway, allowing parents to pay all tuition, transport, and hostel fees in a single unified transaction."
+          "text": "Yes, hostel billing in EduNex ERP is fully integrated with the main online payment gateway, allowing parents to pay all tuition, transport, and hostel fees in a single unified transaction."
         }
       },{
         "@@type": "Question",
@@ -89,14 +89,14 @@
 
 <style>
 :root {
-    --bg:         hsl(222, 47%, 6%);
-    --card-bg:    hsl(222, 47%, 8%);
-    --border:     hsl(217, 33%, 17%);
-    --muted:      hsl(215, 20%, 65%);
-    --primary:    hsl(174, 72%, 56%);
+    --bg:         #F8FAFC;
+    --card-bg:    #FFFFFF;
+    --border:     #E2E8F0;
+    --muted:      #64748B;
+    --primary:    #0D9488;
     --secondary:  hsl(217, 91%, 60%);
-    --foreground: hsl(210, 40%, 98%);
-    --gradient-primary: linear-gradient(135deg, hsl(174,72%,56%), hsl(217,91%,60%));
+    --foreground: #0F172A;
+    --gradient-primary: linear-gradient(135deg, #0D9488, hsl(217,91%,60%));
 }
 body {
     font-family: 'Inter', sans-serif;
@@ -110,12 +110,12 @@ body {
 .hero-feat-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .hpill {
     display: inline-flex; align-items: center; gap: 7px;
-    background: hsla(210,40%,98%,0.04); border: 1px solid hsla(210,40%,98%,0.09);
+    background: #F8FAFC; border: 1px solid #E2E8F0;
     border-radius: 9px; padding: 7px 14px; font-size: 0.76rem; font-weight: 500; color: var(--muted);
 }
 .hpill i { color: var(--primary); }
 .btn-primary-feat {
-    background: var(--gradient-primary); color: hsl(222,47%,6%);
+    background: var(--gradient-primary); color: #FFFFFF;
     border: none; padding: 14px 30px; border-radius: 10px;
     font-weight: 700; font-size: 0.9rem;
     display: inline-flex; align-items: center; gap: 8px;
@@ -131,10 +131,10 @@ body {
 .btn-outline-feat:hover { border-color: var(--primary); background: hsla(174,72%,56%,0.08); }
 .mock-card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4); overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06); overflow: hidden;
 }
 .mock-header {
-    background: hsl(222, 47%, 5%); border-bottom: 1px solid var(--border);
+    background: #F1F5F9; border-bottom: 1px solid var(--border);
     padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;
 }
 .mock-dots { display: flex; gap: 6px; }
@@ -143,10 +143,10 @@ body {
 .mock-dot.yellow { background: #ffbd2e; }
 .mock-dot.green { background: #27c93f; }
 .lead {
-    color: #cbd5e1 !important;
+    color: #334155 !important;
 }
 .text-muted {
-    color: #94a3b8 !important;
+    color: #64748B !important;
 }
 .feat-card {
     background: var(--card-bg);
@@ -165,7 +165,7 @@ body {
     color: var(--primary) !important;
 }
 .accordion-button::after {
-    filter: invert(1);
+    filter: none;
 }
 </style>
 </head>
@@ -202,7 +202,7 @@ body {
                     </div>
                     <span class="text-uppercase fw-bold text-success" style="font-size: 0.65rem; letter-spacing: 1px;">Hostel Room Dashboard</span>
                 </div>
-                <div class="p-4" style="background: hsl(222, 47%, 7%);">
+                <div class="p-4" style="background: #F8FAFC;">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h6 class="mb-0 fw-bold">Live Room Occupancy</h6>
                         <span class="badge bg-warning text-dark px-2 py-1" style="font-size:0.65rem;">12 Hostel Bills Due This Week</span>
@@ -219,14 +219,14 @@ body {
                                 </tr>
                             </thead>
                             <tbody style="font-size: 0.82rem;">
-                                <tr style="border-bottom: 1px solid hsla(217,33%,17%,0.4);">
+                                <tr style="border-bottom: 1px solid #E2E8F0;">
                                     <td class="py-3 fw-semibold">Room 101</td>
                                     <td class="py-3 text-muted">Block A</td>
                                     <td class="py-3 text-center">4 beds</td>
                                     <td class="py-3 text-center">4 / 4</td>
                                     <td class="py-3 text-end"><span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">Full</span></td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid hsla(217,33%,17%,0.4);">
+                                <tr style="border-bottom: 1px solid #E2E8F0;">
                                     <td class="py-3 fw-semibold">Room 203</td>
                                     <td class="py-3 text-muted">Block B</td>
                                     <td class="py-3 text-center">3 beds</td>
@@ -250,7 +250,7 @@ body {
 </section>
 
 <!-- Detailed Features Section -->
-<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 5%);">
+<section class="border-top py-5" style="border-color: var(--border) !important; background: #F1F5F9;">
     <div class="container py-5">
         <div class="text-center mb-5">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Deep Dive</span>
@@ -314,21 +314,21 @@ body {
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="feat-card p-4 text-center">
-                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: hsl(222,47%,6%); border-radius: 50%; font-size: 1.1rem;">1</div>
+                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: #FFFFFF; border-radius: 50%; font-size: 1.1rem;">1</div>
                     <h5 class="fw-bold mb-2">Set Up Hostels &amp; Rooms</h5>
                     <p class="small text-muted mb-0">Add your hostel buildings, define blocks, and configure rooms with capacity and amenities. Students are then linked to their room on admission.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feat-card p-4 text-center">
-                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: hsl(222,47%,6%); border-radius: 50%; font-size: 1.1rem;">2</div>
+                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: #FFFFFF; border-radius: 50%; font-size: 1.1rem;">2</div>
                     <h5 class="fw-bold mb-2">Manage Mess &amp; Billing</h5>
                     <p class="small text-muted mb-0">Plan weekly mess menus, manage subscriptions, and let the system auto-generate hostel bills at the end of each billing cycle.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feat-card p-4 text-center">
-                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: hsl(222,47%,6%); border-radius: 50%; font-size: 1.1rem;">3</div>
+                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: #FFFFFF; border-radius: 50%; font-size: 1.1rem;">3</div>
                     <h5 class="fw-bold mb-2">Track Checkouts &amp; Occupancy</h5>
                     <p class="small text-muted mb-0">Monitor who is in which room at all times. Process checkout when students leave and immediately free up room for the next allocation.</p>
                 </div>
@@ -338,7 +338,7 @@ body {
 </section>
 
 <!-- Before vs After Section -->
-<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 5%);">
+<section class="border-top py-5" style="border-color: var(--border) !important; background: #F1F5F9;">
     <div class="container py-5">
         <div class="text-center mb-5">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Evolution</span>
@@ -374,7 +374,7 @@ body {
 </section>
 
 <!-- Key Operational Benefits & ROI Section -->
-<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+<section class="border-top py-5" style="border-color: var(--border) !important; background: #F8FAFC;">
     <div class="container py-5">
         <div class="text-center mb-5">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Operational Value</span>
@@ -454,7 +454,7 @@ body {
                         </h2>
                         <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
-                                Yes, hostel billing in EduNex ERP (also commonly searched as EduNext ERP) is fully integrated with the main online payment gateway, allowing parents to pay all tuition, transport, and hostel fees in a single unified transaction.
+                                Yes, hostel billing in EduNex ERP is fully integrated with the main online payment gateway, allowing parents to pay all tuition, transport, and hostel fees in a single unified transaction.
                             </div>
                         </div>
                     </div>
@@ -513,10 +513,10 @@ body {
 </section>
 
 <!-- Bottom CTA Section -->
-<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: #F1F5F9;">
     <div class="container py-5">
         <h2 class="fw-bold display-5 mb-3">Ready to Streamline Your School Boarding Operations?</h2>
-        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Automate room allocation, track mess subscriptions, and simplify hostel fee management.</p>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP today. Automate room allocation, track mess subscriptions, and simplify hostel fee management.</p>
         <div class="d-flex justify-content-center gap-3 flex-wrap">
             <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
             <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>

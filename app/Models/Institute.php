@@ -32,6 +32,12 @@ class Institute extends Model
         'feature_transport',
         'feature_whatsapp',
         'feature_live_classes',
+        'feature_attendance',
+        'feature_academics',
+        'feature_lms',
+        'feature_exams',
+        'feature_curriculum',
+        'feature_reports',
     ];
 
     protected $casts = [
@@ -48,6 +54,12 @@ class Institute extends Model
         'feature_transport' => 'boolean',
         'feature_whatsapp' => 'boolean',
         'feature_live_classes' => 'boolean',
+        'feature_attendance' => 'boolean',
+        'feature_academics' => 'boolean',
+        'feature_lms' => 'boolean',
+        'feature_exams' => 'boolean',
+        'feature_curriculum' => 'boolean',
+        'feature_reports' => 'boolean',
     ];
 
     public function users()

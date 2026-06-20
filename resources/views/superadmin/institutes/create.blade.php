@@ -123,6 +123,42 @@
                         <label class="form-check-label fw-semibold text-muted small" for="feature_live_classes">Live Lectures</label>
                     </div>
                 </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_attendance" id="feature_attendance" value="1" {{ old('feature_attendance', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_attendance">Student's Attendance</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_academics" id="feature_academics" value="1" {{ old('feature_academics', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_academics">Academics</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_lms" id="feature_lms" value="1" {{ old('feature_lms', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_lms">LMS</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_exams" id="feature_exams" value="1" {{ old('feature_exams', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_exams">Exams & Tests</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_curriculum" id="feature_curriculum" value="1" {{ old('feature_curriculum', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_curriculum">Curriculum</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="feature_reports" id="feature_reports" value="1" {{ old('feature_reports', true) ? 'checked' : '' }}>
+                        <label class="form-check-label fw-semibold text-muted small" for="feature_reports">Reports</label>
+                    </div>
+                </div>
             </div>
 
             <hr class="my-4">

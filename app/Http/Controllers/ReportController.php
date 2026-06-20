@@ -256,4 +256,113 @@ class ReportController extends Controller
         $pdf = Pdf::loadView('reports.pdf.erp_guide')->setPaper('a4', 'portrait');
         return $pdf->download('EduNex_ERP_Brief_Guide.pdf');
     }
+
+    // ─────────────────────────────────────────────
+    // LMS Report
+    // ─────────────────────────────────────────────
+    public function lmsReport(\Illuminate\Http\Request $request)
+    {
+        $user    = auth()->user();
+        $batches = $user->isTeacher()
+            ? Batch::where('class_teacher_id', $user->id)->where('is_active', true)->get()
+            : Batch::where('institute_id', $user->institute_id)->get();
+
+        $batchId   = $request->get('batch_id');
+        $subjectId = $request->get('subject_id');
+        $subjects  = $batchId ? \App\Models\Subject::where('batch_id', $batchId)->get() : collect();
+
+        // Study Materials
+        $materialsQuery = \App\Models\StudyMaterial::where('institute_id', $user->institute_id)
+            ->with(['batch', 'subject', 'uploader']);
+        if ($batchId)   $materialsQuery->where('batch_id', $batchId);
+        if ($subjectId) $materialsQuery->where('subject_id', $subjectId);
+        $materials = $materialsQuery->orderBy('created_at', 'desc')->get();
+
+        // Homework
+        $homeworkQuery = \App\Models\Homework::where('institute_id', $user->institute_id)
+            ->with(['batch', 'subject', 'attachments']);
+        if ($batchId)   $homeworkQuery->where('batch_id', $batchId);
+        if ($subjectId) $homeworkQuery->where('subject_id', $subjectId);
+        $homeworks = $homeworkQuery->orderBy('due_date', 'desc')->get();
+
+        // Live Lectures
+        $lecturesQuery = \App\Models\LiveLecture::where('institute_id', $user->institute_id)
+            ->with(['batch']);
+        if ($batchId)   $lecturesQuery->where('batch_id', $batchId);
+        $lectures = $lecturesQuery->orderBy('recorded_at', 'desc')->get();
+
+        // Aggregates
+        $totalMaterials   = $materials->count();
+        $totalDownloads   = $materials->sum('download_count');
+        $totalHomework    = $homeworks->count();
+        $overdueHomework  = $homeworks->where('due_date', '<', now())->count();
+        $totalLectures    = $lectures->count();
+
+        // Materials by subject breakdown
+        $materialsBySubject = $materials->groupBy(fn($m) => optional($m->subject)->name ?? 'General');
+
+        return view('reports.lms', compact(
+            'batches', 'batchId', 'subjectId', 'subjects',
+            'materials', 'homeworks', 'lectures',
+            'totalMaterials', 'totalDownloads', 'totalHomework', 'overdueHomework', 'totalLectures',
+            'materialsBySubject'
+        ));
+    }
+
+    // ─────────────────────────────────────────────
+    // Tests & Exams Report
+    // ─────────────────────────────────────────────
+    public function examsReport(\Illuminate\Http\Request $request)
+    {
+        $user    = auth()->user();
+        $batches = $user->isTeacher()
+            ? Batch::where('class_teacher_id', $user->id)->where('is_active', true)->get()
+            : Batch::where('institute_id', $user->institute_id)->get();
+
+        $batchId = $request->get('batch_id');
+        $tab     = $request->get('tab', 'tests'); // 'tests' or 'online'
+
+        // ── Written Tests ──
+        $testsQuery = \App\Models\Test::where('institute_id', $user->institute_id)
+            ->with(['batch', 'subject', 'scores.student']);
+        if ($batchId) $testsQuery->where('batch_id', $batchId);
+        $tests = $testsQuery->orderBy('test_date', 'desc')->get();
+
+        // Annotate each test with computed stats
+        $tests->each(function ($test) {
+            $scores = $test->scores;
+            $test->students_count = $scores->count();
+            $test->avg_score      = $scores->count() > 0 ? round($scores->avg('score'), 1) : null;
+            $test->highest        = $scores->count() > 0 ? $scores->max('score') : null;
+            $test->lowest         = $scores->count() > 0 ? $scores->min('score') : null;
+            $test->pass_count     = $test->total_marks > 0
+                ? $scores->filter(fn($s) => ($s->score / $test->total_marks) * 100 >= 40)->count()
+                : 0;
+        });
+
+        $totalTests    = $tests->count();
+        $avgTestScore  = $tests->whereNotNull('avg_score')->avg('avg_score');
+
+        // ── Online Exams ──
+        $onlineQuery = \App\Models\OnlineExam::where('institute_id', $user->institute_id)
+            ->with(['batch', 'subject', 'sessions.student']);
+        if ($batchId) $onlineQuery->where('batch_id', $batchId);
+        $onlineExams = $onlineQuery->orderBy('start_datetime', 'desc')->get();
+
+        $onlineExams->each(function ($exam) {
+            $submitted = $exam->sessions->where('status', 'submitted');
+            $exam->attempts_count = $submitted->count();
+            $exam->avg_score      = $submitted->count() > 0 ? round($submitted->avg('percentage'), 1) : null;
+            $exam->pass_count     = $submitted->where('is_passed', true)->count();
+            $exam->fail_count     = $submitted->where('is_passed', false)->count();
+        });
+
+        $totalOnlineExams = $onlineExams->count();
+
+        return view('reports.exams', compact(
+            'batches', 'batchId', 'tab',
+            'tests', 'totalTests', 'avgTestScore',
+            'onlineExams', 'totalOnlineExams'
+        ));
+    }
 }

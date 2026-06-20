@@ -15,19 +15,7 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>{{ url('/edunext') }}</loc>
-        <lastmod>2026-05-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
         <loc>{{ url('/edunex-erp') }}</loc>
-        <lastmod>2026-05-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>{{ url('/edunext-erp') }}</loc>
         <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>

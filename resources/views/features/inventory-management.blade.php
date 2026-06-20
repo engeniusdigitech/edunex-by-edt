@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
-        title="School Inventory Management Software | EduNex (EduNext) ERP Store Module"
-        description="Track stock levels, manage purchase orders, and monitor store usage with the EduNex ERP (also known as EduNext ERP) Inventory Management software for schools & colleges."
-        keywords="edunex inventory, edunext inventory, school inventory management software, institute stock management, school store ERP, purchase order software school, inventory tracking software, school supplies management, store management ERP, inventory module school software, school stock control software, edunext erp inventory, edunex erp inventory"
+        title="School Inventory Management Software | EduNex ERP Store Module"
+        description="Track stock levels, manage purchase orders, and monitor store usage with the EduNex ERP Inventory Management software for schools & colleges."
+        keywords="edunex inventory, edunex erp inventory, school inventory management software, institute stock management, school store ERP, purchase order software school, inventory tracking software, school supplies management, store management ERP, inventory module school software, school stock control software"
     />
     <script type="application/ld+json">
     {
@@ -46,7 +46,7 @@
         "name": "Does EduNex ERP support Tally integration for store purchases?",
         "acceptedAnswer": {
           "@@type": "Answer",
-          "text": "Yes, EduNex ERP (also commonly searched as EduNext ERP) features direct integration with Tally, allowing you to export purchase invoices and inventory expenses with one click."
+          "text": "Yes, EduNex ERP features direct integration with Tally, allowing you to export purchase invoices and inventory expenses with one click."
         }
       },{
         "@@type": "Question",
@@ -89,14 +89,14 @@
 
 <style>
 :root {
-    --bg:         hsl(222, 47%, 6%);
-    --card-bg:    hsl(222, 47%, 8%);
-    --border:     hsl(217, 33%, 17%);
-    --muted:      hsl(215, 20%, 65%);
-    --primary:    hsl(174, 72%, 56%);
+    --bg:         #F8FAFC;
+    --card-bg:    #FFFFFF;
+    --border:     #E2E8F0;
+    --muted:      #64748B;
+    --primary:    #0D9488;
     --secondary:  hsl(217, 91%, 60%);
-    --foreground: hsl(210, 40%, 98%);
-    --gradient-primary: linear-gradient(135deg, hsl(174,72%,56%), hsl(217,91%,60%));
+    --foreground: #0F172A;
+    --gradient-primary: linear-gradient(135deg, #0D9488, hsl(217,91%,60%));
 }
 body {
     font-family: 'Inter', sans-serif;
@@ -110,12 +110,12 @@ body {
 .hero-feat-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .hpill {
     display: inline-flex; align-items: center; gap: 7px;
-    background: hsla(210,40%,98%,0.04); border: 1px solid hsla(210,40%,98%,0.09);
+    background: #F8FAFC; border: 1px solid #E2E8F0;
     border-radius: 9px; padding: 7px 14px; font-size: 0.76rem; font-weight: 500; color: var(--muted);
 }
 .hpill i { color: var(--primary); }
 .btn-primary-feat {
-    background: var(--gradient-primary); color: hsl(222,47%,6%);
+    background: var(--gradient-primary); color: #FFFFFF;
     border: none; padding: 14px 30px; border-radius: 10px;
     font-weight: 700; font-size: 0.9rem;
     display: inline-flex; align-items: center; gap: 8px;
@@ -131,10 +131,10 @@ body {
 .btn-outline-feat:hover { border-color: var(--primary); background: hsla(174,72%,56%,0.08); }
 .mock-card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4); overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06); overflow: hidden;
 }
 .mock-header {
-    background: hsl(222, 47%, 5%); border-bottom: 1px solid var(--border);
+    background: #F1F5F9; border-bottom: 1px solid var(--border);
     padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;
 }
 .mock-dots { display: flex; gap: 6px; }
@@ -143,10 +143,10 @@ body {
 .mock-dot.yellow { background: #ffbd2e; }
 .mock-dot.green { background: #27c93f; }
 .lead {
-    color: #cbd5e1 !important;
+    color: #334155 !important;
 }
 .text-muted {
-    color: #94a3b8 !important;
+    color: #64748B !important;
 }
 .feat-card {
     background: var(--card-bg);
@@ -165,7 +165,7 @@ body {
     color: var(--primary) !important;
 }
 .accordion-button::after {
-    filter: invert(1);
+    filter: none;
 }
 </style>
 </head>
@@ -202,7 +202,7 @@ body {
                     </div>
                     <span class="text-uppercase fw-bold text-success" style="font-size: 0.65rem; letter-spacing: 1px;">Store Inventory Dashboard</span>
                 </div>
-                <div class="p-4" style="background: hsl(222, 47%, 7%);">
+                <div class="p-4" style="background: #F8FAFC;">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h6 class="mb-0 fw-bold">Stock Threshold Alerts</h6>
                         <span class="badge bg-warning text-dark px-2 py-1" style="font-size:0.65rem;">3 Purchase Orders Pending</span>
@@ -218,13 +218,13 @@ body {
                                 </tr>
                             </thead>
                             <tbody style="font-size: 0.82rem;">
-                                <tr style="border-bottom: 1px solid hsla(217,33%,17%,0.4);">
+                                <tr style="border-bottom: 1px solid #E2E8F0;">
                                     <td class="py-3 fw-semibold">Whiteboard Markers</td>
                                     <td class="py-3 text-muted">Stationery</td>
                                     <td class="py-3 text-center">45 units</td>
                                     <td class="py-3 text-end"><span class="badge bg-warning-subtle text-warning border border-warning-subtle px-2 py-1">Low Stock</span></td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid hsla(217,33%,17%,0.4);">
+                                <tr style="border-bottom: 1px solid #E2E8F0;">
                                     <td class="py-3 fw-semibold">A4 Paper Reams</td>
                                     <td class="py-3 text-muted">Stationery</td>
                                     <td class="py-3 text-center">200 units</td>
@@ -246,7 +246,7 @@ body {
 </section>
 
 <!-- Detailed Features Section -->
-<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 5%);">
+<section class="border-top py-5" style="border-color: var(--border) !important; background: #F1F5F9;">
     <div class="container py-5">
         <div class="text-center mb-5">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Deep Dive</span>
@@ -310,21 +310,21 @@ body {
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="feat-card p-4 text-center">
-                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: hsl(222,47%,6%); border-radius: 50%; font-size: 1.1rem;">1</div>
+                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: #FFFFFF; border-radius: 50%; font-size: 1.1rem;">1</div>
                     <h5 class="fw-bold mb-2">Add Items &amp; Set Thresholds</h5>
                     <p class="small text-muted mb-0">Add your inventory items with minimum stock thresholds. The system automatically alerts staff when items fall below safe levels.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feat-card p-4 text-center">
-                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: hsl(222,47%,6%); border-radius: 50%; font-size: 1.1rem;">2</div>
+                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: #FFFFFF; border-radius: 50%; font-size: 1.1rem;">2</div>
                     <h5 class="fw-bold mb-2">Raise Purchase Orders</h5>
                     <p class="small text-muted mb-0">When stocks are low, raise purchase orders to approved suppliers. Track order status from pending to delivered.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feat-card p-4 text-center">
-                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: hsl(222,47%,6%); border-radius: 50%; font-size: 1.1rem;">3</div>
+                    <div class="mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; background: var(--gradient-primary); color: #FFFFFF; border-radius: 50%; font-size: 1.1rem;">3</div>
                     <h5 class="fw-bold mb-2">Receive &amp; Distribute</h5>
                     <p class="small text-muted mb-0">Receive delivered items into stock, distribute to departments, and watch consumption reports update in real-time.</p>
                 </div>
@@ -334,7 +334,7 @@ body {
 </section>
 
 <!-- Before vs After Section -->
-<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 5%);">
+<section class="border-top py-5" style="border-color: var(--border) !important; background: #F1F5F9;">
     <div class="container py-5">
         <div class="text-center mb-5">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Evolution</span>
@@ -370,7 +370,7 @@ body {
 </section>
 
 <!-- Key Operational Benefits & ROI Section -->
-<section class="border-top py-5" style="border-color: var(--border) !important; background: hsl(222, 47%, 7%);">
+<section class="border-top py-5" style="border-color: var(--border) !important; background: #F8FAFC;">
     <div class="container py-5">
         <div class="text-center mb-5">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem; background: hsla(174,72%,56%,0.1); border: 1px solid hsla(174,72%,56%,0.2); padding: 5px 14px; border-radius: 9999px;">Procurement &amp; Assets</span>
@@ -450,7 +450,7 @@ body {
                         </h2>
                         <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-muted small" style="border-top: 1px solid var(--border);">
-                                Yes, EduNex ERP (also commonly searched as EduNext ERP) features direct integration with Tally, allowing you to export purchase invoices and inventory expenses with one click.
+                                Yes, EduNex ERP features direct integration with Tally, allowing you to export purchase invoices and inventory expenses with one click.
                             </div>
                         </div>
                     </div>
@@ -509,10 +509,10 @@ body {
 </section>
 
 <!-- Bottom CTA Section -->
-<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: linear-gradient(180deg, hsl(222, 47%, 5%), hsl(222, 47%, 2%));">
+<section class="border-top py-5 text-center" style="border-color: var(--border) !important; background: #F1F5F9;">
     <div class="container py-5">
         <h2 class="fw-bold display-5 mb-3">Take Control of Your Institute Store &amp; Assets</h2>
-        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP (also known as EduNext ERP) today. Streamline your procurement workflows, eliminate waste, and monitor consumption in real-time.</p>
+        <p class="mx-auto text-muted mb-4" style="max-width: 600px;">Get started with EduNex ERP today. Streamline your procurement workflows, eliminate waste, and monitor consumption in real-time.</p>
         <div class="d-flex justify-content-center gap-3 flex-wrap">
             <a href="{{ route('pricing') }}" class="btn-primary-feat">Start Free Trial <i class="fas fa-rocket"></i></a>
             <a href="{{ route('contact') }}" class="btn-outline-feat">Schedule Live Demo <i class="fas fa-calendar-days"></i></a>

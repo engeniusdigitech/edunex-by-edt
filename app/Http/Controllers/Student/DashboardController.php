@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,10 +14,26 @@ class DashboardController extends Controller
         $student = auth('student')->user()->load('batch', 'institute');
 
         $totalClasses = $student->attendances()->count();
-        $presentClasses = $student->attendances()->whereIn('status', ['present', 'late'])->count();
-        $attendancePercentage = $totalClasses > 0 ? round(($presentClasses / $totalClasses) * 100) : 0;
+        $presentClasses = $student->attendances()->where('status', 'present')->count();
+        $lateClasses = $student->attendances()->where('status', 'late')->count();
+        $absentClasses = $student->attendances()->where('status', 'absent')->count();
+        $attendancePercentage = $totalClasses > 0 ? round((($presentClasses + $lateClasses) / $totalClasses) * 100) : 0;
 
         $recentPayments = $student->payments()->latest()->take(5)->get();
+
+        // Recent leaves
+        $recentLeaves = LeaveRequest::where('student_id', $student->id)->latest()->take(5)->get();
+
+        // Monthly attendance breakdown (last 6 months)
+        $monthlyAttendance = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $month = now()->subMonths($i);
+            $monthlyAttendance[] = [
+                'label'   => $month->format('M'),
+                'present' => $student->attendances()->whereYear('date', $month->year)->whereMonth('date', $month->month)->whereIn('status', ['present', 'late'])->count(),
+                'absent'  => $student->attendances()->whereYear('date', $month->year)->whereMonth('date', $month->month)->where('status', 'absent')->count(),
+            ];
+        }
 
         // Academics Data
         $activeHomeworks = \App\Models\Homework::with('attachments')
@@ -41,6 +58,7 @@ class DashboardController extends Controller
 
         return view('student.dashboard', compact(
             'student', 'attendancePercentage', 'presentClasses', 'totalClasses',
+            'absentClasses', 'lateClasses', 'recentLeaves', 'monthlyAttendance',
             'recentPayments', 'activeHomeworks', 'upcomingTests', 'pastTests'
         ));
     }

@@ -70,6 +70,12 @@ class InstituteController extends Controller
                 'feature_transport' => $request->has('feature_transport'),
                 'feature_whatsapp' => $request->has('feature_whatsapp'),
                 'feature_live_classes' => $request->has('feature_live_classes'),
+                'feature_attendance' => $request->has('feature_attendance'),
+                'feature_academics' => $request->has('feature_academics'),
+                'feature_lms' => $request->has('feature_lms'),
+                'feature_exams' => $request->has('feature_exams'),
+                'feature_curriculum' => $request->has('feature_curriculum'),
+                'feature_reports' => $request->has('feature_reports'),
             ]);
 
             $instituteAdminRole = Role::where('name', 'Institute Admin')->firstOrFail();
@@ -131,6 +137,12 @@ class InstituteController extends Controller
             'feature_transport' => $request->has('feature_transport'),
             'feature_whatsapp' => $request->has('feature_whatsapp'),
             'feature_live_classes' => $request->has('feature_live_classes'),
+            'feature_attendance' => $request->has('feature_attendance'),
+            'feature_academics' => $request->has('feature_academics'),
+            'feature_lms' => $request->has('feature_lms'),
+            'feature_exams' => $request->has('feature_exams'),
+            'feature_curriculum' => $request->has('feature_curriculum'),
+            'feature_reports' => $request->has('feature_reports'),
         ]);
 
         return redirect()->route('superadmin.institutes.index')->with('success', 'Institute updated successfully.');

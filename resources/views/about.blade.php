@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="About EduNex ERP — School Management Software Company | Institute ERP by Engenius Digitech" description="EduNex ERP (also known as EduNext ERP) is built by Engenius Digitech — engineers and educators creating the best School Management System and Institute ERP. Learn our mission to digitize schools and institutes across India." keywords="edunex, edunext, edunex erp, edunext erp, about edunex, about edunext erp, about school management software company, school ERP company, institute software developer, school software company, EduNex ERP about, Engenius Digitech school ERP, best school management system, school software brand" />
+    <x-seo title="About EduNex ERP — School Management Software Company | Institute ERP by Engenius Digitech" description="EduNex ERP is built by Engenius Digitech — engineers and educators creating the best School Management System and Institute ERP. Learn our mission to digitize schools and institutes across India." keywords="edunex, edunex erp, edunexerp, about edunex erp, about school management software company, school ERP company, institute software developer, school software company, EduNex ERP about, Engenius Digitech school ERP, best school management system, school software brand" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -14,19 +14,19 @@
 *,*::before,*::after{box-sizing:border-box;}
 body{
     font-family:'Inter',system-ui,sans-serif;
-    background:hsl(222,47%,6%);
-    color:hsl(210,40%,98%);
+    background:#F8FAFC;
+    color:#0F172A;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
 }
 :root{
-    --bg:hsl(222,47%,6%);
-    --card:hsl(222,47%,8%);
-    --border:hsl(217,33%,17%);
-    --muted:hsl(215,20%,65%);
-    --primary:hsl(174,72%,56%);
+    --bg:#F8FAFC;
+    --card:#FFFFFF;
+    --border:#E2E8F0;
+    --muted:#64748B;
+    --primary:#0D9488;
     --secondary:hsl(217,91%,60%);
-    --gradient:linear-gradient(135deg,hsl(174,72%,56%),hsl(217,91%,60%));
+    --gradient:linear-gradient(135deg,#0D9488,hsl(217,91%,60%));
 }
 section{background:transparent!important;}
 .g-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -39,36 +39,36 @@ section{background:transparent!important;}
 .about-hero::before{
     content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
     width:800px;height:600px;
-    background:radial-gradient(ellipse,hsla(174,72%,56%,0.12) 0%,transparent 70%);
+    background:radial-gradient(ellipse,hsla(174,72%,56%,0.08) 0%,transparent 70%);
     pointer-events:none;
 }
 .eyebrow{
     display:inline-flex;align-items:center;gap:7px;
     background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);
     border-radius:9999px;padding:5px 14px;
-    font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);
+    font-size:0.72rem;font-weight:600;color:#0D9488;
     text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;
 }
-.page-h1{font-size:clamp(2.8rem,6vw,4.5rem);font-weight: 500;letter-spacing:-3px;line-height:1.06;margin-bottom:18px;color:#fff;}
+.page-h1{font-size:clamp(2.8rem,6vw,4.5rem);font-weight: 500;letter-spacing:-3px;line-height:1.06;margin-bottom:18px;color:#0F172A;}
 .page-sub{font-size:1rem;color:var(--muted);line-height:1.85;max-width:560px;margin:0 auto;}
 
 /* White section */
-.light-sec{background:hsl(222,47%,5%)!important;padding:90px 0;border-top:1px solid hsl(217,33%,17%);border-bottom:1px solid hsl(217,33%,17%);}
-.light-sec .sec-eyebrow{color:hsl(174,72%,60%);}
-.light-sec .sec-h2{font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:hsl(210,40%,98%);margin-bottom:16px;}
-.light-sec .sec-sub{color:hsl(215,20%,65%);font-size:0.95rem;line-height:1.8;}
+.light-sec{background:#F1F5F9!important;padding:90px 0;border-top:1px solid #E2E8F0;border-bottom:1px solid #E2E8F0;}
+.light-sec .sec-eyebrow{color:#0D9488;}
+.light-sec .sec-h2{font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#0F172A;margin-bottom:16px;}
+.light-sec .sec-sub{color:#64748B;font-size:0.95rem;line-height:1.8;}
 
 /* Mission cards */
 .m-card{
-    background:hsl(222,47%,8%);border:1px solid hsl(217,33%,17%);border-radius:16px;
+    background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;
     padding:28px;height:100%;transition:all 0.25s ease;position:relative;overflow:hidden;
 }
 .m-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient);opacity:0;transition:opacity 0.25s;}
 .m-card:hover{border-color:hsla(174,72%,56%,0.4);box-shadow:0 0 24px hsla(174,72%,56%,0.1);transform:translateY(-4px);}
 .m-card:hover::before{opacity:1;}
 .m-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:18px;}
-.m-title{font-size:1rem;font-weight: 500;color:hsl(210,40%,98%);margin-bottom:8px;}
-.m-desc{font-size:0.85rem;color:hsl(215,20%,65%);line-height:1.75;}
+.m-title{font-size:1rem;font-weight: 500;color:#0F172A;margin-bottom:8px;}
+.m-desc{font-size:0.85rem;color:#64748B;line-height:1.75;}
 
 /* Story section */
 .story-sec{padding:90px 0;}
@@ -84,12 +84,12 @@ section{background:transparent!important;}
 }
 .val-card:hover{border-color:hsla(174,72%,56%,0.35);box-shadow:0 0 24px hsla(174,72%,56%,0.1);transform:translateY(-3px);}
 .v-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:16px;}
-.v-title{font-size:0.95rem;font-weight: 500;color:#fff;margin-bottom:6px;}
+.v-title{font-size:0.95rem;font-weight: 500;color:#0F172A;margin-bottom:6px;}
 .v-desc{font-size:0.82rem;color:var(--muted);line-height:1.75;}
 
 /* Stats */
 .stats-sec{
-    background:hsl(222,47%,5%);
+    background:#F1F5F9;
     border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
     padding:60px 0;
@@ -105,22 +105,23 @@ section{background:transparent!important;}
     background:var(--card);border:1px solid var(--border);
     border-radius:20px;padding:60px 40px;text-align:center;
     position:relative;overflow:hidden;
+    box-shadow:0 4px 24px rgba(0,0,0,0.06);
 }
 .cta-box::before{
     content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);
     width:600px;height:400px;
-    background:radial-gradient(ellipse,hsla(174,72%,56%,0.12) 0%,transparent 70%);
+    background:radial-gradient(ellipse,hsla(174,72%,56%,0.08) 0%,transparent 70%);
     pointer-events:none;
 }
 .cta-btn{
     display:inline-flex;align-items:center;gap:8px;
-    background:var(--gradient);color:hsl(222,47%,6%);
+    background:var(--gradient);color:#FFFFFF;
     text-decoration:none;padding:13px 28px;border-radius:10px;
     font-weight: 500;font-size:0.95rem;
     box-shadow:0 0 24px hsla(174,72%,56%,0.28);
     transition:all 0.25s;
 }
-.cta-btn:hover{opacity:0.9;transform:translateY(-2px);color:hsl(222,47%,6%);}
+.cta-btn:hover{opacity:0.9;transform:translateY(-2px);color:#FFFFFF;}
 
 @media(max-width:768px){.page-h1{font-size:2.5rem;letter-spacing:-2px;}.cta-box{padding:40px 24px;}}
 </style>
@@ -168,12 +169,12 @@ section{background:transparent!important;}
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <span style="display:block;font-size:0.72rem;font-weight: 500;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary);margin-bottom:14px;">Our Story</span>
-                <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:20px;">Started with one question:<br><em style="font-style:normal;">"Why is this so hard?"</em></h2>
+                <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#0F172A;margin-bottom:20px;">Started with one question:<br><em style="font-style:normal;">"Why is this so hard?"</em></h2>
                 <p style="color:var(--muted);font-size:0.95rem;line-height:1.9;margin-bottom:20px;">
                     EduNex ERP was born from frustration. Institute owners were managing hundreds of students using WhatsApp groups, paper registers, and disconnected tools. It was chaotic — and it didn't have to be.
                 </p>
                 <p style="color:var(--muted);font-size:0.95rem;line-height:1.9;margin-bottom:32px;">
-                    The team at <strong style="color:#fff;">Engenius Digitech</strong> — a SaaS company based in Vadodara, Gujarat — built EduNex ERP to solve this from the ground up. One platform, every operation, zero chaos.
+                    The team at <strong style="color:#0F172A;">Engenius Digitech</strong> — a SaaS company based in Vadodara, Gujarat — built EduNex ERP to solve this from the ground up. One platform, every operation, zero chaos.
                 </p>
                 <div class="d-flex gap-5 flex-wrap">
                     <div class="story-stat">
@@ -208,7 +209,7 @@ section{background:transparent!important;}
                             {{ $ev['c'] === 'bi-violet' ? 'background:hsla(262,83%,58%,0.15);color:hsl(262,83%,70%);' : '' }}
                         "><i class="fas {{ $ev['i'] }}"></i></div>
                         <div>
-                            <div style="font-size:0.88rem;font-weight: 500;color:#fff;margin-bottom:4px;">{{ $ev['t'] }}</div>
+                            <div style="font-size:0.88rem;font-weight: 500;color:#0F172A;margin-bottom:4px;">{{ $ev['t'] }}</div>
                             <div style="font-size:0.78rem;color:var(--muted);line-height:1.6;">{{ $ev['d'] }}</div>
                         </div>
                     </div>
@@ -224,7 +225,7 @@ section{background:transparent!important;}
     <div class="container px-4">
         <div class="text-center mb-5">
             <span style="display:block;font-size:0.72rem;font-weight: 500;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary);margin-bottom:14px;">What We Stand For</span>
-            <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:0;">Our Core Values</h2>
+            <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#0F172A;margin-bottom:0;">Our Core Values</h2>
         </div>
         <div class="row g-4">
             @foreach([
@@ -267,11 +268,11 @@ section{background:transparent!important;}
             <span style="display:inline-flex;align-items:center;gap:6px;background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);border-radius:9999px;padding:4px 14px;font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;">
                 <i class="fas fa-rocket"></i> Get Started
             </span>
-            <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#fff;margin-bottom:14px;">Join 100+ institutes<br>already using EduNex ERP.</h2>
+            <h2 style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight: 500;letter-spacing:-1.5px;color:#0F172A;margin-bottom:14px;">Join 100+ institutes<br>already using EduNex ERP.</h2>
             <p style="color:var(--muted);font-size:1rem;max-width:460px;margin:0 auto 32px;line-height:1.8;">Start your free trial today. No credit card, no setup fee, no commitments.</p>
             <div class="d-flex gap-3 flex-wrap justify-content-center">
                 <a href="{{ route('pricing') }}" class="cta-btn">Start Free Trial <i class="fas fa-rocket"></i></a>
-                <a href="{{ route('contact') }}" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:#fff;text-decoration:none;padding:13px 28px;border-radius:10px;font-weight:600;font-size:0.95rem;transition:all 0.2s;">
+                <a href="{{ route('contact') }}" style="display:inline-flex;align-items:center;gap:8px;background:#F1F5F9;border:1px solid var(--border);color:#0F172A;text-decoration:none;padding:13px 28px;border-radius:10px;font-weight:600;font-size:0.95rem;transition:all 0.2s;">
                     Contact Us <i class="fas fa-arrow-right"></i>
                 </a>
             </div>

@@ -1,10 +1,10 @@
 <style>
 :root {
-    --ft-bg:      hsl(222,47%,5%);
-    --ft-border:  hsl(217,33%,17%);
-    --ft-muted:   hsl(215,20%,65%);
-    --ft-primary: hsl(174,72%,56%);
-    --ft-grad:    linear-gradient(135deg,hsl(174,72%,56%),hsl(217,91%,60%));
+    --ft-bg:      #F8FAFC;
+    --ft-border:  #E8EDF5;
+    --ft-muted:   #64748B;
+    --ft-primary: #0D9488;
+    --ft-grad:    linear-gradient(135deg, #0D9488, #2563EB);
 }
 .site-footer {
     background: var(--ft-bg);
@@ -34,12 +34,12 @@
 .ft-social a {
     display: inline-flex; align-items: center; justify-content: center;
     width: 36px; height: 36px; border-radius: 8px;
-    background: rgba(255,255,255,0.05);
+    background: #fff;
     border: 1px solid var(--ft-border);
     color: var(--ft-muted); font-size: 0.9rem;
     text-decoration: none; transition: all 0.2s;
 }
-.ft-social a:hover { color: var(--ft-primary); border-color: var(--ft-primary); background: hsla(174,72%,56%,0.08); }
+.ft-social a:hover { color: var(--ft-primary); border-color: var(--ft-primary); background: #F0FDFA; }
 
 .ft-col-title {
     font-size: 0.7rem; font-weight: 500;
@@ -53,7 +53,7 @@
     text-decoration: none; transition: color 0.2s;
     display: inline-block;
 }
-.ft-links a:hover { color: #fff; }
+.ft-links a:hover { color: #0D9488; }
 
 .ft-bottom {
     border-top: 1px solid var(--ft-border);
@@ -75,7 +75,7 @@
                     <div class="ft-brand">
                         <img src="{{ asset('images/logo.png') }}" alt="EduNex ERP — School Management Software & Institute ERP" style="height:52px;">
                     </div>
-                    <p class="ft-tagline">EduNex ERP (also known as EduNext ERP) — the AI-powered platform for modern institutes. Built by educators, for educators — across coaching centers, schools, and skill institutes.</p>
+                    <p class="ft-tagline">EduNex ERP — the AI-powered platform for modern institutes. Built by educators, for educators — across coaching centers, schools, and skill institutes.</p>
                     <div class="ft-social" style="display:flex;gap:8px;flex-wrap:wrap;">
                         <a href="https://www.linkedin.com/company/engenius-digitech/?viewAsMember=true" target="_blank" rel="noopener" title="EduNex ERP on LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
@@ -121,7 +121,7 @@
                 <div class="col-6 col-md-4 col-lg-2">
                     <div class="ft-col-title">Built by</div>
                     <a href="https://engeniusdigitech.netlify.app" target="_blank" style="text-decoration:none;">
-                        <div style="font-size:1rem;font-weight: 500;color:#fff;margin-bottom:4px;letter-spacing:-0.5px;">Engenius Digitech</div>
+                        <div style="font-size:1rem;font-weight: 600;color:#0F172A;margin-bottom:4px;letter-spacing:-0.5px;">Engenius Digitech</div>
                         <div style="font-size:0.78rem;color:var(--ft-muted);">Specialized SaaS solutions <i class="fas fa-external-link-alt" style="font-size:0.6rem;"></i></div>
                     </a>
                 </div>
@@ -131,7 +131,7 @@
     </div>
 
     <div class="ft-bottom">
-        <p class="ft-copy">© {{ date('Y') }} EduNex ERP. All rights reserved. &nbsp;·&nbsp; Also known as <strong>EduNext ERP</strong></p>
+        <p class="ft-copy">© {{ date('Y') }} EduNex ERP. All rights reserved.</p>
         <p class="ft-made-by">A product of <a href="https://engeniusdigitech.netlify.app" target="_blank" rel="noopener">Engenius Digitech</a></p>
     </div>
 </footer>

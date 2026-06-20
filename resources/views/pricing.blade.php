@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <x-seo title="School Management Software Pricing | Institute ERP Plans & Free Trial — EduNex ERP" description="EduNex ERP offers affordable, transparent pricing for school management software and institute ERP. Choose from Basic, Premium, Premium + Mobile, or Custom plans. Start a 7-day free trial." keywords="school management software price, institute ERP pricing, school software cost, best school management software, school ERP subscription, affordable institute software, school management system pricing, coaching class software pricing, EduNex ERP pricing, school software free trial" />
+    <x-seo title="School Management Software Pricing | EduNex ERP Plans & Free Trial" description="EduNex ERP pricing — affordable school management software and institute ERP plans. Start a 7-day free trial, no credit card required. Go live in 15 minutes. Transparent plans for schools, coaching centres, and colleges." keywords="school management software price india, institute ERP pricing, school ERP cost, affordable school management software, school software subscription, coaching class software price, EduNex ERP pricing, school ERP free trial, best school software india price, cheap school management software, school ERP plans comparison, institute software annual plan, school software per student cost" pageType="WebPage" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -19,10 +19,26 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "How much does EduNex ERP school management software cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EduNex ERP offers transparent, affordable pricing plans for schools, coaching institutes, and colleges. All plans start with a free 7-day trial — no credit card required. Paid plans are available monthly or annually. Visit the pricing page for the latest plan details and to start your free trial."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a free trial for EduNex ERP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. EduNex ERP offers a 7-day free trial with full access to all features. No credit card required. Your school can be fully set up and live in under 15 minutes."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What is the difference between the Premium and Premium + Mobile App plans?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The Premium + Mobile App plan includes a custom-branded mobile app for your school on Android and iOS stores, enabling direct push notifications, live-chat with teachers, and dedicated account management, alongside all Premium ERP features."
+            "text": "The Premium + Mobile App plan includes a custom-branded mobile app for your school on Android and iOS, enabling direct push notifications, live-chat with teachers, and dedicated account management, alongside all Premium ERP features."
           }
         },
         {
@@ -30,7 +46,7 @@
           "name": "What happens after the 7-day trial?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can choose to subscribe to any of our 4 pricing plans. If you decide not to proceed, your data remains secure but access to ERP services will be restricted."
+            "text": "After the trial you can subscribe to any of our plans. If you decide not to proceed, your data remains secure but ERP access will be restricted. There is no obligation to purchase."
           }
         },
         {
@@ -38,7 +54,7 @@
           "name": "Are there setup or implementation fees?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "There are zero hidden setup fees for Basic, Premium, and Premium + Mobile App plans. We assist with initial remote onboarding and data imports for free."
+            "text": "Zero. There are no hidden setup, onboarding, or data migration fees. We assist with full remote setup and data import from any previous software for free."
           }
         },
         {
@@ -46,7 +62,23 @@
           "name": "Can I upgrade or downgrade my plan later?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, you can upgrade, downgrade, or cancel your subscription at any time. Pricing will be prorated accordingly."
+            "text": "Yes. You can upgrade, downgrade, or cancel your subscription at any time. Pricing is prorated for upgrades during an active billing period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a per-student cost in EduNex ERP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. EduNex ERP does not charge per student. All plans include unlimited students. This makes EduNex ERP one of the most cost-effective school management software options for growing institutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does EduNex ERP offer discounts for annual subscriptions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Annual plans are offered at a significantly lower effective monthly rate compared to monthly subscriptions. Contact us or visit the pricing page for current discount offers."
           }
         }
       ]
@@ -58,19 +90,19 @@
 *,*::before,*::after{box-sizing:border-box;}
 body {
     font-family:'Inter',system-ui,sans-serif;
-    background:hsl(222,47%,6%);
-    color:hsl(210,40%,98%);
+    background:#F8FAFC;
+    color:#0F172A;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
 }
 :root{
-    --bg:hsl(222,47%,6%);
-    --card:hsl(222,47%,8%);
-    --border:hsl(217,33%,17%);
-    --muted:hsl(215,20%,65%);
-    --primary:hsl(174,72%,56%);
+    --bg:#F8FAFC;
+    --card:#FFFFFF;
+    --border:#E2E8F0;
+    --muted:#64748B;
+    --primary:#0D9488;
     --secondary:hsl(217,91%,60%);
-    --gradient:linear-gradient(135deg,hsl(174,72%,56%),hsl(217,91%,60%));
+    --gradient:linear-gradient(135deg,#0D9488,#2563EB);
 }
 section{background:transparent!important;}
 .g-text{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -88,19 +120,19 @@ section{background:transparent!important;}
 }
 .eyebrow{
     display:inline-flex;align-items:center;gap:7px;
-    background:hsla(174,72%,56%,0.1);border:1px solid hsla(174,72%,56%,0.22);
+    background:#F0FDFA;border:1px solid #99F6E4;
     border-radius:9999px;padding:6px 16px;
-    font-size:0.72rem;font-weight:600;color:hsl(174,72%,70%);
+    font-size:0.72rem;font-weight:600;color:#0D9488;
     text-transform:uppercase;letter-spacing:1.5px;margin-bottom:24px;
 }
-.page-h1{font-size:clamp(2.5rem,5vw,4.2rem);font-weight: 800;letter-spacing:-2.5px;line-height:1.08;margin-bottom:20px;color:#fff;}
+.page-h1{font-size:clamp(2.5rem,5vw,4.2rem);font-weight: 800;letter-spacing:-2.5px;line-height:1.08;margin-bottom:20px;color:#0F172A;}
 .page-sub{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:620px;margin:0 auto;}
 
 /* Toggle Switch Styles */
 .pricing-toggle-wrap {
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.03);
+    background: #F1F5F9;
     padding: 6px 8px;
     border-radius: 999px;
     border: 1px solid var(--border);
@@ -119,7 +151,7 @@ section{background:transparent!important;}
 }
 .pricing-toggle-btn.active {
     background: var(--gradient);
-    color: hsl(222,47%,6%);
+    color: #fff;
     box-shadow: 0 4px 15px rgba(174, 72, 56, 0.25);
 }
 
@@ -129,10 +161,8 @@ section{background:transparent!important;}
     z-index: 10;
 }
 .pricing-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
     border-radius: 24px;
     padding: 48px 32px;
     height: 100%;
@@ -150,22 +180,12 @@ section{background:transparent!important;}
 
 /* Highlighted (Premium + Mobile App) Card */
 .pricing-card.highlighted {
-    background: rgba(174, 72, 56, 0.03);
-    border: 1px solid hsla(174,72%,56%,0.4);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), 0 0 55px rgba(174, 72, 56, 0.16);
+    background: linear-gradient(135deg,#F0FDFA,#EFF6FF);
+    border: 2px solid #0D9488;
+    box-shadow: 0 20px 50px rgba(13,148,136,0.15);
 }
 .pricing-card.highlighted::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: -1px; right: -1px; bottom: -1px;
-    background: linear-gradient(135deg, hsl(174,72%,56%), hsl(217,91%,60%));
-    z-index: -1;
-    border-radius: 25px;
-    opacity: 0.35;
-    transition: opacity 0.4s ease;
-}
-.pricing-card.highlighted:hover::before {
-    opacity: 0.7;
+    display: none;
 }
 
 /* Plan Badge */
@@ -175,14 +195,14 @@ section{background:transparent!important;}
     left: 50%;
     transform: translateX(-50%);
     background: var(--gradient);
-    color: hsl(222,47%,6%);
+    color: #fff;
     font-weight: 700;
     font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     padding: 6px 18px;
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(174, 72, 56, 0.35);
+    box-shadow: 0 4px 15px rgba(13,148,136,0.35);
     white-space: nowrap;
 }
 
@@ -205,7 +225,7 @@ section{background:transparent!important;}
 .plan-name {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #fff;
+    color: #0F172A;
     margin-bottom: 6px;
     letter-spacing: -0.3px;
 }
@@ -238,13 +258,13 @@ section{background:transparent!important;}
 .price-currency {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #fff;
+    color: #0F172A;
     vertical-align: super;
 }
 .price-number {
     font-size: 2.8rem;
     font-weight: 800;
-    color: #fff;
+    color: #0F172A;
     letter-spacing: -1.5px;
 }
 .price-period {
@@ -270,9 +290,9 @@ section{background:transparent!important;}
     align-items: flex-start;
     gap: 12px;
     font-size: 0.86rem;
-    color: hsl(215, 20%, 82%);
+    color: #475569;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid #F1F5F9;
 }
 .plan-features li:last-child {
     border-bottom: none;
@@ -286,7 +306,7 @@ section{background:transparent!important;}
     color: var(--primary);
 }
 .plan-features li i.fa-circle-xmark {
-    color: rgba(255, 255, 255, 0.2);
+    color: #CBD5E1;
 }
 
 /* Plan Button */
@@ -300,26 +320,26 @@ section{background:transparent!important;}
     font-size: 0.92rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.04);
-    color: #fff;
+    border: 1px solid #E2E8F0;
+    background: #F8FAFC;
+    color: #475569;
 }
 .plan-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.18);
+    background: #F1F5F9;
+    color: #0F172A;
+    border-color: #CBD5E1;
     transform: translateY(-2px);
 }
 .plan-btn.btn-featured {
     background: var(--gradient);
-    color: hsl(222,47%,6%);
+    color: #fff;
     border: none;
-    box-shadow: 0 10px 25px rgba(174, 72, 56, 0.25);
+    box-shadow: 0 10px 25px rgba(13,148,136,0.25);
 }
 .plan-btn.btn-featured:hover {
-    background: linear-gradient(135deg, hsl(174,72%,60%), hsl(217,91%,65%));
-    color: hsl(222,47%,6%);
-    box-shadow: 0 15px 30px rgba(174, 72, 56, 0.35);
+    background: linear-gradient(135deg, #0D9488, #1D4ED8);
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(13,148,136,0.35);
     transform: translateY(-2px);
 }
 
@@ -342,11 +362,11 @@ section{background:transparent!important;}
     pointer-events: none;
 }
 .comp-table-wrap {
-    background: rgba(255, 255, 255, 0.01);
+    background: #fff;
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 36px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -358,26 +378,26 @@ section{background:transparent!important;}
 .comp-table th, .comp-table td {
     padding: 18px 20px;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid #F1F5F9;
 }
 .comp-table th {
     font-weight: 700;
-    color: #fff;
+    color: #0F172A;
     font-size: 0.95rem;
     letter-spacing: -0.2px;
 }
 .comp-table th:first-child, .comp-table td:first-child {
     text-align: left;
     font-weight: 600;
-    color: #fff;
+    color: #0F172A;
     width: 32%;
 }
 .comp-table td:first-child {
-    color: hsl(215, 20%, 85%);
+    color: #475569;
     font-size: 0.9rem;
 }
 .comp-table tr.category-row td {
-    background: rgba(255, 255, 255, 0.02);
+    background: #F8FAFC;
     font-weight: 700;
     color: var(--primary);
     text-transform: uppercase;
@@ -385,26 +405,26 @@ section{background:transparent!important;}
     letter-spacing: 1.5px;
     text-align: left;
     padding: 14px 20px;
-    border-bottom: 1px solid rgba(174, 72, 56, 0.15);
+    border-bottom: 1px solid #E2E8F0;
 }
 .comp-table td i.fa-circle-check {
     color: var(--primary);
     font-size: 1.1rem;
 }
 .comp-table td i.fa-circle-xmark {
-    color: rgba(255, 255, 255, 0.15);
+    color: #CBD5E1;
     font-size: 1.1rem;
 }
 .comp-table td {
     font-size: 0.88rem;
-    color: hsl(215, 20%, 80%);
+    color: #475569;
 }
 
 /* Stats Strip */
 .stats-strip{
-    background: hsl(222, 47%, 4.5%);
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
+    background: linear-gradient(135deg,#F0FDFA,#EFF6FF);
+    border-top:1px solid #E2E8F0;
+    border-bottom:1px solid #E2E8F0;
     padding:50px 0;
 }
 .stat-val{font-size:2rem;font-weight: 800;letter-spacing:-1px;line-height:1;}
@@ -419,10 +439,9 @@ section{background:transparent!important;}
 }
 .faq-item:hover{border-color:hsla(174,72%,56%,0.25)!important;}
 .accordion-button{
-    background:var(--card)!important;color:#fff!important;
+    background:var(--card)!important;color:#0F172A!important;
     font-weight:600;font-size:0.92rem;padding:20px 24px;box-shadow:none!important;
 }
-.accordion-button::after{filter:invert(1);}
 .accordion-button:not(.collapsed){color:var(--primary)!important;}
 .accordion-body{
     background:var(--card);color:var(--muted);
@@ -576,7 +595,7 @@ section{background:transparent!important;}
         position: -webkit-sticky !important;
         position: sticky !important;
         left: 0 !important;
-        background: hsl(222, 47%, 6%) !important;
+        background: #fff !important;
         z-index: 5 !important;
         width: 140px !important;
         min-width: 140px !important;
@@ -586,7 +605,7 @@ section{background:transparent!important;}
         position: -webkit-sticky !important;
         position: sticky !important;
         left: 0 !important;
-        background: rgba(255, 255, 255, 0.02) !important;
+        background: #F8FAFC !important;
         z-index: 4 !important;
     }
 
