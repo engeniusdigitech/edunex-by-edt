@@ -284,26 +284,26 @@
       ]
     },
     {
-      "@@type": "{{ $pageType }}",
-      "@@id": "{{ $canonicalUrl }}/#webpage",
-      "url": "{{ $canonicalUrl }}",
-      "name": "{{ $title }}",
-      "description": "{{ $description }}",
-      "isPartOf": { "@@id": "{{ url('/') }}/#website" },
-      "about": { "@@id": "{{ url('/') }}/#organization" },
+      "@@type": "{!! $pageType !!}",
+      "@@id": "{!! $canonicalUrl !!}/#webpage",
+      "url": "{!! $canonicalUrl !!}",
+      "name": {!! json_encode($title) !!},
+      "description": {!! json_encode($description) !!},
+      "isPartOf": { "@@id": "{!! url('/') !!}/#website" },
+      "about": { "@@id": "{!! url('/') !!}/#organization" },
       "inLanguage": "en-IN",
       "datePublished": "2020-01-01",
-      "dateModified": "{{ now()->toDateString() }}",
+      "dateModified": "{!! now()->toDateString() !!}",
       "speakable": {
         "@@type": "SpeakableSpecification",
         "cssSelector": ["h1", "h2", ".sec-title", ".hero-sub", ".sec-desc"]
       },
-      "primaryImageOfPage": { "@@id": "{{ url('/') }}/#logo" },
+      "primaryImageOfPage": { "@@id": "{!! url('/') !!}/#logo" },
       "breadcrumb": {
         "@@type": "BreadcrumbList",
         "itemListElement": [
-          { "@@type": "ListItem", "position": 1, "name": "Home", "item": "{{ url('/') }}" },
-          { "@@type": "ListItem", "position": 2, "name": "{{ $title }}", "item": "{{ $canonicalUrl }}" }
+          { "@@type": "ListItem", "position": 1, "name": "Home", "item": "{!! url('/') !!}" },
+          { "@@type": "ListItem", "position": 2, "name": {!! json_encode($title) !!}, "item": "{!! $canonicalUrl !!}" }
         ]
       }
     },

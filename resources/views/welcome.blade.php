@@ -675,7 +675,7 @@ body {
 .trust-item i { color: rgba(255,255,255,0.9); }
 
 @media(max-width:991px) {
-    .hero-content { padding: 96px 0 40px; }
+    .hero-content { padding: 130px 0 40px; }
     .display-wrapper { padding-bottom: 0; }
     .mobile-mockup { display: none; }
     .desktop-mockup { border-radius: 10px; }
@@ -683,7 +683,7 @@ body {
 
 @media(max-width:768px) {
     .hero { min-height: auto; }
-    .hero-content { padding: 110px 0 50px; }
+    .hero-content { padding: 140px 0 50px; }
     .hero-h1, .hero-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem) !important; letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
     .hero-sub { font-size: 0.92rem; margin-bottom: 20px; max-width: 100%; line-height: 1.7; }
     .hero-trust-kicker { font-size: 0.68rem; padding: 5px 14px; margin-bottom: 18px; }
@@ -708,7 +708,7 @@ body {
 }
 
 @media(max-width:480px) {
-    .hero-content { padding: 96px 0 28px; }
+    .hero-content { padding: 130px 0 28px; }
     .hero-h1, .hero-h2 { font-size: 1.75rem !important; margin-bottom: 12px; }
     .hero-sub { font-size: 0.88rem; margin-bottom: 16px; }
     .stat-pipe { display: none; }
@@ -890,9 +890,182 @@ body {
     line-height: 1.7;
     margin: 0 0 20px;
 }
+
 @media(max-width:768px) {
     .hf-head, .hf-body { padding-left: 20px; padding-right: 20px; }
     .hf-row { grid-template-columns: 1fr; }
+}
+
+/* ===========================================
+   MOBILE RESPONSIVE FIXES — Welcome Page
+=========================================== */
+
+@media(max-width:991px) {
+    #dashboard img,
+    #mobile-app img { max-width: 100% !important; }
+    #dashboard .col-lg-6.text-center > div,
+    #mobile-app .col-lg-6.text-center > div { width: 100%; }
+    #staff .col-lg-5 { justify-content: flex-start !important; }
+}
+
+@media(max-width:768px) {
+    .staff-section  { padding: 56px 0; }
+    .feat-section   { padding: 56px 0; }
+    .how-section    { padding: 56px 0; }
+    .proof-section  { padding: 56px 0; }
+    .compare-section{ padding: 56px 0; }
+    .testi-section  { padding: 56px 0; }
+    .faq-section    { padding: 56px 0; }
+    .cta-section    { padding: 56px 0; }
+    .sec-title { font-size: clamp(1.6rem, 6vw, 2.2rem); letter-spacing: -1px; }
+    .sec-desc  { font-size: 0.9rem; }
+    .hero-social-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .stats-strip { padding: 20px 0; }
+    .stats-strip .d-flex { gap: 16px 24px !important; }
+    .stat-val { font-size: 1.5rem; }
+    .ftab-nav { gap: 6px; margin-bottom: 32px; }
+    .ftab-btn { font-size: 0.74rem; padding: 8px 14px; gap: 6px; }
+    .ftab-btn i { font-size: 0.78rem; }
+    .fspot-left { padding: 24px 18px !important; }
+    .fspot-row  { padding: 14px 12px; }
+    .ai-flow-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+    .ai-flow-scroll svg { min-width: 680px; }
+    .bcard { padding: 20px 16px; }
+    .bcard-title { font-size: 0.9rem; }
+    #staff .bcard.b12 .col-lg-4 { margin-bottom: 12px; }
+    #staff .bcard.b12 .col-lg-4:last-child { margin-bottom: 0; }
+    .dash-sidebar { display: none !important; }
+    .dash-main-area { grid-column: 1 / -1 !important; }
+    .dash-outer-grid { grid-template-columns: 1fr !important; }
+    .dash-kpi-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .dash-charts-grid { grid-template-columns: 1fr !important; }
+    .why-before, .why-after { padding: 28px 20px; }
+    .t-card { padding: 22px 18px; }
+    .cta-box { padding: 40px 20px !important; }
+    .cta-box h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+    .cta-box p { font-size: 0.9rem; margin-bottom: 24px; }
+    .cta-box .d-flex.gap-3 { flex-direction: column; align-items: stretch; }
+    .cta-box .d-flex.gap-3 a { width: 100%; justify-content: center; }
+    .cta-box .d-flex.gap-4 { gap: 10px 20px !important; justify-content: center; }
+    .accordion-button { font-size: 0.84rem; padding: 14px 16px; }
+    .accordion-body { padding: 0 16px 16px; font-size: 0.84rem; }
+    .ctable { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .ctable table { min-width: 480px; }
+    .city-seo-section { padding: 32px 0 !important; }
+}
+
+@media(max-width:576px) {
+    .hero-form-card { border-radius: 14px; }
+    .hf-head { padding: 18px 16px 14px; }
+    .hf-body { padding: 16px 16px 14px; }
+    .hf-head-title { font-size: 1.1rem; }
+    .stats-strip .d-flex { display: grid !important; grid-template-columns: 1fr 1fr; gap: 16px !important; text-align: center; }
+    .stat-pipe { display: none; }
+    .stat-val { font-size: 1.8rem; }
+    .ftab-nav { display: grid; grid-template-columns: 1fr 1fr; }
+    .ftab-btn { justify-content: center; }
+    .proof-section .d-flex { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .uc-chip { justify-content: center; }
+    #dashboard img { max-width: 100% !important; border-radius: 10px; }
+    #mobile-app img { max-width: 200px !important; }
+    .trust-item { font-size: 0.73rem; }
+    #staff .col-lg-5.d-flex { flex-direction: column !important; align-items: flex-start !important; }
+    #staff .col-lg-5 .btn-primary, #staff .col-lg-5 .btn-outline { width: 100%; justify-content: center; }
+    .bento { grid-template-columns: 1fr !important; }
+    .b4, .b5, .b7, .b8, .b12 { grid-column: span 1 !important; }
+}
+
+@media(max-width:400px) {
+    .hero-h1 { font-size: 1.6rem !important; }
+    .hero-features { grid-template-columns: 1fr !important; }
+    .hfeat { justify-content: flex-start; }
+    .stat-val { font-size: 1.5rem; }
+    .ftab-nav { grid-template-columns: 1fr; }
+    .proof-section .d-flex { grid-template-columns: 1fr !important; }
+}
+
+/* Mobile vertical timeline responsive styles */
+.timeline-mobile {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px 8px;
+}
+.mobile-time-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    background: var(--step-bg);
+    border: 1px solid var(--step-border);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    text-align: left;
+}
+.mts-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #FFF;
+    border: 2px solid var(--step-color);
+    color: var(--step-color);
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.mts-content {
+    flex: 1;
+}
+.mts-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--step-color);
+    margin-bottom: 2px;
+}
+.mts-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 2px;
+}
+.mts-desc {
+    font-size: 0.8rem;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.4;
+}
+.mobile-time-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--step-color);
+    margin: -4px 0;
+    opacity: 0.7;
+    animation: bounce-arrow 2s infinite;
+}
+@keyframes bounce-arrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+}
+
+@media(max-width: 767px) {
+    .timeline-desktop {
+        display: none !important;
+    }
+    .timeline-mobile {
+        display: flex !important;
+    }
 }
 </style>
 
@@ -1393,6 +1566,34 @@ body {
         </div>
     </div>
 </section>
+
+    <!-- ══════════════ Dashboard Screenshot ══════════════ -->
+<section id="dashboard" class="staff-section">  
+    <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>
+    <div class="staff-blob-1" style="background:hsla(217,91%,60%,0.08); bottom:-80px; right:-80px;"></div>
+    <div class="container px-4" style="position:relative;z-index:2;">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="sec-eyebrow" style="color:#7C3AED;">All-in-One Dashboard</span>
+                <h2 class="sec-title">Manage your entire educational institute from a single dashboard.</h2>
+
+                <ul class="feat-list mb-4" style="max-width: 450px; list-style: none; padding: 0;">
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:#475569;"><i class="fas fa-check-circle" style="color:#7C3AED; font-size:1.1rem;"></i> Real-time analytics & reports</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:#475569;"><i class="fas fa-check-circle" style="color:#7C3AED; font-size:1.1rem;"></i> Quick access to student & staff records</li>
+                    <li style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:0.9rem; color:#475569;"><i class="fas fa-check-circle" style="color:#7C3AED; font-size:1.1rem;"></i> Seamless integration with other tools</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div style="position:relative; display:inline-block;">
+                    <!-- Decorative glow behind dashboard -->
+                    <div style="position:absolute; inset:20px; background:var(--gradient-secondary); filter:blur(60px); opacity:0.3; border-radius:50%;"></div>
+                    <img src="{{ asset('images/dashboard.png') }}" alt="EduNex ERP Dashboard" style="max-width: 924px; width: 100%; position:relative; z-index:2; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+                </div>
+            </div>           
+        </div>
+    </div>
+</section>
+
     <!-- ══════════════ MOBILE APP ══════════════ -->
 <section id="mobile-app" class="staff-section">
     <div class="staff-blob-2" style="background:hsla(262,83%,58%,0.07); top:-100px; left:-100px;"></div>
@@ -1454,7 +1655,7 @@ body {
         </div>
 
         <!-- Story Timeline SVG -->
-        <div style="max-width:900px;margin:0 auto;">
+        <div class="timeline-desktop" style="max-width:900px;margin:0 auto;">
             <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
                 <!-- Timeline line -->
                 <line x1="80" y1="120" x2="820" y2="120" stroke="#E2E8F0" stroke-width="3" stroke-dasharray="8 4"/>
@@ -1569,70 +1770,70 @@ body {
                 </defs>
             </svg>
         </div>
+
+        <!-- Mobile vertical timeline -->
+        <div class="timeline-mobile">
+            <!-- Step 1 -->
+            <div class="mobile-time-step" style="--step-color: #0D9488; --step-bg: hsla(174,72%,56%,0.06); --step-border: hsla(174,72%,56%,0.15);">
+                <div class="mts-num"><i class="fas fa-university"></i></div>
+                <div class="mts-content">
+                    <span class="mts-tag">Stage 1: Enroll</span>
+                    <h4 class="mts-title">Student Joins</h4>
+                    <p class="mts-desc">Instant portal access granted.</p>
+                </div>
+            </div>
+            <!-- Arrow/Connector -->
+            <div class="mobile-time-arrow" style="--step-color: #0D9488;"><i class="fas fa-chevron-down"></i></div>
+
+            <!-- Step 2 -->
+            <div class="mobile-time-step" style="--step-color: #2563EB; --step-bg: hsla(217,91%,60%,0.06); --step-border: hsla(217,91%,60%,0.15);">
+                <div class="mts-num"><i class="fas fa-clipboard-list"></i></div>
+                <div class="mts-content">
+                    <span class="mts-tag">Stage 2: Attend</span>
+                    <h4 class="mts-title">Daily Tracking</h4>
+                    <p class="mts-desc">One-tap batch marking & alerts.</p>
+                </div>
+            </div>
+            <!-- Arrow/Connector -->
+            <div class="mobile-time-arrow" style="--step-color: #2563EB;"><i class="fas fa-chevron-down"></i></div>
+
+            <!-- Step 3 -->
+            <div class="mobile-time-step" style="--step-color: #7C3AED; --step-bg: hsla(262,83%,58%,0.06); --step-border: hsla(262,83%,58%,0.15);">
+                <div class="mts-num"><i class="fas fa-book"></i></div>
+                <div class="mts-content">
+                    <span class="mts-tag">Stage 3: Learn</span>
+                    <h4 class="mts-title">Live + Digital</h4>
+                    <p class="mts-desc">Classes, study materials & online exams.</p>
+                </div>
+            </div>
+            <!-- Arrow/Connector -->
+            <div class="mobile-time-arrow" style="--step-color: #7C3AED;"><i class="fas fa-chevron-down"></i></div>
+
+            <!-- Step 4 -->
+            <div class="mobile-time-step" style="--step-color: #D97706; --step-bg: hsla(38,92%,50%,0.06); --step-border: hsla(38,92%,50%,0.15);">
+                <div class="mts-num"><i class="fas fa-credit-card"></i></div>
+                <div class="mts-content">
+                    <span class="mts-tag">Stage 4: Pay</span>
+                    <h4 class="mts-title">Fee Collection</h4>
+                    <p class="mts-desc">Online payments & automatic WhatsApp reminders.</p>
+                </div>
+            </div>
+            <!-- Arrow/Connector -->
+            <div class="mobile-time-arrow" style="--step-color: #D97706;"><i class="fas fa-chevron-down"></i></div>
+
+            <!-- Step 5 -->
+            <div class="mobile-time-step" style="--step-color: #E11D48; --step-bg: hsla(343,90%,50%,0.06); --step-border: hsla(343,90%,50%,0.15);">
+                <div class="mts-num"><i class="fas fa-chart-line"></i></div>
+                <div class="mts-content">
+                    <span class="mts-tag">Stage 5: Grow</span>
+                    <h4 class="mts-title">Analytics</h4>
+                    <p class="mts-desc">Full visibility into every institute metric.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- ══════════════ CHAOS vs CLARITY VISUAL ══════════════ -->
-<section style="background:#F8FAFC; padding:80px 0; border-top:1px solid #E8EDF5;">
-    <div class="container px-4">
-        <div class="text-center mb-5">
-            <span class="sec-eyebrow">The Transformation</span>
-            <h2 class="sec-title">See what changes <span class="g-text">the moment you switch.</span></h2>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;max-width:860px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px -8px rgba(0,0,0,0.12);">
-            <!-- BEFORE panel -->
-            <div style="background:#FEF9F9;padding:36px 32px;border:1px solid #FECACA;border-right:none;border-radius:20px 0 0 20px;">
-                <div style="display:inline-flex;align-items:center;gap:8px;background:#FEE2E2;color:#DC2626;border:1px solid #FECACA;border-radius:50px;padding:5px 14px;font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;">
-                    <i class="fas fa-xmark-circle"></i> Without EduNex ERP
-                </div>
-                <div style="display:flex;flex-direction:column;gap:14px;">
-                    @foreach([
-                        ['fa-table-list','Attendance in Excel','Manual, error-prone registers'],
-                        ['fa-comment-dots','Fees via WhatsApp','No receipts, no tracking'],
-                        ['fa-file-excel','Payroll in sheets','3 hours/month, wrong formulas'],
-                        ['fa-phone-volume','Students call for info','Your phone never stops ringing'],
-                        ['fa-eye-slash','Zero analytics','No idea who\'s behind on fees'],
-                    ] as $b)
-                    <div style="display:flex;align-items:flex-start;gap:12px;">
-                        <div style="width:36px;height:36px;border-radius:10px;background:#FEE2E2;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;color:#DC2626;"><i class="fas {{ $b[0] }}"></i></div>
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#0F172A;">{{ $b[1] }}</div>
-                            <div style="font-size:0.75rem;color:#94A3B8;margin-top:2px;">{{ $b[2] }}</div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            <!-- VS divider -->
-            <div style="background:linear-gradient(180deg,#0D9488,#2563EB);display:flex;align-items:center;justify-content:center;width:60px;position:relative;">
-                <div style="width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;color:#0D9488;box-shadow:0 4px 12px rgba(0,0,0,0.15);">VS</div>
-            </div>
-            <!-- AFTER panel -->
-            <div style="background:#F0FDFA;padding:36px 32px;border:1px solid #99F6E4;border-left:none;border-radius:0 20px 20px 0;">
-                <div style="display:inline-flex;align-items:center;gap:8px;background:#CCFBF1;color:#0D9488;border:1px solid #99F6E4;border-radius:50px;padding:5px 14px;font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;">
-                    <i class="fas fa-circle-check"></i> With EduNex ERP
-                </div>
-                <div style="display:flex;flex-direction:column;gap:14px;">
-                    @foreach([
-                        ['fa-fingerprint','AI Face + GPS Attendance','Marked in 2 seconds, zero proxies'],
-                        ['fa-credit-card','Online fee collection','Auto-reminders, instant receipts'],
-                        ['fa-wand-magic-sparkles','One-click payroll','Payslips to WhatsApp in seconds'],
-                        ['fa-mobile-screen-button','Dedicated mobile app','Students self-serve 24/7'],
-                        ['fa-chart-line','Live analytics dashboard','See everything in real time'],
-                    ] as $a)
-                    <div style="display:flex;align-items:flex-start;gap:12px;">
-                        <div style="width:36px;height:36px;border-radius:10px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;color:#0D9488;"><i class="fas {{ $a[0] }}"></i></div>
-                        <div>
-                            <div style="font-size:0.88rem;font-weight:700;color:#0F172A;">{{ $a[1] }}</div>
-                            <div style="font-size:0.75rem;color:#64748B;margin-top:2px;">{{ $a[2] }}</div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ══════════════ FEATURES ══════════════ -->
 <section id="features" class="feat-section">
@@ -1919,7 +2120,7 @@ function switchTab(id) {
                 <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#0D9488;">How it works — in 2 seconds</span>
                 <h3 style="font-size:1.3rem;font-weight:800;color:#0F172A;margin-top:8px;margin-bottom:0;">The complete AI attendance flow</h3>
             </div>
-            <div style="position:relative;z-index:2;">
+            <div class="ai-flow-scroll" style="position:relative;z-index:2;">
             <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-height:160px;">
                 <!-- Step 1: Open App -->
                 <g>
@@ -2362,9 +2563,9 @@ function switchTab(id) {
                 <div style="flex:1;background:#fff;border-radius:8px;padding:6px 14px;font-size:0.72rem;color:#94A3B8;border:1px solid #E2E8F0;">edunexerp.online/dashboard</div>
             </div>
             <!-- Dashboard content -->
-            <div style="background:#F8FAFC;display:grid;grid-template-columns:200px 1fr;min-height:380px;">
+            <div style="background:#F8FAFC;display:grid;grid-template-columns:200px 1fr;min-height:380px;" class="dash-outer-grid">
                 <!-- Sidebar -->
-                <div style="background:#fff;border-right:1px solid #E2E8F0;padding:20px 0;">
+                <div style="background:#fff;border-right:1px solid #E2E8F0;padding:20px 0;" class="dash-sidebar">
                     <div style="padding:0 16px 16px;border-bottom:1px solid #E2E8F0;margin-bottom:12px;">
                         <div style="font-size:0.75rem;font-weight:800;color:#0F172A;">EduNex ERP</div>
                         <div style="font-size:0.6rem;color:#0D9488;font-weight:600;">Admin Dashboard</div>
@@ -2389,9 +2590,9 @@ function switchTab(id) {
                     @endforeach
                 </div>
                 <!-- Main area -->
-                <div style="padding:20px;">
+                <div style="padding:20px;" class="dash-main-area">
                     <!-- KPI row -->
-                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;" class="dash-kpi-grid">
                         @foreach([
                             ['Students','247','#EFF6FF','#2563EB','↑ 12 this month'],
                             ['Attendance','94%','#F0FDFA','#0D9488','Today, live'],
@@ -2406,7 +2607,7 @@ function switchTab(id) {
                         @endforeach
                     </div>
                     <!-- Charts row -->
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="dash-charts-grid">
                         <!-- Attendance bar chart -->
                         <div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px;">
                             <div style="font-size:0.65rem;font-weight:700;color:#0F172A;margin-bottom:12px;">Weekly Attendance</div>
@@ -2492,7 +2693,7 @@ function switchTab(id) {
 
 
 <!-- ══════════════ CITY & BOARD TARGETING (SEO) ══════════════ -->
-<section style="background:#F0FDFA; padding: 48px 0; border-top: 1px solid #CCFBF1; border-bottom: 1px solid #CCFBF1;">
+<section class="city-seo-section" style="background:#F0FDFA; padding: 48px 0; border-top: 1px solid #CCFBF1; border-bottom: 1px solid #CCFBF1;">
     <div class="container px-4">
         <div class="text-center mb-4">
             <h2 style="font-size:1.1rem; color:#0D9488; font-weight:600; letter-spacing:-0.3px; margin:0 0 6px;">Trusted by schools and institutes across India</h2>
