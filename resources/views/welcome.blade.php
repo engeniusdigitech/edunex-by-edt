@@ -169,7 +169,7 @@ body {
 }
 .hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 150px 0 80px;
+    padding: 190px 0 80px;
     position: relative; z-index: 2;
 }
 /* Trust kicker badge */
@@ -675,7 +675,7 @@ body {
 .trust-item i { color: rgba(255,255,255,0.9); }
 
 @media(max-width:991px) {
-    .hero-content { padding: 130px 0 40px; }
+    .hero-content { padding: 170px 0 40px; }
     .display-wrapper { padding-bottom: 0; }
     .mobile-mockup { display: none; }
     .desktop-mockup { border-radius: 10px; }
@@ -683,7 +683,7 @@ body {
 
 @media(max-width:768px) {
     .hero { min-height: auto; }
-    .hero-content { padding: 140px 0 50px; }
+    .hero-content { padding: 180px 0 50px; }
     .hero-h1, .hero-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem) !important; letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
     .hero-sub { font-size: 0.92rem; margin-bottom: 20px; max-width: 100%; line-height: 1.7; }
     .hero-trust-kicker { font-size: 0.68rem; padding: 5px 14px; margin-bottom: 18px; }
@@ -708,7 +708,7 @@ body {
 }
 
 @media(max-width:480px) {
-    .hero-content { padding: 130px 0 28px; }
+    .hero-content { padding: 170px 0 28px; }
     .hero-h1, .hero-h2 { font-size: 1.75rem !important; margin-bottom: 12px; }
     .hero-sub { font-size: 0.88rem; margin-bottom: 16px; }
     .stat-pipe { display: none; }
@@ -2542,134 +2542,6 @@ function switchTab(id) {
     </div>
 </section>
 
-<!-- ══════════════ ANALYTICS DASHBOARD STORY ══════════════ -->
-<section style="background:#fff;padding:80px 0;border-top:1px solid #E8EDF5;">
-    <div class="container px-4">
-        <div class="text-center mb-5">
-            <span class="sec-eyebrow">Live Analytics</span>
-            <h2 class="sec-title">Everything your institute needs — <span class="g-text">in one view.</span></h2>
-            <p class="sec-desc" style="margin:0 auto;">The EduNex ERP dashboard gives you real-time visibility into attendance, fees, staff, and student performance.</p>
-        </div>
-
-        <!-- SVG Dashboard Mockup -->
-        <div style="max-width:900px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px -10px rgba(0,0,0,0.12);border:1px solid #E2E8F0;">
-            <!-- Browser chrome -->
-            <div style="background:#F1F5F9;padding:14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #E2E8F0;">
-                <div style="display:flex;gap:7px;">
-                    <div style="width:12px;height:12px;border-radius:50%;background:#FC5F5F;"></div>
-                    <div style="width:12px;height:12px;border-radius:50%;background:#FFC337;"></div>
-                    <div style="width:12px;height:12px;border-radius:50%;background:#4ACB5F;"></div>
-                </div>
-                <div style="flex:1;background:#fff;border-radius:8px;padding:6px 14px;font-size:0.72rem;color:#94A3B8;border:1px solid #E2E8F0;">edunexerp.online/dashboard</div>
-            </div>
-            <!-- Dashboard content -->
-            <div style="background:#F8FAFC;display:grid;grid-template-columns:200px 1fr;min-height:380px;" class="dash-outer-grid">
-                <!-- Sidebar -->
-                <div style="background:#fff;border-right:1px solid #E2E8F0;padding:20px 0;" class="dash-sidebar">
-                    <div style="padding:0 16px 16px;border-bottom:1px solid #E2E8F0;margin-bottom:12px;">
-                        <div style="font-size:0.75rem;font-weight:800;color:#0F172A;">EduNex ERP</div>
-                        <div style="font-size:0.6rem;color:#0D9488;font-weight:600;">Admin Dashboard</div>
-                    </div>
-                    @foreach([
-                        ['fa-chart-pie','Dashboard','active'],
-                        ['fa-users','Students',''],
-                        ['fa-clipboard-list','Attendance',''],
-                        ['fa-wallet','Fees',''],
-                        ['fa-user-tie','Staff HR',''],
-                        ['fa-user','Visitor',''],
-                        ['fa-book','LMS',''],
-                        ['fa-book-open','Academics',''],
-                        ['fa-calendar-check','Time Table',''],
-                        ['fa-book','Library',''],
-                        ['fa-truck','Transport',''],
-                        ['fa-mobile-screen-button','Mobile App',''],
-                    ] as $m)
-                    <div style="padding:9px 16px;display:flex;align-items:center;gap:10px;font-size:0.72rem;font-weight:600;cursor:pointer;{{ $m[2]==='active' ? 'background:#F0FDFA;color:#0D9488;border-right:2px solid #0D9488;' : 'color:#64748B;' }}">
-                        <i class="fas {{ $m[0] }}" style="width:14px;text-align:center;"></i> {{ $m[1] }}
-                    </div>
-                    @endforeach
-                </div>
-                <!-- Main area -->
-                <div style="padding:20px;" class="dash-main-area">
-                    <!-- KPI row -->
-                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;" class="dash-kpi-grid">
-                        @foreach([
-                            ['Students','247','#EFF6FF','#2563EB','↑ 12 this month'],
-                            ['Attendance','94%','#F0FDFA','#0D9488','Today, live'],
-                            ['Fees Due','₹48K','#FFFBEB','#D97706','3 pending'],
-                            ['Staff','18','#F5F3FF','#7C3AED','All present'],
-                        ] as $k)
-                        <div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:14px;">
-                            <div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#94A3B8;margin-bottom:6px;">{{ $k[0] }}</div>
-                            <div style="font-size:1.4rem;font-weight:800;color:{{ $k[3] }};letter-spacing:-0.5px;">{{ $k[1] }}</div>
-                            <div style="font-size:0.58rem;color:#94A3B8;margin-top:4px;">{{ $k[4] }}</div>
-                        </div>
-                        @endforeach
-                    </div>
-                    <!-- Charts row -->
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="dash-charts-grid">
-                        <!-- Attendance bar chart -->
-                        <div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px;">
-                            <div style="font-size:0.65rem;font-weight:700;color:#0F172A;margin-bottom:12px;">Weekly Attendance</div>
-                            <div style="display:flex;align-items:flex-end;gap:8px;height:80px;">
-                                @foreach(['Mon'=>88,'Tue'=>95,'Wed'=>92,'Thu'=>97,'Fri'=>89,'Sat'=>76] as $day=>$pct)
-                                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
-                                    <div style="font-size:0.5rem;color:#0D9488;font-weight:700;">{{ $pct }}%</div>
-                                    <div style="width:100%;background:#0D9488;border-radius:4px 4px 0 0;height:{{ round($pct*0.7) }}px;opacity:{{ $pct > 90 ? '1' : '0.6' }};"></div>
-                                    <div style="font-size:0.5rem;color:#94A3B8;">{{ $day }}</div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <!-- Fee collection donut -->
-                        <div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px;">
-                            <div style="font-size:0.65rem;font-weight:700;color:#0F172A;margin-bottom:12px;">Fee Collection — June</div>
-                            <div style="display:flex;align-items:center;gap:16px;">
-                                <svg viewBox="0 0 80 80" style="width:80px;height:80px;flex-shrink:0;">
-                                    <circle cx="40" cy="40" r="28" fill="none" stroke="#E2E8F0" stroke-width="12"/>
-                                    <circle cx="40" cy="40" r="28" fill="none" stroke="#0D9488" stroke-width="12" stroke-dasharray="{{ round(175.93*0.78) }} 175.93" stroke-dashoffset="44" stroke-linecap="round"/>
-                                    <text x="40" y="37" text-anchor="middle" font-size="11" font-weight="800" fill="#0D9488">78%</text>
-                                    <text x="40" y="50" text-anchor="middle" font-size="7" fill="#94A3B8">collected</text>
-                                </svg>
-                                <div style="flex:1;">
-                                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:0.6rem;">
-                                        <div style="width:8px;height:8px;border-radius:2px;background:#0D9488;flex-shrink:0;"></div>
-                                        <span style="color:#64748B;">Collected <strong style="color:#0F172A;">₹1.56L</strong></span>
-                                    </div>
-                                    <div style="display:flex;align-items:center;gap:6px;font-size:0.6rem;">
-                                        <div style="width:8px;height:8px;border-radius:2px;background:#E2E8F0;flex-shrink:0;"></div>
-                                        <span style="color:#64748B;">Pending <strong style="color:#D97706;">₹44K</strong></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Recent activity -->
-                        <div style="grid-column:1 / -1;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px;">
-                            <div style="font-size:0.65rem;font-weight:700;color:#0F172A;margin-bottom:12px;">Recent Activity</div>
-                            <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:4px;">
-                                @foreach([
-                                    ['<i class="fas fa-user-plus" style="background:#EFF6FF;color:#2563EB;"></i>','New admission','Riya Patel','2 min ago'],
-                                    ['<i class="fas fa-wallet" style="background:#F0FDFA;color:#0D9488;"></i>','Fee paid','Amit Sharma','15 min ago'],
-                                    ['<i class="fas fa-clipboard-check" style="background:#FFFBEB;color:#D97706;"></i>','Attendance marked','Class 8','1 hour ago'],
-                                    ['<i class="fas fa-user-tie" style="background:#F5F3FF;color:#7C3AED;"></i>','New staff hired','Priya Desai','3 hours ago'],
-                                    ['<i class="fas fa-book" style="background:#F0F9FF;color:#0284C7;"></i>','New notice','Exam schedule','5 hours ago'],
-                                ] as $act)
-                                <div style="flex-shrink:0;width:220px;padding:12px;border-radius:10px;background:#F8FAFC;border:1px solid #E2E8F0;">
-                                    <div style="display:flex;align-items:flex-start;gap:10px;">
-                                        <div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;font-size:0.6rem;{{ str_replace('</i>', '', $act[0]) }}">{!! $act[0] !!}</div>
-                                        <div>
-                                            <div style="font-size:0.6rem;font-weight:600;color:#0F172A;">{!! $act[1] !!}</div>
-                                            <div style="font-size:0.55rem;color:#64748B;">{!! $act[2] !!}</div>
-                                            <div style="font-size:0.5rem;color:#94A3B8;">{!! $act[3] !!}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-</section>
-
 <!-- ══════════════ CTA ══════════════ -->
 <section class="cta-section">
     <div class="container px-4">
@@ -2687,44 +2559,6 @@ function switchTab(id) {
                 <span class="trust-item"><i class="fas fa-check"></i> Cancel anytime</span>
                 <span class="trust-item"><i class="fas fa-check"></i> 24/7 support</span>
             </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- ══════════════ CITY & BOARD TARGETING (SEO) ══════════════ -->
-<section class="city-seo-section" style="background:#F0FDFA; padding: 48px 0; border-top: 1px solid #CCFBF1; border-bottom: 1px solid #CCFBF1;">
-    <div class="container px-4">
-        <div class="text-center mb-4">
-            <h2 style="font-size:1.1rem; color:#0D9488; font-weight:600; letter-spacing:-0.3px; margin:0 0 6px;">Trusted by schools and institutes across India</h2>
-            <p style="font-size:0.82rem; color:#475569; margin:0;">EduNex ERP is actively used by CBSE, ICSE, Gujarat Board, and State Board schools and coaching institutes in:</p>
-        </div>
-        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:900px; margin:0 auto 24px;">
-            @foreach([
-                'Vadodara','Ahmedabad','Surat','Rajkot','Gandhinagar','Anand','Bhavnagar','Jamnagar',
-                'Mumbai','Pune','Nashik','Nagpur','Aurangabad',
-                'Jaipur','Jodhpur','Udaipur','Kota',
-                'Delhi','Gurgaon','Noida','Faridabad',
-                'Hyderabad','Bangalore','Chennai','Kolkata',
-                'Bhopal','Indore','Lucknow','Patna','Ranchi',
-            ] as $city)
-            <a href="{{ url('/school-erp/india') }}" style="display:inline-block; padding:5px 14px; background:#fff; border:1px solid #99F6E4; border-radius:20px; font-size:0.73rem; color:#0D9488; text-decoration:none; font-weight:500; transition:all 0.2s;" title="School ERP in {{ $city }}">{{ $city }}</a>
-            @endforeach
-        </div>
-        <p style="font-size:0.75rem; color:#64748B; text-align:center; margin:0;">
-            Available as a cloud-based school management system accessible from any device, anywhere in India or worldwide.
-            <a href="{{ url('/school-erp/india') }}" style="color:#0D9488; text-decoration:none; font-weight:500;"> View all locations →</a>
-        </p>
-    </div>
-</section>
-
-<!-- ══════════════ BRAND CLARIFICATION (SEO) ══════════════ -->
-<section style="background: #F8FAFC; padding: 40px 0; border-top: 1px solid #E8EDF5;">
-    <div class="container px-4">
-        <div class="text-center">
-            <p style="font-size: 0.8rem; color: #94A3B8; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                <strong style="color: #64748B;">EduNex ERP</strong> is a comprehensive School and Institute Management Platform developed by <strong style="color: #64748B;">Engenius Digitech</strong>, based in Vadodara, Gujarat, India. Our AI-powered school ERP helps CBSE schools, ICSE schools, State Board schools, coaching centres, colleges, and educational Institutions manage admissions, attendance, online fee collection, examinations, payroll, library, WhatsApp communication, and academic operations from a single cloud-based platform. Trusted by 100+ educational Institutions across Gujarat, Maharashtra, Rajasthan, Delhi, and beyond, <a href="{{ url('/') }}" style="color: #0D9488; text-decoration: none;">EduNex ERP</a> is the best school management software in India for schools, coaching institutes, and training academies of all sizes. Whether you are looking for school ERP software in Vadodara, Ahmedabad, Surat, Mumbai, Jaipur, or anywhere in India — EduNex ERP is the solution.
-            </p>
         </div>
     </div>
 </section>

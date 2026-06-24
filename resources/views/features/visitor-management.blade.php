@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-seo
-        title="School Visitor Gate Security & Campus Lobby Management Software | EduNex ERP"
+        title="School Visitor Management Software | EduNex ERP"
         description="Secure your school or institute with EduNex ERP's Visitor Gate Management module. QR-based self-registration, live receptionist approval, printable passes, and complete visitor audit logs for schools and institutes."
-        keywords="school visitor management software india, campus visitor gate system, visitor gate security software, school lobby management system, institute visitor check-in software, school gate security software, visitor pass software for school, campus security ERP, school visitor log software, digital visitor register school, school visitor tracking system, school security management software, institute gate management, EduNex ERP visitor gate"
+        keywords="school visitor management software india, campus visitor gate system, visitor management software, school lobby management system, institute visitor check-in software, school gate security software, visitor pass software for school, campus security ERP, school visitor log software, digital visitor register school, school visitor tracking system, school security management software, institute gate management, EduNex ERP visitor gate"
     />
     <script type="application/ld+json">
     {
@@ -25,8 +25,8 @@
       },{
         "@@type": "ListItem",
         "position": 3,
-        "name": "Visitor Gate Security",
-        "item": "{{ route('features.visitor-gate') }}"
+        "name": "Visitor management",
+        "item": "{{ route('features.visitor-management') }}"
       }]
     }
     </script>
@@ -173,11 +173,11 @@ body {
 
 @include('components.frontend-navbar')
 
-<section class="container px-4 py-5" style="margin-top: 100px;">
+<section class="container px-4 py-5" style="margin-top: 140px;">
     <div class="row align-items-center g-5 py-5">
         <div class="col-lg-6">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem;">Platform Module</span>
-            <h1 class="fw-bold display-4 mb-3"><span class="g-text">Visitor Gate Security</span> &amp; Lobby Management</h1>
+            <h1 class="fw-bold display-4 mb-3"><span class="g-text">Visitor Management</span></h1>
             <p class="lead text-muted mb-4">
                 Secure your campus entryways. Allow guests to self-register in seconds via dynamic gate QR posters, wait on animated live approval status pages, and get instant entry passes approved by lobby receptionists.
             </p>

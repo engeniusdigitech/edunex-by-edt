@@ -33,7 +33,7 @@ section{background:transparent!important;}
 
 /* Hero */
 .about-hero{
-    padding:100px 0 80px;
+    padding:160px 0 80px;
     text-align:center;position:relative;overflow:hidden;
 }
 .about-hero::before{
@@ -132,7 +132,6 @@ section{background:transparent!important;}
 <!-- Hero -->
 <section class="about-hero">
     <div class="container px-4" style="position:relative;z-index:2;">
-        <div class="eyebrow"><i class="fas fa-info-circle"></i> About EduNex ERP</div>
         <h1 class="page-h1">Built to transform<br>how <span class="g-text">institutes work.</span></h1>
         <p class="page-sub">We believe every institute deserves world-class software. EduNex ERP is the AI-powered platform that makes it possible — for coaching centers, schools, and skill institutes.</p>
     </div>

@@ -33,7 +33,7 @@ section{background:transparent!important;}
 
 /* Hero */
 .blog-hero{
-    padding:100px 0 70px;text-align:center;
+    padding:140px 0 70px;text-align:center;
     position:relative;overflow:hidden;
 }
 .blog-hero::before{

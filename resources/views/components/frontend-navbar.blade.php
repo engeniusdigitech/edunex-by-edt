@@ -1,4 +1,63 @@
 <style>
+html {
+    scroll-padding-top: 120px; /* Accounts for fixed top navbar + mini topbar */
+}
+
+/* ── MINI TOPBAR ── */
+.nb-mini {
+    background: #0D9488;
+    color: rgba(255, 255, 255, 0.9);
+    height: 38px;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 1001;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+.nb-mini-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nb-mini-left, .nb-mini-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.nb-mini a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nb-mini a:hover {
+    color: #ffffff;
+}
+.nb-mini i {
+    font-size: 0.85rem;
+    opacity: 0.95;
+}
+
+@media (max-width: 576px) {
+    .nb-mini-inner {
+        padding: 0 20px;
+    }
+    .nb-mini-left, .nb-mini-right {
+        gap: 12px;
+    }
+    .nb-mini a {
+        font-size: 0.72rem;
+    }
+}
+
 /* ══════════════════════════════════════
    NAVBAR — EduNex ERP
    Desktop: clean pill nav with mega-drop
@@ -211,7 +270,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
 .nb-drawer {
     display: none;
     position: fixed;
-    top: 80px;
+    top: 118px;
     right: 0; bottom: 0;
     width: min(360px, 94vw);
     z-index: 998;
@@ -400,6 +459,16 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
 
 {{-- Navbar bar --}}
 <div id="nb">
+    <div class="nb-mini">
+        <div class="nb-mini-inner">
+            <div class="nb-mini-left">
+                <a href="mailto:engeniusdigitech@gmail.com" aria-label="Email sales"><i class="fas fa-envelope"></i> engeniusdigitech@gmail.com</a>
+            </div>
+            <div class="nb-mini-right">
+                <a href="tel:+918160490089" aria-label="Call sales"><i class="fas fa-phone"></i> +91 81604 90089</a>
+            </div>
+        </div>
+    </div>
     <div class="nb-bar">
 
         {{-- Logo --}}
@@ -434,8 +503,8 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                     </div>
                     <div class="nb-mega-col">
                         <div class="nb-panel-label">Security &amp; Finance</div>
-                        <a href="{{ route('features.visitor-gate') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(38,92%,50%,0.12);color:hsl(38,92%,62%);"><i class="fas fa-id-badge"></i></span> Visitor Gate Security
+                        <a href="{{ route('features.visitor-management') }}" role="menuitem">
+                            <span class="nb-panel-icon" style="background:hsla(38,92%,50%,0.12);color:hsl(38,92%,62%);"><i class="fas fa-id-badge"></i></span> Visitor Management
                         </a>
                         <a href="{{ route('features.accounting-tally') }}" role="menuitem">
                             <span class="nb-panel-icon" style="background:hsla(347,77%,50%,0.12);color:hsl(347,77%,68%);"><i class="fas fa-calculator"></i></span> Accounting &amp; Tally
@@ -585,10 +654,10 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                     <span class="nb-dlink-sub">Digital exam platform</span>
                 </span>
             </a>
-            <a href="{{ route('features.visitor-gate') }}" class="nb-dlink {{ request()->routeIs('features.visitor-gate') ? 'active' : '' }}">
+            <a href="{{ route('features.visitor-management') }}" class="nb-dlink {{ request()->routeIs('features.visitor-management') ? 'active' : '' }}">
                 <span class="nb-dlink-icon di-amber"><i class="fas fa-id-badge"></i></span>
                 <span class="nb-dlink-text">
-                    <span>Visitor Gate Security</span>
+                    <span>Visitor Management</span>
                     <span class="nb-dlink-sub">Digital visitor register</span>
                 </span>
             </a>
@@ -755,7 +824,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
     function syncDrawerTop() {
         var scrolled = window.scrollY > 10;
         nb.classList.toggle('scrolled', scrolled);
-        drawer.style.top = scrolled ? '66px' : '80px';
+        drawer.style.top = scrolled ? '104px' : '118px';
     }
     window.addEventListener('scroll', syncDrawerTop, { passive: true });
     syncDrawerTop(); // run once on load

@@ -67,9 +67,9 @@ Route::get('/digital-assessment-platform', function () {
     return view('digital-assessment');
 })->name('digital.assessment');
 
-Route::get('/features/visitor-gate', function () {
-    return view('features.visitor-gate');
-})->name('features.visitor-gate');
+Route::get('/features/visitor-management', function () {
+    return view('features.visitor-management');
+})->name('features.visitor-management');
 
 Route::get('/features/tally-accounting', function () {
     return view('features.tally-accounting');

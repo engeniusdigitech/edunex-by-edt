@@ -32,7 +32,7 @@ section{background:transparent!important;}
 
 /* Hero */
 .contact-hero {
-    padding:160px 0 80px;
+    padding:200px 0 80px;
     text-align:center; position:relative; overflow:hidden;
 }
 .contact-hero::before {
@@ -178,7 +178,6 @@ textarea.form-inp{resize:vertical;min-height:130px;}
 <!-- Hero -->
 <section class="contact-hero">
     <div class="container px-4" style="position:relative;z-index:2;">
-        <div class="eyebrow"><i class="fas fa-paper-plane"></i> Get in Touch</div>
         <h1 class="page-h1">Let's start your<br><span class="g-text">digital transformation.</span></h1>
         <p class="page-sub">Whether you have a question, need a demo, or want a custom deployment — our team at Engenius Digitech is here.</p>
     </div>

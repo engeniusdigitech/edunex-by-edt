@@ -173,7 +173,7 @@ body {
 
 @include('components.frontend-navbar')
 
-<section class="container px-4 py-5" style="margin-top: 100px;">
+<section class="container px-4 py-5" style="margin-top: 140px;">
     <div class="row align-items-center g-5 py-5">
         <div class="col-lg-6">
             <span class="badge-pill mb-3" style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-size:0.75rem;">Finance Module</span>

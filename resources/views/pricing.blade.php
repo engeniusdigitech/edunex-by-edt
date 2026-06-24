@@ -109,7 +109,7 @@ section{background:transparent!important;}
 
 /* Hero */
 .pricing-hero{
-    padding:120px 0 60px;
+    padding:160px 0 60px;
     text-align:center;position:relative;overflow:hidden;
 }
 .pricing-hero::before{
@@ -480,7 +480,7 @@ section{background:transparent!important;}
     .pricing-card { padding: 40px 24px; }
 }
 @media(max-width:992px){
-    .pricing-hero { padding: 100px 0 50px; }
+    .pricing-hero { padding: 140px 0 50px; }
     .page-h1 { font-size: 2.8rem; }
 }
 @media(max-width:768px){
@@ -627,7 +627,6 @@ section{background:transparent!important;}
 <!-- Hero Section -->
 <section class="pricing-hero">
     <div class="container px-4" style="position:relative;z-index:2;">
-        <div class="eyebrow"><i class="fas fa-tag"></i> PRICING PLANS</div>
         <h1 class="page-h1">Choose the perfect plan<br>for your <span class="g-text">Institute</span></h1>
         <p class="page-sub">Simple, predictable pricing plans designed to help institutes digitalize seamlessly, improve operations, and connect better with parents.</p>
         <!-- Interactive Inline Perplexity Badge -->
@@ -639,15 +638,8 @@ section{background:transparent!important;}
             </a>
         </div>
 
-        <!-- Billing Switcher -->
-        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-4">
-            <div class="pricing-toggle-wrap">
-                <button class="pricing-toggle-btn active" id="btn-monthly" onclick="setBillingCycle('monthly')">Monthly</button>
-                <button class="pricing-toggle-btn" id="btn-annual" onclick="setBillingCycle('annual')">
-                    Annually <span class="badge bg-success-subtle text-success ms-1" style="font-size:0.65rem;">Save 20%</span>
-                </button>
-            </div>
-        </div>
+        <!-- Billed plan info -->
+        <p class="text-center mt-3 text-success-subtle" style="font-size: 0.88rem; font-weight: 600;"><i class="fas fa-check-circle me-1"></i> Try any plan free for 7 days. No credit card required.</p>
     </div>
 </section>
 
@@ -666,21 +658,9 @@ section{background:transparent!important;}
                         <div class="plan-name">Basic Plan</div>
                         <div class="plan-subtitle">For Smaller Academies</div>
                         
-                        <div class="plan-price-wrap">
-                            <!-- Monthly Price Row -->
-                            <div class="price-monthly">
-                                <span class="price-currency">$</span>
-                                <span class="price-number">19</span>
-                                <span class="price-period">/ mo</span>
-                                <div class="price-subtext">Billed monthly</div>
-                            </div>
-                            <!-- Annual Price Row -->
-                            <div class="price-annually">
-                                <span class="price-currency">$</span>
-                                <span class="price-number">15</span>
-                                <span class="price-period">/ mo</span>
-                                <div class="price-subtext">Billed annually ($180/yr)</div>
-                            </div>
+                        <div class="plan-price-wrap d-flex flex-column justify-content-center" style="min-height:80px;">
+                            <div class="price-number" style="font-size: 2rem; color: #0D9488;">7-Day Trial</div>
+                            <div class="price-subtext">Free setup & configuration</div>
                         </div>
 
                         <ul class="plan-features">
@@ -713,31 +693,21 @@ section{background:transparent!important;}
                         <div class="plan-name">Premium Plan</div>
                         <div class="plan-subtitle">For Modern Schools</div>
                         
-                        <div class="plan-price-wrap">
-                            <!-- Monthly Price Row -->
-                            <div class="price-monthly">
-                                <span class="price-currency">$</span>
-                                <span class="price-number">49</span>
-                                <span class="price-period">/ mo</span>
-                                <div class="price-subtext">Billed monthly</div>
-                            </div>
-                            <!-- Annual Price Row -->
-                            <div class="price-annually">
-                                <span class="price-currency">$</span>
-                                <span class="price-number">39</span>
-                                <span class="price-period">/ mo</span>
-                                <div class="price-subtext">Billed annually ($468/yr)</div>
-                            </div>
+                        <div class="plan-price-wrap d-flex flex-column justify-content-center" style="min-height:80px;">
+                            <div class="price-number" style="font-size: 2rem; color: #0D9488;">7-Day Trial</div>
+                            <div class="price-subtext">Free setup & configuration</div>
                         </div>
 
                         <ul class="plan-features">
                             <li><i class="fa-solid fa-circle-check"></i> Everything in Basic</li>
-                            <li><i class="fa-solid fa-circle-check"></i> AI Face Biometric Attendance</li>
-                            <li><i class="fa-solid fa-circle-check"></i> GPS Staff Location Tracking</li>
-                            <li><i class="fa-solid fa-circle-check"></i> Online Exams & Gradebook</li>
-                            <li><i class="fa-solid fa-circle-check"></i> AI Proctoring & Question Bank</li>
-                            <li><i class="fa-solid fa-circle-check"></i> WhatsApp Alerts & Reminders</li>
-                            <li><i class="fa-solid fa-circle-check"></i> One-click Automated Payroll</li>
+                            <li><i class="fa-solid fa-circle-check"></i> AI Biometric Face Attendance</li>
+                            <li><i class="fa-solid fa-circle-check"></i> GPS Tracking & Geofencing</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Online Exams & AI Proctoring</li>
+                            <li><i class="fa-solid fa-circle-check"></i> WhatsApp Alerts & Fee Reminders</li>
+                            <li><i class="fa-solid fa-circle-check"></i> One-click Payroll & Tally Sync</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Visitor Gate & Hostel Management</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Store, Inventory & Library Systems</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Bus Route & GPS Transit Tracking</li>
                             <li><i class="fa-solid fa-circle-check"></i> Priority Ticket Support</li>
                             <li><i class="fa-solid fa-circle-xmark"></i> Custom Branded Mobile App</li>
                         </ul>
@@ -761,21 +731,9 @@ section{background:transparent!important;}
                         <div class="plan-name">Premium + App</div>
                         <div class="plan-subtitle">Complete Branded Suite</div>
                         
-                        <div class="plan-price-wrap">
-                            <!-- Monthly Price Row -->
-                            <div class="price-monthly">
-                                <span class="price-currency">$</span>
-                                <span class="price-number">99</span>
-                                <span class="price-period">/ mo</span>
-                                <div class="price-subtext">Billed monthly</div>
-                            </div>
-                            <!-- Annual Price Row -->
-                            <div class="price-annually">
-                                <span class="price-currency">$</span>
-                                <span class="price-number">79</span>
-                                <span class="price-period">/ mo</span>
-                                <div class="price-subtext">Billed annually ($948/yr)</div>
-                            </div>
+                        <div class="plan-price-wrap d-flex flex-column justify-content-center" style="min-height:80px;">
+                            <div class="price-number" style="font-size: 2rem; color: #0d857a;">7-Day Trial</div>
+                            <div class="price-subtext">Free setup & configuration</div>
                         </div>
 
                         <ul class="plan-features">
@@ -845,7 +803,7 @@ section{background:transparent!important;}
             <div class="stat-div d-none d-md-block"></div>
             <div><div class="stat-val g-text">15 min</div><div class="stat-lbl">Setup Time</div></div>
             <div class="stat-div d-none d-md-block"></div>
-            <div><div class="stat-val" style="color:hsl(38,92%,60%);">4.9★</div><div class="stat-lbl">Rating</div></div>
+            <div><div class="stat-val" style="color:hsl(38,92%,60%);">5★</div><div class="stat-lbl">Rating</div></div>
         </div>
     </div>
 </section>
@@ -1036,10 +994,50 @@ section{background:transparent!important;}
                         <td><i class="fa-solid fa-circle-check"></i></td>
                     </tr>
                     <tr>
-                        <td>Tally Sync & Custom ERP Integrations</td>
+                        <td>Tally ERP Sync & Accounting Integration</td>
                         <td><i class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+
+                    <!-- Security, Transport & Operations -->
+                    <tr class="category-row">
+                        <td colspan="5">Security, Transport & Operations</td>
+                    </tr>
+                    <tr>
+                        <td>Visitor & Gate Security Management</td>
                         <td><i class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Hostel & Mess Allocation System</td>
                         <td><i class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Store & Inventory Management</td>
+                        <td><i class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>School Bus & GPS Transport Tracking</td>
+                        <td><i class="fa-solid fa-circle-xmark"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Library Management System (QR Scan)</td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
                         <td><i class="fa-solid fa-circle-check"></i></td>
                     </tr>
 

@@ -213,7 +213,7 @@ body {
 }
 .hero-content {
     flex: 1; display: flex; align-items: center;
-    padding: 150px 0 80px;
+    padding: 190px 0 80px;
     position: relative; z-index: 2;
 }
 /* Trust kicker badge */
@@ -719,7 +719,7 @@ body {
 .trust-item i { color: rgba(255,255,255,0.9); }
 
 @media(max-width:991px) {
-    .hero-content { padding: 130px 0 40px; }
+    .hero-content { padding: 170px 0 40px; }
     .display-wrapper { padding-bottom: 0; }
     .mobile-mockup { display: none; }
     .desktop-mockup { border-radius: 10px; }
@@ -727,7 +727,7 @@ body {
 
 @media(max-width:768px) {
     .hero { min-height: auto; }
-    .hero-content { padding: 140px 0 50px; }
+    .hero-content { padding: 180px 0 50px; }
     .hero-h1, .hero-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem) !important; letter-spacing: -1px; line-height: 1.2; margin-bottom: 14px; }
     .hero-sub { font-size: 0.92rem; margin-bottom: 20px; max-width: 100%; line-height: 1.7; }
     .hero-trust-kicker { font-size: 0.68rem; padding: 5px 14px; margin-bottom: 18px; }
@@ -752,7 +752,7 @@ body {
 }
 
 @media(max-width:480px) {
-    .hero-content { padding: 130px 0 28px; }
+    .hero-content { padding: 170px 0 28px; }
     .hero-h1, .hero-h2 { font-size: 1.75rem !important; margin-bottom: 12px; }
     .hero-sub { font-size: 0.88rem; margin-bottom: 16px; }
     .stat-pipe { display: none; }

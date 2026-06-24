@@ -75,7 +75,7 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>{{ route('features.visitor-gate') }}</loc>
+        <loc>{{ route('features.visitor-management') }}</loc>
         <lastmod>2026-05-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
