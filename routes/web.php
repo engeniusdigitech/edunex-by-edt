@@ -63,6 +63,24 @@ Route::get('/blogs', function () {
     return view('blogs');
 })->name('blogs');
 
+Route::get('/login-hub', function () {
+    if (auth()->guard('student')->check()) {
+        return redirect()->route('student.dashboard');
+    }
+    if (auth()->check()) {
+        if (auth()->user()->isSuperAdmin()) {
+            return redirect()->route('superadmin.dashboard');
+        }
+        return redirect()->to('/dashboard');
+    }
+    return view('login_hub');
+})->name('login.hub');
+
+Route::get('/portal', function () {
+    return redirect()->route('login.hub');
+});
+
+
 Route::get('/digital-assessment-platform', function () {
     return view('digital-assessment');
 })->name('digital.assessment');

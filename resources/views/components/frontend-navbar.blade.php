@@ -563,6 +563,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
             </div>
 
             <a href="{{ route('contact') }}" class="nb-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
+            <a href="{{ route('login.hub') }}" class="nb-link {{ request()->routeIs('login.hub') ? 'active' : '' }}">Login Portal</a>
 
         </nav>
 
@@ -590,10 +591,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                         <button type="submit" class="nbc nbc-red"><i class="fas fa-right-from-bracket"></i> Logout</button>
                     </form>
                 @else
-                    <a href="{{ route('student.login') }}" class="nbc nbc-ghost" style="font-size:0.82rem;padding:8px 13px;">
-                        <i class="fas fa-user-graduate"></i> Student
-                    </a>
-                    <a href="{{ route('login') }}" class="nbc nbc-ghost">
+                    <a href="{{ route('login.hub') }}" class="nbc nbc-ghost">
                         <i class="fas fa-right-to-bracket"></i> Log in
                     </a>
                     <a href="{{ route('pricing') }}" class="nbc nbc-solid">
@@ -637,6 +635,14 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 <span class="nb-dlink-text">
                     <span>Contact Us</span>
                     <span class="nb-dlink-sub">Talk to our team</span>
+                </span>
+                <i class="fas fa-chevron-right nb-dlink-arrow"></i>
+            </a>
+            <a href="{{ route('login.hub') }}" class="nb-dlink {{ request()->routeIs('login.hub') ? 'active' : '' }}">
+                <span class="nb-dlink-icon di-violet"><i class="fas fa-right-to-bracket"></i></span>
+                <span class="nb-dlink-text">
+                    <span>Login Portal</span>
+                    <span class="nb-dlink-sub">Student &amp; Staff gateway</span>
                 </span>
                 <i class="fas fa-chevron-right nb-dlink-arrow"></i>
             </a>
@@ -767,11 +773,8 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 <a href="{{ route('pricing') }}" class="nbc nbc-solid">
                     <i class="fas fa-rocket"></i> Start Free Trial
                 </a>
-                <a href="{{ route('login') }}" class="nbc nbc-ghost">
-                    <i class="fas fa-right-to-bracket"></i> Staff Log in
-                </a>
-                <a href="{{ route('student.login') }}" class="nbc nbc-ghost">
-                    <i class="fas fa-user-graduate"></i> Student Portal
+                <a href="{{ route('login.hub') }}" class="nbc nbc-ghost">
+                    <i class="fas fa-right-to-bracket"></i> Login Portals
                 </a>
             @endif
         @endif
