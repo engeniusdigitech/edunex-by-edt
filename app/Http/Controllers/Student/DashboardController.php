@@ -56,10 +56,17 @@ class DashboardController extends Controller
             ->take(3)
             ->get();
 
+        // Calculate fees
+        $studentFees = \App\Models\StudentFee::where('student_id', $student->id)->get();
+        $totalFees = $studentFees->sum('amount');
+        $paidFees = $studentFees->sum('paid_amount');
+        $balanceFees = $studentFees->sum('due_amount');
+
         return view('student.dashboard', compact(
             'student', 'attendancePercentage', 'presentClasses', 'totalClasses',
             'absentClasses', 'lateClasses', 'recentLeaves', 'monthlyAttendance',
-            'recentPayments', 'activeHomeworks', 'upcomingTests', 'pastTests'
+            'recentPayments', 'activeHomeworks', 'upcomingTests', 'pastTests',
+            'totalFees', 'paidFees', 'balanceFees'
         ));
     }
 

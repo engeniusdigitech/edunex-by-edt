@@ -32,6 +32,20 @@ Route::prefix('v1')->group(function () {
         
         Route::get('/leave-requests', [\App\Http\Controllers\Api\V1\Student\LeaveRequestController::class, 'index']);
         Route::post('/leave-requests', [\App\Http\Controllers\Api\V1\Student\LeaveRequestController::class, 'store']);
+        Route::delete('/leave-requests/{leave}', [\App\Http\Controllers\Api\V1\Student\LeaveRequestController::class, 'withdraw']);
+
+        // Library
+        Route::get('/library', [\App\Http\Controllers\Api\V1\Student\LibraryController::class, 'index']);
+        Route::get('/library/my-books', [\App\Http\Controllers\Api\V1\Student\LibraryController::class, 'myBooks']);
+        Route::get('/library/history', [\App\Http\Controllers\Api\V1\Student\LibraryController::class, 'history']);
+        Route::get('/library/fines', [\App\Http\Controllers\Api\V1\Student\LibraryController::class, 'fines']);
+        Route::get('/library/digital', [\App\Http\Controllers\Api\V1\Student\LibraryController::class, 'digital']);
+
+        // Study Materials
+        Route::get('/study-materials', [\App\Http\Controllers\Api\V1\Student\StudyMaterialController::class, 'index']);
+
+        // Profile
+        Route::post('/profile/change-password', [\App\Http\Controllers\Api\V1\Student\ProfileController::class, 'changePassword']);
 
         // Class Chatroom API endpoints
         Route::get('/class-chat/batches', [\App\Http\Controllers\Api\V1\Chat\ClassChatApiController::class, 'batches']);

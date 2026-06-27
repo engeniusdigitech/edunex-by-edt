@@ -168,7 +168,7 @@
             const encodedMessage = encodeURIComponent(message);
             
             // The provided WhatsApp number
-            const waNumber = '918160490089'; 
+            const waNumber = '919998915886'; 
             
             // WhatsApp redirection URL
             const finalUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;

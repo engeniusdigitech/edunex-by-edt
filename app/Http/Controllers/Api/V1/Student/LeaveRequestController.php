@@ -17,19 +17,21 @@ class LeaveRequestController extends Controller
             ->latest()
             ->get();
 
+        $leavesMapped = $leaves->map(function ($leave) {
+            return [
+                'id' => $leave->id,
+                'type' => $leave->type,
+                'start_date' => $leave->start_date ? $leave->start_date->format('Y-m-d') : null,
+                'end_date' => $leave->end_date ? $leave->end_date->format('Y-m-d') : null,
+                'reason' => $leave->reason,
+                'status' => $leave->status,
+                'rejection_reason' => $leave->rejection_reason,
+                'created_at' => $leave->created_at->format('Y-m-d H:i:s'),
+            ];
+        })->values();
+
         return response()->json([
-            'leaves' => $leaves->map(function ($leave) {
-                return [
-                    'id' => $leave->id,
-                    'type' => $leave->type,
-                    'start_date' => $leave->start_date ? $leave->start_date->format('Y-m-d') : null,
-                    'end_date' => $leave->end_date ? $leave->end_date->format('Y-m-d') : null,
-                    'reason' => $leave->reason,
-                    'status' => $leave->status,
-                    'rejection_reason' => $leave->rejection_reason,
-                    'created_at' => $leave->created_at->format('Y-m-d H:i:s'),
-                ];
-            })
+            'leave_requests' => $leavesMapped,
         ]);
     }
 
@@ -69,5 +71,22 @@ class LeaveRequestController extends Controller
                 'status' => $leave->status,
             ]
         ], 201);
+    }
+
+    public function withdraw(Request $request, LeaveRequest $leave)
+    {
+        $student = $request->user();
+
+        if ($leave->student_id !== $student->id) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        if ($leave->status !== 'pending') {
+            return response()->json(['message' => 'Only pending leave requests can be withdrawn.'], 422);
+        }
+
+        $leave->delete();
+
+        return response()->json(['message' => 'Leave request withdrawn successfully.']);
     }
 }

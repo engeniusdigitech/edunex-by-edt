@@ -264,7 +264,7 @@
 
                 const text = `*New Lead from Website* 🚀\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Country:* ${country}\n\n*Message:* ${message}`;
                 const encodedText = encodeURIComponent(text);
-                const waUrl = `https://wa.me/918160490089?text=${encodedText}`;
+                const waUrl = `https://wa.me/919998915886?text=${encodedText}`;
 
                 window.open(waUrl, '_blank');
                 toggleWhatsappForm();

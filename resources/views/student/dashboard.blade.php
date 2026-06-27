@@ -71,9 +71,8 @@ body { background: #F1F5F9 !important; }
     font-size: 0.88rem; font-weight: 800; color: #0F172A;
     display: flex; align-items: center; gap: 8px;
 }
-.dcard-title i { font-size: 0.9rem; }
-.dcard-link { font-size: 0.75rem; font-weight: 700; color: #6366F1; text-decoration: none; }
-.dcard-link:hover { color: #4F46E5; }
+.dcard-title i { font-size: 3rem; }
+.dcard-link { font-size: 1.2rem; font-weight: 700; color: #29e50c; text-decoration: none; }
 .dcard-body { padding: 18px 22px 22px; }
 
 /* ── Attendance Ring ── */
@@ -194,7 +193,6 @@ body { background: #F1F5F9 !important; }
 @php
     $student   = auth()->guard('student')->user();
     $hour      = (int) now()->format('H');
-    $greeting  = $hour < 12 ? 'Good Morning' : ($hour < 17 ? 'Good Afternoon' : 'Good Evening');
     $pct       = $attendancePercentage;
     $circ      = 2 * pi() * 52;
     $offset    = $circ - ($pct / 100) * $circ;
@@ -218,7 +216,6 @@ body { background: #F1F5F9 !important; }
         <div class="hero-inner">
             <div class="hero-avatar">{{ strtoupper(substr($student->name, 0, 2)) }}</div>
             <div class="hero-info">
-                <div class="hero-greeting"><i class="fas fa-sun" style="color:#FBBF24;"></i> {{ $greeting }}</div>
                 <h1 class="hero-name">{{ $student->name }}</h1>
                 <div class="hero-meta">
                     <span><i class="fas fa-building"></i> {{ $student->institute->name ?? 'Student Portal' }}</span>
@@ -252,11 +249,15 @@ body { background: #F1F5F9 !important; }
 
         {{-- Attendance progress bar --}}
         <div style="position:relative;z-index:1;margin-top:20px;">
+                                <a href="{{ route('student.attendance.index') }}" class="dcard-link">All Records <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                
                 <span style="font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.5);">Overall Attendance Progress</span>
                 <span style="font-size:0.72rem;font-weight:800;color:{{ $pct >= 75 ? '#34D399' : '#FBBF24' }};">
                     @if($pct >= 90) Outstanding @elseif($pct >= 75) On Track @elseif($pct >= 50) Needs Effort @else Critical @endif
                 </span>
+                
             </div>
             <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:99px;overflow:hidden;">
                 <div style="height:100%;width:{{ $pct }}%;background:{{ $pct >= 75 ? 'linear-gradient(90deg,#10B981,#34D399)' : ($pct >= 50 ? 'linear-gradient(90deg,#F59E0B,#FBBF24)' : 'linear-gradient(90deg,#EF4444,#F87171)') }};border-radius:99px;transition:width 1s;"></div>
@@ -269,109 +270,38 @@ body { background: #F1F5F9 !important; }
         </div>
     </div>
 
+    <!-- ── fees ── -->
+     <div class="fees" style="margin-bottom:20px;">
+        <div class="dcard">
+            <div class="dcard-head" style="margin-bottom:4px;">
+                <div class="dcard-title"><i class="fas fa-wallet" style="color:#10B981;"></i> Fee Summary</div>
+            </div>
+                <a href="{{ route('student.fees.index') }}" class="dcard-link" style="margin-left:16px;">Fees Records <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+            <div class="dcard-body">
+                @if($student->institute && $student->institute->feature_fees)
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                        <span style="font-size:0.75rem;font-weight:700;color:#475569;">Total Fees</span>
+                        <span style="font-size:0.75rem;font-weight:800;color:#0F172A;">₹{{ number_format($totalFees, 2) }}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                        <span style="font-size:0.75rem;font-weight:700;color:#475569;">Paid</span>
+                        <span style="font-size:0.75rem;font-weight:800;color:#0F172A;">₹{{ number_format($paidFees, 2) }}</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span style="font-size:0.75rem;font-weight:700;color:#475569;">Due</span>
+                        <span style="font-size:0.75rem;font-weight:800;color:#EF4444;">₹{{ number_format($balanceFees, 2) }}</span>
+                    </div>
+                @else
+                    <p style="font-size:0.78rem;color:#64748B;">Fee management is not enabled for your institute.</p>
+                @endif
+            </div>
+        </div>
+    </div>
+
     <div class="dash-grid">
 
         {{-- ── LEFT COLUMN ── --}}
         <div>
-
-            {{-- Attendance Story --}}
-            @if(!$student->institute || $student->institute->feature_attendance)
-            <div class="dcard" style="margin-bottom:16px;">
-                <div class="dcard-head">
-                    <div class="dcard-title"><i class="fas fa-chart-pie" style="color:#6366F1;"></i> Attendance Story</div>
-                    <a href="{{ route('student.attendance.index') }}" class="dcard-link">Full Report <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
-                </div>
-                <div class="dcard-body">
-                    <div class="att-story-layout">
-                        <div class="att-ring-wrap">
-                            <svg width="130" height="130" viewBox="0 0 130 130">
-                                <circle cx="65" cy="65" r="52" fill="none" stroke="#F1F5F9" stroke-width="12"/>
-                                <circle cx="65" cy="65" r="52" fill="none" stroke="#FEE2E2" stroke-width="12"
-                                    stroke-dasharray="{{ round($circ,2) }}"
-                                    stroke-dashoffset="{{ round($absOffset,2) }}"/>
-                                <circle cx="65" cy="65" r="52" fill="none" stroke="{{ $ringColor }}" stroke-width="12"
-                                    stroke-linecap="round"
-                                    stroke-dasharray="{{ round($circ,2) }}"
-                                    stroke-dashoffset="{{ round($offset,2) }}"/>
-                            </svg>
-                            <div class="att-ring-center">
-                                <div class="rv" style="color:{{ $ringColor }};">{{ $pct }}%</div>
-                                <div class="rl">Rate</div>
-                            </div>
-                        </div>
-                        <div class="att-narrative">
-                            @if($pct >= 90)
-                            <div class="att-headline"><i class="fas fa-trophy" style="color:#D97706;margin-right:6px;"></i>Outstanding!</div>
-                            <div class="att-subtext">You've attended <strong>{{ $totalAttended }}</strong> of <strong>{{ $totalClasses }}</strong> classes. You're in the top tier — exceptional consistency.</div>
-                            @elseif($pct >= 75)
-                            <div class="att-headline"><i class="fas fa-circle-check" style="color:#10B981;margin-right:6px;"></i>You're On Track</div>
-                            <div class="att-subtext">Attended <strong>{{ $totalAttended }}</strong> of <strong>{{ $totalClasses }}</strong>. Just <strong>{{ max(0,ceil($totalClasses*0.9)-$totalAttended) }} more</strong> classes to hit 90%. Keep going!</div>
-                            @elseif($pct >= 50)
-                            <div class="att-headline"><i class="fas fa-triangle-exclamation" style="color:#F59E0B;margin-right:6px;"></i>Needs Effort</div>
-                            <div class="att-subtext">Attended <strong>{{ $totalAttended }}</strong> of <strong>{{ $totalClasses }}</strong>. Aim for 75%+ — regular attendance makes a huge difference.</div>
-                            @else
-                            <div class="att-headline"><i class="fas fa-circle-exclamation" style="color:#EF4444;margin-right:6px;"></i>Attendance Critical</div>
-                            <div class="att-subtext">Only <strong>{{ $totalAttended }}</strong> of <strong>{{ $totalClasses }}</strong> classes attended. Please speak with your advisor — we're here to help.</div>
-                            @endif
-                            <div class="att-pills">
-                                <div class="att-pill"><div class="dot" style="background:{{ $ringColor }};"></div><div><div class="pv">{{ $presentClasses }}</div><div class="pl">Present</div></div></div>
-                                <div class="att-pill"><div class="dot" style="background:#F59E0B;"></div><div><div class="pv">{{ $lateClasses }}</div><div class="pl">Late</div></div></div>
-                                <div class="att-pill"><div class="dot" style="background:#EF4444;"></div><div><div class="pv">{{ $absentClasses }}</div><div class="pl">Absent</div></div></div>
-                            </div>
-                            {{-- progress bar --}}
-                            <div class="prog-bar-wrap">
-                                <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
-                                    <span style="font-size:0.65rem;font-weight:700;color:#94A3B8;">Progress to 90% goal</span>
-                                    <span style="font-size:0.65rem;font-weight:800;color:{{ $ringColor }};">{{ $pct }}% / 90%</span>
-                                </div>
-                                <div class="prog-bar-track">
-                                    <div class="prog-bar-fill" style="width:{{ min(100, $pct) }}%;background:{{ $ringColor }};"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Monthly Chart --}}
-            <div class="dcard" style="margin-bottom:16px;">
-                <div class="dcard-head">
-                    <div class="dcard-title"><i class="fas fa-chart-column" style="color:#6366F1;"></i> 6-Month Trend</div>
-                    <a href="{{ route('student.attendance.index') }}" class="dcard-link">All Records <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
-                </div>
-                <div class="dcard-body">
-                    @php
-                        $maxDay = collect($monthlyAttendance)->max(fn($m)=>$m['present']+$m['absent']);
-                        $maxDay = max($maxDay,1);
-                    @endphp
-                    <div class="month-bars">
-                        @foreach($monthlyAttendance as $m)
-                        @php
-                            $tot   = $m['present'] + $m['absent'];
-                            $pctM  = $tot > 0 ? round(($m['present']/$tot)*100) : 0;
-                            $barH  = $tot > 0 ? max(6, round(($tot/$maxDay)*80)) : 6;
-                            $col   = $pctM>=90?'#10B981':($pctM>=75?'#6366F1':($pctM>=50?'#F59E0B':'#EF4444'));
-                            $bgCol = $pctM>=90?'#ECFDF5':($pctM>=75?'#EEF2FF':($pctM>=50?'#FFFBEB':'#FEF2F2'));
-                        @endphp
-                        <div class="m-bar-group">
-                            <div class="m-bar-pct" style="color:{{ $col }};">{{ $pctM }}%</div>
-                            <div class="m-bar-track" style="background:{{ $bgCol }};">
-                                <div class="m-bar-fill" style="height:{{ $barH }}px;background:{{ $col }};"></div>
-                            </div>
-                            <div class="m-bar-lbl">{{ $m['label'] }}</div>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;">
-                        @foreach([['#10B981','≥90% Outstanding'],['#6366F1','75-89% Good'],['#F59E0B','50-74% Fair'],['#EF4444','<50% Critical']] as $lg)
-                        <span style="display:flex;align-items:center;gap:5px;font-size:0.68rem;font-weight:700;color:#64748B;">
-                            <span style="width:10px;height:10px;border-radius:3px;background:{{ $lg[0] }};display:inline-block;flex-shrink:0;"></span>{{ $lg[1] }}
-                        </span>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            @endif
 
             {{-- Quick Access --}}
             <div class="dcard" style="margin-bottom:16px;">

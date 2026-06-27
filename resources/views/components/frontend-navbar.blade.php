@@ -465,7 +465,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 <a href="mailto:engeniusdigitech@gmail.com" aria-label="Email sales"><i class="fas fa-envelope"></i> engeniusdigitech@gmail.com</a>
             </div>
             <div class="nb-mini-right">
-                <a href="tel:+918160490089" aria-label="Call sales"><i class="fas fa-phone"></i> +91 81604 90089</a>
+                <a href="tel:+919998915886" aria-label="Call sales"><i class="fas fa-phone"></i> +91 81604 90089</a>
             </div>
         </div>
     </div>
