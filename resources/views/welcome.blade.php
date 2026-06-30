@@ -1628,212 +1628,204 @@ body {
     </div>
 </section>
 
-<!-- Stats strip -->
-<div class="stats-strip">
-    <div class="container px-4">
-        <div class="d-flex align-items-center justify-content-center gap-4 gap-md-5 flex-wrap text-center">
-            <div><div class="stat-val" style="color:#0D9488;">100<span>+</span></div><div class="stat-lbl">Institutes</div></div>
-            <div class="stat-pipe d-none d-md-block"></div>
-            <div><div class="stat-val" style="color:#2563EB;">50K<span>+</span></div><div class="stat-lbl">Students</div></div>
-            <div class="stat-pipe d-none d-md-block"></div>
-            <div><div class="stat-val" style="color:#7C3AED;">99.9<span>%</span></div><div class="stat-lbl">Uptime</div></div>
-            <div class="stat-pipe d-none d-md-block"></div>
-            <div><div class="stat-val" style="color:#0D9488;">24/7</div><div class="stat-lbl">Support</div></div>
-            <div class="stat-pipe d-none d-md-block"></div>
-            <div><div class="stat-val" style="color:#F59E0B;">5★</div><div class="stat-lbl">Rating</div></div>
-        </div>
-    </div>
-</div>
 
 <!-- ══════════════ INSTITUTE STORY VISUAL ══════════════ -->
-<section style="background:#fff; padding:80px 0; border-top:1px solid #E8EDF5;">
-    <div class="container px-4">
-        <div class="text-center mb-5">
-            <span class="sec-eyebrow">The EduNex ERP Story</span>
-            <h2 class="sec-title" style="margin-bottom:12px;">From chaos to clarity — <span class="g-text">in one platform.</span></h2>
-            <p class="sec-desc" style="margin:0 auto;">Every great institute runs the same journey. EduNex ERP is built for every step of it.</p>
+<section class="story-section">
+<style>
+.story-section {
+    background: linear-gradient(160deg, #F0FDFA 0%, #EFF6FF 50%, #F5F3FF 100%);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+.story-section::before {
+    content: '';
+    position: absolute; top: -120px; left: -120px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,148,136,0.08), transparent 70%);
+    pointer-events: none;
+}
+.story-section::after {
+    content: '';
+    position: absolute; bottom: -100px; right: -100px;
+    width: 350px; height: 350px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%);
+    pointer-events: none;
+}
+.story-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+.story-eyebrow-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff;
+    border: 1px solid rgba(13,148,136,0.25);
+    border-radius: 999px; padding: 6px 18px;
+    font-size: 0.72rem; font-weight: 700;
+    color: #0D9488; text-transform: uppercase; letter-spacing: 1.2px;
+    box-shadow: 0 2px 12px rgba(13,148,136,0.1);
+    margin-bottom: 18px;
+}
+.story-eyebrow-pill i { font-size: 0.7rem; }
+.story-header-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800; color: #0F172A;
+    letter-spacing: -1px; line-height: 1.2;
+    margin: 0;
+}
+.story-header-title span {
+    background: linear-gradient(135deg, #0D9488, #6366F1);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.story-frame {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+}
+.story-frame-glow {
+    position: absolute; inset: -2px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, #0D9488, #6366F1, #2563EB);
+    z-index: 0;
+    filter: blur(0px);
+    opacity: 0.7;
+}
+.story-frame-inner {
+    position: relative; z-index: 1;
+    background: #fff;
+    border-radius: 24px;
+    padding: 6px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.12);
+}
+.story-frame-inner img {
+    width: 100%; display: block;
+    border-radius: 20px;
+}
+.story-frame-top {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 16px 4px;
+}
+.story-dot { width: 10px; height: 10px; border-radius: 50%; }
+.story-frame-label {
+    margin-left: auto;
+    font-size: 0.68rem; font-weight: 700;
+    color: #94A3B8; letter-spacing: 0.5px;
+}
+.story-floating-badge {
+    position: absolute;
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    font-size: 0.75rem; font-weight: 700; color: #0F172A;
+    z-index: 10;
+    animation: float-badge 4s ease-in-out infinite;
+}
+.story-badge-1 { top: -18px; left: -24px; animation-delay: 0s; }
+.story-badge-2 { bottom: -18px; right: -24px; animation-delay: 2s; }
+@keyframes float-badge {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+.story-badge-icon {
+    width: 32px; height: 32px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; color: #fff; flex-shrink: 0;
+}
+.story-badge-sub { font-size: 0.65rem; font-weight: 500; color: #64748B; margin-top: 1px; }
+.story-stats {
+    display: flex; justify-content: center; gap: 40px;
+    margin-top: 52px; flex-wrap: wrap;
+}
+.story-stat {
+    text-align: center;
+    padding: 20px 28px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #E8EDF5;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    min-width: 120px;
+    transition: all 0.25s;
+}
+.story-stat:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(13,148,136,0.12); border-color: #0D9488; }
+.story-stat-val { font-size: 1.8rem; font-weight: 900; letter-spacing: -1.5px; line-height: 1; background: linear-gradient(135deg,#0D9488,#2563EB); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.story-stat-lbl { font-size: 0.68rem; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 5px; }
+@media(max-width:768px) {
+    .story-badge-1, .story-badge-2 { display: none; }
+    .story-stats { gap: 16px; }
+    .story-stat { padding: 16px 20px; min-width: 90px; }
+    .story-stat-val { font-size: 1.4rem; }
+}
+</style>
+    <div class="container px-4" style="position:relative;z-index:2;">
+
+        <div class="story-header">
+            <div class="story-eyebrow-pill"><i class="fas fa-book-open"></i> The EduNex ERP Story</div>
+            <h2 class="story-header-title">One platform. <span>Every workflow.</span><br>Zero chaos.</h2>
         </div>
 
-        <!-- Story Timeline SVG -->
-        <div class="timeline-desktop" style="max-width:900px;margin:0 auto;">
-            <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-                <!-- Timeline line -->
-                <line x1="80" y1="120" x2="820" y2="120" stroke="#E2E8F0" stroke-width="3" stroke-dasharray="8 4"/>
+        <div class="story-frame">
+            <!-- Gradient border glow -->
+            <div class="story-frame-glow"></div>
 
-                <!-- Stage 1: Enroll -->
-                <g>
-                    <circle cx="100" cy="120" r="40" fill="#F0FDFA" stroke="#0D9488" stroke-width="2"/>
-                    <!-- Graduation cap icon -->
-                    <path d="M100 103 L85 111 L100 119 L115 111 Z" fill="#0D9488"/>
-                    <path d="M92 115 L92 125 C92 125 96 129 100 129 C104 129 108 125 108 125 L108 115" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="115" y1="111" x2="115" y2="121" stroke="#0D9488" stroke-width="2" stroke-linecap="round"/>
-                    <text x="100" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#0D9488">Enroll</text>
-                    <rect x="40" y="175" width="120" height="60" rx="12" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1.5"/>
-                    <text x="100" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">Student Joins</text>
-                    <text x="100" y="211" text-anchor="middle" font-size="8" fill="#64748B">Instant portal</text>
-                    <text x="100" y="224" text-anchor="middle" font-size="8" fill="#64748B">access granted</text>
-                    <line x1="100" y1="160" x2="100" y2="175" stroke="#CCFBF1" stroke-width="1.5"/>
-                </g>
+            <!-- Browser chrome -->
+            <div class="story-frame-inner">
+                <div class="story-frame-top">
+                    <div class="story-dot" style="background:#FF5F57;"></div>
+                    <div class="story-dot" style="background:#FEBC2E;"></div>
+                    <div class="story-dot" style="background:#28C840;"></div>
+                    <div class="story-frame-label">edunexerp.online</div>
+                </div>
+                <img src="{{ asset('images/process.jpg') }}" alt="EduNex ERP Story">
+            </div>
 
-                <!-- Arrow 1 -->
-                <path d="M155 120 L205 120" stroke="#0D9488" stroke-width="2" marker-end="url(#arr)"/>
-
-                <!-- Stage 2: Attend -->
-                <g>
-                    <circle cx="280" cy="120" r="40" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
-                    <!-- Clipboard-check icon -->
-                    <rect x="268" y="103" width="24" height="30" rx="3" fill="none" stroke="#2563EB" stroke-width="2"/>
-                    <rect x="274" y="100" width="12" height="6" rx="2" fill="#2563EB"/>
-                    <path d="M272 116 l3 3 l6 -6" stroke="#2563EB" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line x1="272" y1="124" x2="288" y2="124" stroke="#2563EB" stroke-width="1.5" opacity=".4"/>
-                    <line x1="272" y1="128" x2="284" y2="128" stroke="#2563EB" stroke-width="1.5" opacity=".4"/>
-                    <text x="280" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#2563EB">Attend</text>
-                    <rect x="220" y="175" width="120" height="60" rx="12" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
-                    <text x="280" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">Daily Tracking</text>
-                    <text x="280" y="211" text-anchor="middle" font-size="8" fill="#64748B">One-tap batch</text>
-                    <text x="280" y="224" text-anchor="middle" font-size="8" fill="#64748B">marking &amp; alerts</text>
-                    <line x1="280" y1="160" x2="280" y2="175" stroke="#BFDBFE" stroke-width="1.5"/>
-                </g>
-
-                <!-- Arrow 2 -->
-                <path d="M335 120 L385 120" stroke="#2563EB" stroke-width="2" marker-end="url(#arr2)"/>
-
-                <!-- Stage 3: Learn -->
-                <g>
-                    <circle cx="460" cy="120" r="40" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
-                    <!-- Open book icon -->
-                    <path d="M447 108 C447 108 453 106 460 108 C467 106 473 108 473 108 L473 128 C473 128 467 126 460 128 C453 126 447 128 447 128 Z" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/>
-                    <line x1="460" y1="108" x2="460" y2="128" stroke="#7C3AED" stroke-width="1.5"/>
-                    <line x1="450" y1="112" x2="458" y2="111" stroke="#7C3AED" stroke-width="1" opacity=".5"/>
-                    <line x1="450" y1="116" x2="458" y2="115" stroke="#7C3AED" stroke-width="1" opacity=".5"/>
-                    <line x1="462" y1="111" x2="470" y2="112" stroke="#7C3AED" stroke-width="1" opacity=".5"/>
-                    <line x1="462" y1="115" x2="470" y2="116" stroke="#7C3AED" stroke-width="1" opacity=".5"/>
-                    <text x="460" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#7C3AED">Learn</text>
-                    <rect x="400" y="175" width="120" height="60" rx="12" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.5"/>
-                    <text x="460" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">Live + Digital</text>
-                    <text x="460" y="211" text-anchor="middle" font-size="8" fill="#64748B">Classes, materials</text>
-                    <text x="460" y="224" text-anchor="middle" font-size="8" fill="#64748B">&amp; online exams</text>
-                    <line x1="460" y1="160" x2="460" y2="175" stroke="#DDD6FE" stroke-width="1.5"/>
-                </g>
-
-                <!-- Arrow 3 -->
-                <path d="M515 120 L565 120" stroke="#7C3AED" stroke-width="2" marker-end="url(#arr3)"/>
-
-                <!-- Stage 4: Pay -->
-                <g>
-                    <circle cx="640" cy="120" r="40" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
-                    <!-- Credit card icon -->
-                    <rect x="624" y="107" width="32" height="22" rx="4" fill="none" stroke="#D97706" stroke-width="2"/>
-                    <line x1="624" y1="114" x2="656" y2="114" stroke="#D97706" stroke-width="3"/>
-                    <rect x="628" y="119" width="8" height="4" rx="1" fill="#D97706" opacity=".5"/>
-                    <rect x="639" y="119" width="5" height="4" rx="1" fill="#D97706" opacity=".3"/>
-                    <text x="640" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#D97706">Pay</text>
-                    <rect x="580" y="175" width="120" height="60" rx="12" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5"/>
-                    <text x="640" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">Fee Collection</text>
-                    <text x="640" y="211" text-anchor="middle" font-size="8" fill="#64748B">Online payments</text>
-                    <text x="640" y="224" text-anchor="middle" font-size="8" fill="#64748B">&amp; auto reminders</text>
-                    <line x1="640" y1="160" x2="640" y2="175" stroke="#FDE68A" stroke-width="1.5"/>
-                </g>
-
-                <!-- Arrow 4 -->
-                <path d="M695 120 L745 120" stroke="#D97706" stroke-width="2" marker-end="url(#arr4)"/>
-
-                <!-- Stage 5: Grow -->
-                <g>
-                    <circle cx="820" cy="120" r="40" fill="#FFF1F2" stroke="#E11D48" stroke-width="2"/>
-                    <!-- Chart trending up icon -->
-                    <polyline points="808,128 815,120 822,124 832,112" fill="none" stroke="#E11D48" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <polyline points="829,112 832,112 832,115" fill="none" stroke="#E11D48" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line x1="806" y1="130" x2="834" y2="130" stroke="#E11D48" stroke-width="1.5" opacity=".3"/>
-                    <text x="820" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#E11D48">Grow</text>
-                    <rect x="760" y="175" width="120" height="60" rx="12" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1.5"/>
-                    <text x="820" y="197" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">Analytics</text>
-                    <text x="820" y="211" text-anchor="middle" font-size="8" fill="#64748B">Full visibility into</text>
-                    <text x="820" y="224" text-anchor="middle" font-size="8" fill="#64748B">every metric</text>
-                    <line x1="820" y1="160" x2="820" y2="175" stroke="#FECDD3" stroke-width="1.5"/>
-                </g>
-
-                <!-- Arrow markers -->
-                <defs>
-                    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                        <path d="M0 0 L6 3 L0 6 Z" fill="#0D9488"/>
-                    </marker>
-                    <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                        <path d="M0 0 L6 3 L0 6 Z" fill="#2563EB"/>
-                    </marker>
-                    <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                        <path d="M0 0 L6 3 L0 6 Z" fill="#7C3AED"/>
-                    </marker>
-                    <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                        <path d="M0 0 L6 3 L0 6 Z" fill="#D97706"/>
-                    </marker>
-                </defs>
-            </svg>
-        </div>
-
-        <!-- Mobile vertical timeline -->
-        <div class="timeline-mobile">
-            <!-- Step 1 -->
-            <div class="mobile-time-step" style="--step-color: #0D9488; --step-bg: hsla(174,72%,56%,0.06); --step-border: hsla(174,72%,56%,0.15);">
-                <div class="mts-num"><i class="fas fa-university"></i></div>
-                <div class="mts-content">
-                    <span class="mts-tag">Stage 1: Enroll</span>
-                    <h4 class="mts-title">Student Joins</h4>
-                    <p class="mts-desc">Instant portal access granted.</p>
+            <!-- Floating badge 1 -->
+            <div class="story-floating-badge story-badge-1">
+                <div class="story-badge-icon" style="background:linear-gradient(135deg,#0D9488,#2563EB);"><i class="fas fa-fingerprint"></i></div>
+                <div>
+                    <div>AI Attendance</div>
+                    <div class="story-badge-sub">Marked in &lt;2 seconds</div>
                 </div>
             </div>
-            <!-- Arrow/Connector -->
-            <div class="mobile-time-arrow" style="--step-color: #0D9488;"><i class="fas fa-chevron-down"></i></div>
 
-            <!-- Step 2 -->
-            <div class="mobile-time-step" style="--step-color: #2563EB; --step-bg: hsla(217,91%,60%,0.06); --step-border: hsla(217,91%,60%,0.15);">
-                <div class="mts-num"><i class="fas fa-clipboard-list"></i></div>
-                <div class="mts-content">
-                    <span class="mts-tag">Stage 2: Attend</span>
-                    <h4 class="mts-title">Daily Tracking</h4>
-                    <p class="mts-desc">One-tap batch marking & alerts.</p>
-                </div>
-            </div>
-            <!-- Arrow/Connector -->
-            <div class="mobile-time-arrow" style="--step-color: #2563EB;"><i class="fas fa-chevron-down"></i></div>
-
-            <!-- Step 3 -->
-            <div class="mobile-time-step" style="--step-color: #7C3AED; --step-bg: hsla(262,83%,58%,0.06); --step-border: hsla(262,83%,58%,0.15);">
-                <div class="mts-num"><i class="fas fa-book"></i></div>
-                <div class="mts-content">
-                    <span class="mts-tag">Stage 3: Learn</span>
-                    <h4 class="mts-title">Live + Digital</h4>
-                    <p class="mts-desc">Classes, study materials & online exams.</p>
-                </div>
-            </div>
-            <!-- Arrow/Connector -->
-            <div class="mobile-time-arrow" style="--step-color: #7C3AED;"><i class="fas fa-chevron-down"></i></div>
-
-            <!-- Step 4 -->
-            <div class="mobile-time-step" style="--step-color: #D97706; --step-bg: hsla(38,92%,50%,0.06); --step-border: hsla(38,92%,50%,0.15);">
-                <div class="mts-num"><i class="fas fa-credit-card"></i></div>
-                <div class="mts-content">
-                    <span class="mts-tag">Stage 4: Pay</span>
-                    <h4 class="mts-title">Fee Collection</h4>
-                    <p class="mts-desc">Online payments & automatic WhatsApp reminders.</p>
-                </div>
-            </div>
-            <!-- Arrow/Connector -->
-            <div class="mobile-time-arrow" style="--step-color: #D97706;"><i class="fas fa-chevron-down"></i></div>
-
-            <!-- Step 5 -->
-            <div class="mobile-time-step" style="--step-color: #E11D48; --step-bg: hsla(343,90%,50%,0.06); --step-border: hsla(343,90%,50%,0.15);">
-                <div class="mts-num"><i class="fas fa-chart-line"></i></div>
-                <div class="mts-content">
-                    <span class="mts-tag">Stage 5: Grow</span>
-                    <h4 class="mts-title">Analytics</h4>
-                    <p class="mts-desc">Full visibility into every institute metric.</p>
+            <!-- Floating badge 2 -->
+            <div class="story-floating-badge story-badge-2">
+                <div class="story-badge-icon" style="background:linear-gradient(135deg,#F59E0B,#EF4444);"><i class="fas fa-money-bill-wave"></i></div>
+                <div>
+                    <div>Auto Payroll</div>
+                    <div class="story-badge-sub">WhatsApp payslips sent</div>
                 </div>
             </div>
         </div>
+
+        <!-- Stats row -->
+        <div class="story-stats">
+            <div class="story-stat">
+                <div class="story-stat-val">100+</div>
+                <div class="story-stat-lbl">Institutes</div>
+            </div>
+            <div class="story-stat">
+                <div class="story-stat-val">50K+</div>
+                <div class="story-stat-lbl">Students</div>
+            </div>
+            <div class="story-stat">
+                <div class="story-stat-val">99.9%</div>
+                <div class="story-stat-lbl">Uptime</div>
+            </div>
+            <div class="story-stat">
+                <div class="story-stat-val">15m</div>
+                <div class="story-stat-lbl">Go Live</div>
+            </div>
+            <div class="story-stat">
+                <div class="story-stat-val">5★</div>
+                <div class="story-stat-lbl">Rating</div>
+            </div>
+        </div>
+
     </div>
 </section>
-
 
 <!-- ══════════════ FEATURES ══════════════ -->
 <section id="features" class="feat-section">
@@ -2113,211 +2105,133 @@ function switchTab(id) {
         </div>
 
         <!-- AI Attendance Visual Story -->
-        <div style="background:linear-gradient(135deg,#F0FDFA,#EFF6FF);border:1px solid #E2E8F0;border-radius:20px;padding:36px 32px;margin-bottom:40px;overflow:hidden;position:relative;">
-            <div style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(13,148,136,0.06);"></div>
-            <div style="position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:rgba(37,99,235,0.05);"></div>
-            <div class="text-center mb-4" style="position:relative;z-index:2;">
-                <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#0D9488;">How it works — in 2 seconds</span>
-                <h3 style="font-size:1.3rem;font-weight:800;color:#0F172A;margin-top:8px;margin-bottom:0;">The complete AI attendance flow</h3>
+        <style>
+        .staff-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            margin-top: 20px;
+        }
+        @media(max-width:991px) { .staff-visual { grid-template-columns: 1fr; } }
+
+        .staff-visual-img-wrap {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .staff-visual-img {
+            width: 100%; display: block;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+        .staff-visual-badge {
+            position: absolute;
+            bottom: 20px; left: 20px;
+            background: #fff;
+            border-radius: 14px;
+            padding: 10px 16px;
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            font-size: 0.78rem; font-weight: 600; color: #0F172A;
+        }
+        .staff-visual-badge-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #10B981;
+            box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
+            flex-shrink: 0;
+        }
+
+        .staff-steps { display: flex; flex-direction: column; gap: 20px; }
+        .staff-step-card {
+            background: #fff;
+            border: 1px solid #E8EDF5;
+            border-radius: 16px;
+            padding: 22px 24px;
+            display: flex; align-items: flex-start; gap: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.25s ease;
+        }
+        .staff-step-card:hover {
+            border-color: #0D9488;
+            box-shadow: 0 8px 30px rgba(13,148,136,0.1);
+            transform: translateY(-2px);
+        }
+        .staff-step-num {
+            width: 36px; height: 36px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.78rem; flex-shrink: 0;
+            color: #fff;
+        }
+        .staff-step-body { flex: 1; }
+        .staff-step-title { font-size: 0.95rem; font-weight: 700; color: #0F172A; margin-bottom: 5px; }
+        .staff-step-desc { font-size: 0.82rem; color: #64748B; line-height: 1.7; margin: 0; }
+        .staff-step-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .staff-step-tag {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: #F1F5F9; border-radius: 6px;
+            padding: 3px 9px; font-size: 0.68rem; font-weight: 600; color: #475569;
+        }
+        </style>
+
+        <div class="staff-visual">
+            <!-- Left: Image -->
+            <div class="staff-visual-img-wrap">
+                <img src="{{ asset('images/attendance.jpg') }}" alt="Staff Biometric Attendance" class="staff-visual-img">
+                <div class="staff-visual-badge">
+                    <div class="staff-visual-badge-dot"></div>
+                    Live — Attendance marked 2s ago
+                </div>
             </div>
-            <div class="ai-flow-scroll" style="position:relative;z-index:2;">
-            <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-height:160px;">
-                <!-- Step 1: Open App -->
-                <g>
-                    <rect x="10" y="30" width="130" height="100" rx="12" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
-                    <!-- Phone frame -->
-                    <rect x="40" y="40" width="70" height="80" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
-                    <rect x="50" y="52" width="50" height="50" rx="4" fill="#EFF6FF"/>
-                    <!-- Camera scan lines in phone -->
-                    <line x1="50" y1="62" x2="100" y2="62" stroke="#2563EB" stroke-width="1" opacity=".3"/>
-                    <line x1="50" y1="72" x2="100" y2="72" stroke="#2563EB" stroke-width="1" opacity=".3"/>
-                    <line x1="50" y1="82" x2="100" y2="82" stroke="#2563EB" stroke-width="1" opacity=".3"/>
-                    <line x1="50" y1="92" x2="100" y2="92" stroke="#2563EB" stroke-width="1" opacity=".3"/>
-                    <!-- Face outline -->
-                    <ellipse cx="75" cy="74" rx="14" ry="16" fill="none" stroke="#2563EB" stroke-width="1.5" opacity=".7"/>
-                    <circle cx="70" cy="70" r="2" fill="#2563EB" opacity=".7"/>
-                    <circle cx="80" cy="70" r="2" fill="#2563EB" opacity=".7"/>
-                    <path d="M69 79 Q75 83 81 79" stroke="#2563EB" stroke-width="1.5" fill="none" opacity=".7"/>
-                    <!-- Corner brackets on face -->
-                    <path d="M54 55 L54 60 M54 55 L59 55" stroke="#0D9488" stroke-width="2" fill="none" stroke-linecap="round"/>
-                    <path d="M96 55 L96 60 M96 55 L91 55" stroke="#0D9488" stroke-width="2" fill="none" stroke-linecap="round"/>
-                    <path d="M54 95 L54 90 M54 95 L59 95" stroke="#0D9488" stroke-width="2" fill="none" stroke-linecap="round"/>
-                    <path d="M96 95 L96 90 M96 95 L91 95" stroke="#0D9488" stroke-width="2" fill="none" stroke-linecap="round"/>
-                    <!-- Home button -->
-                    <circle cx="75" cy="112" r="5" fill="#CBD5E1"/>
-                    <text x="75" y="143" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">Open EduNex App</text>
-                    <text x="75" y="155" text-anchor="middle" font-size="8" fill="#64748B">Camera activates</text>
-                </g>
 
-                <!-- Arrow 1 -->
-                <g>
-                    <line x1="148" y1="80" x2="178" y2="80" stroke="#0D9488" stroke-width="2"/>
-                    <polygon points="178,75 188,80 178,85" fill="#0D9488"/>
-                    <text x="168" y="72" text-anchor="middle" font-size="8" fill="#0D9488" font-weight="700">instant</text>
-                </g>
-
-                <!-- Step 2: AI Scan -->
-                <g>
-                    <rect x="192" y="30" width="130" height="100" rx="12" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
-                    <!-- Brain/AI icon -->
-                    <circle cx="257" cy="75" r="28" fill="#F0FDFA"/>
-                    <!-- Neural net dots -->
-                    <circle cx="245" cy="68" r="4" fill="#0D9488" opacity=".7"/>
-                    <circle cx="257" cy="62" r="4" fill="#0D9488"/>
-                    <circle cx="269" cy="68" r="4" fill="#0D9488" opacity=".7"/>
-                    <circle cx="245" cy="82" r="4" fill="#0D9488" opacity=".7"/>
-                    <circle cx="257" cy="88" r="4" fill="#0D9488"/>
-                    <circle cx="269" cy="82" r="4" fill="#0D9488" opacity=".7"/>
-                    <circle cx="257" cy="75" r="4" fill="#0D9488"/>
-                    <!-- Connections -->
-                    <line x1="245" y1="68" x2="257" y2="62" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <line x1="245" y1="68" x2="257" y2="75" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <line x1="257" y1="62" x2="269" y2="68" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <line x1="269" y1="68" x2="257" y2="75" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <line x1="245" y1="82" x2="257" y2="75" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <line x1="245" y1="82" x2="257" y2="88" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <line x1="257" y1="88" x2="269" y2="82" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <line x1="269" y1="82" x2="257" y2="75" stroke="#0D9488" stroke-width="1" opacity=".4"/>
-                    <text x="257" y="143" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">On-Device AI</text>
-                    <text x="257" y="155" text-anchor="middle" font-size="8" fill="#64748B">Face descriptor match</text>
-                </g>
-
-                <!-- Arrow 2 -->
-                <g>
-                    <line x1="330" y1="80" x2="360" y2="80" stroke="#2563EB" stroke-width="2"/>
-                    <polygon points="360,75 370,80 360,85" fill="#2563EB"/>
-                    <text x="350" y="72" text-anchor="middle" font-size="8" fill="#2563EB" font-weight="700">&lt;1 sec</text>
-                </g>
-
-                <!-- Step 3: GPS -->
-                <g>
-                    <rect x="374" y="30" width="130" height="100" rx="12" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
-                    <circle cx="439" cy="75" r="28" fill="#FFFBEB"/>
-                    <!-- Map background -->
-                    <rect x="415" y="52" width="48" height="46" rx="6" fill="#FDE68A" opacity=".3"/>
-                    <line x1="415" y1="62" x2="463" y2="62" stroke="#D97706" stroke-width=".5" opacity=".4"/>
-                    <line x1="415" y1="72" x2="463" y2="72" stroke="#D97706" stroke-width=".5" opacity=".4"/>
-                    <line x1="415" y1="82" x2="463" y2="82" stroke="#D97706" stroke-width=".5" opacity=".4"/>
-                    <line x1="425" y1="52" x2="425" y2="98" stroke="#D97706" stroke-width=".5" opacity=".4"/>
-                    <line x1="439" y1="52" x2="439" y2="98" stroke="#D97706" stroke-width=".5" opacity=".4"/>
-                    <line x1="453" y1="52" x2="453" y2="98" stroke="#D97706" stroke-width=".5" opacity=".4"/>
-                    <!-- GPS Pin -->
-                    <path d="M439 58 C432 58 427 63 427 70 C427 77 439 90 439 90 C439 90 451 77 451 70 C451 63 446 58 439 58Z" fill="#D97706"/>
-                    <circle cx="439" cy="70" r="5" fill="#fff"/>
-                    <!-- Geofence circle -->
-                    <circle cx="439" cy="75" r="20" fill="none" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4 2" opacity=".5"/>
-                    <text x="439" y="143" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">GPS Geofence</text>
-                    <text x="439" y="155" text-anchor="middle" font-size="8" fill="#64748B">Within 100m radius</text>
-                </g>
-
-                <!-- Arrow 3 -->
-                <g>
-                    <line x1="512" y1="80" x2="542" y2="80" stroke="#7C3AED" stroke-width="2"/>
-                    <polygon points="542,75 552,80 542,85" fill="#7C3AED"/>
-                    <text x="532" y="72" text-anchor="middle" font-size="8" fill="#7C3AED" font-weight="700">verified</text>
-                </g>
-
-                <!-- Step 4: Marked -->
-                <g>
-                    <rect x="556" y="30" width="130" height="100" rx="12" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1.5"/>
-                    <!-- Big checkmark -->
-                    <circle cx="621" cy="72" r="28" fill="#0D9488" opacity=".12"/>
-                    <circle cx="621" cy="72" r="22" fill="#0D9488" opacity=".2"/>
-                    <circle cx="621" cy="72" r="16" fill="#0D9488"/>
-                    <path d="M612 72 l6 6 l12 -12" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    <!-- Ping rings -->
-                    <circle cx="621" cy="72" r="30" fill="none" stroke="#0D9488" stroke-width="1" opacity=".3"/>
-                    <text x="621" y="115" text-anchor="middle" font-size="10" font-weight="800" fill="#0D9488">PRESENT ✓</text>
-                    <text x="621" y="143" text-anchor="middle" font-size="9" font-weight="700" fill="#0F172A">Attendance Marked</text>
-                    <text x="621" y="155" text-anchor="middle" font-size="8" fill="#64748B">Auto-logged in 2 seconds</text>
-                </g>
-
-                <!-- WhatsApp notification -->
-                <g>
-                    <rect x="698" y="40" width="95" height="50" rx="8" fill="#25D366" opacity=".1"/>
-                    <rect x="698" y="40" width="95" height="50" rx="8" fill="none" stroke="#25D366" stroke-width="1"/>
-                    <text x="745" y="58" text-anchor="middle" font-size="8" font-weight="700" fill="#128C7E">WhatsApp Alert</text>
-                    <text x="745" y="70" text-anchor="middle" font-size="7" fill="#128C7E">"Ravi Kumar marked</text>
-                    <text x="745" y="80" text-anchor="middle" font-size="7" fill="#128C7E">IN at 9:02 AM ✓"</text>
-                    <line x1="698" y1="65" x2="686" y2="80" stroke="#25D366" stroke-width="1" stroke-dasharray="3 2"/>
-                </g>
-            </svg>
-            </div>
-        </div>
-
-        <div class="bento">
-
-            
-
-            <!-- Staff Attendance -->
-            <div class="bcard b4">
-                <div class="bicon bi-teal"><i class="fas fa-calendar-check"></i></div>
-                <div class="bcard-title">Staff Attendance</div>
-                <div class="bcard-desc">Daily logs with Mark-IN, Mark-OUT times, hours on site, and exportable monthly summaries.</div>
-                <div class="mt-2"><span class="mtag">Mark IN & OUT</span><span class="mtag">CSV export</span><span class="mtag">Monthly reports</span></div>
-                <div style="display:flex;gap:24px;margin-top:20px;">
-                    <div style="text-align:center;">
-                        <div style="font-size:1.8rem;font-weight: 500;letter-spacing:-1.5px;" class="g-text">94%</div>
-                        <div style="font-size:0.63rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Avg Attendance</div>
+            <!-- Right: Feature cards -->
+            <div class="staff-steps">
+                <div class="staff-step-card">
+                    <div class="staff-step-num" style="background:linear-gradient(135deg,#0D9488,#2563EB);">
+                        <i class="fas fa-fingerprint" style="font-size:1rem;"></i>
                     </div>
-                    <div style="text-align:center;">
-                        <div style="font-size:1.8rem;font-weight: 500;letter-spacing:-1.5px;color:var(--foreground);">8h12m</div>
-                        <div style="font-size:0.63rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Avg Hours/Day</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Payroll -->
-            <div class="bcard b4">
-                <div class="bicon bi-amber"><i class="fas fa-file-invoice-dollar"></i></div>
-                <div class="bcard-title">Statutory Payroll</div>
-                <div class="bcard-desc">Automatic PF/ESIC deductions, separate Casual/Earned leave caps, TDS tax slabs, and pro-rated net salary.</div>
-                <div class="mini-bars">
-                    <div class="mbar" style="height:28%;"></div>
-                    <div class="mbar" style="height:50%;"></div>
-                    <div class="mbar" style="height:38%;"></div>
-                    <div class="mbar" style="height:68%;"></div>
-                    <div class="mbar" style="height:55%;"></div>
-                    <div class="mbar hi" style="height:90%;"></div>
-                </div>
-                <div style="font-size:0.67rem;color:var(--muted);margin-top:4px;">Payroll disbursement (6 months)</div>
-                <div class="mt-2"><span class="mtag"><i class="fas fa-check" style="color:hsl(38,92%,60%);"></i> PF & ESIC rates</span><span class="mtag">TDS slabs</span></div>
-            </div>
-
-            <!-- Salary Slips -->
-            <div class="bcard b4">
-                <div class="bicon bi-violet"><i class="fas fa-file-invoice-dollar"></i></div>
-                <div class="bcard-title">Digital Payslips</div>
-                <div class="bcard-desc">Detailed itemized payslips covering statutory splits, sent via WhatsApp/email automatically.</div>
-                <div class="slip">
-                    <div class="slip-row"><span class="sl">Gross Salary</span><span class="sv">₹35,000</span></div>
-                    <div class="slip-row"><span class="sl">PF / ESIC Deductions</span><span class="sv r">−₹1,800</span></div>
-                    <div class="slip-row"><span class="sl">TDS Deduction</span><span class="sv r">−₹1,450</span></div>
-                    <div class="slip-row"><span class="sl" style="font-weight: 500;color:var(--foreground);">Net Disbursed</span><span class="sv g" style="font-size:0.9rem;">₹31,750</span></div>
-                </div>
-            </div>
-
-            <!-- Bottom strip -->
-            <div class="bcard b12" style="background:#EFF6FF;border-color:#BFDBFE;">
-                <div class="row g-4">
-                    @foreach([
-                        ['i'=>'fa-shield-halved','c'=>'bi-blue','t'=>'100% Proxy-Proof','d'=>'Face + GPS dual-verification. No buddy punching, ever.'],
-                        ['i'=>'fa-chart-bar','c'=>'bi-teal','t'=>'Punctuality Analytics','d'=>'Late arrivals, absenteeism, and daily logs in one dashboard.'],
-                        ['i'=>'fab fa-whatsapp','c'=>'bi-amber','t'=>'WhatsApp Payslips','d'=>'Salary slips sent to each staff member\'s phone every month.'],
-                    ] as $s)
-                    <div class="col-lg-4">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="bicon {{ $s['c'] }}" style="margin-bottom:0;flex-shrink:0;width:38px;height:38px;border-radius:9px;font-size:0.95rem;"><i class="{{ str_starts_with($s['i'],'fab') ? $s['i'] : 'fas '.$s['i'] }}"></i></div>
-                            <div>
-                                <div class="bcard-title" style="font-size:0.9rem;margin-bottom:4px;">{{ $s['t'] }}</div>
-                                <div class="bcard-desc" style="font-size:0.8rem;">{{ $s['d'] }}</div>
-                            </div>
+                    <div class="staff-step-body">
+                        <div class="staff-step-title">AI Face + GPS Verification</div>
+                        <p class="staff-step-desc">Staff open the app, face is scanned and GPS verified simultaneously. Attendance marked in under 2 seconds — no PINs, no cards, zero proxies.</p>
+                        <div class="staff-step-tags">
+                            <span class="staff-step-tag"><i class="fas fa-bolt" style="color:#F59E0B;"></i> &lt;2 sec</span>
+                            <span class="staff-step-tag"><i class="fas fa-location-dot" style="color:#EF4444;"></i> GPS Geofenced</span>
+                            <span class="staff-step-tag"><i class="fas fa-shield-alt" style="color:#10B981;"></i> Anti-Spoof AI</span>
                         </div>
                     </div>
-                    @endforeach
+                </div>
+
+                <div class="staff-step-card">
+                    <div class="staff-step-num" style="background:linear-gradient(135deg,#F59E0B,#EF4444);">
+                        <i class="fas fa-file-invoice-dollar" style="font-size:1rem;"></i>
+                    </div>
+                    <div class="staff-step-body">
+                        <div class="staff-step-title">One-Click Payroll & Payslips</div>
+                        <p class="staff-step-desc">Generate monthly payroll and WhatsApp PDF payslips to every staff member in a single click. PF, ESIC, TDS deductions automated.</p>
+                        <div class="staff-step-tags">
+                            <span class="staff-step-tag"><i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp Delivery</span>
+                            <span class="staff-step-tag"><i class="fas fa-file-pdf" style="color:#EF4444;"></i> PDF Payslips</span>
+                            <span class="staff-step-tag"><i class="fas fa-calculator" style="color:#6366F1;"></i> Auto Deductions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="staff-step-card">
+                    <div class="staff-step-num" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);">
+                        <i class="fas fa-chart-bar" style="font-size:1rem;"></i>
+                    </div>
+                    <div class="staff-step-body">
+                        <div class="staff-step-title">Punctuality & Attendance Analytics</div>
+                        <p class="staff-step-desc">Live dashboard shows daily Mark-IN / Mark-OUT logs, late arrivals, absentee trends, and exportable monthly summaries for every staff member.</p>
+                        <div class="staff-step-tags">
+                            <span class="staff-step-tag"><i class="fas fa-download" style="color:#0D9488;"></i> CSV Export</span>
+                            <span class="staff-step-tag"><i class="fas fa-clock" style="color:#F59E0B;"></i> Late Tracking</span>
+                            <span class="staff-step-tag"><i class="fas fa-calendar-check" style="color:#2563EB;"></i> Monthly Reports</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

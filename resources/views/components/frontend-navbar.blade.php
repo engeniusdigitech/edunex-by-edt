@@ -563,13 +563,12 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
             </div>
 
             <a href="{{ route('contact') }}" class="nb-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
-            <a href="{{ route('login.hub') }}" class="nb-link {{ request()->routeIs('login.hub') ? 'active' : '' }}">Login Portal</a>
 
         </nav>
 
         {{-- Desktop CTAs --}}
         <div class="nb-ctas">
-            @if(Route::has('login'))
+            <!-- @if(Route::has('login'))
                 @if(auth()->guard('student')->check())
                     <a href="{{ route('student.dashboard') }}" class="nbc nbc-solid">
                         <i class="fas fa-gauge-high"></i> Dashboard
@@ -593,7 +592,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 @else
                     <a href="{{ route('login.hub') }}" class="nbc nbc-ghost">
                         <i class="fas fa-right-to-bracket"></i> Log in
-                    </a>
+                    </a> -->
                     <a href="{{ route('pricing') }}" class="nbc nbc-solid">
                         <i class="fas fa-rocket"></i> Free Trial
                     </a>
