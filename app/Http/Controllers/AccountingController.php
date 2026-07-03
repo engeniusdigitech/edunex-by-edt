@@ -8,6 +8,7 @@ use App\Models\AccountingJournalEntry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class AccountingController extends Controller
@@ -161,6 +162,102 @@ class AccountingController extends Controller
             'startDate',
             'endDate'
         ));
+    }
+
+    public function vouchers(Request $request)
+    {
+        $query = AccountingVoucher::with('journalEntries.ledger');
+
+        if ($request->filled('type')) {
+            $query->where('type', $request->type);
+        }
+
+        if ($request->filled('start_date')) {
+            $query->whereDate('date', '>=', $request->start_date);
+        }
+
+        if ($request->filled('end_date')) {
+            $query->whereDate('date', '<=', $request->end_date);
+        }
+
+        $vouchers = $query->latest('date')->latest('id')->paginate(20)->withQueryString();
+
+        return view('accounting.vouchers.index', compact('vouchers'));
+    }
+
+    public function createVoucher()
+    {
+        $ledgers = AccountingLedger::orderBy('type')->orderBy('name')->get();
+
+        return view('accounting.vouchers.create', compact('ledgers'));
+    }
+
+    public function storeVoucher(Request $request)
+    {
+        $request->validate([
+            'type' => 'required|in:receipt,payment,journal',
+            'date' => 'required|date',
+            'narration' => 'nullable|string|max:500',
+            'lines' => 'required|array|min:2',
+            'lines.*.ledger_id' => 'required|exists:accounting_ledgers,id',
+            'lines.*.debit' => 'nullable|numeric|min:0',
+            'lines.*.credit' => 'nullable|numeric|min:0',
+        ]);
+
+        $totalDebit = 0;
+        $totalCredit = 0;
+        foreach ($request->lines as $line) {
+            $totalDebit += (float) ($line['debit'] ?? 0);
+            $totalCredit += (float) ($line['credit'] ?? 0);
+        }
+
+        if ($totalDebit <= 0 || $totalCredit <= 0) {
+            return back()->withInput()->withErrors(['lines' => 'Each voucher needs at least one debit and one credit line with an amount greater than zero.']);
+        }
+
+        if (round($totalDebit, 2) !== round($totalCredit, 2)) {
+            return back()->withInput()->withErrors(['lines' => 'This voucher does not balance. Total debits (' . number_format($totalDebit, 2) . ') must equal total credits (' . number_format($totalCredit, 2) . ').']);
+        }
+
+        $prefixMap = ['receipt' => 'RCPT', 'payment' => 'PYMT', 'journal' => 'JRNL'];
+        $prefix = $prefixMap[$request->type];
+        $voucherNumber = $prefix . '-' . Carbon::parse($request->date)->format('Ymd') . '-' . strtoupper(bin2hex(random_bytes(2)));
+
+        DB::transaction(function () use ($request, $voucherNumber, $totalDebit) {
+            $voucher = AccountingVoucher::create([
+                'institute_id' => Auth::user()->institute_id,
+                'voucher_number' => $voucherNumber,
+                'type' => $request->type,
+                'date' => $request->date,
+                'narration' => $request->narration,
+                'amount' => $totalDebit,
+            ]);
+
+            foreach ($request->lines as $line) {
+                $debit = (float) ($line['debit'] ?? 0);
+                $credit = (float) ($line['credit'] ?? 0);
+
+                if ($debit > 0) {
+                    AccountingJournalEntry::create([
+                        'accounting_voucher_id' => $voucher->id,
+                        'accounting_ledger_id' => $line['ledger_id'],
+                        'entry_type' => 'debit',
+                        'amount' => $debit,
+                    ]);
+                }
+
+                if ($credit > 0) {
+                    AccountingJournalEntry::create([
+                        'accounting_voucher_id' => $voucher->id,
+                        'accounting_ledger_id' => $line['ledger_id'],
+                        'entry_type' => 'credit',
+                        'amount' => $credit,
+                    ]);
+                }
+            }
+        });
+
+        return redirect()->route('accounting.vouchers.index')->with('success', 'Voucher ' . $voucherNumber . ' posted successfully.');
     }
 
     public function tallyExport(Request $request)

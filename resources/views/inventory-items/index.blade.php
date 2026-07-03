@@ -13,7 +13,7 @@
 .bg-indigo-soft{background:#EEF2FF;color:#4F46E5;}
 .bg-amber-soft{background:#FFFBEB;color:#D97706;}
 .bg-emerald-soft{background:#ECFDF5;color:#059669;}
-.btn-add{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;text-decoration:none;box-shadow:0 4px 15px rgba(79,70,229,#.35);}
+.btn-add{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:8px;text-decoration:none;box-shadow:0 4px 15px rgba(79,70,229,.35);}
 .btn-add:hover{color:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,.45);}
 .table-card{background:#fff;border:1px solid #E2E8F0;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.02);overflow:hidden;}
 .btn-action{width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#64748B;border:1px solid #E2E8F0;background:#fff;text-decoration:none;transition:all .2s;}
@@ -22,13 +22,76 @@
 
 <div class="inv-hdr d-flex justify-content-between align-items-center flex-wrap gap-3">
     <div style="position:relative;z-index:2;">
-        <span style="font-size:.7rem;font-weight:700;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-boxes me-1"></i> Store &amp; Logistics</span>
-        <h2 style="font-size:1.5rem;font-weight:800;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">Store Inventory</h2>
+        <span style="font-size:.7rem;font-weight:500;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-boxes me-1"></i> Store &amp; Logistics</span>
+        <h2 style="font-size:1.5rem;font-weight:500;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">Store Inventory</h2>
     </div>
-    <div style="position:relative;z-index:2;display:flex;gap:12px;">
+    <div style="position:relative;z-index:2;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
         <a href="{{ route('inventory-suppliers.index') }}" class="btn btn-outline-light rounded-4 px-4 py-2" style="font-size:.85rem;font-weight:600;"><i class="fas fa-truck-loading me-2"></i> Manage Suppliers</a>
         <a href="{{ route('purchase-orders.index') }}" class="btn btn-outline-light rounded-4 px-4 py-2" style="font-size:.85rem;font-weight:600;"><i class="fas fa-file-invoice-dollar me-2"></i> Purchase Orders</a>
+        <div class="dropdown">
+            <button class="btn btn-outline-light rounded-4 px-4 py-2 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:.85rem;font-weight:600;">
+                <i class="fas fa-file-import me-2"></i> Import
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                <li><h6 class="dropdown-header text-muted"><i class="fas fa-upload me-1"></i> Upload Data</h6></li>
+                <li>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#importInventoryModal">
+                        <i class="fas fa-table text-success me-2"></i> Import Excel / CSV
+                    </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header text-muted"><i class="fas fa-download me-1"></i> Download Sample</h6></li>
+                <li>
+                    <a class="dropdown-item" href="{{ asset('samples/inventory-items-sample.csv') }}" download>
+                        <i class="fas fa-file-csv text-primary me-2"></i> Sample CSV
+                    </a>
+                </li>
+            </ul>
+        </div>
         <a href="{{ route('inventory-items.create') }}" class="btn-add"><i class="fas fa-plus"></i> Add Stock Item</a>
+    </div>
+</div>
+
+@if(session('success'))
+<div class="alert alert-success bg-white border border-success border-start-0 border-end-0 border-bottom-0 border-top-4 shadow-sm rounded-4 mb-4">
+    <i class="fas fa-check-circle text-success me-2"></i> {{ session('success') }}
+</div>
+@endif
+@if(session('warning'))
+<div class="alert alert-warning bg-white border border-warning border-start-0 border-end-0 border-bottom-0 border-top-4 shadow-sm rounded-4 mb-4">
+    <i class="fas fa-exclamation-triangle text-warning me-2"></i> {{ session('warning') }}
+</div>
+@endif
+@if(session('error'))
+<div class="alert alert-danger bg-white border border-danger border-start-0 border-end-0 border-bottom-0 border-top-4 shadow-sm rounded-4 mb-4">
+    <i class="fas fa-times-circle text-danger me-2"></i> {{ session('error') }}
+</div>
+@endif
+
+<div class="card border-0 shadow-sm mb-4" style="border-radius: 16px;">
+    <div class="card-body p-2">
+        <ul class="nav nav-pills nav-fill gap-1">
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('inventory.dashboard') }}">
+                    <i class="fas fa-chart-pie me-2"></i>Overview
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 active" href="{{ route('inventory-items.index') }}">
+                    <i class="fas fa-cubes me-2"></i>Stock Items
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('inventory-suppliers.index') }}">
+                    <i class="fas fa-truck-loading me-2"></i>Suppliers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('purchase-orders.index') }}">
+                    <i class="fas fa-file-invoice-dollar me-2"></i>Purchase Orders
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -43,8 +106,8 @@
     <div class="col-md-4">
         <div class="kpi-card kpi-total d-flex align-items-center justify-content-between">
             <div>
-                <span class="text-muted small fw-bold uppercase">Total Unique Items</span>
-                <h3 class="fw-extrabold text-dark mt-1 mb-0" style="font-size:1.8rem;letter-spacing:-1px;">{{ $totalItems }}</h3>
+                <span class="text-muted small fw-medium uppercase">Total Unique Items</span>
+                <h3 class="fw-medium text-dark mt-1 mb-0" style="font-size:1.8rem;letter-spacing:-1px;">{{ $totalItems }}</h3>
             </div>
             <div class="kpi-icon bg-indigo-soft">
                 <i class="fas fa-cubes"></i>
@@ -54,8 +117,8 @@
     <div class="col-md-4">
         <div class="kpi-card kpi-warning d-flex align-items-center justify-content-between">
             <div>
-                <span class="text-muted small fw-bold uppercase">Low Stock Alerts</span>
-                <h3 class="fw-extrabold text-dark mt-1 mb-0 {{ $lowStockCount > 0 ? 'text-danger' : '' }}" style="font-size:1.8rem;letter-spacing:-1px;">{{ $lowStockCount }}</h3>
+                <span class="text-muted small fw-medium uppercase">Low Stock Alerts</span>
+                <h3 class="fw-medium text-dark mt-1 mb-0 {{ $lowStockCount > 0 ? 'text-danger' : '' }}" style="font-size:1.8rem;letter-spacing:-1px;">{{ $lowStockCount }}</h3>
             </div>
             <div class="kpi-icon bg-amber-soft">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -65,8 +128,8 @@
     <div class="col-md-4">
         <div class="kpi-card kpi-value d-flex align-items-center justify-content-between">
             <div>
-                <span class="text-muted small fw-bold uppercase">Estimated Stock Value</span>
-                <h3 class="fw-extrabold text-dark mt-1 mb-0" style="font-size:1.8rem;letter-spacing:-1px;">${{ number_format($totalStockVal, 2) }}</h3>
+                <span class="text-muted small fw-medium uppercase">Estimated Stock Value</span>
+                <h3 class="fw-medium text-dark mt-1 mb-0" style="font-size:1.8rem;letter-spacing:-1px;">{{ currencySymbol() }}{{ number_format($totalStockVal, 2) }}</h3>
             </div>
             <div class="kpi-icon bg-emerald-soft">
                 <i class="fas fa-dollar-sign"></i>
@@ -79,7 +142,7 @@
 <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
     <form action="{{ route('inventory-items.index') }}" method="GET" class="row g-3 align-items-end">
         <div class="col-md-4">
-            <label for="search" class="form-label small text-muted fw-bold">Search Name or SKU</label>
+            <label for="search" class="form-label small text-muted fw-medium">Search Name or SKU</label>
             <div class="input-group">
                 <span class="input-group-text bg-light border-end-0 text-muted"><i class="fas fa-search"></i></span>
                 <input type="text" name="search" id="search" value="{{ request('search') }}" class="form-control bg-light border-start-0 shadow-none" placeholder="e.g. Uniform shirt, SKU-1002...">
@@ -87,7 +150,7 @@
         </div>
         
         <div class="col-md-3">
-            <label for="category_id" class="form-label small text-muted fw-bold">Filter Category</label>
+            <label for="category_id" class="form-label small text-muted fw-medium">Filter Category</label>
             <select name="category_id" id="category_id" class="form-select bg-light shadow-none">
                 <option value="">-- All Categories --</option>
                 @foreach($categories as $cat)
@@ -99,7 +162,7 @@
         <div class="col-md-3">
             <div class="form-check form-switch mb-2">
                 <input class="form-check-input" type="checkbox" name="low_stock" id="low_stock" value="1" {{ request('low_stock') ? 'checked' : '' }}>
-                <label class="form-check-label small text-muted fw-bold" for="low_stock">Show Low Stock Only</label>
+                <label class="form-check-label small text-muted fw-medium" for="low_stock">Show Low Stock Only</label>
             </div>
         </div>
         
@@ -135,14 +198,14 @@
                             <span class="badge bg-light text-dark font-monospace border py-1.5 px-2.5" style="font-size:.75rem;">{{ $item->sku ?: 'NO SKU' }}</span>
                         </td>
                         <td>
-                            <div class="fw-bold text-dark" style="font-size:.85rem;">{{ $item->name }}</div>
+                            <div class="fw-medium text-dark" style="font-size:.85rem;">{{ $item->name }}</div>
                             <span class="text-muted small" style="font-size:.78rem;">Unit type: {{ $item->unit }}</span>
                         </td>
                         <td style="font-size:.82rem;color:#334155;">
                             {{ $item->category->name }}
                         </td>
-                        <td class="text-end fw-bold text-dark" style="font-size:.85rem;">
-                            ${{ number_format($item->unit_price, 2) }}
+                        <td class="text-end fw-medium text-dark" style="font-size:.85rem;">
+                            {{ currencySymbol() }}{{ number_format($item->unit_price, 2) }}
                         </td>
                         <td class="text-center">
                             @if($isLow)
@@ -170,7 +233,7 @@
                     <tr>
                         <td colspan="7" class="text-center py-5 text-muted">
                             <i class="fas fa-boxes fs-3 mb-2" style="color:#CBD5E1;"></i>
-                            <div class="fw-bold">No Inventory Items Found</div>
+                            <div class="fw-medium">No Inventory Items Found</div>
                             <div class="small">Add stock items to start tracking your institution resources.</div>
                         </td>
                     </tr>
@@ -182,5 +245,47 @@
 
 <div class="mt-4">
     {{ $items->links() }}
+</div>
+
+{{-- Import Inventory Modal --}}
+<div class="modal fade" id="importInventoryModal" tabindex="-1" aria-labelledby="importInventoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <div>
+                    <h5 class="modal-title fw-semibold" id="importInventoryModalLabel">
+                        <i class="fas fa-file-import text-primary me-2"></i> Import Inventory Items
+                    </h5>
+                    <p class="text-muted small mb-0 mt-1">Upload an Excel or CSV file to bulk-import stock items.</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('inventory-items.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body pt-3">
+                    <div class="alert alert-info border-0 rounded-3 small" style="background:#EFF6FF;color:#1D4ED8;">
+                        <i class="fas fa-info-circle me-1"></i>
+                        <strong>Required columns:</strong> name<br>
+                        <strong>Optional:</strong> category (name, auto-created), sku, unit, quantity, min_qty_warning, unit_price<br>
+                        <strong>Note:</strong> Initial stock is logged automatically.
+                    </div>
+                    <div class="mb-3">
+                        <label for="inventory_import_file" class="form-label fw-medium">Select File <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="inventory_import_file" name="import_file" accept=".xlsx,.xls,.csv" required>
+                        <div class="form-text">Accepted formats: .xlsx, .xls, .csv (max 5 MB)</div>
+                    </div>
+                    <a href="{{ asset('samples/inventory-items-sample.csv') }}" download class="btn btn-sm btn-outline-secondary">
+                        <i class="fas fa-download me-1"></i> Download Sample CSV
+                    </a>
+                </div>
+                <div class="modal-footer border-top-0 bg-light rounded-bottom-4">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-modern">
+                        <i class="fas fa-upload me-2"></i> Import Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 @endsection

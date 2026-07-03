@@ -1429,9 +1429,10 @@ body {
                 <div class="col-lg-6 text-center text-lg-start hero-copy">
 
                     <!-- H1 — SEO-rich, memorable -->
+                    <!-- Modern School Management Software -->
                     <h1 class="hero-h1">
-                        India's <span class="hero-grad">#1 School ERP</span><br>
-                        &amp; Institute<br>Management Software.
+                        Modern <span class="hero-grad">School ERP</span><br>
+                        &amp; Educational Institute<br>Management Software.
                     </h1>
 
                     <!-- Subtitle -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -58,5 +59,18 @@ class ProfileController extends Controller
         $student->update(['password' => Hash::make($request->password)]);
 
         return response()->json(['message' => 'Password changed successfully.']);
+    }
+
+    public function updatePhoto(Request $request)
+    {
+        $request->validate(['photo' => 'required|image|max:2048']);
+        $student = $request->user();
+
+        $path = $request->file('photo')->store('profile-photos', 'public');
+        $url = Storage::url($path);
+
+        $student->update(['profile_image_url' => $url]);
+
+        return response()->json(['profile_image_url' => $url, 'message' => 'Profile photo updated']);
     }
 }

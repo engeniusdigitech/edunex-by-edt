@@ -47,7 +47,7 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h5 class="fw-bold text-dark mb-0">Student Transport Allocations</h5>
+    <h5 class="fw-medium text-dark mb-0">Student Transport Allocations</h5>
     <button class="btn btn-primary btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#addAllocationModal">
         <i class="fas fa-plus me-1"></i> Allocate Transport
     </button>
@@ -83,7 +83,7 @@
                                         {{ strtoupper(substr($alloc->student->name, 0, 2)) }}
                                     </div>
                                     <div>
-                                        <div class="fw-bold text-dark" style="font-size:0.9rem;">{{ $alloc->student->name }}</div>
+                                        <div class="fw-medium text-dark" style="font-size:0.9rem;">{{ $alloc->student->name }}</div>
                                         <div class="text-muted small">Roll: {{ $alloc->student->roll_number ?? 'N/A' }}</div>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Allocate Student Transport</h5>
+                <h5 class="modal-title fw-medium text-dark">Allocate Student Transport</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.allocations.store') }}" method="POST">
@@ -195,7 +195,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Edit Allocation</h5>
+                <h5 class="modal-title fw-medium text-dark">Edit Allocation</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.allocations.update', $alloc->id) }}" method="POST">

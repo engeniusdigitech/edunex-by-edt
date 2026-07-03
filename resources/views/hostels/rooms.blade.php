@@ -5,12 +5,12 @@
 .r-hdr{background:linear-gradient(135deg,#0F172A,#1E1B4B);border-radius:18px;padding:28px 32px;margin-bottom:28px;border:1px solid rgba(99,102,241,.2);position:relative;overflow:hidden;}
 .r-hdr::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.05) 1px,transparent 1px);background-size:26px 26px;}
 .r-card{background:#fff;border:1px solid #F1F5F9;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.03);overflow:hidden;}
-.r-sec-hdr{padding:16px 28px;border-bottom:1px solid #F1F5F9;background:#FAFAFA;font-size:.78rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;gap:10px;}
+.r-sec-hdr{padding:16px 28px;border-bottom:1px solid #F1F5F9;background:#FAFAFA;font-size:.78rem;font-weight:500;color:#475569;text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;gap:10px;}
 .r-body{padding:28px;}
-.form-label-custom{display:block;font-size:.7rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px;}
+.form-label-custom{display:block;font-size:.7rem;font-weight:500;color:#475569;text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px;}
 .form-control-custom,.form-select-custom{border:1.5px solid #E2E8F0;border-radius:12px;padding:10px 14px;font-size:.85rem;color:#1E293B;transition:all .2s;background:#fff;}
 .form-control-custom:focus,.form-select-custom:focus{border-color:#4F46E5;box-shadow:0 0 0 3px rgba(79,70,229,.08);outline:none;}
-.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:9px;cursor:pointer;transition:all .2s;}
+.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:9px;cursor:pointer;transition:all .2s;}
 .btn-action{width:32px;height:32px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#64748B;border:1px solid #E2E8F0;background:#fff;text-decoration:none;transition:all .2s;}
 .btn-action:hover{color:#EF4444;border-color:#FCA5A5;background:#FEF2F2;}
 </style>
@@ -19,8 +19,8 @@
     <div style="position:relative;z-index:2;display:flex;align-items:center;gap:14px;">
         <a href="{{ route('hostels.index') }}" style="width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;flex-shrink:0;"><i class="fas fa-arrow-left"></i></a>
         <div>
-            <div style="font-size:.7rem;font-weight:700;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;"><i class="fas fa-hotel me-1"></i> Rooms</div>
-            <h2 style="font-size:1.4rem;font-weight:800;color:#fff;margin:0;letter-spacing:-.5px;">{{ $hostel->name }}</h2>
+            <div style="font-size:.7rem;font-weight:500;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;"><i class="fas fa-hotel me-1"></i> Rooms</div>
+            <h2 style="font-size:1.4rem;font-weight:500;color:#fff;margin:0;letter-spacing:-.5px;">{{ $hostel->name }}</h2>
         </div>
     </div>
 </div>
@@ -95,7 +95,7 @@
                                 $occupiedCount = $activeAllocations->count();
                             @endphp
                             <tr>
-                                <td class="ps-4 fw-bold text-dark">{{ $room->room_number }}</td>
+                                <td class="ps-4 fw-medium text-dark">{{ $room->room_number }}</td>
                                 <td><span class="badge bg-light text-dark border">{{ $room->room_type }}</span></td>
                                 <td>
                                     <div class="d-flex align-items-center gap-2">

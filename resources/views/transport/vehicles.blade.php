@@ -47,7 +47,7 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h5 class="fw-bold text-dark mb-0">Vehicle Inventory</h5>
+    <h5 class="fw-medium text-dark mb-0">Vehicle Inventory</h5>
     <button class="btn btn-primary btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#addVehicleModal">
         <i class="fas fa-plus me-1"></i> Add Vehicle
     </button>
@@ -76,7 +76,7 @@
                 <tbody>
                     @forelse($vehicles as $vehicle)
                         <tr>
-                            <td class="px-4 fw-bold text-dark">{{ $vehicle->vehicle_number }}</td>
+                            <td class="px-4 fw-medium text-dark">{{ $vehicle->vehicle_number }}</td>
                             <td>{{ $vehicle->vehicle_name }}</td>
                             <td>{{ $vehicle->capacity }} Seats</td>
                             <td>
@@ -115,7 +115,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Register Vehicle</h5>
+                <h5 class="modal-title fw-medium text-dark">Register Vehicle</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.vehicles.store') }}" method="POST">
@@ -156,7 +156,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Edit Vehicle</h5>
+                <h5 class="modal-title fw-medium text-dark">Edit Vehicle</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.vehicles.update', $vehicle->id) }}" method="POST">

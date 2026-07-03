@@ -47,7 +47,7 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h5 class="fw-bold text-dark mb-0">Routes List</h5>
+    <h5 class="fw-medium text-dark mb-0">Routes List</h5>
     <button class="btn btn-primary btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#addRouteModal">
         <i class="fas fa-plus me-1"></i> Add Route
     </button>
@@ -76,7 +76,7 @@
                 <tbody>
                     @forelse($routes as $route)
                         <tr>
-                            <td class="px-4 fw-bold text-dark">{{ $route->route_name }}</td>
+                            <td class="px-4 fw-medium text-dark">{{ $route->route_name }}</td>
                             <td>{{ $route->route_description ?? 'No Description' }}</td>
                             <td>
                                 <span class="badge bg-secondary rounded-pill px-2.5 py-1">
@@ -115,7 +115,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Create Transport Route</h5>
+                <h5 class="modal-title fw-medium text-dark">Create Transport Route</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.routes.store') }}" method="POST">
@@ -149,7 +149,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Edit Route</h5>
+                <h5 class="modal-title fw-medium text-dark">Edit Route</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.routes.update', $route->id) }}" method="POST">

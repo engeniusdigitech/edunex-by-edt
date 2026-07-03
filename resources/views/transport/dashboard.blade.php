@@ -57,7 +57,7 @@
                         <i class="fas fa-bus"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $totalVehicles }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ $totalVehicles }}</h3>
                 <span class="text-muted small">Registered fleet</span>
             </div>
         </div>
@@ -72,7 +72,7 @@
                         <i class="fas fa-route"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $totalRoutes }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ $totalRoutes }}</h3>
                 <span class="text-muted small">Active routes</span>
             </div>
         </div>
@@ -87,7 +87,7 @@
                         <i class="fas fa-id-card"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $totalDrivers }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ $totalDrivers }}</h3>
                 <span class="text-muted small">Registered drivers</span>
             </div>
         </div>
@@ -102,7 +102,7 @@
                         <i class="fas fa-user-friends"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $totalStudents }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ $totalStudents }}</h3>
                 <span class="text-muted small">Allocated students</span>
             </div>
         </div>
@@ -113,7 +113,7 @@
 <div class="card border-0 shadow-sm" style="border-radius: 16px;">
     <div class="card-header bg-white border-bottom-0 pt-4 px-4 d-flex justify-content-between align-items-center">
         <div>
-            <h6 class="fw-bold text-dark mb-0">Recent Allocations</h6>
+            <h6 class="fw-medium text-dark mb-0">Recent Allocations</h6>
             <p class="text-muted small mb-0">Latest student allocations added to the system</p>
         </div>
         <a href="{{ route('transport.allocations') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">View All</a>
@@ -139,7 +139,7 @@
                                         {{ strtoupper(substr($alloc->student->name, 0, 2)) }}
                                     </div>
                                     <div>
-                                        <div class="fw-bold text-dark" style="font-size:0.9rem;">{{ $alloc->student->name }}</div>
+                                        <div class="fw-medium text-dark" style="font-size:0.9rem;">{{ $alloc->student->name }}</div>
                                         <div class="text-muted small">Roll: {{ $alloc->student->roll_number ?? 'N/A' }}</div>
                                     </div>
                                 </div>

@@ -47,7 +47,7 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h5 class="fw-bold text-dark mb-0">Drivers Inventory</h5>
+    <h5 class="fw-medium text-dark mb-0">Drivers Inventory</h5>
     <button class="btn btn-primary btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#addDriverModal">
         <i class="fas fa-plus me-1"></i> Add Driver
     </button>
@@ -75,7 +75,7 @@
                 <tbody>
                     @forelse($drivers as $driver)
                         <tr>
-                            <td class="px-4 fw-bold text-dark">{{ $driver->driver_name }}</td>
+                            <td class="px-4 fw-medium text-dark">{{ $driver->driver_name }}</td>
                             <td>{{ $driver->mobile_number }}</td>
                             <td>
                                 @if($driver->vehicle)
@@ -116,7 +116,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Register Driver</h5>
+                <h5 class="modal-title fw-medium text-dark">Register Driver</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.drivers.store') }}" method="POST">
@@ -155,7 +155,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0" style="border-radius: 20px;">
             <div class="modal-header border-bottom-0 pt-4 px-4">
-                <h5 class="modal-title fw-bold text-dark">Edit Driver</h5>
+                <h5 class="modal-title fw-medium text-dark">Edit Driver</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('transport.drivers.update', $driver->id) }}" method="POST">

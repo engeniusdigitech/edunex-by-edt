@@ -1,0 +1,3 @@
+name,email,phone,roll_number,gender,blood_group,father_name,mother_name,parent_email,alternate_phone_1,enrollment_date,batch_id,password
+Rahul Sharma,rahul.sharma@example.com,9876543210,STU001,Male,B+,Ramesh Sharma,Sunita Sharma,ramesh@example.com,9876543211,2024-06-01,Class 10A,
+Priya Patel,priya.patel@example.com,9876543220,STU002,Female,A+,Mahesh Patel,Rekha Patel,mahesh@example.com,,2024-06-01,Class 10A,MyPass@123

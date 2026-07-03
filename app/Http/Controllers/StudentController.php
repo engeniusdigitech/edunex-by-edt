@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Batch;
+use App\Imports\StudentsImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class StudentController extends Controller
 {
@@ -140,4 +143,35 @@ class StudentController extends Controller
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
     }
+
+    /**
+     * Bulk-import students from an Excel or CSV file.
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        $instituteId = auth()->user()->institute_id;
+
+        try {
+            $import = new StudentsImport($instituteId);
+            Excel::import($import, $request->file('import_file'));
+
+            $errors = $import->errors();
+            if ($errors->isNotEmpty()) {
+                $errorMessages = $errors->map(fn ($e) => $e->getMessage())->take(5)->implode('; ');
+                return redirect()->route('students.index')
+                    ->with('warning', "Import completed with some skipped rows: {$errorMessages}");
+            }
+
+            return redirect()->route('students.index')
+                ->with('success', 'Students imported successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('students.index')
+                ->with('error', 'Import failed: ' . $e->getMessage());
+        }
+    }
 }
+

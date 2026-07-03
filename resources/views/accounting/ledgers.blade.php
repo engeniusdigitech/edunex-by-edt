@@ -18,6 +18,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('accounting.vouchers.index') }}">
+                    <i class="fas fa-book me-2"></i>Voucher Book
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('expenses.index') }}">
                     <i class="fas fa-receipt me-2"></i>Expense Ledger
                 </a>
@@ -38,7 +43,7 @@
             <div class="card-header bg-white border-bottom-0 pt-4 px-4">
                 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
                     <div>
-                        <h6 class="fw-bold text-dark mb-0">General Ledgers Directory</h6>
+                        <h6 class="fw-medium text-dark mb-0">General Ledgers Directory</h6>
                         <p class="text-muted small mb-0">Overview of chart of account definitions</p>
                     </div>
                 </div>
@@ -88,7 +93,7 @@
                             @forelse($ledgers as $ledger)
                                 <tr>
                                     <td>
-                                        <div class="fw-bold text-dark">{{ $ledger->name }}</div>
+                                        <div class="fw-medium text-dark">{{ $ledger->name }}</div>
                                     </td>
                                     <td>
                                         <span class="badge rounded-pill px-2.5 py-1 text-uppercase
@@ -136,7 +141,7 @@
     <div class="col-12 col-md-4">
         <div class="card border-0 shadow-sm" style="border-radius: 16px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4 pb-0">
-                <h6 class="fw-bold text-dark mb-0"><i class="fas fa-plus-circle me-2 text-primary"></i>Add Ledger Account</h6>
+                <h6 class="fw-medium text-dark mb-0"><i class="fas fa-plus-circle me-2 text-primary"></i>Add Ledger Account</h6>
             </div>
             <div class="card-body p-4">
                 <p class="text-xs text-muted">Register custom accounts to map specific departments, fees, assets, or liability entities.</p>

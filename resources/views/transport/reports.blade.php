@@ -51,7 +51,7 @@
     <div class="col-md-6">
         <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4">
-                <h6 class="fw-bold text-dark mb-0">Route-wise Passenger List</h6>
+                <h6 class="fw-medium text-dark mb-0">Route-wise Passenger List</h6>
                 <p class="text-muted small mb-0">List students assigned to a specific route</p>
             </div>
             <div class="card-body px-4 pb-4">
@@ -114,7 +114,7 @@
     <div class="col-md-6">
         <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4">
-                <h6 class="fw-bold text-dark mb-0">Vehicle-wise Passenger List</h6>
+                <h6 class="fw-medium text-dark mb-0">Vehicle-wise Passenger List</h6>
                 <p class="text-muted small mb-0">List students assigned to a specific vehicle</p>
             </div>
             <div class="card-body px-4 pb-4">
@@ -177,7 +177,7 @@
     <div class="col-12">
         <div class="card border-0 shadow-sm" style="border-radius: 16px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4">
-                <h6 class="fw-bold text-dark mb-0"><i class="fas fa-exclamation-circle text-warning me-2"></i>Pending Transport Fees</h6>
+                <h6 class="fw-medium text-dark mb-0"><i class="fas fa-exclamation-circle text-warning me-2"></i>Pending Transport Fees</h6>
                 <p class="text-muted small mb-0">List of active allocations with pending payment status</p>
             </div>
             <div class="card-body px-4 pb-4">
@@ -196,7 +196,7 @@
                             @forelse($pendingFeesList as $alloc)
                                 <tr>
                                     <td>
-                                        <div class="fw-bold text-dark">{{ $alloc->student->name }}</div>
+                                        <div class="fw-medium text-dark">{{ $alloc->student->name }}</div>
                                         <div class="text-muted small">Roll: {{ $alloc->student->roll_number ?? 'N/A' }} / Class: {{ $alloc->student->batch->name ?? 'None' }}</div>
                                     </td>
                                     <td>{{ $alloc->route->route_name }}</td>

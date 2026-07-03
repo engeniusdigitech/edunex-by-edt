@@ -212,7 +212,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
             Route::resource('principals', \App\Http\Controllers\PrincipalController::class)->middleware('can:manage-principals');
+            Route::post('students/import', [StudentController::class, 'import'])->name('students.import')->middleware('can:manage-students');
             Route::resource('students', StudentController::class)->middleware('can:manage-students');
+            Route::post('staff/import', [\App\Http\Controllers\StaffController::class, 'import'])->name('staff.import')->middleware('can:manage-staff');
             Route::resource('staff', \App\Http\Controllers\StaffController::class)->middleware('can:manage-staff');
 
             Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index')->middleware('can:manage-attendance');
@@ -229,7 +231,9 @@ Route::middleware(['auth'])->group(function () {
             Route::put('/payment-gateways/settings', [PaymentGatewayController::class, 'updateSettings'])->name('payment-gateways.update')->middleware('can:manage-payments');
 
             // Academics Module
+            Route::post('batches/import', [\App\Http\Controllers\BatchController::class, 'import'])->name('batches.import')->middleware('can:manage-batches');
             Route::resource('batches', \App\Http\Controllers\BatchController::class)->except(['create', 'edit', 'show'])->middleware('can:manage-batches');
+            Route::post('subjects/import', [\App\Http\Controllers\SubjectController::class, 'import'])->name('subjects.import')->middleware('can:manage-academics');
             Route::resource('subjects', \App\Http\Controllers\SubjectController::class)->except(['create', 'edit', 'show'])->middleware('can:manage-academics');
             Route::resource('homework', \App\Http\Controllers\HomeworkController::class)->middleware('can:manage-academics');
             Route::resource('tests', \App\Http\Controllers\TestController::class)->middleware('can:manage-academics');
@@ -252,6 +256,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('question-bank', \App\Http\Controllers\QuestionBankController::class)->middleware('can:manage-academics');
 
             // Hostel Management Module
+            Route::get('hostels/dashboard', [\App\Http\Controllers\HostelController::class, 'dashboard'])->name('hostels.dashboard')->middleware('can:manage-hostels');
             Route::resource('hostels', \App\Http\Controllers\HostelController::class)->middleware('can:manage-hostels');
             Route::post('hostels/{hostel}/rooms', [\App\Http\Controllers\HostelController::class, 'storeRoom'])->name('hostels.rooms.store')->middleware('can:manage-hostels');
             Route::delete('hostels/{hostel}/rooms/{room}', [\App\Http\Controllers\HostelController::class, 'destroyRoom'])->name('hostels.rooms.destroy')->middleware('can:manage-hostels');
@@ -266,6 +271,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('hostel-messes/{mess}/subscribe', [\App\Http\Controllers\HostelMessController::class, 'subscribeStudent'])->name('hostel-messes.subscribe')->middleware('can:manage-hostels');
 
             // Inventory & Store Management Module
+            Route::get('inventory/dashboard', [\App\Http\Controllers\InventoryItemController::class, 'dashboard'])->name('inventory.dashboard')->middleware('can:manage-inventory');
+            Route::post('inventory-items/import', [\App\Http\Controllers\InventoryItemController::class, 'import'])->name('inventory-items.import')->middleware('can:manage-inventory');
             Route::resource('inventory-items', \App\Http\Controllers\InventoryItemController::class)->middleware('can:manage-inventory');
             Route::resource('inventory-suppliers', \App\Http\Controllers\InventorySupplierController::class)->middleware('can:manage-inventory');
             Route::resource('purchase-orders', \App\Http\Controllers\PurchaseOrderController::class)->middleware('can:manage-inventory');
@@ -373,6 +380,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/tracking', [\App\Http\Controllers\TransportTrackingController::class, 'index'])->name('tracking.index');
                 Route::post('/trips', [\App\Http\Controllers\TransportTrackingController::class, 'startTrip'])->name('trips.start');
                 Route::post('/trips/{trip}/location', [\App\Http\Controllers\TransportTrackingController::class, 'updateLocation'])->name('trips.location');
+                Route::get('/trips/{trip}/status', [\App\Http\Controllers\TransportTrackingController::class, 'tripStatus'])->name('trips.status');
                 Route::post('/trips/{trip}/board', [\App\Http\Controllers\TransportTrackingController::class, 'boardStudent'])->name('trips.board');
                 Route::post('/trips/{trip}/complete', [\App\Http\Controllers\TransportTrackingController::class, 'completeTrip'])->name('trips.complete');
                 Route::post('/routes/{route}/optimize', [\App\Http\Controllers\TransportTrackingController::class, 'optimizeRoute'])->name('routes.optimize');
@@ -386,6 +394,9 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/ledgers', [\App\Http\Controllers\AccountingController::class, 'storeLedger'])->name('ledgers.store');
                 Route::get('/gst-reports', [\App\Http\Controllers\AccountingController::class, 'gstReports'])->name('gst.reports');
                 Route::get('/tally-export', [\App\Http\Controllers\AccountingController::class, 'tallyExport'])->name('tally.export');
+                Route::get('/vouchers', [\App\Http\Controllers\AccountingController::class, 'vouchers'])->name('vouchers.index');
+                Route::get('/vouchers/create', [\App\Http\Controllers\AccountingController::class, 'createVoucher'])->name('vouchers.create');
+                Route::post('/vouchers', [\App\Http\Controllers\AccountingController::class, 'storeVoucher'])->name('vouchers.store');
             })->middleware('can:manage-payments');
 
             // Study Materials (LMS)

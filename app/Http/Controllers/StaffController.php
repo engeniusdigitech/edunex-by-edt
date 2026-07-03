@@ -6,10 +6,12 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Subject;
 use App\Models\Batch;
+use App\Imports\StaffImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StaffController extends Controller
 {
@@ -231,5 +233,35 @@ class StaffController extends Controller
             'face_image' => $faceImagePath,
             'face_enrolled_at' => now(),
         ]);
+    }
+
+    /**
+     * Bulk-import staff from an Excel or CSV file.
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        $instituteId = auth()->user()->institute_id;
+
+        try {
+            $import = new StaffImport($instituteId);
+            Excel::import($import, $request->file('import_file'));
+
+            $errors = $import->errors();
+            if ($errors->isNotEmpty()) {
+                $errorMessages = $errors->map(fn ($e) => $e->getMessage())->take(5)->implode('; ');
+                return redirect()->route('staff.index')
+                    ->with('warning', "Import completed with some skipped rows: {$errorMessages}");
+            }
+
+            return redirect()->route('staff.index')
+                ->with('success', 'Staff imported successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('staff.index')
+                ->with('error', 'Import failed: ' . $e->getMessage());
+        }
     }
 }

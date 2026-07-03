@@ -9,15 +9,15 @@
 .nav-link-custom:hover{color:#4F46E5;}
 .nav-link-custom.active{color:#4F46E5;border-color:#4F46E5;}
 .grid-table{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;}
-.grid-header{background:#F8FAFC;border-bottom:1px solid #E2E8F0;font-weight:700;color:#334155;text-transform:uppercase;font-size:.75rem;letter-spacing:.5px;}
+.grid-header{background:#F8FAFC;border-bottom:1px solid #E2E8F0;font-weight:500;color:#334155;text-transform:uppercase;font-size:.75rem;letter-spacing:.5px;}
 .grid-row{border-bottom:1px solid #F1F5F9;transition:background .2s;}
 .grid-row:hover{background:#F8FAFC;}
-.grid-day{font-weight:700;color:#1E293B;background:#F8FAFC;border-right:1px solid #E2E8F0;display:flex;align-items:center;padding:16px;font-size:.85rem;text-transform:capitalize;}
+.grid-day{font-weight:500;color:#1E293B;background:#F8FAFC;border-right:1px solid #E2E8F0;display:flex;align-items:center;padding:16px;font-size:.85rem;text-transform:capitalize;}
 .grid-cell{padding:12px;border-right:1px solid #F1F5F9;}
 .grid-cell:last-child{border-right:none;}
 .menu-input{width:100%;min-height:75px;border:1px solid #E2E8F0;border-radius:10px;padding:8px 12px;font-size:.8rem;color:#334155;resize:vertical;transition:all .2s;background:#fff;}
 .menu-input:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.15);background:#FFF;}
-.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(79,70,229,.35);transition:all .2s;cursor:pointer;}
+.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(79,70,229,.35);transition:all .2s;cursor:pointer;}
 .btn-save:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,.45);color:#fff;}
 .card-sec{background:#fff;border:1px solid #E2E8F0;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.02);overflow:hidden;}
 .card-header-sec{padding:20px 24px;border-bottom:1px solid #F1F5F9;background:#fff;}
@@ -25,8 +25,8 @@
 
 <div class="m-hdr d-flex justify-content-between align-items-center flex-wrap gap-3">
     <div style="position:relative;z-index:2;">
-        <span style="font-size:.7rem;font-weight:700;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-utensils me-1"></i> Mess &amp; Catering</span>
-        <h2 style="font-size:1.5rem;font-weight:800;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">{{ $hostelMess->name }}</h2>
+        <span style="font-size:.7rem;font-weight:500;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-utensils me-1"></i> Mess &amp; Catering</span>
+        <h2 style="font-size:1.5rem;font-weight:500;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">{{ $hostelMess->name }}</h2>
     </div>
     <div style="position:relative;z-index:2;">
         <a href="{{ route('hostel-messes.index') }}" class="btn btn-outline-light rounded-4 px-4 py-2" style="font-size:.85rem;font-weight:600;"><i class="fas fa-arrow-left me-2"></i> Back to Mess List</a>
@@ -77,25 +77,25 @@
                     
                     <!-- Breakfast -->
                     <div class="col-md-2 grid-cell">
-                        <label class="d-md-none text-muted small fw-bold mb-1">Breakfast</label>
+                        <label class="d-md-none text-muted small fw-medium mb-1">Breakfast</label>
                         <textarea name="menu[{{ $day }}][breakfast]" class="menu-input" placeholder="e.g. Eggs, Toast, Coffee">{{ $menus[$day]['breakfast'] ?? '' }}</textarea>
                     </div>
                     
                     <!-- Lunch -->
                     <div class="col-md-3 grid-cell">
-                        <label class="d-md-none text-muted small fw-bold mb-1">Lunch</label>
+                        <label class="d-md-none text-muted small fw-medium mb-1">Lunch</label>
                         <textarea name="menu[{{ $day }}][lunch]" class="menu-input" placeholder="e.g. Rice, Grilled Chicken, Salad">{{ $menus[$day]['lunch'] ?? '' }}</textarea>
                     </div>
                     
                     <!-- Snacks -->
                     <div class="col-md-2 grid-cell">
-                        <label class="d-md-none text-muted small fw-bold mb-1">Snacks</label>
+                        <label class="d-md-none text-muted small fw-medium mb-1">Snacks</label>
                         <textarea name="menu[{{ $day }}][snacks]" class="menu-input" placeholder="e.g. Tea, Cookies, Fruit">{{ $menus[$day]['snacks'] ?? '' }}</textarea>
                     </div>
                     
                     <!-- Dinner -->
                     <div class="col-md-3 grid-cell">
-                        <label class="d-md-none text-muted small fw-bold mb-1">Dinner</label>
+                        <label class="d-md-none text-muted small fw-medium mb-1">Dinner</label>
                         <textarea name="menu[{{ $day }}][dinner]" class="menu-input" placeholder="e.g. Soup, Steak, Baked Veggies">{{ $menus[$day]['dinner'] ?? '' }}</textarea>
                     </div>
                 </div>
@@ -116,14 +116,14 @@
         <div class="col-lg-4">
             <div class="card-sec">
                 <div class="card-header-sec">
-                    <h5 class="fw-bold mb-0 text-dark" style="font-size:1.05rem;">Subscribe Student</h5>
+                    <h5 class="fw-medium mb-0 text-dark" style="font-size:1.05rem;">Subscribe Student</h5>
                     <p class="text-muted small mb-0 mt-1">Enroll a student in the {{ $hostelMess->name }} monthly subscription.</p>
                 </div>
                 <div class="p-4">
                     <form action="{{ route('hostel-messes.subscribe', $hostelMess) }}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="student_id" class="form-label fw-bold text-dark" style="font-size:.8rem;">Select Student</label>
+                            <label for="student_id" class="form-label fw-medium text-dark" style="font-size:.8rem;">Select Student</label>
                             <select name="student_id" id="student_id" class="form-select rounded-3 py-2.5 shadow-none" style="font-size:.85rem;" required>
                                 <option value="">-- Choose Student --</option>
                                 @foreach($students as $student)
@@ -142,7 +142,7 @@
             <div class="card-sec">
                 <div class="card-header-sec d-flex justify-content-between align-items-center">
                     <div>
-                        <h5 class="fw-bold mb-0 text-dark" style="font-size:1.05rem;">Active Subscriptions</h5>
+                        <h5 class="fw-medium mb-0 text-dark" style="font-size:1.05rem;">Active Subscriptions</h5>
                         <p class="text-muted small mb-0 mt-1">Students receiving meals from this mess hall.</p>
                     </div>
                 </div>
@@ -161,11 +161,11 @@
                                 <tr>
                                     <td class="ps-4">
                                         <div class="d-flex align-items-center gap-3">
-                                            <div style="width:36px;height:36px;border-radius:10px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;font-weight:700;color:#4F46E5;font-size:.85rem;">
+                                            <div style="width:36px;height:36px;border-radius:10px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;font-weight:500;color:#4F46E5;font-size:.85rem;">
                                                 {{ strtoupper(substr($sub->student->name, 0, 2)) }}
                                             </div>
                                             <div>
-                                                <div class="fw-bold text-dark" style="font-size:.85rem;">{{ $sub->student->name }}</div>
+                                                <div class="fw-medium text-dark" style="font-size:.85rem;">{{ $sub->student->name }}</div>
                                                 <div class="text-muted small">Batch: {{ $sub->student->batch->name ?? 'N/A' }}</div>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@
                                 <tr>
                                     <td colspan="4" class="text-center py-5 text-muted">
                                         <i class="fas fa-users fs-3 mb-2" style="color:#CBD5E1;"></i>
-                                        <div class="fw-bold">No Active Subscriptions</div>
+                                        <div class="fw-medium">No Active Subscriptions</div>
                                         <div class="small">Enroll students on the left to start their catering schedule.</div>
                                     </td>
                                 </tr>

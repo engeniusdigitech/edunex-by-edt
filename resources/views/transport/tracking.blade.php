@@ -63,7 +63,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: bold;
+        font-weight:500;
         font-size: 0.8rem;
     }
 </style>
@@ -117,10 +117,15 @@
         <div class="card border-0 glass-card h-100 mb-4">
             <div class="card-header bg-transparent border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
                 <div>
-                    <h5 class="fw-bold text-dark mb-0">Live Map Console</h5>
+                    <h5 class="fw-medium text-dark mb-0">Live Map Console</h5>
                     <p class="text-muted small mb-0">Monitor live trips, coordinate stops, and manage routing</p>
                 </div>
                 <div class="d-flex align-items-center gap-2">
+                    @if($selectedTrip && $selectedTrip->status === 'en_route')
+                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5">
+                            <span class="pulse-dot me-1"></span> Live &bull; refreshing every 4s
+                        </span>
+                    @endif
                     <span id="click-picker-status" class="badge bg-warning text-dark d-none">
                         <i class="fas fa-crosshairs me-1"></i> Click on map to set coordinates
                     </span>
@@ -143,7 +148,7 @@
                         <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill mb-1">
                             <span class="pulse-dot me-1"></span> EN ROUTE
                         </span>
-                        <h6 class="fw-bold text-dark mb-0">Trip #{{ $selectedTrip->id }}</h6>
+                        <h6 class="fw-medium text-dark mb-0">Trip #{{ $selectedTrip->id }}</h6>
                     </div>
                     <form action="{{ route('transport.trips.complete', $selectedTrip->id) }}" method="POST">
                         @csrf
@@ -157,12 +162,12 @@
                     <div class="row g-2 text-center mb-3">
                         <div class="col-6 bg-light rounded p-2">
                             <span class="text-muted small block">Vehicle</span>
-                            <div class="fw-bold text-dark small">{{ $selectedTrip->vehicle->vehicle_name }}</div>
+                            <div class="fw-medium text-dark small">{{ $selectedTrip->vehicle->vehicle_name }}</div>
                             <span class="text-muted text-xs">{{ $selectedTrip->vehicle->vehicle_number }}</span>
                         </div>
                         <div class="col-6 bg-light rounded p-2">
                             <span class="text-muted small block">Route</span>
-                            <div class="fw-bold text-dark small text-truncate" title="{{ $selectedTrip->route->route_name }}">
+                            <div class="fw-medium text-dark small text-truncate" title="{{ $selectedTrip->route->route_name }}">
                                 {{ $selectedTrip->route->route_name }}
                             </div>
                             <span class="text-muted text-xs">{{ $selectedTrip->route->stops->count() }} Stops</span>
@@ -172,7 +177,7 @@
                     <!-- Simulator Controls -->
                     <div class="card bg-primary-subtle border-0 p-3 mb-4 rounded-3 text-primary-emphasis">
                         <div class="d-flex align-items-center justify-content-between mb-2">
-                            <span class="fw-bold text-sm"><i class="fas fa-laptop-code me-2"></i>Trip GPS Simulator</span>
+                            <span class="fw-medium text-sm"><i class="fas fa-laptop-code me-2"></i>Trip GPS Simulator</span>
                             <span class="badge bg-primary rounded-pill" id="sim-status-badge">Idle</span>
                         </div>
                         <p class="text-xs mb-3 text-primary-emphasis opacity-75">Simulate vehicle movement along the route stops. This triggers location reporting to database and boarding notifications.</p>
@@ -188,7 +193,7 @@
                     </div>
 
                     <!-- Route Stops Progress Timeline -->
-                    <h6 class="fw-bold text-dark mb-3"><i class="fas fa-route me-2 text-primary"></i>Stops &amp; Checklists</h6>
+                    <h6 class="fw-medium text-dark mb-3"><i class="fas fa-route me-2 text-primary"></i>Stops &amp; Checklists</h6>
                     <div class="list-group list-group-flush rounded-3 border">
                         @forelse($selectedTrip->route->stops as $stop)
                             <div class="list-group-item stop-item p-3 d-flex justify-content-between align-items-center" 
@@ -202,7 +207,7 @@
                                         {{ $stop->sort_order ?: ($loop->index + 1) }}
                                     </div>
                                     <div>
-                                        <div class="fw-bold text-dark text-sm">{{ $stop->stop_name }}</div>
+                                        <div class="fw-medium text-dark text-sm">{{ $stop->stop_name }}</div>
                                         <div class="text-muted text-xs">
                                             @if($stop->latitude && $stop->longitude)
                                                 {{ round($stop->latitude, 4) }}, {{ round($stop->longitude, 4) }}
@@ -238,7 +243,7 @@
             <!-- Start a New Trip Panel -->
             <div class="card border-0 glass-card mb-4">
                 <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
-                    <h6 class="fw-bold text-dark mb-0"><i class="fas fa-plus-circle me-2 text-primary"></i>Start a New Trip</h6>
+                    <h6 class="fw-medium text-dark mb-0"><i class="fas fa-plus-circle me-2 text-primary"></i>Start a New Trip</h6>
                 </div>
                 <div class="card-body p-4">
                     <form action="{{ route('transport.trips.start') }}" method="POST">
@@ -272,7 +277,7 @@
         <!-- Route Optimization Panel -->
         <div class="card border-0 glass-card">
             <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
-                <h6 class="fw-bold text-dark mb-0"><i class="fas fa-magic me-2 text-warning"></i>Route Optimizer (TSP)</h6>
+                <h6 class="fw-medium text-dark mb-0"><i class="fas fa-magic me-2 text-warning"></i>Route Optimizer (TSP)</h6>
             </div>
             <div class="card-body p-4">
                 <p class="text-xs text-muted">Geographically sort route stops to compute the shortest path. Starts from Delhi Institute Hub and runs nearest-neighbor TSP algorithm.</p>
@@ -679,7 +684,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 studentCard.className = "list-group-item d-flex justify-content-between align-items-center p-3";
                 studentCard.innerHTML = `
                     <div>
-                        <div class="fw-bold text-dark text-sm">${student.name}</div>
+                        <div class="fw-medium text-dark text-sm">${student.name}</div>
                         <div class="text-muted text-xs">Roll Number: ${student.roll_number || 'N/A'}</div>
                         <span class="badge rounded-pill text-xs mt-1" id="status-badge-${student.id}">
                             ${currentStatus === 'none' ? 'No Log' : currentStatus.toUpperCase()}
@@ -766,6 +771,51 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Error sending boarding status.");
         });
     }
+
+    // ----------------------------------------------------
+    // Live Position Polling (updates the map for EVERY viewer,
+    // not just the browser tab running the GPS simulator)
+    // ----------------------------------------------------
+    if (selectedTrip && selectedTrip.status === 'en_route') {
+        const liveStatusUrl = `/transport/trips/${selectedTrip.id}/status`;
+
+        setInterval(function() {
+            fetch(liveStatusUrl, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status !== 'en_route') {
+                        // Trip was completed/cancelled from another session - refresh view
+                        window.location.reload();
+                        return;
+                    }
+
+                    if (data.current_lat && data.current_lng) {
+                        const latLng = [parseFloat(data.current_lat), parseFloat(data.current_lng)];
+                        if (!busMarker) {
+                            busMarker = L.marker(latLng, {icon: busIcon}).addTo(map);
+                        } else {
+                            busMarker.setLatLng(latLng);
+                        }
+                    }
+
+                    // Keep boarding checklist badges in sync if the modal is open
+                    if (data.boarding_logs) {
+                        selectedTrip.boarding_logs = data.boarding_logs;
+                        data.boarding_logs.forEach(log => {
+                            if (currentActiveStopId && log.transport_stop_id == currentActiveStopId) {
+                                const badge = document.getElementById(`status-badge-${log.student_id}`);
+                                if (badge) {
+                                    badge.textContent = log.status.toUpperCase();
+                                    badge.className = "badge rounded-pill text-xs mt-1 " +
+                                        (log.status === 'boarded' ? 'bg-success' : (log.status === 'deboarded' ? 'bg-primary' : 'bg-danger'));
+                                }
+                            }
+                        });
+                    }
+                })
+                .catch(err => console.error('Live tracking poll failed', err));
+        }, 4000);
+    }
 });
 </script>
 @endsection
@@ -777,8 +827,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="modal-content border-0 glass-card">
             <div class="modal-header border-bottom-0 pb-0 pt-4 px-4">
                 <div>
-                    <h5 class="modal-title fw-bold text-dark" id="boardingModalLabel">Boarding Check-In</h5>
-                    <p class="text-muted small mb-0" id="boarding-subtitle">Stop: <span class="fw-bold text-primary" id="modal-stop-name">Name</span></p>
+                    <h5 class="modal-title fw-medium text-dark" id="boardingModalLabel">Boarding Check-In</h5>
+                    <p class="text-muted small mb-0" id="boarding-subtitle">Stop: <span class="fw-medium text-primary" id="modal-stop-name">Name</span></p>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -800,7 +850,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
 
                 <!-- Students list -->
-                <h6 class="fw-bold text-dark text-xs text-uppercase tracking-wider mb-2">Allocated Students</h6>
+                <h6 class="fw-medium text-dark text-xs text-uppercase tracking-wider mb-2">Allocated Students</h6>
                 <div id="modal-students-container" class="list-group list-group-flush border rounded overflow-auto" style="max-height: 280px;">
                     <!-- Javascript populates this -->
                 </div>

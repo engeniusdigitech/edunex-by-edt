@@ -754,6 +754,7 @@
                                 <i class="fas fa-chevron-down dropdown-arrow"></i>
                             </a>
                             <div class="collapse {{ $isStoreActive ? 'show' : '' }}" id="storeCollapse">
+                                <a href="{{ route('inventory.dashboard') }}" class="{{ request()->routeIs('inventory.dashboard') ? 'active' : '' }} small py-2"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                                 <a href="{{ route('inventory-items.index') }}" class="{{ request()->routeIs('inventory-items.*') ? 'active' : '' }} small py-2"><i class="fas fa-boxes-stacked"></i> Stock Items</a>
                                 <a href="{{ route('inventory-suppliers.index') }}" class="{{ request()->routeIs('inventory-suppliers.*') ? 'active' : '' }} small py-2"><i class="fas fa-truck-field"></i> Suppliers / Vendors</a>
                                 <a href="{{ route('purchase-orders.index') }}" class="{{ request()->routeIs('purchase-orders.*') ? 'active' : '' }} small py-2"><i class="fas fa-file-signature"></i> Purchase Orders</a>
@@ -777,6 +778,7 @@
                             <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
                         <div class="collapse {{ $isHostelActive ? 'show' : '' }}" id="hostelCollapse">
+                            <a href="{{ route('hostels.dashboard') }}" class="{{ request()->routeIs('hostels.dashboard') ? 'active' : '' }} small py-2"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                             <a href="{{ route('hostels.index') }}" class="{{ request()->routeIs('hostels.*') ? 'active' : '' }} small py-2"><i class="fas fa-hotel"></i> Hostels &amp; Rooms</a>
                             <a href="{{ route('hostel-allocations.index') }}" class="{{ request()->routeIs('hostel-allocations.*') ? 'active' : '' }} small py-2"><i class="fas fa-user-tag"></i> Room Allocations</a>
                             <a href="{{ route('hostel-messes.index') }}" class="{{ request()->routeIs('hostel-messes.*') ? 'active' : '' }} small py-2"><i class="fas fa-utensils"></i> Mess &amp; Menus</a>

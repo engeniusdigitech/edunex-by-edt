@@ -10,14 +10,39 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    /**
+     * Normalize DB role names → Flutter slug constants.
+     * Flutter AppConstants expects: student, parent, admin, principal,
+     * class_teacher, subject_teacher, librarian, receptionist, hostel_warden.
+     */
+    private function normalizeRole(string $roleName): string
+    {
+        return match (strtolower(trim($roleName))) {
+            'student'                       => 'student',
+            'parent', 'guardian'            => 'parent',
+            'super admin', 'superadmin',
+            'institute admin', 'admin'      => 'admin',
+            'principal', 'vice principal'   => 'principal',
+            'class teacher', 'classteacher',
+            'teacher', 'staff'              => 'class_teacher',
+            'subject teacher'               => 'subject_teacher',
+            'librarian'                     => 'librarian',
+            'receptionist', 'front desk'    => 'receptionist',
+            'warden', 'hostel warden',
+            'hostelwarden'                  => 'hostel_warden',
+            default                         => strtolower(str_replace(' ', '_', $roleName)),
+        };
+    }
+
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'email'       => 'required|email',
+            'password'    => 'required',
             'device_name' => 'required',
         ]);
 
+        // ── Student login ────────────────────────────────────────────────────
         $student = Student::where('email', $request->email)->first();
 
         if ($student) {
@@ -34,17 +59,24 @@ class LoginController extends Controller
             }
 
             return response()->json([
-                'token' => $student->createToken($request->device_name)->plainTextToken,
+                'token'     => $student->createToken($request->device_name)->plainTextToken,
                 'user_type' => 'student',
-                'student' => [
-                    'name' => $student->name,
-                    'email' => $student->email,
-                    'institute_id' => $student->institute_id,
-                ]
+                'user'      => [
+                    'id'                 => $student->id,
+                    'name'               => $student->name,
+                    'email'              => $student->email,
+                    'role'               => 'student',
+                    'roll_number'        => $student->roll_number,
+                    'admission_no'       => $student->admission_no ?? null,
+                    'profile_image_url'  => $student->profile_image
+                                            ? asset('storage/' . $student->profile_image)
+                                            : null,
+                    'institute_id'       => $student->institute_id,
+                ],
             ]);
         }
 
-        // Try authenticating as Staff User
+        // ── Staff / User login ───────────────────────────────────────────────
         $user = \App\Models\User::where('email', $request->email)->first();
 
         if ($user) {
@@ -54,15 +86,22 @@ class LoginController extends Controller
                 ]);
             }
 
+            $roleName      = $user->role?->name ?? 'staff';
+            $normalizedRole = $this->normalizeRole($roleName);
+
             return response()->json([
-                'token' => $user->createToken($request->device_name)->plainTextToken,
+                'token'     => $user->createToken($request->device_name)->plainTextToken,
                 'user_type' => 'staff',
-                'user' => [
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'role' => $user->role->name ?? 'Staff',
-                    'institute_id' => $user->institute_id,
-                ]
+                'user'      => [
+                    'id'                => $user->id,
+                    'name'              => $user->name,
+                    'email'             => $user->email,
+                    'role'              => $normalizedRole,
+                    'profile_image_url' => $user->profile_image
+                                          ? asset('storage/' . $user->profile_image)
+                                          : null,
+                    'institute_id'      => $user->institute_id,
+                ],
             ]);
         }
 
@@ -74,7 +113,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-
         return response()->json(['message' => 'Logged out successfully']);
     }
 }

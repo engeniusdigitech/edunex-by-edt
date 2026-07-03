@@ -5,21 +5,53 @@
 .a-hdr{background:linear-gradient(135deg,#0F172A,#1E1B4B);border-radius:18px;padding:28px 32px;margin-bottom:28px;border:1px solid rgba(99,102,241,.2);position:relative;overflow:hidden;}
 .a-hdr::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.05) 1px,transparent 1px);background-size:26px 26px;}
 .a-card{background:#fff;border:1px solid #F1F5F9;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.03);overflow:hidden;}
-.a-sec-hdr{padding:16px 28px;border-bottom:1px solid #F1F5F9;background:#FAFAFA;font-size:.78rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;gap:10px;}
+.a-sec-hdr{padding:16px 28px;border-bottom:1px solid #F1F5F9;background:#FAFAFA;font-size:.78rem;font-weight:500;color:#475569;text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;gap:10px;}
 .a-body{padding:24px;}
 .btn-action{background:#fff;border:1px solid #E2E8F0;padding:6px 12px;border-radius:8px;font-size:.8rem;font-weight:600;color:#475569;text-decoration:none;transition:all .2s;}
 .btn-action:hover{background:#FEF2F2;border-color:#FCA5A5;color:#EF4444;}
-.btn-add{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;text-decoration:none;box-shadow:0 4px 15px rgba(79,70,229,.35);}
+.btn-add{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:8px;text-decoration:none;box-shadow:0 4px 15px rgba(79,70,229,.35);}
 .btn-add:hover{color:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,.45);}
 </style>
 
 <div class="a-hdr d-flex justify-content-between align-items-center flex-wrap gap-3">
     <div style="position:relative;z-index:2;">
-        <span style="font-size:.7rem;font-weight:700;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-user-tag me-1"></i> Room Allocations</span>
-        <h2 style="font-size:1.5rem;font-weight:800;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">Student Room Allocations</h2>
+        <span style="font-size:.7rem;font-weight:500;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-user-tag me-1"></i> Room Allocations</span>
+        <h2 style="font-size:1.5rem;font-weight:500;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">Student Room Allocations</h2>
     </div>
     <div style="position:relative;z-index:2;">
         <a href="{{ route('hostel-allocations.create') }}" class="btn-add"><i class="fas fa-plus"></i> Allocate Room</a>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm mb-4" style="border-radius: 16px;">
+    <div class="card-body p-2">
+        <ul class="nav nav-pills nav-fill gap-1">
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('hostels.dashboard') }}">
+                    <i class="fas fa-chart-pie me-2"></i>Overview
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('hostels.index') }}">
+                    <i class="fas fa-building me-2"></i>Hostel Blocks
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 active" href="{{ route('hostel-allocations.index') }}">
+                    <i class="fas fa-user-tag me-2"></i>Allocations
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('hostel-bills.index') }}">
+                    <i class="fas fa-file-invoice-dollar me-2"></i>Invoices
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('hostel-messes.index') }}">
+                    <i class="fas fa-utensils me-2"></i>Messes
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -39,10 +71,10 @@
                 <form action="{{ route('hostel-allocations.bills.generate') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label" style="font-size:.7rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px;">Select Billing Month</label>
+                        <label class="form-label" style="font-size:.7rem;font-weight:500;color:#475569;text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px;">Select Billing Month</label>
                         <input type="month" name="billing_month" class="form-control" value="{{ date('Y-m') }}" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-bold" style="background:#4F46E5;border:none;"><i class="fas fa-cogs"></i> Run Billing Engine</button>
+                    <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-medium" style="background:#4F46E5;border:none;"><i class="fas fa-cogs"></i> Run Billing Engine</button>
                 </form>
             </div>
         </div>
@@ -76,7 +108,7 @@
                     <tbody>
                         @forelse($allocations as $alloc)
                             <tr>
-                                <td class="ps-4 fw-bold text-dark">{{ $alloc->student->name }}</td>
+                                <td class="ps-4 fw-medium text-dark">{{ $alloc->student->name }}</td>
                                 <td>{{ $alloc->room->hostel->name }}</td>
                                 <td><span class="badge bg-light text-dark border">{{ $alloc->room->room_number }}</span></td>
                                 <td>{{ $alloc->allocated_from->format('M d, Y') }}</td>

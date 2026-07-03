@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Subject;
+use App\Imports\SubjectsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SubjectController extends Controller
 {
@@ -49,5 +50,28 @@ class SubjectController extends Controller
     {
         $subject->delete();
         return redirect()->route('subjects.index')->with('success', 'Subject deleted successfully.');
+    }
+
+    /**
+     * Bulk-import subjects from an Excel or CSV file.
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        $instituteId = auth()->user()->institute_id;
+
+        try {
+            $import = new SubjectsImport($instituteId);
+            Excel::import($import, $request->file('import_file'));
+
+            return redirect()->route('subjects.index')
+                ->with('success', 'Subjects imported successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('subjects.index')
+                ->with('error', 'Import failed: ' . $e->getMessage());
+        }
     }
 }

@@ -4,25 +4,25 @@
 <style>
 .invoice-card{background:#fff;border:1px solid #E2E8F0;border-radius:18px;box-shadow:0 4px 25px rgba(0,0,0,.03);overflow:hidden;}
 .invoice-hdr{background:linear-gradient(135deg,#0F172A,#1E293B);color:#fff;padding:40px;}
-.status-badge{font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;display:inline-flex;align-items:center;gap:6px;}
+.status-badge{font-size:.8rem;font-weight:500;padding:6px 14px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px;display:inline-flex;align-items:center;gap:6px;}
 .status-draft{background:rgba(241,245,249,.15);color:#F1F5F9;border:1px solid rgba(241,245,249,.3);}
 .status-sent{background:rgba(37,99,235,.15);color:#93C5FD;border:1px solid rgba(37,99,235,.3);}
 .status-received{background:rgba(5,150,105,.15);color:#6EE7B7;border:1px solid rgba(5,150,105,.3);}
 .status-cancelled{background:rgba(220,38,38,.15);color:#FCA5A5;border:1px solid rgba(220,38,38,.3);}
 .btn-action{width:32px;height:32px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#EF4444;border:1px solid #FCA5A5;background:#FEF2F2;transition:all .2s;}
 .btn-action:hover{color:#fff;background:#EF4444;border-color:#EF4444;}
-.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(79,70,229,.35);transition:all .2s;text-decoration:none;cursor:pointer;}
+.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.82rem;font-weight:500;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(79,70,229,.35);transition:all .2s;text-decoration:none;cursor:pointer;}
 .btn-save:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,.45);color:#fff;}
 </style>
 
 <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
     <div>
-        <a href="{{ route('purchase-orders.index') }}" class="text-decoration-none text-muted small fw-bold"><i class="fas fa-arrow-left me-1"></i> Back to Purchase Orders</a>
+        <a href="{{ route('purchase-orders.index') }}" class="text-decoration-none text-muted small fw-medium"><i class="fas fa-arrow-left me-1"></i> Back to Purchase Orders</a>
     </div>
     
     <!-- Status Workflow Form -->
     <div class="d-flex align-items-center gap-3">
-        <span class="text-muted small fw-bold">Order Lifecycle State:</span>
+        <span class="text-muted small fw-medium">Order Lifecycle State:</span>
         <form action="{{ route('purchase-orders.status.update', $purchaseOrder) }}" method="POST" class="d-flex gap-2">
             @csrf
             <select name="status" class="form-select form-select-sm shadow-none" style="font-size:.85rem;font-weight:600;min-width:180px;">
@@ -62,12 +62,12 @@
                 <span class="status-badge status-{{ $purchaseOrder->status }}mb-3">
                     <i class="fas fa-circle" style="font-size:.5rem;"></i> {{ $purchaseOrder->status }}
                 </span>
-                <h2 class="fw-bold mb-1" style="font-size:2.2rem;letter-spacing:-1px;">{{ $purchaseOrder->po_number }}</h2>
+                <h2 class="fw-medium mb-1" style="font-size:2.2rem;letter-spacing:-1px;">{{ $purchaseOrder->po_number }}</h2>
                 <p class="mb-0 text-white-50" style="font-size:.9rem;"><i class="far fa-calendar-alt me-1"></i> Order Date: {{ \Carbon\Carbon::parse($purchaseOrder->order_date)->format('M d, Y') }}</p>
             </div>
             <div class="col-md-6 text-md-end">
-                <span style="font-size:.7rem;font-weight:700;color:#67E8F9;text-transform:uppercase;letter-spacing:1.5px;display:block;">EduNex ERP Store Department</span>
-                <h4 class="fw-extrabold text-white mt-1 mb-0" style="font-size:1.5rem;">Purchase Requisition</h4>
+                <span style="font-size:.7rem;font-weight:500;color:#67E8F9;text-transform:uppercase;letter-spacing:1.5px;display:block;">EduNex ERP Store Department</span>
+                <h4 class="fw-medium text-white mt-1 mb-0" style="font-size:1.5rem;">Purchase Requisition</h4>
                 <p class="mb-0 text-white-50 small">Creator: {{ $purchaseOrder->creator->name ?? 'System' }}</p>
             </div>
         </div>
@@ -77,8 +77,8 @@
     <div class="p-4 p-md-5 border-bottom" style="background:#F8FAFC;">
         <div class="row g-4">
             <div class="col-md-6">
-                <span class="text-muted small d-block uppercase fw-bold mb-2" style="font-size:.7rem;">Vendor / Supplier</span>
-                <h5 class="fw-bold text-dark mb-1">{{ $purchaseOrder->supplier->name }}</h5>
+                <span class="text-muted small d-block uppercase fw-medium mb-2" style="font-size:.7rem;">Vendor / Supplier</span>
+                <h5 class="fw-medium text-dark mb-1">{{ $purchaseOrder->supplier->name }}</h5>
                 <p class="text-muted small mb-0" style="font-size:.8rem;line-height:1.5;">
                     @if($purchaseOrder->supplier->contact_person)
                         <strong>Attn:</strong> {{ $purchaseOrder->supplier->contact_person }}<br>
@@ -95,8 +95,8 @@
                 </p>
             </div>
             <div class="col-md-6 text-md-end">
-                <span class="text-muted small d-block uppercase fw-bold mb-2" style="font-size:.7rem;">Shipping Destination</span>
-                <h5 class="fw-bold text-dark mb-1">{{ auth()->user()->institute->name ?? 'Main Campus Store' }}</h5>
+                <span class="text-muted small d-block uppercase fw-medium mb-2" style="font-size:.7rem;">Shipping Destination</span>
+                <h5 class="fw-medium text-dark mb-1">{{ auth()->user()->institute->name ?? 'Main Campus Store' }}</h5>
                 <p class="text-muted small mb-0" style="font-size:.8rem;line-height:1.5;">
                     EduNex ERP School Administration Block<br>
                     Central Store Room, Ground Floor<br>
@@ -128,17 +128,17 @@
                             <span class="badge bg-light text-dark font-monospace border py-1.5 px-2" style="font-size:.7rem;">{{ $item->item->sku ?: 'NO SKU' }}</span>
                         </td>
                         <td>
-                            <div class="fw-bold text-dark" style="font-size:.85rem;">{{ $item->item->name }}</div>
+                            <div class="fw-medium text-dark" style="font-size:.85rem;">{{ $item->item->name }}</div>
                             <span class="text-muted small" style="font-size:.78rem;">Unit: {{ $item->item->unit }}</span>
                         </td>
-                        <td class="text-end fw-bold text-dark" style="font-size:.85rem;">
-                            ${{ number_format($item->unit_cost, 2) }}
+                        <td class="text-end fw-medium text-dark" style="font-size:.85rem;">
+                            {{ currencySymbol() }}{{ number_format($item->unit_cost, 2) }}
                         </td>
                         <td class="text-center" style="font-size:.85rem;color:#334155;">
                             {{ $item->quantity }}
                         </td>
-                        <td class="text-end fw-bold text-dark" style="font-size:.85rem;">
-                            ${{ number_format($item->total_cost, 2) }}
+                        <td class="text-end fw-medium text-dark" style="font-size:.85rem;">
+                            {{ currencySymbol() }}{{ number_format($item->total_cost, 2) }}
                         </td>
                         @if($purchaseOrder->status === 'draft')
                             <td class="pe-5 text-end">
@@ -154,7 +154,7 @@
                     <tr>
                         <td colspan="{{ $purchaseOrder->status === 'draft' ? 6 : 5 }}" class="text-center py-5 text-muted">
                             <i class="fas fa-shopping-basket fs-3 mb-2" style="color:#CBD5E1;"></i>
-                            <div class="fw-bold">This PO has no items yet.</div>
+                            <div class="fw-medium">This PO has no items yet.</div>
                             <div class="small">Add items using the panel below to populate the invoice.</div>
                         </td>
                     </tr>
@@ -162,10 +162,10 @@
                 
                 <!-- Total calculations -->
                 <tr class="table-light border-top-2" style="border-top:2px solid #E2E8F0!important;">
-                    <td colspan="3" class="ps-5 fw-bold text-dark" style="font-size:.88rem;">Total PO Value</td>
-                    <td class="text-center fw-bold text-dark" style="font-size:.88rem;">{{ $purchaseOrder->items->sum('quantity') }} Items</td>
-                    <td class="text-end fw-extrabold text-indigo" style="font-size:1.05rem;color:#4F46E5;">
-                        ${{ number_format($purchaseOrder->total_amount, 2) }}
+                    <td colspan="3" class="ps-5 fw-medium text-dark" style="font-size:.88rem;">Total PO Value</td>
+                    <td class="text-center fw-medium text-dark" style="font-size:.88rem;">{{ $purchaseOrder->items->sum('quantity') }} Items</td>
+                    <td class="text-end fw-medium text-indigo" style="font-size:1.05rem;color:#4F46E5;">
+                        {{ currencySymbol() }}{{ number_format($purchaseOrder->total_amount, 2) }}
                     </td>
                     @if($purchaseOrder->status === 'draft')
                         <td></td>
@@ -179,12 +179,12 @@
 <!-- Add Item Panel (Only if status is draft) -->
 @if($purchaseOrder->status === 'draft')
     <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 mb-5">
-        <h5 class="fw-bold mb-4 text-dark"><i class="fas fa-plus-circle me-2 text-indigo" style="color:#4F46E5;"></i> Add Order Line Item</h5>
+        <h5 class="fw-medium mb-4 text-dark"><i class="fas fa-plus-circle me-2 text-indigo" style="color:#4F46E5;"></i> Add Order Line Item</h5>
         <form action="{{ route('purchase-orders.items.store', $purchaseOrder) }}" method="POST" class="row g-3 align-items-end">
             @csrf
             
             <div class="col-md-5">
-                <label for="inventory_item_id" class="form-label small text-muted fw-bold">Select Stock Item</label>
+                <label for="inventory_item_id" class="form-label small text-muted fw-medium">Select Stock Item</label>
                 <select name="inventory_item_id" id="inventory_item_id" class="form-select rounded-3 py-2.5 shadow-none" style="font-size:.85rem;" onchange="updateItemPrice(this)" required>
                     <option value="">-- Choose Item --</option>
                     @foreach($inventoryItems as $item)
@@ -194,7 +194,7 @@
             </div>
             
             <div class="col-md-3">
-                <label for="unit_cost" class="form-label small text-muted fw-bold">Unit Price ($)</label>
+                <label for="unit_cost" class="form-label small text-muted fw-medium">Unit Price ($)</label>
                 <div class="input-group">
                     <span class="input-group-text bg-light border-end-0 text-muted">$</span>
                     <input type="number" step="0.01" name="unit_cost" id="unit_cost" class="form-control rounded-3 py-2.5 shadow-none border-start-0" placeholder="0.00" required>
@@ -202,7 +202,7 @@
             </div>
 
             <div class="col-md-2">
-                <label for="quantity" class="form-label small text-muted fw-bold">Quantity</label>
+                <label for="quantity" class="form-label small text-muted fw-medium">Quantity</label>
                 <input type="number" name="quantity" id="quantity" class="form-control rounded-3 py-2.5 shadow-none" min="1" value="1" required>
             </div>
 

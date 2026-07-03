@@ -5,10 +5,66 @@ namespace App\Http\Controllers;
 use App\Models\InventoryItem;
 use App\Models\InventoryCategory;
 use App\Models\InventoryStockLog;
+use App\Models\InventorySupplier;
+use App\Models\PurchaseOrder;
+use App\Imports\InventoryItemsImport;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InventoryItemController extends Controller
 {
+    public function dashboard()
+    {
+        $totalItems = InventoryItem::count();
+        $lowStockCount = InventoryItem::whereRaw('available_qty <= min_qty_warning')->count();
+        $totalStockVal = InventoryItem::selectRaw('SUM(available_qty * unit_price) as val')->value('val') ?? 0;
+        $totalSuppliers = InventorySupplier::count();
+
+        $poStatusCounts = PurchaseOrder::selectRaw('status, count(*) as cnt')
+            ->groupBy('status')
+            ->pluck('cnt', 'status');
+
+        $openPoValue = PurchaseOrder::whereIn('status', ['draft', 'sent'])->sum('total_amount');
+
+        $lowStockItems = InventoryItem::with('category')
+            ->whereRaw('available_qty <= min_qty_warning')
+            ->orderByRaw('available_qty - min_qty_warning ASC')
+            ->limit(6)
+            ->get();
+
+        $stockMovement = collect(range(6, 0))->map(function ($daysAgo) {
+            $date = Carbon::today()->subDays($daysAgo);
+            $stockIn = InventoryStockLog::where('type', 'stock_in')
+                ->whereDate('created_at', $date)
+                ->sum('quantity');
+            $stockOut = InventoryStockLog::where('type', 'stock_out')
+                ->whereDate('created_at', $date)
+                ->sum('quantity');
+            return [
+                'label' => $date->format('D'),
+                'stock_in' => (int) $stockIn,
+                'stock_out' => (int) $stockOut,
+            ];
+        });
+        $maxMovement = max(1, $stockMovement->flatMap(fn ($d) => [$d['stock_in'], $d['stock_out']])->max());
+
+        $recentLogs = InventoryStockLog::with(['item', 'user'])->latest()->limit(8)->get();
+
+        return view('inventory.dashboard', compact(
+            'totalItems',
+            'lowStockCount',
+            'totalStockVal',
+            'totalSuppliers',
+            'poStatusCounts',
+            'openPoValue',
+            'lowStockItems',
+            'stockMovement',
+            'maxMovement',
+            'recentLogs'
+        ));
+    }
+
     public function index(Request $request)
     {
         $query = InventoryItem::with('category');
@@ -143,5 +199,28 @@ class InventoryItemController extends Controller
     {
         $inventoryItem->delete();
         return redirect()->route('inventory-items.index')->with('success', 'Stock item deleted successfully.');
+    }
+
+    /**
+     * Bulk-import inventory items from an Excel or CSV file.
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        $instituteId = auth()->user()->institute_id;
+        $userId      = auth()->id();
+
+        try {
+            Excel::import(new InventoryItemsImport($instituteId, $userId), $request->file('import_file'));
+
+            return redirect()->route('inventory-items.index')
+                ->with('success', 'Inventory items imported successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('inventory-items.index')
+                ->with('error', 'Import failed: ' . $e->getMessage());
+        }
     }
 }

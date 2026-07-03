@@ -18,6 +18,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('accounting.vouchers.index') }}">
+                    <i class="fas fa-book me-2"></i>Voucher Book
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('expenses.index') }}">
                     <i class="fas fa-receipt me-2"></i>Expense Ledger
                 </a>
@@ -64,7 +69,7 @@
                         <i class="fas fa-sign-in-alt"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ currencySymbol() }}{{ number_format($totalCollected, 2) }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ currencySymbol() }}{{ number_format($totalCollected, 2) }}</h3>
                 <span class="text-muted small">GST liability from student invoice payments</span>
             </div>
         </div>
@@ -80,7 +85,7 @@
                         <i class="fas fa-sign-out-alt"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ currencySymbol() }}{{ number_format($totalPaid, 2) }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ currencySymbol() }}{{ number_format($totalPaid, 2) }}</h3>
                 <span class="text-muted small">GST paid on supplier &amp; office expenses</span>
             </div>
         </div>
@@ -96,7 +101,7 @@
                         <i class="fas fa-wallet"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ currencySymbol() }}{{ number_format($netPayable, 2) }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ currencySymbol() }}{{ number_format($netPayable, 2) }}</h3>
                 <span class="text-muted small">Balance owed to tax department</span>
             </div>
         </div>
@@ -109,7 +114,7 @@
     <div class="col-12 col-lg-6">
         <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4">
-                <h6 class="fw-bold text-dark mb-0">Output GST Ledger Splits (Credit entries)</h6>
+                <h6 class="fw-medium text-dark mb-0">Output GST Ledger Splits (Credit entries)</h6>
                 <p class="text-muted small mb-0">List of fee invoice receipts containing GST portions</p>
             </div>
             <div class="card-body px-4 pb-4">
@@ -129,7 +134,7 @@
                                     <td>
                                         <code class="text-secondary small">{{ $entry->voucher->voucher_number }}</code>
                                     </td>
-                                    <td class="fw-bold text-dark text-end">{{ currencySymbol() }}{{ number_format($entry->amount, 2) }}</td>
+                                    <td class="fw-medium text-dark text-end">{{ currencySymbol() }}{{ number_format($entry->amount, 2) }}</td>
                                 </tr>
                             @empty
                                 <tr>
@@ -147,7 +152,7 @@
     <div class="col-12 col-lg-6">
         <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4">
-                <h6 class="fw-bold text-dark mb-0">Input GST (ITC) Ledger Splits (Debit entries)</h6>
+                <h6 class="fw-medium text-dark mb-0">Input GST (ITC) Ledger Splits (Debit entries)</h6>
                 <p class="text-muted small mb-0">List of expenditures containing GST inputs</p>
             </div>
             <div class="card-body px-4 pb-4">
@@ -167,7 +172,7 @@
                                     <td>
                                         <code class="text-secondary small">{{ $entry->voucher->voucher_number }}</code>
                                     </td>
-                                    <td class="fw-bold text-dark text-end">{{ currencySymbol() }}{{ number_format($entry->amount, 2) }}</td>
+                                    <td class="fw-medium text-dark text-end">{{ currencySymbol() }}{{ number_format($entry->amount, 2) }}</td>
                                 </tr>
                             @empty
                                 <tr>

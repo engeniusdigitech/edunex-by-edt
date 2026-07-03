@@ -6,7 +6,7 @@
 .s-hdr::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.05) 1px,transparent 1px);background-size:26px 26px;}
 .card-sec{background:#fff;border:1px solid #E2E8F0;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.02);overflow:hidden;}
 .card-header-sec{padding:20px 24px;border-bottom:1px solid #F1F5F9;background:#fff;}
-.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(79,70,229,.35);transition:all .2s;text-decoration:none;cursor:pointer;}
+.btn-save{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(79,70,229,.35);transition:all .2s;text-decoration:none;cursor:pointer;}
 .btn-save:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,.45);color:#fff;}
 .btn-action{width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#64748B;border:1px solid #E2E8F0;background:#fff;text-decoration:none;transition:all .2s;}
 .btn-action:hover{color:#4F46E5;border-color:#4F46E5;background:#EEF2FF;}
@@ -14,11 +14,38 @@
 
 <div class="s-hdr d-flex justify-content-between align-items-center flex-wrap gap-3">
     <div style="position:relative;z-index:2;">
-        <span style="font-size:.7rem;font-weight:700;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-boxes me-1"></i> Store &amp; Logistics</span>
-        <h2 style="font-size:1.5rem;font-weight:800;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">Suppliers &amp; Vendors</h2>
+        <span style="font-size:.7rem;font-weight:500;color:#67E8F9;text-transform:uppercase;letter-spacing:1px;"><i class="fas fa-boxes me-1"></i> Store &amp; Logistics</span>
+        <h2 style="font-size:1.5rem;font-weight:500;color:#fff;margin:6px 0 0;letter-spacing:-.5px;">Suppliers &amp; Vendors</h2>
     </div>
     <div style="position:relative;z-index:2;">
         <a href="{{ route('inventory-items.index') }}" class="btn btn-outline-light rounded-4 px-4 py-2" style="font-size:.85rem;font-weight:600;"><i class="fas fa-boxes me-2"></i> Inventory Items</a>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm mb-4" style="border-radius: 16px;">
+    <div class="card-body p-2">
+        <ul class="nav nav-pills nav-fill gap-1">
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('inventory.dashboard') }}">
+                    <i class="fas fa-chart-pie me-2"></i>Overview
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('inventory-items.index') }}">
+                    <i class="fas fa-cubes me-2"></i>Stock Items
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 active" href="{{ route('inventory-suppliers.index') }}">
+                    <i class="fas fa-truck-loading me-2"></i>Suppliers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('purchase-orders.index') }}">
+                    <i class="fas fa-file-invoice-dollar me-2"></i>Purchase Orders
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -39,34 +66,34 @@
     <div class="col-lg-4">
         <div class="card-sec">
             <div class="card-header-sec">
-                <h5 class="fw-bold mb-0 text-dark" style="font-size:1.05rem;">Register Supplier</h5>
+                <h5 class="fw-medium mb-0 text-dark" style="font-size:1.05rem;">Register Supplier</h5>
                 <p class="text-muted small mb-0 mt-1">Add a vendor details to start ordering stock items.</p>
             </div>
             <div class="p-4">
                 <form action="{{ route('inventory-suppliers.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label fw-bold text-dark" style="font-size:.8rem;">Company Name <span class="text-danger">*</span></label>
+                        <label for="name" class="form-label fw-medium text-dark" style="font-size:.8rem;">Company Name <span class="text-danger">*</span></label>
                         <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control rounded-3 py-2.5 shadow-none" placeholder="e.g. Paramount Book Stall" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="contact_person" class="form-label fw-bold text-dark" style="font-size:.8rem;">Contact Person</label>
+                        <label for="contact_person" class="form-label fw-medium text-dark" style="font-size:.8rem;">Contact Person</label>
                         <input type="text" name="contact_person" id="contact_person" value="{{ old('contact_person') }}" class="form-control rounded-3 py-2.5 shadow-none" placeholder="e.g. John Doe">
                     </div>
 
                     <div class="mb-3">
-                        <label for="phone" class="form-label fw-bold text-dark" style="font-size:.8rem;">Phone Number</label>
+                        <label for="phone" class="form-label fw-medium text-dark" style="font-size:.8rem;">Phone Number</label>
                         <input type="text" name="phone" id="phone" value="{{ old('phone') }}" class="form-control rounded-3 py-2.5 shadow-none" placeholder="+123456789">
                     </div>
 
                     <div class="mb-3">
-                        <label for="email" class="form-label fw-bold text-dark" style="font-size:.8rem;">Email Address</label>
+                        <label for="email" class="form-label fw-medium text-dark" style="font-size:.8rem;">Email Address</label>
                         <input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control rounded-3 py-2.5 shadow-none" placeholder="vendor@example.com">
                     </div>
 
                     <div class="mb-4">
-                        <label for="address" class="form-label fw-bold text-dark" style="font-size:.8rem;">Office Address</label>
+                        <label for="address" class="form-label fw-medium text-dark" style="font-size:.8rem;">Office Address</label>
                         <textarea name="address" id="address" class="form-control rounded-3 py-2.5 shadow-none" rows="3" placeholder="e.g. Suite 4B, Commercial Ave"></textarea>
                     </div>
 
@@ -81,7 +108,7 @@
         <div class="card-sec">
             <div class="card-header-sec d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
-                    <h5 class="fw-bold mb-0 text-dark" style="font-size:1.05rem;">Active Vendors Directory</h5>
+                    <h5 class="fw-medium mb-0 text-dark" style="font-size:1.05rem;">Active Vendors Directory</h5>
                     <p class="text-muted small mb-0 mt-1">Vendor information for purchase requisition.</p>
                 </div>
                 <form action="{{ route('inventory-suppliers.index') }}" method="GET" class="d-flex gap-2">
@@ -105,7 +132,7 @@
                         @forelse($suppliers as $supplier)
                             <tr>
                                 <td class="ps-4">
-                                    <div class="fw-bold text-dark" style="font-size:.85rem;">{{ $supplier->name }}</div>
+                                    <div class="fw-medium text-dark" style="font-size:.85rem;">{{ $supplier->name }}</div>
                                 </td>
                                 <td style="font-size:.82rem;color:#334155;">
                                     {{ $supplier->contact_person ?: '—' }}
@@ -133,7 +160,7 @@
                             <tr>
                                 <td colspan="5" class="text-center py-5 text-muted">
                                     <i class="fas fa-truck-loading fs-3 mb-2" style="color:#CBD5E1;"></i>
-                                    <div class="fw-bold">No Suppliers Registered</div>
+                                    <div class="fw-medium">No Suppliers Registered</div>
                                     <div class="small">Add a supplier on the left to start sending purchase orders.</div>
                                 </td>
                             </tr>
@@ -154,7 +181,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header border-bottom-0 p-4">
-                <h5 class="modal-title fw-bold text-dark" id="editModalLabel" style="font-size:1.1rem;">Update Supplier Details</h5>
+                <h5 class="modal-title fw-medium text-dark" id="editModalLabel" style="font-size:1.1rem;">Update Supplier Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-4 pb-4 pt-0">
@@ -163,27 +190,27 @@
                     @method('PUT')
                     
                     <div class="mb-3">
-                        <label for="edit_name" class="form-label fw-bold text-dark" style="font-size:.8rem;">Company Name <span class="text-danger">*</span></label>
+                        <label for="edit_name" class="form-label fw-medium text-dark" style="font-size:.8rem;">Company Name <span class="text-danger">*</span></label>
                         <input type="text" name="name" id="edit_name" class="form-control rounded-3 py-2.5 shadow-none" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="edit_contact_person" class="form-label fw-bold text-dark" style="font-size:.8rem;">Contact Person</label>
+                        <label for="edit_contact_person" class="form-label fw-medium text-dark" style="font-size:.8rem;">Contact Person</label>
                         <input type="text" name="contact_person" id="edit_contact_person" class="form-control rounded-3 py-2.5 shadow-none">
                     </div>
 
                     <div class="mb-3">
-                        <label for="edit_phone" class="form-label fw-bold text-dark" style="font-size:.8rem;">Phone Number</label>
+                        <label for="edit_phone" class="form-label fw-medium text-dark" style="font-size:.8rem;">Phone Number</label>
                         <input type="text" name="phone" id="edit_phone" class="form-control rounded-3 py-2.5 shadow-none">
                     </div>
 
                     <div class="mb-3">
-                        <label for="edit_email" class="form-label fw-bold text-dark" style="font-size:.8rem;">Email Address</label>
+                        <label for="edit_email" class="form-label fw-medium text-dark" style="font-size:.8rem;">Email Address</label>
                         <input type="email" name="email" id="edit_email" class="form-control rounded-3 py-2.5 shadow-none">
                     </div>
 
                     <div class="mb-4">
-                        <label for="edit_address" class="form-label fw-bold text-dark" style="font-size:.8rem;">Office Address</label>
+                        <label for="edit_address" class="form-label fw-medium text-dark" style="font-size:.8rem;">Office Address</label>
                         <textarea name="address" id="edit_address" class="form-control rounded-3 py-2.5 shadow-none" rows="3"></textarea>
                     </div>
 

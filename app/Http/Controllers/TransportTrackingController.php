@@ -106,6 +106,26 @@ class TransportTrackingController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function tripStatus(VehicleTrip $trip)
+    {
+        $trip->load('boardingLogs');
+
+        return response()->json([
+            'id' => $trip->id,
+            'status' => $trip->status,
+            'current_lat' => $trip->current_lat,
+            'current_lng' => $trip->current_lng,
+            'updated_at' => $trip->updated_at?->toIso8601String(),
+            'boarding_logs' => $trip->boardingLogs->map(function ($log) {
+                return [
+                    'student_id' => $log->student_id,
+                    'transport_stop_id' => $log->transport_stop_id,
+                    'status' => $log->status,
+                ];
+            }),
+        ]);
+    }
+
     public function boardStudent(Request $request, VehicleTrip $trip)
     {
         $request->validate([

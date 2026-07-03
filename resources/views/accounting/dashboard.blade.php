@@ -35,6 +35,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('accounting.vouchers.index') }}">
+                    <i class="fas fa-book me-2"></i>Voucher Book
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link rounded-pill py-2.5 px-3 text-secondary" href="{{ route('expenses.index') }}">
                     <i class="fas fa-receipt me-2"></i>Expense Ledger
                 </a>
@@ -60,7 +65,7 @@
                         <i class="fas fa-money-bill-wave"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ currencySymbol() }}{{ number_format($cashBalance, 2) }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ currencySymbol() }}{{ number_format($cashBalance, 2) }}</h3>
                 <span class="text-muted small">Current cash liquidity</span>
             </div>
         </div>
@@ -76,7 +81,7 @@
                         <i class="fas fa-university"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ currencySymbol() }}{{ number_format($bankBalance, 2) }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ currencySymbol() }}{{ number_format($bankBalance, 2) }}</h3>
                 <span class="text-muted small">Institutional reserves</span>
             </div>
         </div>
@@ -92,7 +97,7 @@
                         <i class="fas fa-file-invoice-dollar"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ currencySymbol() }}{{ number_format($totalReceivable, 2) }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ currencySymbol() }}{{ number_format($totalReceivable, 2) }}</h3>
                 <span class="text-muted small">Outstanding student dues</span>
             </div>
         </div>
@@ -109,7 +114,7 @@
                         <i class="fas fa-percent"></i>
                     </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark">{{ currencySymbol() }}{{ number_format($netGst, 2) }}</h3>
+                <h3 class="fw-medium mb-0 text-dark">{{ currencySymbol() }}{{ number_format($netGst, 2) }}</h3>
                 <span class="text-muted small">Collected vs Input Credit</span>
             </div>
         </div>
@@ -122,7 +127,7 @@
     <div class="col-md-6 col-12">
         <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
             <div class="card-header bg-white border-bottom-0 pt-4 px-4">
-                <h6 class="fw-bold text-dark mb-0">Financial Performance Overview</h6>
+                <h6 class="fw-medium text-dark mb-0">Financial Performance Overview</h6>
                 <p class="text-muted small mb-0">Revenues vs Expenditures breakdown</p>
             </div>
             <div class="card-body px-4 pb-4">
@@ -130,7 +135,7 @@
                     <div>
                         <div class="d-flex justify-content-between text-sm mb-1">
                             <span class="text-muted">Total Realized Revenue</span>
-                            <span class="fw-bold text-success">{{ currencySymbol() }}{{ number_format($totalRevenue, 2) }}</span>
+                            <span class="fw-medium text-success">{{ currencySymbol() }}{{ number_format($totalRevenue, 2) }}</span>
                         </div>
                         <div class="progress" style="height: 10px; border-radius:50px;">
                             <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
@@ -139,7 +144,7 @@
                     <div>
                         <div class="d-flex justify-content-between text-sm mb-1">
                             <span class="text-muted">Total Logged Expenses</span>
-                            <span class="fw-bold text-danger">{{ currencySymbol() }}{{ number_format($totalExpenses, 2) }}</span>
+                            <span class="fw-medium text-danger">{{ currencySymbol() }}{{ number_format($totalExpenses, 2) }}</span>
                         </div>
                         @php
                             $expensePercentage = $totalRevenue > 0 ? min(100, ($totalExpenses / $totalRevenue) * 100) : 0;
@@ -153,7 +158,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="text-muted text-xs">Operating Surplus / (Deficit)</div>
-                                <h4 class="fw-bold mb-0 {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-success' : 'text-danger' }}">
+                                <h4 class="fw-medium mb-0 {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-success' : 'text-danger' }}">
                                     {{ currencySymbol() }}{{ number_format($totalRevenue - $totalExpenses, 2) }}
                                 </h4>
                             </div>
@@ -171,7 +176,7 @@
     <div class="col-md-6 col-12">
         <div class="card border-0 glass-card h-100" style="border-radius: 16px;">
             <div class="card-header bg-transparent border-0 pt-4 px-4">
-                <h6 class="fw-bold text-dark mb-0"><i class="fas fa-exchange-alt me-2 text-primary"></i>Tally TDL Sync Console</h6>
+                <h6 class="fw-medium text-dark mb-0"><i class="fas fa-exchange-alt me-2 text-primary"></i>Tally TDL Sync Console</h6>
                 <p class="text-muted small mb-0">Generate double-entry voucher XML files to import directly into Tally Prime / ERP 9</p>
             </div>
             <div class="card-body px-4 pb-4">
@@ -202,10 +207,12 @@
 <div class="card border-0 shadow-sm" style="border-radius: 16px;">
     <div class="card-header bg-white border-bottom-0 pt-4 px-4 d-flex justify-content-between align-items-center">
         <div>
-            <h6 class="fw-bold text-dark mb-0">Recent Voucher Ledger Postings</h6>
+            <h6 class="fw-medium text-dark mb-0">Recent Voucher Ledger Postings</h6>
             <p class="text-muted small mb-0">Real-time ledger audit trail of double-entry voucher inputs</p>
         </div>
-        <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill">Audit Active</span>
+        <a href="{{ route('accounting.vouchers.create') }}" class="btn btn-primary btn-sm rounded-pill px-3">
+            <i class="fas fa-plus me-1"></i>New Voucher
+        </a>
     </div>
     <div class="card-body px-4 pb-4">
         <div class="table-responsive">
@@ -224,7 +231,7 @@
                     @forelse($recentVouchers as $vch)
                         <tr>
                             <td>
-                                <div class="fw-bold text-dark">{{ $vch->voucher_number }}</div>
+                                <div class="fw-medium text-dark">{{ $vch->voucher_number }}</div>
                             </td>
                             <td>{{ \Carbon\Carbon::parse($vch->date)->format('d M, Y') }}</td>
                             <td>
@@ -249,7 +256,7 @@
                                 </div>
                             </td>
                             <td class="text-muted small" style="max-width: 150px; white-space: normal;">{{ $vch->narration }}</td>
-                            <td class="fw-bold text-dark text-end" style="font-size: 0.95rem;">{{ currencySymbol() }}{{ number_format($vch->amount, 2) }}</td>
+                            <td class="fw-medium text-dark text-end" style="font-size: 0.95rem;">{{ currencySymbol() }}{{ number_format($vch->amount, 2) }}</td>
                         </tr>
                     @empty
                         <tr>

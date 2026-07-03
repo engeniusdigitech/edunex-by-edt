@@ -1,0 +1,6 @@
+name,category,sku,unit,quantity,min_qty_warning,unit_price
+A4 Paper Reams,Stationery,SKU-001,ream,50,10,150.00
+Whiteboard Markers,Stationery,SKU-002,box,20,5,80.00
+Plastic Chairs,Furniture,,pcs,30,5,1200.00
+Laptop Dell,Electronics,SKU-004,pcs,5,2,45000.00
+Cleaning Liquid,Housekeeping,,litre,10,3,60.00

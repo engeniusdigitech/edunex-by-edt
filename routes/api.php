@@ -54,5 +54,74 @@ Route::prefix('v1')->group(function () {
 
         // Transport API endpoints
         Route::get('/student/transport', [\App\Http\Controllers\Api\V1\Transport\TransportApiController::class, 'studentTransport']);
+
+        // Assignments
+        Route::get('/assignments', [\App\Http\Controllers\Api\V1\Student\AssignmentController::class, 'index']);
+        Route::post('/assignments/{assignment}/submit', [\App\Http\Controllers\Api\V1\Student\AssignmentController::class, 'submit']);
+
+        // Examinations
+        Route::get('/examinations', [\App\Http\Controllers\Api\V1\Student\ExaminationController::class, 'index']);
+
+        // Hostel
+        Route::get('/student/hostel', [\App\Http\Controllers\Api\V1\Student\HostelController::class, 'studentHostel']);
+
+        // Downloads (report cards, certificates, documents)
+        Route::get('/downloads', [\App\Http\Controllers\Api\V1\Student\DownloadController::class, 'index']);
+
+        // Profile photo
+        Route::post('/profile/photo', [\App\Http\Controllers\Api\V1\Student\ProfileController::class, 'updatePhoto']);
+
+        // Parent routes
+        Route::prefix('parent')->group(function () {
+            Route::get('/children', [\App\Http\Controllers\Api\V1\Parent\ParentController::class, 'children']);
+            Route::get('/children/{student}/profile', [\App\Http\Controllers\Api\V1\Parent\ParentController::class, 'childProfile']);
+            Route::get('/children/{student}/attendance', [\App\Http\Controllers\Api\V1\Parent\ParentController::class, 'childAttendance']);
+            Route::get('/children/{student}/fees', [\App\Http\Controllers\Api\V1\Parent\ParentController::class, 'childFees']);
+            Route::get('/children/{student}/homework', [\App\Http\Controllers\Api\V1\Parent\ParentController::class, 'childHomework']);
+        });
+
+        // Staff routes
+        Route::prefix('staff')->group(function () {
+            Route::get('/profile', [\App\Http\Controllers\Api\V1\Staff\StaffProfileController::class, 'show']);
+            Route::get('/dashboard', [\App\Http\Controllers\Api\V1\Staff\StaffDashboardController::class, 'index']);
+            Route::get('/timetable', [\App\Http\Controllers\Api\V1\Staff\StaffTimetableController::class, 'index']);
+
+            // Attendance
+            Route::get('/attendance/students', [\App\Http\Controllers\Api\V1\Staff\AttendanceController::class, 'students']);
+            Route::post('/attendance', [\App\Http\Controllers\Api\V1\Staff\AttendanceController::class, 'store']);
+
+            // Leave approvals
+            Route::get('/leave-approvals', [\App\Http\Controllers\Api\V1\Staff\LeaveApprovalController::class, 'index']);
+            Route::post('/leave-approvals/{leave}/approve', [\App\Http\Controllers\Api\V1\Staff\LeaveApprovalController::class, 'approve']);
+            Route::post('/leave-approvals/{leave}/reject', [\App\Http\Controllers\Api\V1\Staff\LeaveApprovalController::class, 'reject']);
+
+            // Marks
+            Route::get('/marks', [\App\Http\Controllers\Api\V1\Staff\MarksController::class, 'index']);
+            Route::post('/marks', [\App\Http\Controllers\Api\V1\Staff\MarksController::class, 'store']);
+
+            // Homework
+            Route::get('/homework', [\App\Http\Controllers\Api\V1\Staff\HomeworkController::class, 'index']);
+            Route::post('/homework', [\App\Http\Controllers\Api\V1\Staff\HomeworkController::class, 'store']);
+
+            // Library
+            Route::get('/library', [\App\Http\Controllers\Api\V1\Staff\LibraryController::class, 'index']);
+            Route::post('/library/issue', [\App\Http\Controllers\Api\V1\Staff\LibraryController::class, 'issue']);
+            Route::post('/library/return', [\App\Http\Controllers\Api\V1\Staff\LibraryController::class, 'returnBook']);
+
+            // Visitors (Receptionist)
+            Route::get('/visitors', [\App\Http\Controllers\Api\V1\Staff\VisitorController::class, 'index']);
+            Route::post('/visitors', [\App\Http\Controllers\Api\V1\Staff\VisitorController::class, 'store']);
+
+            // Hostel (Warden)
+            Route::get('/hostel/overview', [\App\Http\Controllers\Api\V1\Staff\HostelController::class, 'overview']);
+            Route::get('/hostel/leaves', [\App\Http\Controllers\Api\V1\Staff\HostelController::class, 'leaves']);
+
+            // Announcements
+            Route::get('/announcements', [\App\Http\Controllers\Api\V1\Staff\AnnouncementController::class, 'index']);
+            Route::post('/announcements', [\App\Http\Controllers\Api\V1\Staff\AnnouncementController::class, 'store']);
+        });
     });
+
+    // Forgot password (public)
+    Route::post('/forgot-password', [\App\Http\Controllers\Api\V1\Auth\ForgotPasswordController::class, 'send']);
 });

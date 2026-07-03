@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Batch;
+use App\Imports\BatchesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BatchController extends Controller
 {
@@ -78,5 +80,28 @@ class BatchController extends Controller
     {
         $batch->delete();
         return redirect()->route('batches.index')->with('success', 'Batch deleted successfully.');
+    }
+
+    /**
+     * Bulk-import batches from an Excel or CSV file.
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        $instituteId = auth()->user()->institute_id;
+
+        try {
+            $import = new BatchesImport($instituteId);
+            Excel::import($import, $request->file('import_file'));
+
+            return redirect()->route('batches.index')
+                ->with('success', 'Batches imported successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('batches.index')
+                ->with('error', 'Import failed: ' . $e->getMessage());
+        }
     }
 }
