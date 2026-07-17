@@ -178,7 +178,12 @@ Route::get('/institute-erp/{country}', [SeoLandingController::class, 'instituteC
     ->name('seo.institute.country');
 
 // ── Sitemap ───────────────────────────────────────────────────────────
-Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemap'])->name('sitemap');
+Route::get('/sitemap.xml', [SeoLandingController::class, 'sitemapIndex'])->name('sitemap');
+Route::get('/sitemap-main.xml', [SeoLandingController::class, 'sitemapMain'])->name('sitemap.main');
+Route::get('/sitemap-blog.xml', [SeoLandingController::class, 'sitemapBlog'])->name('sitemap.blog');
+Route::get('/sitemap-home-country.xml', [SeoLandingController::class, 'sitemapCountry'])->name('sitemap.country');
+Route::get('/sitemap-home-state.xml', [SeoLandingController::class, 'sitemapState'])->name('sitemap.state');
+Route::get('/sitemap-home-city.xml', [SeoLandingController::class, 'sitemapCity'])->name('sitemap.city');
 
 
 

@@ -331,15 +331,66 @@ class SeoLandingController extends Controller
     // ─────────────────────────────────────────────────────────────────────
 
     /** GET /sitemap.xml */
-    public function sitemap()
+    public function sitemapIndex()
+    {
+        $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
+        $now = date('Y-m-d');
+        
+        return response()
+            ->view('sitemaps.index', compact('xmlHeader', 'now'))
+            ->header('Content-Type', 'text/xml')
+            ->header('Cache-Control', 'public, max-age=86400');
+    }
+
+    /** GET /sitemap-main.xml */
+    public function sitemapMain()
+    {
+        $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
+        return response()
+            ->view('sitemaps.main', compact('xmlHeader'))
+            ->header('Content-Type', 'text/xml')
+            ->header('Cache-Control', 'public, max-age=86400');
+    }
+
+    /** GET /sitemap-blog.xml */
+    public function sitemapBlog()
+    {
+        $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
+        return response()
+            ->view('sitemaps.blog', compact('xmlHeader'))
+            ->header('Content-Type', 'text/xml')
+            ->header('Cache-Control', 'public, max-age=86400');
+    }
+
+    /** GET /sitemap-home-country.xml */
+    public function sitemapCountry()
     {
         $countries = $this->allCountries();
-        $states    = $this->allStates();
-        $cities    = $this->allCities();
         $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
-
         return response()
-            ->view('sitemap', compact('countries', 'states', 'cities', 'xmlHeader'))
+            ->view('sitemaps.country', compact('countries', 'xmlHeader'))
+            ->header('Content-Type', 'text/xml')
+            ->header('Cache-Control', 'public, max-age=86400');
+    }
+
+    /** GET /sitemap-home-state.xml */
+    public function sitemapState()
+    {
+        $states = $this->allStates();
+        $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
+        return response()
+            ->view('sitemaps.state', compact('states', 'xmlHeader'))
+            ->header('Content-Type', 'text/xml')
+            ->header('Cache-Control', 'public, max-age=86400');
+    }
+
+    /** GET /sitemap-home-city.xml */
+    public function sitemapCity()
+    {
+        $cities = $this->allCities();
+        $xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
+        return response()
+            ->view('sitemaps.city', compact('cities', 'xmlHeader'))
             ->header('Content-Type', 'text/xml')
             ->header('Cache-Control', 'public, max-age=86400');
     }

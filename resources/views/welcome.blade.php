@@ -200,7 +200,7 @@ body {
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
-    font-size: 1.03rem; color: rgba(255,255,255,0.60);
+    font-size: 1.03rem; color: rgba(255,255,255,0.76);
     line-height: 1.85; margin-bottom: 26px; max-width: 480px;
 }
 .hero-features {
@@ -231,12 +231,12 @@ body {
 .btn-hero-ghost {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,0.07);
-    color: rgba(255,255,255,0.88); border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.88); border: 1px solid rgba(255,255,255,0.32);
     padding: 14px 26px; border-radius: 12px;
     font-weight: 600; font-size: 0.95rem; text-decoration: none;
     transition: all 0.25s ease; backdrop-filter: blur(8px);
 }
-.btn-hero-ghost:hover { color:#fff; background:rgba(255,255,255,0.14); border-color:rgba(255,255,255,0.28); transform:translateY(-2px); }
+.btn-hero-ghost:hover { color:#fff; background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.55); transform:translateY(-2px); box-shadow: 0 0 24px rgba(255,255,255,0.12); }
 /* Social proof */
 .hero-social-row { display: flex; align-items: center; gap: 14px; font-size: 0.8rem; color: rgba(255,255,255,0.44); }
 .hero-avatars { display: flex; }
@@ -253,17 +253,23 @@ body {
 /* Floating notification toasts */
 .hero-notif {
     position: absolute;
-    background: rgba(255,255,255,0.97);
-    border-radius: 14px; padding: 11px 15px;
-    display: flex; align-items: center; gap: 11px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.12);
-    min-width: 192px; z-index: 20; font-size: 0.75rem;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(226,232,240,0.8);
+    border-radius: 16px; padding: 12px 18px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 20px 40px rgba(15,23,42,0.15), 0 1px 3px rgba(0,0,0,0.05);
+    min-width: 210px; z-index: 20; font-size: 0.75rem;
     animation: hero-notif-float 5s ease-in-out infinite;
     pointer-events: none;
 }
 .hero-notif-1 { top: 7%;  right: -18px; }
-.hero-notif-2 { bottom: 9%; left: -22px; animation-delay: -2.5s; }
-@keyframes hero-notif-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+.hero-notif-2 { bottom: 9%; left: -22px; animation-delay: -3s; animation-duration: 6s; }
+@keyframes hero-notif-float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-10px) rotate(-0.6deg); }
+}
 .hero-notif-icon {
     width: 34px; height: 34px; border-radius: 9px;
     display: flex; align-items: center; justify-content: center;
@@ -716,100 +722,104 @@ body {
 
 /* ── Hero Contact Form ── */
 .hero-form-card {
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 40px 90px -12px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.10);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     position: relative;
+    background: #ffffff;
 }
 .hero-form-card::before {
     content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 1;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
-    pointer-events: none;
+    position: absolute; top: 0; left: 0; right: 0; height: 5px; z-index: 10;
+    background: linear-gradient(90deg, #0D9488, #2563EB);
 }
 .hero-form-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 55px 110px -12px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.14), 0 0 60px rgba(13,148,136,0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 40px 85px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.12), 0 0 45px rgba(13,148,136,0.15);
 }
 .hf-head {
-    background: linear-gradient(135deg, #0D9488 0%, #1D4ED8 100%);
-    padding: 24px 28px 20px;
+    background: #ffffff;
+    padding: 32px 34px 20px;
+    border-bottom: 1px solid #F1F5F9;
 }
 .hf-head-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 500;
-    padding: 4px 12px;
+    background: rgba(13, 148, 136, 0.08);
+    border: 1px solid rgba(13, 148, 136, 0.15);
+    color: #0D9488;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;
     border-radius: 20px;
-    margin-bottom: 10px;
-    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 .hf-head-title {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: -0.5px;
-    margin: 0 0 4px;
-    line-height: 1.3;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0F172A;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+    line-height: 1.25;
 }
 .hf-head-sub {
-    font-size: 0.76rem;
-    color: rgba(255,255,255,0.72);
+    font-size: 0.85rem;
+    color: #475569;
     margin: 0;
+    line-height: 1.45;
 }
 .hf-body {
-    background: #fff;
-    padding: 24px 28px 20px;
+    background: #ffffff;
+    padding: 24px 34px 30px;
 }
 .hf-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 16px;
 }
-.hf-group { margin-bottom: 14px; }
+.hf-group { margin-bottom: 16px; }
 .hf-lbl {
     display: block;
-    font-size: 0.69rem;
-    font-weight: 500;
-    color: #64748B;
-    margin-bottom: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
 }
 .hf-inp-wrap { position: relative; }
 .hf-ico {
     position: absolute;
-    left: 11px;
+    left: 14px;
     top: 50%;
     transform: translateY(-50%);
     color: #94A3B8;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
+    transition: color 0.25s ease, transform 0.25s ease;
 }
 .hf-inp-wrap input,
 .hf-inp-wrap textarea,
 .hf-inp-wrap select {
     width: 100%;
-    padding: 10px 12px 10px 32px;
-    border: 1.5px solid #E2E8F0;
-    border-radius: 10px;
-    font-size: 0.84rem;
+    padding: 12px 14px 12px 38px;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 12px;
+    font-size: 0.86rem;
     color: #0F172A;
     background: #F8FAFC;
     font-family: inherit;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     appearance: none;
 }
 .hf-inp-wrap textarea {
-    padding-top: 10px;
+    padding-top: 12px;
     resize: none;
-    min-height: 82px;
+    min-height: 90px;
     line-height: 1.5;
 }
 .hf-inp-wrap input:focus,
@@ -817,49 +827,60 @@ body {
 .hf-inp-wrap select:focus {
     border-color: #0D9488;
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(13,148,136,0.1);
+    box-shadow: 0 0 0 4px rgba(13,148,136,0.15);
+}
+.hf-inp-wrap:focus-within .hf-ico {
+    color: #0D9488;
+    transform: translateY(-50%) scale(1.08);
 }
 .hf-inp-wrap input::placeholder,
-.hf-inp-wrap textarea::placeholder { color: #CBD5E1; }
+.hf-inp-wrap textarea::placeholder { color: #94A3B8; }
 .hf-submit {
     width: 100%;
-    padding: 13px 20px;
-    background: linear-gradient(135deg, #0D9488, #1D4ED8);
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #0D9488, #2563EB);
     color: #fff;
     border: none;
     border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.92rem;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     font-family: inherit;
-    transition: opacity 0.2s, transform 0.15s;
-    margin-bottom: 14px;
+    transition: all 0.25s ease;
+    margin-bottom: 24px;
     letter-spacing: -0.2px;
+    box-shadow: 0 4px 14px rgba(13,148,136,0.25);
 }
-.hf-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+.hf-submit:hover {
+    background: linear-gradient(135deg, #0F766E, #1D4ED8);
+    box-shadow: 0 6px 20px rgba(13,148,136,0.35);
+    transform: translateY(-1.5px);
+}
 .hf-submit:active { transform: translateY(0); }
 .hf-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 .hf-trust {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding-top: 12px;
-    border-top: 1px solid #F1F5F9;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 34px;
+    background: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+    margin: 24px -34px -30px -34px;
 }
 .hf-trust-item {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 0.69rem;
-    color: #94A3B8;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #64748B;
 }
-.hf-trust-item i { color: #0D9488; font-size: 0.7rem; }
+.hf-trust-item i { color: #0D9488; font-size: 0.75rem; }
 .hf-success-wrap {
     text-align: center;
     padding: 28px 12px;
@@ -1472,13 +1493,7 @@ body {
 
                     <!-- Social proof -->
                     <div class="hero-social-row">
-                        <div class="hero-avatars">
-                            <div class="hero-avatar">RS</div>
-                            <div class="hero-avatar">AM</div>
-                            <div class="hero-avatar">PD</div>
-                            <div class="hero-avatar">KS</div>
-                            <div class="hero-avatar">VR</div>
-                        </div>
+                        
                         <span><strong style="color:rgba(255,255,255,0.82);">100+ institutes</strong> across India trust EduNex ERP</span>
                     </div>
                     <p style="margin-top:14px; font-size:0.74rem; color:rgba(255,255,255,0.3);">

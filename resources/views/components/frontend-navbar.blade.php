@@ -182,12 +182,17 @@ html {
 }
 .nb-panel a:hover { background: #F0FDF4; color: #0D9488; }
 .nb-panel-icon {
-    width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0;
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.72rem;
-    background: #F0FDFA; color: #0D9488;
+    font-size: 0.85rem;
+    background: #F1F5F9; color: #475569;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
 }
-.nb-panel a:hover .nb-panel-icon { background: #CCFBF1; }
+.nb-panel a:hover .nb-panel-icon {
+    background: #0D9488; color: #FFFFFF;
+    border-color: #0D9488;
+}
 .nb-panel-divider {
     height: 1px; background: #F1F5F9; margin: 6px 0;
 }
@@ -205,8 +210,6 @@ html {
 }
 .nb-mega-col { padding: 4px; }
 .nb-mega-col + .nb-mega-col { border-left: 1px solid #F1F5F9; }
-.nb-mega .nb-panel-icon { background: #EFF6FF; color: #3B82F6; }
-.nb-mega a:hover .nb-panel-icon { background: #DBEAFE; }
 
 /* ── DESKTOP RIGHT CTAs ── */
 .nb-ctas {
@@ -339,14 +342,16 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
 .nb-dlink-icon {
     width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.92rem;
+    background: #F8FAFC; color: #64748B;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
 }
-.di-teal  { background: hsla(174,72%,56%,0.14); color: hsl(174,72%,60%); }
-.di-blue  { background: hsla(217,91%,60%,0.14); color: hsl(217,91%,72%); }
-.di-amber { background: hsla(38,92%,50%,0.14);  color: hsl(38,92%,62%); }
-.di-violet{ background: hsla(262,83%,58%,0.14); color: hsl(262,83%,72%); }
-.di-rose  { background: hsla(347,77%,50%,0.14); color: hsl(347,77%,68%); }
-.di-green { background: hsla(142,72%,45%,0.14); color: hsl(142,72%,58%); }
+.nb-dlink:hover .nb-dlink-icon,
+.nb-dlink.active .nb-dlink-icon {
+    background: #0D9488; color: #FFFFFF;
+    border-color: #0D9488;
+}
 .nb-dlink-text { flex: 1; }
 .nb-dlink-text span { display: block; }
 .nb-dlink-text .nb-dlink-sub {
@@ -504,31 +509,31 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                     <div class="nb-mega-col">
                         <div class="nb-panel-label">Security &amp; Finance</div>
                         <a href="{{ route('features.visitor-management') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(38,92%,50%,0.12);color:hsl(38,92%,62%);"><i class="fas fa-id-badge"></i></span> Visitor Management
+                            <span class="nb-panel-icon"><i class="fas fa-id-badge"></i></span> Visitor Management
                         </a>
                         <a href="{{ route('features.accounting-tally') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(347,77%,50%,0.12);color:hsl(347,77%,68%);"><i class="fas fa-calculator"></i></span> Accounting &amp; Tally
+                            <span class="nb-panel-icon"><i class="fas fa-calculator"></i></span> Accounting &amp; Tally
                         </a>
                         <a href="{{ route('features.transit-tracking') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(142,72%,45%,0.12);color:hsl(142,72%,58%);"><i class="fas fa-map-location-dot"></i></span> GPS Transit Tracking
+                            <span class="nb-panel-icon"><i class="fas fa-map-location-dot"></i></span> GPS Transit Tracking
                         </a>
                         <a href="{{ route('features.statutory-payroll') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(217,91%,60%,0.12);color:hsl(217,91%,70%);"><i class="fas fa-file-invoice-dollar"></i></span> Statutory Payroll
+                            <span class="nb-panel-icon"><i class="fas fa-file-invoice-dollar"></i></span> Statutory Payroll
                         </a>
                     </div>
                     <div class="nb-mega-col">
                         <div class="nb-panel-label">Academic &amp; Management</div>
                         <a href="{{ route('digital.assessment') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(262,83%,58%,0.12);color:hsl(262,83%,72%);"><i class="fas fa-laptop-code"></i></span> Online Assessment
+                            <span class="nb-panel-icon"><i class="fas fa-laptop-code"></i></span> Online Assessment
                         </a>
                         <a href="{{ route('features.inventory-management') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(174,72%,56%,0.12);color:hsl(174,72%,60%);"><i class="fas fa-boxes-stacked"></i></span> Inventory Management
+                            <span class="nb-panel-icon"><i class="fas fa-boxes-stacked"></i></span> Inventory Management
                         </a>
                         <a href="{{ route('features.hostel-management') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(262,83%,58%,0.12);color:hsl(262,83%,72%);"><i class="fas fa-bed"></i></span> Hostel Management
+                            <span class="nb-panel-icon"><i class="fas fa-bed"></i></span> Hostel Management
                         </a>
                         <a href="{{ route('features.library-management') }}" role="menuitem">
-                            <span class="nb-panel-icon" style="background:hsla(142,72%,45%,0.12);color:hsl(142,72%,58%);"><i class="fas fa-book-open"></i></span> Library Management
+                            <span class="nb-panel-icon"><i class="fas fa-book-open"></i></span> Library Management
                         </a>
                     </div>
                 </div>
@@ -547,17 +552,17 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                         <span class="nb-panel-icon"><i class="fas fa-building"></i></span> About EduNex ERP
                     </a>
                     <a href="{{ route('blogs') }}" role="menuitem">
-                        <span class="nb-panel-icon" style="background:hsla(38,92%,50%,0.12);color:hsl(38,92%,62%);"><i class="fas fa-newspaper"></i></span> Blog &amp; Insights
+                        <span class="nb-panel-icon"><i class="fas fa-newspaper"></i></span> Blog &amp; Insights
                     </a>
                     <a href="https://engeniusdigitech.netlify.app" target="_blank" rel="noopener noreferrer" role="menuitem">
-                        <span class="nb-panel-icon" style="background:hsla(262,83%,58%,0.12);color:hsl(262,83%,72%);"><i class="fas fa-external-link-alt"></i></span> Engenius Digitech
+                        <span class="nb-panel-icon"><i class="fas fa-external-link-alt"></i></span> Engenius Digitech
                     </a>
                     <div class="nb-panel-divider"></div>
                     <a href="{{ asset('edunex-erp-brochure.html') }}" role="menuitem">
-                        <span class="nb-panel-icon" style="background:hsla(217,91%,60%,0.12);color:hsl(217,91%,72%);"><i class="fas fa-eye"></i></span> View Brochure
+                        <span class="nb-panel-icon"><i class="fas fa-eye"></i></span> View Brochure
                     </a>
                     <a href="{{ asset('edunex-erp-brochure.pdf') }}" download role="menuitem">
-                        <span class="nb-panel-icon" style="background:hsla(217,91%,60%,0.12);color:hsl(217,91%,72%);"><i class="fas fa-file-arrow-down"></i></span> Download PDF
+                        <span class="nb-panel-icon"><i class="fas fa-file-arrow-down"></i></span> Download PDF
                     </a>
                 </div>
             </div>
@@ -617,12 +622,12 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
         {{-- Main Links --}}
         <div class="nb-drawer-section">
             <a href="{{ url('/') }}" class="nb-dlink {{ request()->is('/') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-teal"><i class="fas fa-house"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-house"></i></span>
                 <span class="nb-dlink-text"><span>Home</span></span>
                 <i class="fas fa-chevron-right nb-dlink-arrow"></i>
             </a>
             <a href="{{ route('pricing') }}" class="nb-dlink {{ request()->routeIs('pricing') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-green"><i class="fas fa-tag"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-tag"></i></span>
                 <span class="nb-dlink-text">
                     <span>Pricing</span>
                     <span class="nb-dlink-sub">Plans &amp; free trial</span>
@@ -630,7 +635,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 <i class="fas fa-chevron-right nb-dlink-arrow"></i>
             </a>
             <a href="{{ route('contact') }}" class="nb-dlink {{ request()->routeIs('contact') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-blue"><i class="fas fa-headset"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-headset"></i></span>
                 <span class="nb-dlink-text">
                     <span>Contact Us</span>
                     <span class="nb-dlink-sub">Talk to our team</span>
@@ -638,7 +643,7 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
                 <i class="fas fa-chevron-right nb-dlink-arrow"></i>
             </a>
             <a href="{{ route('login.hub') }}" class="nb-dlink {{ request()->routeIs('login.hub') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-violet"><i class="fas fa-right-to-bracket"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-right-to-bracket"></i></span>
                 <span class="nb-dlink-text">
                     <span>Login Portal</span>
                     <span class="nb-dlink-sub">Student &amp; Staff gateway</span>
@@ -653,56 +658,56 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
         <div class="nb-drawer-section">
             <div class="nb-drawer-section-title">Features</div>
             <a href="{{ route('digital.assessment') }}" class="nb-dlink {{ request()->routeIs('digital.assessment') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-blue"><i class="fas fa-laptop-code"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-laptop-code"></i></span>
                 <span class="nb-dlink-text">
                     <span>Online Assessment</span>
                     <span class="nb-dlink-sub">Digital exam platform</span>
                 </span>
             </a>
             <a href="{{ route('features.visitor-management') }}" class="nb-dlink {{ request()->routeIs('features.visitor-management') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-amber"><i class="fas fa-id-badge"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-id-badge"></i></span>
                 <span class="nb-dlink-text">
                     <span>Visitor Management</span>
                     <span class="nb-dlink-sub">Digital visitor register</span>
                 </span>
             </a>
             <a href="{{ route('features.accounting-tally') }}" class="nb-dlink {{ request()->routeIs('features.accounting-tally') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-rose"><i class="fas fa-calculator"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-calculator"></i></span>
                 <span class="nb-dlink-text">
                     <span>Accounting &amp; Tally</span>
                     <span class="nb-dlink-sub">Ledger, expenses &amp; Tally sync</span>
                 </span>
             </a>
             <a href="{{ route('features.transit-tracking') }}" class="nb-dlink {{ request()->routeIs('features.transit-tracking') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-teal"><i class="fas fa-map-location-dot"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-map-location-dot"></i></span>
                 <span class="nb-dlink-text">
                     <span>GPS Transit Tracking</span>
                     <span class="nb-dlink-sub">Live transport maps</span>
                 </span>
             </a>
             <a href="{{ route('features.statutory-payroll') }}" class="nb-dlink {{ request()->routeIs('features.statutory-payroll') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-blue"><i class="fas fa-file-invoice-dollar"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-file-invoice-dollar"></i></span>
                 <span class="nb-dlink-text">
                     <span>Statutory Payroll</span>
                     <span class="nb-dlink-sub">PF, ESI &amp; compliance</span>
                 </span>
             </a>
             <a href="{{ route('features.inventory-management') }}" class="nb-dlink {{ request()->routeIs('features.inventory-management') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-teal"><i class="fas fa-boxes-stacked"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-boxes-stacked"></i></span>
                 <span class="nb-dlink-text">
                     <span>Inventory Management</span>
                     <span class="nb-dlink-sub">Stock and store tracking</span>
                 </span>
             </a>
             <a href="{{ route('features.hostel-management') }}" class="nb-dlink {{ request()->routeIs('features.hostel-management') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-violet"><i class="fas fa-bed"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-bed"></i></span>
                 <span class="nb-dlink-text">
                     <span>Hostel Management</span>
                     <span class="nb-dlink-sub">Room &amp; mess allocator</span>
                 </span>
             </a>
             <a href="{{ route('features.library-management') }}" class="nb-dlink {{ request()->routeIs('features.library-management') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-green"><i class="fas fa-book-open"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-book-open"></i></span>
                 <span class="nb-dlink-text">
                     <span>Library Management</span>
                     <span class="nb-dlink-sub">Books issue &amp; QR scan</span>
@@ -716,22 +721,22 @@ body.nb-open .nb-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45d
         <div class="nb-drawer-section">
             <div class="nb-drawer-section-title">Company</div>
             <a href="{{ route('about') }}" class="nb-dlink {{ request()->routeIs('about') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-teal"><i class="fas fa-building"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-building"></i></span>
                 <span class="nb-dlink-text"><span>About Us</span></span>
             </a>
             <a href="{{ route('blogs') }}" class="nb-dlink {{ request()->routeIs('blogs') ? 'active' : '' }}">
-                <span class="nb-dlink-icon di-amber"><i class="fas fa-newspaper"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-newspaper"></i></span>
                 <span class="nb-dlink-text"><span>Blog &amp; Insights</span></span>
             </a>
             <a href="{{ asset('edunex-erp-brochure.html') }}" class="nb-dlink">
-                <span class="nb-dlink-icon di-blue"><i class="fas fa-eye"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-eye"></i></span>
                 <span class="nb-dlink-text">
                     <span>View Brochure</span>
                     <span class="nb-dlink-sub">Interactive brochure</span>
                 </span>
             </a>
             <a href="{{ asset('edunex-erp-brochure.pdf') }}" download class="nb-dlink">
-                <span class="nb-dlink-icon di-blue"><i class="fas fa-file-arrow-down"></i></span>
+                <span class="nb-dlink-icon"><i class="fas fa-file-arrow-down"></i></span>
                 <span class="nb-dlink-text">
                     <span>Download PDF</span>
                     <span class="nb-dlink-sub">EduNex ERP brochure</span>
